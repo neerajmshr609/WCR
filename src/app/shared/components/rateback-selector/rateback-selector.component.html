@@ -1,0 +1,38 @@
+<div
+  class="ratebacks"
+  [ngClass]="{ 'ratebacks--small': isSmall, 'ratebacks--big': isBig }"
+>
+  <a
+    class="ratebacks__item"
+    *ngFor="let rateback of parsedRatebacks"
+    [ngClass]="{ disabled: readonly && !rateback.count }"
+    (click)="selectRateback(rateback.value)"
+  >
+    <img
+      class="ratebacks__icon"
+      [src]="
+        'assets/ratebacks/' +
+        rateback.type +
+        (isFilledIcon ? '-filled' : '') +
+        '.svg'
+      "
+      [style]="
+        selectedRatebackInsights === rateback.value
+          ? 'border-color: ' + getOutlineColor(rateback.value)
+          : null
+      "
+      [ngClass]="{
+        'ratebacks__icon--green':
+          showWinLose &&
+          selectedWinLose === rateback.value &&
+          winner === rateback.value,
+        'ratebacks__icon--red':
+          showWinLose &&
+          selectedWinLose === rateback.value &&
+          winner !== rateback.value,
+      }"
+    />
+    <p class="ratebacks__name">{{ rateback.name | translate }}</p>
+    <p class="ratebacks__amount" *ngIf="readonly">{{ rateback.count }}</p>
+  </a>
+</div>

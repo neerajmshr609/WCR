@@ -1,0 +1,72 @@
+@import "_variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media (min-width: $bp-small) {
+    width: auto;
+  }
+}
+
+app-plus-icon {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+}
+
+.add-skill-wrap {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+
+  &-btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: $--sds-typography-scale-06;
+    border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+    background: $--sds-color-background-default-secondary;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background: $--sds-color-background-default-secondary-hover;
+    }
+  }
+
+}
+
+.topic-select-stage {
+  color: $--sds-color-text-default-default;
+  font-family: $--sds-typography-heading-font-family;
+  font-size: $--sds-typography-heading-size-base;
+  font-weight: $--sds-typography-heading-font-weight;
+  line-height: $line-height-120;
+  letter-spacing: $--letter-spacing--0048;
+  margin-bottom: $--sds-size-space-1050;
+}
+
+.filter-panel {
+  margin-bottom: $--sds-size-space-800;
+  @media screen and (min-width: $bp-medium) {
+    margin-bottom: $--sds-size-space-1050;
+  }
+}
+
+.selected-skills,
+.skills-list {
+  margin-bottom: $--sds-size-space-300;
+  @media screen and (min-width: $bp-medium) {
+    margin-bottom: $--sds-size-space-850;
+  }
+}
+
+.cards-grid-default {
+  grid-template-columns: repeat(2, auto);
+  justify-content: flex-start;
+}
+

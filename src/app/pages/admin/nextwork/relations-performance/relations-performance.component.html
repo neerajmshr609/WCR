@@ -1,0 +1,67 @@
+<div class="relations">
+  <table
+    mat-table
+    matSort
+    [dataSource]="dataSource"
+    multiTemplateDataRows
+    class="mat-elevation-z8"
+  >
+    <ng-container matColumnDef="fromcategory_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>From category</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.fromcategory_name }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-slider
+          min="0"
+          max="1"
+          step="0.1"
+          [value]="element.weight"
+          [thumbLabel]="true"
+        ></mat-slider>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tocategory_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>To category</th>
+      <td mat-cell *matCellDef="let element">{{ element.tocategory_name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="discouraging">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Discouraging</th>
+      <td mat-cell *matCellDef="let element">{{ element.discouraging }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="unhelpful">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Unhelpful</th>
+      <td mat-cell *matCellDef="let element">{{ element.unhelpful }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="helpful">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Helpful</th>
+      <td mat-cell *matCellDef="let element">
+        <p>{{ element.helpful }}</p>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="inspiring">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Brilliant insight
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <p>{{ element.inspiring }}</p>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let element; columns: displayedColumns"
+      class="example-element-row"
+    ></tr>
+  </table>
+</div>

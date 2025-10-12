@@ -1,0 +1,93 @@
+@import "_variables";
+@import "_mixins";
+
+:host {
+  display: flex;
+  justify-content: stretch;
+  align-items: flex-end;
+}
+
+.allow-review {
+  cursor: pointer;
+}
+
+.restrict-review {
+  cursor: not-allowed;
+}
+
+.review-score {
+  &_actions-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &_actions-arrows {
+    display: flex;
+    gap: $--sds-size-space-300;
+  }
+
+  &_actions-text {
+    text-transform: uppercase;
+    color: $--sds-color-text-default-tertiary;
+    font-family: $--sds-typography-font-family;
+    font-size: $--sds-typography-scale-01;
+    font-weight: $--sds-typography-weight-medium;
+    line-height: normal;
+    letter-spacing: $--letter-spacing-3;
+    text-align: center;
+  }
+
+  &_meter-score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &_score-container {
+    display: flex;
+    margin: $--sds-size-space-150 0;
+    justify-content: stretch;
+    align-items: stretch;
+    width: 114px;
+    height: 54px;
+    border-radius: $--sds-size-radius-200;
+    box-shadow: 0 1.667px 6.666px 0 rgba(0, 0, 0, 0.25);
+
+    > * {
+      flex-grow: 1;
+      flex-basis: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &_score {
+    border-top-left-radius: $--sds-size-radius-200;
+    border-bottom-left-radius: $--sds-size-radius-200;
+    text-align: center;
+    font-family: $--sds-typography-font-family;
+    font-size: $--sds-typography-scale-03;
+    font-style: normal;
+    font-weight: $--sds-typography-weight-bold;
+  }
+
+  &_emoji {
+    border-top-right-radius: $--sds-size-radius-200;
+    border-bottom-right-radius: $--sds-size-radius-200;
+  }
+
+  &_total-reviews {
+    text-align: center;
+    color: #B0B0B0;
+    font-family: $--sds-typography-font-family;
+    font-size: $--sds-typography-scale-02;
+    font-weight: $--sds-typography-weight-900;
+    line-height: normal;
+    letter-spacing: $--letter-spacing-3;
+    text-transform: uppercase;
+    text-wrap: wrap;
+  }
+}

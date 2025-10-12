@@ -1,0 +1,18 @@
+<app-visible-menu-items-container
+  [visibleItems]="visibleItems()"
+  [selectedItem]="selectedItem()"
+  [displayDropdownBtn]="displayDropdownBtn()"
+  [dropdownIsActive]="dropdownIsActive()"
+  (selectedItemChange)="setSelected($event)"
+  (dropdownButtonClick)="dropdownButtonClickHandler()"
+  #buttonTriggerContainer
+></app-visible-menu-items-container>
+
+@if (dropdownIsActive()) {
+  <app-dropdown-list
+    [items]="invisibleItems()"
+    (selectedChange)="setSelected($event)"
+    (outsideClick)="clickOutsideDropdownHandler($event)"
+    [buttonTriggerRef]="buttonTriggerContainer.buttonTriggerRef().elementRef"
+  ></app-dropdown-list>
+}

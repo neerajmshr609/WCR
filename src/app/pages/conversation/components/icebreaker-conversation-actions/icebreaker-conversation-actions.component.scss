@@ -1,0 +1,47 @@
+@import "_variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: $--sds-size-space-400;
+  padding: $--sds-size-space-725 0 $--sds-size-space-400 0;
+}
+
+.ice-breaker-btn {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  width: fit-content;
+  cursor: pointer;
+
+  &.disabled {
+    cursor: not-allowed;
+    .ice-breaker-btn_text {
+      color: $--sds-color-text-disabled-default !important;
+    }
+  }
+
+  &_text {
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 100%;
+    white-space: nowrap;
+
+
+  }
+
+  &_icon {
+    width: 1.778rem;
+    height: 1.778rem;
+  }
+}
+
+app-icon-long-arrow, app-icon-finish {
+  display: flex;
+  width: 1.6rem;
+  height: 1.6rem;
+}

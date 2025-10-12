@@ -1,0 +1,99 @@
+@import "_variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.9rem;
+  padding: 1.8rem 1rem;
+}
+
+app-mail-icon {
+  display: flex;
+  width: 7.5rem;
+  height: 7.5rem;
+}
+
+app-user-icon, app-icon-double-right-arrow {
+  display: flex;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.go-login-text {
+  color: $--sds-color-text-default-default;
+  font-family: $--sds-typography-body-font-family;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 100%; /* 25.201px */
+}
+
+app-close-icon {
+  display: flex;
+  width: 3.8rem;
+  height: 3.8rem;
+}
+
+.check-email-title {
+  color: $--sds-color-text-default-default;
+  font-family: $--sds-typography-heading-font-family;
+  font-size: 3.8rem;
+  font-style: normal;
+  font-weight: $--sds-typography-heading-font-weight;
+  line-height: 120%;
+  letter-spacing: -0.756px;
+  margin: 0;
+}
+
+.user-email {
+  color: $--sds-color-text-default-secondary;
+  font-family: $--sds-typography-body-font-family;
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-strong;
+  line-height: 140%;
+}
+
+.login-link {
+  color: $--sds-color-text-default-default;
+  font-family: $--sds-typography-body-font-family;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 140%;
+
+  a {
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: 25.201px;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-strong;
+    line-height: 140%;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.resend-text {
+  color: $--sds-color-text-default-secondary;
+  font-family: $--sds-typography-body-font-family;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  .close {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+  }
+}

@@ -1,0 +1,7 @@
+@for (image of imagesList(); track image.zIndex) {
+  <img
+    [ngStyle]="{'z-index': image.zIndex}"
+    src="{{ image.src }}"
+    alt="{{ image.alt | translate }}"
+  />
+}

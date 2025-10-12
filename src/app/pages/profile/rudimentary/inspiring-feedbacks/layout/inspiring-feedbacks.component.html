@@ -1,0 +1,13 @@
+<div
+  class="profile-feedbacks"
+  *ngIf="usersFeedbacks$ | async as usersFeedbacks; else loaderTpl"
+>
+  <app-newsfeed-item
+    *ngFor="let feedback of usersFeedbacks"
+    [feedback]="feedback"
+  ></app-newsfeed-item>
+</div>
+
+<ng-template #loaderTpl>
+  <app-small-spinner [diameter]="40"></app-small-spinner>
+</ng-template>

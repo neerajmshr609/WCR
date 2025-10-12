@@ -1,0 +1,40 @@
+@if (!actionsTemplate() || isMobileScreen()) {
+  <app-button-filter
+    [isActive]="isActiveFilterButton()"
+    [isOpened]="!isHiddenFilters()"
+    (click)="toggleDisplayFilters()"
+  ></app-button-filter>
+}
+
+<app-search-input
+  [ngStyle]="{'flex': displayColumn() || isMobileScreen() ? 1 : 'unset'}"
+  class="filter-panel_search-input"
+  [(searchText)]="searchInputValue"
+  [placeholder]="placeholder()"
+  (focused)="focusTextInput.emit($event)"
+></app-search-input>
+
+@if (actionsTemplate()) {
+  <ng-container
+    *ngTemplateOutlet="actionsTemplate()"
+  ></ng-container>
+
+  @if (!isMobileScreen()) {
+    <app-button-filter
+      [isActive]="isActiveFilterButton()"
+      (click)="toggleDisplayFilters()"
+    ></app-button-filter>
+  }
+}
+
+@if (!isHiddenFilters()) {
+  <app-filters-list-horizontal
+    [@expandCollapse]
+    [ngStyle]="{'width': displayColumn() ? '100%' : 'auto'}"
+    class="filter-panel_filters-list"
+    [filtersList]="filterItems()"
+    [(selectedFilters)]="selectedFilters"
+  ></app-filters-list-horizontal>
+}
+
+

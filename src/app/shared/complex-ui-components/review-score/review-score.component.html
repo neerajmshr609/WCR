@@ -1,0 +1,50 @@
+<div class="review-score_actions-container">
+
+  <div class="review-score_actions-arrows">
+    <app-arrow-left-circle-icon
+      [color]="allowNegativeReview() ? arrowDefaultColor : arrowActiveColor "
+      [hoverColor]="allowNegativeReview() ? arrowActiveColor : null"
+      [ngClass]="allowNegativeReview() ? 'allow-review' : 'restrict-review '"
+      (click)="negativeReview()"
+    ></app-arrow-left-circle-icon>
+
+    <app-arrow-right-circle-icon
+      [color]="allowPositiveReview() ? arrowDefaultColor : arrowActiveColor"
+      [hoverColor]="allowNegativeReview() ? arrowActiveColor : null"
+      [ngClass]="allowPositiveReview() ? 'allow-review' : 'restrict-review '"
+      (click)="positiveReview()"
+    ></app-arrow-right-circle-icon>
+  </div>
+
+  @if (!hasReviews()) {
+    <span
+      class="review-score_actions-text"
+      [innerHTML]="'review-score.no-reviews' | translate"
+    ></span>
+  }
+</div>
+<div class="review-score_meter-score-container">
+  <app-meter
+    [rotateCoefficient]="rotateCoefficient()"
+    [color]="currentColor()"
+  ></app-meter>
+  <div class="review-score_score-container">
+    <div class="review-score_score" [style.color]="currentColor()">
+      {{ currentMark() }}
+    </div>
+
+    <div class="review-score_emoji" [style.background-color]="currentColor()">
+      <app-icon-render
+        [icon]="currentEmoji()"
+      ></app-icon-render>
+    </div>
+  </div>
+  <div class="review-score_total-reviews">
+    {{ totalReviews() }}
+    <span [innerHTML]="'review-score.reviews' | translate"></span>
+  </div>
+</div>
+
+
+
+

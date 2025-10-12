@@ -1,0 +1,20 @@
+<div class="responsive-gallery" #gallery>
+  <div
+    class="responsive-gallery-item"
+    *ngFor="let item of projectFiles"
+    (click)="clickItem.emit(item)"
+  >
+    <app-grid-presentation-placeholder
+      [file]="item"
+      [changes$]="changesEvt.asObservable()"
+    ></app-grid-presentation-placeholder>
+
+    <p
+      class="title-text"
+      [title]="item.name"
+      *ngIf="item.showinfo && item.name"
+    >
+      {{ item.name }}
+    </p>
+  </div>
+</div>

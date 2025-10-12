@@ -1,0 +1,34 @@
+<section>
+  <button (click)="close()" class="close-btn">
+    <img src="../../../../../assets/close-modal-icon.svg" alt="close-modal-icon" />
+  </button>
+
+  <div class="modal__body">
+    <h1 class="title">Select a topic to unlock live availability</h1>
+
+    <p class="subtitle">
+      This button indicates to connections that you are now live and available
+      to answer questions instantly. To activate it, select at least one topic
+      in the settings area.
+      <br />
+      <br />
+      <span class="grey-text"
+        >Instant availability also overrides while being activated your
+        preconfigured time schedule.</span
+      >
+    </p>
+    <img class="gif" src="../../../../../assets/header/logo-online.gif" alt="Online status" />
+  </div>
+
+  <div class="actions">
+    <button
+      class="set-payout-acount-btn"
+      (click)="close()"
+      routerLink="/settings"
+      [queryParams]="{ type: 'finance' }"
+    >
+      SETUP PAYOUT ACCOUNT
+    </button>
+    <button (click)="close()" class="confirm-btn">Got it</button>
+  </div>
+</section>

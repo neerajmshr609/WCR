@@ -1,0 +1,16 @@
+<app-conversation-request-more-button
+  #triger
+  [disable]="isDisable()"
+  (click)="toggleMenu()"
+></app-conversation-request-more-button>
+
+@if (isOpened()) {
+  <app-dropdown-list
+    [items]="menuItems()"
+    alignBy='right'
+    (selectedChange)="selectMenuItem($event)"
+    (outsideClick)="closeMenu()"
+    [buttonTriggerRef]="triger.elementRef"
+  ></app-dropdown-list>
+}
+

@@ -1,0 +1,94 @@
+<form class="skillset-item" [formGroup]="form">
+
+  <div class="form_field__group">
+    <div class="form_field topic">
+      <span
+        class="form-label"
+      >
+        {{ 'selected_topic' | translate }}
+      </span>
+      <div class="skill-name">
+        {{ skillName() }}
+      </div>
+    </div>
+    <div class="form_field experiance">
+      <app-select
+        [disabled]="disabled()"
+        [control]="form.get('level')"
+        inputName="level"
+        label="{{
+          (isAddMode() ? 'choose_experience' : 'experience') | translate
+        }}"
+        [options]="skillLevelsStringsList"
+        [placeholder]="'select_level' | translate"
+      ></app-select>
+    </div>
+    <div class="form_field ">
+      <app-select
+        [disabled]="disabled()"
+        [control]="form.get('sharing_advice_as')"
+        inputName="sharing_advice_as"
+        [label]="'sharing_advice_as' | translate"
+        [options]="adviceOptions()"
+        [placeholder]="'sharing_advice_as' | translate"
+        [viewModel]="['id', 'name']"
+      ></app-select>
+    </div>
+    <div class="form_field ">
+      <app-select
+        [disabled]="form.get('organization_name').disabled"
+        [control]="form.get('organization_name')"
+        inputName="organisation"
+        [label]="'organisation' | translate"
+        [options]="organisations()"
+        [placeholder]="form.get('organization_name')?.value ? form.get('organization_name').value : 'organisation' | translate"
+        [viewModel]="['name', 'name']"
+      ></app-select>
+    </div>
+    <div class="form_field">
+      <app-select
+        [viewModel]="['id', 'name']"
+        [disabled]="disabled()"
+        [control]="form.get('represent_organization_as')"
+        inputName="represent_organisation"
+        [label]="'represent_organisation' | translate"
+        [options]="representOrganisationOptions()"
+        [placeholder]="'represent_organisation' | translate"
+      ></app-select>
+    </div>
+    <div class="form_field">
+      <app-input [control]="form.get('rate')" disabled placeholder="Coming Soon" label="Hourly Wage (EUR)"></app-input>
+    </div>
+  </div>
+
+  <div class="actions">
+    @if (!isAddMode()) {
+      @if (!isSaveModeActive()) {
+        <app-more-menu
+          class="skill-menu"
+          [placement]="'left'"
+          [menuList]="actionList"
+          [menuTitle]="'skill_menu_title' | translate"
+        ></app-more-menu>
+     } @else {
+        <app-button class="full-round" btnUIType="primary" size="medium" (click)="onEdit()">
+          <app-save-icon  strokeWidth="2" color="#ffffff"></app-save-icon>
+        </app-button>
+      }
+    }
+
+    @if (isAddMode()) {
+      <app-button-icon-oval
+        (click)="onSave()"
+        [disabled]="form.invalid || disabled()"
+        [isActive]="!form.invalid"
+      >
+        <mat-icon class="action__icon add">add_plus</mat-icon>
+      </app-button-icon-oval>
+    } @else {
+      <app-button-icon-oval>
+        <app-reorder-icon  strokeWidth="2"></app-reorder-icon>
+      </app-button-icon-oval>
+    }
+  </div>
+</form>

@@ -1,0 +1,29 @@
+@import 'variables';
+
+.action {
+  background-color: transparent;
+  height: 100%;
+  width: 4rem;
+  border-radius: $--sds-size-radius-500;
+  border: 1px solid $--sds-color-border-default-default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0.8rem;
+  cursor: pointer;
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+    position: relative;
+  }
+
+  &.active {
+    border: 1px solid $--sds-color-border-brand-default;
+    background: $--sds-color-background-brand-default;
+
+    .icon {
+        filter: invert(1);
+    }
+  }
+}

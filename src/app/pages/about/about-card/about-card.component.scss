@@ -1,0 +1,82 @@
+@import 'variables';
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 3rem;
+  box-shadow: 0 0.4px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  color: #fff;
+  height: 64.2rem;
+  background-color: $feed-light-gray-text;
+  overflow: hidden;
+
+  @media screen and (max-width: 486px) {
+    padding: 16% 12%;
+  }
+
+  &__img {
+    display: flex;
+    justify-content: flex-end;
+    height: 15rem;
+    margin-bottom: 3rem;
+
+    img {
+      height: 100%;
+    }
+
+    @media screen and (max-width: 486px) {
+      height: 10rem;
+    }
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    padding: 0 18px;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2rem;
+    letter-spacing: 0.05em;
+
+    li {
+      margin-bottom: 1.5rem;
+      list-style-position: outside;
+      &::marker {
+        padding-right: 1rem;
+      }
+    }
+
+    li:last-child {
+      margin-bottom: unset;
+    }
+  }
+
+  &__index {
+    position: absolute;
+    bottom: -6rem;
+    right: 1rem;
+    font-weight: 500;
+    font-size: 16rem;
+    line-height: 18.7rem;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  &--intro {
+    color: $--sds-color-grey-500;
+
+    .card__text {
+      font-weight: 500;
+    }
+  }
+}

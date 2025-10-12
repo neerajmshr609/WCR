@@ -1,0 +1,49 @@
+<div class="mock-content" (mouseenter)="this.isHoveredItem.set(true)" (mouseleave)="this.isHoveredItem.set(false)"
+  [ngClass]="{ 'active': isHoveredItem()}">
+
+  @if(selected() === 'robots') {
+  <div class="stretch-block" (click)="switchHoverState()">
+    <img class="mock-screen" src="assets/mocks/lupai/lupai-top.png">
+    <img class="mock-screen screen-3" src="assets/mocks/lupai/lupai-bottom.png">
+  </div>
+  }
+  @if (selected() === 'tasks') {
+  <div class="scroll-block" (click)="switchHoverState()">
+    <img class="mock-screen" src="assets/mocks/tasks/tasks-all-min.png">
+    <img class="mock-screen screen-3" src="assets/mocks/tasks/tasks-bottom-min.png">
+  </div>
+  }
+
+  @if (selected() === 'files') {
+  <div class="scroll-block" (click)="switchHoverState()">
+    <img class="mock-screen" src="assets/mocks/file/file-min.png">
+  </div>
+  }
+
+  @if (selected() === 'summary') {
+  <div class="stretch-block" (click)="switchHoverState()">
+    <img class="mock-screen" src="assets/mocks/summary/sum-top.png">
+    <img class="mock-screen screen-3" src="assets/mocks/summary/sum-bottom.png">
+  </div>
+  }
+
+  @if (selected() === 'subgroups') {
+  <div class="stretch-block" (click)="switchHoverState()">
+    <img class="mock-screen" src="assets/mocks/summary/sum-top.png">
+    <img class="mock-screen screen-3" src="assets/mocks/summary/sum-bottom.png">
+  </div>
+  }
+
+  @if (selected() === 'events') {
+  <div class="scroll-block" (click)="switchHoverState()">
+    <img class="mock-screen" src="assets/mocks/events/events.png">
+  </div>
+  }
+
+  @if (selected() === 'public_boards' || selected() === 'questions') {
+  }
+
+  <div class="overlay" (click)="switchHoverState()">
+    <div class="text">Coming soon</div>
+  </div>
+</div>

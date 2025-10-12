@@ -1,0 +1,52 @@
+<app-login-icon></app-login-icon>
+<h2 class="login-modal-title">{{ 'auth-header.sign-in' | translate }}</h2>
+<form class="form" [formGroup]="form" (submit)="onSubmit()">
+
+  <app-input [control]="form.get('email')" inputName="email" placeholder="example@mail.org" type="email"
+             [label]="'fields.email' | translate"
+  >
+    <span>{{ 'validation.email-valid' | translate }}</span>
+  </app-input>
+
+  <app-input [control]="form.get('password')" inputName="password"
+             [placeholder]="'validation.password-placeholder' | translate: {min: 6}" type="password"
+             [label]="'fields.password' | translate">
+    <span>{{ 'validation.min-length' | translate:{ min: 6 } }}</span>
+  </app-input>
+
+  @if (form.get('newPassword')) {
+    <app-input [control]="form.get('newPassword')" inputName="newPassword"
+               [placeholder]="'validation.password-placeholder' | translate: {min: 6}" type="password"
+               [label]="'fields.password' | translate">
+      <span>{{ 'validation.min-length' | translate :{ min: 6 } }}</span>
+    </app-input>
+  }
+
+  <div *ngIf="error()">
+    <p class="mat-error">{{ error() }}</p>
+    <app-button
+      size="medium"
+      btnUIType="neutral"
+      class="resend"
+      *ngIf="shouldShowResendConfirmation()"
+      (click)="didRequestConfirmation(form.get('email')?.value)"
+    >
+      {{ 'actions.resend-confirmation-email' | translate }}
+    </app-button>
+  </div>
+
+
+  <div class="btn-group end">
+    <app-button size="large" btnUIType="neutral" type="reset" (click)="close()">{{ 'actions.cancel' | translate }}
+    </app-button>
+
+    <app-button class="submit-btn" size="large" btnUIType="primary" type="submit"
+                [disabled]="form.invalid || (form.get('accepted') && form.get('accepted')?.value === false)">
+      <div *ngIf="isLoading()" class="spinner" role="status">
+        <app-small-spinner [isWhite]="true" diameter="16"></app-small-spinner>
+      </div>
+      {{ 'actions.sign-in' | translate }}
+
+    </app-button>
+  </div>
+</form>

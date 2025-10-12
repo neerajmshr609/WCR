@@ -1,0 +1,8 @@
+<div class="schedule">
+  <span
+    *ngFor="let item of result"
+    class="schedule__item"
+    [ngClass]="{ 'schedule__item--bold': item.status }"
+    >{{ item.name }}</span
+  >
+</div>

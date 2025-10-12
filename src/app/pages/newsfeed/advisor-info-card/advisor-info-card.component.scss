@@ -1,0 +1,115 @@
+@import 'variables';
+
+app-advisor-info-card {
+  .advisor-card {
+    &--grey &__button-post-action {
+      background: $feed-light-gray-text;
+    }
+
+    &__button-post-action {
+      padding: 7rem 4rem 3rem;
+      background: black;
+      border-radius: 6px;
+    }
+
+    &__text {
+      color: white;
+      text-align: center;
+      padding: 0 2rem;
+
+      @at-root {
+        h3#{&} {
+          font-family: Poppins;
+          font-weight: normal;
+          font-size: 2.6rem;
+          margin-bottom: 3rem;
+        }
+
+        h4#{&} {
+          font-weight: 500;
+          font-size: 1.6rem;
+          margin-top: 6rem;
+          margin-bottom: 2rem;
+
+          &.my-8 {
+            margin: 8rem 0;
+          }
+        }
+
+        p#{&} {
+          text-transform: uppercase;
+          font-weight: 500;
+          font-size: 1.1rem;
+          margin-bottom: 5rem;
+        }
+      }
+
+      @media screen and (max-width: $bp-smallest) {
+        padding: 0;
+      }
+    }
+
+    &__button {
+      width: 100%;
+      max-width: 350px;
+      height: 56px;
+      box-shadow: 0px 1.5px 6px rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      background: white;
+      border: none;
+      color: blue;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 26px;
+      cursor: pointer;
+
+      transition: all 0.3s;
+
+      &:hover {
+        transform: translateY(2px);
+      }
+    }
+
+    &__user {
+      transition: all 0.45s;
+      background: white;
+      cursor: pointer;
+      min-height: 8rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      position: relative;
+      justify-content: space-between;
+      box-shadow: 0px 0.25641px 1.7094px rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+
+      app-user-info {
+        margin-left: 2rem;
+      }
+
+      &--badge {
+        transition: all 0.85s;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        color: black;
+        padding: 5px 7px;
+        background-color: transparent;
+        border-radius: 6px;
+        border: 2px solid;
+        margin-right: 2rem;
+      }
+    }
+  }
+
+  app-message {
+    color: cornflowerblue;
+    app-default-message {
+      color: red;
+      .user-avatar {
+        display: none;
+      }
+    }
+  }
+}

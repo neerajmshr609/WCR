@@ -1,0 +1,62 @@
+<div #videoRef class="avpresentation-video-container">
+  <div
+    class="avpresentation-video"
+    *ngIf="showVideo"
+    [ngClass]="{ 'avpresentation-video--big': isRateflowPresentation }"
+  >
+    <app-curves
+      *ngIf="isMobile && !isNewsfeedPresentation"
+      [file]="file"
+      [avRatingParams]="avRatingParams"
+      [duration]="duration || file.duration"
+      [toggleTimer$]="toggleTimer$"
+      [filesFeedback$]="filesFeedback$"
+      [mediaFileIsOver$]="mediaFileIsOver$"
+      [seeked$]="seeked$"
+      [(curves)]="curves"
+      (seekTo)="seekTo($event)"
+    ></app-curves>
+
+    <ng-container [ngSwitch]="file.kind">
+      <ng-container *ngSwitchCase="'video'">
+        <div
+          plyr
+          class="videoplayer-instance"
+          id="videoplayer-{{ file.id }}"
+          [plyrOptions]="playerOptions"
+          [plyrPlaysInline]="true"
+          [plyrSources]="videoSources"
+          [plyrDriver]="hlsDriver"
+          [plyrPoster]="file.thumbnail"
+          (plyrInit)="player = $event"
+        ></div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'hostedvideo'">
+        <div class="video-container">
+          <youtube-player
+            #ytPlayer
+            [id]="'player-' + file.id"
+            [videoId]="file.handle"
+            [playerVars]="playerVars"
+            (stateChange)="onYTPlayerStateChange($event)"
+          ></youtube-player>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <app-curves
+      *ngIf="!isMobile && !isNewsfeedPresentation"
+      [file]="file"
+      [playerExists]="!!player || !!youtubePlayer"
+      [avRatingParams]="avRatingParams"
+      [duration]="duration || file.duration"
+      [toggleTimer$]="toggleTimer$"
+      [filesFeedback$]="filesFeedback$"
+      [mediaFileIsOver$]="mediaFileIsOver$"
+      [seeked$]="seeked$"
+      [(curves)]="curves"
+      (seekTo)="seekTo($event)"
+    ></app-curves>
+  </div>
+</div>

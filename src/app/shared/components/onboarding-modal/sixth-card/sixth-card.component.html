@@ -1,0 +1,35 @@
+<button mat-icon-button mat-dialog-close class="modal__btn--close">
+  <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+</button>
+
+<div class="modal__body">
+  <img
+    class="modal__img"
+    src="assets/onboarding-modal/bank.svg"
+    alt="feedbackrequest-modal-image"
+  />
+
+  <h2 class="modal__title">
+    Connect your bank account to use the time counter
+  </h2>
+  <p class="modal__text">
+    In order to activate your payment counter and set you prefered hourly rate
+    please follow the link and connect your bank account at our payment provider
+    stripe.
+  </p>
+
+  <div class="modal__actions">
+    <a
+      class="btn btn-primary"
+      mat-dialog-close
+      routerLink="/settings"
+      [queryParams]="{ type: 'finance' }"
+      >Setup payment</a
+    >
+    <img
+      src="/assets/powered-by-stripe.png"
+      alt="powered by stripe"
+      class="stripe"
+    />
+  </div>
+</div>

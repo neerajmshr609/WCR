@@ -1,0 +1,67 @@
+@import "_variables";
+
+:host {
+  padding: $--sds-size-space-400;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  gap: $--sds-size-space-400;
+
+  border-radius: $--sds-size-radius-400;
+  border: $--sds-size-stroke-border--solid--sds-color-border-default-default;
+  background: $--sds-color-background-default-default;
+  width: 100%;
+  min-height: 685px;
+  box-sizing: border-box;
+}
+
+app-summary {
+  margin-top: 8px;
+}
+
+.open-request-card {
+
+  &_labels {
+    display: inline-flex;
+    gap: 8px;
+    padding: 10px 0;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_labels-add-button {
+    width: 1.6rem;
+    height: 1.6rem;
+    padding: $--sds-size-space-200;
+  }
+
+  &_enter-chatroom {
+    display: inline-flex;
+    gap: $--sds-size-space-200;
+  }
+
+  &_horizontal-line {
+    padding: $--sds-size-space-250 $--sds-size-space-400 2px $--sds-size-space-400;
+  }
+}
+
+.menu-header {
+  display: flex;
+  margin: $--sds-size-space-200 $--sds-size-space-400 $--sds-size-space-100 $--sds-size-space-400;
+  justify-content: flex-start;
+  height: 4.2rem;
+  border-bottom: 1px solid $--sds-color-border-default-default;
+  color: $--sds-color-text-default-default;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-strong;
+  line-height: 140%;
+  padding-bottom: 1.2px;
+}

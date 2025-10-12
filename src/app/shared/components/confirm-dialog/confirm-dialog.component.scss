@@ -1,0 +1,23 @@
+.modal {
+
+  &__actions {
+    display: flex;
+    gap: 1.6rem;
+  }
+  &__title {
+    width: calc(100% - 5rem);
+    font-size: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  &__btn {
+    &--close {
+      width: 40px !important;
+      height: 40px !important;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

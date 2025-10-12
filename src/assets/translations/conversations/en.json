@@ -1,0 +1,181 @@
+{
+  "menu": {
+    "my_connections": {
+      "name": "My Connections",
+      "text": "ALL MESSAGES, FEEDBACK REQUESTS, INVITATIONS, LIVE CALLS, PAYMENTS WILL ALL APPEAR HERE.",
+      "title": "This is your main communication center FOR ALL YOUR CONNECTIONS"
+    },
+    "my_connectors": {
+      "name": "My Connectors",
+      "text": "ALL MESSAGES, FEEDBACK REQUESTS, INVITATIONS, LIVE CALLS, PAYMENTS WILL ALL APPEAR HERE.",
+      "title": "THIS IS YOUR MAIN COMMUNICATIONS CENTER FOR ALL YOUR CONNECTIONS"
+    }
+  },
+  "journey": {
+    "my_advice": {
+      "archived_connections": {
+        "name": "archived connections",
+        "text": "HERE WE DISPLAY ALL CONNECTORS WHOSE FEEDBACK YOU DIDN’T LIKE OVERALL. BY DEFAULT YOU CANT INTERACT WITH THEM ANYMORE.",
+        "title": "THIS SECTION FOR ALL CONNECTORS THAT JUST DIDN’T GET YOU"
+      },
+      "new_connections": {
+        "name": "new connections",
+        "text": "ALL PROJECTS YOU SEE HERE WILL REMAIN UNTIL YOUR CONNECTION REVIEWS THEM. YOU CAN ALSO WRITE THEM DIRECTLY.",
+        "title": "THIS SECTION IS FOR ALL CONNECTIONS WHO HAVE NOT  REVIEWED YOUR PROJECTS YET"
+      },
+      "interested_connections": {
+        "name": "interested connections",
+        "text": "ALL CONNECTIONS THAT APPEAR HERE ARE INTERESTED IN YOUR FEEDBACK AND HAVE CHOSEN TO CONTINUE WORKING WITH YOU.",
+        "title": "THIS SECTION IS FOR ALL CONNECTIONS THAT ARE INTERESTED IN YOU."
+      },
+      "regular_connections": {
+        "name": "regular connections",
+        "text": "ALL OF YOUR REGULAR AND RETURNING CONNECTIONS WILL APPEAR HERE.",
+        "title": "THIS SECTION IS FOR YOUR  RETURNING CONNECTIONS"
+      }
+    },
+    "my_works": {
+      "archived_connectors": {
+        "name": "archived connectors",
+        "text": "Here we display all connectors that you did not like overall. By default, you can not interact with them anymore.",
+        "title": "SECTION FOR BORING, RUDE OR UNHELPFUL CONNECTORS"
+      },
+      "new_connectors": {
+        "name": "new connectors",
+        "text": "ALL CONNECTORS WILL REMAIN HERE UNTIL YOU HAVE REVIEWED THEIR FEEDBACK AND DECIDED TO CHOOSE THEM OR NOT.",
+        "title": "THIS SECTION IS FOR ALL PROJECTS WITH FEEDBACK THAT YOU HAVE NOT REVIEWED YET"
+      },
+      "interesting_connectors": {
+        "name": "interesting connectors",
+        "text": "ALL CONNECTORS THAT APPEAR HERE YOU ARE INTERESTED IN AND HAVE COMMITED TO CONTINUE WORKING WITH.",
+        "title": "THIS SECTION IS FOR ALL CONNECTORS THAT YOU ARE INTERESTED IN"
+      },
+      "regular_connectors": {
+        "name": "regular connectors",
+        "text": "ALL OF YOUR TRUSTED AND GO-TO CONNECTORS WILL APPEAR HERE.",
+        "title": "THIS SECTION IS FOR ALL PROJECTS WITH FEEDBACK THAT YOU HAVE NOT REVIEWED YET"
+      }
+    }
+  },
+  "stats": {
+    "last_interaction": "last interaction",
+    "total_income": "total income",
+    "spent_total": "spent total",
+    "time_spent": "time spent",
+    "hourly_rate": "hourly rate",
+    "no_last_interaction": "NO",
+    "rate_backs": {
+      "disrespectful": "disrespectful",
+      "unhelpful": "unhelpful",
+      "helpful": "helpful",
+      "brilliant_insight": "brilliant insight",
+      "strengths": "strengths",
+      "weaknesses": "weaknesses",
+      "next_steps": "next steps",
+      "links": "links"
+    },
+    "total_score": "Total Score",
+    "knowledge": "Knowledge",
+    "explanation": "explanation",
+    "pronunciation": "pronunciation",
+    "politeness": "politeness",
+    "no_skill": "No skill",
+    "stands_out": "Stands out",
+    "could_be_improved": "Could be improved",
+    "no_reviews": "No reviews received",
+    "less_info": "less info",
+    "more_info": "more info",
+    "hide_analytics": "hide analytics",
+    "show_analytics": "show analytics"
+  },
+  "user_info": {
+    "name_anon": "Anonymous",
+    "city_global": "GLOBAL"
+  },
+  "conversation_item": {
+    "to_pay": "<span>to</span> pay",
+    "group_conversation_info": {
+      "img_alt": "Conversation Image",
+      "person": "PERSON"
+    },
+    "time_spent": "time spent",
+    "earned": "earned",
+    "awaiting": "awaiting",
+    "unpaid": "unpaid",
+    "paid": "paid",
+    "waiting": "waiting",
+    "not_paid": "not paid",
+    "no_income": "no income",
+    "no_costs": "no costs",
+    "no_awaiting": "no awaiting",
+    "no_unpaid": "no unpaid",
+    "connection": "CONNECTION",
+    "connector": "CONNECTOR",
+    "untitled": "Untitled",
+    "question_raised": "Question raised",
+    "paid_feedback_request": "Paid feedback request",
+    "no_project_attached": "No project attached",
+    "add": "add",
+    "calendars_menu": {
+      "google": "Google",
+      "outlook": "Outlook",
+      "apple": "Apple"
+    }
+  },
+  "conversation_types": {
+    "community_chat": "Communities",
+    "direct_chat": "Direct Messages",
+    "get_support": "Get Help",
+    "org_chat": "Org Chat",
+    "requests": "Requests",
+    "scheduled": "Scheduled",
+    "we_care": "We Care",
+    "unknown": "Unfinished Request",
+    "feedback_chat": "Brieftalk"
+  },
+  "filters": {
+    "search": "Search"
+  },
+  "new_chat": {
+    "title": "Add new Chat",
+    "cancel_btn": "Cancel",
+    "confirm_btn": "Create",
+    "recipient": "Select Users",
+    "search": "Search user",
+    "choose_chat_type": "Choose chat type",
+    "chat_type": "Select Chatroom Type",
+    "chat_name": "Chat name",
+    "enter_chat_name": "Enter chat name",
+    "chat_logo": "Logo"
+  },
+  "conversations": {
+    "empty": "No Entry yet"
+  },
+  "uploader": {
+    "upload_file": "Upload File",
+    "img-help": "Ideal size 500px x 500px"
+  },
+  "fields": {"no-result":  "No Result"},
+  "validation": {
+    "required-field": "This is a required field"
+  },
+  "empty": {
+    "empty-list": "No Chats yet here",
+    "main-title": "conversations",
+    "main-descriptions": "You see all different types of communications here sorted by the most recent. Use the categories for more overview.",
+    "scheduled-title": "scheduled",
+    "scheduled-subtitle": "All Your Scheduled Call Appointments will be displayed here.",
+    "request-title": "open requests",
+    "request-subtitle": "All case tickets which you are involved in and which not have a coordinating counsellor yet",
+    "org-title": "org chats",
+    "org-subtitle": "All your Organisation related group chats go here.",
+    "com-title": "communities",
+    "com-subtitle": "are shared-interest spaces with events, discussions, subgroups, and bulletin boards. ",
+    "we-care-title": "we care",
+    "we-care-subtitle": "All client cases you directly coordinate, assist or advice others ",
+    "direct-title": "direct messages",
+    "direct-subtitle": "All your direct one to one chats go in here",
+    "support-title": "get support",
+    "support-subtitle": "All your cases where others help you to solve your current cases."
+  }
+}

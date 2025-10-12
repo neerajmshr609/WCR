@@ -1,0 +1,7 @@
+<div class="custom-slider" *ngIf="show$ | async">
+  <ngx-slider
+    (valueChange)="didChange($event)"
+    [value]="inputValue"
+    [options]="options"
+  ></ngx-slider>
+</div>

@@ -1,0 +1,14 @@
+<div class="modal__container">
+  <button mat-icon-button mat-dialog-close class="modal__btn--close">
+    <img src="assets/close-modal-icon.svg" alt="{{ 'payout_request.cancel_dialog.close_img_alt' | translate }}" />
+  </button>
+
+  <div class="modal__body">
+    <h1 class="modal__title">{{ data.message | translate }}</h1>
+  </div>
+
+  <div class="modal__actions">
+    <app-button mat-dialog-close size="large" btnUIType="neutral" type="reset">{{ 'payout_request.cancel_dialog.cancel_btn_text' | translate }}</app-button>
+    <app-button [mat-dialog-close]="true"  size="large" btnUIType="primary"> {{ 'payout_request.cancel_dialog.confirm_btn_text' | translate }}</app-button>
+  </div>
+</div>

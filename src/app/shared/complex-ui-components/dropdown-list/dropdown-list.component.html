@@ -1,0 +1,10 @@
+<ul>
+  @for (item of items(); track item.param) {
+    <app-dropdown-list-item
+      [menuItem]="item"
+      [disabled]="isDisabled(item)"
+      [selected]="isSelected(item)"
+      (click)="clickItemHandler(item)"
+    ></app-dropdown-list-item>
+  }
+</ul>

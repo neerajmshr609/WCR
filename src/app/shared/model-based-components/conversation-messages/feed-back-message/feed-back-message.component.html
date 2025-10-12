@@ -1,0 +1,17 @@
+<div class="feedback-message">
+  <div class="feedback-message__user">
+    <div class="feedback-message__user-image">
+      <img
+        [src]="avatarSrc()"
+        alt="User avatar"
+      />
+    </div>
+    <app-heart-icon color="#757575"
+                    fill="white"></app-heart-icon>
+  </div>
+  <div class="feedback-message__message">
+    <p class="feedback-message__text">
+      {{ message().body }}
+    </p>
+  </div>
+</div>

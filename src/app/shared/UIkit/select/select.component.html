@@ -1,0 +1,38 @@
+@if (control()) {
+  <div class="form-field">
+    <label
+      class="form-label"
+      [for]="inputName()"
+      [ngClass]="{ disabled: disabled() }"
+    >
+      {{ label() }}
+    </label>
+    <mat-select
+      class="form-input"
+      [placeholder]="placeholder()"
+      [id]="inputName()"
+      [name]="inputName()"
+      [disabled]="disabled()"
+      [formControl]="control()"
+      [ngClass]="{'disabled': disabled()}"
+    >
+      @if (!disabled()) {
+        @for (option of options(); track option[viewModel()[1]]) {
+          <mat-option [value]="option[viewModel()[0]]">
+            {{ option[viewModel()[1]] | translate }}
+          </mat-option>
+        }
+      }
+    </mat-select>
+    <small
+      class="form__validator"
+      [ngClass]="{
+        'form__validator--visible':
+          (control().touched && control().errors?.required) ||
+          (control().value && control().errors?.pattern),
+      }"
+    >
+      <ng-content></ng-content>
+    </small>
+  </div>
+}

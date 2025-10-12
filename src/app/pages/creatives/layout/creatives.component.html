@@ -1,0 +1,70 @@
+<div class="creatives">
+  <div class="search-bar" *ngIf="isSmallScreen">
+    <app-search-bar></app-search-bar>
+  </div>
+
+  <app-search-results *ngIf="selectedCategories?.length"></app-search-results>
+
+  <div class="newsfeed__menu-area">
+    <app-main-content-menu
+      [menuItems]="menuItems"
+    ></app-main-content-menu>
+
+    <p class="browser-cache-message" *ngIf="isInDraftsSection">
+      {{ 'not_finished_feedback' | translate }}
+      <ng-container *ngIf="!authService.userIsSignedIn()">
+        <a routerLink="/auth" [queryParams]="{ mode: 'signup' }"
+          >{{ 'create' | translate }}</a
+        >
+        {{ 'to_enable' | translate }}
+      </ng-container>
+    </p>
+
+    <p class="browser-cache-message" *ngIf="isInReviewQueueSection">
+      {{ 'review_queue' | translate }}
+      <ng-container *ngIf="!authService.userIsSignedIn()">
+        <a routerLink="/auth" [queryParams]="{ mode: 'signup' }"
+          >{{ 'create' | translate }}</a
+        >
+        {{ 'to_do_this' | translate }}
+      </ng-container>
+    </p>
+  </div>
+
+  <div
+    class="cards-grid paid-newsfeed"
+    appLoadMoreOnscroll
+    (loadMoreEvt)="loadMore()"
+  >
+    <app-creatives-info-card
+      *ngIf="!isInReviewQueueSection"
+      (sortByCoordinates)="sortByCoordinates($event)"
+    ></app-creatives-info-card>
+
+    <ng-container *ngIf="projects$ | async as projects">
+      <app-creatives-project-card
+        *ngFor="let project of projects"
+        [project]="project"
+        [disabled]="
+          !currentUser ||
+          (currentUser.inspiring_rates_count <= 5 &&
+            !isInReviewQueueSection &&
+            !isInDraftsSection &&
+            !project.paid_feedback_request)
+        "
+        [currentUser]="currentUser"
+        [author]="project.user"
+        (removeFromQueueDidClickEvent)="removeFromQueueDidClick($event)"
+        (firstInQueue)="firstInQueue($event)"
+      ></app-creatives-project-card>
+    </ng-container>
+
+    <app-small-spinner diameter="30" *ngIf="isLoading"></app-small-spinner>
+  </div>
+</div>
+
+<app-helpnavigation
+  page="creatives"
+  url="3xrIQ1O1nW0"
+  class="red"
+></app-helpnavigation>

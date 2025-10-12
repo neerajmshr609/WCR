@@ -1,0 +1,81 @@
+<section class="conversation-manage-panel">
+  <div class="manage-menu">
+    <div class="manage-menu-wrapper">
+      @for(item of itemMainMenu(); track item.id ) {
+      <div class="manage-menu-item" role="button" [ngClass]="[(selected() === item.id ? 'selected': ''), item.id]"
+        (click)="selectConversationMenu(item.id)">
+        <div class="icon-container">
+          <ng-container *ngComponentOutlet="item.icon; inputs: item.inputs"></ng-container>
+        </div>
+        {{ item.title | translate }}
+      </div>
+      }
+    </div>
+    <div class="menu-wrap">
+      <app-button class="menu" size="medium" btnUIType="subtle" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"
+        [disabled]="isNotAuthorized() || menuItems().length === 0">
+        <app-icon-more-vertical [color]="isNotAuthorized() ? '#b3b3b3' : '#1E1E1E'"
+          class="conversation-request-more-button_icon"></app-icon-more-vertical>
+      </app-button>
+
+      <mat-menu #menu="matMenu" xPosition="before" class="wcr-mat-menu">
+        @for(menuItem of menuItems(); track menuItem.id) {
+        <div mat-menu-item class="wcr-mat-menu-item" (click)="selectMenuItem(menuItem)">
+          <div class="wcr-mat-menu-item-icon">
+            <ng-container *ngComponentOutlet="menuItem.icon"></ng-container>
+          </div>
+          <span class="wcr-mat-menu-item-text">{{ menuItem.title | translate }}</span>
+        </div>
+        }
+
+      </mat-menu>
+    </div>
+
+  </div>
+  <div class="content">
+
+    @if (selected() === 'internal_chat' && currentPermissions && currentPermissions()?.isCounselor() &&
+    this.internalChatConversation()) {
+    <app-conversation-detail (isRecordingEvent)="handleAudioRecord($event)" [isInternal]="true"
+      [conversation]="internalChatConversation()"></app-conversation-detail>
+    }
+
+    @if (selected() === 'client_chat' && conversation()) {
+    <app-conversation-detail [conversation]="conversation()" (isRecordingEvent)="handleAudioRecord($event)"
+      [activeConversationRater]="activeConversationRater()"
+      [activeConversationPartners]="activeConversationPartners()"></app-conversation-detail>
+    }
+
+    @if (selected() === 'robots') {
+    <app-lupai-chat-bot [currentUser]="currentUser()"></app-lupai-chat-bot>
+    }
+
+    @if(selected() === 'client_chat' || selected() === 'internal_chat') {
+    <div class="content__actions" [ngClass]="{'open': isOpenMobileMenu(), 'audio-record': isRecordAudio()}">
+      <app-button class="chat__actions-back" rounded btnUIType="neutral" size="medium"
+        (click)="navigateBackClickHandler()">
+        <app-icon-arrow direction="left"></app-icon-arrow>
+      </app-button>
+      @if (currentUser() && !currentUser().isAnonymous) {
+      <app-button size="medium" btnUIType="primary" (click)="toggleMobileMenu()">
+        <app-conversation-menu-item [item]="selectedItem()"
+          [onlyIconMenu]="onlyIconMenu()"></app-conversation-menu-item>
+      </app-button>
+      }
+      @if (isOpenMobileMenu()) {
+      <app-mobile-menu [items]="itemMainMenu()" alignBy='right' positionBy="top" theme="dark"
+        (selectedChange)="selectMenuItem($event)" (outsideClick)="closeMenu()"
+        (changeView)="onlyIconMenu.set($event)"></app-mobile-menu>
+      }
+
+    </div>
+    }
+
+
+    @if(['summary', 'files', 'tasks', '', 'events', 'offer_boards', 'subgroups', 'questions', 'public_boards'
+    ].includes(selected())) {
+    <app-mock-wrap [selected]="selected()"></app-mock-wrap>
+    }
+  </div>
+
+</section>

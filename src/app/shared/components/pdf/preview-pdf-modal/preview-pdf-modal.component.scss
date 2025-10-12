@@ -1,0 +1,28 @@
+@import 'variables';
+
+.pdf-container {
+  height: 100%;
+}
+
+.modal-pdf {
+  position: relative;
+}
+
+.close {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 100;
+
+  img {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+}

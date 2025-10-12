@@ -1,0 +1,99 @@
+<section class="confirmation-dialog">
+  <div class="header-container">
+    <h1 class="title">{{ data.title | translate }}</h1>
+    <app-button
+      size="small"
+      btnUIType="subtle"
+      iconBtn
+      type="button"
+      (click)="close()"
+      class="close-btn"
+    >
+      <app-close-icon color="#1E1E1E" class="icon"></app-close-icon>
+    </app-button>
+  </div>
+  <div class="new-conversation-content">
+    <form class="add-user" [formGroup]="addNewChatForm">
+      <app-select
+        [control]="addNewChatForm.get('conversation_type')"
+        inputName="conversation_type"
+        placeholder="{{ 'new_chat.choose_chat_type' | translate }}"
+        label="{{ 'new_chat.chat_type' | translate }}"
+        [options]="chatTypeOptions"
+        [viewModel]="viewModel"
+      ></app-select>
+      @if(addNewChatForm?.get('conversation_type').value === 'direct_chat') {
+        <div class="form-field">
+          <label class="form-label recipient" for="recipient">{{ 'new_chat.recipient' | translate }}</label>
+          <input
+            [placeholder]="'new_chat.search' | translate"
+            id="recipient"
+            class="form-input"
+            autocomplete="off"
+            [formControl]="recipientName"
+            [appAutocomplete]="autocomplete">
+        </div>
+
+        <app-autocomplete (valueChange)="selectUserToAdd($event)" #autocomplete="appAutocomplete">
+          <ng-template appAutocompleteContent>
+            @for (option of addUsersList(); track option.id) {
+              <app-autocomplete-option [value]="option">
+                {{ option.username }} ({{ option.email }})
+              </app-autocomplete-option>
+            }
+            <app-autocomplete-option *ngIf="!addUsersList().length">{{ 'fields.no-result'  | translate }}
+            </app-autocomplete-option>
+          </ng-template>
+        </app-autocomplete>
+
+      }
+
+      @if (addNewChatForm?.get('conversation_type').value !== 'direct_chat') {
+        <div class="inp-wrapper">
+          <app-input
+            [control]="addNewChatForm.get('name')"
+            inputName="'name'"
+            placeholder="{{ 'new_chat.enter_chat_name' | translate }}"
+            type="text"
+            label="{{ 'new_chat.chat_name' | translate }}"
+          >
+            @if (addNewChatForm.get('name').touched && addNewChatForm.get('name').errors?.required) {
+              <span
+              >{{ 'validation.required-field' | translate }}</span
+              >
+            }
+          </app-input>
+        </div>
+        <div class="inp-wrapper">
+          <label class="form-label" for="image">{{
+            'new_chat.chat_logo' | translate
+          }}</label>
+          <p class="img-help-text">{{ 'uploader.img-help' | translate }}</p>
+          <app-image-uploader
+            id="image"
+            [formData]="{ name: 'image' }"
+            (save)="uploadAvatar($event)"
+            [folder]="folder"
+            [image]="addNewChatForm.get('image').value"
+          ></app-image-uploader>
+          <div class="uploader--chat-avatar"></div>
+        </div>
+      }
+    </form>
+  </div>
+
+  <div class="actions">
+    <app-button
+      size="medium"
+      btnUIType="neutral"
+      type="button"
+      (click)="close()"
+      class="cancel"
+    >
+      {{ 'new_chat.cancel_btn' | translate }}
+    </app-button>
+    <app-button size="medium" btnUIType="primary" type="button" (click)="add()" [disabled]="addNewChatForm.invalid" >
+      {{ 'new_chat.confirm_btn' | translate }}
+    </app-button>
+  </div>
+</section>

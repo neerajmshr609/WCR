@@ -1,0 +1,40 @@
+@import "_variables";
+
+:host {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  justify-content: stretch;
+  flex-wrap: wrap;
+  gap: $--sds-size-space-400 $--sds-size-space-400;
+  @media (min-width: $desktop) {
+    padding-left: $--sds-size-space-275;
+    padding-right: $--sds-size-space-275;
+  }
+
+}
+
+.filter-panel {
+  &_search-input {
+    flex-grow: 1;
+  }
+
+  &_filters-list {
+    flex-basis: 100%;
+  }
+}
+
+@media only screen and (min-width: $bp-small) {
+  .filter-panel {
+    &_search-input {
+      flex-grow: unset;
+    }
+
+    &_filters-list {
+      flex-basis: unset;
+      flex-grow: 1;
+    }
+  }
+}

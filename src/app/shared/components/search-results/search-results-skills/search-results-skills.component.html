@@ -1,0 +1,22 @@
+<div class="results">
+  <div
+    class="results__item results__item--selected"
+    *ngFor="let skill of skills"
+  >
+    <img
+      class="results__item--selected-skill-badge"
+      (click)="didDeselectSkill(skill)"
+      src="../../../../../assets/skillRemove@2x.png"
+    />
+    <img [src]="skill.icon" class="results__item--icon icon" />
+    <div class="results__item--skill-detail">
+      <h3>{{ skill.shortname }}</h3>
+      <p>
+<!-- TOOD: Workaroud with connector endings in several laguages  -->
+        {{ skill.advisors_count }} connector{{
+          skill.advisors_count === 1 ? '' : 's'
+        }}
+      </p>
+    </div>
+  </div>
+</div>

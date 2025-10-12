@@ -1,0 +1,161 @@
+@import 'variables';
+
+app-user-accordion {
+  .accordion-card {
+    width: 36.2rem;
+    position: relative;
+
+    input {
+      display: none;
+
+      &:checked + label {
+        border-bottom: none;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        background-color: $--sds-color-background-default-default;
+
+        & + .content {
+          opacity: 1;
+          height: auto;
+          display: block;
+          background-color: $--sds-color-background-default-default;
+        }
+      }
+    }
+
+    label {
+      display: flex;
+      cursor: pointer;
+      transition: ease 0.5s;
+      padding: $--sds-size-space-300;
+      border-radius: $--sds-size-space-300;
+      border: 1px solid $--sds-color-border-default-default;
+
+      .header-content {
+        display: flex;
+        align-items: center;
+        //position: relative;
+
+        .avatar-section {
+          margin-right: 1.4rem;
+          img {
+            width: 50px;
+            height: 50px;
+            border: 1px solid $--sds-color-border-neutral-default;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
+
+        .info-section {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          width: 100%;
+          min-width: 22rem;
+
+          .fullname {
+            overflow: hidden;
+            color: $--sds-color-black-400;
+            text-overflow: ellipsis;
+            font-size: $--sds-typography-body-size-medium;
+            font-weight: $--sds-typography-body-font-weight-strong;
+            line-height: 140%;
+            max-width: none;
+            @media (min-width: $bp-small) {
+              max-width: 240px;
+            }
+
+          }
+
+          .statuses {
+            display: flex;
+            gap: $--sds-size-space-150;
+
+            .status,
+            .city {
+              display: flex;
+              padding: $--sds-size-space-100 $--sds-size-space-200;
+              justify-content: center;
+              align-items: center;
+              gap: $--sds-size-space-100;
+              border-radius: $--sds-size-radius-100;
+              font-size: $--Body-Size-XXS;
+              font-weight: $--sds-typography-weight-bold;
+              line-height: normal;
+              letter-spacing: $--letter-spacing-3;
+              text-transform: uppercase;
+            }
+
+            .status {
+              border: $--sds-size-stroke-border solid
+              $--sds-color-border-brand-default;
+              background: $--sds-color-background-brand-default;
+              color: $--sds-color-text-brand-on-brand;
+            }
+
+            .city {
+              border: $--sds-size-stroke-border solid
+              $--sds-color-border-default-secondary;
+              color: $--sds-color-text-default-secondary;
+            }
+          }
+
+          .username {
+            overflow: hidden;
+            color: $--sds-color-text-default-secondary;
+            text-overflow: ellipsis;
+            font-size: $--sds-typography-body-size-small;
+            font-weight: $--sds-typography-body-font-weight-strong;
+            line-height: 20px;
+            display: flex;
+            align-items: center;
+            margin-top: 2px;
+          }
+        }
+
+        .arrows {
+          position: absolute;
+          right: 1.6rem;
+          top: 1.2rem;
+        }
+      }
+    }
+
+    .content {
+      padding: 17.5px;
+      border-radius: $--sds-size-space-300;
+      border: 1px solid $--sds-color-border-default-default;
+      display: none;
+      border-top: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      position: relative;
+      z-index: 900;
+      background: $--sds-color-background-brand-tertiary;
+
+      hr {
+        border-top: 1px solid $--sds-color-border-neutral-tertiary;
+        padding: 0 12px;
+        margin-bottom: 12px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    .accordion-card {
+      width: 100%;
+    }
+  }
+
+  app-more-menu {
+    .more-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.2rem !important;
+      height: 3.2rem !important;
+    }
+  }
+
+}

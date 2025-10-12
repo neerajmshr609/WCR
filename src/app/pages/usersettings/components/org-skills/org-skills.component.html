@@ -1,0 +1,34 @@
+<div class="org-skills">
+  <app-section-header title="{{ 'org_skills' | translate }}">
+    <app-topics-icon></app-topics-icon>
+  </app-section-header>
+
+  <div class="org-skills_wrapper">
+    <div class="org-skills_wrapper_inner">
+      <div class="user_skills">
+        <app-org-skill-item
+          matTooltip="{{ 'empty-skills' | translate }}"
+          [matTooltipDisabled]="filteredSkills().length !== 0"
+          [allSkills]="filteredSkills()"
+          (skillAdd)="onSave($event)"
+          [disabled]="filteredSkills().length === 0"
+        ></app-org-skill-item>
+
+        @if (allSkills() && skills()) {
+          <div cdkDropList>
+            @for (skill of skills(); track skill.id) {
+              <app-org-skill-item
+                cdkDrag
+                class="drag-box"
+                (skillUpdate)="editSkill($event)"
+                (skillDelete)="deleteSkill($event)"
+                [allSkills]="filteredSkills()"
+                [userSkill]="skill"
+              ></app-org-skill-item>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

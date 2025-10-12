@@ -1,0 +1,9 @@
+<div class="search-results">
+  <div class="selected-category" *ngFor="let option of categories">
+    <p>{{ option.name }}</p>
+    <img
+      src="/src/assets/newsfeed/x-circle.svg"
+      (click)="removeSearchResult(option)"
+    />
+  </div>
+</div>

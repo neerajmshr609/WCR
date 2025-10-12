@@ -1,0 +1,169 @@
+@import 'variables';
+
+:host {
+  position: relative;
+}
+
+.message-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 6rem;
+  position: relative;
+
+  &__own {
+    justify-content: flex-end;
+    .message-date {
+      text-align: right;
+    }
+  }
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  background-color: #f2f2f2;
+  font-weight: 500;
+  font-size: 19px;
+  color: #858585;
+  line-height: 27px;
+  overflow: hidden;
+  min-width: 25rem;
+  max-width: 60%;
+  border-radius: 0 8px 8px 8px;
+  animation: messageBoxAnimation 1s ease forwards;
+
+  @media screen and (max-width: $bp-small) {
+    max-width: 100%;
+  }
+
+  ::ng-deep app-iframely-embed {
+    position: relative;
+
+    .embed-parent {
+      display: block;
+      max-height: unset;
+      height: unset;
+    }
+
+    .iframely-embed {
+      margin: auto;
+    }
+
+    .iframely-youtube {
+      transform: unset;
+    }
+  }
+
+  .regular-message {
+    padding: 10px;
+    position: relative;
+    top: 15px;
+    visibility: hidden;
+    opacity: 0;
+    cursor: default;
+    animation: messageBoxTextAnimation 0.85s ease 0.5s forwards;
+  }
+
+  .title-message {
+    background-color: #bfabab;
+    color: white;
+
+    h4 {
+      color: #dddddd;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140.19%;
+    }
+  }
+
+  .image-messages-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    img {
+      max-width: 100%;
+      flex: 1 1 0;
+    }
+  }
+
+  &__own {
+    justify-content: flex-end;
+    background-color: #9cb4ab;
+    color: white;
+    font-weight: 500;
+    font-size: 19px;
+    border-radius: 8px 0 8px 8px;
+    line-height: 27px;
+  }
+
+  &__payment-request {
+    background-color: transparent;
+  }
+}
+
+.message-date {
+  font-weight: 500;
+  padding-top: 0.6rem;
+  color: $feed-light-gray-text;
+  font-size: 1.1rem;
+  width: 100%;
+}
+
+@keyframes messageBoxAnimation {
+  from {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    padding: 0;
+  }
+  to {
+    opacity: 1;
+    height: auto;
+    width: auto;
+  }
+}
+
+@keyframes messageBoxTextAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+    visibility: visible;
+  }
+}
+
+.user-avatar {
+  position: absolute;
+  top: 0;
+  transform: translateY(-80%);
+  height: 45px;
+  width: 45px;
+  border-radius: 4px;
+  left: 6px;
+
+  &__author {
+    left: unset;
+    border-radius: 4px 40px 40px 4px !important;
+    border: 1px solid #303030;
+    right: -16px;
+  }
+}
+
+::ng-deep .custom-payment-request {
+  .receipt {
+    margin-left: auto;
+  }
+
+  .receipt--left {
+    border-radius: 16px 0 16px 16px !important;
+  }
+
+  .receipt__item {
+    gap: 20px !important;
+  }
+}

@@ -1,0 +1,36 @@
+@import "variables";
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 $--sds-size-space-200;
+}
+.queued-by {
+  &_icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &_icon-text {
+    color: $--sds-color-text-default-secondary;
+    font-size: $--Body-Size-XXS;
+    font-weight: $--sds-typography-weight-bold;
+    line-height: normal;
+    letter-spacing: $--letter-spacing-3;
+    text-transform: uppercase;
+    text-wrap: nowrap;
+  }
+
+  &_images-container {
+    display: inline-flex;
+    overflow-x: hidden;
+    gap: 7px;
+    margin-left: 14px;
+  }
+}
+
+app-icon-arrow {
+  display: flex;
+  width: 1.6rem;
+  height: 1.6rem;
+}

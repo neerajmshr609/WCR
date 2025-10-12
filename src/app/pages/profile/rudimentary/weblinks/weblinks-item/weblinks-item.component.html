@@ -1,0 +1,62 @@
+<div *ngIf="isAuthUser" class="card">
+  <div class="card__header">
+    <div class="card__button">
+      <app-gt-switch
+        (didChangeEvent)="webLink.active = !webLink.active"
+        [small]="true"
+        [onoffMode]="true"
+        [isSwitched]="webLink.active"
+      ></app-gt-switch>
+    </div>
+    <span
+      class="card__status"
+      [style.color]="webLink.active ? 'rgb(91, 195, 38)' : '#B0B0B0'"
+      >{{ webLink.active ? 'Public' : 'Draft' }}</span
+    >
+    <div class="card__img">
+      <img
+        class="card__img"
+        [src]="'/assets/weblinks/' + webLink.name + '.svg'"
+        alt="External link image"
+        (click)="navigateToSocialLink(webLink.url)"
+      />
+      <p class="card__img-title">{{ webLink.name }}</p>
+    </div>
+  </div>
+  <p class="card__text">Displayed Text in Profile</p>
+  <div>
+    <textarea
+      [(ngModel)]="webLink.description"
+      class="card__text-input"
+    ></textarea>
+  </div>
+  <p class="card__url">URL link</p>
+  <input
+    [(ngModel)]="webLink.url"
+    class="card__url-input"
+    placeholder=" Enter your profile link here"
+  />
+</div>
+
+<div *ngIf="!isAuthUser" class="card card--locked">
+  <div class="card__header card__header--locked">
+    <div class="card__img">
+      <img
+        (click)="navigateToSocialLink(webLink.url)"
+        class="card__img"
+        [src]="'/assets/weblinks/' + webLink.name + '.svg'"
+        alt="External link image"
+      />
+      <p class="card__img-title">{{ webLink.name }}</p>
+    </div>
+  </div>
+  <p class="card__text card__text--locked">{{ webLink.description }}</p>
+  <p class="card__url-head">Link opens in new tab</p>
+  <a
+    [href]="webLink.url"
+    class="card__urlLink card__url--locked"
+    target="_blank"
+    rel="noopener norefferer"
+    >{{ webLink.url }}</a
+  >
+</div>

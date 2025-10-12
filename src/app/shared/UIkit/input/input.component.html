@@ -1,0 +1,31 @@
+@if(control()) {
+  <div class="form-field">
+    <label class="form-label" [for]="inputName()" [ngClass]="{disabled: disabled()}">{{ label() }}</label>
+    <ng-content select=".input-details"></ng-content>
+    <input
+      class="form-input"
+      [type]="type()"
+      [placeholder]="placeholder()"
+      [id]="inputName()"
+      [name]="inputName()"
+      [disabled]="disabled()"
+      [readonly]="disabled()"
+      [formControl]="control()"
+    />
+    @if(control().touched && control().invalid) {
+
+    <small
+      class="form__validator"
+      [ngClass]="{
+            'form__validator--visible':
+              (control().touched && control().errors?.required) ||
+              (control().touched && control().errors?.email) ||
+              (control().value && control().errors?.pattern),
+          }"
+    >
+      <ng-content></ng-content>
+    </small>
+    }
+  </div>
+}
+

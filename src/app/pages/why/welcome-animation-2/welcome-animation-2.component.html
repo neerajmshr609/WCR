@@ -1,0 +1,17 @@
+<div #cardRef class="animation-card">
+  <div class="body">
+    <a
+      class="button"
+      routerLink="/auth"
+      [queryParams]="{ mode: 'signup', portfolio: true }"
+      #buttonRef
+      >Sign up now</a
+    >
+    <div class="text" #textRef>
+      <p class="typewriter--insight">insight focused</p>
+      <p class="typewriter--portfolio">portfolio</p>
+      <p class="typewriter--review">review</p>
+    </div>
+  </div>
+  <div class="footer" #footerRef></div>
+</div>

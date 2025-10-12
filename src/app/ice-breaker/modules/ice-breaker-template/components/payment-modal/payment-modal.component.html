@@ -1,0 +1,77 @@
+<section matDialogContent>
+  <button class="close-modal-btn close-btn" (click)="close(undefined)">
+    <img src="assets/close-modal-icon.svg" alt="Close modal icon" />
+  </button>
+  <ng-container *ngIf="paymentMethods">
+    <ng-container *ngIf="paymentMethods.data.length; else enterCardTpl">
+      <img
+        class="payment-icon"
+        src="assets/icons/money-check.svg"
+        alt="Money check icon"
+      />
+      <h1 class="payment-title">Confirm your maximum Budget</h1>
+      <p class="payment-description">
+        If you are new to GetMe, please enter your credit card data. No money
+        will be deducted at this time. We only send you a payment request after
+        your counterpart has filled out their Capsule. We will also ask you
+        to release each payment manually, So you are always in complete control
+        of your budget at all times.
+      </p>
+      <ng-container *ngIf="paymentRequestInvoice$ | async as paymentRequest">
+        <div class="custom-payment-request__container">
+          <app-receipt
+            [paymentRequest]="paymentRequest"
+            [awaitingPayment]="true"
+            [showAdditions]="true"
+            [showDateCreated]="false"
+            [peopleAmount]="data.countOfPeople"
+            type="overview_total_cost"
+            incomeText="Connections Income"
+            class="custom-payment-request"
+            (denySessionPayment)="close(undefined)"
+            (approveSessionPayment)="close(paymentRequest)"
+          ></app-receipt>
+        </div>
+        <img
+          class="stripe-secure-payment-icon"
+          src="assets/user-settings/finances/secure-payments.svg"
+          alt="Secure payment stripe icon"
+        />
+      </ng-container>
+    </ng-container>
+    <ng-template #enterCardTpl>
+      <img
+        class="payment-icon"
+        src="assets/icons/hand-pay.svg"
+        alt="Hand pay icon"
+      />
+      <h1 class="payment-title">No credit card found</h1>
+      <p class="payment-description">
+        If you are new GetMe, please enter your credit card data. We will only
+        check if your card is valid. No money will be deducted at this time.
+      </p>
+      <img
+        class="secure-payment-method-icon"
+        [ngClass]="{
+          'secure-payment-method-icon--showed-card-form': isShowCardForm,
+        }"
+        src="assets/user-settings/finances/secure-payments.svg"
+        alt="Secure payment stripe icon"
+      />
+      <button
+        *ngIf="!isShowCardForm; else cardForm"
+        class="enter-card-information-btn"
+        (click)="isShowCardForm = true"
+      >
+        Enter Your Card Information
+      </button>
+      <ng-template #cardForm>
+        <app-add-payment-method-form
+          [user]="currentUser$ | async"
+          (paymentMethodId)="attachPaymentMethods($event)"
+        >
+        </app-add-payment-method-form>
+      </ng-template>
+    </ng-template>
+  </ng-container>
+</section>

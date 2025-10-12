@@ -1,0 +1,50 @@
+<div class="confirmation-message">
+  <app-button-close
+    class="confirmation-message_close-icon_btn"
+    (click)="close()"
+  ></app-button-close>
+  <div>
+    <h4 class="confirmation-message_title"
+        [innerHTML]="data.title | translate"
+    ></h4>
+    @if (isTypeOfMessageString()) {
+      <p class="confirmation-message_text"
+         [innerHTML]="data.message | translate"
+      ></p>
+    } @else {
+      <br />
+      <ng-container
+        *ngComponentOutlet="data.message"
+      ></ng-container>
+    }
+
+    <br />
+    @if (data?.question) {
+      <p class="confirmation-message_text"
+         [innerHTML]="data.question | translate"
+      ></p>
+    }
+  </div>
+
+  <div class="confirmation-message_action">
+    <app-button
+      size="medium"
+      btnUIType="neutral"
+      (click)="cancel()"
+    >{{ data.cancel | translate }}
+    </app-button>
+    <app-button
+      size="medium"
+      btnUIType="primary"
+      (click)="confirm()"
+    >
+      @if (isConfirmationButtonText()) {
+        {{ data.confirm | translate }}
+      } @else {
+        <ng-container
+          *ngComponentOutlet="data.confirm"
+        ></ng-container>
+      }
+    </app-button>
+  </div>
+</div>

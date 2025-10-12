@@ -1,0 +1,352 @@
+@if (conversation && selected() === 'internal_chat' && currentPermissions && currentPermissions()?.isCounselor()) {
+<ng-container *ngTemplateOutlet="conversationBlock"></ng-container>
+}
+
+@if (conversation && selected() === 'client_chat') {
+<ng-container *ngTemplateOutlet="conversationBlock"></ng-container>
+}
+
+@if (selected() === 'robots') {
+<app-lupai-chat-bot></app-lupai-chat-bot>
+}
+
+@if(['summary', 'files', 'tasks', 'events', 'offer_boards', 'subgroups', 'questions', 'public_boards'
+].includes(selected())) {
+<app-mock-wrap [selected]="selected()"></app-mock-wrap>
+}
+
+
+<ng-template #conversationBlock>
+  @if (currentUser() && conversation) {
+  <div class="chat" [ngClass]="{internal: isInternal()}">
+    @if (showChatHeading()) {
+    <ng-container *ngTemplateOutlet="headerComponent"></ng-container>
+
+    }
+
+
+    @if (pagination$ | async; as paginationDetail) {
+    <div class="chat__history" infiniteScroll [infiniteScrollUpDistance]="2" [scrollWindow]="false"
+      [infiniteScrollThrottle]="0" [infiniteScrollDisabled]="
+        isLoadMoreMessages() || !paginationDetail.canLoadMore
+      " infiniteScrollContainer=".chat__history" [fromRoot]="true"
+      (scrolledUp)="loadMoreMessages(chatHistoryRef, chatHistoryRef.scrollTop)" #chatHistoryRef>
+      @if (isLoadMoreMessages()) {
+      <app-small-spinner [diameter]="50"></app-small-spinner>
+      }
+
+      <ng-container *ngFor="let message of (messages$ | async)">
+        <!--    <ng-container *ngFor="let item of dialogData; trackBy: trackByIndex">-->
+        <ng-container [ngTemplateOutlet]="messageTMPL" [ngTemplateOutletContext]="{ message: message }">
+        </ng-container>
+
+        <ng-template #messageTMPL let-message="message" let-paymentSessionId="paymentSessionId">
+          <div *ngIf="unreadMessagesNumber() && message.id === firstUnreadMessageId() && !message.read"
+            class="chat__unread-separator">
+            <p class="chat__unread-text">{{ unreadMessagesNumber() }} Unread Messages</p>
+          </div>
+
+          <ng-container *ngIf="message | shouldShowMessage: currentUser()">
+            <app-message [isInternalChat]="isInternal()" class="chat__message chat__item"
+              [id]="'chat-message-' + message.id" [message]="message" [conversation]="conversation"
+              [paymentSessionId]="paymentSessionId" [feedback]="getFeedback(message.feedback_id)" [feedbackQuestion]="
+                getFeedbackQuestion(message.id, message.feedback_id)
+              " [isRater]="advisorId === currentUser().id" [canReply]="!message.system_message"
+              [initialMessage]="message.replay_message" [canEdit]="
+                message.user_id === currentUser().id &&
+                message.icebreaker_question_id
+              " [recipients]="
+                message.user_id === currentUser()?.id
+                  ? [getCurrentUserInfo()]
+                  : activeConversationPartners()
+              " (find)="findFeedback($event)" (reply)="replyMessage(message)" (edit)="editMessageOriginal($event)"
+                         (enterMeet)="onEnterClasroomClick()"
+              (scrollToInitialMessage)="scrollToMessage(message.initial_message_id)" appScrollIntoViewDirective
+              (visible)="scrollMessageIntoView(message.id)"></app-message>
+          </ng-container>
+        </ng-template>
+
+      </ng-container>
+
+      <div *ngIf="
+          (isActivePaymentCounterSession || currentUser()?.id !== advisorId) &&
+          isCanScroll &&
+          !isOwnerOfIceBreaker()
+        " class="scroll-to-bottom-btn">
+        <app-scroll-btn (clickedScrollDown)="scrollOnHistory(true)" (clickedScrollUp)="scrollOnHistory(false)">
+        </app-scroll-btn>
+      </div>
+      <div class="meeting chat__item" *ngIf="
+          conversation.lastmeetingconfirmed &&
+          conversation.lastmeetingtime &&
+          meetingToday &&
+          !conversation.lastmeetingfinished
+        "
+        >
+<!--          <div *ngIf="!meetingInProgress$.value">-->
+<!--            <p class="meeting__info" *ngIf="!meetingCanStart">-->
+<!--              {{ 'lesson_start_at' | translate }}-->
+<!--              <b>{{ conversation.lastmeetingtime | date: ' h:mm a' }}</b>-->
+<!--            </p>-->
+<!--            <button-->
+<!--              (click)="onEnterClasroomClick()"-->
+<!--              class="meeting__submit-btn submit"-->
+<!--              mat-flat-button-->
+<!--              [disabled]="jitsiIframeIsLoading || !meetingCanStart"-->
+<!--            >-->
+<!--              <div class="btn-body">-->
+<!--                <span>{{ 'enter_room' | translate }}</span>-->
+<!--                <app-small-spinner-->
+<!--                  diameter="16"-->
+<!--                  *ngIf="jitsiIframeIsLoading"-->
+<!--                ></app-small-spinner>-->
+<!--              </div>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--          @if (!(meetingInProgress$ | async)) {-->
+<!--            <app-enter-video-call-->
+<!--              @fadeInUp-->
+<!--              [inProgress]="meetingInProgress$ | async"-->
+<!--              [loading]="jitsiIframeIsLoading"-->
+<!--              (join)="onEnterClasroomClick()"-->
+<!--            ></app-enter-video-call>-->
+<!--          }-->
+        <!-- Jitsi container -->
+        <div class="video-meet-wrapper" [ngClass]="{
+            hidden: (jitsiIframeIsLoading || !(meetingInProgress$ | async)),
+            }">
+
+          @if(isVideoCallFullView() || isVideoCallDraggable()) {
+            <div class="video-call-actions">
+              @if(isVideoCallFullView()) {
+                <button class="video-call-btn" (click)="minimizeVideoScreen()">
+                  <app-icon-minimize color="#F5F5F5"></app-icon-minimize>
+                </button>
+              }
+              @if(isVideoCallDraggable()) {
+                <button class="video-call-btn" (click)="maximizeVideoScreen()">
+                  <app-icon-maximaze color="#F5F5F5"></app-icon-maximaze>
+                </button>
+              }
+              <button class="video-call-btn" (click)="squareVideoScreen()">
+                <app-icon-square fill="#F5F5F5"></app-icon-square>
+              </button>
+              <button class="video-call-btn" (click)="horizontalVideoScreen()">
+                <app-icon-horizontal fill="#F5F5F5"></app-icon-horizontal>
+              </button>
+              <button class="video-call-btn" (click)="verticalVideoScreen()">
+                <app-icon-vertical fill="#F5F5F5"></app-icon-vertical>
+              </button>
+              @if(isVideoCallDraggable()) {
+                <button class="video-call-drag" (touchstart)="onTouchStart($event)" (mousedown)="onMouseDown($event)">
+                  <app-icon-draggable color="#1E1E1E"></app-icon-draggable>
+                </button>
+              }
+            </div>
+          } @else {
+            <div [matMenuTriggerFor]="menu" class="jitsi-settings-btn">
+              <app-icon-settings fill="#E2E2E2"></app-icon-settings>
+            </div>
+
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="minimizeVideoScreen()">
+                <mat-icon><app-icon-minimize></app-icon-minimize></mat-icon>
+
+                Minimize Video Call
+              </button>
+              <button mat-menu-item (click)="verticalVideoScreen()">
+                <mat-icon>
+                  <app-icon-vertical></app-icon-vertical>
+                </mat-icon>
+                Vertical
+              </button>
+              <button mat-menu-item (click)="squareVideoScreen()">
+                <mat-icon>
+                  <app-icon-square></app-icon-square>
+                </mat-icon>
+                Square
+              </button>
+              <button mat-menu-item (click)="horizontalVideoScreen()">
+                <mat-icon>
+                  <app-icon-horizontal></app-icon-horizontal>
+                </mat-icon>
+                Horizontal
+              </button>
+              <button mat-menu-item (click)="maximizeVideoScreen()">
+                <mat-icon>
+                  <app-icon-maximaze></app-icon-maximaze>
+                </mat-icon>
+                Maximize Video Call
+              </button>
+            </mat-menu>
+          }
+        <div
+          id="jitsi-container"
+        ></div>
+        <!-- /Jitsi container -->
+        </div>
+      </div>
+
+      @if (showFinishQuestionnaireButton()) {
+      <app-finish-questionnaire-button [conversation]="conversation"></app-finish-questionnaire-button>
+      }
+
+      @if (conversation.isIceBreaker() && !conversation.isOwner(currentUser())) {
+      <app-icebreaker-conversation-actions [(conversation)]="conversation" [textInput]="textInputComp"
+        [audioInput]="audioInputComp"></app-icebreaker-conversation-actions>
+      }
+    </div>
+
+    }
+
+    @if (isDisplayAdditionalMenu()) {
+    <app-additional-menu [conversationId]="this.conversation.id" (send)="sendFiles()" [(isUploadFile)]="isUploadFile"
+      [(isDisplayAdditionalMenu)]="isDisplayAdditionalMenu"></app-additional-menu>
+    }
+
+    @if (!isUploadFile() || this.isSendingFile()) {
+    <div class="chat__bottom" #chatbottom>
+      <div class="chat__payment-box" *ngIf="bankCardPayment">
+        <form id="payment-form">
+          <!-- Elements will create input elements here -->
+          <div id="card-element"></div>
+
+          <!-- We'll put the error messages in this element -->
+          <div id="card-errors" role="alert"></div>
+
+          <button class="chat__submit-btn" mat-flat-button id="submit" [disabled]="bankCardPaymentInProgress">
+            <div class="btn-body">
+              <span> {{ 'pay_btn_text' | translate }} </span>
+              <app-small-spinner *ngIf="bankCardPaymentInProgress" diameter="16" [isWhite]="true"></app-small-spinner>
+            </div>
+          </button>
+        </form>
+      </div>
+
+      <div class="chat__counter-box" *ngIf="conversation.isclarification">
+        <br />
+        <button (click)="resolveAndCloseClarification()" class="mat-raised-button clarification-resolve"> {{
+          'resolve_and_close' | translate }}
+        </button>
+        <button (click)="resolveAndAddToQueueClarification()" class="mat-raised-button clarification-resolve"> {{
+          'resolve_and_queue' | translate }}
+        </button>
+      </div>
+
+      <div class="mt-1">
+        <div class="message-to-answer" *ngIf="messageToAnswer">
+          <button class="message-to-answer__cancel" (click)="clearMessageToAnswer()">
+            <mat-icon>close</mat-icon>
+          </button>
+          <span class="message-to-answer__header">Initial message</span>
+          <span class="message-to-answer__text">
+            <ng-container *ngIf="messageToAnswer.body; else noBodyTpl">{{
+              messageToAnswer.body
+              }}</ng-container>
+            <ng-template #noBodyTpl>
+              <ng-container *ngIf="messageToAnswer.audio_message">{{ 'audio_message' | translate }}</ng-container>
+              <ng-container *ngIf="messageToAnswer.message_screenshots?.length">{{ 'image' | translate }}</ng-container>
+            </ng-template>
+          </span>
+        </div>
+
+        @if (showConfirmationPanel() && confirmationPanelData().options) {
+        <app-chat-confirmation-panel [options]="confirmationPanelData().options"
+          (reply)="replyToYesNoQuestion($event)"></app-chat-confirmation-panel>
+        }
+
+        @if (!signedInUser() && conversation.isCompleted()) {
+        <app-login-proposal [title]="'ice-breaker.propose-finish_btn_text' | translate"
+          [conversationId]="conversation.id"></app-login-proposal>
+        } @else {
+        @if(isRecording()) {
+        <app-audio-record #audioInput [user]="currentUser()" [sendBtnSrc]="sendBtnSrc"
+          [audioError$]="audioError.asObservable()" (uploadingFinished)="sendAudioMessage($event)"
+          (error)="handleRecorderNotAllowed()" (close)="handleAudioSuccess()" (startUpload)="startUpload($event)"
+          [hasHost]="true"></app-audio-record>
+        } @else {
+        <app-text-input #textInput [inputPlaceholder]="inputPlaceholder()" [sendBtnSrc]="sendBtnSrc"
+          [scaleSendBtn]="scaleSendBtn" [externalAudioRecord]="true" [allowImages]="true"
+          [recordBtnDisabled]="recorderNotAllowed" [messageSent$]="messageSentEvt.asObservable()"
+          [focusInput$]="focusInput.asObservable()" (recordBtnClicked)="startAudioRecording()"
+          (sendBtnClicked)="onAnswerSendClick($event)" [(additionalMenu)]="isDisplayAdditionalMenu"
+          [withAdditionalMenu]="true" [recordingProcess]="isRecording()" [isStartUploadAudio]="isStartedUploadAudio()"
+          [editable]="!showConfirmationPanel()"></app-text-input>
+        }
+        }
+
+      </div>
+    </div>
+    }
+
+  </div>
+  }
+
+
+  <ng-template #tipsTpl let-tips="tips" let-id="id" let-tipsType="tipsType">
+    <div class="tips" [ngClass]="{
+      'tips--paid': tips?.paid,
+      'tips--unpaid': tips && !tips.paid,
+      'tips--wait': currentUser().id === advisorId && !tips,
+    }">
+      <ng-container *ngIf="currentUser().id !== advisorId && !tips">
+        <app-tips [processing$]="tipsPaymentProcessing$" [id]="id" (payTips)="handleTipsActions($event, tipsType, id)"
+          (denyTips)="handleTipsActions(null, tipsType, id)"></app-tips>
+      </ng-container>
+
+      <div class="tips__thx" *ngIf="tips?.paid">
+        <app-heart class="tips__heart" *ngIf="currentUser().id !== advisorId"></app-heart>
+        <app-receipt [id]="id" [link]="stripeDashboardLink$ | async" [paymentRequest]="tips" [approved]="tips.paid"
+          [showDateCreated]="false" [isTips]="true" [tipsValue]="tips.percent"
+          [outgoing]="currentUser().id !== advisorId" [ngClass]="{
+          'chat__message--right': currentUser().id !== advisorId,
+          'chat__message--left': currentUser().id === advisorId,
+        }"></app-receipt>
+      </div>
+
+      <div class="tips__status">
+        <div [ngSwitch]="true">
+          <span *ngSwitchCase="tips?.paid">{{ 'tip_paid_additionally' | translate }}</span>
+          <span *ngSwitchCase="tips && !tips.paid">{{ 'tip_payment_declined' | translate }}</span>
+          <span *ngSwitchCase="currentUser().id === advisorId && !tips">{{ 'no_tip_paid_yet' | translate }}</span>
+          <span *ngSwitchDefault></span>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>
+
+<div class="content__actions"
+  [ngClass]="{'open': isOpenMobileMenu(), 'audio-record': isRecording(), 'bottom-position': !chatBottom?.nativeElement, 'with-proposal': conversation.isIceBreaker() && !signedInUser() && conversation.icebreaker_member.complete}">
+  <app-button class="chat__actions-back" rounded btnUIType="neutral" size="medium" (click)="navigateBackClickHandler()">
+    <app-icon-arrow direction="left"></app-icon-arrow>
+  </app-button>
+  <app-scroll-down-btn *ngIf="showScrollBottomButton()" [shownNumber]="unreadMessagesNumber()"
+    (clickedScrollDown)="scrollToLastMessage()"></app-scroll-down-btn>
+  @if (currentUser() && !currentUser().isAnonymous && !isActiveIceBreaker()) {
+  <app-button size="medium" btnUIType="primary" (click)="toggleMobileMenu()">
+    <app-conversation-menu-item [item]="selectedItem()" [onlyIconMenu]="onlyIconMenu()"></app-conversation-menu-item>
+  </app-button>
+  }
+  @if (isOpenMobileMenu()) {
+  <app-mobile-menu [items]="itemMainMenu()" alignBy='right' positionBy="top" theme="dark"
+    (selectedChange)="selectMenuItem($event)" (outsideClick)="closeMenu()"
+    (changeView)="onlyIconMenu.set($event)"></app-mobile-menu>
+  }
+
+</div>
+
+
+<ng-template #headerComponent>
+  @if (isInternal() && selected() === 'internal_chat') {
+  <app-internal-chat-header [conversation]="conversation"></app-internal-chat-header>
+  <div class="chat__line"></div>
+
+  } @else {
+  <app-conversation-header [conversation]="conversation" [activeConversationRater]="activeConversationRater()"
+    [activeConversationPartners]="activeConversationPartners()"
+    [paymentSessionOpened]="!!(paymentSessionOpened$ | async)" [isOwnerOfIceBreaker]="isOwnerOfIceBreaker()"
+    [isVideoCallRequested]="videoCallRequested" (requestVideoCall)="requestVideoCall()"
+    (closePaymentSession)="closePaymentSession()" (onPriceChanged)="onPriceChanged($event)"></app-conversation-header>
+  }
+</ng-template>

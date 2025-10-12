@@ -1,0 +1,77 @@
+@import 'variables';
+
+:host {
+  background-color: #f7f7f7 !important;
+}
+
+.draw {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem;
+  position: relative;
+  margin-top: 8rem;
+
+  @media only screen and (max-width: $bp-small) {
+    margin-top: 0rem;
+  }
+
+  .backImage {
+    position: absolute;
+    object-fit: contain;
+    padding: 0;
+    margin: 0;
+    left: 20px;
+  }
+
+  &.mobile {
+    align-items: center;
+  }
+}
+
+canvas {
+  transform-origin: 0 0;
+}
+.actions {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.action {
+  margin-bottom: 10px;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  &:disabled {
+    cursor: default;
+    opacity: 0.3;
+  }
+  img {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .draw {
+    flex-direction: column-reverse;
+    background: #000;
+    margin-top: 0;
+
+    .actions {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      margin: 0;
+      padding: 1rem;
+
+      .action-btn-text {
+        color: #fff;
+      }
+    }
+  }
+}

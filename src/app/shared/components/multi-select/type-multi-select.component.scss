@@ -1,0 +1,114 @@
+@import "variables";
+
+:host {
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+  flex: 1;
+
+  @media (max-width: $desktop) {
+    display: grid;
+    grid-template-areas:
+    "filter-btn nested-content nested-content"
+    "filter-list filter-list filter-list";
+    grid-template-columns: 44px 1fr 1fr;
+  }
+}
+
+.select-filter {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+
+  @media (max-width: $desktop) {
+    flex-direction: column;
+  }
+}
+
+.nested-content {
+  grid-area: nested-content;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.filter-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-list.mobile {
+  grid-area: filter-list;
+  margin-top: 24px;
+}
+
+.filter-item {
+  display: flex;
+  padding: 8px;
+  border-radius: $--sds-size-radius-200;
+  background-color: $--sds-color-background-default-default;
+  color: $--sds-color-text-default-secondary;
+  font-size: $--sds-typography-body-size-medium;
+  line-height: 1.6rem;
+  gap: 8px;
+  height: 3.2rem;
+  cursor: pointer;
+  user-select: none;
+
+
+
+  app-mark-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    display: flex;
+  }
+}
+
+
+.filter-btn.active, .filter-btn.active.opened {
+  background-color: $--sds-color-background-brand-default;
+  border: none;
+}
+
+.filter-btn.opened {
+  border: $--sds-size-stroke-border solid $--sds-color-border-neutral-secondary;
+  background: $--sds-color-background-neutral-tertiary-hover;
+}
+
+
+.filter-btn {
+  background-color: $--sds-color-background-default-default;
+  border-radius: 2.2rem;
+  width: 4.4rem;
+  height: 4.4rem;
+  border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+
+  grid-area: filter-btn;
+
+}
+
+app-settings-icon {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+}
+
+.icon {
+  display: flex;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.filter-item.selected {
+  color: $--sds-color-background-default-default;
+  background-color: $--sds-color-background-brand-default;
+  transition: all .5s ease-in-out;
+}

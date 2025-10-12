@@ -1,0 +1,5 @@
+<div class="iframe" [ngClass]="{ 'iframe--center': !loaded }">
+  <app-load-iframe-btn (clicked)="load()" *ngIf="!loaded"></app-load-iframe-btn>
+
+  <div class="iframe__container" [innerHTML]="iframeSrc" *ngIf="loaded"></div>
+</div>

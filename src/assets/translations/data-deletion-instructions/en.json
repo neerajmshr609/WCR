@@ -1,0 +1,11 @@
+{
+  "title": "Data Deletion Instructions for We Care Remote Operated by Greyt IT UG",
+  "intro": "We respect your privacy and provide you with the ability to delete your data from our services. To request the deletion of your account data, please follow the simple steps below.",
+  "how_heading": "How to Request Data Deletion:",
+  "step_email": "<strong>Compose an Email:</strong> Send an email to <a href=\"mailto:info@wcr.is\" class=\"email\">info@wcr.is</a>.",
+  "step_subject": "<strong>Use the Subject Line:</strong> \"Request for Data Deletion\"",
+  "step_details": "<strong>Include Your Details:</strong> In the body of the email, please include your full name and the email address you used to register with our service. This is necessary to verify your identity and locate your data.",
+  "what_next": "What Happens Next?",
+  "next_detail": "Once we receive your request, our team will verify your identity. The data deletion process will be completed within 30 days of confirming your request. We will send you a final confirmation email once your data has been permanently deleted.",
+  "note": "Please note that revoking this consent does not affect the lawfulness of processing based on consent before its withdrawal. Some anonymous or aggregated data may be retained for statistical purposes, but it will not be linked to you in any way."
+}

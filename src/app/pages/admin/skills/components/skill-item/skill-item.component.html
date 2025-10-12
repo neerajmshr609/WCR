@@ -1,0 +1,133 @@
+<mat-tab-group
+  [preserveContent]="true"
+  mat-align-tabs="start"
+  mat-stretch-tabs="false"
+  #skillCard
+  [(selectedIndex)]=selectedIndex
+  [style.gap]="'1rem'"
+>
+  <form [formGroup]="skillForm()">
+    <ng-container formArrayName="translations_attributes">
+      <ng-container *ngFor="let translation of translations_attributes.controls; let i = index;" [formGroupName]="i">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <p>{{getTabLabel(translation.value.locale) || 'Select language'}}</p>
+          </ng-template>
+
+          <div class="skill-item">
+            <div class="skill-item__translation-controls">
+              @if(translation.value.locale !== LANGUAGES.ENGLISH){
+                <mat-form-field>
+                  <mat-label>Selected language</mat-label>
+                  <mat-select formControlName="locale">
+                    @for (language of languageOptions(); track language){
+                      <mat-option [value]="language.value">{{language.viewValue}}</mat-option>
+                    }
+                  </mat-select>
+                  @if (translation.get('locale')?.hasError('duplicateLocale')) {
+                    <mat-error>This language is already used.</mat-error>
+                  }
+                </mat-form-field>
+              }
+
+              <button class="skill-item__add-translation-btn"  mat-raised-button (click)="addTranslation()">
+                Add Translation
+                <mat-icon>add</mat-icon>
+              </button>
+              @if(translations_attributes.length > 1 && translation.value.locale !== LANGUAGES.ENGLISH){
+                <button
+                  class="skill-item__delete-translation-btn"
+                  mat-raised-button
+                  (click)="onDeleteTranslation(translation.value.locale)">
+                  Delete Translation
+                  <mat-icon [style.transform]="'scale(1.5)'" [style.color]="'red'">delete</mat-icon>
+                </button>
+              }
+            </div>
+
+            <div class="skill-item__content">
+              <section>
+                <div class="skill-item__inputs-group form__group">
+                  <div class="skill-item__image">
+                    <img
+                      #skillImage
+                      [src]="skillForm()?.get('icon').value || 'assets/skill_placeholder34@2x.png'"
+                      alt="Skill icon"
+                      (click)="openUploader()"
+                    />
+                  </div>
+
+                  <input
+                    name="name"
+                    formControlName="name"
+                    id="name"
+                    placeholder="Enter name"
+                    class="skill-item__title form__input"
+                  />
+                  <input
+                    name="shortname"
+                    formControlName="shortname"
+                    placeholder="Enter short name"
+                    id="shortname"
+                    class="skill-item__title form__input"
+                  />
+                    <input
+                      name="link"
+                      id="link"
+                      [formControl]="linkControl"
+                      placeholder="Enter link"
+                      class="skill-item__title form__input"
+                    />
+                </div>
+
+                <div class="skill-item__controls">
+                  <mat-icon
+                    [style.color]="'red'"
+                    *ngIf="skill && skill.id"
+                    (click)="onDeleteSkill(skill)"
+                    matTooltip="Delete"
+                    matTooltipPosition="above"
+                  >delete</mat-icon>
+                  <mat-icon
+                    *ngIf="skill && skill.id && skillForm().valid"
+                    (click)="onSave()"
+                    matTooltip="Save"
+                    matTooltipPosition="above"
+                  >save</mat-icon>
+
+                  <mat-icon
+                    [style.transform]="'scale(1.5)'"
+                    *ngIf="(!skill || !skill.id) && skillForm().valid"
+                    (click)="onSave()"
+                    matTooltip="Add Skill"
+                    matTooltipPosition="above"
+                  >add_box</mat-icon>
+                </div>
+              </section>
+
+              <div class="tags">
+                <app-tags
+                  *ngIf="skill?.id"
+                  [tags]="skill.artcategory_skills"
+                  (updateTags)="updateTags($event)"
+                ></app-tags>
+              </div>
+            </div>
+          </div>
+
+        </mat-tab>
+      </ng-container>
+    </ng-container>
+  </form>
+</mat-tab-group>
+<div class="uploader uploader--skill-image"></div>
+
+<!-- Confirmation Dialog Template -->
+<ng-template #confirmationDialog let-data let-dialogRef="dialogRef">
+  <h2 mat-dialog-title>{{ data.title }}</h2>
+  <mat-dialog-content>{{ data.message }}</mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="dialogRef.close(false)">Cancel</button>
+    <button mat-raised-button color="warn" (click)="dialogRef.close(true)">Confirm</button>
+  </mat-dialog-actions>
+</ng-template>

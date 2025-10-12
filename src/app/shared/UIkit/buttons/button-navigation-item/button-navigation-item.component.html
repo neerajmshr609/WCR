@@ -1,0 +1,14 @@
+<a class="navigation-button"
+   [routerLink]="routerLink()"
+   [routerLinkActive]="'active'"
+   (isActiveChange)="isActive.set($event)"
+>
+  <app-icon-render
+    class="navigation-button_icon"
+    [icon]="navigationItemWithRenderContext()"
+    [componentIconInputs]="navigationItemWithRenderContext().icon_render_context"
+  ></app-icon-render>
+  <span
+    class="navigation-button_text"
+  >{{ navigationTitle() | translate }}</span>
+</a>

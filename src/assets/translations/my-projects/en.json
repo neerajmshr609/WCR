@@ -1,0 +1,45 @@
+{
+  "choices": {
+    "overview": "Overview",
+    "best": "Choose The Best",
+    "custom": "Custom Questions"
+  },
+  "stats": {
+    "last_interaction": "last interaction",
+    "total_income": "total income",
+    "spent_total": "spent total",
+    "time_spent": "time spent",
+    "hourly_rate": "hourly rate",
+    "no_last_interaction": "NO",
+    "rate_backs": {
+      "disrespectful": "disrespectful",
+      "unhelpful": "unhelpful",
+      "helpful": "helpful",
+      "brilliant_insight": "brilliant insight",
+      "strengths": "strengths",
+      "weaknesses": "weaknesses",
+      "next_steps": "next steps",
+      "links": "links"
+    },
+    "total_score": "Total Score",
+    "knowledge": "Knowledge",
+    "explanation": "explanation",
+    "pronunciation": "pronunciation",
+    "politeness": "politeness",
+    "no_skill": "No skill",
+    "stands_out": "Stands out",
+    "could_be_improved": "Could be improved",
+    "no_reviews": "No reviews received",
+    "less_info": "less info",
+    "more_info": "more info",
+    "hide_analytics": "hide analytics",
+    "show_analytics": "show analytics"
+  },
+  "audio_record": {
+    "paused": "Paused"
+  },
+  "item_resort_view": {
+    "resort": "Resort",
+    "original": "Original"
+  }
+}

@@ -1,0 +1,19 @@
+<div class="schedule">
+  <div class="schedule__days">
+    <div
+      *ngFor="let day of days"
+      class="schedule__day"
+      [ngClass]="{ 'schedule__day--active': day.status }"
+    >
+      {{ day.name }}
+    </div>
+  </div>
+
+  <div class="schedule__time-range">
+    <div class="schedule__label">from</div>
+    <div class="schedule__time">{{ ruleset.time_from }}</div>
+
+    <div class="schedule__label">until</div>
+    <div class="schedule__time">{{ ruleset.time_until }}</div>
+  </div>
+</div>

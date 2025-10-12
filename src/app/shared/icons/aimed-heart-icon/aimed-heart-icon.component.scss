@@ -1,0 +1,26 @@
+:host {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+  box-sizing: border-box;
+  width: 42px;
+  height: 42px;
+}
+
+.aimed-heart {
+  &_aim-icon {
+    width: 42px;
+    height: 42px;
+  }
+  &_heart-icon {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-47%, -40%);
+    z-index: 1;
+  }
+}

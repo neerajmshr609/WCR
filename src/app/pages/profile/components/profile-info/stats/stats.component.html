@@ -1,0 +1,12 @@
+<app-segment-title
+  title="stats.title"
+></app-segment-title>
+
+<div class="stats_rows-container">
+  @for (statItem of scoresList(); track statItem.title) {
+    <p class="stats_row">
+      <span>{{ statItem.title | translate }}</span>
+      <span class="font-strong">{{ statItem.value }}</span>
+    </p>
+  }
+</div>

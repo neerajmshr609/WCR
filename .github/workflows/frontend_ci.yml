@@ -1,0 +1,117 @@
+name: "Frontend CI BUILD"
+run-name: >
+  ${{ github.event_name == 'workflow_dispatch' 
+      && format('Build and Deploy Frontend to {0} environment', github.event.inputs.environment) 
+      || format('Build and Deploy Frontend to {0} environment', github.ref_name == 'master' && 'prod' || 'dev') }}
+on:
+  push:
+    branches: [dev]
+  workflow_call:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        description: Type environment
+        required: true
+        default: dev
+      frontend_tag:
+        type: string
+        description: Type frontend tag
+        required: true
+        default: latest
+      region:
+        type: string
+        description: Type region
+        required: true
+        default: "eu-central-1"
+
+env:
+  APPLICATION: "frontend"
+  APP_PATH: /opt/greyt
+  ECR_URL: "${{ secrets.ACCOUNT_ID }}.dkr.ecr.${{ github.event.inputs.region || 'eu-central-1'}}.amazonaws.com"
+  CONTAINER_REGISTRY: "ecr-frontend"
+  DOCKER_WORKDIR: "."
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment || 'dev'}}
+    steps:
+      - uses: actions/checkout@v4
+      - name: AWS login
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.SECRET_KEY }}
+          aws-region: ${{ github.event.inputs.region || 'eu-central-1'}}
+      - name: EKS login
+        run: |
+          aws ecr get-login-password --region ${{ github.event.inputs.region || 'eu-central-1'}} | docker login --username AWS --password-stdin ${{ env.ECR_URL }}
+
+      - name: Build and push
+        run: |
+          docker build -f ${{ env.DOCKER_WORKDIR }}/Dockerfile-frontend --tag ${{ env.APPLICATION }}:${{ github.event.inputs.frontend_tag || 'latest'}} . \
+            --build-arg NG_APP_PRODUCTION='${{ secrets.NG_APP_PRODUCTION }}' \
+            --build-arg NG_APP_ANALYTICS_ENABLED='${{ secrets.NG_APP_ANALYTICS_ENABLED }}' \
+            --build-arg NG_APP_STRIPE_PK='${{ secrets.NG_APP_STRIPE_PK }}' \
+            --build-arg NG_APP_BASE_URL='${{ secrets.NG_APP_BASE_URL }}' \
+            --build-arg NG_APP_WS_BASE='${{ secrets.NG_APP_WS_BASE }}' \
+            --build-arg NG_APP_JITSI_URL='${{ secrets.NG_APP_JITSI_URL }}' \
+            --build-arg NG_APP_LOGROCKET_APP_ID='${{ secrets.NG_APP_LOGROCKET_APP_ID }}' \
+            --build-arg NG_APP_PAYPAL_CLIENT_ID='${{ secrets.NG_APP_PAYPAL_CLIENT_ID }}' \
+            --build-arg NG_APP_ONESIGNAL_APP_ID='${{ secrets.NG_APP_ONESIGNAL_APP_ID }}' \
+            --build-arg NG_APP_ONESIGNAL_SAFARI_WEB_ID='${{ secrets.NG_APP_ONESIGNAL_SAFARI_WEB_ID }}' \
+            --build-arg NG_APP_ONESIGNAL_ALLOW_LOCALHOST_AS_SECURE_ORIGIN='${{ secrets.NG_APP_ONESIGNAL_ALLOW_LOCALHOST_AS_SECURE_ORIGIN }}' \
+            --build-arg NG_APP_ENVIRONMENT='${{ secrets.NG_APP_ENVIRONMENT }}' \
+            --build-arg BUCKET_ENVIRONMENT='${{ secrets.BUCKET_ENVIRONMENT }}' \
+            --build-arg NG_APP_GIT_REVISION='${{ github.sha }}' \
+            --build-arg NG_APP_LUPAI_WS_URL='${{ secrets.NG_APP_LUPAI_WS_URL }}' \
+            --build-arg NG_APP_LUPAI_TOKEN='${{ secrets.NG_APP_LUPAI_TOKEN }}'
+          docker tag ${{ env.APPLICATION }}:${{ github.event.inputs.frontend_tag || 'latest'}} ${{ env.ECR_URL }}/${{ env.CONTAINER_REGISTRY }}:${{ github.event.inputs.frontend_tag || 'latest'}}
+          docker push ${{ env.ECR_URL }}/${{ env.CONTAINER_REGISTRY }}:${{ github.event.inputs.frontend_tag || 'latest'}}
+
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment || 'dev'}}
+    needs: [build]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install rsync and ssh
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y rsync openssh-client
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan ${{ secrets.SSH_IP }} >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Deploy application using Docker Compose
+        run: |
+          eval $(ssh-agent -s)
+          echo "${{ secrets.SSH_KEY }}" | tr -d '\r' | ssh-add -
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }} <<EOF
+          set -e
+          cd ${{ env.APP_PATH }}
+          aws ecr get-login-password --region ${{ github.event.inputs.region || 'eu-central-1'}} | docker login --username AWS --password-stdin ${{ env.ECR_URL }}
+          docker stop frontend proxy || true
+          docker rm frontend proxy || true
+          docker images --filter=reference="${{ env.ECR_URL }}/${{ env.CONTAINER_REGISTRY }}:*" --quiet | xargs -r docker rmi
+          docker volume rm greyt_frontend || true
+          sed -i "s|^FRONTEND=.*|FRONTEND=${{ env.ECR_URL }}/${{ env.CONTAINER_REGISTRY }}:${{ github.event.inputs.frontend_tag || 'latest'}}|g" .env
+          DB_HOST=${{ secrets.DB_HOST }} DB_PASSWORD=${{ secrets.DB_PASSWORD }} DB_USERNAME=${{ secrets.DB_USERNAME }} \
+          docker compose --profile ${{ github.event.inputs.environment || 'dev'}} up -d --build frontend
+
+          until [ "\$(docker inspect -f '{{.State.Running}}' frontend)" == "true" ]; do
+            echo "Waiting for frontend to start..."
+            sleep 3
+          done
+
+          docker compose --profile ${{ github.event.inputs.environment || 'dev'}} up -d --build proxy
+
+          docker image prune -a -f
+          EOF

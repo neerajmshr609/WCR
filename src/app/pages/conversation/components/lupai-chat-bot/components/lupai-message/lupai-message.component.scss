@@ -1,0 +1,961 @@
+// Import variables for consistency with existing message styles
+@import 'variables';
+
+// Animations
+@keyframes lupaiSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lupaiShimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes lupaiPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+// Host styling for proper component encapsulation
+:host {
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;
+
+  // Add extra margin-top for the first message
+  &:first-child {
+    margin-top: 2rem;
+  }
+}
+
+// Main lupai message container - Based on existing message component structure
+.lupai-message {
+  width: 100%;
+  display: flex;
+  align-self: start;
+  position: relative;
+  margin-bottom: 1rem;
+
+  // Common avatar styles
+  &__avatar {
+    position: absolute;
+    top: 0;
+    left: -24px;
+    transform: translateY(-80%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: transparent;
+    z-index: 1;
+
+    mat-icon {
+      font-size: $--sds-typography-scale-04;
+      color: $--sds-color-text-default-secondary;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border: none;
+      background: transparent;
+      border-radius: 0;
+
+      // Robot.svg için özel stil - clipping'i engelle
+      &[src*='robot.svg'] {
+        border: none !important;
+        border-radius: 0 !important;
+      }
+    }
+
+    // Robot.svg için container'ın kendisini düzenle
+    &:has(img[src*='robot.svg']) {
+      border-radius: 0 !important;
+      overflow: visible !important;
+      background: transparent !important;
+    }
+  }
+
+  // Common content styles
+  &__content {
+    padding: $--sds-size-space-200;
+    min-width: 25rem;
+    box-sizing: border-box;
+    border: 1px solid $--sds-color-border-default-default;
+    position: relative;
+    z-index: 2;
+
+    @media only screen and (max-width: $bp-small) {
+      min-width: auto;
+      padding: 1rem;
+    }
+  }
+
+  // User message styles - Right aligned like existing messages
+  &--user {
+    justify-content: flex-end;
+    position: relative;
+
+    .lupai-message__user {
+      position: relative;
+      max-width: 70%;
+
+      @media only screen and (max-width: $bp-small) {
+        max-width: 85%;
+      }
+
+      .lupai-message__avatar {
+        right: -16px;
+        left: unset;
+        border: 1px solid $--sds-color-border-neutral-default;
+        border-radius: 4px 40px 40px 4px;
+      }
+
+      .lupai-message__content {
+        background: $--sds-color-background-brand-default;
+        color: $--sds-color-text-neutral-on-neutral;
+        border-radius: $--sds-size-radius-300 0 $--sds-size-radius-300
+          $--sds-size-radius-200;
+      }
+
+      .lupai-message__text {
+        color: $--sds-color-text-neutral-on-neutral;
+        font-size: $--sds-typography-body-size-medium;
+        font-weight: $--sds-typography-body-font-weight-medium;
+        line-height: 140.188%;
+        word-break: break-word;
+        margin-bottom: 0.5rem;
+      }
+
+      .lupai-message__time {
+        font-size: $--sds-typography-body-size-medium;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: $--sds-typography-body-font-weight-regular;
+      }
+
+      .lupai-message__user-context {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: $--sds-color-background-neutral-default-hover;
+        border-radius: $--sds-size-radius-100;
+        border: 1px solid $--sds-color-border-default-secondary;
+
+        .lupai-message__user-context-header {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 0.5rem;
+          font-size: $--sds-typography-body-size-small;
+          font-weight: $--sds-typography-body-font-weight-medium;
+          color: $--sds-color-text-neutral-on-neutral;
+
+          mat-icon {
+            font-size: $--sds-typography-scale-00;
+            width: 1rem;
+            height: 1rem;
+          }
+        }
+
+        .lupai-message__user-context-items {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .lupai-message__user-context-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: $--sds-typography-body-size-small;
+          color: $--sds-color-text-neutral-on-neutral;
+
+          mat-icon {
+            font-size: $--sds-typography-scale-00;
+            width: 0.875rem;
+            height: 0.875rem;
+            color: $--sds-color-text-neutral-on-neutral;
+          }
+        }
+      }
+    }
+  }
+
+  // Lupai message styles - Left aligned like existing bot messages
+  &--lupai {
+    justify-content: flex-start;
+    position: relative;
+
+    .lupai-message__lupai {
+      position: relative;
+      max-width: 100%;
+
+      @media only screen and (max-width: $bp-small) {
+        max-width: 95%;
+      }
+
+      .lupai-message__avatar {
+        left: -24px;
+        right: unset;
+        border-radius: 40px 4px 4px 40px;
+        border: 1px solid $--sds-color-border-neutral-default;
+
+        // Robot.svg için border'ı kaldır
+        img[src*='robot.svg'] {
+          border: none !important;
+        }
+
+        &:has(img[src*='robot.svg']) {
+          border: none !important;
+          border-radius: 0 !important;
+          overflow: visible !important;
+        }
+      }
+
+      .lupai-message__content {
+        background: $--sds-color-background-default-default;
+        border-radius: 0 $--sds-size-radius-300 $--sds-size-radius-300
+          $--sds-size-radius-300;
+        border: 1px solid $--sds-color-border-default-default;
+      }
+
+      .lupai-message--lupai .lupai-message__lupai .lupai-message__user-context {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: $--sds-color-background-neutral-default-hover;
+        border-radius: $--sds-size-radius-100;
+        border: 1px solid $--sds-color-border-default-secondary;
+
+        .lupai-message__user-context-header {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 0.5rem;
+          font-size: $--sds-typography-body-size-small;
+          font-weight: $--sds-typography-body-font-weight-medium;
+          color: $--sds-color-text-neutral-on-neutral;
+
+          mat-icon {
+            font-size: $--sds-typography-scale-00;
+            width: 1rem;
+            height: 1rem;
+          }
+        }
+
+        .lupai-message__user-context-items {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .lupai-message__user-context-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: $--sds-typography-body-size-small;
+          color: $--sds-color-text-neutral-on-neutral;
+
+          mat-icon {
+            font-size: $--sds-typography-scale-00;
+            width: 0.875rem;
+            height: 0.875rem;
+            color: $--sds-color-text-neutral-on-neutral;
+          }
+        }
+      }
+    }
+  }
+
+  // Processing state
+  &--processing {
+    .lupai-message__processing {
+      background: linear-gradient(
+        135deg,
+        $--sds-color-state-100 0%,
+        $--sds-color-state-200 100%
+      );
+      border: 2px solid $--sds-color-state-600;
+      border-radius: $--sds-size-radius-300;
+      padding: 1.25rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+      overflow: hidden;
+
+      // Animated background effect
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        background-size: 200px 100%;
+        animation: lupaiShimmer 2s infinite;
+      }
+
+      &-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      &-icon {
+        animation: lupaiSpin 1.5s linear infinite;
+        color: $--sds-color-state-700;
+        font-size: $--sds-typography-scale-05;
+        filter: drop-shadow(0 1px 2px rgba(90, 90, 90, 0.3));
+      }
+
+      &-text {
+        font-weight: 600;
+        color: $--sds-color-text-default-default;
+        font-size: $--sds-typography-scale-00;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    .lupai-message__progress-bar {
+      margin-top: 0.75rem;
+      height: 6px;
+      border-radius: $--sds-size-radius-100;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+
+      ::ng-deep .mat-mdc-progress-bar-fill::after {
+        background-color: $--sds-color-state-700;
+      }
+    }
+  }
+
+  // Error state
+  &--error {
+    .lupai-message__error {
+      background: $--sds-color-background-danger-tertiary;
+      
+      border: 1px solid $--sds-color-border-danger-default;
+      border-radius: $--sds-size-radius-300;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+
+      &-icon {
+        color: $--sds-color-text-danger-default;
+        margin-top: 0.25rem;
+      }
+
+      &-content {
+        flex: 1;
+
+        h4 {
+          margin: 0 0 0.25rem 0;
+          color: $--sds-color-text-danger-default;
+          font-size: $--sds-typography-body-size-xs;
+          font-weight: 600;
+        }
+
+        p {
+          margin: 0;
+          color: $--sds-color-text-danger-default;
+          font-size: $--sds-typography-body-size-xxs;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+
+  // Main content text
+  &__text {
+    color: $--sds-color-text-utilities-text-on-overlay;
+    font-size: $--sds-typography-body-size-medium;
+    font-weight: $--sds-typography-body-font-weight-medium;
+    line-height: 140.188%;
+    word-break: break-word;
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    // Handle HTML content safely
+    ::ng-deep {
+      p {
+        margin: 0.5rem 0;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      ul,
+      ol {
+        margin: 0.5rem 0;
+        padding-left: 1.5rem;
+
+        li {
+          margin: 0.25rem 0;
+          line-height: inherit;
+        }
+      }
+
+      strong,
+      b {
+        font-weight: 600;
+      }
+
+      em,
+      i {
+        font-style: italic;
+      }
+    }
+  }
+
+  // Warning for sensitive topics
+  &__warning {
+    background: $--sds-color-state-100;
+    border: 1px solid $--sds-color-state-300;
+    border-radius: $--sds-size-radius-300;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    &-icon {
+      color: $--sds-color-text-default-secondary;
+      margin-top: 0.25rem;
+      font-size: $--sds-typography-scale-04;
+    }
+
+    &-content {
+      flex: 1;
+
+      h4 {
+        margin: 0 0 0.25rem 0;
+        color: $--sds-color-text-default-default;
+        font-size:  $--sds-typography-body-size-medium;
+        font-weight: 600;
+      }
+
+      p {
+        margin: 0;
+        color: $--sds-color-text-default-secondary;
+        font-size: $--sds-typography-body-size-small;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  // Improved query notice
+  &__improved-query {
+    background: $--sds-color-state-100;
+    border: 1px solid $--sds-color-state-300;
+    border-radius: $--sds-size-radius-300;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+
+    mat-icon {
+      color: $--sds-color-text-default-secondary;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0;
+      color: $--sds-color-text-default-default;
+      font-weight: 500;
+    }
+  }
+
+  // Metadata section
+  &__metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: $--sds-size-radius-300;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 1.2rem;
+      color: $--sds-color-text-default-tertiary;
+      font-weight: 500;
+
+      mat-icon {
+        font-size: 20px;
+        color: inherit;
+      }
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  // Topics section
+  &__topics {
+    margin-bottom: 1rem;
+
+    h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+      color: $--sds-color-text-default-default;
+      font-weight: 600;
+    }
+
+    &-list {
+      gap: 0.25rem;
+
+      mat-chip-option {
+        font-size: 0.95rem;
+        background: $--sds-color-state-200;
+        border: none;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: $--sds-color-state-400;
+          color: $--sds-color-text-neutral-on-neutral;
+          transform: translateY(-1px);
+          box-shadow: 0 2px 4px rgba(48, 48, 48, 0.3);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+
+    &__topic-chip {
+      user-select: none;
+
+     
+    }
+  }
+
+  // Sources and Organizations sections
+  &__sources,
+  &__organizations {
+    background: $--sds-color-state-100;
+    border: 1px solid $--sds-color-state-200;
+    border-radius: $--sds-size-radius-300;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+
+    &-header {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid $--sds-color-state-200;
+      transition: background-color 0.2s ease;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid $--sds-color-state-200;
+      width: 100%;
+      text-align: left;
+
+      &:hover {
+        background: $--sds-color-state-200;
+      }
+
+    
+
+      h4 {
+        margin: 0;
+        font-size: 1.4rem;
+        color: $--sds-color-text-default-default;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+
+        mat-icon {
+          font-size: 26px;
+        }
+      }
+    }
+
+    &-content {
+      padding: 0.75rem;
+    }
+  }
+
+  &__expand-icon {
+    transition: transform 0.2s ease;
+
+    &--expanded {
+      transform: rotate(180deg);
+    }
+  }
+
+  // Source and organization items
+  &__source-item,
+  &__organization-item {
+    background: white;
+    border: 1px solid $--sds-color-state-200;
+    border-radius: $--sds-size-radius-300;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    transition: box-shadow 0.2s ease;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__source-header,
+  &__organization-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  &__source-title,
+  &__organization-name {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: $--sds-color-text-default-default;
+    margin: 0;
+  }
+
+  &__source-score,
+  &__organization-score {
+    font-size: 1.1rem;
+    color: $--sds-color-text-default-secondary;
+    background: $--sds-color-state-200;
+    padding: 0.3rem 0.7rem;
+    border-radius: $--sds-size-radius-300;
+    font-weight: 500;
+  }
+
+  &__source-description,
+  &__organization-description {
+    font-size: 1.1rem;
+    color: $--sds-color-text-default-secondary;
+    margin: 0.5rem 0;
+    line-height: 1.4;
+  }
+
+  &__source-section {
+    font-size: 1.05rem;
+    color: $--sds-color-text-default-tertiary;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  &__source-link,
+  &__organization-link {
+    background: transparent;
+    border: 1px solid $--sds-color-state-600;
+    color: $--sds-color-text-default-secondary;
+    padding: 0.4rem 0.8rem;
+    border-radius:  $--sds-size-radius-100;
+    font-size: $--sds-typography-body-size-xs;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all 0.2s ease;
+    font-weight: 500;
+
+    &:hover {
+      background: $--sds-color-state-800;
+      color: $--sds-color-text-neutral-on-neutral;
+      transform: translateY(-1px);
+    }
+
+    mat-icon {
+      font-size: $--sds-typography-scale-04;
+    }
+  }
+
+  // Footer with timestamp
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    font-size: $--sds-typography-body-size-medium;
+    color: $--sds-color-text-default-tertiary;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    margin-top: 1rem;
+  }
+
+  &__time {
+    font-size: $--sds-typography-body-size-medium;
+    color: $--sds-color-text-default-tertiary;
+    font-weight: $--sds-typography-weight-medium;
+    width: fit-content;
+    padding-top: 7px;
+    line-height: normal;
+    display: block;
+    margin-left: auto;
+  }
+
+  // Eğer bot mesajı solda ise, gerekirse aşağıdaki gibi eklenebilir:
+  .lupai-message__lupai .lupai-message__time {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  // Domain-specific styling
+  &.domain-immigration {
+    .lupai-message__content {
+      //border-left: 4px solid $--sds-color-state-700;
+    }
+  }
+
+  &.domain-asylum {
+    .lupai-message__content {
+      //border-left: 4px solid $--sds-color-border-danger-default;
+    }
+  }
+
+  &.domain-general {
+    .lupai-message__content {
+      //border-left: 4px solid $--sds-color-border-neutral-default;
+    }
+  }
+}
+
+// =============================================
+// Custom Formatted Content Styling
+// =============================================
+
+// Styles for formatted response content
+.lupai-message__text ::ng-deep {
+  // Regular paragraphs
+  .lupai-paragraph {
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: inherit;
+    font-size: inherit;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Numbered list items
+  .lupai-numbered-item {
+    display: flex;
+    margin: 1.5rem 0;
+    gap: 1rem;
+    align-items: flex-start;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &__number {
+      flex-shrink: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: linear-gradient(
+        135deg,
+        $--sds-color-state-800,
+        $--sds-color-state-900
+      );
+      color: $--sds-color-text-neutral-on-neutral;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+          font-size: $--sds-typography-scale-00;
+    box-shadow: 0 2px 8px rgba(48, 48, 48, 0.25);
+    margin-top: 0.125rem;
+    }
+
+    &__content {
+      flex: 1;
+      line-height: 1.6;
+
+      // Bold text styling for step titles
+      strong {
+        color: $--sds-color-text-default-default;
+        font-weight: 600;
+        font-size: 1.05em;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      // Line breaks within numbered items
+      br {
+        margin: 0.25rem 0;
+      }
+    }
+  }
+
+  // Bold text in regular content
+  strong {
+    font-weight: 600;
+    color: $--sds-color-text-default-default;
+  }
+
+  // Links if any
+  a {
+    color: $--sds-color-text-default-secondary;
+    text-decoration: none;
+
+    &:hover {
+      color: $--sds-color-text-default-default;
+      text-decoration: underline;
+    }
+  }
+}
+
+// =============================================
+// End Custom Formatted Content Styling
+// =============================================
+
+// Responsive adjustments
+@media only screen and (max-width: $bp-small) {
+  .lupai-message {
+    &--user .lupai-message__user {
+      max-width: 85%;
+
+      .lupai-message__content {
+        padding: 1rem;
+      }
+    }
+
+    &--lupai .lupai-message__lupai {
+      max-width: 95%;
+
+      .lupai-message__content {
+        padding: 1rem;
+      }
+    }
+
+    &__metadata {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    &__sources-header,
+    &__organizations-header {
+      padding: 0.5rem 0.75rem;
+
+      h4 {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
+.lupai-message__user + .lupai-message__time,
+.lupai-message__user .lupai-message__time {
+  color: $--sds-color-text-default-tertiary !important;
+}
+
+// GLOBAL CONTEXT BLOĞU STİLİ (hem user hem bot için)
+.lupai-message__user-context {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f7f7f7;
+  border-radius: $--sds-size-radius-100;
+  border: 1px solid $--sds-color-border-default-secondary;
+
+  .lupai-message__user-context-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: $--sds-typography-body-size-small;
+    font-weight: $--sds-typography-body-font-weight-medium;
+    color: $--sds-color-text-default-default;
+
+    mat-icon {
+      font-size: $--sds-typography-scale-00;
+      width: 1rem;
+      height: 1rem;
+      color: $--sds-color-text-default-default;
+    }
+  }
+
+  .lupai-message__user-context-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .lupai-message__user-context-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: $--sds-typography-body-size-small;
+    color: $--sds-color-text-default-default;
+
+    mat-icon {
+      font-size: $--sds-typography-scale-00;
+      width: 0.875rem;
+      height: 0.875rem;
+      color: $--sds-color-text-default-default;
+    }
+  }
+}
+
+.lupai-message--user .lupai-message__user-context-header mat-icon {
+  color: #fff;
+}

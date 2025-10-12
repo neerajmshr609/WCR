@@ -1,0 +1,21 @@
+{
+  "empty": {
+    "empty-list": "No Chats yet here",
+    "main-title": "conversations",
+    "main-descriptions": "Hier sehen Sie alle Arten von Nachrichten, sortiert nach der aktuellsten. Nutzen Sie die Kategorien für mehr Übersicht.",
+    "scheduled-title": "scheduled",
+    "scheduled-subtitle": "Alle Ihre geplanten Termine werden hier angezeigt.",
+    "request-title": "open requests",
+    "request-subtitle": "Alle offenen Fälle, an denen du beteiligt bist und für die noch kein koordinierender Berater:in vorhanden ist, werden hier dargestellt.",
+    "org-title": "org chats",
+    "org-subtitle": "Alle mit ihrer Organisation bezogenen Gruppenchats findet man hier.",
+    "com-title": "communities",
+    "com-subtitle": "Sind Interessensräume mit Veranstaltungen, Diskussionen, Untergruppen und Pinnwänden.",
+    "we-care-title": "we care",
+    "we-care-subtitle": "Alle Klientenfälle, die du direkt koordinierst oder wo du anderen dabei hilfst oder sie in irgendeiner Art berätst.",
+    "direct-title": "direct messages",
+    "direct-subtitle": "Alle Ihre direkten Eins-zu-eins-Chats findet man hier.",
+    "support-title": "get support",
+    "support-subtitle": "Alle Ihre Fälle, bei denen andere Ihnen helfen, Ihre aktuellen Fälle zu lösen."
+  }
+}

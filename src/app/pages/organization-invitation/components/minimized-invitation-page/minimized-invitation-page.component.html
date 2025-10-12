@@ -1,0 +1,20 @@
+<app-button
+  class="minimized-invitation"
+  [size]="buttonSize()"
+  btnUIType="primary"
+  (click)="navigateToInvitationPage()"
+>
+    <span class="minimized-invitation_content">
+      <app-icon-user-plus
+        class="minimized-invitation_icon"
+        color="#F5F5F5"
+        strokeWidth="1.6"
+      ></app-icon-user-plus>
+      <span
+        class="minimized-invitation_text"
+      >
+        {{ 'minimized-invitation.join_organization' | translate: invitation() }}
+      </span>
+    </span>
+
+</app-button>

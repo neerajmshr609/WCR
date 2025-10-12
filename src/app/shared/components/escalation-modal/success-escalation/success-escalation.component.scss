@@ -1,0 +1,43 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+app-select {
+  margin-top: 4px;
+}
+
+app-close-icon {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+}
+
+.escalation-type {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 1.2rem 1.2rem 1.2rem 1.6rem;
+  border-radius:$--sds-size-radius-200;
+  border: $--sds-size-stroke-border solid $--sds-color-border-positive-default;
+  color: $--sds-color-text-default-default;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 100%;
+}
+
+app-icon-check-circle {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex;
+}

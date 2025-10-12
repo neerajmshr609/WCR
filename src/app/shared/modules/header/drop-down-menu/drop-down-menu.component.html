@@ -1,0 +1,252 @@
+@if (isNotDesktop$ | async) {
+  <app-mobile-current-route  [matMenuTriggerFor]="mobileMenu" [openMenuState]="menuOpenState()"></app-mobile-current-route>
+} @else {
+  <button class="menu-btn" mat-icon-button [matMenuTriggerFor]="mobileMenu" disableRipple="true">
+    <app-icon-more-vertical strokeWidth="6" color="#757575"></app-icon-more-vertical>
+  </button>
+}
+<mat-menu #mobileMenu="matMenu" class="wcr-header-menu" overlapTrigger="false" yPosition="below" xPosition="before" hasBackdrop="true" backdropClass="wcr-header-menu-backdrop">
+  @if (isSignedInAsCounselor()) {
+    @if (isNotDesktop$ | async) {
+      <ng-container *ngTemplateOutlet="profileTemplate"></ng-container>
+      <ng-container *ngTemplateOutlet="conversationsTemplate"></ng-container>
+      <ng-container *ngTemplateOutlet="requestDeskTemplate"></ng-container>
+
+      <app-header-mobile-navbar-item
+        link="counsellor-desk"
+        title="header.counsellor_desk-line"
+        description="header.counsellor_desk-dropdown-description">
+        <app-counsellor-desk-icon [strokeWidth]="2.1"></app-counsellor-desk-icon>
+      </app-header-mobile-navbar-item>
+
+      <app-header-mobile-navbar-item
+        [link]="MENU_URLS.CREATE_ICE_BREAKER"
+        title="header.create_capsule"
+        description="header.create_capsule_description"
+      >
+        <app-icon-capsule-closed></app-icon-capsule-closed>
+      </app-header-mobile-navbar-item>
+
+      <ng-container *ngTemplateOutlet="shapeImpactTemplate"></ng-container>
+      <ng-container *ngTemplateOutlet="publicfeedTemplate"></ng-container>
+
+      <mat-divider></mat-divider>
+
+      <ng-container *ngTemplateOutlet="getHelpTemplate"></ng-container>
+
+      <ng-container *ngTemplateOutlet="blogTemplate"></ng-container>
+
+
+      <ng-container *ngTemplateOutlet="homeTemplate"></ng-container>
+
+    } @else {
+
+      <app-header-mobile-navbar-item
+        [link]="MENU_URLS.CREATE_ICE_BREAKER"
+        title="header.create_capsule"
+        description="header.create_capsule_description"
+      >
+        <app-icon-capsule-closed></app-icon-capsule-closed>
+      </app-header-mobile-navbar-item>
+
+      <ng-container *ngTemplateOutlet="profileTemplate"></ng-container>
+
+      <mat-divider></mat-divider>
+
+
+      <ng-container *ngTemplateOutlet="shapeImpactTemplate"></ng-container>
+
+      <ng-container *ngTemplateOutlet="getHelpTemplate"></ng-container>
+
+      <ng-container *ngTemplateOutlet="homeTemplate"></ng-container>
+    }
+
+    <mat-divider></mat-divider>
+    <ng-container *ngTemplateOutlet="settingsTemplate"></ng-container>
+    @if (isAdmin()) {
+      <ng-container *ngTemplateOutlet="myBriefsTemplate"></ng-container>
+    }
+    <ng-container *ngTemplateOutlet="logoutTemplate"></ng-container>
+
+  } @else {
+    @if (authorizedUser()) {
+      @if (isNotDesktop$ | async) {
+        <ng-container *ngTemplateOutlet="profileTemplate"></ng-container>
+        <ng-container *ngTemplateOutlet="conversationsTemplate"></ng-container>
+        <ng-container *ngTemplateOutlet="shapeImpactTemplate"></ng-container>
+        <ng-container *ngTemplateOutlet="publicfeedTemplate"></ng-container>
+
+        <mat-divider></mat-divider>
+
+        <ng-container *ngTemplateOutlet="getHelpTemplate"></ng-container>
+
+        <ng-container *ngTemplateOutlet="blogTemplate"></ng-container>
+
+
+        <ng-container *ngTemplateOutlet="homeTemplate"></ng-container>
+
+      } @else {
+        <ng-container *ngTemplateOutlet="profileTemplate"></ng-container>
+        <ng-container *ngTemplateOutlet="shapeImpactTemplate"></ng-container>
+
+
+        <ng-container *ngTemplateOutlet="homeTemplate"></ng-container>
+      }
+
+      <mat-divider></mat-divider>
+      <ng-container *ngTemplateOutlet="settingsTemplate"></ng-container>
+      @if (isAdmin()) {
+        <ng-container *ngTemplateOutlet="myBriefsTemplate"></ng-container>
+      }
+      <ng-container *ngTemplateOutlet="logoutTemplate"></ng-container>
+    } @else {
+      @if (isNotDesktop$ | async) {
+        <ng-container *ngTemplateOutlet="publicfeedTemplate"></ng-container>
+        <ng-container *ngTemplateOutlet="getHelpTemplate"></ng-container>
+        <ng-container *ngTemplateOutlet="blogTemplate"></ng-container>
+
+        <ng-container *ngTemplateOutlet="homeTemplate"></ng-container>
+      } @else {
+        <!--        NOTHING    -->
+      }
+    }
+  }
+
+
+  <ng-container *ngTemplateOutlet="languageTemplate"></ng-container>
+
+  <!-- ToDo: here we should list the organizations, which user works with -->
+  <!-- <app-header-mobile-navbar-item
+    [link]="''"
+    title="header.org_landing_page"
+  >
+    <app-icon-org-chat></app-icon-org-chat>
+  </app-header-mobile-navbar-item> -->
+
+
+</mat-menu>
+
+<ng-template #logoutTemplate>
+  <app-header-mobile-navbar-item
+    link=""
+    (click)="onLogout()"
+    [title]="'header.menu.logout'"
+  >
+    <app-icon-log-out></app-icon-log-out>
+  </app-header-mobile-navbar-item>
+</ng-template>
+
+<ng-template #publicfeedTemplate>
+  <app-header-mobile-navbar-item
+    link="publicfeed"
+    title="header.news-line"
+    description="header.news-description">
+    <app-news-icon [strokeWidth]="2.5"></app-news-icon>
+  </app-header-mobile-navbar-item>
+</ng-template>
+
+<ng-template #getHelpTemplate>
+  <app-header-mobile-navbar-item
+    link="/help"
+    title="header.get-help-line"
+    description="header.get-help_description">
+    <app-like-icon></app-like-icon>
+  </app-header-mobile-navbar-item>
+</ng-template>
+
+<ng-template #blogTemplate>
+  <app-header-mobile-navbar-item
+    (click)="navigateToBlogPage()"
+    title="header.blog"
+  >
+    <app-blog-icon></app-blog-icon>
+  </app-header-mobile-navbar-item>
+</ng-template>
+
+<ng-template #languageTemplate>
+  <app-header-mobile-navbar-item
+    title="{{languageService.currentLanguageTitle()}}"
+    (click)="openLanguageSelectModal()"
+  >
+    <app-icon-globe></app-icon-globe>
+  </app-header-mobile-navbar-item>
+</ng-template>
+
+<ng-template #homeTemplate>
+  <app-header-mobile-navbar-item
+    link="/home"
+    title="header.we_care_remote_home"
+  >
+    <app-home-icon></app-home-icon>
+  </app-header-mobile-navbar-item>
+</ng-template>
+
+<ng-template #settingsTemplate>
+  <app-header-mobile-navbar-item
+    link="/settings"
+    title="header.menu.settings"
+  >
+    <app-icon-settings-gear></app-icon-settings-gear>
+  </app-header-mobile-navbar-item>
+</ng-template>
+
+<ng-template #requestDeskTemplate>
+  <app-header-mobile-navbar-item
+    link="open-requests"
+    title="header.request_desk-line"
+    description="header.request_desk-description">
+    <app-request-icon></app-request-icon>
+  </app-header-mobile-navbar-item>
+</ng-template>
+
+<ng-template #conversationsTemplate>
+  <app-header-mobile-navbar-item
+    class="conversation-icon"
+    link="conversations"
+    title="header.inbox"
+    description="header.inbox-description"
+  >
+    <app-conversations-icon [strokeWidth]="0.6"></app-conversations-icon>
+  </app-header-mobile-navbar-item>
+</ng-template>
+
+
+<ng-template #profileTemplate>
+  <app-header-mobile-navbar-item
+    [link]="profileLink()"
+    title="header.profile.title"
+    description="header.profile.description"
+  >
+    <app-icon-public-profile></app-icon-public-profile>
+  </app-header-mobile-navbar-item>
+</ng-template>
+
+<ng-template #shapeImpactTemplate>
+  <app-header-mobile-navbar-item
+    link="/rateflow"
+    title="header.shape_impact"
+    description="header.shape_impact_description"
+  >
+  <div class="icon-alignment">
+    <app-icon-shape-impact></app-icon-shape-impact>
+    </div>
+  </app-header-mobile-navbar-item>
+</ng-template>
+
+<ng-template #counsellorDesk>
+  <app-header-mobile-navbar-item
+    link="counsellor-desk"
+    title="header.counsellor_desk-line"
+    description="header.counsellor_desk-dropdown-description">
+    <app-counsellor-desk-icon [strokeWidth]="2.1"></app-counsellor-desk-icon>
+  </app-header-mobile-navbar-item>
+</ng-template>
+
+<ng-template #myBriefsTemplate>
+  <app-header-mobile-navbar-item
+    link="insights"
+    title="header.my_briefs"
+    description="header.my_briefs_description">
+    <app-icon-briefings></app-icon-briefings>
+  </app-header-mobile-navbar-item>
+</ng-template>

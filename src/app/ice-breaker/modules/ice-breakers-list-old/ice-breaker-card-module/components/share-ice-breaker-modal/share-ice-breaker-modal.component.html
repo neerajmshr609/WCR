@@ -1,0 +1,30 @@
+<section mat-dialog-content>
+  <button class="close-modal-btn" (click)="close()">
+    <img src="../../../../../../../../../assets/close-modal-icon.svg" alt="close-modal-icon" />
+  </button>
+  <article class="share-icon-container">
+    <img src="../../../../../../../../../assets/icons/share.svg" alt="Share icon" />
+  </article>
+  <h1
+    class="header-text"
+    [innerHTML]="'ice-breaker-card.share-your-getme' | translate | safe: 'html'"
+  ></h1>
+  <section class="share-carousel">
+    <app-share-profile-carousel
+      [shareLink]="shareLink"
+    ></app-share-profile-carousel>
+  </section>
+  <section class="preview">
+    <p class="preview__text">{{ 'ice-breaker-card.preview' | translate }}:</p>
+    <section class="preview__content">
+      <div>
+        <img src="../../../../../../../../../assets/share-img.svg" alt="Share image" />
+      </div>
+      <div class="description">
+        <span class="name">{{ userName }}</span>
+        {{ 'ice-breaker-card.want-share' | translate }} <br />
+        “{{ title }}”
+      </div>
+    </section>
+  </section>
+</section>

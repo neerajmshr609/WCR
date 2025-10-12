@@ -1,0 +1,11 @@
+@import "_variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: $--sds-size-space-300;
+}
+
+.email-notification_switch {
+  padding: 0 $--sds-size-space-600;
+}

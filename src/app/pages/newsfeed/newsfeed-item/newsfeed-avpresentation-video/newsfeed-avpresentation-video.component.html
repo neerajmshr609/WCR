@@ -1,0 +1,90 @@
+<div
+  class="newsfeed-avpresentation-video"
+  [ngClass]="{ 'no-curves': !showCurves }"
+>
+  <div class="newsfeed-avpresentation-video__track-controls">
+    <p class="newsfeed-avpresentation-video__track-controls--title">
+      {{ file.projectfile_title }}
+    </p>
+
+    <div
+      class="newsfeed-avpresentation-video__track-controls--track"
+      *ngIf="file.kind === 'video'"
+    >
+      <img
+        (click)="videoClicked()"
+        class="playpause"
+        [src]="isPlaying ? 'assets/av/av-pause.png' : 'assets/av/av-play.png'"
+      />
+
+      <p class="current-time">{{ currentTime | hms }}</p>
+
+      <div class="track-line">
+        <div class="track-line-progress" [style.width]="trackTimeWidth"></div>
+      </div>
+
+      <p class="track-time">{{ duration | hms }}</p>
+    </div>
+  </div>
+
+  <div class="newsfeed-avpresentation-video__content">
+    <div class="newsfeed-item__image-area--category" *ngIf="category">
+      <p>{{ category }}</p>
+    </div>
+
+    <div
+      class="placeholder"
+      *ngIf="!videoLoaded"
+      [style.backgroundImage]="'url(' + file.thumbnail + ')'"
+      (click)="
+        file.kind === 'hostedvideo' ? (videoLoaded = true) : videoClicked()
+      "
+    >
+      <button *ngIf="file.kind === 'hostedvideo'">
+        <img src="/assets/av/youtube-play.svg" alt="" />
+      </button>
+    </div>
+
+    <ng-container *ngIf="videoLoaded" [ngSwitch]="file.kind">
+      <div
+        plyr
+        *ngSwitchCase="'video'"
+        class="videoplayer-instance"
+        id="videoplayer-{{ file.id }}"
+        [plyrOptions]="playerOptions"
+        [plyrPlaysInline]="true"
+        [plyrSources]="videoSources"
+        [plyrDriver]="hlsDriver"
+        [plyrPoster]="file.thumbnail"
+        (plyrInit)="player = $event"
+      ></div>
+
+      <div
+        *ngSwitchCase="'hostedvideo'"
+        class="newsfeed-avpresentation-video__youtube"
+      >
+        <youtube-player
+          [id]="'player-' + file.id"
+          [videoId]="file.handle"
+          [playerVars]="playerVars"
+          (ready)="onYTPlayerReady($event)"
+          (stateChange)="onYTPlayerStateChange($event)"
+        ></youtube-player>
+      </div>
+    </ng-container>
+  </div>
+
+  <app-curves
+    *ngIf="showCurves"
+    [readMode]="true"
+    [file]="file"
+    [lanesToPrint$]="lanesToPrint$"
+    [feedbackItems]="feedbackItem ? [feedbackItem] : allFeedbacksFromUser"
+    [duration]="duration || file.duration"
+    [toggleTimer$]="toggleTimer$"
+    [mediaFileIsOver$]="mediaFileIsOver$"
+    [seeked$]="seeked$"
+    [playerExists]="!!player || !!youtubePlayer"
+    (seekTo)="seekTo($event)"
+  ></app-curves>
+</div>

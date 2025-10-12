@@ -1,0 +1,54 @@
+<button mat-icon-button (click)="clickClose.emit()" class="modal__btn--close">
+  <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+</button>
+
+<div class="modal__body">
+  <div class="modal__header">
+    <img
+      class="modal__img"
+      src="assets/onboarding-modal/feedbackrequest-modal-image-2.svg"
+      alt="feedbackrequest-modal-image"
+    />
+
+    <h2 class="modal__title"><span>Great</span> to have you with us</h2>
+
+    <app-heart text="" class="modal__heart"></app-heart>
+  </div>
+
+  <div #videoRef [style.height.px]="height" class="video">
+    <youtube-player
+      id="DthGeVMDy54"
+      videoId="DthGeVMDy54"
+      [playerVars]="playerVars"
+    ></youtube-player>
+  </div>
+
+  <div class="modal__info">
+    <h2 class="modal__subtitle">A quick overview</h2>
+    <p class="modal__text">
+      At Getme.Global we combine two incompatible things at the same time.
+      <b>Learn and earn money</b>.
+    </p>
+    <p class="modal__text">
+      To start collecting payments please create a wallet.
+    </p>
+  </div>
+
+  <div class="modal__actions">
+    <a
+      class="btn btn-primary"
+      mat-dialog-close
+      routerLink="/settings"
+      [queryParams]="{ type: 'finance' }"
+      >Setup payment</a
+    >
+    <img
+      src="/assets/powered-by-stripe.png"
+      alt="powered by stripe"
+      class="stripe"
+    />
+    <button mat-button class="modal__skip-btn" (click)="clickClose.emit()">
+      skip
+    </button>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+@import "_variables";
+
+:host {
+  display: flex;
+  gap: $--sds-size-space-300;
+  padding: 6px;
+  width: 292px;
+}
+.load-more {
+  display: flex;
+  padding: $--sds-size-space-400 $--sds-size-space-600;
+  gap: $--sds-size-space-500;
+  border-radius: $--sds-size-radius-200;
+  border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+  background: $--sds-color-background-default-default;
+  box-shadow: $--sds-size-depth-0 $--sds-size-depth-100 $--sds-size-depth-100 $--sds-size-depth-negative-025 $--sds-color-black-100 inset;
+}
+
+.help-text {
+  color: $--sds-color-text-default-secondary;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-small;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 140%;
+}
+
+app-icon-visible {
+  display: flex;
+  width: 42px;
+  height: 42px;
+}

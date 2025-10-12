@@ -1,0 +1,10 @@
+@import "_variables";
+
+:host {
+  display: block;
+}
+
+.save-icon {
+  width: calc($--sds-typography-body-size-medium * 1.4);
+  height: calc($--sds-typography-body-size-medium * 1.4);
+}

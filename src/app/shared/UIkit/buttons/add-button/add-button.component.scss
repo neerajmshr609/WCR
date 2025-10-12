@@ -1,0 +1,34 @@
+@import "variables";
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+.add-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 3.3rem;
+  height: 3.3rem;
+  padding: $--sds-size-space-200;
+  border-radius: $--sds-size-radius-200;
+  border: none;
+  background: transparent;
+
+  &:hover {
+    border: $--sds-size-stroke-border--solid--sds-color-border-default-default;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    border: $--sds-size-stroke-border--solid--sds-color-border-disabled-default;
+    background: $--sds-color-background-disabled-default;
+  }
+
+  &_icon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}

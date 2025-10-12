@@ -1,0 +1,99 @@
+@import "_variables";
+
+$icon-size: 5.333rem;
+$btn-icon-size: 1.778rem;
+$more-icon-width: 16px;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: $--sds-color-background-default-default;
+  border: 1px solid $--sds-color-border-default-default;
+  border-radius: $--sds-size-radius-200;
+  gap: $--sds-size-space-400;
+}
+
+.ice-breaker-card {
+  &_head {
+    display: flex;
+    justify-items: stretch;
+    align-items: stretch;
+    cursor: pointer;
+  }
+
+  &_description {
+    max-height: 160px;
+    color: $--sds-color-text-default-secondary;
+    font-size: $--sds-typography-body-size-medium;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: $line-height-140;
+    overflow-y: scroll;
+    margin: 0 $--sds-size-space-300;
+  }
+
+  &_button {
+    margin: 0 $--sds-size-space-300 $--sds-size-space-300 $--sds-size-space-300;
+
+    &-icon {
+      width: $btn-icon-size;
+      height: $btn-icon-size;
+    }
+  }
+}
+
+.head {
+  &_content {
+    flex-grow: 1;
+    display: flex;
+    justify-items: stretch;
+    align-items: center;
+    gap: $--sds-size-space-300;
+    padding: $--sds-size-space-300;
+    max-width: calc(100% - ($more-icon-width + ($--sds-size-space-300 * 2)));
+  }
+
+  &_image {
+    width: $icon-size;
+    height: $icon-size;
+  }
+
+  &_text {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    font-family: $--sds-typography-family-sans;
+    font-size: $--sds-typography-body-size-xs;
+    font-weight: $--sds-typography-weight-medium;
+    letter-spacing: $--letter-spacing-3;
+  }
+
+  &_sub-title {
+    color: $--sds-color-text-default-secondary;
+    text-transform: uppercase;
+  }
+
+  &_title {
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-weight: $--sds-typography-body-font-weight-strong;
+    line-height: $line-height-140;
+  }
+
+  &_counselors-amount {
+    margin-top: $--sds-size-space-200;
+    color: $--sds-color-text-default-tertiary;
+    text-transform: uppercase;
+  }
+
+  &_more-btn {
+    padding: $--sds-size-space-400 $--sds-size-space-300;
+  }
+
+  &_more-icon {
+    width: $more-icon-width;
+    height: 22px;
+  }
+}

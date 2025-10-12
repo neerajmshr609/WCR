@@ -1,0 +1,9 @@
+<app-heart-icon
+  class="add-to-review-queue_icon"
+  color="#757575"
+  [fill]="isAddedToQueue() ? '#FDD3D0' : 'white'"
+></app-heart-icon>
+
+<span
+  class="add-to-review-queue_text"
+>{{ (isAddedToQueue() ? 'added_to_review_queue' : 'add_to_review_queue') | translate }}</span>

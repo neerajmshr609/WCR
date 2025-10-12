@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="292"
+   height="223"
+   viewBox="0 0 292 223"
+   version="1.1"
+   id="svg20"
+   sodipodi:docname="animation-lamp.svg"
+   style="fill:none"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata26">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs24">
+    <filter
+       id="filter0_d"
+       x="9.6255703"
+       y="42.144299"
+       width="289.94501"
+       height="129.65199"
+       filterUnits="userSpaceOnUse"
+       style="color-interpolation-filters:sRGB">
+      <feFlood
+         flood-opacity="0"
+         result="BackgroundImageFix"
+         id="feFlood32" />
+      <feColorMatrix
+         in="SourceAlpha"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+         result="hardAlpha"
+         id="feColorMatrix34" />
+      <feOffset
+         dy="16.7194"
+         id="feOffset36" />
+      <feGaussianBlur
+         stdDeviation="8.3597"
+         id="feGaussianBlur38" />
+      <feColorMatrix
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+         id="feColorMatrix40" />
+      <feBlend
+         mode="normal"
+         in2="BackgroundImageFix"
+         result="effect1_dropShadow"
+         id="feBlend42" />
+      <feBlend
+         mode="normal"
+         in="SourceGraphic"
+         in2="effect1_dropShadow"
+         result="shape"
+         id="feBlend44" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1020"
+     id="namedview22"
+     showgrid="false"
+     inkscape:zoom="1.380117"
+     inkscape:cx="87.5"
+     inkscape:cy="85.5"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg20" />
+  <path
+     d="m 115.6409,187.098 c 0,18.336 -1.2874,32.126 31.6502,32.126 32.5009,0 32.5009,-13.79 32.5009,-32.126 z"
+     id="path2"
+     inkscape:connector-curvature="0"
+     style="clip-rule:evenodd;fill:#000000;fill-rule:evenodd" />
+  <path
+     d="m 131.1899,217.072 c 0,3.291 -0.6474,5.766 15.9171,5.766 16.345,0 16.345,-2.475 16.345,-5.766 z"
+     id="path4"
+     inkscape:connector-curvature="0"
+     style="clip-rule:evenodd;fill:#000000;fill-rule:evenodd" />
+  <path
+     d="m 180.338,51.999772 h -69.8171 c -4.0539,0 -7.9714,1.464108 -11.0315,4.122878 L 70.6812,81.1522 c -6.80761,5.9148 -7.73908,16.146 -2.1115,23.1928 l 43.234,54.138 c 2.3803,2.98 3.6768,6.681 3.6768,10.496 v 11.241 h 63.4225 v -11.588 c 0,-3.602 1.156,-7.108 3.298,-10.003 l 40.312,-54.4951 c 5.189,-7.0144 4.153,-16.8319 -2.386,-22.6084 L 191.474,56.21397 C 188.4,53.49848 184.44,51.999772 180.338,51.999772 Z"
+     id="path6"
+     inkscape:connector-curvature="0"
+     style="fill:#000000" />
+  <path
+     d="M 214.107,85.2771 188.08,63.5886 h -11.259 l 17.351,21.6885 z"
+     id="path8"
+     inkscape:connector-curvature="0"
+     style="fill:#858585" />
+  <path
+     d="M 173.083,147.9189 217.562,99.7334 H 195.323 Z"
+     id="path10"
+     inkscape:connector-curvature="0"
+     style="fill:#858585" />
+  <path
+     d="M 115.241,99.7334 147.3191,169.235 179.397,99.7334 Z"
+     id="path12"
+     inkscape:connector-curvature="0"
+     style="fill:#858585" />
+  <path
+     d="M 158.294,63.5886 H 136.3255 L 118.9747,85.2771 H 175.645 Z"
+     id="path14"
+     inkscape:connector-curvature="0"
+     style="fill:#858585" />
+  <path
+     d="m 117.8288,63.5886 h -11.259 L 80.5436,85.2771 h 19.9344 z"
+     id="path16"
+     inkscape:connector-curvature="0"
+     style="fill:#858585" />
+  <path
+     d="M 77.074,99.7334 121.5526,147.9189 99.3128,99.7334 Z"
+     id="path18"
+     inkscape:connector-curvature="0"
+     style="fill:#858585" />
+</svg>

@@ -1,0 +1,21 @@
+<div class="expertise-card-content">
+  <div class="expertise-card-content_icon">
+    <ng-content></ng-content>
+  </div>
+  <div class="expertise-card-content_text">
+    <h4 class="expertise-card-content_title">
+      {{ skillName() || 'Mock_skill_name'}}
+    </h4>
+    <p class="expertise-card-content_sub-title">
+      <span class="expertise-card-content_sub-title-icon">
+        <app-user-icon></app-user-icon>
+      </span>
+      <span class="expertise-card-content_sub-title-text">
+        {{ openRequest().firstMemberName | uppercase }}
+        @if (openRequest().members.length > 1) {
+          , + {{ openRequest().members.length - 1 }} Person
+        } 
+      </span>
+    </p>
+  </div>
+</div>

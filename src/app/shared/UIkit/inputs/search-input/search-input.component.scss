@@ -1,0 +1,49 @@
+@import "_mixins";
+@import "_variables";
+
+:host {
+  @include borderBoxBlock;
+  position: relative;
+}
+
+$--input-icon-size: 1.6rem;
+
+.search-input {
+  width: 100%;
+  color: $--sds-color-text-default-default;
+  font-size: $--sds-typography-body-size-medium;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  padding: $--sds-size-space-300 calc($--sds-size-space-600 + $--input-icon-size) $--sds-size-space-300 $--sds-size-space-400;
+  border-radius: $--sds-size-radius-full;
+  border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+  background-color: $--sds-color-background-default-default;
+  line-height: $line-height-100;
+
+  &.square {
+    border-radius: $--sds-size-radius-200;
+  }
+
+  &.placeholder {
+    color: $--sds-color-text-default-tertiary;
+  }
+
+  &.disabled {
+    color: $--sds-color-text-disabled-on-disabled;
+    border-color: $--sds-color-border-disabled-secondary;
+    background-color: $--sds-color-background-disabled-default;
+  }
+
+  &_icon {
+    position: absolute;
+    width: $--input-icon-size;
+    height: $--input-icon-size;
+    right: calc($--sds-size-stroke-border + $--sds-size-space-400);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  &_close-icon {
+    cursor: pointer;
+  }
+}
+

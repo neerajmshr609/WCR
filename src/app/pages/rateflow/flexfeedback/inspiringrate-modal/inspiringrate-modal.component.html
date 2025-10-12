@@ -1,0 +1,54 @@
+<div class="modal__container">
+  <button mat-icon-button mat-dialog-close class="modal__btn--close">
+    <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+  </button>
+
+  <div class="modal__body">
+    <h1 class="modal__title">
+      Get paid {{ data.rate | euroCurrency }} if this creative decides that your
+      review is really inspiring.
+    </h1>
+  </div>
+
+  <div class="ratebacks">
+    <div class="ratebacks__item disabled">
+      <img src="assets/ratebacks/discouraging.svg" />
+      <p class="ratebacks__item-name">Disrespectful</p>
+      <p class="ratebacks__item-amount">0</p>
+    </div>
+
+    <div class="ratebacks__item">
+      <img src="assets/ratebacks/unhelpful.svg" />
+      <p class="ratebacks__item-name">Unhelpful</p>
+      <p class="ratebacks__item-amount">3</p>
+    </div>
+
+    <div class="ratebacks__item">
+      <img src="assets/ratebacks/helpful.svg" />
+      <p class="ratebacks__item-name">Helpful</p>
+      <p class="ratebacks__item-amount">5</p>
+    </div>
+
+    <div class="ratebacks__item">
+      <img src="assets/ratebacks/inspiring.svg" />
+      <p class="ratebacks__item-name">Brilliant insight</p>
+      <p class="ratebacks__item-amount">2</p>
+    </div>
+  </div>
+
+  <div class="how-it-works">
+    <p class="how-it-works__title">How it works</p>
+    <p class="how-it-works__text">
+      The creative will seperately evaluate every comment later on. If the score
+      adds up to be overall positive the Creative will pay you for this review
+      the above promised price. Additionally we connect you on Getme.Global for
+      further possible consultations. Once being a trusted connector to a
+      creative, your able to set your own hourly rates and get paid for your
+      time spent.
+    </p>
+  </div>
+
+  <div class="modal__actions">
+    <button class="modal__btn accented-btn" mat-dialog-close>Got it</button>
+  </div>
+</div>

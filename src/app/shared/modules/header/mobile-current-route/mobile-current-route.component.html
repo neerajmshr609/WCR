@@ -1,0 +1,66 @@
+@if(pathTitle$ | async; as path) {
+  <div class="icon">
+    @switch (path) {
+      @case ('home') {
+        <app-home-icon [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'" [strokeWidth]="2.5"></app-home-icon>
+      }
+      @case ('inbox') {
+        <app-conversations-icon [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'" [strokeWidth]="0.6"></app-conversations-icon>
+      }
+      @case ('menu.upload') {
+        <app-upload-icon [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'"></app-upload-icon>
+      }
+      @case ('menu.signed_in_as') {
+        <img [ngClass]="{'revert-color': openMenuState()}" src="../../../../../assets/header/why.svg" alt="">
+      }
+      @case ('blog') {
+        <app-blog-icon [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'"></app-blog-icon>
+      }
+      @case ('request_desk-line') {
+        <app-add-members-icon [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'" [strokeWidth]="1.38"></app-add-members-icon>
+      }
+      @case ('get-help-line') {
+        <app-like-icon [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'"></app-like-icon>
+      }
+      @case ('menu.settings') {
+        <img [ngClass]="{'revert-color': openMenuState()}" src="../../../../../assets/header/settings.svg" alt="" />
+      }
+      @case ('profile-title') {
+        <img [ngClass]="{'revert-color': openMenuState()}" class="header__item-icon" src="assets/icons/user.svg" alt="" />
+      }
+      @case ('news-line') {
+        <app-news-icon [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'"></app-news-icon>
+      }
+      @case ('news-line') {
+        <app-news-icon [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'"></app-news-icon>
+      }
+      @case ('shape_impact') {
+        <app-icon-shape-impact [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'"></app-icon-shape-impact>
+      }
+      @case ('insights-mobile') {
+        <app-icon-option [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'"></app-icon-option>
+      }
+      @case ('counsellor_desk-line') {
+        <app-counsellor-desk-icon [strokeWidth]="2.1" [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'"></app-counsellor-desk-icon>
+      }
+      @case ('create_capsule') {
+        <app-icon-capsule-closed [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'"></app-icon-capsule-closed>
+      }
+      @case ('capsule') {
+        <app-icon-capsule-closed [color]="openMenuState() ? '#F5F5F5': '#1E1E1E'"></app-icon-capsule-closed>
+      }
+    }
+  </div>
+
+
+  @if (authModal()) {
+    <span class="route-title" [innerHTML]="'header.' + authModal() | translate"></span>
+  } @else {
+    @if (path) {
+      <span class="route-title" [innerHTML]="('header.' + path) | translate"></span>
+    }
+  }
+}
+
+
+

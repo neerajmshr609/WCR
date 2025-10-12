@@ -1,0 +1,16 @@
+@import '_variables';
+
+:host {
+  & > * {
+    height: fit-content;
+  }
+}
+
+app-ice-breaker-card {
+  display: flex;
+  width: 31.1rem;
+
+  @media screen and (max-width: $bp-medium) {
+    width: 100%;
+  }
+}

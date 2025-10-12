@@ -1,0 +1,14 @@
+@import "_variables";
+@import "_mixins";
+
+:host {
+  width: 100%;
+  background-color: $--sds-color-background-neutral-default;
+  height: 33.375rem;
+  overflow: hidden;
+  @include centeringFlex;
+}
+
+.cover-image {
+  width: 100%;
+}

@@ -1,0 +1,46 @@
+{
+  "menu": {
+    "latest": "Neueste",
+    "review_queue": "Reviewswarteschlange"
+  },
+  "uploader": {
+    "upload_file": "Datei hochladen"
+  },
+  "welcome_card": {
+    "access": "Zugriff",
+    "filter": "Filter",
+    "pick_the_cases": "Wählen Sie die<br/>Fälle aus, in denen<br/>Ihr<br/>Feedback<br/>wirklich<br/>einen<br/>Unterschied<br/>machen könnte",
+    "difference": "Unterschied"
+  },
+  "expertise-card": {
+    "counselors": "Berater",
+    "counselor": "Berater"
+  },
+  "open_request_card": {
+    "enter_chatroom": "Chatraum betreten",
+    "image_of": "Bild von"
+  },
+  "add_to_review_queue": "Zur Reviewswarteschlange hinzufügen",
+  "added_to_review_queue": "Zur Überprüfungswarteschlange hinzugefügt",
+  "queued_by": {
+    "queued_by": "Eingereiht von"
+  },
+  "summary": {
+    "case_summary": "Fallzusammenfassung",
+    "ai_generated": "KI-generiert",
+    "questions_answered": "Beantwortete Fragen",
+    "received_request_type": "Diese Anfrage wurde gerichtet an ",
+    "platform": "alle",
+    "organization_direct": "Ihre Organisation",
+    "consult_direct": "Sie persönlich"
+  },
+  "card": {
+    "counselors": "Berater"
+  },
+  "select-stage-1": "Wählen Sie das Thema, das Ihren Bedürfnissen am nächsten kommt",
+  "select-stage-2": "Wählen Sie den am besten passenden Themenfokus und starten Sie das Gespräch",
+  "greeter-card": {
+    "text": "Keiner der | Fälle hier ist | bisher einem | NGO zugewiesen. | Als  Helfer:in | sieh dir den | Case an, frage | nach im Chat, | und entscheide, ob | Ihr als NGO | helfen könnt.",
+    "text2": "Sobald Ihr | entscheidet, | den Fall zu | übernehmen, | bestätigt Ihr | dies einfach per | Knopfdruck im | Chat. Bis dahin | ist es ein Ort, | um  die beste | Lösung | gemeinsam für | jeden Fall | zu finden. "
+  }
+}

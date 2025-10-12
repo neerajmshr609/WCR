@@ -1,0 +1,159 @@
+<div class="organization">
+  @if (isLoading()) {
+    <div class="organization__loading">
+      <app-small-spinner diameter="26"></app-small-spinner>
+    </div>
+  } @else {
+    <section class="organization__header">
+      <div class="organization__header-texts">
+        <h2 class="organization__claim">{{ organizationData().organization?.claim }}</h2>
+        <p class="organization__subtitle">{{ organizationData().organization?.about_short }}</p>
+      </div>
+      <div class="btn-group center">
+        <app-button (click)="navigateToOrgSite(organizationData().organization?.website_url)" size="medium"
+                    btnUIType="neutral" type="button">{{ 'heading.website-button' | translate }}
+        </app-button>
+        <app-button (click)="navigateToOrgSite(organizationData().organization?.blog_url)" size="medium"
+                    btnUIType="primary" type="button">{{ 'heading.blog-button' | translate }}
+        </app-button>
+      </div>
+    </section>
+    @if (organizationData().organization?.background_image_top) {
+      <section class="organization__top-image"
+               [style.background-image]="'url(' + organizationData().organization.background_image_top + ')'"></section>
+    }
+
+    @if (organizationData().org_skills?.length > 0) {
+      <section class="organization__skills">
+        <div class="organization__skills-heading">
+          <h3 class="organization__skills-title">{{ 'get-help.title' | translate }}</h3>
+          <p class="organization__subtitle">{{ 'get-help.subtitle' | translate }}</p>
+        </div>
+        <app-skill-filter
+          [skills]="organizationData().org_skills"
+          [artCategories]="artCategories()"
+          [selectedSkills]="selectedSkills()"
+          (selectedSkillsChange)="selectedSkills.set($event)"
+        ></app-skill-filter>
+
+        @if (skillsAreSelected()) {
+          <div class="ice-breakers-subtitle">
+            @if (isNotMobile()) {
+              <app-chevron-down-icon
+                class="ice-breakers-subtitle_chevron-down"
+                color="#757575"
+                strokeWidth="1.6"
+              ></app-chevron-down-icon>
+              {{ 'ice-breakers-subtitle.not-mobile' | translate | uppercase }}
+              <app-chevron-down-icon
+                class="ice-breakers-subtitle_chevron-down"
+                color="#757575"
+                strokeWidth="1.6"
+              ></app-chevron-down-icon>
+            } @else {
+              {{ 'ice-breakers-subtitle.mobile' | translate | uppercase }}
+            }
+          </div>
+        }
+
+        <app-ice-breakers-list
+          class="cards-grid-default"
+          [iceBreakers]="iceBreakers()"
+          [orgId]="organizationData().organization?.id"
+        ></app-ice-breakers-list>
+      </section>
+    }
+
+    @if (organizationData().hasCounselors) {
+      <section class="organization__counsellors">
+        <h4 class="organization__section-title">{{ 'counsellors.title' | translate }}</h4>
+        <!-- <p class="organization__section-subheading">{{'counsellors.subtitle' | translate}}</p> -->
+        <div class="organization__counsellors-carousel">
+          @if (isNotMobile()) {
+            <div class="organization__counsellors-carousel-content">
+              <carousel
+                [cellWidth]="316"
+                [height]="counsellorCardHeight()"
+                [freeScroll]="false"
+                [arrows]="true"
+                [arrowsOutside]="true"
+                [loop]="true"
+                [lightDOM]="false"
+                [margin]="24"
+                [cellsToShow]="counsellorsCellsToSHow()"
+              >
+                @for (member of organizationData().all_active_org_members; track member.id) {
+                  <div class="carousel-cell">
+                    <app-member-card [member]="member"></app-member-card>
+                  </div>
+                }
+              </carousel>
+            </div>
+          } @else {
+            <app-counselors-vertical-carousel
+              [cardHeight]="counsellorCardHeight()"
+              [counselors]="organizationData().counselors"
+            ></app-counselors-vertical-carousel>
+          }
+        </div>
+      </section>
+    }
+
+    @if (organizationData().org_partners?.length > 0) {
+      <section class="organization__partners">
+        <h4 class="organization__section-title">{{ 'partners.title' | translate }}</h4>
+        <p class="organization__section-subheading">{{ 'partners.subtitle' | translate }}</p>
+        <div class="organization__partners-cards">
+          @for (partner of organizationData()?.org_partners; track partner.id) {
+            <app-partners-card [partner]="partner"></app-partners-card>
+          }
+        </div>
+      </section>
+    }
+
+    @if (organizationData().organization?.show_contact_form) {
+      <section class="organization__contact"
+               [style.background-image]="'url(' + organizationData().organization?.background_image_bottom + ')'">
+        <div class="organization__contact-content">
+          <h3 class="organization__contact-title">{{ 'contact.title' | translate }}</h3>
+          <p class="organization__contact-subtitle">{{ 'contact.subtitle' | translate }}</p>
+          <form class="organization__contact-form" [formGroup]="contactForm" (submit)="sendMessage()">
+            <div class="organization__contact-form-controls">
+              <app-input [control]="contactForm.get('name')" inputName="name" type="text"
+                         [placeholder]="'contact.name-field-placeholder' | translate"
+                         [label]="'contact.name-field-label' | translate">
+                @if (contactForm.get('name')?.hasError('required') && contactForm.get('name')?.touched) {
+                  <span>{{ 'errors.required' | translate }}</span>
+                }
+              </app-input>
+              <app-input [control]="contactForm.get('surname')" inputName="Doe"
+                         [placeholder]="'contact.surname-field-placeholder' | translate" type="text"
+                         [label]="'contact.surname-field-label' | translate"></app-input>
+              <app-input [control]="contactForm.get('email')" inputName="email"
+                         [placeholder]="'contact.email-field-placeholder' | translate" type="email"
+                         [label]="'contact.email-field-label' | translate">
+                @if (contactForm.get('email')?.hasError('required') && contactForm.get('email')?.touched) {
+                  <span>{{ 'errors.required' | translate }}</span>
+                }
+                @if (contactForm.get('email')?.hasError('email') && contactForm.get('email')?.touched) {
+                  <span>{{ 'errors.wrong-email' | translate }}</span>
+                }
+              </app-input>
+              <app-textarea [control]="contactForm.get('message')" rows="4" inputName="message"
+                            [placeholder]="'contact.message-field-placeholder' | translate"
+                            [label]="'contact.message-field-label' | translate">
+                @if (contactForm.get('message')?.hasError('required') && contactForm.get('message')?.touched) {
+                  <span>{{ 'errors.required' | translate }}</span>
+                }
+              </app-textarea>
+            </div>
+            <app-button btnUIType="primary" type="submit" size="large"
+                        [disabled]="!contactForm.valid">{{ 'contact.submit-button-text' | translate }}
+            </app-button>
+          </form>
+        </div>
+      </section>
+    }
+    <app-ngo-footer></app-ngo-footer>
+  }
+</div>

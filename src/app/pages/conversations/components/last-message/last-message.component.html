@@ -1,0 +1,38 @@
+<div>
+  @if(message()) {
+    <div class="last-message">
+    @if(message().subtitle) {
+      <span class="subtitle"> {{ message().subtitle }} </span>
+    }
+
+    <div class="messages-wrapper">
+      <div class="message-body">
+        <span class="message-author">{{ message().user?.username }}:</span>
+        <span class="message-text">{{ message().body }}</span>
+      </div>
+
+      <div class="message-meta" [ngClass]="{'with-subtitle': message().subtitle}">
+        <span class="message-created"> {{ message().created_at  | amLocal | amTimeAgo}} </span>
+        @if (mentions() || messageCount()) {
+          <div class="message-counters">
+            @if(mentions()) {
+              <div class="counter">
+                <app-mention-icon strokeWidth="1.15075" color="#757575" class="icon"></app-mention-icon>
+                <span>{{ mentions() }}</span>
+              </div>
+            }
+            @if(messageCount()) {
+              <div class="counter">
+                <app-message-icon strokeWidth="1.15075" color="#757575" class="icon"></app-message-icon>
+                <span>{{ messageCount() }}</span>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+    </div>
+  }
+</div>
+
+

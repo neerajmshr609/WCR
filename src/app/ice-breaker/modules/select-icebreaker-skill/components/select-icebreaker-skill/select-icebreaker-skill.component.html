@@ -1,0 +1,21 @@
+<section class="create-icebreaker-container">
+  @if (isNotDesktop()) {
+    <app-mobile-header title="Create Capsule" subtitle="to ask clients a series of questions about a topic you can select below"></app-mobile-header>
+  } @else {
+    <app-desktop-header title="Create Capsule" subtitle="to ask clients a series of questions about <br> a topic you can select below"></app-desktop-header>
+  }
+  <p class="create-icebreaker-describe">
+    Select a topic to create a new capsule
+  </p>
+
+
+  <app-skill-filter
+    [skills]="skills()"
+    [displayColumn]="true"
+    [allowMultiselect]="true"
+    [displayStage]="false"
+    [artCategories]="artCategories()"
+    [(selectedSkills)]="selectedSkills"
+    [placeholder]="'Start typing to filter available topics'"
+  ></app-skill-filter>
+</section>

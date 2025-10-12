@@ -1,0 +1,80 @@
+@import "variables";
+
+.conversation-item {
+  text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 0.7rem;
+  align-items: center;
+  flex: 1;
+  padding: $--sds-size-space-200;
+  border-radius: $--sds-size-radius-200;
+  border: 1px solid $--sds-color-border-default-default;
+
+  @media (max-width: $desktop) {
+    padding-top: 0.6rem;
+  }
+}
+
+.conversation-user {
+  display: flex;
+  flex: 1;
+  max-width: 23.8rem;
+  order: 1;
+
+  @media (max-width: $desktop) {
+    max-width: 19rem;
+  }
+
+}
+
+app-last-message {
+  max-width: 70.6rem;
+  flex: 1 1 100%;
+  order: 2;
+
+  @media (max-width: $desktop) {
+    max-width: none;
+    order: 3;
+  }
+
+
+}
+
+app-conversation-type {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  max-width: 16rem;
+  order: 3;
+
+  @media (max-width: $desktop) {
+    order: 2;
+    flex: 0;
+  }
+}
+
+
+.conversation-btn {
+  order: 4;
+  display: flex;
+  background-color: $--sds-color-background-brand-default;
+  border-radius: $--sds-size-radius-200;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  border: none;
+  cursor: pointer;
+
+  app-right-arrow-icon {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: $desktop) {
+   display: none;
+  }
+}

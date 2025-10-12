@@ -1,0 +1,226 @@
+<div class="header">
+  <h1 class="header__title">{{'scheduling.settings' | translate}}</h1>
+  <div class="header__time-zone">
+    <p class="header__time-zone-label">
+      {{ 'scheduling.current_time_zone' | translate }}
+    </p>
+    <ng-moment-timezone-picker
+      class="header__time-zone-datepicker"
+      [ngModel]="userData.time_zone"
+      (ngModelChange)="selectTimeZone($event)"
+      [customPlaceholderText]="''"
+    >
+    </ng-moment-timezone-picker>
+  </div>
+</div>
+
+<div class="info">
+  <img
+    src="./assets/user-settings/scheduling/scheduling.svg"
+    alt=""
+    class="info__image"
+  />
+  <p class="info__title">{{ 'scheduling.contact_ways' | translate }}</p>
+</div>
+
+<div class="switches">
+  <div class="switches__switch">
+    <p class="switches__switch-text">
+      {{ 'scheduling.live_video' | translate }}
+    </p>
+    <app-gt-switch
+      [isSwitched]="userData.video_chat_allowed"
+      [onoffMode]="true"
+      [small]="true"
+      (didChangeEvent)="changeUserSettings(1)"
+    >
+    </app-gt-switch>
+  </div>
+
+  <div class="switches__switch">
+    <p class="switches__switch-text">{{ 'scheduling.auto_confirmation' | translate }}</p>
+    <app-gt-switch
+      [isSwitched]="userData.appointments_auto_confirmation"
+      [onoffMode]="true"
+      [small]="true"
+      (didChangeEvent)="changeUserSettings(2)"
+    >
+    </app-gt-switch>
+  </div>
+
+  <div class="switches__switch">
+    <p class="switches__switch-text">
+      {{ 'scheduling.live_chat' | translate }}
+    </p>
+    <app-gt-switch
+      [isSwitched]="userData.live_chat_allowed"
+      [onoffMode]="true"
+      [small]="true"
+      (didChangeEvent)="changeUserSettings(3)"
+    >
+    </app-gt-switch>
+  </div>
+</div>
+
+<div class="info">
+  <img
+    src="./assets/user-settings/scheduling/calendar.svg"
+    class="info__image"
+  />
+  <p class="info__title"> {{ 'scheduling.set_available_timeslots' | translate }} </p>
+  <p class="info__text"> {{ 'scheduling.create_timeframe' | translate }} </p>
+</div>
+
+<div class="create-ruleset">
+  <p class="create-ruleset__title">{{ 'scheduling.select_category' | translate }}</p>
+  <div class="create-ruleset__users">
+    <div class="create-ruleset__user-change">
+      <p class="create-ruleset__user-text">{{ 'scheduling.new_connections' | translate }}</p>
+      <app-gt-switch
+        [isSwitched]="newStudent"
+        [onoffMode]="true"
+        [small]="true"
+        (didChangeEvent)="checkoutUser(1)"
+      >
+      </app-gt-switch>
+    </div>
+
+    <div class="create-ruleset__user-change">
+      <p class="create-ruleset__user-text">{{ 'scheduling.interested_connections' | translate }}</p>
+      <app-gt-switch
+        [isSwitched]="interestedStudent"
+        [onoffMode]="true"
+        [small]="true"
+        (didChangeEvent)="checkoutUser(2)"
+      >
+      </app-gt-switch>
+    </div>
+
+    <div class="create-ruleset__user-change">
+      <p class="create-ruleset__user-text">{{ 'scheduling.regular_connections' | translate }}</p>
+      <app-gt-switch
+        [isSwitched]="regularStudent"
+        [onoffMode]="true"
+        [small]="true"
+        (didChangeEvent)="checkoutUser(3)"
+      >
+      </app-gt-switch>
+    </div>
+  </div>
+
+  <div class="create-ruleset__select-days">
+    <p class="create-ruleset__select-days-label"> {{ 'scheduling.select_days' | translate }} </p>
+
+    <div class="create-ruleset__select-days-week">
+      <div
+        *ngFor="let item of days; let i = index"
+        class="create-ruleset__select-day-block"
+        (click)="selectDay(i)"
+      >
+        <span class="create-ruleset__select-day">{{ item.name | translate }}</span>
+        <img
+          [src]="
+            'assets/user-settings/scheduling/' +
+            (days[i].status ? 'check-square.svg' : 'check-null.svg')
+          "
+          alt="{{ 'scheduling.check_img_alt' | translate}}"
+        />
+      </div>
+    </div>
+
+    <div class="create-ruleset__add-days-time">
+      <p class="create-ruleset__add-days-label">{{ 'scheduling.set_time' | translate }}</p>
+      <div class="create-ruleset__add-days-select">
+        <p>
+          {{ 'scheduling.from' | translate }}
+          <mat-form-field class="create-ruleset__add-days-timepicker">
+            <input
+              matInput
+              name="selected_time_A"
+              format="24"
+              [(ngModel)]="timeStart"
+              [ngxMatTimepicker]="pickerA"
+              readonly
+            />
+          </mat-form-field>
+          <ngx-mat-timepicker color="accent" #pickerA> </ngx-mat-timepicker>
+        </p>
+
+        <p>
+          {{ 'scheduling.until' | translate }}
+          <mat-form-field class="create-ruleset__add-days-timepicker">
+            <input
+              matInput
+              name="selected_time_B"
+              format="24"
+              [(ngModel)]="timeEnd"
+              [ngxMatTimepicker]="pickerB"
+              readonly
+            />
+          </mat-form-field>
+          <ngx-mat-timepicker color="accent" #pickerB> </ngx-mat-timepicker>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="add-days">
+  <button
+    class="add-days__btn"
+    [disabled]="!newStudent && !interestedStudent && !regularStudent"
+    (click)="addChangeData()"
+  >
+    <p class="add-days__btn-title">{{ 'scheduling.add_time_rule' | translate }}</p>
+    <img
+      class="add-days__btn-img"
+      src="assets/user-settings/scheduling/plus-circle.svg"
+      alt=""
+    />
+  </button>
+  <div class="add-days__rulesets" *ngIf="schedulingData">
+    <div *ngFor="let item of schedulingData.rulesets; let i = index">
+      <div class="add-days__ruleset">
+        <div class="add-days__element">
+          <p
+            class="add-days__student"
+            [ngClass]="{ 'add-days__student--new': item.for_new }"
+          >
+            {{ 'scheduling.new_connections' | translate | lowercase }}
+          </p>
+          <p
+            class="add-days__student"
+            [ngClass]="{
+              'add-days__student--interesting': item.for_interested,
+            }"
+          >
+            {{ 'scheduling.interested_connections' | translate | lowercase }}
+          </p>
+          <p
+            class="add-days__student"
+            [ngClass]="{ 'add-days__student--regular': item.for_regular }"
+          >
+            {{ 'scheduling.regular_connections' | translate | lowercase }}
+          </p>
+        </div>
+        <div class="add-days__days">
+          <app-week [weekData]="item.weekdays"></app-week>
+        </div>
+        <p class="add-days__time">
+          {{ 'scheduling.from' | translate }}
+          {{ item.time_from }}
+          {{ 'scheduling.until' | translate }}
+          {{ item.time_until }}
+        </p>
+      </div>
+      <div class="add-days__delete" (click)="deleteSchedulingItem(i)">
+        <img
+          class="add-days__delete-img"
+          src="assets/user-settings/scheduling/minus-circle.svg"
+          alt=""
+        />
+        <p class="add-days__delete-text">{{ 'scheduling.remove_time_rule' | translate }} #{{ i + 1 }}</p>
+      </div>
+    </div>
+  </div>
+</div>

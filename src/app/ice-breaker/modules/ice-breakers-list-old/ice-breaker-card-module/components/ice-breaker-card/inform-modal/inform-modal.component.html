@@ -1,0 +1,15 @@
+<section>
+  <section class="header">
+    <h2>{{ headerText }}</h2>
+    <button class="close-btn" (click)="close()">
+      <img
+        src="../../../../../../../assets/close-modal-icon.svg"
+        alt="close-modal-icon"
+      />
+    </button>
+  </section>
+  <div class="img-emoji">
+    <img [src]="imgSrc" alt="Modal img" />
+  </div>
+  <p class="footer-text" [innerHTML]="footerText | safe: 'html'"></p>
+</section>

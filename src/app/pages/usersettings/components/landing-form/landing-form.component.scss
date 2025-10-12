@@ -1,0 +1,46 @@
+@import 'variables';
+
+.form {
+  &__group {
+    display: flex;
+    width: 100%;
+
+    &-row {
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: $--sds-size-space-200;
+      column-gap: $--sds-size-space-800;
+
+      .form-field {
+        .image-container{
+          margin-bottom: 1.4rem;
+        }
+
+        &.w-50 {
+          flex: calc(50% - $--sds-size-space-800);
+        }
+
+        &.w-100 {
+          flex: 100%;
+        }
+
+        &.m-12 {
+          margin: 2rem 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .form {
+    .form__group {
+      flex-direction: column;
+
+      &-row {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}

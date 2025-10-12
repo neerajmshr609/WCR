@@ -1,0 +1,118 @@
+{
+  "search_bar": {
+    "categories": {
+      "input_placeholder": "Search by art category"
+    },
+    "skills": {
+      "input_placeholder": "Search by art category",
+      "connectors_online": "CONNECTORS ONLINE",
+      "all_connectors": "All connectors"
+    }
+  },
+  "menu": {
+    "latest": "Latest",
+    "following": "Following",
+    "stay_tuned": "Stay tuned for new options"
+  },
+  "temporary_stored_interactions": "Your interactions will be only stored temporary.",
+  "create_account": "Create a free account",
+  "save_your_followed": "to save your followed creatives permanently",
+  "follow_creative": "Follow creative or commenter to see their updates here.",
+  "advisor_info_card": {
+    "added_title": " Creative<br/>added to your<br/><b>trusted advisor</b><br/>list.",
+    "remove_title": "Creative<br/>removed from your <br/><b>trusted advisor</b><br/>list.",
+    "quick_access": "You will have quick access to this connector during your next upload.",
+    "no_longer_see": "You will no longer see this connector in your trusted connector list.",
+    "receive_feedback": "To receive feedback onto an uploaded project. Go to myprojects, select edit and then add this advisor.",
+    "got_it_btn": "Got it"
+  },
+  "project_card_v2": {
+    "hide": "Hide",
+    "show": "Show"
+  },
+  "user_info": {
+    "name_anon": "Anonymous",
+    "city_global": "GLOBAL"
+  },
+  "item_resort_view": {
+    "resort": "Resort",
+    "original": "Original"
+  },
+  "feedback-focus-area": {
+    "emotions": "emotions",
+    "technical_execution": "technical<br/>execution",
+    "idea": "idea /<br/>concept /<br/>story"
+  },
+  "load_iframe_btn": {
+    "text": "Load project"
+  },
+  "load_pdf_btn": {
+    "text": "Load file"
+  },
+  "dummy_file": {
+    "overview": "Overview",
+    "description": "Description",
+    "how_to": "how to use"
+  },
+  "file_info": {
+    "lyrics": "Lyrics",
+    "description": "Description"
+  },
+  "profile-info": {
+    "title": "PUBLIC PROFILE",
+    "description": "Win more prospects faster by adding value first using content, questions and feedback to get conversations started.",
+    "connections": "Connections",
+    "Conversations": "Real Conversations",
+    "my-topics": "MY TOPICS",
+    "languages": "LANGUAGES",
+    "online": "now online",
+    "no-project-uploaded": "no projects uploaded",
+    "team-account": "team account",
+    "ice-breakers": "Capsules",
+    "buttons": {
+      "chose-cover": "Chose profile cover",
+      "recommend": "Recommend",
+      "share": "Share Profile",
+      "edit": "Edit",
+      "add-favorite": "Add to My Connectors",
+      "remove-connector": "Remove from Connectors",
+      "expand": "Expand profile Card",
+      "collapse": "Collapse profile Card"
+    }
+  },
+  "stats": {
+    "last_interaction": "last interaction",
+    "total_income": "total income",
+    "spent_total": "spent total",
+    "time_spent": "time spent",
+    "hourly_rate": "hourly rate",
+    "no_last_interaction": "NO",
+    "rate_backs": {
+      "disrespectful": "disrespectful",
+      "unhelpful": "unhelpful",
+      "helpful": "helpful",
+      "brilliant_insight": "brilliant insight",
+      "strengths": "strengths",
+      "weaknesses": "weaknesses",
+      "next_steps": "next steps",
+      "links": "links"
+    },
+    "total_score": "Total Score",
+    "knowledge": "Knowledge",
+    "explanation": "explanation",
+    "pronunciation": "pronunciation",
+    "politeness": "politeness",
+    "no_skill": "No skill",
+    "stands_out": "Stands out",
+    "could_be_improved": "Could be improved",
+    "no_reviews": "No reviews received",
+    "less_info": "less info",
+    "more_info": "more info",
+    "hide_analytics": "hide analytics",
+    "show_analytics": "show analytics"
+  },
+  "greeter-card": {
+    "text": "Here you can | see helpful | feedback | from other | NGO | members, | feel free to | browse | around and | give your own | feedback.",
+    "text2": "Because | which ideas, | features, | structures | and solutions | we all really | need- that is | decided on | WCR | together."
+  }
+}

@@ -1,0 +1,27 @@
+@if (allSkills() && skills().length > 0) {
+  <div class="topics">
+    <app-section-header
+      title="{{ 'advisors_skillset.select_adjust' | translate }}"
+    >
+      <app-topics-icon></app-topics-icon>
+    </app-section-header>
+
+    <div class="org-skills_wrapper">
+      <div class="org-skills_wrapper_inner">
+        <div class="user_skills" cdkDropListGroup>
+            @for (skill of skills(); track skill.id) {
+              <app-skillset-item
+                cdkDrag
+                class="drag-box"
+                (skillUpdate)="editSkill($event)"
+                (skillDelete)="deleteSkill($event)"
+                [allSkills]="filteredSkills()"
+                [userSkill]="skill"
+
+              ></app-skillset-item>
+            }
+        </div>
+      </div>
+    </div>
+  </div>
+}

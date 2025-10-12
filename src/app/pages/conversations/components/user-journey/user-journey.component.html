@@ -1,0 +1,56 @@
+<div class="user-journey">
+  <div class="user-journey__items">
+    <ng-template
+      ngFor
+      let-journeyItem
+      [ngForOf]="journeyItems[feedbackPath$?.value]"
+    >
+      <div
+        class="border"
+        [ngClass]="{ selected: journeyItem.key === selectedJourney?.key }"
+      >
+        <div
+          class="user-journey-item"
+          [class]="journeyItem.class"
+          (click)="onJourneyClick(journeyItem)"
+        >
+          <p
+            class="user-journey-item__count"
+            [ngClass]="{
+              'small-paddings-journey-item': !!selectedJourney?.key,
+            }"
+          >
+            {{ journeyItem.count || 0 }}
+          </p>
+          <p
+            class="user-journey-item__desc"
+            [ngClass]="{
+              'small-paddings-journey-item': !!selectedJourney?.key,
+            }"
+          >
+            <img
+              src="assets/inbox/{{ journeyItem.icon.name }}"
+              alt="button icon"
+            />
+            <span
+              class="user-journey-item__text"
+              *ngIf="!isMobile || journeyItem.key === selectedJourney?.key"
+            >
+              {{ journeyItem.name | translate | splitJourneyName: isMobile }}
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <img
+        src="assets/arrow.svg"
+        *ngIf="journeyItem.icon.display"
+        class="user-journey-item__arrow"
+        [ngClass]="{
+          disabled: !journeyItem.count,
+          'user-journey-item__arrow--reverted': journeyItem.icon.reverted,
+        }"
+      />
+    </ng-template>
+  </div>
+</div>

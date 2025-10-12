@@ -1,0 +1,16 @@
+version: '3'
+services:
+  base: &base
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/wcr-front
+      - /wcr-front/node_modules
+    stdin_open: true
+    tty: true
+  web:
+    <<: *base
+    command: bash -c "ng serve --host 0.0.0.0"
+    ports:
+      - 4200:4200

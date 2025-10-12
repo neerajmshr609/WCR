@@ -1,0 +1,63 @@
+@import 'variables';
+
+:host {
+  ::ng-deep {
+    tbody tr {
+      cursor: pointer;
+
+      &.blurred {
+        .amount,
+        .wallet {
+          span {
+            filter: blur(4px);
+          }
+        }
+      }
+    }
+  }
+}
+
+.payouts {
+  padding: 90px 15px 0;
+
+  table {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1800px;
+  }
+}
+
+.currency,
+.amount {
+  text-transform: uppercase;
+}
+
+.status {
+  span {
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .created {
+    background: $feed-accent-ember;
+  }
+
+  .error {
+    background: $--sds-color-background-danger-secondary;
+  }
+
+  .declined {
+    background: $feed-accent-red;
+    color: white;
+  }
+
+  .success {
+    background: $feed-accent-green;
+  }
+
+  .in_progress {
+    background: #d3c795;
+  }
+}

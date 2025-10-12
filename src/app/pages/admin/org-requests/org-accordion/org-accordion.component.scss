@@ -1,0 +1,185 @@
+@import 'variables';
+
+.accordion-card {
+  margin-bottom: 12px;
+
+  input {
+    display: none;
+
+    &:checked + label + .content {
+      opacity: 1;
+      height: auto;
+      display: block;
+    }
+
+    &:checked + label {
+      border-bottom: none;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      background-color: $--sds-color-background-default-default;
+
+      & + .content {
+        opacity: 1;
+        height: auto;
+        display: block;
+      }
+    }
+  }
+
+  label {
+    width: 768px;
+    display: flex;
+    cursor: pointer;
+    transition: ease 0.5s;
+    padding: $--sds-size-space-300;
+    border-radius: $--sds-size-space-300;
+    border: 1px solid $--sds-color-border-default-default;
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 14px;
+      position: relative;
+
+      .avatar-section {
+        img {
+          width: 50px;
+          height: 50px;
+          border: 1px solid $--sds-color-border-neutral-default;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+
+      .info-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .fullname {
+          overflow: hidden;
+          color: $--sds-color-black-400;
+          text-overflow: ellipsis;
+          font-size: $--sds-typography-body-size-medium;
+          font-weight: $--sds-typography-body-font-weight-strong;
+          line-height: 140%;
+          margin-bottom: 6px;
+        }
+
+        .official-info {
+          overflow: hidden;
+          color: $--sds-color-state-800;
+          text-overflow: ellipsis;
+          font-size: $--sds-typography-body-size-small;
+          font-weight: $--sds-typography-body-font-weight-strong;
+          line-height: 140%;
+          margin-bottom: 6px;
+        }
+      }
+
+      .btns-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+    }
+  }
+
+  .content {
+    margin-bottom: 20px;
+    width: 768px;
+    padding: 0 $--sds-size-space-300 $--sds-size-space-300;
+    border-radius: $--sds-size-space-300;
+    border: 1px solid $--sds-color-border-default-default;
+    display: none;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    z-index: 1001;
+    background: $--sds-color-background-default-default;
+
+    .divider {
+      color: $--sds-color-border-default-default;
+    }
+
+    .inner-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: $--sds-size-space-300 0 0;
+
+      .city,
+      .email {
+        color: $--sds-color-text-default-secondary;
+        font-size: $--Body-Size-XXS;
+        font-weight: $--sds-typography-weight-bold;
+      }
+
+      .statuses {
+        display: flex;
+        gap: $--sds-size-space-150;
+        margin-bottom: 6px;
+
+        .status {
+          display: flex;
+          padding: $--sds-size-space-100 $--sds-size-space-200;
+          justify-content: center;
+          align-items: center;
+          gap: $--sds-size-space-100;
+          border-radius: $--sds-size-radius-100;
+          font-size: $--Body-Size-XXS;
+          font-weight: $--sds-typography-weight-bold;
+          line-height: normal;
+          letter-spacing: $--letter-spacing-3;
+          text-transform: uppercase;
+          border: $--sds-size-stroke-border solid
+            $--sds-color-border-brand-default;
+          background: $--sds-color-background-brand-default;
+          color: $--sds-color-text-brand-on-brand;
+        }
+      }
+
+      .type {
+        padding: $--sds-size-space-100 $--sds-size-space-200;
+        border-radius: $--sds-size-radius-100;
+        font-size: $--Body-Size-XXS;
+        font-weight: $--sds-typography-weight-bold;
+        text-transform: uppercase;
+        border: $--sds-size-stroke-border solid
+          $--sds-color-border-default-secondary;
+        color: $--sds-color-text-default-secondary;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .accordion-card {
+    width: 100%;
+
+    label {
+      width: unset;
+
+      .header-content {
+        .info-section {
+          width: 170px;
+        }
+
+        .btns-wrapper {
+          flex-direction: column;
+          width: 100%;
+        }
+      }
+    }
+
+    .content {
+      width: unset;
+
+      .inner-content {
+        flex-direction: column;
+      }
+    }
+  }
+}

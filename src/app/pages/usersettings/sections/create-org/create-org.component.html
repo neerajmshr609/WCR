@@ -1,0 +1,49 @@
+<div class="create-org-container">
+  <app-section-header [title]="'create_organization_title' | translate">
+    <app-organization-icon></app-organization-icon>
+  </app-section-header>
+
+  @if (organization()) {
+    <div class="process-info">
+      <p>{{ 'request' | translate }}:  {{ organization().status | uppercase}}</p>
+    </div>
+  }
+
+  <app-org-form
+    [form]="form"
+    [avatars]="formData.avatars"
+    [formData]="formData"
+    (selectAvatar)="selectAvatar($event)"
+    (openUploader)="openUploader($event)"
+  ></app-org-form>
+
+  <div class="submit_btn-wrapper">
+    @if (organization()) {
+      <app-button
+        size="large"
+        btnUIType="neutral"
+        type="button"
+        (click)="updateOrg()"
+      >
+        {{ 'update_org' | translate }}
+      </app-button>
+      <app-button
+        size="large"
+        btnUIType="primary"
+        type="button"
+        (click)="deleteOrg()"
+      >
+        {{ 'delete_org' | translate }}
+      </app-button>
+    } @else {
+      <app-button
+        size="large"
+        btnUIType="primary"
+        type="button"
+        (click)="createOrg()"
+      >
+        {{ 'create_org' | translate }}
+      </app-button>
+    }
+  </div>
+</div>

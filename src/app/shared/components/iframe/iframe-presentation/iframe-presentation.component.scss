@@ -1,0 +1,52 @@
+@import 'variables';
+
+:host {
+  width: 100%;
+  height: 100%;
+
+  ::ng-deep {
+    .iframely-embed {
+      width: 100%;
+      max-width: unset !important;
+      height: 100%;
+    }
+
+    .iframely-responsive {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      padding-bottom: 0 !important;
+
+      > * {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border: 0;
+      }
+
+      iframe {
+        overflow: auto !important;
+      }
+    }
+  }
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  &--center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__container {
+    height: 100%;
+  }
+}

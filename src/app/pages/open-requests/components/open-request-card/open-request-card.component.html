@@ -1,0 +1,82 @@
+<div class="open-request-card_header">
+  <div class="open-request-card_skill">
+    <app-expertise-title-card
+      [openRequest]="openRequestConversation()"
+    >
+      <img
+        style="object-fit: contain"
+        width="100%"
+        height="100%"
+        [src]="openRequestConversation().image || openRequestConversation().conversation_userskill?.skill?.icon"
+        [alt]="('open_request_card.image_of' | translate) + openRequestConversation().conversation_userskill.skill.name"
+      />
+    </app-expertise-title-card>
+  </div>
+  <div>
+    <mat-menu #menu="matMenu"  class="wcr-mat-menu">
+      <div class="menu-header">
+        Open Request Settings
+      </div>
+      @if (openRequestConversation().request_type !== 'platform') {
+        <div mat-menu-item class="wcr-mat-menu-item with-description" (click)="openEscalation()">
+          <div class="wcr-mat-menu-item-icon">
+            <app-icon-pull-request></app-icon-pull-request>
+          </div>
+          <span class="wcr-mat-menu-item-text">Make Case Visible to others</span>
+          <span class="wcr-mat-menu-item-description">Decide who can see this case.</span>
+        </div>
+      }
+<!--      <div mat-menu-item class="wcr-mat-menu-item">-->
+<!--        <div class="wcr-mat-menu-item-icon"><app-icon-people></app-icon-people></div>-->
+<!--        <span class="wcr-mat-menu-item-text">Set first in queue</span>-->
+<!--      </div>-->
+    </mat-menu>
+
+    <!-- TODO this disable for only one menu item in feature this should be reword -->
+    <button
+      [disabled]="openRequestConversation().request_type === 'platform'"
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      #menuTrigger="matMenuTrigger"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</div>
+<div class="open-request-card_labels">
+  <app-add-button></app-add-button>
+  @for (category of categoryTags(); track category) {
+    <app-category-name
+      [categoryName]="category"
+    ></app-category-name>
+  }
+</div>
+<app-summary
+  [openRequestConversation]="openRequestConversation()"
+></app-summary>
+
+<app-queued-by
+  [openRequestConversation]="openRequestConversation()"
+></app-queued-by>
+
+<app-button
+  size="large"
+  btnUIType="primary"
+  type="button"
+  (click)="enterChatroomButtonHandler()"
+>
+  <div class="open-request-card_enter-chatroom">
+    <app-message-square-icon></app-message-square-icon>
+    {{ 'open_request_card.enter_chatroom' | translate }}
+  </div>
+</app-button>
+
+
+<app-horizontal-line
+  class="open-request-card_horizontal-line"
+></app-horizontal-line>
+
+<app-add-to-review-queue
+  [openRequest]="openRequestConversation()"
+  (click)="switchAddToQueue()"
+></app-add-to-review-queue>

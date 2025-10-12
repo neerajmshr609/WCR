@@ -1,0 +1,94 @@
+@import 'variables';
+
+.message-notification-container {
+  position: relative;
+  background: #f2f2f2;
+  padding: 8px 13px;
+  box-shadow: 0 1.5px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  width: 300px;
+  margin-bottom: 20px;
+
+  .header {
+    margin-bottom: 8px;
+    &__text {
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 12px;
+      color: $--sds-color-grey-500;
+    }
+
+    &__name {
+      font-weight: 500;
+      font-size: 12px;
+      margin-left: 10px;
+      line-height: 14px;
+      letter-spacing: 0.03em;
+      color: black;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .body-message {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+
+    &__avatar {
+      height: 50px;
+      width: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    &__text {
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 13px;
+      letter-spacing: 0.03em;
+      color: #000000;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: unset;
+    border: unset;
+    cursor: pointer;
+  }
+}
+::ng-deep .toast-container .ngx-toastr {
+  padding: unset;
+}
+
+::ng-deep .toast-container .ngx-toastr:hover {
+  cursor: unset;
+}
+
+.new-tab-btn {
+  margin-top: 5px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  color: black;
+  letter-spacing: 0.03em;
+  background-color: transparent;
+  border: 1.2px solid $feed-light-gray-text;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  padding: 3px 13px;
+
+  img {
+    vertical-align: middle;
+  }
+}

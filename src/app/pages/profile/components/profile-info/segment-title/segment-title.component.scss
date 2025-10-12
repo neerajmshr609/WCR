@@ -1,0 +1,12 @@
+@import "_variables";
+@import "_mixins";
+
+:host {
+  display: block;
+}
+
+.segment-title {
+  padding: $--sds-size-space-150 0;
+  color: $--sds-color-text-default-tertiary;
+  @include bodyCode;
+}

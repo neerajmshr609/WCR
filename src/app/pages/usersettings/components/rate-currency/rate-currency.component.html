@@ -1,0 +1,18 @@
+<form class="block-rate-currency" [formGroup]="form">
+  <div class="inp">
+    <app-input
+      [control]="form.get('rate')"
+      inputName="rate"
+      type="number"
+      label="{{ 'currency_rate.hourly_rate' | translate }}"
+    ></app-input>
+  </div>
+  <div class="inp">
+    <app-select
+      [control]="form.get('currency')"
+      inputName="currency"
+      label="{{ 'currency_rate.select_display' | translate }}"
+      [options]="currencies()"
+    ></app-select>
+  </div>
+</form>

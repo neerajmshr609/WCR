@@ -1,0 +1,30 @@
+@if (conversation().hasNextSteps()) {
+  <app-next-step>
+    <div
+      class="ice-breaker-btn"
+      (click)="nextIceBreakerQuestion(conversation())"
+    >
+      <app-icon-long-arrow strokeWidth="1.6"></app-icon-long-arrow>
+    <span class="ice-breaker-btn_text"
+          [innerHTML]="'ice-breaker.next_btn_text' | translate"
+    ></span>
+      <app-icon-long-arrow strokeWidth="1.6"></app-icon-long-arrow>
+    </div>
+  </app-next-step>
+}
+@if (!conversation().isCompleted() && conversation().isLastStep()) {
+
+  <app-next-step>
+    <app-icon-finish [fill]="'#1E1E1E'"></app-icon-finish>
+    <div
+      class="ice-breaker-btn"
+      (click)="completeIceBreaker(conversation())"
+    >
+    <span class="ice-breaker-btn_text"
+          [innerHTML]="'ice-breaker.finish_btn_text-without-title' | translate "
+    ></span>
+      <app-icon-finish [fill]="'#1E1E1E'"></app-icon-finish>
+    </div>
+  </app-next-step>
+
+}

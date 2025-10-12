@@ -1,0 +1,68 @@
+<div class="wrapper" #wrapperRef>
+  <div class="audio-container" [ngClass]="direction() === 'right' ? 'light' : 'dark'">
+    <div class="not-loaded" *ngIf="!loaded">
+      <button
+        class="load-message"
+        [ngClass]="{ 'load-message--loading': loading || !audioMessage().url }"
+        [disabled]="paymentRequestAmount"
+        (click)="load($event)"
+      >
+        @if(loading || !audioMessage().url) {
+          <app-small-spinner
+            [isWhite]="direction() !== 'right'"
+            diameter="20"
+          ></app-small-spinner>
+        } @else {
+          <app-icon-play [color]="direction() === 'right' ? '#F5F5F5' : '#2C2C2C'"></app-icon-play>
+        }
+      </button>
+
+      <div class="progress-container">
+        <div class="progress"></div>
+      </div>
+
+
+      @if (audioMessage().url) {
+        <div
+          class="duration"
+          [ngClass]="{ 'duration--disabled': !canSelectLanguage }"
+          (click)="openDropDownMenu()"
+          [attr.data-lang]="language"
+        >
+          {{ audioMessage().duration | hms }}
+        </div>
+      } @else {
+        <div class="duration">
+          <span class="duration__loading">{{ 'audio_message_loading' | translate }}</span>
+        </div>
+      }
+    </div>
+
+    <div *ngIf="loaded" class="plyr-container">
+      <div
+        plyr
+        (click)="$event.stopPropagation()"
+        preload="none"
+        class="player"
+        plyrType="audio"
+        [plyrPlaysInline]="true"
+        [plyrOptions]="playerOptions"
+        [plyrSources]="plyrSources"
+      ></div>
+    </div>
+
+    <button mat-button [matMenuTriggerFor]="menu" class="trigger"></button>
+    <mat-menu #menu="matMenu" class="langs">
+      <button
+        mat-menu-item
+        role="menuitemradio"
+        class="langs__item"
+        [ngClass]="{ 'langs__item--selected': language === lang }"
+        (click)="onSelect(lang)"
+        *ngFor="let lang of languageList()"
+      >
+        {{ lang }}
+      </button>
+    </mat-menu>
+  </div>
+</div>

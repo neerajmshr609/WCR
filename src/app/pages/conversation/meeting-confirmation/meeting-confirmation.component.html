@@ -1,0 +1,81 @@
+<div class="meeting__confirmation">
+  <div class="skill__items" *ngIf="skill">
+    <div class="skill__container">
+      <div class="skill__item">
+        <img [src]="skill.icon" class="skill__icon" />
+      </div>
+    </div>
+  </div>
+
+  <div class="meeting__time">
+    {{ meetingTime | date: 'MMM d, y, h:mm a' }}
+
+    <svg class="meeting__calendar-icon">
+      <use xlink:href="assets/feather-icon-defs.svg#icon-calendar"></use>
+    </svg>
+  </div>
+
+<!--  <div-->
+<!--    class="meeting__actions"-->
+<!--    *ngIf="!meetingFinished && meetingConfirmationExists && !meetingMissed"-->
+<!--  >-->
+<!--    <span>-->
+<!--      <div [ngClass]="{ accept: meetingConfirmed, decline: !meetingConfirmed }">-->
+<!--        <mat-icon>{{ meetingConfirmed ? 'check' : 'close' }}</mat-icon>-->
+<!--      </div>-->
+<!--      {{ meetingConfirmed ? 'Accepted' : 'Declined' }}-->
+<!--    </span>-->
+<!--  </div>-->
+
+  <div
+    class="meeting__actions"
+    *ngIf="
+      !meetingFinished &&
+      !meetingConfirmationExists &&
+      !fromCurrentUser &&
+      !meetingMissed
+    "
+  >
+    <button
+      mat-raised-button
+      class="meeting__btn meeting__btn--decline"
+      (click)="onMeetingDeclineClick()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <button
+      mat-raised-button
+      class="meeting__btn meeting__btn--accept"
+      (click)="onMeetingAcceptClick()"
+    >
+      <mat-icon>check</mat-icon>
+    </button>
+  </div>
+
+  <div
+    *ngIf="
+      !meetingFinished &&
+      !meetingConfirmationExists &&
+      fromCurrentUser &&
+      !meetingMissed
+    "
+    class="meeting__finished-text"
+  >
+    Confirmation pending
+  </div>
+
+  <div *ngIf="meetingFinished && !meetingPaid" class="meeting__finished-text">
+    Finished
+  </div>
+
+  <div
+    *ngIf="meetingMissed && !(meetingFinished && !meetingPaid)"
+    class="meeting__finished-text"
+  >
+    Missed
+  </div>
+
+  <div *ngIf="meetingFinished && meetingPaid" class="meeting__finished-text">
+    Paid
+  </div>
+</div>

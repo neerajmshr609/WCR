@@ -1,0 +1,49 @@
+<footer class="ngo-footer">
+  <div class="ngo-footer__content">
+<!--    TODO temp hide-->
+<!--    <div class="ngo-footer__block ngo-footer__social-block">-->
+<!--      <a href="/home" class="ngo-footer__logo">-->
+<!--        <app-ngo-footer-logo-icon></app-ngo-footer-logo-icon>-->
+<!--      </a>-->
+<!--      <div class="ngo-footer__social">-->
+<!--        <a class="ngo-footer__icon-link" href="https://www.facebook.com/getmeadvice">-->
+<!--          <app-facebook-icon></app-facebook-icon>-->
+<!--        </a>-->
+<!--        <a class="ngo-footer__icon-link" href="https://www.instagram.com/getme.global/">-->
+<!--          <app-instagram-icon></app-instagram-icon>-->
+<!--        </a>-->
+
+<!--        <a class="ngo-footer__icon-link" href="https://www.linkedin.com/company/17961733">-->
+<!--          <app-linkedin-icon></app-linkedin-icon>-->
+<!--        </a>-->
+<!--        <a class="ngo-footer__icon-link" href="#">-->
+<!--          <app-x-icon></app-x-icon>-->
+<!--        </a>-->
+<!--        <a-->
+<!--          class="ngo-footer__icon-link"-->
+<!--          href="https://www.youtube.com/channel/UCUlwWMtjW2E-iMs5VcKBaqw"-->
+<!--        >-->
+<!--          <app-youtube-icon></app-youtube-icon>-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </div>-->
+    <div class="ngo-footer__block">
+      <h6 class="ngo-footer__title">{{'footer.blogposts.title' | translate}}</h6>
+      @for(post of trendingBlogposts(); track post.id){
+        <a [href]="post.url" class="ngo-footer__link" target="_blank">{{post.link_text | translate}}</a>
+      }
+    </div>
+    <div class="ngo-footer__block">
+      <h6 class="ngo-footer__title">{{'footer.blog.title' | translate}}</h6>
+      @for(topic of blogTopics(); track topic.id){
+        <a [href]="topic.url" class="ngo-footer__link" target="_blank">{{topic.link_text | translate}}</a>
+      }
+    </div>
+    <div class="ngo-footer__block">
+      <h6 class="ngo-footer__title">{{'footer.team-and-other.title' | translate}}</h6>
+      @for(member of team(); track member.id){
+        <a [href]="member.url" class="ngo-footer__link" target="_blank">{{member.link_text | translate}}</a>
+      }
+    </div>
+  </div>
+</footer>

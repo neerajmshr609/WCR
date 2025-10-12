@@ -1,0 +1,39 @@
+@import 'variables';
+
+.image-uploader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 1px solid $--sds-color-border-default-default;
+  padding: 2.4rem 1.2rem;
+  border-radius: $--sds-size-radius-200;
+  cursor: pointer;
+
+  .profile-img {
+    height: 4.8rem;
+    width: 4.8rem;
+    object-fit: cover;
+    margin-right: 1rem;
+    border-radius: $--sds-size-radius-full;
+    border: $--sds-size-stroke-border solid $--sds-color-border-neutral-default;
+    background: $--sds-color-background-default-default;
+  }
+
+  .image-label {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    color: $--sds-color-text-default-default;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 100%;
+  }
+
+  &:hover {
+    .image-label {
+      color: $--sds-color-text-neutral-secondary;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<app-section-header [title]="'user_management_title' | translate">
+  <app-user-management-icon></app-user-management-icon>
+</app-section-header>
+
+<app-filters
+  [activeUsersCount]="activeUsers().length"
+  [organization]="organization()"
+  (filter)="filterUsers($event)"
+></app-filters>
+
+<div class="users-container">
+  @for (user of users(); track user.id) {
+    <app-user-accordion
+      (approveEvent)="handleApprove($event)"
+      (expand)="expandUserPermissionCard($event)"
+      [user]="user"
+    ></app-user-accordion>
+  }
+</div>
+
+@if (!users().length) {
+  <div class="no-data">
+    <h3>{{ 'no_users_found_with_this_state' | translate }}</h3>
+  </div>
+}

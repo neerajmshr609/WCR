@@ -1,0 +1,10 @@
+@import '_variables';
+
+:host {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: -webkit-fill-available;
+}
+
+

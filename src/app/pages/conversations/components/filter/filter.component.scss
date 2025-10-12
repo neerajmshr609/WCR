@@ -1,0 +1,35 @@
+@import 'variables';
+
+.filter {
+  display: flex;
+  align-items: center;
+  margin-top: 1.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: $feed-light-gray-text;
+    white-space: nowrap;
+    cursor: pointer;
+    min-width: fit-content;
+
+    @media screen and (max-width: $bp-smallest) {
+      padding: 0 5px;
+    }
+
+    &:hover,
+    &--selected {
+      color: $feed-accent-selection;
+
+      svg path {
+        fill: $feed-accent-selection;
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<div class="nextwork-settings" *ngIf="settingsFormGroup">
+  <form [formGroup]="settingsFormGroup" (ngSubmit)="onSubmit()">
+    <div class="actions-container">
+      <button type="submit" class="btn action-button action-button--submit">
+        <div *ngIf="isCreating" class="spinner" role="status">
+          <app-small-spinner [diameter]="20"></app-small-spinner>
+        </div>
+        Save settings
+      </button>
+    </div>
+
+    <div class="group" formArrayName="settings">
+      <div
+        class="nextwork-settings__item"
+        *ngFor="let settingControl of getControls(); let i = index"
+        [formGroupName]="i"
+      >
+        <mat-form-field
+          class="example-full-width"
+          class="nextwork-settings__item--title"
+        >
+          <input type="text" matInput formControlName="name" />
+        </mat-form-field>
+
+        <mat-form-field class="nextwork-settings__item--value">
+          <input
+            type="number"
+            min="0"
+            step="1"
+            matInput
+            formControlName="value"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="nextwork-settings__item nextwork-settings__item--new-item">
+        <button type="button" class="btn btn-success" (click)="onAddSetting()">
+          Add setting
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

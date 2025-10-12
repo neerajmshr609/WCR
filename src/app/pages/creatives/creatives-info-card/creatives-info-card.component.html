@@ -1,0 +1,65 @@
+<div
+  class="info-card"
+  [ngClass]="{
+    'info-card--locked': isLocked,
+    'info-card--unsigned': !currentUser,
+  }"
+  [@cardFlip]="state"
+>
+  <ng-container *ngIf="state === 'default'">
+    <button class="access-filter" (click)="changeState()">
+      <span>{{'creatives_info_card.access' | translate}}</span>
+      <img src="assets/feedback-focus-area/marker-pink.svg" alt="" />
+      <span>{{ 'creatives_info_card.filter' | translate }}</span>
+    </button>
+
+    <p #cardRef></p>
+
+    <div *ngIf="currentUser" class="footer">
+      <p class="footer__text">
+        {{ 'creatives_info_card.learn_how' | translate }}
+      </p>
+      <app-gt-switch
+        (didChangeEvent)="toggleUserTutorials()"
+        [isSwitched]="!!currentUser.showtutorials"
+        [onoffMode]="true"
+      ></app-gt-switch>
+    </div>
+  </ng-container>
+
+  <div class="flipped" *ngIf="state === 'flipped'" #flippedRef>
+    <button (click)="pin()" class="pin">
+      <img
+        [src]="'/assets/icons/' + (pinned ? 'unpin' : 'pin') + '.svg'"
+        alt=""
+      />
+    </button>
+
+    <button class="access-filter" (click)="changeState()">
+      <span>{{ 'creatives_info_card.resort_projects' | translate }}</span>
+      <img src="assets/feedback-focus-area/marker-pink-empty.svg" alt="" />
+      <span>{{ 'creatives_info_card.by_desired' | translate }}</span>
+    </button>
+
+    <div class="triangle">
+      <app-feedback-focus-area
+        markerColor="white"
+        textColor="white"
+        triangleColor="pink"
+        [coordinates]="coordinates"
+        [disabled]="false"
+        [fullWidth]="flippedRef.clientWidth"
+        [coordinatesChange$]="coordinatesChange.asObservable()"
+        (coordinatesChange)="coordinates = $event"
+      ></app-feedback-focus-area>
+    </div>
+
+    <div class="flipped__btns">
+      <button class="flipped__btn" (click)="reset()">
+        {{ 'creatives_info_card.reset' | translate }}</button>
+      <button class="flipped__btn flipped__btn--blue" (click)="apply()">
+        {{ 'creatives_info_card.reset' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

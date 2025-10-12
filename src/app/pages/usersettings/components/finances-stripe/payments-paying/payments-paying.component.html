@@ -1,0 +1,112 @@
+<div class="payments payments-paying">
+  <div class="payments-header">
+    <h2 class="payments-header-title payments-header-title-paying">
+      {{
+        (connect()
+          ? 'finances_stripe.your_payment_accounts'
+          : 'finances_stripe.setup_paying_others'
+        ) | translate
+      }}
+    </h2>
+
+    @if (connect()) {
+      <div class="payments-header-menu">
+        <button mat-icon-button [matMenuTriggerFor]="menu" disableRipple>
+          <mat-icon class="black">more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item class="payments-header-btn">
+            <span class="grey">{{
+              'finances_stripe.stay_turned' | translate
+            }}</span>
+          </button>
+        </mat-menu>
+      </div>
+    }
+
+    <p class="payments-header-connected">
+      {{
+        (connect()
+          ? 'finances_stripe.connected'
+          : 'finances_stripe.unconnected'
+        ) | translate
+      }}
+    </p>
+  </div>
+  <div class="payments-block">
+    <div class="payments-block-info">
+      @if (!connect()) {
+        <a
+          [href]="stripeDashboardLinks?.billing_url"
+          target="_blank"
+          class="stripe-connect"
+          (click)="reloadNotification = true"
+        >
+          <span>
+            {{ 'finances_stripe.connect_with_stripe' | translate }}
+          </span>
+        </a>
+      }
+
+      @if (reloadNotification) {
+        <p class="reload-notification">
+          {{ 'finances_stripe.please_reload' | translate }}
+        </p>
+      }
+
+      @if (connect() && balance() && invoices.length) {
+        <div>
+          <div class="payments-block-info-paying">
+            <h4 class="payments-block-info-paying-title">
+              {{ 'finances_stripe.last_transactions' | translate }}
+            </h4>
+            <div class="payments-block-info-paying-box-1">
+              <p class="payments-block-info-paying-header">
+                {{ 'finances_stripe.date_time' | translate | uppercase }}
+              </p>
+              <p class="payments-block-info-paying-header">
+                {{ 'finances_stripe.amount' | translate | uppercase }}
+              </p>
+            </div>
+
+            @for (item of invoices; track item.created) {
+              <div class="payments-block-info-paying-box-2">
+                <p class="payments-block-info-paying-date">
+                  {{ item.created | datemoment }}
+                </p>
+                <p class="payments-block-info-paying-amount">
+                  {{ item.total | currencies: item.currency }}
+                </p>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+    <div class="payments-block-img">
+      <img
+        src="assets/user-settings/finances/payments.svg"
+        alt="Payments icon"
+      />
+    </div>
+    <div class="payments-block-btn">
+      <p class="payments-block-btn-paying">
+        @if (!connect()) {
+          <span>
+            {{ 'finances_stripe.supported_payments_methods' | translate }}
+          </span>
+        } @else {
+          <a
+            mat-button
+            [href]="stripeDashboardLinks?.billing_url"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ 'finances_stripe.open_payments_dashboard' | translate }}</a
+          >
+        }
+      </p>
+    </div>
+  </div>
+  <p class="payments-inform" [innerHTML]="informText | translate"></p>
+</div>

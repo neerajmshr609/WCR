@@ -1,0 +1,48 @@
+<div class="ice-breaker-card_head"
+     (click)="emitFullViewToggle.emit()"
+>
+  <div class="head_content">
+    <app-card-image
+      class="head_image"
+      [image]="iceBreaker().icon"
+    ></app-card-image>
+    <div class="head_text">
+      <h5 class="head_sub-title">
+        {{ iceBreaker().skillName }}
+      </h5>
+      <h4 class="head_title">
+        {{ iceBreaker().title }}
+      </h4>
+      <p class="head_counselors-amount">
+        {{ iceBreaker().counselorsAmount }} Counselors
+      </p>
+    </div>
+  </div>
+  <div
+    class="head_more-btn"
+  >
+    <app-icon-more-vertical
+      class="head_more-icon"
+      [color]="'#000'"
+    ></app-icon-more-vertical>
+  </div>
+</div>
+@if (fullView()) {
+  <div class="ice-breaker-card_description" [@expandCollapse]>
+    {{ iceBreaker().description }}
+  </div>
+  <app-button
+    class="ice-breaker-card_button"
+    size="large"
+    btnUIType="primary"
+    (click)="startConversation()"
+  >
+    <app-icon-shake-hands-small
+      class="ice-breaker-card_button-icon"
+    ></app-icon-shake-hands-small>
+    <span
+      class="ice-breaker-card_button-text"
+      [innerHTML]="'ice-breaker-card.start-conversation' | translate"
+    ></span>
+  </app-button>
+}

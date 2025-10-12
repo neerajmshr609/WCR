@@ -1,0 +1,82 @@
+@import "variables";
+
+:host {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px 0;
+  justify-content: space-between;
+
+  @media (min-width: $desktop) {
+    padding: 15px 16px 8px;
+  }
+}
+
+.users-block {
+  display: flex;
+  align-items: center;
+}
+
+.users {
+  display: flex;
+  flex-direction: row-reverse;
+  max-width: 320px;
+  overflow: hidden;
+}
+
+.user {
+  display: flex;
+  width: 38px;
+  height: 38px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  object-fit: contain;
+  border-radius: 38px;
+
+  @media (min-width: $desktop) {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
+}
+
+.user.shifted {
+  margin-left: -17px;
+}
+
+.add-new-user {
+  display: flex;
+  width: 38px;
+  height: 38px;
+  padding: 0 14px 0 13px;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  @media (min-width: $desktop) {
+    width: 57px;
+    height: 57px;
+    padding: 8px 14px 9px 13px;
+  }
+
+
+  app-add-user-icon {
+    display: flex;
+    width: 16px;
+    height: 24px;
+
+    @media (min-width: $desktop) {
+      width: 30px;
+      height: 39px;
+    }
+  }
+}
+
+app-icon-more-vertical {
+  display: flex;
+  width: 1.6rem;
+  height: 1.6rem;
+}

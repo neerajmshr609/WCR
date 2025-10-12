@@ -1,0 +1,92 @@
+<div class="categories">
+  <div class="categories__list">
+    <h2 (click)="onCreateRequest()" class="add-new">+</h2>
+    <app-small-spinner [diameter]="30" *ngIf="!categories"></app-small-spinner>
+    <p
+      (click)="onSelect(category)"
+      class="category-item {{ category == selectedCategory ? 'active' : '' }}"
+      *ngFor="let category of sortCategoriesBy('name')"
+    >
+      {{ category.name }}
+    </p>
+  </div>
+
+  <div class="categories__edit">
+    <!--    <h1 class="category-form__title">{{ selectedCategory ? 'Edit Parent category' : 'Add Parent category' }}</h1>-->
+
+    <form
+      class="form"
+      #categoryForm="ngForm"
+      (ngSubmit)="onSubmit(categoryForm)"
+    >
+      <div class="actions-container">
+        <button
+          type="submit"
+          class="btn action-button action-button--submit"
+          [disabled]="!categoryForm.valid"
+        >
+          <div *ngIf="isCreating" class="spinner" role="status">
+            <app-small-spinner [diameter]="20"></app-small-spinner>
+          </div>
+          {{ selectedCategory && selectedCategory.id ? 'Save changes' : 'Add' }}
+        </button>
+        <button
+          (click)="onDelete()"
+          type="button"
+          class="btn btn-danger action-button action-button--delete"
+          *ngIf="selectedCategory && selectedCategory.id"
+        >
+          <div *ngIf="isDeleting" class="spinner" role="status">
+            <app-small-spinner [diameter]="20"></app-small-spinner>
+          </div>
+          Delete
+        </button>
+      </div>
+
+      <mat-tab-group>
+        <mat-tab label="General">
+          <div class="form__group">
+            <label class="form__label" for="name">Sub Genre</label>
+            <input
+              class="form__input"
+              type="text"
+              id="name"
+              ngModel
+              name="name"
+            />
+          </div>
+
+          <div class="form__group">
+            <label class="form__label">Parent genre</label>
+            <mat-form-field>
+              <mat-label>Parent genre</mat-label>
+              <mat-select ngModel name="parentcategory_id" required>
+                <mat-option
+                  *ngFor="let parentCategory of parentCategories"
+                  [value]="parentCategory.id"
+                >
+                  {{ parentCategory.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-tab>
+        <mat-tab label="Relations">
+          <app-relations
+            (artfieldUpdate)="onArtfieldUpdate($event)"
+            (categoryrelationUpdate)="onRelationUpdate($event)"
+            (parentCategoryrelationUpdate)="onParentRelationUpdate($event)"
+            [currentCategorySub]="selectedCategorySub"
+            *ngIf="selectedCategory && selectedCategory.id"
+          ></app-relations>
+        </mat-tab>
+      </mat-tab-group>
+
+      <!--      <h5>Child categories</h5>-->
+
+      <!--      <select class="custom-select" multiple>-->
+      <!--        <option [selected]="childcat.parentcategory_id === 1" value="{{ childcat.id }}" *ngFor="let childcat of childCategories | async">{{ childcat.name }}</option>-->
+      <!--      </select>-->
+    </form>
+  </div>
+</div>

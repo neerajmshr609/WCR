@@ -1,0 +1,28 @@
+<div class="search-bar col-2">
+  <!-- <div class="search-bar__media-menu">
+    <img src="assets/header/image.svg" (click)="toggleMediatype('image')" [ngClass]="{'active': selectedMediatypes.has('image')}">
+    <img src="assets/header/audio.svg" (click)="toggleMediatype('audio')" [ngClass]="{'active': selectedMediatypes.has('audio')}">
+    <img src="assets/header/video.svg" (click)="toggleMediatype('video')" [ngClass]="{'active': selectedMediatypes.has('video')}">
+  </div> -->
+
+  <div class="search-bar__search-container">
+    <input
+      type="text"
+      class="search-bar__search"
+      placeholder="{{ 'search_bar.categories.input_placeholder' | translate }}"
+      [formControl]="myControl"
+      [matAutocomplete]="auto"
+      name="search-artcategory"
+      autocomplete="off"
+      #autocomplete
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="searchDidSelectOption($event)"
+    >
+      <mat-option *ngFor="let cat of filteredOptions | async" [value]="cat">
+        {{ cat.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+</div>

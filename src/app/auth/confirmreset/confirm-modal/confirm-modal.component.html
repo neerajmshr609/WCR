@@ -1,0 +1,63 @@
+<div class="modal-header">
+  <h2 mat-dialog-title>{{ 'reset-password.title' | translate }}</h2> <app-close-icon strokeWidth="3" (click)="close()"></app-close-icon>
+</div>
+
+<mat-dialog-content >
+  <div class="input-form-control">
+    <app-input [control]="form.get('password')" [placeholder]="'fields.new-password' | translate" type="password"
+             [label]="'fields.password' | translate">
+      @if(form.get('password').touched && form.get('password').invalid) {
+
+        @if(form.get('password').touched && form.get('password').errors?.minlength) {
+          <span>{{ 'validation.min-length' | translate:{ min: 6 } }}</span>
+        }
+
+        @if(form.get('password').touched && form.get('password').errors?.required) {
+          <span>{{'validation.required-field' | translate}}</span>
+        }
+        @if(form.get('password')?.errors?.['passwordComplexity']) {
+          @if(!form.get('password')?.errors?.['passwordComplexity'].hasSixLetters) {
+            <span>
+              {{ 'validation.min-simbols' | translate }}
+            </span>
+          }
+          @if(!form.get('password')?.errors?.['passwordComplexity'].hasNumber) {
+            <span>
+              {{ 'validation.min-number' | translate }}
+            </span>
+          }
+          @if(!form.get('password')?.errors?.['passwordComplexity'].hasSpecialChar) {
+            <span>
+              {{ 'validation.min-special-simbol' | translate }}
+            </span>
+          }
+        }
+      }
+
+      <span class="input-details">{{ 'reset-password.validator-description' | translate }}</span>
+    </app-input>
+  </div>
+  <div class="input-form-control">
+    <app-input [control]="form.get('passwordConfirmation')" [placeholder]="'fields.reset-password' | translate"
+               type="password"
+               [label]="'fields.passwordConfirmation' | translate">
+
+      @if(form.get('passwordConfirmation').touched && form.get('passwordConfirmation').errors?.required) {
+        <span>{{'validation.required-field' | translate}}</span>
+      }
+      @if(form.get('passwordConfirmation').touched && form.get('passwordConfirmation').errors?.minlength) {
+        <span>{{ 'validation.min-length' | translate:{ min: 6 } }}</span>
+      }
+    </app-input>
+    @if (form.get('passwordConfirmation')?.errors?.mustMatch) {
+      <span class="form_error">
+        {{ 'validation.password-match-error' | translate }}
+      </span>
+    }
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <app-button size="medium" btnUIType="neutral" (click)="close()">{{ 'reset-password.cancel' | translate }}</app-button>
+  <app-button size="medium" btnUIType="primary" (click)="onSubmit()" [disabled]="form.invalid">{{ 'reset-password.reset-action' | translate }}</app-button>
+</mat-dialog-actions>

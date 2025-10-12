@@ -1,0 +1,35 @@
+@import "_variables";
+
+:host {
+  display: block;
+  position: absolute;
+  top: calc(100% + $--sds-size-depth-100);
+  width: fit-content;
+  max-height: 526px;
+  overflow-y: auto;
+  border-radius: $--sds-size-radius-200;
+  border: $--sds-size-stroke-border--solid--sds-color-border-default-default;
+  background: $--sds-color-background-default-default;
+  box-shadow: $--sds-size-depth-0 $--sds-size-depth-100 $--sds-size-depth-100 $--sds-size-depth-negative-025 $--sds-color-black-200, $--sds-size-depth-0 $--sds-size-depth-100 $--sds-size-depth-100 $--sds-size-depth-negative-025 $--sds-color-black-100;
+  padding: $--sds-size-space-200;
+  z-index: 100;
+  transition: all 0.3s ease-in-out;
+
+
+  & ul {
+    list-style: none;
+  }
+}
+
+:host(.center) {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+:host(.right) {
+  margin-left: 100%;
+  transform: translateX(-100%);
+}
+
+
+

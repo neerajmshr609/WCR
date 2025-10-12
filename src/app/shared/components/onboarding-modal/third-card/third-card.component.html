@@ -1,0 +1,164 @@
+<div class="modal">
+  <a
+    mat-icon-button
+    mat-dialog-close
+    class="modal__btn--close"
+    routerLink="/why"
+    [queryParams]="{ type: 'howtouse' }"
+  >
+    <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+  </a>
+
+  <div class="modal__body" #bodyRef>
+    <div class="next">
+      <img
+        class="modal__img"
+        [src]="
+          'assets/onboarding-modal/feedbackrequest-modal-image-' + img + '.svg'
+        "
+        alt="feedbackrequest-modal-image"
+      />
+      <p class="modal__text">What do you want to do next?</p>
+    </div>
+
+    <div class="slides" #sliderRef>
+      <div class="slide">
+        <div class="slide__video">
+          <img
+            [src]="videos[0]"
+            *ngIf="showVideos"
+            [ngStyle]="{ 'height.px': videosHeight }"
+          />
+        </div>
+        <h2 class="modal__title">
+          Mentor creatives who really appreciate your advice. Find them by
+          providing firstly inspiring feedback.
+        </h2>
+        <div class="modal__actions">
+          <a class="btn btn-primary" mat-dialog-close routerLink="/rateflow"
+            >Give Feedback</a
+          >
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide__video" #videoRef>
+          <div
+            *ngIf="showVideos"
+            [ngStyle]="{ 'height.px': height }"
+            class="video"
+          >
+            <youtube-player
+              id="DthGeVMDy54"
+              videoId="DthGeVMDy54"
+              [playerVars]="playerVars"
+            ></youtube-player>
+          </div>
+        </div>
+        <h2 class="modal__title">
+          See how Getme.Global works in detail by watching our complete
+          tutorial.
+        </h2>
+        <div class="modal__actions">
+          <button
+            class="helpnavigation__button btn btn--primary"
+            (click)="showIframe.emit()"
+          >
+            Watch tutorial
+          </button>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide__video">
+          <img
+            [src]="videos[1]"
+            *ngIf="showVideos"
+            [ngStyle]="{ 'height.px': videosHeight }"
+          />
+        </div>
+        <h2 class="modal__title">
+          Complete your public profile, set your topics & tools. Decide how much
+          you want to be paid for your time spent.
+        </h2>
+        <div class="modal__actions">
+          <a
+            class="btn btn-primary"
+            mat-dialog-close
+            routerLink="/settings"
+            [queryParams]="{ type: 'finance' }"
+            >Setup connector profile</a
+          >
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide__video">
+          <img
+            [src]="videos[2]"
+            *ngIf="showVideos"
+            [ngStyle]="{ 'height.px': videosHeight }"
+          />
+        </div>
+        <h2 class="modal__title">
+          Find truly inspiring mentors. Upload your own work and only pay
+          connectors you feel give you brilliant insigths.
+        </h2>
+        <div class="modal__actions">
+          <a class="btn btn-primary" mat-dialog-close routerLink="/upload"
+            >Upload a Project</a
+          >
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide__video">
+          <img
+            [src]="videos[3]"
+            *ngIf="showVideos"
+            [ngStyle]="{ 'height.px': videosHeight }"
+          />
+        </div>
+        <h2 class="modal__title">
+          Find inspiring creatives and connectors by seeing their works and
+          given reviews.
+        </h2>
+        <div class="modal__actions">
+          <a class="btn btn-primary" mat-dialog-close routerLink="/publicfeed"
+            >Open Public Feed</a
+          >
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide__video">
+          <img
+            [src]="videos[4]"
+            *ngIf="showVideos"
+            [ngStyle]="{ 'height.px': videosHeight }"
+          />
+        </div>
+        <h2 class="modal__title">
+          Give five briliant insights and unlock our “pro” area for connectors.
+        </h2>
+        <div class="modal__actions">
+          <a class="btn btn-primary" mat-dialog-close routerLink="/creatives"
+            >Go to Creatives Area</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="toggle" *ngIf="currentUser">
+      <app-gt-switch
+        (didChangeEvent)="toggleUserTutorials()"
+        [small]="true"
+        [isSwitched]="!!currentUser.showtutorials"
+        [onoffMode]="true"
+      ></app-gt-switch>
+      <h2 class="toggle__label">
+        Learn how to give inspiring feedback with our practice focused tutorial.
+      </h2>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+@import 'variables';
+
+.tips {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  width: clamp(250px, 60%, 40rem);
+  padding: 1rem 0.5rem;
+  background: #000;
+  border-radius: 16px;
+  border-top-left-radius: 0;
+  color: #fff;
+
+  &--feedback-session {
+    width: 100%;
+    border-radius: 0;
+    padding: 2rem 1rem;
+  }
+
+  &--feedback-session & {
+    &__values {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    &__title {
+      margin-left: 2.2rem;
+    }
+
+    &__close-btn {
+      top: 2rem;
+      right: 3rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+
+    app-small-spinner {
+      margin-left: 1rem;
+    }
+  }
+
+  &__title {
+    margin-left: 1rem;
+    font-weight: 500;
+    font-size: 1.6rem;
+  }
+
+  &__values {
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+  }
+
+  &__item {
+    min-width: auto;
+    padding: 0 1rem;
+    font-weight: 500;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    color: #fff !important;
+
+    &:disabled {
+      opacity: 0.7;
+    }
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    min-width: auto;
+    padding: 0;
+    line-height: normal;
+  }
+}
+
+app-small-spinner {
+  width: auto;
+}

@@ -1,0 +1,31 @@
+{
+  "title": "Wählen Sie ein Thema",
+  "step_1": "Bitte wählen Sie mindestens eine Fähigkeit aus, um fortzufahren.",
+  "step_2": "Wählen Sie Ihren Fokus",
+  "step_3": "Drücken Sie auf 'Gespräch starten' und beginnen Sie mit der Beantwortung der Fragen.",
+  "title_desktop": "Hilfe erhalten",
+  "subtitle": "um Unterstützung von einem Berater zu erhalten",
+  "subtitle_desktop": "indem Sie sich einen Moment Zeit nehmen,<br/>Ihre Bedürfnisse zu definieren, damit wir Ihnen besser helfen können.",
+  "select-stage-1": "Wählen Sie das Thema, das Ihren Bedürfnissen am nächsten kommt",
+  "select-stage-2": "Wählen Sie den am besten passenden Themenfokus und starten Sie das Gespräch",
+  "ice-breakers-subtitle": {
+    "mobile": "Wählen Sie Ihren spezifischen Fokus",
+    "not-mobile": "Oder wählen Sie jetzt Ihren spezifischen Fokus"
+  },
+  "card": {
+    "counselors": "Berater",
+    "reviews": "Bewertungen",
+    "positive": "positive",
+    "negative": "negative",
+    "watch-explainer": "Erklärvideo ansehen",
+    "start-conversation": "Gespräch beginnen",
+    "summary": "Zusammenfassung"
+  },
+  "menu": {
+    "title": "Einstellungen für den intelligenten Fragebogen",
+    "share": "Fragebogen Nr. 1 teilen"
+  },
+  "ice-breaker-card": {
+    "start-conversation": "Dialog starten"
+  }
+}

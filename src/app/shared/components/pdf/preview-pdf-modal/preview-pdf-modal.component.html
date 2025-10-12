@@ -1,0 +1,16 @@
+<div #containerRef class="modal-pdf">
+  <a mat-dialog-close class="close">
+    <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+  </a>
+
+  <div class="pdf-container">
+    <pdf-viewer
+      [src]="data"
+      [render-text]="true"
+      [original-size]="false"
+      [fit-to-page]="true"
+      (pages-initialized)="pageInitialized()"
+      style="display: block"
+    ></pdf-viewer>
+  </div>
+</div>

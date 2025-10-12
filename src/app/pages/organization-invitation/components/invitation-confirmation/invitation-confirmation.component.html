@@ -1,0 +1,12 @@
+@if (!isSignedInUser()) {
+  <app-auth
+    [authMode]="invitedUserExists() ? AUTH_MODES.LOGIN : AUTH_MODES.SIGNUP"
+    [restrictSwitchMode]="true"
+    [predefinedEmail]="invitationEmail()"
+    [predefinedOrganization]="invitedIntoOrganization()"
+    [submitWithoutOrganization]="true"
+  ></app-auth>
+}
+
+
+

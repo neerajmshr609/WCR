@@ -1,0 +1,276 @@
+@import 'variables';
+
+:host {
+  ::ng-deep {
+    .mat-button-wrapper {
+      svg {
+        color: black;
+      }
+    }
+
+    .mat-select-value {
+      font-weight: 500;
+      font-size: 14px;
+      color: black;
+      outline: none;
+    }
+  }
+}
+
+::ng-deep {
+  .available-date-class {
+    background: #72d4bb;
+    border-radius: 100%;
+
+    .mat-calendar-body-cell-content {
+      color: white;
+      font-weight: 700;
+    }
+  }
+}
+
+.skill-card-request-sent {
+  &__hint {
+    padding: 1rem;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+    max-width: 290px;
+    color: $--sds-color-grey-500;
+    margin: 0 auto;
+  }
+}
+
+.chat {
+  overflow: auto;
+  padding-top: 6rem;
+  color: black;
+  display: grid;
+  gap: 6rem;
+  max-height: 240px;
+
+  .skill-card-request__input {
+    margin: 0;
+    margin-top: 0;
+    width: 100%;
+
+    &--title {
+      text-align: left;
+    }
+  }
+}
+
+.skill-card-request {
+  width: 100%;
+
+  opacity: 0.2;
+  pointer-events: none;
+  position: relative;
+  transition: all 0.34s ease-in-out;
+
+  &__loader {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__input {
+    width: calc(100% - 2rem);
+    margin: 0 auto;
+    display: flex;
+    border: 3px solid #000000;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 5rem;
+    padding: 0.5rem 1rem;
+
+    &--title {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      padding-right: 0.5rem;
+      color: black;
+      outline: none;
+    }
+
+    &--rate-container {
+      display: flex;
+      padding: 0 5px 0 5px;
+      margin-left: auto;
+    }
+
+    &--rate-block {
+      padding-right: 10px;
+      align-self: center;
+    }
+
+    &--rate {
+      font-weight: normal;
+      font-size: 10px;
+      line-height: 12px;
+      letter-spacing: 0.07rem;
+      color: #dddddd;
+    }
+
+    &--rating {
+      font-weight: 900;
+      font-size: 10px;
+      line-height: 12px;
+      color: $--sds-color-grey-500;
+    }
+
+    &--button {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+  }
+
+  &__project-input {
+    cursor: pointer;
+
+    &--active {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      margin-bottom: -3px;
+    }
+  }
+
+  &__datetime-input {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    &--date {
+      display: flex;
+      flex: 0.5;
+      margin-right: 1rem;
+    }
+
+    &--time {
+      display: flex;
+      flex: 0.5;
+      align-items: center;
+    }
+  }
+
+  &__datetime-input-done {
+    border-radius: 0;
+  }
+
+  &__message-input {
+    margin-top: -3px;
+    border: none;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    position: relative;
+    flex-direction: column;
+  }
+
+  input {
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+    border: none;
+    width: 90%;
+  }
+}
+
+.message-send-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.select-project-menu {
+  &__btn {
+    position: relative;
+    padding-left: 5.3rem;
+    height: 3rem;
+    line-height: 3rem;
+
+    .no-project {
+      position: absolute;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2.3rem;
+    }
+  }
+
+  &__header {
+    font-weight: 500;
+  }
+
+  &__link {
+    img {
+      margin-right: 3px;
+    }
+  }
+
+  &__addproject {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: $feed-light-gray-text;
+  }
+
+  &__title {
+    height: 4rem;
+    line-height: 4rem;
+    font-weight: 500;
+    font-size: 11px;
+    color: $feed-light-gray-text;
+  }
+}
+
+.send-btn {
+  background: none;
+  border: none;
+  outline: none;
+  display: block;
+  padding: 0.5rem 1rem 0 0;
+}
+
+.message__feedback--blue {
+  color: $feed-accent-blue;
+  padding: 6px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  word-break: break-word;
+  text-align: center;
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.btn-room {
+  background: $feed-accent-green;
+  border: 1px solid $feed-accent-green;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+
+  a {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+}

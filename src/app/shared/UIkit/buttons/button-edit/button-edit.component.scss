@@ -1,0 +1,10 @@
+@import "_variables";
+
+:host {
+  display: block;
+}
+
+.edit-btn_icon {
+  width: $--sds-typography-body-size-medium;
+  height: $--sds-typography-body-size-medium;
+}

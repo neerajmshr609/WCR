@@ -1,0 +1,125 @@
+@import 'variables';
+
+.skillset-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid $--sds-color-border-default-default;
+
+  .form_field__group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .action {
+    background-color: transparent;
+    height: 6.8rem;
+    width: 4rem;
+    border-radius: $--sds-size-radius-500;
+    border: 1px solid $--sds-color-border-default-default;
+    margin: 0 1rem 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0.8rem;
+    cursor: pointer;
+
+    &.active {
+      border: 1px solid $--sds-color-border-brand-default;
+      background: $--sds-color-background-brand-default;
+
+      .add {
+        filter: invert(1);
+      }
+    }
+
+    &__icon {
+      width: 2rem;
+      height: 2rem;
+      position: relative;
+    }
+  }
+
+  .skill-menu {
+    background-color: transparent;
+    border: none;
+    position: relative;
+    top: 1.7rem;
+    cursor: pointer;
+    right: -1rem;
+  }
+
+  .form_field {
+    background-color: transparent;
+    border: none;
+
+    &.topic {
+      width: 85%;
+      margin: 0 3rem 0 2rem;
+    }
+
+    &.experiance {
+      width: 60%;
+    }
+
+    .label {
+      font-size: 1.3rem;
+      color: $--sds-color-text-default-default;
+      font-weight: $--sds-typography-subtitle-font-weight;
+      margin-bottom: 1rem;
+    }
+
+    .select,
+    input {
+      background-color: $--sds-color-background-default-default;
+      border: 1px solid $--sds-color-border-default-default;
+      height: 40px;
+      border-radius: $--sds-size-radius-300;
+      padding: 1rem;
+      font-size: $--sds-typography-body-size-xs;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .skillset-item {
+    flex-direction: column;
+    position: relative;
+
+    .action {
+      position: absolute;
+      left: -1rem;
+      top: 6rem;
+    }
+
+    .skill-menu {
+      position: absolute;
+      right: -1rem;
+      top: 0;
+    }
+
+    .form_field__group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 26rem;
+      margin: 0 0 0 4rem;
+    }
+
+    .form_field {
+      &.topic,
+      &.experiance {
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+
+      .label {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

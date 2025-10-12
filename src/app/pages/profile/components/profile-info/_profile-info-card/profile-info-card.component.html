@@ -1,0 +1,301 @@
+<app-profile-info-card-title
+  [profile]="userProfile()"
+></app-profile-info-card-title>
+
+
+<app-horizontal-line
+  class="profile-info-card_horizontal-line"
+></app-horizontal-line>
+@if (isOrganizationMember()) {
+  <app-role-description></app-role-description>
+}
+
+@if (!collapsed()) {
+  <app-recommend-or-share-profile></app-recommend-or-share-profile>
+
+  @if (hasActivities()) {
+    <app-stats
+      [profile]="userProfile()"
+    ></app-stats>
+
+    <app-horizontal-line
+      class="profile-info-card_horizontal-line"
+    ></app-horizontal-line>
+  }
+
+  <app-profile-topics-expertise></app-profile-topics-expertise>
+
+  <app-horizontal-line
+    class="profile-info-card_horizontal-line"
+  ></app-horizontal-line>
+
+  <app-profile-info-languages></app-profile-info-languages>
+
+  <app-horizontal-line
+    class="profile-info-card_horizontal-line"
+  ></app-horizontal-line>
+
+  <app-email-notifications></app-email-notifications>
+}
+
+@if (isMediumMaxWidth()) {
+  <app-collapse-button
+    [collapsed]="collapsed()"
+    (click)="collapseClickHandler()"
+  ></app-collapse-button>
+}
+<!--<app-role-description-->
+
+<!--&gt;</app-role-description>-->
+<!--<div-->
+<!--  class="profile-info-card {{-->
+<!--    isContainedMode ? 'profile-info-card-contained' : ''-->
+<!--  }}"-->
+<!--&gt;-->
+<!--  <div class="profile-info-card__header" *ngIf="!isContainedMode">-->
+<!--    <app-user-info *ngIf="user" [user]="user"></app-user-info>-->
+
+<!--    <div class="profile-info-card__header&#45;&#45;rate" *ngIf="user.online">-->
+<!--      {{ 'profile-info.online' | translate }}-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <ng-container *ngIf="isExpand">-->
+<!--    <p class="team-badge" *ngIf="user.isteam">-->
+<!--      {{ 'profile-info.team-account' | translate }}-->
+<!--    </p>-->
+<!--    <div class="gt-separator"></div>-->
+<!--    <div class="profile-info-card__usermode">-->
+<!--      <form class="about-me-from" [formGroup]="aboutMeForm">-->
+<!--        <app-content-editable-field-->
+<!--          minRows="1"-->
+<!--          class="title-control"-->
+<!--          formControlName="title"-->
+<!--          maxLength="50"-->
+<!--          (keydown.enter)="$event.preventDefault()"-->
+<!--          placeHolder="PUBLIC PROFILE"-->
+<!--          (onFocusOut)="updateUserInfo()"-->
+<!--        ></app-content-editable-field>-->
+<!--        <app-content-editable-field-->
+<!--          minRows="6"-->
+<!--          formControlName="description"-->
+<!--          maxLength="500"-->
+<!--          (keydown.enter)="$event.preventDefault()"-->
+<!--          [placeHolder]="'profile-info.description' | translate"-->
+<!--          (onFocusOut)="updateUserInfo()"-->
+<!--        ></app-content-editable-field>-->
+<!--      </form>-->
+<!--    </div>-->
+
+<!--    <div class="profile-info-card__cta">-->
+<!--      <button class="profile-info-card__cta&#45;&#45;button">-->
+<!--        <svg>-->
+<!--          <path-->
+<!--            d="M10.2173 0.00677949C15.9605 -0.199016 20.7957 4.30562 21 10.0908C21 10.228 21 10.3423 21 10.4795V19.6717C21 20.3805 20.4325 20.9751 19.7288 20.9979H10.6032C4.85997 21.1123 0.0928745 16.4933 0.00207329 10.7081C-0.111429 4.90014 4.45136 0.12111 10.2173 0.00677949ZM6.1993 11.9658L10.2854 16.0817C10.467 16.2646 10.7621 16.2646 10.9437 16.0817L14.9844 12.0115C16.1421 10.8453 16.2329 8.94745 15.1206 7.73554C13.9629 6.4779 11.9879 6.45504 10.7848 7.66695L10.6259 7.82701L10.467 7.66695C9.28656 6.47791 7.37972 6.47791 6.222 7.66695C5.06428 8.85599 5.01888 10.7767 6.1993 11.9658Z"-->
+<!--            fill="black"-->
+<!--          ></path>-->
+<!--        </svg>-->
+<!--        {{ 'profile-info.buttons.recommend' | translate }}-->
+<!--      </button>-->
+
+<!--      <button-->
+<!--        class="profile-info-card__cta&#45;&#45;button profile-info-card__cta&#45;&#45;button__black"-->
+<!--        (click)="shareProfile()"-->
+<!--      >-->
+<!--        {{ 'profile-info.buttons.share' | translate }}-->
+<!--        <svg>-->
+<!--          <use href="assets/feather-icon-defs.svg#icon-share-3"></use>-->
+<!--        </svg>-->
+<!--      </button>-->
+
+<!--      &lt;!&ndash;    <mat-menu #shareMenu="matMenu">&ndash;&gt;-->
+<!--      &lt;!&ndash;      <button mat-menu-item [socialShare]="'fb'">&ndash;&gt;-->
+<!--      &lt;!&ndash;        <svg height="20px" width="20px">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <use xlink:href="assets/feather-icon-defs.svg#icon-facebook"></use>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </svg>&ndash;&gt;-->
+<!--      &lt;!&ndash;        <span>Facebook</span>&ndash;&gt;-->
+<!--      &lt;!&ndash;      </button>&ndash;&gt;-->
+<!--      &lt;!&ndash;      <button mat-menu-item ngxClipboard [cbContent]="referralLink">&ndash;&gt;-->
+<!--      &lt;!&ndash;        <svg height="20px" width="20px">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <use xlink:href="assets/feather-icon-defs.svg#icon-link-2"></use>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </svg>&ndash;&gt;-->
+<!--      &lt;!&ndash;        <span>Copy link</span>&ndash;&gt;-->
+<!--      &lt;!&ndash;      </button>&ndash;&gt;-->
+<!--      &lt;!&ndash;    </mat-menu>&ndash;&gt;-->
+<!--    </div>-->
+<!--    <div class="gt-separator"></div>-->
+
+<!--    <div class="profile-info-card__usermode" *ngIf="!isContainedMode">-->
+<!--      <div class="activity">-->
+<!--        &lt;!&ndash;        <div class="activity__item">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <p>Projects reviewed</p>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <p class="score">{{ user.activity_score.projects_reviewed }}</p>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <div class="activity__item">-->
+<!--          <p>-->
+<!--            {{ 'profile-info.connections' | translate }}-->
+<!--          </p>-->
+<!--          <p class="score">{{ user.activity_score.interested_students }}</p>-->
+<!--        </div>-->
+<!--        <div class="activity__item">-->
+<!--          <p>-->
+<!--            {{ 'profile-info.Conversations' | translate }}-->
+<!--          </p>-->
+<!--          <p class="score">{{ user.activity_score.returning_students }}</p>-->
+<!--        </div>-->
+<!--        <div class="activity__item">-->
+<!--          &lt;!&ndash;      TODO: add translate&ndash;&gt;-->
+<!--          <p>Recommended</p>-->
+<!--          <p class="score">{{ user.activity_score.got_recommended }}</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="gt-separator" *ngIf="!isContainedMode"></div>-->
+
+<!--    <div class="profile-info-card__usermode">-->
+<!--      <div class="header-container">-->
+<!--        <h2 class="profile-info-card__usermode&#45;&#45;header">-->
+<!--          {{ 'profile-info.my-topics' | translate }}-->
+<!--        </h2>-->
+<!--        <a-->
+<!--          *ngIf="currentUser?.id === user?.id"-->
+<!--          class="go-to-settings"-->
+<!--          routerLink="/settings"-->
+<!--          [queryParams]="{ type: 'skills' }"-->
+<!--        >-->
+<!--          {{ 'profile-info.buttons.edit' | translate }}-->
+<!--          <img src="../../../../../assets/gear-grey.svg" alt="" />-->
+<!--        </a>-->
+<!--      </div>-->
+
+<!--      <div class="skills">-->
+<!--        <button-->
+<!--          class="skills__item"-->
+<!--          *ngFor="let userSkill of user.user_skills"-->
+<!--          [ngClass]="{-->
+<!--            skills__item__selected:-->
+<!--              userSkill.skill.id === pickedSkill?.skill?.id,-->
+<!--          }"-->
+<!--          (click)="selectSkill(userSkill)"-->
+<!--        >-->
+<!--          {{ userSkill.skill.name }}-->
+<!--        </button>-->
+<!--        <p class="skills__item" *ngIf="user.skills.length === 0">-->
+<!--          {{ 'profile-info.no-project-uploaded' | translate }}-->
+<!--        </p>-->
+<!--      </div>-->
+<!--      <ng-container *ngIf="currentUser?.id === user?.id">-->
+<!--        <button-->
+<!--          *ngIf="user.icebreakers.length && pickedSkill"-->
+<!--          class="create-icebreaker-btn"-->
+<!--          routerLink="/profile/create-ice-breaker/{{ pickedSkill.id }}"-->
+<!--        >-->
+<!--          {{ 'ice-breaker-card.create' | translate }}-->
+<!--        </button>-->
+<!--      </ng-container>-->
+<!--    </div>-->
+
+<!--    <div class="gt-separator" *ngIf="!isContainedMode"></div>-->
+
+<!--    <div class="profile-info-card__usermode">-->
+<!--      &lt;!&ndash;      TODO: add translate&ndash;&gt;-->
+<!--      <h2 class="profile-info-card__usermode&#45;&#45;header">languages</h2>-->
+
+<!--      <div class="skills" *ngIf="!user.lang">-->
+<!--        &lt;!&ndash;      TODO: add translate&ndash;&gt;-->
+<!--        <p class="skills__item">Not set</p>-->
+<!--      </div>-->
+
+<!--      <div class="skills" *ngIf="user.lang">-->
+<!--        <p class="skills__item" *ngFor="let lang of user.lang.split(',')">-->
+<!--          {{ lang }}-->
+<!--        </p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div-->
+<!--      class="gt-separator"-->
+<!--      *ngIf="!currentUser || currentUser.id !== user.id"-->
+<!--    ></div>-->
+
+<!--    <div-->
+<!--      class="profile-info-card__cta"-->
+<!--      *ngIf="!currentUser || currentUser.id !== user.id"-->
+<!--    >-->
+<!--      <p-->
+<!--        class="profile-info-card__cta&#45;&#45;button"-->
+<!--        [ngClass]="{-->
+<!--          'profile-info-card__cta&#45;&#45;unfollow': currentUser?.adviserIDs?.includes(-->
+<!--            user.id-->
+<!--          ),-->
+<!--        }"-->
+<!--        (click)="addToAdvisorsDidClick()"-->
+<!--      >-->
+<!--        <ng-template [ngIf]="!currentUser">-->
+<!--          <img src="../../../../../assets/newsfeed/heart.svg" alt="" />-->
+<!--          {{ 'profile-info.buttons.add-favorite' | translate }}-->
+<!--        </ng-template>-->
+
+<!--        <ng-template [ngIf]="currentUser">-->
+<!--          <ng-container *ngIf="!currentUser.adviserIDs?.includes(user.id)">-->
+<!--            <img src="../../../../../assets/newsfeed/heart.svg" alt="" />-->
+<!--            {{ 'profile-info.buttons.add-favorite' | translate }}-->
+<!--          </ng-container>-->
+
+<!--          <ng-container *ngIf="currentUser.adviserIDs?.includes(user.id)">-->
+<!--            <img src="../../../../../assets/heart-cancel-newsfeed.svg" alt="" />-->
+<!--            {{ 'profile-info.buttons.remove-connector' | translate }}-->
+<!--          </ng-container>-->
+<!--        </ng-template>-->
+<!--      </p>-->
+<!--    </div>-->
+
+<!--    <div class="gt-separator"></div>-->
+<!--    <div class="profile-info-card__email-notifications">-->
+<!--      <h2 class="profile-info-card__usermode&#45;&#45;header">Email notifications</h2>-->
+<!--      <div class="confirm-subscribe-toggle">-->
+<!--        <app-gt-switch-->
+<!--          (didChangeEvent)="switchSubscription.set(!switchSubscription())"-->
+<!--          [small]="true"-->
+<!--          [isSwitched]="switchSubscription()"-->
+<!--          [onoffMode]="true"-->
+<!--        ></app-gt-switch>-->
+<!--        <span-->
+<!--          class="confirm-subscribe-toggle__text"-->
+<!--          [ngClass]="{-->
+<!--              'confirm-subscribe-toggle__text&#45;&#45;green': switchSubscription(),-->
+<!--            }">-->
+<!--        @if(switchSubscription()) {-->
+<!--          Turn off new message email notification-->
+<!--        }-->
+<!--        @else {-->
+<!--          Turn on new message email notification-->
+<!--        }-->
+
+<!--      </span>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </ng-container>-->
+<!--  <button (click)="expand()" class="expand-btn">-->
+<!--    <ng-container *ngIf="!isExpand; else collapseText">-->
+<!--      {{ 'profile-info.buttons.expand' | translate }}-->
+
+<!--      <br />-->
+<!--      <img-->
+<!--        class="expand-btn__expand"-->
+<!--        src="../../../../../assets/conversations/chevrons.svg"-->
+<!--        alt=""-->
+<!--      />-->
+<!--    </ng-container>-->
+<!--    <ng-template #collapseText>-->
+<!--      {{ 'profile-info.buttons.collapse' | translate }}-->
+<!--      <br />-->
+<!--      <img-->
+<!--        class="expand-btn__collapse"-->
+<!--        src="../../../../../assets/conversations/chevrons.svg"-->
+<!--        alt=""-->
+<!--      />-->
+<!--    </ng-template>-->
+<!--  </button>-->
+<!--</div>-->

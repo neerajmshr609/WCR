@@ -1,0 +1,91 @@
+<div *ngIf="!file" class="loader-icon">
+  <app-small-spinner diameter="20"></app-small-spinner>
+</div>
+
+<div
+  *ngIf="file"
+  class="item-media-view"
+  [ngClass]="{
+    'item-media-view--various-height': variousHeight,
+    'no-curves': !showCurves,
+    short: file.kind === 'audio',
+    'no-controls': file.kind === 'hostedvideo',
+  }"
+  [class]="
+    file.kind === 'video' || file.kind === 'audio'
+      ? 'item-media-view--av'
+      : file.feedformat
+  "
+  #imageContainer
+>
+  <div
+    class="newsfeed-item__image-area--category"
+    *ngIf="
+      category &&
+      !readonly &&
+      file?.kind !== 'audio' &&
+      file.kind !== 'video' &&
+      file.kind !== 'hostedvideo'
+    "
+  >
+    <p>{{ category }}</p>
+  </div>
+
+  <div *ngIf="file?.kind === 'audio'" class="media media--audio">
+    <app-newsfeed-avpresentation
+      [feedbackItem]="feedbackItem"
+      [file]="file"
+      [category]="category"
+      [isActive]="isActive"
+      [avRatingParams]="feedbackItem?.avratingparam"
+      [allFeedbacksFromUser]="fileFeedbacks"
+    ></app-newsfeed-avpresentation>
+  </div>
+
+  <div *ngIf="file.kind.includes('video')" class="media media--video">
+    <app-newsfeed-avpresentation-video
+      [feedbackItem]="feedbackItem"
+      [avRatingParams]="feedbackItem?.avratingparam"
+      [file]="file"
+      [category]="category"
+      [isActive]="isActive"
+      [showCurves]="showCurves"
+      [allFeedbacksFromUser]="fileFeedbacks"
+    ></app-newsfeed-avpresentation-video>
+  </div>
+
+  <div class="media media--flex" *ngIf="file?.kind === 'iframe'">
+    <h3 class="iframe-title">{{ file.projectfile_title }}</h3>
+    <app-load-iframe-btn (clicked)="loadIframe()"></app-load-iframe-btn>
+  </div>
+
+  <div class="media media--flex" *ngIf="file?.kind === 'pdf'">
+    <h3 class="iframe-title">{{ file.projectfile_title }}</h3>
+    <app-load-pdf-btn (clicked)="loadPdf()"></app-load-pdf-btn>
+  </div>
+
+  <div class="media" *ngIf="file?.kind === 'dummy'">
+    <app-dummy-file [file]="file"></app-dummy-file>
+  </div>
+
+  <img
+    class="lazyload media"
+    *ngIf="file?.kind === 'image'"
+    data-src="{{ file.url }}"
+    alt=""
+  />
+
+  <div
+    appDomChange
+    (domChange)="onDomChange()"
+    *ngIf="feedbackItem && !selectedFileImageView$ && feedbackItem.drawing"
+  >
+    <canvas #canvasRef class="item-media-view__canvas"></canvas>
+  </div>
+
+  <app-file-info
+    [file]="file"
+    [showPopup]="isFileInfoOpen"
+    (toggle)="toggleFileInfo.emit()"
+  ></app-file-info>
+</div>

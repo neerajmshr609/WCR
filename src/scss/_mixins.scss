@@ -1,0 +1,123 @@
+@import "_variables";
+
+@mixin blackToBlue {
+  filter: invert(9%) sepia(100%) saturate(4973%) hue-rotate(242deg) brightness(122%) contrast(141%);
+}
+
+@mixin blackToBlueLogo {
+  filter: invert(46%) sepia(88%) saturate(1624%) hue-rotate(169deg) brightness(102%) contrast(106%);
+}
+
+@mixin blackToYellow {
+  filter: invert(70%) sepia(35%) saturate(836%) hue-rotate(8deg) brightness(101%) contrast(91%);
+}
+
+@mixin blackToRed {
+  filter: invert(79%) sepia(73%) saturate(2014%) hue-rotate(303deg) brightness(89%) contrast(114%);
+}
+
+@mixin blackToGreen {
+  filter: invert(55%) sepia(28%) saturate(2424%) hue-rotate(118deg) brightness(94%) contrast(102%);
+}
+
+@mixin invertColor() {
+  filter: invert(100%);
+}
+
+@mixin blackToPink() {
+  filter: invert(80%) sepia(15%) saturate(530%) hue-rotate(314deg) brightness(99%) contrast(97%);
+}
+
+@mixin blackToBlueAccent() {
+  filter: invert(7%) sepia(100%) saturate(7332%) hue-rotate(245deg) brightness(115%) contrast(135%);
+}
+
+@mixin blackToDarkGrey {
+  filter: invert(54%) sepia(10%) saturate(15%) hue-rotate(23deg) brightness(95%) contrast(87%);
+}
+
+// #DDDDDD
+@mixin blackTokGrey {
+  filter: invert(93%) sepia(72%) saturate(4541%) hue-rotate(182deg) brightness(125%) contrast(73%);
+}
+
+// #F2F2F2
+@mixin blackToLightGrey {
+  filter: invert(97%) sepia(8%) saturate(315%) hue-rotate(153deg) brightness(116%) contrast(90%);
+}
+
+@mixin baseTransition {
+  transition: all 0.3s ease-in-out;
+}
+
+@mixin centeringFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin borderBoxBlock {
+  display: block;
+  box-sizing: border-box;
+}
+
+@mixin pageContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin bodyBaseText {
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: $line-height-140;
+}
+
+@mixin singleLineBodyBaseText {
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: $line-height-100;
+  text-wrap: nowrap;
+}
+
+@mixin bodyCode {
+  font-family: $--sds-typography-code-font-family;
+  font-size: $--sds-typography-code-size-base;
+  font-style: normal;
+  font-weight: $--sds-typography-code-font-weight;
+  line-height: $line-height-100;
+}
+
+@mixin bodySmall {
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-small;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: $line-height-140;
+}
+
+@mixin heading {
+  font-family: $--sds-typography-heading-font-family;
+  font-size: $--sds-typography-heading-size-base;
+  font-style: normal;
+  font-weight: $--sds-typography-heading-font-weight;
+  line-height: $line-height-120;
+  letter-spacing: $--letter-spacing--0048;
+}
+
+@mixin multiRowFlex-300 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $--sds-size-space-300;
+}
+
+@mixin multiRowFlex-400 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $--sds-size-space-400;
+}

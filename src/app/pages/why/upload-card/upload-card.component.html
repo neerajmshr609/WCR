@@ -1,0 +1,12 @@
+<div class="upload-card" #cardRef>
+  <img class="heart" src="assets/why/heart.svg" alt="" />
+  <a
+    class="upload"
+    routerLink="/auth"
+    [queryParams]="{ mode: 'signup', portfolio: true }"
+  >
+    <img src="assets/header/upload.svg" alt="upload-project-icon" />
+    sign up and <br />
+    start uploading
+  </a>
+</div>

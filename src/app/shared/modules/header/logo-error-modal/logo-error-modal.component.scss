@@ -1,0 +1,76 @@
+@import '_variables';
+
+.title {
+  margin-top: 50px;
+  font-weight: 500;
+  font-size: 32.2092px;
+  line-height: 123%;
+  letter-spacing: 0.1em;
+  margin-bottom: 30px;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 130%;
+  letter-spacing: 0.1em;
+  color: $--sds-color-grey-500;
+  margin-bottom: 50px;
+
+  .grey-text {
+    color: $feed-light-gray-text;
+  }
+}
+
+.close-btn {
+  display: block;
+  background-color: unset;
+  border: unset;
+  height: 42px;
+  margin-left: auto;
+  cursor: pointer;
+  img {
+    height: 32px;
+  }
+}
+
+.gif {
+  width: 320px;
+  height: 320px;
+  margin-bottom: 50px;
+  display: block;
+  margin-inline: auto;
+}
+
+.actions {
+  display: flex;
+  gap: 17px;
+  justify-content: center;
+}
+.set-payout-acount-btn {
+  padding: 15px 20px;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid black;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.confirm-btn {
+  background-color: black;
+  padding: 0 20px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 29px;
+  letter-spacing: 0.03em;
+  color: white;
+  border: unset;
+  height: 49px;
+  cursor: pointer;
+}

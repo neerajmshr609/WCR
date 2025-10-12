@@ -1,0 +1,41 @@
+<app-section-header [title]="'basic_title' | translate">
+  <app-account-info-icon strike="1"></app-account-info-icon>
+</app-section-header>
+
+<app-client-form
+  [currentUser]="currentUser()"
+  [form]="form"
+  [avatars]="formData.avatars"
+  [formData]="formData"
+  (selectAvatar)="selectAvatar($event)"
+  (openUploader)="openUploader($event)"
+  (changeEmail)="handleEmailChange()"
+></app-client-form>
+<div class="btn-wrapper">
+  <app-button
+    class="reset"
+    size="large"
+    btnUIType="primary"
+    type="button"
+    (click)="resetPasword()"
+  >
+    {{ 'password_reset' | translate }}</app-button
+  >
+</div>
+
+<app-languages
+  (save)="changeLanguage($event)"
+  [languages]="languages"
+></app-languages>
+
+<!-- <div class="btn-wrapper">
+  <app-button
+    class="reset"
+    size="large"
+    btnUIType="primary"
+    type="button"
+    (click)="deletePersonalInfo()"
+  >
+    {{ 'delete_personal_info' | translate }}</app-button
+  >
+</div> -->

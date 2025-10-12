@@ -1,0 +1,190 @@
+@import 'variables';
+
+.modal__container {
+  padding: 2.4rem;
+}
+
+.btn-close {
+  align-self: flex-end;
+}
+
+.description {
+  &__text {
+    overflow: auto;
+    padding: 8px;
+    font-size: 14px;
+    display: block;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    resize: none;
+    min-height: 40px;
+    flex: 1;
+    width: 100%;
+    max-height: 300px;
+    font-weight: 400;
+    overflow: inherit;
+  }
+
+  &__title {
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  &__tag {
+    color: white;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    margin: 1rem 1.4rem;
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-left: 0;
+    grid-column: 2;
+
+    .inner-container {
+      display: flex;
+      align-items: center;
+      border-radius: 5rem;
+      background-color: black;
+    }
+
+    p {
+      padding: 0.3rem 1rem;
+      border: 3px solid black;
+      border-radius: 5rem;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 15px;
+    }
+
+    span {
+      margin-left: 0.5rem;
+      display: block;
+      color: white;
+      margin-right: 1.2rem;
+      word-break: keep-all;
+    }
+  }
+}
+
+:host {
+  ::ng-deep {
+    app-audio-message {
+      .wrapper {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.message {
+  position: relative;
+  background-color: $feed-chat-bubble-background;
+  border-radius: 16px;
+  border-top-left-radius: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+
+  &:hover {
+    background-color: #e8e8e8;
+  }
+
+  h2 {
+    text-align: left;
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 0 1rem;
+
+    a {
+      color: #0000ff;
+      &:hover,
+      &:active,
+      &:visited {
+        color: #0000ff;
+      }
+    }
+  }
+
+  &--mustard {
+    color: #fff !important;
+    border-color: $feed-accent-ember !important;
+    background-color: $feed-accent-ember;
+    &:hover {
+      background-color: $feed-accent-ember;
+    }
+  }
+
+  &--green {
+    color: #fff;
+    border-color: $feed-accent-green !important;
+    background-color: $feed-accent-green;
+    &:hover {
+      background-color: $feed-accent-green;
+    }
+  }
+
+  &--blue {
+    color: #fff;
+    border-color: $feed-accent-blue !important;
+    background-color: $feed-accent-blue;
+    &:hover {
+      background-color: $feed-accent-blue;
+    }
+  }
+
+  &--red {
+    color: #fff;
+    border-color: $feed-accent-red !important;
+    background-color: $feed-accent-red;
+    &:hover {
+      background-color: $feed-accent-red;
+    }
+  }
+}
+
+.url {
+  margin-top: 2rem;
+
+  &__body {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    margin-left: 1rem;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  &__input {
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba(white, 0.5);
+    border: none;
+    border-bottom: 2px solid #f7f7f7;
+    width: 100%;
+    display: block;
+
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid $--sds-color-black-400;
+    }
+  }
+}
+
+.modal {
+  &__title {
+    font-size: 3rem;
+  }
+
+  &__actions {
+    margin-top: 2rem;
+  }
+}

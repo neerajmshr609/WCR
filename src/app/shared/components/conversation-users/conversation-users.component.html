@@ -1,0 +1,140 @@
+@if(conversation()) {
+  <div class="conversation-info">
+
+    @switch (type()) {
+      @case (types().DIRECT_CHAT) {
+        <div class="conversation-info__img-container direct">
+          <img
+            class="conversation-info__img conversation"
+            [src]="conversationPartner()?.avatar || anotherMembers[0]?.avatar || defaultUserAvatar"
+            alt="{{ 'conversation_item.group_conversation_info.img_alt' | translate}}"
+          />
+        </div>
+      }
+
+      @case (types().COMMUNITY_CHAT) {
+        <div class="conversation-info__img-container communities" [ngStyle]="{'background-color': getRandomColor()}">
+          @if(conversation().image) {
+            <img
+              class="conversation-info__img communities"
+              [src]="conversation().image"
+              alt="Conversation Image"
+            />
+          } @else {
+            <app-group-chat fill="black"></app-group-chat>
+          }
+        </div>
+      }
+
+      @case (types().REQUESTS) {
+        <div class="conversation-info__img-container request">
+          <img
+            class="conversation-info__img communities"
+            [src]="conversation().conversation_skill?.skill?.icon || defaultGroupAvatar"
+            alt="Conversation Image"
+          />
+        </div>
+      }
+
+      @case (types().WE_CARE) {
+        <div class="conversation-info__img-container">
+          <img
+            class="conversation-info__img conversation"
+            [src]="conversation().conversation_skill?.skill?.icon || defaultGroupAvatar"
+            alt="Conversation Image"
+          />
+          <img
+            class="conversation-info__img user"
+            [src]="anotherMembers[0]?.avatar || defaultUserAvatar"
+          />
+        </div>
+      }
+
+
+      @case (types().GET_SUPPORT) {
+        <div class="conversation-info__img-container">
+          <img
+            class="conversation-info__img conversation"
+            [src]="conversation().org_image || defaultGroupAvatar"
+            alt="Conversation Image"
+          />
+          <img
+            class="conversation-info__img user"
+            [src]="consultant()?.avatar || conversation().conversation_skill?.skill?.icon || defaultUserAvatar"
+          />
+        </div>
+      }
+
+      @case (types().ORG_CHAT) {
+        <div class="conversation-info__img-container">
+          <img
+            class="conversation-info__img conversation"
+            [src]="conversation().org_logo || defaultOrganizationAvatar"
+            alt="Conversation Image"
+          />
+          @if (conversation().image) {
+            <img
+              class="conversation-info__img conversation-right"
+              [src]="conversation().image"
+              alt="Conversation Image"
+            />
+          } @else {
+            <div class="conversation-info__img conversation-right" [ngStyle]="{'background-color': getRandomColor()}">
+              <app-group-chat fill="black"></app-group-chat>
+            </div>
+          }
+
+        </div>
+      }
+      @default {
+        <div class="conversation-info__img-container direct">
+          <img
+            class="conversation-info__img conversation"
+            [src]="conversationPartner()?.avatar || anotherMembers[0]?.avatar || defaultUserAvatar"
+            alt="{{ 'conversation_item.group_conversation_info.img_alt' | translate}}"
+          />
+        </div>
+      }
+    }
+
+    @if (!authService.isAnonymousUser()) {
+      <div class="conversation-info__text-block">
+        <span style="font-weight: 400; color: grey;font-size: 12px;">{{subtitle}}</span>
+        <span class="conversation-info__name"> {{ name() || anotherMembers[0]?.display_name }} </span>
+        @if (type() === types().DIRECT_CHAT) {
+          <span class="city"> {{ anotherMembers[0]?.city }} </span>
+        } @else {
+          @if(anotherMembers.length > 0) {
+            <div class="conversation-info__members">
+              <app-user-icon [strokeWidth]="2"></app-user-icon>
+              <span>
+            @if (anotherMembers && anotherMembers.length > 0) {
+              {{ anotherMembers[0]?.display_name }}
+              @if (anotherMembers.length > 1) {
+                +
+                {{ anotherMembers.length - 1 }} {{ 'conversation_item.group_conversation_info.person' | translate }}
+              }
+            }
+        </span>
+            </div>
+          } @else {
+            @if (members() && members().length > 0) {
+            <div class="conversation-info__members">
+              <app-user-icon [strokeWidth]="2"></app-user-icon>
+              <span>
+
+                {{ members()[0]?.display_name }} {{ 'conversation_item.group_conversation_info.person' | translate }}
+              </span>
+            </div>
+            }
+          }
+        }
+      </div>
+    } @else {
+      <div class="conversation-info__text-block">
+        <span class="conversation-info__name"> {{ conversation().conversation_skill?.skill?.name }} </span>
+      </div>
+    }
+  </div>
+}
+

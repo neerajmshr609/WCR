@@ -1,0 +1,9 @@
+@if (init) {
+  <app-payout-request
+    [requestIn]="request"
+    [mode]="mode"
+    [amount]="amount"
+    [dateCreated]="date"
+    (requestCreated)="onCreated($event)"
+  ></app-payout-request>
+}

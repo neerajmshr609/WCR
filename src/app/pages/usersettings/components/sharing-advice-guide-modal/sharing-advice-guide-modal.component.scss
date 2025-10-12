@@ -1,0 +1,110 @@
+@import '_variables';
+
+.modal-text {
+  color: $--sds-color-text-default-default;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 140%;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2.4rem 1.6rem 0 1.6rem;
+}
+
+.sharing-advice-subtitle {
+  margin-top: 12px;
+  margin-bottom: 28px;
+  color: $--sds-color-text-default-secondary;
+
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 140%;
+}
+
+.modal-title {
+  color: $--sds-color-text-default-default !important;
+  font-family: $--sds-typography-heading-font-family !important;
+  font-size: $--sds-typography-heading-size-base !important;
+  font-style: normal !important;
+  font-weight: $--sds-typography-heading-font-weight !important;
+  line-height: 120% !important;
+  letter-spacing: -0.48px !important;
+
+  padding: 3.2rem 1.6rem 0 1.6rem !important;
+}
+
+.allow-btn, .allow-cancel-btn {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: $--sds-color-text-default-default;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 100%;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: $--sds-size-radius-200;
+  transition: all 0.3s ease-in-out;
+  box-sizing: content-box;
+
+}
+
+.allow-btn {
+  background: $--sds-color-background-positive-tertiary;
+  border: $--sds-size-stroke-border solid $--sds-color-border-neutral-secondary;
+
+  &:hover {
+    border-radius: $--sds-size-radius-200;
+    background: $--sds-color-background-neutral-tertiary-hover;
+  }
+}
+
+.allow-cancel-btn {
+  border: $--sds-size-stroke-border solid transparent;
+}
+
+.allow-cancel-btn:hover {
+  border-color: $--sds-color-border-default-default;
+}
+
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 1.6rem;
+  min-height: auto !important;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 1.2rem 1.6rem;
+  color: $--sds-color-text-positive-default !important;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 140%;
+}
+
+app-mark-icon, app-close-icon {
+  display: flex;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+

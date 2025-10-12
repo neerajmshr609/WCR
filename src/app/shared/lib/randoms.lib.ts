@@ -1,0 +1,1 @@
+export const getRandomTrueOrFalse = () => !!Math.round(Math.random());

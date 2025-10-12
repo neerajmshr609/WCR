@@ -1,0 +1,134 @@
+@import 'variables';
+
+.confirmation-dialog {
+  padding: $--sds-size-space-800;
+  background-color: $--sds-color-background-default-default;
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $--sds-size-space-300;
+
+    .title {
+      font-weight: $--sds-typography-heading-size-base;
+      font-size: $--sds-typography-heading-size-base;
+      color: $--sds-color-text-default-default;
+      text-align: center;
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+
+      .icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  .new-conversation-content {
+    position: relative;
+
+    .inp-wrapper {
+      margin: $--sds-size-space-300 0;
+    }
+
+    .add-user__list {
+      height: fit-content;
+      background-color: $--sds-color-background-default-default;
+      overflow-y: scroll;
+      border: 1px solid $--sds-color-border-default-default;
+      border-radius: $--sds-size-radius-200;
+      padding: $--sds-size-space-300 $--sds-size-space-400;
+      transform: translateY(-1px);
+      width: 299px;
+      max-height: 120px;
+      display: none;
+      position: absolute;
+      z-index: 10;
+      margin-top: $--sds-size-space-200;
+
+      &.open {
+        display: block;
+      }
+
+      li {
+        list-style: none;
+        margin: $--sds-size-space-300 0;
+        cursor: pointer;
+        color: $--sds-color-text-neutral-default;
+
+        &:hover {
+          color: $--sds-color-text-neutral-secondary;
+        }
+      }
+    }
+  }
+
+  .subtitle,
+  .confirm-text {
+    font-size: $--sds-typography-body-size-small;
+    line-height: 51px;
+    font-weight: $--sds-typography-subtitle-font-weight;
+    color: $--sds-color-text-default-secondary;
+    line-height: inherit;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2.4rem 0 0;
+    width: 100%;
+
+    .cancel {
+      margin-right: 1.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .confirmation-dialog {
+    margin: 1rem;
+
+    .actions {
+      flex-direction: column;
+      width: 100%;
+
+      .cancel {
+        margin: 12px 0;
+      }
+    }
+  }
+}
+
+.form__group {
+  color: $--sds-color-text-default-default;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 100%;
+}
+
+.form-field {
+  margin-top: 1.2rem;
+}
+
+.form-label {
+  display: inline-block;
+}
+
+.form-label.recipient {
+  margin-top: 4px;
+}
+
+.img-help-text {
+  color: $--sds-color-text-default-secondary;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 140%;
+  margin-bottom: $--sds-size-space-200;
+}

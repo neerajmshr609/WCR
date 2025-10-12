@@ -1,0 +1,39 @@
+@import 'variables';
+
+:host {
+  width: 100%;
+}
+
+.content-editable-field {
+  border: unset;
+  box-sizing: content-box;
+  padding: 10px;
+  resize: none;
+  width: calc(100% - 20px);
+  color: $feed-light-gray-text;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 133%;
+  overflow: hidden;
+
+  &::placeholder {
+    color: $feed-light-gray-text;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 133%;
+  }
+
+  &:disabled {
+    background-color: unset;
+  }
+}
+
+:is(textarea:read-only, textarea:-moz-read-only) {
+  border: 0;
+  box-shadow: none;
+}
+
+:is(textarea:-moz-read-write, textarea:read-write) {
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}

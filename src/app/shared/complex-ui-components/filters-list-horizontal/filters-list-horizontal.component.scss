@@ -1,0 +1,7 @@
+@import "_variables";
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $--sds-size-space-200 $--sds-size-space-200;
+}

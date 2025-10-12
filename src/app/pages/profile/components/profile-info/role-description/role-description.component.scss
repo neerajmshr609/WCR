@@ -1,0 +1,60 @@
+@import "_variables";
+@import "_mixins";
+
+$description-height: 13.2rem;
+
+:host {
+  display: block;
+}
+
+.role-description {
+  &_role-name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: $--sds-size-space-325;
+    gap: $--sds-size-space-325;
+  }
+
+  &_role-name {
+    color: #757575;
+    text-align: center;
+    font-family: $--sds-typography-family-sans;
+    font-size: $--sds-typography-body-size-xs;
+    font-style: normal;
+    font-weight: $--sds-typography-weight-medium;
+    line-height: normal;
+    letter-spacing: $--letter-spacing-3;
+    text-transform: uppercase;
+  }
+
+  &_role-name-input-container {
+    display: flex;
+    justify-items: stretch;
+    align-items: center;
+    gap: $--sds-size-space-300;
+    margin-bottom: $--sds-size-space-325;
+  }
+
+  &_role-name-input {
+    justify-self: stretch;
+  }
+
+  &_role-description_role-name-btn {
+
+  }
+
+  &_text {
+    color: $--sds-color-text-default-secondary;
+    padding: 0 $--sds-size-space-300;
+    @include bodyBaseText;
+  }
+
+  &_input {
+    height: $description-height;
+  }
+
+  &_action-btn {
+    margin-top: $--sds-size-space-200;
+  }
+}

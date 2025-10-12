@@ -1,0 +1,34 @@
+<div
+  class="tips"
+  [ngClass]="{ 'tips--feedback-session': isFeedbackSessionTip }"
+>
+  <button
+    mat-button
+    class="tips__close-btn"
+    [disabled]="showSpinner$ | async"
+    (click)="onDenyClick()"
+  >
+    <img src="assets/payments/deny.svg" alt="close-btn" />
+  </button>
+
+  <div class="tips__header">
+    <p class="tips__title">{{ 'tips_want_leave' }}</p>
+    <app-small-spinner
+      *ngIf="showSpinner$ | async"
+      [diameter]="16"
+      [isWhite]="true"
+    ></app-small-spinner>
+  </div>
+
+  <div class="tips__values">
+    <button
+      mat-button
+      class="tips__item"
+      [disabled]="showSpinner$ | async"
+      *ngFor="let value of tipsValues"
+      (click)="onPercentClick(value)"
+    >
+      {{ value }}%
+    </button>
+  </div>
+</div>

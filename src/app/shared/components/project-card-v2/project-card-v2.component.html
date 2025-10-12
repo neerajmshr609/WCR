@@ -1,0 +1,324 @@
+<div class="card" *ngIf="project" #cardRef>
+  <div
+    class="card__header-mini"
+    [ngClass]="{
+      'card__header-mini--columns': isPublicProfileProject && isAuthor,
+    }"
+    *ngIf="isConversationsProject || isPublicProfileProject"
+  >
+    <p>{{ project.title || 'Untitled' }}</p>
+    <div class="show-switch" *ngIf="isPublicProfileProject && isAuthor">
+      <app-gt-switch
+        [isSwitched]="!project.private"
+        [onoffMode]="true"
+        [small]="true"
+        (didChangeEvent)="hideProject()"
+      >
+        <span
+          class="gt-switch-left"
+          [ngClass]="{ 'gt-switch-left--green': !project.private }"
+        >
+          {{ (project.private ? 'project_card_v2.hide' : 'project_card_v2.show') | translate }}
+        </span>
+      </app-gt-switch>
+    </div>
+  </div>
+
+  <div
+    class="card__header"
+    *ngIf="!isConversationsProject && !isPublicProfileProject"
+  >
+    <div
+      class="card__header--left"
+      (click)="switchToUserMode()"
+      *ngIf="!isInUserMode"
+    >
+      <app-user-info
+        *ngIf="rater"
+        [disableLink]="true"
+        [user]="rater"
+      ></app-user-info>
+    </div>
+
+    <div class="card__header--left-info" *ngIf="isInUserMode">
+      <img
+        src="assets/conversation-back@2x.png"
+        class="userinfo-back"
+        (click)="switchToProjectMode()"
+      />
+    </div>
+
+    <app-user-info *ngIf="rater && isInUserMode" [user]="rater"></app-user-info>
+
+    <div class="card__header--rate" *ngIf="isInUserMode">
+      <p>€{{ rater.advisorrate }}/h</p>
+    </div>
+  </div>
+
+  <div
+    class="card__file-list"
+    *ngIf="(allFeedbacksObject && !isInUserMode) || isPublicProfileProject"
+  >
+    <div class="slider-presentation-nav" #carouselNavRef>
+      <div
+        class="slider-presentation-nav__item slider-presentation-nav__content--info"
+        *ngIf="resortAvailable"
+      >
+        <svg>
+          <use xlink:href="assets/feather-icon-defs.svg#icon-repeat"></use>
+        </svg>
+
+        <p class="feedbackcount">{{ feedbackCount('resort') }}</p>
+      </div>
+
+      <div
+        class="slider-presentation-nav__item slider-presentation-nav__content--info"
+        *ngIf="project.projectfiles.length !== 1"
+      >
+        <svg>
+          <use xlink:href="assets/feather-icon-defs.svg#icon-grid"></use>
+        </svg>
+        <p class="feedbackcount" *ngIf="feedbackCount('grid') as count">
+          {{ count }}
+        </p>
+      </div>
+
+      <div
+        class="slider-presentation-nav__item slider-presentation-nav__content--info"
+      >
+        <mat-icon>info</mat-icon>
+        <p class="feedbackcount" *ngIf="feedbackCount('concept') as count">
+          {{ count }}
+        </p>
+      </div>
+
+      <ng-template ngFor let-item [ngForOf]="project.projectfiles">
+        <div
+          class="slider-presentation-nav__item"
+          [class]="'slider-presentation-nav__item--' + item.kind"
+        >
+          <img
+            *ngIf="item.kind === 'image'"
+            [src]="item.url"
+            class="slider-presentation-nav__content slider-presentation-nav__content--image"
+          />
+          <img
+            *ngIf="item.kind === 'video' || item.kind === 'hostedvideo'"
+            src="assets/projectfiles-types/video.svg"
+            class="slider-presentation-nav__content"
+          />
+          <img
+            *ngIf="item.kind === 'audio'"
+            src="assets/projectfiles-types/audio.svg"
+            class="slider-presentation-nav__content"
+          />
+          <img
+            *ngIf="item.kind === 'iframe'"
+            src="assets/projectfiles-types/iframe.svg"
+            class="slider-presentation-nav__content"
+          />
+          <img
+            *ngIf="item.kind === 'pdf'"
+            src="assets/projectfiles-types/pdf.svg"
+            class="slider-presentation-nav__content"
+          />
+          <img
+            *ngIf="item.kind === 'dummy'"
+            src="assets/projectfiles-types/dummy.svg"
+            class="slider-presentation-nav__content"
+          />
+
+          <p class="feedbackcount" *ngIf="feedbackCount(+item.id) as count">
+            {{ count }}
+          </p>
+
+          <div
+            class="slider-presentation-nav__item-info"
+            [ngClass]="{
+              'slider-presentation-nav__item-info--active': isFileInfoOpen,
+            }"
+            *ngIf="
+              item.kind !== 'dummy' &&
+              item.showinfo &&
+              (item.lyrics || item.projectfile_title || item.filedescription)
+            "
+          >
+            i
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="card__presentation">
+    <div
+      class="card__media-view"
+      *ngIf="(allFeedbacksObject && !isInUserMode) || isPublicProfileProject"
+      #carouselRef
+      [ngStyle]="{ 'width.px': cardRef.clientWidth }"
+    >
+      <app-screenshot-overlay
+        *ngIf="showScreenshot"
+        [isLoading]="screenshotLoading"
+        [src]="screenshotSrc"
+        [style.width.px]="carouselRef.clientWidth"
+      ></app-screenshot-overlay>
+
+      <app-item-resort-view
+        *ngIf="resortAvailable"
+        [raterID]="raterID"
+        [project]="project"
+        [style.width.px]="carouselRef.clientWidth"
+      ></app-item-resort-view>
+
+      <app-grid-presentation
+        *ngIf="project.projectfiles.length !== 1"
+        [projectFiles]="project.projectfiles"
+        [style.width.px]="carouselRef.clientWidth"
+      ></app-grid-presentation>
+
+      <app-project-info-cards
+        [project]="project"
+        [isSmall]="true"
+      ></app-project-info-cards>
+
+      <ng-container *ngFor="let item of project.projectfiles">
+        <ng-container
+          *ngIf="allFeedbacksObject[+item.id] || {} as feedbackObject"
+        >
+          <app-item-media-view
+            [file]="item"
+            [fileFeedbacks]="feedbackObject[selectedUserFeedbackType]"
+            [isActive]="selectedDisplayType === +item.id"
+            [feedbackItem]="selectedFeedbackForImageView"
+            [showDrawing$]="showDrawing$.asObservable()"
+            [isFileInfoOpen]="isFileInfoOpen"
+            [style.width.px]="carouselRef.clientWidth"
+            (toggleFileInfo)="toggleFileInfo()"
+          ></app-item-media-view>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+
+  <app-feedback-selector
+    *ngIf="
+      !isPublicProfileProject &&
+      allFeedbacksObject &&
+      !isInUserMode &&
+      selectedDisplayType !== 'resort'
+    "
+    [selectedFeedbackType]="selectedUserFeedbackType"
+    [feedbacks]="allFeedbacksObject[selectedDisplayType]"
+    (selectTab)="selectTab($event)"
+  ></app-feedback-selector>
+
+  <a
+    class="give-feedback-btn"
+    *ngIf="isPublicProfileProject"
+    [routerLink]="'/rateflow/' + project.sharetoken"
+  >
+    Give feedback
+  </a>
+
+  <ng-container
+    *ngIf="!isPublicProfileProject && !isInUserMode && allFeedbacksObject"
+  >
+    <ng-container
+      *ngIf="allFeedbacksObject[selectedDisplayType] as allFeedbacks"
+    >
+      <ng-container
+        *ngIf="
+          allFeedbacks[selectedUserFeedbackType] || allFeedbacks as feedbacks
+        "
+      >
+        <ng-container *ngIf="feedbacks.length">
+          <div class="card__comments">
+            <div
+              #feedbackAreaRef
+              class="card__comments__question-area--text"
+              [id]="'feedback-' + feedback.id"
+              *ngFor="let feedback of feedbacks"
+            >
+              <app-feedback-bubble
+                [isProjectCard]="true"
+                [showScreenshot]="showScreenshot"
+                [showCurves]="showCurves"
+                [feedback]="feedback"
+                [isAuthor]="isAuthor"
+                [canSelectLanguage]="
+                  isAuthor || project.user.id === currentUser?.id
+                "
+                [isSelected]="selectedFeedbackId === feedback.id"
+                [rater]="rater"
+                [project]="project"
+                clickOutside
+                (selectFeedback)="selectFeedbackForImageView(feedback, $event)"
+                (didSelectRerateRateback)="didSelectRerateRateback($event)"
+                (clickOutside)="deselectFeedback(feedback)"
+              ></app-feedback-bubble>
+            </div>
+          </div>
+
+          <div
+            class="card__footer presenter-question-input__container"
+            *ngIf="
+              isAuthor &&
+              !isNewsfeedPresentation &&
+              !isConversationsProject &&
+              !isAnon(rater.id)
+            "
+          >
+            <div
+              class="presenter-question-input"
+              *ngIf="!feedbackChatMessageSaved"
+            >
+              <img
+                class="presenter-question-input__loader"
+                src="assets/loader.svg"
+                *ngIf="feedbackChatMessageSaving"
+                [@fadeInOut]
+              />
+
+              <app-text-input
+                *ngIf="
+                  rater &&
+                  !feedbackChatMessageSaving &&
+                  !feedbackChatMessageSaved
+                "
+                [inputPlaceholder]="'Reply to ' + rater.username + '...'"
+                [user]="rater"
+                audioPage="latest"
+                [audioOrder]="project.id + '-' + rater.id"
+                (sendBtnClicked)="onChatMessageSendClick($event)"
+              ></app-text-input>
+            </div>
+
+            <app-message
+              *ngIf="feedbackChatMessageSaved"
+              class="chat__message chat__message--right"
+              [message]="currentChatMessage"
+            ></app-message>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <div *ngIf="!isInUserMode && !allFeedbacksObject" class="mb-2">
+    <app-small-spinner diameter="30"></app-small-spinner>
+  </div>
+
+  <div
+    class="card__usermode"
+    *ngIf="isInUserMode && rater"
+    style="margin-bottom: 14px"
+  >
+    <app-profile-info-card
+      [isContainedMode]="true"
+      [user]="rater"
+    ></app-profile-info-card>
+  </div>
+
+  <div class="gt-separator" *ngIf="isInUserMode && rater"></div>
+</div>

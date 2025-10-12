@@ -1,0 +1,26 @@
+<ng-container *ngIf="searchService.currentPage$ | async as searchBarSection">
+  <div class="search-results">
+    <ng-container
+      *ngIf="searchService.selectedCategories$ | async as selectedCategories"
+    >
+      <app-search-results-categories
+        *ngIf="
+          selectedCategories.length &&
+          (searchBarSection === 'publicfeed' ||
+            searchBarSection === 'creatives')
+        "
+        [section]="searchBarSection"
+        [categories]="selectedCategories"
+      ></app-search-results-categories>
+    </ng-container>
+
+    <ng-container
+      *ngIf="searchService.selectedSkills$ | async as selectedSkills"
+    >
+      <app-search-results-skills
+        *ngIf="selectedSkills.length && searchBarSection === 'advisors'"
+        [skills]="selectedSkills"
+      ></app-search-results-skills>
+    </ng-container>
+  </div>
+</ng-container>

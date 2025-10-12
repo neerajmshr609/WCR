@@ -1,0 +1,747 @@
+@if (currentUser() &&
+conversation) {
+  <div
+    class="chat"
+    [ngClass]="{internal: isInternal()}"
+  >
+    @if (showChatHeading()) {
+      <ng-container *ngTemplateOutlet="headerComponent"></ng-container>
+
+    }
+
+    @if (pagination$ | async; as paginationDetail) {
+      <div
+        class="chat__history"
+        infiniteScroll
+        [infiniteScrollUpDistance]="2"
+        [scrollWindow]="false"
+        [infiniteScrollThrottle]="0"
+        [infiniteScrollDisabled]="
+        isLoadMoreMessages() || !paginationDetail.canLoadMore
+      "
+        infiniteScrollContainer=".chat__history"
+        [fromRoot]="true"
+        (scrolledUp)="loadMoreMessages(chatHistoryRef, chatHistoryRef.scrollTop)"
+        #chatHistoryRef
+      >
+        @if (isLoadMoreMessages()) {
+          <app-small-spinner [diameter]="50"></app-small-spinner>
+        }
+
+        <ng-container *ngFor="let message of (messages$ | async)">
+          <!--    <ng-container *ngFor="let item of dialogData; trackBy: trackByIndex">-->
+          <ng-container
+            [ngTemplateOutlet]="messageTMPL"
+            [ngTemplateOutletContext]="{ message: message }"
+          >
+          </ng-container>
+
+          <!--      <ng-container-->
+            <!--        *ngIf="item.type === 'paymentSession' && (item.data.session_type !== 'icebreaker_owner')"-->
+            <!--        [ngTemplateOutlet]="paymentSession"-->
+            <!--        [ngTemplateOutletContext]="{ paymentSession: getPaymentSession(item) }">-->
+            <!--      </ng-container>-->
+
+            <!--      <ng-template #paymentSession let-paymentSession="paymentSession">-->
+            <!--        <div class="payment-session chat__item"-->
+            <!--             *ngIf="(paymentSession.status !== paymentSessionStatuses.created && currentUser.id !== advisorId) || paymentSession.messages?.length"-->
+            <!--             [ngClass]="{-->
+            <!--              'payment-session&#45;&#45;paid': paymentSession.status === paymentSessionStatuses.approved,-->
+            <!--              'payment-session&#45;&#45;free': !paymentSession.payment_request?.billable_seconds && !paymentSession.payment_request?.due_seconds && paymentSession.status !== paymentSessionStatuses.created,-->
+            <!--              'payment-session&#45;&#45;unpaid': paymentSession.status !== paymentSessionStatuses.approved && paymentSession.status !== paymentSessionStatuses.created,-->
+            <!--              'payment-session__ice-breaker-session': !isOwnerOfIceBreaker && paymentSession.session_type === 'icebreaker_owner'-->
+            <!--            }">-->
+            <!--          <app-receipt-->
+            <!--            class="chat__message"-->
+            <!--            [id]="paymentSession.id"-->
+            <!--            [link]="stripeDashboardLink$ | async"-->
+            <!--            [paymentRequest]="paymentSession.payment_request"-->
+            <!--            [approved]="paymentSession.status === paymentSessionStatuses.approved"-->
+            <!--            [denied]="paymentSession.status === paymentSessionStatuses.denied"-->
+            <!--            [created]="paymentSession.status === paymentSessionStatuses.created"-->
+            <!--            [awaitingPayment]="paymentSession.status === paymentSessionStatuses.awaitingPayment"-->
+            <!--            [createdAt]="paymentSession.created_at"-->
+            <!--            [outgoing]="(currentUser.id === advisorId) + (paymentSession.status === paymentSessionStatuses.awaitingPayment) !== 1"-->
+            <!--            [hourlyRate]="conversation.advisorrate || activeConversationRater.advisorrate"-->
+            <!--            [processing$]="processing$"-->
+            <!--            type="messagePaymentSession"-->
+            <!--            *ngIf="paymentSession.status !== paymentSessionStatuses.created"-->
+            <!--            [ngClass]="{-->
+            <!--              'chat__message&#45;&#45;right': (currentUser.id === advisorId) + (paymentSession.status === paymentSessionStatuses.awaitingPayment) !== 1,-->
+            <!--              'chat__message&#45;&#45;left': (currentUser.id === advisorId) + (paymentSession.status === paymentSessionStatuses.awaitingPayment) === 1-->
+            <!--            }"-->
+            <!--            (denySessionPayment)="denySessionPayment($event)"-->
+            <!--            (approveSessionPayment)="approveSessionPayment($event)"-->
+            <!--          ></app-receipt>-->
+
+            <!--          <div class="payment-session__messages"-->
+            <!--               *ngIf="currentUser.id === advisorId || paymentSession.status === paymentSessionStatuses.approved || paymentSession.payment_request?.billable_seconds === 0">-->
+            <!--            <div *ngFor="let paymentSessionMessage of paymentSession.messages">-->
+            <!--              <ng-container [ngTemplateOutlet]="message"-->
+            <!--                            [ngTemplateOutletContext]="{ message: paymentSessionMessage, paymentSessionId: paymentSession.id }"></ng-container>-->
+            <!--            </div>-->
+            <!--          </div>-->
+
+            <!--          <div class="payment-session__status" *ngIf="paymentSession.status !== paymentSessionStatuses.created">-->
+            <!--            <div [ngSwitch]="true">-->
+            <!--              <span-->
+            <!--                *ngSwitchCase="paymentSession.status === paymentSessionStatuses.approved || paymentSession.payment_request?.billable_seconds === 0">paid</span>-->
+            <!--              <span *ngSwitchCase="paymentSession.status === paymentSessionStatuses.denied">denied</span>-->
+            <!--              <span *ngSwitchDefault>unpaid</span>-->
+            <!--            </div>-->
+            <!--          </div>-->
+            <!--        </div>-->
+
+            <!--        <ng-container *ngIf="paymentSession.status === paymentSessionStatuses.approved">-->
+            <!--          <ng-container *ngTemplateOutlet="tipsTpl;-->
+            <!--                        context: {-->
+            <!--                          tips: paymentSession.tip,-->
+            <!--                          id: paymentSession.id,-->
+            <!--                          tipsType: tipsTypes.messagePaymentSession-->
+            <!--                        }"></ng-container>-->
+            <!--        </ng-container>-->
+            <!--      </ng-template>-->
+
+            <!--      <ng-container-->
+            <!--        *ngIf="item.type === 'paymentSession' && (item.data.session_type == 'icebreaker_owner')"-->
+            <!--        [ngTemplateOutlet]="paymentSessionIceBreaker"-->
+            <!--        [ngTemplateOutletContext]="{ paymentSession: getPaymentSession(item) }">-->
+            <!--      </ng-container>-->
+
+            <!--      <ng-template #paymentSessionIceBreaker let-paymentSession="paymentSession">-->
+            <!--        <ng-container *ngIf="paymentSession.status !== paymentSessionStatuses.approved; else unlockedIceBreakerMessages">-->
+            <!--          <div *ngIf="isOwnerOfIceBreaker" class="payment-session payment-session&#45;&#45;preview-messages-container">-->
+            <!--            <div class="payment-session__messages">-->
+            <!--              <div class="preview-title">-->
+            <!--                RANDOMLY SELECTED PREVIEW-->
+            <!--              </div>-->
+            <!--              <div *ngFor="let paymentSessionMessage of paymentSession.messages">-->
+            <!--                <ng-container [ngTemplateOutlet]="message"-->
+            <!--                              [ngTemplateOutletContext]="{ message: paymentSessionMessage, paymentSessionId: paymentSession.id }"></ng-container>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--            <div class="payment-session__status">-->
+            <!--              <div>-->
+            <!--                <span>Randomly Selected Preview</span>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--          </div>-->
+            <!--          <div class="payment-session chat__item"-->
+            <!--               *ngIf="(paymentSession.status !== paymentSessionStatuses.created && currentUser.id !== advisorId) || paymentSession.messages?.length"-->
+            <!--               [ngClass]="{-->
+            <!--              'payment-session&#45;&#45;paid': paymentSession.status === paymentSessionStatuses.approved,-->
+            <!--              'payment-session&#45;&#45;unpaid': paymentSession.status !== paymentSessionStatuses.approved && paymentSession.status !== paymentSessionStatuses.created-->
+            <!--            }">-->
+            <!--            <app-receipt-->
+            <!--              class="chat__message"-->
+            <!--              [id]="paymentSession.id"-->
+            <!--              [link]="stripeDashboardLink$ | async"-->
+            <!--              [paymentRequest]="paymentSession.payment_request"-->
+            <!--              [approved]="paymentSession.status === paymentSessionStatuses.approved"-->
+            <!--              [denied]="paymentSession.status === paymentSessionStatuses.denied"-->
+            <!--              [awaitingPayment]="paymentSession.status === paymentSessionStatuses.awaitingPayment"-->
+            <!--              [createdAt]="paymentSession.created_at"-->
+            <!--              [outgoing]="(currentUser.id === advisorId) + (paymentSession.status === paymentSessionStatuses.awaitingPayment) !== 1"-->
+            <!--              [hourlyRate]="conversation.advisorrate || activeConversationRater.advisorrate"-->
+            <!--              [processing$]="processing$"-->
+            <!--              [showTime]="false"-->
+            <!--              [type]="isOwnerOfIceBreaker ? '': paymentSessionStatuses.awaitingPayment"-->
+            <!--              [ngClass]="{-->
+            <!--              'chat__message&#45;&#45;right': (currentUser.id === advisorId) + (paymentSession.status === paymentSessionStatuses.awaitingPayment) !== 1,-->
+            <!--              'chat__message&#45;&#45;left': (currentUser.id === advisorId) + (paymentSession.status === paymentSessionStatuses.awaitingPayment) === 1-->
+            <!--            }"-->
+            <!--              (denySessionPayment)="denySessionPayment($event)"-->
+            <!--              (approveSessionPayment)="approveSessionPayment($event)">-->
+
+            <!--              <ng-container description>-->
+            <!--                <div class="payment-session-description chat__message"-->
+            <!--                     [ngClass]="{'payment-session-description__left': !isOwnerOfIceBreaker,-->
+            <!--                                'payment-session-description__right': isOwnerOfIceBreaker-->
+            <!--                   }">-->
+            <!--                  Once this invoice is paid, All <br> the information will be <br> revealed in this Ice Breaker.-->
+            <!--                </div>-->
+            <!--              </ng-container>-->
+            <!--              <ng-container header-right>-->
+            <!--                {{ isOwnerOfIceBreaker ? 'flat rate' : 'flat fee'}}-->
+            <!--              </ng-container>-->
+            <!--            </app-receipt>-->
+
+            <!--            <div class="payment-session__messages"-->
+            <!--                 *ngIf="!isOwnerOfIceBreaker">-->
+            <!--              <div *ngFor="let paymentSessionMessage of paymentSession.messages">-->
+            <!--                <ng-container [ngTemplateOutlet]="message"-->
+            <!--                              [ngTemplateOutletContext]="{ message: paymentSessionMessage, paymentSessionId: paymentSession.id }"></ng-container>-->
+            <!--              </div>-->
+            <!--            </div>-->
+
+            <!--            <div class="payment-session__status" *ngIf="paymentSession.status !== paymentSessionStatuses.created">-->
+            <!--              <div [ngSwitch]="true">-->
+            <!--              <span-->
+            <!--                *ngSwitchCase="paymentSession.status === paymentSessionStatuses.approved || paymentSession.payment_request?.billable_seconds === 0">paid</span>-->
+            <!--                <span *ngSwitchCase="paymentSession.status === paymentSessionStatuses.denied">denied</span>-->
+            <!--                <span *ngSwitchDefault>unpaid</span>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--          </div>-->
+            <!--        </ng-container>-->
+            <!--        <ng-template #unlockedIceBreakerMessages>-->
+            <!--          <div *ngFor="let paymentSessionMessage of paymentSession.messages">-->
+            <!--            <ng-container [ngTemplateOutlet]="message"-->
+            <!--                          [ngTemplateOutletContext]="{ message: paymentSessionMessage, paymentSessionId: paymentSession.id }"></ng-container>-->
+            <!--          </div>-->
+            <!--&lt;!&ndash;          <div class="chat__item">&ndash;&gt;-->
+
+            <!--&lt;!&ndash;            <div class="payment-session__messages"&ndash;&gt;-->
+            <!--&lt;!&ndash;                 *ngIf="!isAdvisorCurrentUser">&ndash;&gt;-->
+            <!--&lt;!&ndash;              <div *ngFor="let paymentSessionMessage of paymentSession.messages">&ndash;&gt;-->
+            <!--&lt;!&ndash;                <ng-container [ngTemplateOutlet]="message"&ndash;&gt;-->
+            <!--&lt;!&ndash;                              [ngTemplateOutletContext]="{ message: paymentSessionMessage, paymentSessionId: paymentSession.id }"></ng-container>&ndash;&gt;-->
+            <!--&lt;!&ndash;              </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+            <!--&lt;!&ndash;          </div>&ndash;&gt;-->
+            <!--        </ng-template>-->
+            <!--      </ng-template>-->
+
+          <ng-template
+            #messageTMPL
+            let-message="message"
+            let-paymentSessionId="paymentSessionId"
+          >
+            <div *ngIf="unreadMessagesNumber() && message.id === firstUnreadMessageId() && !message.read"
+                 class="chat__unread-separator">
+              <p class="chat__unread-text">{{ unreadMessagesNumber() }} Unread Messages</p>
+            </div>
+
+            <ng-container *ngIf="message | shouldShowMessage: currentUser()">
+              <app-message
+                [isInternalChat]="isInternal()"
+                class="chat__message chat__item"
+                [id]="'chat-message-' + message.id"
+                [message]="message"
+                [conversation]="conversation"
+                [paymentSessionId]="paymentSessionId"
+                [feedback]="getFeedback(message.feedback_id)"
+                (enterMeet)="onEnterClasroomClick()"
+                [feedbackQuestion]="
+                getFeedbackQuestion(message.id, message.feedback_id)"
+                [isRater]="advisorId === currentUser().id"
+                [canReply]="!message.system_message"
+                [initialMessage]="message.replay_message"
+                [canEdit]="
+                message.user_id === currentUser().id &&
+                message.icebreaker_question_id
+              "
+                [recipients]="
+                message.user_id === currentUser()?.id
+                  ? [getCurrentUserInfo()]
+                  : activeConversationPartners()
+              "
+                (find)="findFeedback($event)"
+                (reply)="replyMessage(message)"
+                (edit)="editMessageOriginal($event)"
+                (scrollToInitialMessage)="scrollToMessage(message.initial_message_id)"
+                appScrollIntoViewDirective
+                (visible)="scrollMessageIntoView(message.id)"
+              ></app-message>
+            </ng-container>
+          </ng-template>
+
+          <!--      &lt;!&ndash;      Don't show if not lesson and not the iceBreaker lesson&ndash;&gt;-->
+            <!--      <ng-container-->
+            <!--        *ngIf="item.type === 'lesson' && item.data.meetingtime && item.data.id !== conversation.icebreaker_member?.lesson?.id">-->
+            <!--        <ng-container *ngIf="item.data as lesson">-->
+            <!--          <div class="video_chat_history">-->
+            <!--            <ng-template *ngTemplateOutlet="lessonTpl; context: { $implicit: lesson }"></ng-template>-->
+
+            <!--            <ng-template #lessonTpl let-lesson>-->
+            <!--              <app-meeting-confirmation-->
+            <!--                class="chat__message"-->
+            <!--                [ngClass]="{-->
+            <!--                  'chat__message&#45;&#45;right': currentUser.id === lesson.user_id,-->
+            <!--                  'chat__message&#45;&#45;left': currentUser.id !== lesson.user_id-->
+            <!--                }"-->
+            <!--                [skill]="conversation.conversation_userskill?.skill"-->
+            <!--                [fromCurrentUser]="currentUser.id === lesson.user_id"-->
+            <!--                [meetingTime]="lesson.meetingtime"-->
+            <!--                [meetingMissed]="isLessonMissed(lesson)"-->
+            <!--                [meetingConfirmed]="lesson.confirmed"-->
+            <!--                [meetingFinished]="lesson.finished"-->
+            <!--                [meetingPaid]="lesson.paid"-->
+            <!--                (meetingConfirmEvt)="markConversationMeetingAsConfirmed($event)"-->
+            <!--              ></app-meeting-confirmation>-->
+
+            <!--              <div *ngIf="lesson.finished"-->
+            <!--                   class="payment-session chat__item"-->
+            <!--                   [ngClass]="{-->
+            <!--                      'payment-session&#45;&#45;paid': lesson.paymentrequestapproved,-->
+            <!--                      'payment-session&#45;&#45;unpaid': (!lesson.paymentrequestapproved || lesson.paymentrequestdenied) && (lesson.payment_request.billable_seconds || lesson.payment_request.due_seconds),-->
+            <!--                      'payment-session&#45;&#45;free': !lesson.payment_request.billable_seconds && !lesson.payment_request.due_seconds,-->
+            <!--                      'payment-session&#45;&#45;missed': isLessonMissed(lesson) && !lesson.paymentrequestapproved && !lesson.paymentrequestdenied && !lesson.finished-->
+            <!--                    }">-->
+            <!--                <ng-container>-->
+            <!--                  <app-receipt-->
+            <!--                    class="chat__message chat__invoice"-->
+            <!--                    [id]="lesson.id"-->
+            <!--                    [link]="stripeDashboardLink$ | async"-->
+            <!--                    [paymentRequest]="lesson.payment_request"-->
+            <!--                    [approved]="lesson.paymentrequestapproved"-->
+            <!--                    [denied]="lesson.paymentrequestdenied"-->
+            <!--                    [created]="conversation.lastmeetingtime && !conversation.lastmeetingfinished || !conversation.lastmeetingpaid"-->
+            <!--                    [awaitingPayment]="!lesson.paymentrequestapproved && !lesson.paymentrequestdenied"-->
+            <!--                    [createdAt]="lesson.created_at"-->
+            <!--                    [outgoing]="(currentUser.id === advisorId) + (!lesson.paymentrequestapproved && !lesson.paymentrequestdenied) !== 1"-->
+            <!--                    [hourlyRate]="conversation.advisorrate || activeConversationRater.advisorrate"-->
+            <!--                    [processing$]="processing$"-->
+            <!--                    [ngClass]="{-->
+            <!--                      'chat__message&#45;&#45;right': (currentUser.id === advisorId) + (!lesson.paymentrequestapproved && !lesson.paymentrequestdenied) !== 1,-->
+            <!--                      'chat__message&#45;&#45;left': (currentUser.id === advisorId) + (!lesson.paymentrequestapproved && !lesson.paymentrequestdenied) === 1-->
+            <!--                    }"-->
+            <!--                    (denySessionPayment)="meetingPaymentDeny($event)"-->
+            <!--                    (approveSessionPayment)="meetingPaymentConfirm($event)"-->
+            <!--                  ></app-receipt>-->
+
+            <!--                  <app-meeting-feedback-->
+            <!--                    [lesson]="lesson"-->
+            <!--                    *ngIf="lesson.paid && currentUser.id !== advisorId"-->
+            <!--                  ></app-meeting-feedback>-->
+
+            <!--                  <div class="payment-session__status"-->
+            <!--                       [ngClass]="{'mt-2': lesson.paid && currentUser.id !== advisorId}"-->
+            <!--                       *ngIf="paymentSession.status !== paymentSessionStatuses.created">-->
+            <!--                    <div class="receipt__title" [ngSwitch]="true">-->
+            <!--                      <span *ngSwitchCase="lesson.paymentrequestapproved">paid</span>-->
+            <!--                      <span *ngSwitchCase="lesson.paymentrequestdenied">denied</span>-->
+            <!--                      <span-->
+            <!--                        *ngSwitchCase="!lesson.payment_request.billable_seconds && !lesson.payment_request.due_seconds">free</span>-->
+            <!--                      <span *ngSwitchDefault>unpaid</span>-->
+            <!--                    </div>-->
+            <!--                  </div>-->
+            <!--                </ng-container>-->
+            <!--              </div>-->
+            <!--              <ng-container *ngIf="lesson.paymentrequestapproved">-->
+            <!--                <ng-container-->
+            <!--                  *ngTemplateOutlet="tipsTpl;-->
+            <!--                  context: { tips: lesson.tip, id: lesson.id, tipsType: tipsTypes.lesson }"-->
+            <!--                ></ng-container>-->
+            <!--              </ng-container>-->
+            <!--            </ng-template>-->
+            <!--          </div>-->
+            <!--        </ng-container>-->
+            <!--      </ng-container>-->
+
+            <!--      &lt;!&ndash;      iceBreaker feedback &ndash;&gt;-->
+            <!--      <ng-container *ngIf="item.type === 'iceBreaker-lesson' && currentUser.id !== advisorId">-->
+            <!--        <app-meeting-feedback-->
+            <!--          [lesson]="item.data"-->
+            <!--        ></app-meeting-feedback>-->
+            <!--        <div class="ice-breaker-tip-bg"-->
+            <!--             *ngIf="conversation.icebreaker_member.tip && !conversation.icebreaker_member.tip.paid">-->
+            <!--          <ng-container-->
+            <!--            *ngTemplateOutlet="tipsTpl;-->
+            <!--                  context: { tips: item.data.tip, id: conversation.icebreaker_member.id, tipsType: tipsTypes.iceBreaker }"-->
+            <!--          ></ng-container>-->
+            <!--        </div>-->
+            <!--      </ng-container>-->
+            <!--    </ng-container>-->
+          </ng-container>
+
+<!--        <div-->
+<!--          *ngIf="-->
+<!--          (isActivePaymentCounterSession || currentUser()?.id !== advisorId) &&-->
+<!--          isCanScroll &&-->
+<!--          !isOwnerOfIceBreaker()-->
+<!--        "-->
+<!--          class="scroll-to-bottom-btn"-->
+<!--        >-->
+<!--          <app-scroll-btn-->
+<!--            (clickedScrollDown)="scrollOnHistory(true)"-->
+<!--            (clickedScrollUp)="scrollOnHistory(false)"-->
+<!--          >-->
+<!--          </app-scroll-btn>-->
+<!--        </div>-->
+        <div
+          class="meeting chat__item"
+          *ngIf="
+          conversation.lastmeetingconfirmed &&
+          conversation.lastmeetingtime &&
+          meetingToday &&
+          !conversation.lastmeetingfinished
+        "
+        >
+<!--          <div *ngIf="!meetingInProgress$.value">-->
+<!--            <p class="meeting__info" *ngIf="!meetingCanStart">-->
+<!--              {{ 'lesson_start_at' | translate }}-->
+<!--              <b>{{ conversation.lastmeetingtime | date: ' h:mm a' }}</b>-->
+<!--            </p>-->
+<!--            <button-->
+<!--              (click)="onEnterClasroomClick()"-->
+<!--              class="meeting__submit-btn submit"-->
+<!--              mat-flat-button-->
+<!--              [disabled]="jitsiIframeIsLoading || !meetingCanStart"-->
+<!--            >-->
+<!--              <div class="btn-body">-->
+<!--                <span>{{ 'enter_room' | translate }}</span>-->
+<!--                <app-small-spinner-->
+<!--                  diameter="16"-->
+<!--                  *ngIf="jitsiIframeIsLoading"-->
+<!--                ></app-small-spinner>-->
+<!--              </div>-->
+<!--            </button>-->
+<!--          </div>-->
+      @if (!(meetingInProgress$ | async) && !hideEnterVideoCall()) {
+        <app-enter-video-call
+          @fadeInUp
+          [inProgress]="meetingInProgress$ | async"
+          [loading]="jitsiIframeIsLoading"
+          (join)="onEnterClasroomClick()"
+          (close)="hideVideoCall()"
+        ></app-enter-video-call>
+      }
+
+
+            <div class="video-meet-wrapper" [ngClass]="{
+            hidden: (jitsiIframeIsLoading || !(meetingInProgress$ | async)),
+            }">
+
+              @if(isVideoCallFullView() || isVideoCallDraggable()) {
+                <div class="video-call-actions">
+                  @if(isVideoCallFullView()) {
+                    <button class="video-call-btn" (click)="minimizeVideoScreen()">
+                      <app-icon-minimize color="#F5F5F5"></app-icon-minimize>
+                    </button>
+                  }
+                  @if(isVideoCallDraggable()) {
+                    <button class="video-call-btn" (click)="maximizeVideoScreen()">
+                      <app-icon-maximaze color="#F5F5F5"></app-icon-maximaze>
+                    </button>
+                  }
+
+                  <button class="video-call-btn" (click)="squareVideoScreen()">
+                    <app-icon-square fill="#F5F5F5"></app-icon-square>
+                  </button>
+                  <button class="video-call-btn" (click)="horizontalVideoScreen()">
+                    <app-icon-horizontal fill="#F5F5F5"></app-icon-horizontal>
+                  </button>
+                  <button class="video-call-btn" (click)="verticalVideoScreen()">
+                    <app-icon-vertical fill="#F5F5F5"></app-icon-vertical>
+                  </button>
+                  @if(isVideoCallDraggable()) {
+                    <button class="video-call-drag" (touchstart)="onTouchStart($event)" (mousedown)="onMouseDown($event)">
+                      <app-icon-draggable color="#1E1E1E"></app-icon-draggable>
+                    </button>
+                  }
+                </div>
+              } @else {
+                <div [matMenuTriggerFor]="menu" class="jitsi-settings-btn">
+                  <app-icon-settings fill="#E2E2E2"></app-icon-settings>
+                </div>
+
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="minimizeVideoScreen()">
+                    <mat-icon><app-icon-minimize></app-icon-minimize></mat-icon>
+
+                    Minimize Video Call
+                  </button>
+                  <button mat-menu-item (click)="verticalVideoScreen()">
+                    <mat-icon>
+                      <app-icon-vertical></app-icon-vertical>
+                    </mat-icon>
+                    Vertical
+                  </button>
+                  <button mat-menu-item (click)="squareVideoScreen()">
+                    <mat-icon>
+                      <app-icon-square></app-icon-square>
+                    </mat-icon>
+                    Square
+                  </button>
+                  <button mat-menu-item (click)="horizontalVideoScreen()">
+                    <mat-icon>
+                      <app-icon-horizontal></app-icon-horizontal>
+                    </mat-icon>
+                    Horizontal
+                  </button>
+                  <button mat-menu-item (click)="maximizeVideoScreen()">
+                    <mat-icon>
+                     <app-icon-maximaze></app-icon-maximaze>
+                    </mat-icon>
+                    Maximize Video Call
+                  </button>
+                </mat-menu>
+              }
+
+              <div
+                id="jitsi-container"
+
+              ></div>
+            </div>
+          <!-- Jitsi container -->
+
+          <!-- /Jitsi container -->
+        </div>
+
+        @if (showFinishQuestionnaireButton()) {
+          <app-finish-questionnaire-button [conversation]="conversation"></app-finish-questionnaire-button>
+        }
+
+        @if (conversation.isIceBreaker() && !conversation.isOwner(currentUser())) {
+          <app-icebreaker-conversation-actions
+            [(conversation)]="conversation"
+            [textInput]="textInputComp"
+            [audioInput]="audioInputComp"
+          ></app-icebreaker-conversation-actions>
+        }
+      </div>
+
+    }
+
+    @if (isDisplayAdditionalMenu()) {
+      <app-additional-menu
+        [conversationId]="this.conversation.id"
+        (send)="sendFiles()"
+        [(isUploadFile)]="isUploadFile"
+        [(isDisplayAdditionalMenu)]="isDisplayAdditionalMenu"
+      ></app-additional-menu>
+    }
+
+    @if (!isUploadFile() || this.isSendingFile()) {
+      <div class="chat__bottom">
+        <div class="chat__payment-box" *ngIf="bankCardPayment">
+          <form id="payment-form">
+            <!-- Elements will create input elements here -->
+            <div id="card-element"></div>
+
+            <!-- We'll put the error messages in this element -->
+            <div id="card-errors" role="alert"></div>
+
+            <button
+              class="chat__submit-btn"
+              mat-flat-button
+              id="submit"
+              [disabled]="bankCardPaymentInProgress"
+            >
+              <div class="btn-body">
+                <span> {{ 'pay_btn_text' | translate }} </span>
+                <app-small-spinner
+                  *ngIf="bankCardPaymentInProgress"
+                  diameter="16"
+                  [isWhite]="true"
+                ></app-small-spinner>
+              </div>
+            </button>
+          </form>
+        </div>
+
+
+        <!--    <ng-container *ngIf="isCanCreateIceBreaker">-->
+        <!--      <button class="create-icebreaker-btn" routerLink="/create-ice-breaker">-->
+        <!--        <img src="assets/ice-breaker/ice-breaker-logo.svg" alt="">-->
+        <!--        Create Ice Breaker-->
+        <!--      </button>-->
+        <!--    </ng-container>-->
+
+        <!--    <div class="chat__counter-box" *ngIf="(!conversation.isclarification)">-->
+        <!--      <p *ngIf="((paymentSessionOpened$ | async) === false) && this.currentPaymentSession"-->
+        <!--         class="paused-message">When <span class="paused-message__highlight">paused</span>, messages will be sent for-->
+        <!--        free.</p>-->
+        <!--      <app-payment-counter-->
+        <!--        class="counter-with-internal-content"-->
+        <!--        [meetingStartTimer$]="meetingStartTimer$.asObservable()"-->
+        <!--        [meetingInProgress$]="meetingInProgress$.asObservable()"-->
+        <!--        [user]="currentUser"-->
+        <!--        [isMeeting]="meetingInProgress$ | async"-->
+        <!--        [conversationDidSend$]="conversationDidSend$"-->
+        <!--        [currentPaymentSession]="currentPaymentSession"-->
+        <!--        [conversationId]="conversation.id"-->
+        <!--        [advisorId]="advisorId"-->
+        <!--        [informMessage]="informMessage"-->
+        <!--        [hourlyRate]="conversation.advisorrate || activeConversationRater.advisorrate"-->
+        <!--        [closeTimer$]="closeTimer$.asObservable()"-->
+        <!--        (createPaymentSession)="createPaymentSession()"-->
+        <!--        (closePaymentSession)="closePaymentSession()"-->
+        <!--        (isActiveSession)="isActivePaymentCounterSession = $event"-->
+        <!--        (toggleTimer)="toggleTimer($event)"-->
+        <!--        (didUpdate)="onCounterUpdate($event)">-->
+        <!--        <ng-container payment-container>-->
+        <!--          <app-scroll-btn class="nav-btns" (clickedScrollDown)="scrollOnHistory(true)"-->
+        <!--                          (clickedScrollUp)="scrollOnHistory(false)">-->
+        <!--          </app-scroll-btn>-->
+        <!--        </ng-container>-->
+        <!--      </app-payment-counter>-->
+        <!--    </div>-->
+
+        <div class="chat__counter-box" *ngIf="conversation.isclarification">
+          <br />
+          <button
+            (click)="resolveAndCloseClarification()"
+            class="mat-raised-button clarification-resolve"
+          > {{ 'resolve_and_close' | translate }}
+          </button>
+          <button
+            (click)="resolveAndAddToQueueClarification()"
+            class="mat-raised-button clarification-resolve"
+          > {{ 'resolve_and_queue' | translate }}
+          </button>
+        </div>
+
+        <div class="mt-1">
+          <div class="message-to-answer" *ngIf="messageToAnswer">
+            <button
+              class="message-to-answer__cancel"
+              (click)="clearMessageToAnswer()"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+            <span class="message-to-answer__header">Initial message</span>
+            <span class="message-to-answer__text">
+            <ng-container *ngIf="messageToAnswer.body; else noBodyTpl">{{
+                messageToAnswer.body
+              }}</ng-container>
+            <ng-template #noBodyTpl>
+              <ng-container *ngIf="messageToAnswer.audio_message"
+              >{{ 'audio_message' | translate }}</ng-container
+              >
+              <ng-container *ngIf="messageToAnswer.message_screenshots?.length"
+              >{{ 'image' | translate }}</ng-container
+              >
+            </ng-template>
+          </span>
+          </div>
+
+          @if (showConfirmationPanel() && confirmationPanelData().options) {
+            <app-chat-confirmation-panel [options]="confirmationPanelData().options"
+                                         (reply)="replyToYesNoQuestion($event)"></app-chat-confirmation-panel>
+          }
+          @if (!signedInUser() && conversation.isCompleted()) {
+            <app-login-proposal [title]="'ice-breaker.propose-finish_btn_text' | translate" [conversationId]="conversation.id"></app-login-proposal>
+          } @else {
+            @if(isRecording) {
+              <app-audio-record
+                #audioInput
+                [user]="currentUser()"
+                [sendBtnSrc]="sendBtnSrc"
+                [audioError$]="audioError.asObservable()"
+                (uploadingFinished)="sendAudioMessage($event)"
+                (error)="handleRecorderNotAllowed()"
+                (close)="handleAudioSuccess()"
+                (startUpload)="startUpload($event)"
+                [hasHost]="true"
+              ></app-audio-record>
+            } @else {
+              <app-text-input
+                #textInput
+                (messageUpdate)="checkUpdate($event)"
+                [inputPlaceholder]="inputPlaceholder()"
+                [sendBtnSrc]="sendBtnSrc"
+                [scaleSendBtn]="scaleSendBtn"
+                [externalAudioRecord]="true"
+                [allowImages]="true"
+                [recordBtnDisabled]="recorderNotAllowed"
+                [messageSent$]="messageSentEvt.asObservable()"
+                [focusInput$]="focusInput.asObservable()"
+                (recordBtnClicked)="startAudioRecording()"
+                (sendBtnClicked)="onAnswerSendClick($event)"
+                [(additionalMenu)]="isDisplayAdditionalMenu"
+                [withAdditionalMenu]="true"
+                [recordingProcess]="isRecording"
+                [isStartUploadAudio]="isStartedUploadAudio()"
+                [editable]="!showConfirmationPanel()"
+              ></app-text-input>
+            }
+          }
+
+        </div>
+      </div>
+    }
+
+    <app-scroll-down-btn
+      *ngIf="showScrollBottomButton()"
+      [shownNumber]="unreadMessagesNumber()"
+      [right]="(!signedInUser() && !conversation.isCompleted() && conversation.isLastStep()) ? '6.2rem' : this.backBntMargin()"
+      [bottom]="(!signedInUser() && !conversation.isCompleted() && conversation.isLastStep()) ? '16.6rem' : '9.6rem'"
+      (clickedScrollDown)="scrollToLastMessage()"
+    ></app-scroll-down-btn>
+
+    @if (currentUser().isAnonymous) {
+      <app-button class="actions back" rounded btnUIType="neutral" size="medium" (click)="navigateBackClickHandler()"
+                  [ngClass]="{'audio-record': isRecording, 'with-proposal': (!signedInUser() && conversation.isCompleted())}">
+        <app-icon-arrow direction="left"></app-icon-arrow>
+      </app-button>
+    }
+
+  </div>
+}
+
+
+<ng-template #tipsTpl let-tips="tips" let-id="id" let-tipsType="tipsType">
+  <div
+    class="tips"
+    [ngClass]="{
+      'tips--paid': tips?.paid,
+      'tips--unpaid': tips && !tips.paid,
+      'tips--wait': currentUser().id === advisorId && !tips,
+    }"
+  >
+    <ng-container *ngIf="currentUser().id !== advisorId && !tips">
+      <app-tips
+        [processing$]="tipsPaymentProcessing$"
+        [id]="id"
+        (payTips)="handleTipsActions($event, tipsType, id)"
+        (denyTips)="handleTipsActions(null, tipsType, id)"
+      ></app-tips>
+    </ng-container>
+
+    <div class="tips__thx" *ngIf="tips?.paid">
+      <app-heart
+        class="tips__heart"
+        *ngIf="currentUser().id !== advisorId"
+      ></app-heart>
+      <app-receipt
+        [id]="id"
+        [link]="stripeDashboardLink$ | async"
+        [paymentRequest]="tips"
+        [approved]="tips.paid"
+        [showDateCreated]="false"
+        [isTips]="true"
+        [tipsValue]="tips.percent"
+        [outgoing]="currentUser().id !== advisorId"
+        [ngClass]="{
+          'chat__message--right': currentUser().id !== advisorId,
+          'chat__message--left': currentUser().id === advisorId,
+        }"
+      ></app-receipt>
+    </div>
+
+    <div class="tips__status">
+      <div [ngSwitch]="true">
+        <span *ngSwitchCase="tips?.paid">{{ 'tip_paid_additionally' | translate }}</span>
+        <span *ngSwitchCase="tips && !tips.paid">{{ 'tip_payment_declined' | translate }}</span>
+        <span *ngSwitchCase="currentUser().id === advisorId && !tips"
+        >{{ 'no_tip_paid_yet' | translate }}</span
+        >
+        <span *ngSwitchDefault></span>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template  #headerComponent>
+  @if (isInternal()) {
+    <app-internal-chat-header
+      [conversation]="conversation"></app-internal-chat-header>
+    <div class="chat__line"></div>
+
+  } @else {
+    <app-conversation-header
+
+      [conversation]="conversation"
+      [activeConversationRater]="activeConversationRater()"
+      [activeConversationPartners]="activeConversationPartners()"
+      [paymentSessionOpened]="!!(paymentSessionOpened$ | async)"
+      [isOwnerOfIceBreaker]="isOwnerOfIceBreaker()"
+      [isVideoCallRequested]="videoCallRequested"
+      (requestVideoCall)="requestVideoCall()"
+      (closePaymentSession)="closePaymentSession()"
+      (onPriceChanged)="onPriceChanged($event)"
+    ></app-conversation-header>
+  }
+</ng-template>

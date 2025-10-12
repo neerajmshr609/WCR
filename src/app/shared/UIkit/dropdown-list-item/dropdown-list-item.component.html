@@ -1,0 +1,26 @@
+<li
+  class="dropdown-list-item"
+  [ngClass]="{
+    'dropdown-list-item--selected': selected(),
+    'dropdown-list-item--disabled': disabled(),
+    'dropdown-list-item--without-hover': withoutHover()
+  }"
+>
+  @if (hasIcon()) {
+    <app-icon-render
+      class="dropdown-list-item_icon"
+      [icon]="icon()"
+      [componentIconInputs]="menuItem().inputs"
+    ></app-icon-render>
+  }
+  <div class="dropdown-list-item_text">
+    <h4
+      class="dropdown-list-item_title"
+    >{{ menuItem().title | translate }}</h4>
+    @if (description()) {
+      <p class="dropdown-list-item_description">
+        {{ description() | translate }}
+      </p>
+    }
+  </div>
+</li>

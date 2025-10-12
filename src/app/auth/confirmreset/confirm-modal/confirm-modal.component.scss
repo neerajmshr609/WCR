@@ -1,0 +1,54 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+app-select {
+  margin-top: 4px;
+}
+
+app-close-icon {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+}
+
+mat-dialog-actions {
+
+}
+
+.form_error {
+  display: inline-flex;
+  transition: all 0.2s;
+  color: #900b09;
+  opacity: 0.7;
+  margin-top: 8px;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.modal-header {
+}
+
+.input-details {
+  color: $--sds-color-text-default-secondary;
+
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 140%; /* 22.4px */
+  margin-bottom: 0.8rem;
+}
+
+.input-form-control {
+  margin-bottom: 1.2rem;
+}

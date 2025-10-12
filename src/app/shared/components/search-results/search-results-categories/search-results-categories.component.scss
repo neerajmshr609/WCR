@@ -1,0 +1,31 @@
+@import '_variables';
+
+.search-results {
+  width: 100%;
+  height: auto;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0.5rem;
+
+  .selected-category {
+    margin: 0.5rem;
+    background-color: white;
+    padding: 0.6rem 1rem;
+    padding-left: 2rem;
+    border-radius: 5rem;
+    border: $feed-border-dark;
+    display: flex;
+    align-items: center;
+
+    p {
+      margin-right: 1rem;
+      font-weight: 500;
+      font-size: 1.6rem;
+    }
+
+    img {
+      cursor: pointer;
+    }
+  }
+}

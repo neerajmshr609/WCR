@@ -1,0 +1,27 @@
+<div class="card">
+  <h4 class="card__title" contenteditable="true" #cardTitle>
+    {{ card ? card.title : 'Card title' }}
+  </h4>
+
+  <div class="card__image">
+    <img
+      #cardImage
+      *ngIf="card || imageUrl"
+      [src]="card?.imageurl || imageUrl | safe: 'url'"
+      alt=""
+    />
+    <button class="btn upload-btn" (click)="onImageClick()">image</button>
+  </div>
+
+  <p class="card__text" contenteditable="true" #cardText>
+    {{ card ? card.text : 'Card text' }}
+  </p>
+
+  <div class="card__controls">
+    <mat-icon *ngIf="!card || !card.id" (click)="onSave(true)"
+      >add_box</mat-icon
+    >
+    <mat-icon *ngIf="card && card.id" (click)="onSave(false)">save</mat-icon>
+    <mat-icon *ngIf="card && card.id" (click)="onDelete()">delete</mat-icon>
+  </div>
+</div>

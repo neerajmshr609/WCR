@@ -1,0 +1,314 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  align-items: center;
+
+  ::ng-deep {
+    .ngx-slider.animate .ngx-slider-bubble.ngx-slider-limit {
+      visibility: hidden !important;
+    }
+
+    .ngx-slider {
+      .ngx-slider-bar {
+        display: none;
+      }
+
+      .ngx-slider-pointer {
+        opacity: 0 !important;
+        outline: none;
+
+        &::after {
+          content: none !important;
+        }
+
+        &.ngx-slider-active {
+          z-index: 3 !important;
+        }
+      }
+
+      .ngx-slider-model-value {
+        top: -14px !important;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        z-index: 2 !important;
+        font-weight: bold;
+        font-size: 1.4rem;
+        line-height: 130%;
+        text-align: center;
+        color: #fff;
+        filter: drop-shadow(0px 1.5px 6px rgba(0, 0, 0, 0.25));
+        border: 2px solid #1E1E1E;
+
+      }
+    }
+  }
+}
+
+app-av-rating-slider {
+  width: 100%;
+  display: flex;
+}
+
+.av-rating-slider {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 1px solid $--sds-color-border-default-default;
+
+  &__btn {
+    display: flex;
+    width: 6px;
+    padding: 0 15px 0 10px;
+    cursor: pointer;
+  }
+
+  &__menu {
+    background: #fafafa;
+    box-shadow: 0px 0.42px 2.82px rgba(0, 0, 0, 0.25);
+    border-radius: 11px;
+
+    &--img {
+      padding: 0 15px 0 15px;
+      width: 60px;
+      fill: #000000;
+
+      &--selected {
+        fill: $feed-light-gray-text;
+      }
+    }
+
+    &--btn {
+      border: none;
+      background: none;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 26px;
+      cursor: pointer;
+      padding: 0 15px 0 15px;
+
+      &--selected {
+        color: $feed-light-gray-text;
+      }
+    }
+  }
+  .ngx-slider {
+    margin-top: 16px;
+    height: 8px;
+  }
+
+  .ngx-slider-span {
+    outline: none;
+  }
+
+  .ngx-slider .ngx-slider-limit {
+    width: 10px;
+    height: 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #ffe4d1;
+    top: -1px;
+    display: none;
+  }
+
+  .ngx-slider .ngx-slider-model-value {
+    display: block;
+    width: 26px;
+    height: 24px;
+    text-align: center;
+    border-radius: 16px;
+    cursor: pointer;
+    color: rgba($color: #fff, $alpha: 0.7);
+    top: -12px;
+    font-size: 14px !important;
+    font-weight: 600;
+    opacity: 1 !important;
+    margin-left: -13px;
+  }
+
+  .ngx-slider .ngx-slider-bar {
+    background-color: transparent !important;
+  }
+
+  .ngx-slider .ngx-slider-pointer::after {
+    background-color: transparent;
+    display: none;
+  }
+  .ngx-slider .ngx-slider-pointer {
+    width: 28px;
+    height: 28px;
+    z-index: 10;
+    background: transparent;
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    text-align: center;
+    padding: 6px;
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+
+    .mat-mdc-icon-button.mat-mdc-button-base {
+      padding: 0!important;
+      width: 17px!important;
+      height: 17px!important;
+    }
+
+    mat-icon {
+      width: 24px!important;
+      height: 24px!important;
+    }
+
+
+    span {
+      flex: 1
+    }
+
+    &--green {
+      background-color: #91ceb9 !important;
+
+    }
+
+  }
+
+  &__active {
+    opacity: 1;
+
+
+    &--green {
+      border: 1px solid #15E798;
+    }
+
+    &--mustard {
+      border: 1px solid #FFC300;
+
+    }
+
+    &--blue {
+      border: 1px solid #007BFF;
+    }
+  }
+
+  &__slider {
+    background: #f2f2f2;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+
+  &__slider-green {
+    ::ng-deep .ngx-slider-model-value {
+      background-color: #CAEBDF !important;
+      border: 2px solid #B3B3B3;
+    }
+  }
+
+  &__slider-green--selected {
+    ::ng-deep .ngx-slider-model-value {
+      background-color: #15E798 !important;
+    }
+  }
+
+  &__slider-mustard {
+    ::ng-deep .ngx-slider-model-value {
+      background-color: #F1EACB !important;
+      border: 2px solid #B3B3B3;
+    }
+  }
+
+  &__slider-mustard--selected {
+    ::ng-deep .ngx-slider-model-value {
+      background-color: #FFC300 !important;
+    }
+  }
+
+  &__slider-blue {
+    ::ng-deep .ngx-slider-model-value {
+      background-color: #B2D0DD !important;
+      border: 2px solid #B3B3B3;
+    }
+  }
+
+  &__slider-blue--selected {
+    ::ng-deep .ngx-slider-model-value {
+      background-color: #007BFF !important;
+    }
+  }
+}
+
+.mat-menu-item {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+
+  &:disabled {
+    opacity: 1;
+
+    color: $feed-accent-selection;
+
+    svg path {
+      fill: $feed-accent-selection !important;
+    }
+  }
+
+  svg {
+    width: 28px;
+    margin-right: 1.6rem;
+  }
+}
+
+ngx-slider {
+  position: relative;
+}
+
+ngx-slider:before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: '-5';
+  position: absolute;
+  left: 0;
+  top: -15px;
+  color: $--sds-color-text-default-secondary;
+  text-align: center;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 140%;
+  height: 35px;
+  width: 35px;
+}
+
+ngx-slider:after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: '+5';
+  position: absolute;
+  right: 0;
+  top: -15px;
+  color: $--sds-color-text-default-secondary;
+  text-align: center;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 140%;
+  height: 35px;
+  width: 35px;
+}

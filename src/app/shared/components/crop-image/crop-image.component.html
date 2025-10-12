@@ -1,0 +1,26 @@
+<div class="crop-modal">
+  <div class="header">
+    <h2 class="title">Crop the AREA you wish to emphasize on</h2>
+    <app-button btnUIType="primary" size="medium" [mat-dialog-close]="croppedImage">
+      save
+    </app-button>
+    <button mat-dialog-close class="close">
+      <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+    </button>
+  </div>
+
+  <div class="cropper-container">
+    <image-cropper
+      class="image-cropper"
+      [imageFile]="imageFile"
+      (imageCropped)="imageCropped($event)"
+      [roundCropper]="false"
+      [onlyScaleDown]="true"
+      [maintainAspectRatio]="false"
+      backgroundColor="white"
+      format="jpeg"
+    ></image-cropper>
+  </div>
+
+  <app-button btnUIType="primary" size="medium" class="btn btn--black" [mat-dialog-close]="croppedImage">save</app-button>
+</div>

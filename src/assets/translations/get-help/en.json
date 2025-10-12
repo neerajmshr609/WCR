@@ -1,0 +1,34 @@
+{
+  "title": "Select a topic",
+  "title_desktop": "Get help",
+  "step_1": "Please select at least one skill to continue.",
+  "step_2": "Select your focus",
+  "step_3" : "Press 'Start Conversation' and start answering the questions",
+  "subtitle": "to receive assistance from a counsellor",
+  "subtitle_desktop": "by taking a moment to define<br/>your needs so we can assist you better.",
+  "select-stage-1": "Select the Topic closest to your needs",
+  "select-stage-2": "Select the best matching topic focus and start conversation",
+  "ice-breakers-subtitle":{
+    "mobile": "Select your specific Focus",
+    "not-mobile": "Or Select Now your specific Focus"
+  },
+  "card": {
+    "counselors": "counselors",
+    "reviews": "Reviews",
+    "positive": "positive",
+    "negative": "negative",
+    "watch-explainer": "Watch Explainer",
+    "start-conversation": "Start Conversation",
+    "summary": "Summary"
+  },
+  "menu": {
+    "title": "Smart Questionnaire Settings",
+    "share": "Share Questionnaire #1"
+  },
+  "search-input": {
+    "placeholder": "Find Topic"
+  },
+  "ice-breaker-card": {
+    "start-conversation": "Start Conversation"
+  }
+}

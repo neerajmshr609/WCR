@@ -1,0 +1,18 @@
+<div class="visible-menu-items-container">
+  @for (menuItem of visibleItems(); track menuItem.param) {
+    <app-visible-menu-button
+      [menuItem]="menuItem"
+      [selected]="isSelected(menuItem)"
+      (click)="clickItemHandler(menuItem)"
+    ></app-visible-menu-button>
+  }
+
+  @if (displayDropdownBtn()) {
+    <app-button-more-vert
+      class="visible-menu-items-container_dropdown-open-btn"
+      [isActive]="dropdownIsActive()"
+      (click)="dropdownButtonClickHandler()"
+      #buttonTrigger
+    ></app-button-more-vert>
+  }
+</div>

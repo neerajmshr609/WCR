@@ -1,0 +1,235 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+
+  ::ng-deep {
+    .project-info-cards {
+      padding-top: 0;
+    }
+  }
+}
+
+.presentation-container {
+  position: relative;
+  display: grid;
+  grid-template-rows: max-content 1fr;
+  padding: 0.9rem 0;
+  width: 100%;
+  height: 100%;
+  grid-row-gap: 2rem;
+}
+
+.slider-presentation:not(.slider-presentation--big) {
+  ::ng-deep {
+    .flickity-prev-next-button {
+      background: black;
+      transform: none;
+      top: -5px;
+      height: 50px;
+      border-radius: 0;
+      outline: none;
+      width: 40px;
+
+      .flickity-button-icon {
+        fill: white;
+      }
+
+      &.next {
+        right: -5rem;
+        border-radius: 8px 0 0 8px;
+      }
+
+      &.previous {
+        left: -5rem;
+        border-radius: 0 8px 8px 0;
+      }
+    }
+  }
+}
+
+.slider-presentation {
+  min-height: 31rem;
+
+  &--big {
+    app-iframe-presentation {
+      ::ng-deep {
+        .iframe {
+          padding: 0 4rem !important;
+        }
+      }
+    }
+
+    ::ng-deep {
+
+      .flickity-button:focus {
+        box-shadow: none;
+      }
+
+      .flickity-prev-next-button {
+        top: calc(-7rem - 2px);
+        transform: none;
+        width: 44px;
+        height: 44px;
+        outline: none;
+        border-radius: $--sds-typography-scale-06;
+        border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+        background: $--sds-color-background-default-secondary;
+
+
+        @media (min-width: 1440px) {
+          top: calc(-6.8rem - 2px);
+        }
+        @media (min-width: 1920px) {
+          top: calc(-6.6rem - 2px);
+        }
+
+        .flickity-button-icon {
+          fill: #1E1E1E;
+          width: 20px;
+          height: 20px;
+          left: 25%;
+          top: 26%;
+        }
+
+        &.previous {
+          left: 0;
+        }
+
+        &.next {
+          right: 0;
+        }
+      }
+    }
+  }
+
+  &--big &__content--audio {
+    padding-top: 7rem;
+
+    @media (max-width: $bp-medium) {
+      padding-top: 0;
+    }
+  }
+
+  &__item {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: max-content;
+    text-align: center;
+  }
+
+  &__content {
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+    transition: opacity 0.4s;
+    opacity: 0;
+
+    &--audio {
+      height: 100%;
+
+      app-avpresentation {
+        overflow: hidden;
+        border-radius: $--sds-size-radius-400;
+      }
+
+      @media (max-width: $bp-large) {
+        max-width: 550px;
+        margin: 0 auto;
+      }
+    }
+
+    &--image {
+      cursor: pointer;
+    }
+
+    &--video {
+      height: max-content;
+
+      @media (max-width: $bp-large) {
+        max-width: 550px;
+        margin: 0 auto;
+      }
+
+      ::ng-deep {
+        video {
+          width: 100%;
+        }
+
+        iframe {
+          width: 100%;
+          height: 100%;
+        }
+
+        mat-icon {
+          position: absolute;
+          color: white;
+          font-size: 5rem;
+          transform: translate(-50%, -50%);
+          cursor: pointer;
+        }
+      }
+    }
+
+    &--info {
+      text-align: left;
+      margin: 0 auto;
+      overflow: auto;
+      overflow-x: hidden;
+
+      p {
+        font-size: 1.6rem;
+        color: var(--color-black);
+      }
+
+      .small {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        color: #9a9a9a;
+        margin-top: 2rem;
+      }
+
+      h4 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  &__content.flickity-lazyloaded,
+  &__content.flickity-lazyerror,
+  &__content--video,
+  &__content--iframe,
+  &__content--audio {
+    opacity: 1;
+  }
+}
+
+.slider-presentation-nav {
+  height: 5rem;
+  transition: opacity 0.2s;
+  margin: 0 6rem;
+
+  &--big {
+    height: 6rem;
+
+    ::ng-deep {
+      .flickity-viewport {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+.img-container {
+  margin: 0 auto;
+  width: fit-content;
+  max-width: 100%;
+  height: auto;
+  overflow: auto;
+}

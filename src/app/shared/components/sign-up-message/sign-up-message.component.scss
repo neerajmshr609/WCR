@@ -1,0 +1,78 @@
+.sign-up-message-modal {
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 26px;
+    width: 200px;
+    margin: 16px 0;
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 26px;
+    width: 280px;
+    height: 100%;
+  }
+
+  &__actions {
+    display: flex;
+    align-content: flex-end;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__btn {
+    align-self: flex-end;
+    padding: 6px 16px;
+    border-radius: 16px !important;
+    font-size: 22px;
+    line-height: 30px;
+    height: 44px;
+    cursor: pointer;
+    top: auto;
+    right: auto;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    &--close {
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      width: 52px;
+      height: 52px;
+    }
+  }
+
+  &__link {
+    align-self: center;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: #0000ff;
+    margin-top: 1rem;
+    text-decoration: none;
+  }
+}
+
+::ng-deep .sign-up-message-modal {
+  .mat-dialog-container {
+    padding: 36px;
+    border-radius: 16px;
+  }
+}

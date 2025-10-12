@@ -1,0 +1,114 @@
+@import 'variables';
+
+:host {
+  ::ng-deep {
+    .cropper {
+      outline: rgb(255 255 255 / 60%) solid 100vw !important;
+
+      &::after {
+        border-width: 2px !important;
+      }
+    }
+
+    .square {
+      width: 10px !important;
+      height: 10px !important;
+    }
+
+    .resize {
+      &.right,
+      &.topright,
+      &.bottomright {
+        right: -13px !important;
+      }
+      &.left,
+      &.topleft,
+      &.bottomleft {
+        left: -13px !important;
+      }
+      &.top,
+      &.topright,
+      &.topleft {
+        top: -13px !important;
+      }
+      &.bottom,
+      &.bottomright,
+      &.bottomleft {
+        bottom: -13px !important;
+      }
+    }
+  }
+}
+
+.crop-modal {
+  position: relative;
+  padding: 2.4rem;
+
+  > .btn {
+    display: none;
+
+    @media screen and (max-width: $bp-medium) {
+      display: block;
+      margin: 1rem auto 0;
+    }
+  }
+}
+
+.title {
+  width: 100%;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 2.2rem;
+  line-height: 2.3rem;
+
+  @media screen and (max-width: $bp-medium) {
+    text-align: center;
+    font-size: 2rem;
+    padding: 1rem 1rem 0;
+  }
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr max-content max-content;
+  gap: 2rem;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 1rem;
+
+  @media screen and (max-width: $bp-medium) {
+    display: block;
+
+    .btn {
+      display: none;
+    }
+  }
+}
+
+.close {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  @media screen and (max-width: $bp-medium) {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: auto;
+  }
+}
+
+.btn {
+  min-width: 11rem;
+  font-size: 1.8rem;
+}

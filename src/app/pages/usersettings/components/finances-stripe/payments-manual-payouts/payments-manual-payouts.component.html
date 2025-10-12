@@ -1,0 +1,68 @@
+<div class="manual">
+  <div class="payments-header">
+    <h2 class="payments-header-title">
+      {{
+        'finances_stripe.manual_payouts'
+          | translate: { secure: connect() ? '' : ' (less secure)' }
+      }}
+    </h2>
+    @if (!connect()) {
+      <p class="payments-header-connected payments-header-connected-getting">
+        {{ 'finances_stripe.manual_payouts.unconnected' | translate }}
+      </p>
+    }
+  </div>
+
+  <div
+    class="manual__username"
+    [ngClass]="{ 'manual__username--center': !showPayoutBnt() }"
+  >
+    <span>{{ 'finances_stripe.username' | translate }}:</span>
+    <span class="darkgrey">{{ currentUser().username }}</span>
+  </div>
+
+  @if (showPayoutBnt()) {
+    <div class="manual__table">
+      <div class="manual__table-title">
+        {{ 'finances_stripe.unpaid_balance' | translate }}
+      </div>
+      <div class="manual__table-body">
+        <div class="manual__table-row">
+          <span>{{ 'finances_stripe.date_time' | translate }} </span>
+          <span>{{ 'finances_stripe.amount' | translate }}</span>
+        </div>
+
+        @for (item of advisorPayments()?.items; track item.id) {
+          <div class="manual__table-row">
+            <span>{{ item.created_at | date: 'medium' }}</span>
+            <span>{{ item.amount / 100 | euroCurrency }}</span>
+          </div>
+        }
+
+        <div class="manual__table-row">
+          <span>Eur</span>
+          <span>{{ advisorPayments()?.balance / 100 | euroCurrency }}</span>
+        </div>
+      </div>
+    </div>
+    <button
+      class="manual__request-btn"
+      (click)="requestPayout()"
+      [disabled]="!advisorPayments()?.balance"
+    >
+      <img src="assets/user-settings/finances/request-payout.svg" alt="" />
+      {{ 'finances_stripe.request_payout' | translate }}
+    </button>
+  }
+
+  @if (currentPayoutRequest()) {
+    <div class="manual__active-request">
+      <app-payout-request
+        [requestIn]="currentPayoutRequest()"
+        (requestDeleted)="deleteRequest()"
+        (requestCreated)="currentPayoutRequest = $event"
+        mode="created"
+      ></app-payout-request>
+    </div>
+  }
+</div>

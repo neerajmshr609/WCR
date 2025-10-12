@@ -1,0 +1,41 @@
+{
+  "user_info": {
+    "name_anon": "Анонім",
+    "city_global": "ГЛОБАЛЬНО"
+  },
+  "text_input": {
+    "placeholder": "Почніть друкувати..."
+  },
+  "ice-breaker-card": {
+    "ice-breaker": "КАПСУЛА",
+    "share": "ПОДІЛИТИСЯ КАПСУЛОЙ {{id}}",
+    "delete": "Видалити Капсулу",
+    "single-reviews": "ОКРЕМІ ВІДГУКИ",
+    "reviews": "Відгуки",
+    "select-topic": "Обрати тему",
+    "create": "Створити Капсулу",
+    "rating": {
+      "title": "ЗАГАЛЬНИЙ РЕЙТИНГ",
+      "knowledge": "Знання",
+      "articulation": "Артикуляція",
+      "explanation": "Пояснення",
+      "politeness": "Ввічливість"
+    },
+    "select-profile": "Оберіть тему з вашої картки профілю для створення розмови-капсули.",
+    "click-button": "Натисніть кнопку нижче, щоб почати створення цієї Капсули",
+    "pick-topic": "Оберіть тему перед створенням Капсули",
+    "adjust-price": "Налаштувати<br>Ціну",
+    "want-share": "хоче поділитися цією Капсулою з вами:",
+    "preview": "Перегляд",
+    "click-to-copy": "НАТИСНІТЬ, ЩОБ СКОПІЮВАТИ",
+    "share-your-getme": "<span style=\"font-weight: 700;color: #000000;\">Поділіться</span> вашою <br>Капсулою зараз",
+    "if-you-have": "Якщо у вас ще не налаштовані теми, перейдіть до <a href=\"/settings?type=skills\" style=\"text-decoration: underline\">зони налаштувань</a> та оберіть теми, в яких ви компетентні.",
+    "buttons": {
+      "enter-and-pay": "УВІЙТИ до розмови",
+      "enter-and-get-paid": "УВІЙТИ до розмови",
+      "go-chat-room": "Перейти до чат-кімнати",
+      "connections-will-get-paid": "З'єднання",
+      "connections-will-pay": "З'єднання"
+    }
+  }
+}

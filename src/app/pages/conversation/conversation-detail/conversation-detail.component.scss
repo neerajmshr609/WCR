@@ -1,0 +1,976 @@
+@import 'variables';
+@import 'mixins';
+
+app-conversation-detail {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+
+  .jitsi-settings-btn {
+    border-radius: 100px;
+    background: #000;
+    position: absolute;
+    top: -1rem;
+    left: 0;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    cursor: pointer;
+
+  }
+
+  app-icon-settings {
+    display: flex;
+    width: 24px;
+    height: 24px;
+  }
+
+  app-login-proposal {
+    border-top: 1px solid $--sds-color-border-default-default;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    @media (min-width: $desktop) {
+      position: relative;
+      width: auto;
+      border-radius: $--sds-size-radius-200;
+      border: 1px solid $--sds-color-border-default-default;
+    }
+  }
+
+  app-enter-video-call {
+    display: flex;
+  }
+
+  app-iframely-embed {
+    position: relative !important;
+  }
+
+  app-internal-chat-header {
+    @media (max-width: $desktop) {
+      display: none !important;
+      border: none;
+      border-radius: 0;
+      padding: $--sds-size-space-200 !important;;
+      background: $--sds-color-background-default-secondary;
+    }
+  }
+
+
+  @mixin statusBar {
+    width: fit-content;
+    margin: 0 auto calc(-4rem - 2px);
+    padding: 0.5rem 2rem;
+    border-radius: $--sds-size-radius-200 $--sds-size-radius-200 0px 0px;
+    font-size: 1.3rem;
+    line-height: 15px;
+    transform: scale(1.05);
+    text-align: center;
+    text-transform: uppercase;
+    color: #fafafa;
+    font-weight: 500;
+  }
+
+  @mixin submitBtn {
+    width: 100%;
+    height: 4.8rem;
+    background: $feed-accent-green;
+    border-radius: 4px;
+    color: #fff;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow:
+        0 7px 14px rgba(50, 50, 93, 0.1),
+        0 3px 6px rgba(0, 0, 0, 0.08);
+      background-color: #02b876;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+    }
+
+    span {
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: normal;
+      text-transform: uppercase;
+    }
+
+    .btn-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      app-small-spinner {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+  .internal.chat {
+    gap: 0;
+    background-color: $--sds-color-background-default-secondary;
+    border: 1px solid $--sds-color-border-default-default;
+    border-radius: $--sds-size-radius-200;
+    overflow: hidden;
+  }
+  .internal .chat__header {
+    border-radius: $--sds-size-radius-200 $--sds-size-radius-200 0 0;
+    border: none;
+    padding: 16px 22px;
+  }
+
+  .internal .chat__history {
+    border: none;
+    border-radius: 0;
+    flex: 1 1 100px;
+    background-color: $--sds-color-background-default-secondary;
+  }
+
+  .internal .chat__bottom {
+    border: none;
+    border-radius: 0;
+    background-color: $--sds-color-background-default-secondary;
+  }
+
+  .chat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+
+    &__line {
+      display: none;
+      width: calc(100% - 32px);
+      height: 1px;
+      min-height: 1px;
+      margin-left: 14px;
+      margin-right: 14px;
+      background-color: $--sds-color-border-default-default;
+
+      @media (min-width: $desktop) {
+        display: block;
+      }
+    }
+
+    &__item {
+      z-index: 0;
+      margin-top: 76px;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      width: 100%;
+    }
+
+    &__bottom {
+
+      z-index: 155;
+      padding: 0 12px 20px 12px;
+      border-radius:  0 0 $--sds-size-radius-200 $--sds-size-radius-200;
+      border-bottom: 1px solid $--sds-color-border-default-default;
+      border-left: 1px solid $--sds-color-border-default-default;
+      border-right: 1px solid $--sds-color-border-default-default;
+
+      background-color: $--sds-color-background-default-default;
+
+      @media screen and (max-width: $bp-small) {
+        padding-right: 1rem;
+        padding-left: 1rem;
+        width: 100%;
+        bottom: 0;
+        position: fixed;
+      }
+    }
+
+    &__history {
+      border-radius: $--sds-size-radius-200 $--sds-size-radius-200 0 0;
+      padding: 16px 48px 0 40px;
+      border-top: 1px solid $--sds-color-border-default-default;
+      border-left: 1px solid $--sds-color-border-default-default;
+      border-right: 1px solid $--sds-color-border-default-default;
+      overflow: auto;
+      margin-top: 24px;
+      background-color: $--sds-color-background-default-default;
+      flex: 1 1 100px;
+      @media (max-width: $desktop) {
+        border-top: none;
+        margin-top: 0;
+        border-radius: 0;
+        padding: 8px 32px;
+      }
+
+      @media (max-width: $bp-small) {
+        padding: 8px 32px 115px;
+      }
+
+      //*:first-child:not(.ice-breaker-btn_text):not(app-button):not(app-icon-arrow) {
+      //  margin-top: 36px;
+      //}
+    }
+
+    &__submit-btn {
+      @include submitBtn;
+
+      margin-top: 1em;
+    }
+
+    &__payment-box {
+      label {
+        font-family: 'Helvetica Neue', Helvetica, sans-serif;
+        font-size: 1.6rem;
+        font-variant: normal;
+        padding: 0;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      label {
+        font-weight: 500;
+        font-size: 1.4rem;
+        display: block;
+        margin-bottom: 0.8rem;
+      }
+
+      #card-errors {
+        &.active {
+          height: 2rem;
+          padding: 0.4rem 0;
+          color: #fa755a;
+          font-size: 1.2rem;
+        }
+      }
+
+      .form-row {
+        width: 70%;
+        float: left;
+      }
+
+      .token {
+        color: #32325d;
+        font-family: 'Source Code Pro', monospace;
+        font-weight: 500;
+      }
+
+      .wrapper {
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      #stripe-token-handler {
+        position: absolute;
+        top: 0;
+        left: 25%;
+        right: 25%;
+        padding: 2rem 3rem;
+        border-radius: 0 0 4px 4px;
+        box-sizing: border-box;
+        box-shadow:
+          0 50px 100px rgba(50, 50, 93, 0.1),
+          0 15px 35px rgba(50, 50, 93, 0.15),
+          0 5px 15px rgba(0, 0, 0, 0.1);
+        -webkit-transition: all 500ms ease-in-out;
+        transition: all 500ms ease-in-out;
+        transform: translateY(0);
+        opacity: 1;
+        background-color: white;
+      }
+
+      #stripe-token-handler.is-hidden {
+        opacity: 0;
+        transform: translateY(-8rem);
+      }
+
+      /**
+       * The CSS shown here will not be introduced in the Quickstart guide, but shows
+       * how you can use CSS to style your Element's container.
+       */
+      .StripeElement {
+        background-color: white;
+        padding: 1.6rem 1.2rem;
+        border-radius: 4px;
+        border: 1px solid #e1e6ec;
+        -webkit-transition: box-shadow 150ms ease;
+        transition: box-shadow 150ms ease;
+      }
+
+      .StripeElement--focus {
+        box-shadow: 0 1px 3px 0 #cfd7df;
+      }
+
+      .StripeElement--invalid {
+        border-color: #fa755a;
+      }
+
+      .StripeElement--webkit-autofill {
+        background-color: #fefde5 !important;
+      }
+    }
+
+    &__counter-box {
+      margin-bottom: 1em;
+    }
+
+    &__invoice {
+      margin-top: 0.8rem;
+    }
+
+    &__invoice {
+      margin-top: 0.8rem;
+    }
+
+    &__unread-separator{
+      width: 100%;
+      border-top: 2px solid $--sds-color-border-neutral-default;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    &__unread-text{
+      font-size: 1.3rem;
+      font-weight: 600;
+      line-height: 2.8rem;
+    }
+  }
+
+  .message-payment-status {
+    margin-top: 0.8rem;
+    height: 3rem;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    width: max-content;
+
+    .divider {
+      height: 1.4rem;
+      width: 2px;
+      background: #3f3f3f;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: white;
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+
+    .payment-min {
+      margin-right: 0.8rem;
+    }
+
+    img {
+      width: 2.2rem;
+      height: 1.6rem;
+      margin-left: 0.8rem;
+      margin-right: 0.8rem;
+    }
+  }
+
+  .message-payment-status-incoming {
+    margin-top: 0.8rem;
+    height: 3rem;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    width: max-content;
+
+    .divider {
+      height: 1.4rem;
+      width: 2px;
+      background: #3f3f3f;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: white;
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+
+    .payment-min {
+      margin-right: 0.8rem;
+    }
+
+    img {
+      width: 2.2rem;
+      height: 1.6rem;
+      margin-left: 0.8rem;
+      margin-right: 0.8rem;
+    }
+
+    .payment-request-action-left {
+      margin-right: 2px;
+    }
+
+    .payment-request-action-right {
+      margin-left: 2px;
+    }
+
+    .payment-request-action {
+      cursor: pointer;
+    }
+  }
+
+  .clarification-resolve {
+    padding: 1rem !important;
+    margin: 1rem !important;
+    width: 45%;
+    background-color: black;
+    color: white;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .lesson-feedback {
+    border-radius: 6px;
+    border-color: black;
+    margin-bottom: 2rem;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h3 {
+      font-size: 1.4rem;
+      text-decoration: underline;
+      margin: 2rem;
+      margin-bottom: 0rem;
+    }
+  }
+
+  .message-to-answer {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.4rem;
+    padding-right: 3rem;
+    font-size: 1.5rem;
+    color: $feed-light-gray-text;
+    position: relative;
+    margin-bottom: 0.5rem;
+
+    &__header {
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    &__cancel {
+      position: absolute;
+      top: 0.4rem;
+      right: 1.4rem;
+      cursor: pointer;
+      color: $feed-light-gray-text;
+      background: none;
+      border: none;
+      outline: none;
+      font-size: 1.5rem;
+    }
+
+    &__text {
+      white-space: nowrap;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .payment-session {
+    padding: 5rem 0 4rem;
+    background: #ede6e6;
+
+    &--preview-messages-container {
+      background: #dddddd;
+      border-color: $feed-accent-ember !important;
+      margin-bottom: -6rem;
+
+      .preview-title {
+        padding-left: 20px;
+        font-weight: 400;
+        font-size: 24.882px;
+        line-height: 140.19%;
+        letter-spacing: 0.1em;
+        color: $feed-light-gray-text;
+      }
+    }
+
+    &__ice-breaker-session {
+      padding: 0;
+      background: transparent;
+    }
+
+    &--unpaid,
+    &--paid,
+    &--free,
+    &--preview-messages-container {
+      border-bottom: 3px solid;
+    }
+
+    &--unpaid {
+      border-color: $--sds-color-border-brand-tertiary;
+    }
+
+    &--free {
+      background: rgba($color: $feed-accent-ember, $alpha: 0.2);
+      border-color: $feed-accent-ember;
+    }
+
+    &--paid {
+      background: #e3eee6;
+      border-color: $feed-accent-green;
+    }
+
+    &--unpaid &__status {
+      background: $--sds-color-background-danger-secondary;
+    }
+
+    &--paid &__status {
+      background: $feed-accent-green;
+    }
+
+    &--preview-messages-container &__status,
+    &--free &__status {
+      background: $feed-accent-ember;
+    }
+
+    &--missed {
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    &__status {
+      @include statusBar;
+    }
+
+    .chat__item:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .meeting {
+    z-index: 1000;
+    margin-top: 76px;
+    position: absolute;
+    left: 1px;
+    width: calc(100% - 2px);
+    bottom: 8rem;
+
+    &__info {
+      margin: 2rem 0;
+      font-size: 1.6rem;
+      text-align: center;
+    }
+
+    &__submit-btn {
+      @include submitBtn;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .tips {
+    position: relative;
+    padding: 3rem 2rem;
+    background: #e3eee6;
+
+    &--unpaid,
+    &--paid,
+    &--wait {
+      border-bottom: 3px solid;
+    }
+
+    &__status {
+      @include statusBar;
+      margin: 2rem auto -3rem;
+    }
+
+    &--wait {
+      border-color: $feed-accent-ember;
+    }
+
+    &--wait & {
+      &__status {
+        background: $feed-accent-ember;
+      }
+    }
+
+    &--unpaid {
+      border-color: $--sds-color-border-brand-tertiary;
+    }
+
+    &--unpaid & {
+      &__status {
+        background: $--sds-color-background-danger-secondary;
+      }
+    }
+
+    &--paid {
+      border-color: $feed-accent-green;
+    }
+
+    &--paid & {
+      &__status {
+        background: $feed-accent-green;
+      }
+    }
+
+    &__thx {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &__heart {
+      flex: 1;
+      margin-bottom: -4em;
+    }
+  }
+
+  .paused-message {
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 133%;
+    color: $feed-light-gray-text;
+
+    &__highlight {
+      color: black;
+      font-weight: 700;
+    }
+  }
+
+
+
+  .ice-breaker-nav-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .ice-breaker-nav-btn {
+    background-color: black;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    border: unset;
+    padding: 4px 9px;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    span {
+      vertical-align: text-bottom;
+      margin-right: 10px;
+    }
+
+    img {
+      height: 13px;
+    }
+  }
+
+  .create-icebreaker-btn {
+    border-radius: 4px;
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    border: unset;
+    padding: 10px 24px;
+    background-color: $feed-accent-selection;
+    display: block;
+    margin-inline: auto;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    img {
+      height: 25px;
+      vertical-align: middle;
+      padding-right: 10px;
+      @include invertColor;
+    }
+  }
+
+  .ice-breaker-tip-bg {
+    .tips {
+      background: unset;
+    }
+  }
+
+  .scroll-to-bottom-btn {
+    position: sticky;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 100;
+    padding-right: 20px;
+  }
+
+  .scroll-to-bottom-wrapper {
+    height: 30px;
+    width: 100%;
+  }
+
+  ::ng-deep .counter-with-internal-content {
+    .payment-counter__inactive-state--info {
+      border-radius: 6px 0 0 6px !important;
+    }
+
+    .nav-btns {
+      .btn-container {
+        border-radius: 0 4px 4px 0;
+      }
+    }
+  }
+
+  .payment-session-description {
+    position: absolute;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 200%;
+    color: $--sds-color-grey-500;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &__left {
+      text-align: left;
+      left: 0;
+    }
+
+    &__right {
+      text-align: right;
+      right: 0;
+    }
+
+    @media screen and (max-width: $bp-small) {
+      position: relative;
+      text-align: center;
+      margin-inline: auto;
+    }
+  }
+
+  .uploader {
+    &__header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 16px;
+    }
+
+    &__close {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+
+    &__actions {
+      display: flex;
+      justify-content: flex-end;
+      padding: 24px;
+      background-color: #fafafa;
+      border-radius: 0px 0px 5px 5px;
+      border: 1px solid #eaeaea;
+    }
+
+    app-send-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+    }
+  }
+
+  .additional-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: $--sds-color-background-default-secondary;
+    padding: 12px 7px;
+    border-top: 1px solid $--sds-color-border-default-default;
+    box-shadow: 0 150px $--sds-color-background-default-secondary;
+
+    &__header {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+
+      app-close-icon {
+        display: flex;
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &__items {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      justify-items: center;
+    }
+
+    &__item {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+      padding: 8px 8px 14px 8px;
+      width: 68px;
+      height: 68px;
+      color: $--sds-color-grey-500;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 14px;
+      align-items: center;
+      text-align: center;
+    }
+
+    &__item.active {
+      cursor: pointer;
+      color: $--sds-color-text-brand-default;
+    }
+  }
+
+  app-text-input {
+    display: block;
+    background-color: white;
+  }
+
+  .uppy-Dashboard-inner {
+    border-radius: 4px 4px 0px 0px !important;
+  }
+
+  app-conversation-header {
+
+    .chat__header {
+      display: none;
+    }
+
+    @media (min-width: $desktop) {
+      .chat__header {
+        display: flex;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    position: absolute;
+    bottom: 9.8rem;
+    right: 1.2rem;
+    gap: 0.8rem;
+    width: 162px;
+    z-index: 100;
+    transition: all 0.3s ease;
+    justify-content: flex-end;
+
+    @media (min-width: $bp-small) {
+      right: 4rem;
+    }
+
+    @media (min-width: $desktop) {
+      display: none;
+    }
+
+    &.back {
+      width: 4rem;
+    }
+
+    &.back.with-proposal {
+      bottom: 16.6rem;
+    }
+
+    app-icon-arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+
+    &.audio-record {
+      @media (max-width: 500px) {
+        bottom: 13.2rem;
+      }
+    }
+  }
+
+  .actions-back {
+    .btn-entity {
+      background: $--sds-color-background-default-secondary !important;
+    }
+  }
+
+
+  app-meeting-confirmation {
+    margin-top: 20px;
+  }
+}
+#jitsi-container {
+  display: flex;
+  overflow: hidden;
+  padding-bottom: 6px;
+}
+
+app-icon-minimize, app-icon-maximaze, app-icon-square, app-icon-horizontal, app-icon-vertical, app-icon-draggable {
+  display: flex;
+  width: 24px;
+  height: 24px;
+}
+
+.video-call {
+  &-actions {
+    position: absolute;
+    top: -16px;
+    left: 44px;
+    display: flex;
+    gap: 4px;
+  }
+
+  &-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    padding: 8px;
+    cursor: pointer;
+    background: #000;
+    outline: none;
+    border: none;
+  }
+
+  &-drag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    border-radius: 100px;
+    border: $--sds-size-stroke-border solid $--sds-color-border-default-tertiary;
+    background: $--sds-color-background-default-secondary;
+    cursor: move;
+  }
+}
+

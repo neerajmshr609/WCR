@@ -1,0 +1,49 @@
+<div
+  class="price-slider__container"
+  [ngClass]="{
+    'slider-opened-bottom': showSlider && placement === 'bottom',
+    'slider-opened-top': showSlider && placement === 'top',
+  }"
+>
+  <button
+    class="price-slider__toggle-btn"
+    *ngIf="isAdvisor"
+    (click)="toggleSlider()"
+    [disabled]="isDisabledSelect"
+  >
+    <img
+      class="gear-icon"
+      [src]="showSlider ? 'assets/gear-check.svg' : iconGear"
+      alt="slier toggle icon"
+    />
+  </button>
+
+  <div [class]="'price-slider__slider ' + placement" *ngIf="showSlider">
+    <button class="slide-btn" (click)="decreaseSliderValue()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <nouislider
+      [config]="sliderConfig"
+      [(ngModel)]="sliderValue"
+      (end)="onValueChanged($event)"
+    ></nouislider>
+    <button class="slide-btn" (click)="increaseSlidePrice()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+    <div class="slider-description" *ngIf="showSubTitle">
+      {{ 'price-slider.change_hourly_rate' | translate }}
+    </div>
+  </div>
+
+  <div class="price-slider__body">
+    <img src="assets/payments/coins.svg" alt="coins-icon" />
+    <p *ngIf="isAdvisor" class="title">{{ title | translate }}</p>
+    <p class="price-slider__price" *ngIf="!fixedPrice">
+      {{ sliderValue | euroCurrency }}
+      <ng-container *ngIf="showHourPrefix">/h</ng-container>
+    </p>
+    <p class="price-slider__price" *ngIf="fixedPrice">
+      {{ fixedPrice | currency: 'EUR' : 'symbol' : '0.0-2' }}
+    </p>
+  </div>
+</div>

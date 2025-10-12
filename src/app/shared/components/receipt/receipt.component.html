@@ -1,0 +1,128 @@
+<ng-content select="[description]"> </ng-content>
+<div class="receipt-container">
+  <div
+    class="receipt"
+    [ngClass]="{
+      'receipt--feedback': isFeedbackSession,
+      'receipt--right': outgoing,
+      'receipt--left': !outgoing,
+    }"
+  >
+    <div class="receipt__header">
+      <ng-container *ngIf="!isFeedbackSession">
+        <div class="receipt__title">
+          <span>{{ receiptTitle }}</span>
+        </div>
+      </ng-container>
+
+      <div
+        class="receipt__actions"
+        *ngIf="!outgoing && awaitingPayment && !isFree"
+      >
+        <ng-container *ngIf="showSpinner$ | async; else actionTpl">
+          <app-small-spinner diameter="16" [isWhite]="true"></app-small-spinner>
+        </ng-container>
+
+        <ng-template #actionTpl>
+          <img
+            src="assets/payments/deny.svg"
+            alt="payment-request-deny"
+            (click)="onDenyClick()"
+          />
+          <img
+            src="assets/payments/accept.svg"
+            alt="payment-request-approve-icon"
+            (click)="onApproveClick()"
+          />
+        </ng-template>
+      </div>
+
+      <ng-container *ngIf="!isFeedbackSession">
+        <img
+          class="receipt__status"
+          src="assets/payments/payment-request-denied@2x.png"
+          alt="payment-request-deny"
+          *ngIf="denied"
+        />
+        <img
+          class="receipt__status"
+          src="assets/payments/payment-request-approved@2x.png"
+          alt="payment-request-approve-icon"
+          *ngIf="approved || isFree"
+        />
+        <img
+          class="receipt__status"
+          *ngIf="awaitingPayment && outgoing && !isFree"
+          src="assets/payments/payment-request-awaiting.svg"
+          alt="payment-request-submitted-icon"
+        />
+      </ng-container>
+
+      <p class="receipt__header-left">{{ total | euroCurrency: '0.2-2' }}</p>
+      <ng-container *ngIf="showTime; else projectedContent">
+        <div class="receipt__header-divider"></div>
+        <p class="receipt__header-right" *ngIf="peopleAmount; else tipsOrTime">
+          {{ peopleAmount }} x Ppl.
+        </p>
+        <ng-template #tipsOrTime>
+          <p class="receipt__header-right" *ngIf="!isTips; else tipsTpl">
+            {{ seconds | hms: 'withUnits' }}
+          </p>
+          <ng-template #tipsTpl>
+            <p class="receipt__header-right">TIP</p>
+          </ng-template>
+        </ng-template>
+      </ng-container>
+      <ng-template #projectedContent>
+        <div class="receipt__header-divider"></div>
+        <p class="receipt__header-right">
+          <ng-content select="[header-right]"></ng-content>
+        </p>
+      </ng-template>
+    </div>
+
+    <div class="receipt__body">
+      <a
+        class="receipt__link"
+        [href]="link"
+        target="_blank"
+        *ngIf="link && approved"
+      >
+        Link to invoice hub
+
+        <img src="assets/icons/external-link.svg" alt="external-link" />
+      </a>
+
+      <div
+        class="receipt__items"
+        [ngClass]="{ 'receipt__items--pt': !link || !approved }"
+        *ngIf="showAdditions"
+      >
+        <div class="receipt__item">
+          <span>{{ incomeText }}</span>
+          <span>{{ advisorIncome | euroCurrency: '0.2-2' }}</span>
+        </div>
+        <div class="receipt__item">
+          <span>GetMe fee </span>
+          <span>{{ greytFee | euroCurrency: '0.2-2' }}</span>
+        </div>
+        <div class="receipt__item">
+          <span>Stripe fee</span>
+          <span>{{ stripeFee | euroCurrency: '0.2-2' }}</span>
+        </div>
+        <!--        <div class="receipt__item">-->
+        <!--          <span>Value added Tax</span>-->
+        <!--          <span>{{ (paymentRequest?.value_added_tax || 0) | euroCurrency:'0.2-2' }}</span>-->
+        <!--        </div>-->
+        <div class="receipt__item">
+          <span>TOTAL</span>
+          <span>{{ total | euroCurrency: '0.2-2' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="time" *ngIf="showDateCreated">
+    {{ createdAt | amLocal | amTimeAgo }}
+  </p>
+</div>

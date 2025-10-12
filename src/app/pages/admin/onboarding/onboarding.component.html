@@ -1,0 +1,47 @@
+<mat-sidenav-container class="side-nav-container">
+  <mat-sidenav mode="side" opened>
+    <div class="admin__menu">
+      <ul class="nav">
+        <li
+          class="nav__item"
+          [ngClass]="{ active: currentFlow === 'rateflow' }"
+          (click)="selectFlow('rateflow')"
+        >
+          <a class="nav__link">Rateflow</a>
+        </li>
+        <li
+          class="nav__item"
+          [ngClass]="{ active: currentFlow === 'projects' }"
+          (click)="selectFlow('projects')"
+        >
+          <a class="nav__link">My Projects</a>
+        </li>
+        <li
+          class="nav__item"
+          [ngClass]="{ active: currentFlow === 'chat' }"
+          (click)="selectFlow('chat')"
+        >
+          <a class="nav__link">Chat</a>
+        </li>
+      </ul>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="admin__content">
+      <div class="stories" *ngFor="let story of stories">
+        <app-story
+          (deleted)="onStoryDelete($event)"
+          [story]="story"
+        ></app-story>
+      </div>
+
+      <div class="add-story" *ngIf="currentFlow">
+        <mat-form-field class="example-full-width">
+          <input #storyName matInput placeholder="New story name" />
+        </mat-form-field>
+
+        <button class="btn" (click)="addStory(storyName.value)">Add</button>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

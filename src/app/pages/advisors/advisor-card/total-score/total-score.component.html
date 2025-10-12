@@ -1,0 +1,96 @@
+<ng-container *ngIf="userSkill; else empty">
+  <button
+    class="total-score-btn total-score-btn__hover-state"
+    cdkOverlayOrigin
+    [ngClass]="{ 'scale-down': smallBtn }"
+    (click)="openPopup()"
+    #trigger="cdkOverlayOrigin"
+  >
+    <div class="total-score-btn__number">
+      <span [appScoreColor]="userSkill.overall_skill_score" setStyle="color">{{
+        userSkill.overall_skill_score | projectScore
+      }}</span>
+    </div>
+    <div
+      class="total-score-btn__emoji"
+      [appScoreColor]="userSkill.overall_skill_score"
+      [appScoreEmoji]="userSkill.overall_skill_score"
+    ></div>
+  </button>
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+    [cdkConnectedOverlayPositions]="positions"
+    [cdkConnectedOverlayHasBackdrop]="true"
+    [cdkConnectedOverlayOffsetX]="offsetX"
+    [cdkConnectedOverlayOffsetY]="offsetX"
+    (backdropClick)="isOpen = false"
+    [cdkConnectedOverlayOpen]="isOpen"
+  >
+    <article class="total-score-container">
+      <article class="header">
+        <div>
+          {{ 'ice-breaker-card.rating.title' | translate }}
+        </div>
+      </article>
+      <article class="content">
+        <div class="score">
+          {{ 'ice-breaker-card.rating.knowledge' | translate }}
+          <span>
+            {{ userSkill.knowledge_skill_score | projectScore }}
+          </span>
+        </div>
+        <div class="score">
+          {{ 'ice-breaker-card.rating.explanation' | translate }}
+          <span>
+            {{ userSkill.explanation_skill_score | projectScore }}
+          </span>
+        </div>
+        <div class="score">
+          {{ 'ice-breaker-card.rating.articulation' | translate }}
+          <span>
+            {{ userSkill.articulation_skill_score | projectScore }}
+          </span>
+        </div>
+        <div class="score">
+          {{ 'ice-breaker-card.rating.politeness' | translate }}
+          <span>
+            {{ userSkill.politeness_skill_score | projectScore }}
+          </span>
+        </div>
+      </article>
+      <button class="total-score-btn" [ngClass]="{ 'scale-down': smallBtn }">
+        <div class="total-score-btn__number">
+          <span
+            [appScoreColor]="userSkill.overall_skill_score"
+            setStyle="color"
+            >{{ userSkill.overall_skill_score | projectScore }}</span
+          >
+        </div>
+        <div
+          class="total-score-btn__emoji"
+          [appScoreColor]="userSkill.overall_skill_score"
+          [appScoreEmoji]="userSkill.overall_skill_score"
+        ></div>
+      </button>
+    </article>
+  </ng-template>
+</ng-container>
+<ng-template #empty>
+  <button
+    class="total-score-btn total-score-btn__hover-state"
+    [ngClass]="{ 'scale-down': smallBtn }"
+  >
+    <div class="total-score-btn__number">
+      <span [appScoreColor]="null" setStyle="color">{{
+        null | projectScore
+      }}</span>
+    </div>
+    <div
+      class="total-score-btn__emoji"
+      [appScoreColor]="null"
+      [appScoreEmoji]="null"
+    ></div>
+  </button>
+</ng-template>

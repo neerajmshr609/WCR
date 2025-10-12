@@ -1,0 +1,68 @@
+<div class="footer">
+  <div class="animation-container">
+    <canvas #canvas>
+    </canvas>
+  </div>
+  <div class="animation-container floating">
+    <div class="cover floatingAlternate">
+    </div>
+  </div>
+  <div class="content">
+    <div class="content__data">
+      <p class="content__address">
+
+        {{ 'footer.address' | translate: { site: 'Greyt.iT UG'} }}
+      </p>
+      <div class="content__agb">
+        <div class="content__agb-top">
+          <div class="content__badge" routerLink="/imprint">{{ 'footer.imprint' | translate }}</div>
+          <div class="content__badge" routerLink="/terms">{{ 'footer.terms' | translate }}</div>
+        </div>
+        <div class="btn-alignment">
+        <div class="content__badge" routerLink="/policy">{{ 'footer.privacy' | translate }}</div>
+        <div class="content__badge" routerLink="/data-deletion-instructions">
+          {{ 'footer.data-deletion-instructions' | translate }}
+        </div>
+        </div>
+      </div>
+    </div>
+    <app-sponsor-box></app-sponsor-box>
+    <section class="social-wrapper">
+      <a class="icon-link" href="">
+        <img src="assets/icons/tiktok.svg" alt="TikTok link" class="icon" data-hover="assets/icons/tiktok-hover.svg"
+          (mouseover)="changeIconToHover($event)" (mouseout)="changeIconToDefault($event)"
+          (click)="changeIconToHover($event)" />
+      </a>
+      <a class="icon-link" href="">
+        <img src="assets/icons/instagram.svg" alt="Instagram link" class="icon"
+          data-hover="assets/icons/instagram-hover.svg" (mouseover)="changeIconToHover($event)"
+          (mouseout)="changeIconToDefault($event)" (click)="changeIconToHover($event)" />
+      </a>
+      <a class="icon-link" href="">
+        <img src="assets/icons/youtube.svg" alt="Youtube link" class="icon" data-hover="assets/icons/youtube-hover.svg"
+          (mouseover)="changeIconToHover($event)" (mouseout)="changeIconToDefault($event)"
+          (click)="changeIconToHover($event)" />
+      </a>
+      <a class="icon-link" href="">
+        <img src="assets/icons/facebook.svg" alt="Facebook link" class="icon"
+          data-hover="assets/icons/facebook-hover.svg" (mouseover)="changeIconToHover($event)"
+          (mouseout)="changeIconToDefault($event)" (click)="changeIconToHover($event)" />
+      </a>
+      <a class="icon-link" href="">
+        <img src="assets/icons/linkedin.svg" alt="LinkedIn link" class="icon"
+          data-hover="assets/icons/linkedin-hover.svg" (mouseover)="changeIconToHover($event)"
+          (mouseout)="changeIconToDefault($event)" (click)="changeIconToHover($event)" />
+      </a>
+    </section>
+  </div>
+</div>
+<svg style="position: fixed; top: 100vh">
+  <defs>
+    <filter id="blob">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="blob">
+      </feColorMatrix>
+      <feComposite in="SourceGraphic" in2="blob" operator="atop"></feComposite>
+    </filter>
+  </defs>
+</svg>

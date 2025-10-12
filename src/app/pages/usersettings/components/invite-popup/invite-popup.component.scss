@@ -1,0 +1,90 @@
+@import "variables";
+
+.invite-user {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 466px;
+
+  &__actions {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+
+  &__email {
+    margin-bottom: 4px;
+  }
+
+  .form-field, &__note {
+    margin-bottom: 12px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    color: $--sds-color-text-default-default;
+    font-size: $--sds-typography-heading-size-base;
+    font-style: normal;
+    font-weight: $--sds-typography-heading-font-weight;
+    line-height: 120%;
+    letter-spacing: -0.48px;
+  }
+
+  &__close {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  &__note {
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+  }
+
+  &__site-protection {
+    color: $--sds-color-text-default-secondary;
+    font-size: $--Body-Size-XS;
+    font-style: normal;
+    font-weight: $--sds-typography-weight-medium;
+    line-height: normal;
+    letter-spacing: $--letter-spacing-3;
+    text-transform: uppercase;
+
+    a {
+      text-transform: none;
+      color: $--sds-color-text-default-default;
+      font-family: Inter, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      text-decoration-style: solid;
+      text-decoration-skip-ink: none;
+      text-decoration-thickness: auto;
+      text-underline-offset: auto;
+      text-underline-position: from-font;
+      text-decoration: underline;
+    }
+  }
+}
+
+mat-icon.button-add__icon {
+  height: 1.6rem;
+  font-size: 1.6rem;
+  width: 1.6rem;
+}
+

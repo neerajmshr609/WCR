@@ -1,0 +1,42 @@
+@import 'variables';
+
+.modal-text {
+  color: $--sds-color-text-default-secondary;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 140%;
+}
+
+app-close-icon {
+  display: flex;
+  width: 20px !important;
+  height: 20px !important;
+  cursor: pointer;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 16px 16px 0 16px;
+}
+
+.modal-title {
+  color: $--sds-color-text-default-default;
+  font-family: $--sds-typography-heading-font-family;
+  font-size: $--sds-typography-heading-size-base;
+  font-style: normal;
+  font-weight: $--sds-typography-heading-font-weight;
+  line-height: 120%;
+  letter-spacing: -0.48px;
+}
+
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.6rem;
+  padding: 0 2.4rem 2.4rem 2.4rem;
+}

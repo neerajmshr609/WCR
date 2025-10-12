@@ -1,0 +1,74 @@
+<div
+  class="av-rating-slider"
+  [ngClass]="param.active && (!paused() || (paused() && param.focused)) ? 'av-rating-slider__active--' + color : 'av-rating-slider' "
+  (click)="onParamClick()"
+>
+  <div
+    [ngClass]="
+      param.active && (!paused() || (paused() && param.focused))
+        ? 'av-rating-slider__name av-rating-slider__name--' +
+          color +
+          '--selected'
+        : 'av-rating-slider__name'
+    "
+  >
+    <span>{{ name }}</span>
+    <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+
+  </div>
+
+
+  <div
+    [ngClass]="
+       param.active && (!paused() || (paused() && param.focused))
+        ? 'av-rating-slider__slider av-rating-slider__slider-' +
+          color +
+          '--selected'
+        : 'av-rating-slider__slider av-rating-slider__slider-' + color
+    "
+  >
+      <ngx-slider
+        #slider
+        (userChangeEnd)="onUserChangeEnd($event)"
+        (userChange)="onUserChangeStart(slider)"
+        [(value)]="sliderValue"
+        [options]="options()"
+      ></ngx-slider>
+  </div>
+
+</div>
+
+
+
+<mat-menu #menu="matMenu">
+  <button class="feedback-menu-item" mat-menu-item (click)="toggleMode()" [disabled]="param.active">
+    <svg
+      width="35"
+      height="23"
+      viewBox="0 0 35 23"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M34.2057 3.40282C35.4359 4.63354 34.9564 6.6112 33.8334 7.73372L22.0081 19.5633L15.2385 20.5823L16.2514 13.807L28.079 1.9751C29.1997 0.854458 31.1816 0.378706 32.4123 1.60612L34.2057 3.40282ZM1.96654 21.5551C1.34858 22.7646 -0.492538 21.8244 0.12542 20.613L4.17852 12.6864C4.61742 11.8312 5.89444 11.7882 6.10988 12.9264L7.25933 17.9239L8.94502 14.501C9.31305 13.7517 10.2579 13.7489 10.7479 14.4023L13.9836 19.3459C14.7277 20.4869 12.9896 21.6151 12.2512 20.4789L10.0019 17.0423L7.83147 21.4516C7.40626 22.32 6.10421 22.1731 5.89161 21.2253L4.72609 16.1593L1.96654 21.5551ZM27.6052 5.38473L30.4271 8.20617L32.366 6.26678C32.6414 5.99135 33.0978 5.22693 32.7378 4.86976L30.9444 3.07306C30.5882 2.71684 29.82 3.17369 29.5441 3.44487L27.6052 5.38473ZM28.9592 9.67358L26.1396 6.85403L18.1945 14.7982L17.6994 18.1166L21.016 17.6196L28.9592 9.67358Z"
+        fill="black"
+      />
+    </svg>
+    <span>Write | {{ color }} slider</span>
+  </button>
+  <button class="feedback-menu-item" mat-menu-item (click)="toggleMode()" [disabled]="!param.active">
+    <svg
+      width="37"
+      height="16"
+      viewBox="0 0 37 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M35.0651 6.48H34.9051C34.2251 3.04 31.1451 0.440002 27.5051 0.440002C25.5051 0.440002 23.7051 1.24 22.3451 2.48C21.1451 2.12 19.8251 1.92 18.4651 1.92C17.1051 1.92 15.7851 2.12 14.5851 2.48C13.2251 1.2 11.4251 0.440002 9.42509 0.440002C5.78509 0.440002 2.74509 3.04 2.02509 6.48H1.86509C1.02509 6.48 0.345093 7.16 0.345093 8C0.345093 8.84 1.02509 9.52 1.86509 9.52H2.02509C2.70509 12.96 5.78509 15.56 9.42509 15.56C13.5851 15.56 16.9851 12.2 16.9851 8C16.9851 7 16.7851 6.04 16.4251 5.16C17.0651 5.04 17.7451 4.96 18.4651 4.96C19.1851 4.96 19.8651 5.04 20.5051 5.16C20.1451 6.04 19.9451 7 19.9451 8C19.9451 12.16 23.3051 15.56 27.5051 15.56C31.1451 15.56 34.1851 12.96 34.9051 9.52H35.0651C35.9051 9.52 36.5851 8.84 36.5851 8C36.5851 7.16 35.9051 6.48 35.0651 6.48ZM9.42509 12.52C6.94509 12.52 4.90509 10.48 4.90509 8C4.90509 5.52 6.94509 3.48 9.42509 3.48C11.9051 3.48 13.9451 5.52 13.9451 8C13.9451 10.48 11.9051 12.52 9.42509 12.52ZM27.5051 12.52C25.0251 12.52 22.9851 10.48 22.9851 8C22.9851 5.52 25.0251 3.48 27.5051 3.48C29.9851 3.48 32.0251 5.52 32.0251 8C32.0251 10.48 29.9851 12.52 27.5051 12.52Z"
+        fill="black"
+      />
+    </svg>
+    <span>Read | {{ color }} slider</span>
+  </button>
+</mat-menu>

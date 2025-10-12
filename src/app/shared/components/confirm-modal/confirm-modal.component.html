@@ -1,0 +1,40 @@
+<section class="confirmation-dialog">
+  <article class="header-container">
+    <h1 class="title">{{ data.title | translate }}</h1>
+    <app-button
+      size="large"
+      btnUIType="subtle"
+      iconBtn
+      rounded
+      type="button"
+      (click)="close()"
+      class="close-btn"
+    >
+      <app-close-icon color="black" class="icon"></app-close-icon>
+    </app-button>
+  </article>
+  <p class="subtitle">{{ data.subtitle | translate }}</p>
+  <br />
+  <p class="confirm-text">
+    {{ data.question | translate }}
+  </p>
+  <section class="actions">
+    <app-button
+      size="medium"
+      btnUIType="neutral"
+      type="button"
+      (click)="close()"
+      class="cancel"
+    >
+      {{ data.cancel_btn ? (data.cancel_btn | translate) : 'Cancel' }}
+    </app-button>
+    <app-button
+      size="medium"
+      btnUIType="primary"
+      type="button"
+      (click)="confirm()"
+    >
+      {{ data.confirm_btn ? (data.confirm_btn | translate) : 'Confirm' }}
+    </app-button>
+  </section>
+</section>

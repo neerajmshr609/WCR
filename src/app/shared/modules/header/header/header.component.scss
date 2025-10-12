@@ -1,0 +1,149 @@
+@import '_variables';
+@import '_mixins';
+
+:host {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex: 1;
+}
+
+.header {
+  &_logo {
+    width: 4.5rem;
+    height: 4.5rem;
+    min-width: 4.5rem;
+
+    @media (min-width: $bp-medium) {
+      width: 5.5rem;
+      height: 5.5rem;
+    }
+
+    @media (min-width: $desktop) {
+      width: 6.5rem;
+      height: 6.5rem;
+    }
+  }
+
+  &_announcement {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: $--sds-size-space-200;
+  }
+
+  &_navigation-items.is-without-login {
+    @media (max-width: 600px) {
+      display: grid;
+      grid-template-areas: "signup login menu";
+      grid-template-columns: minmax(50px, auto) 35px minmax(120px, auto);
+    }
+  }
+
+  &_navigation-items {
+    display: flex;
+    align-items: center;
+    gap: $--sds-size-space-200;
+  }
+
+  .header-sign-up-btn {
+    grid-area: signup;
+  }
+
+  .login-btn {
+    grid-area: login;
+  }
+
+  .header_mobile-menu {
+    grid-area: menu;
+  }
+
+    &_mobile-menu .menu-alignment {
+    width: 16ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+  }
+
+  &_mobile-menu {
+    padding: $--sds-size-space-300;
+    border-radius: $--sds-size-radius-200;
+    border: 1px solid $--sds-color-border-default-default;
+    gap: $--sds-size-space-200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    color: $--sds-color-text-default-default;
+    overflow: hidden;
+    padding: 12px;
+  }
+
+  &_mobile-menu.open {
+    border-radius: $--sds-size-radius-full;
+    border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+    background: $--sds-color-background-brand-default;
+    padding: $--sds-size-space-400 3.8rem;
+    color: $--sds-color-text-brand-on-brand;
+    z-index: 20000;
+    right: 12px;
+  }
+}
+
+.login-btn {
+  border-radius: $--sds-size-radius-200;
+
+  &_icon {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.signup-menu-item {
+  position: relative;
+  top: 1.2rem;
+  min-width: 9.333rem;
+  height: 8.598rem;
+  padding: 8.41px 6.82px 15.96px 8.18px;
+  border-radius: $--sds-size-radius-150;
+  background: $--sds-color-background-brand-default;
+
+  a {
+    text-decoration: none;
+    color: $--sds-color-background-default-default;
+    font-size: $--sds-typography-body-size-small;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: $line-height-140;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 7.767rem;
+    height: 5.968rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 94%;
+    background: url('/assets/header/signup-arrow.svg') no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 6.7rem;
+    left: 0;
+  }
+
+}
+
+.login-btn {
+  min-width: 8px;
+}

@@ -1,0 +1,198 @@
+@if (type === 'getting') {
+  <div
+    class="payments payments-getting"
+    [ngClass]="{ 'payments-getting-connected': connect }"
+  >
+    @if (!connect || (connect && advisorPayments?.balance)) {
+      <app-payments-manual-payouts
+        [connect]="connect"
+        [currentUser]="currentUser"
+        [showPayoutBnt]="showPayoutBnt"
+        [advisorPayments]="advisorPayments"
+        [currentPayoutRequest]="currentPayoutRequest"
+      ></app-payments-manual-payouts>
+    }
+
+    <div class="secure">
+      <div class="payments-header">
+        <h2 class="payments-header-title">
+          {{
+            (connect
+              ? 'finances_stripe.connector_payouts_account'
+              : 'finances_stripe.setup_secure_payouts'
+            ) | translate
+          }}
+        </h2>
+        @if (connect) {
+          <div class="payments-header-menu">
+            <button mat-icon-button [matMenuTriggerFor]="menu" disableRipple>
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="onDeleteStripe()">
+                <span>{{
+                  'finances_stripe.delete_stripe_account' | translate
+                }}</span>
+              </button>
+            </mat-menu>
+          </div>
+          <p
+            class="payments-header-connected payments-header-connected-getting"
+          >
+            {{ 'finances_stripe.connected' | translate }}
+          </p>
+        }
+      </div>
+
+      <div class="payments-block">
+        <div class="payments-block-info">
+          @if (!connect) {
+            <a
+              href="https://connect.stripe.com/express/oauth/authorize?redirect_uri={{
+                baseUrl
+              }}/stripe/token&client_id={{
+                stripeClientID
+              }}&stripe_user[email]={{
+                currentUser.email
+              }}&suggested_capabilities[]=transfers"
+              class="stripe-connect"
+              ><span>{{
+                'finances_stripe.connect_with_stripe' | translate
+              }}</span></a
+            >
+          }
+
+          @if (reloadNotification) {
+            <p class="reload-notification">
+              {{ 'finances_stripe.please_reload' | translate }}
+            </p>
+          }
+          @if (connect && balance) {
+            <div>
+              <div class="payments-block-info-getting">
+                <div class="payments-block-info-getting-balance">
+                  @if (balance.available_amount < 3000) {
+                    <p class="payments-block-info-getting-balance__text">
+                      {{ 'finances_stripe.your_advice_income' | translate }}:
+                    </p>
+                  }
+
+                  @if (balance.available_amount >= 3000) {
+                    <p
+                      class="payments-block-info-getting-balance__text green-color"
+                    >
+                      {{ 'finances_stripe.ready_for_payout' | translate }}
+                    </p>
+                  }
+
+                  <p
+                    class="payments-block-info-getting-balance__item"
+                    [ngClass]="{
+                      'green-color': balance.available_amount >= 3000,
+                    }"
+                  >
+                    {{
+                      balance.available_amount | currencies: balance.currency
+                    }}
+                  </p>
+                </div>
+                <div class="payments-block-info-getting-balance-inform">
+                  <img
+                    src="assets/user-settings/finances/chevrons-left.svg"
+                    alt="Left icon"
+                  />
+                  <p class="payments-block-info-getting-balance-inform__text">
+                    {{ 'finances_stripe.on_the_way' | translate }}:
+                  </p>
+                  <p class="payments-block-info-getting-balance-inform__prices">
+                    {{
+                      balance?.pending_amount
+                        ? (balance.pending_amount
+                          | currencies: balance.currency)
+                        : '€0.00'
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+        <div class="payments-block-img">
+          <img src="assets/user-settings/finances/advisor.svg" alt="Advisor" />
+        </div>
+        <div class="payments-block-btn">
+          <div class="payments-block-btn-getting">
+            @if (!connect) {
+              <div>
+                <p>{{ 'finances_stripe.supported_countries' | translate }}</p>
+                <select>
+                  @for (country of countries; track country.code) {
+                    <option [value]="country.code">
+                      {{ country.name | translate }} ({{ country.code }})
+                    </option>
+                  }
+                </select>
+              </div>
+            } @else {
+              <div class="payments-block-btn-getting-info">
+                <p class="payments-block-btn-paying">
+                  <a
+                    mat-button
+                    [href]="(stripeDashboardLinks$ | async)?.url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >{{
+                      'finances_stripe.open_payouts_dashboard' | translate
+                    }}</a
+                  >
+                </p>
+
+                @if (balance?.available_amount >= 3000) {
+                  <button
+                    (click)="onPayout()"
+                    class="payments-block-btn-getting-text green-info"
+                  >
+                    {{ 'finances_stripe.payout_my_income' | translate }}
+                  </button>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+      <p class="payments-inform" [innerHTML]="informText"></p>
+    </div>
+
+    @if (notSupport) {
+      <app-payments-not-supported></app-payments-not-supported>
+    }
+
+    @if (type === 'paying') {
+      <app-payments-paying
+        [connect]="connect"
+        [type]="type()"
+        [balance]="balance"
+      ></app-payments-paying>
+    }
+
+    @if (type === 'save' && connect) {
+      <app-payments-saving [saveBonus]="saveBonus"></app-payments-saving>
+    }
+
+    <ng-template #ConfirmModalTmpl>
+      <section class="confirm-modal">
+        <h1 class="header-text">
+          {{ 'finances_stripe.withdraw.question' | translate }}
+        </h1>
+        <section class="confirm-modal__actions">
+          <button [mat-dialog-close]="null" class="decline">
+            {{ 'finances_stripe.withdraw.cancel_btn_text' | translate }}
+          </button>
+          <button [mat-dialog-close]="true" class="accept">
+            {{ 'finances_stripe.withdraw.accept_btn_text' | translate }}
+          </button>
+        </section>
+      </section>
+    </ng-template>
+  </div>
+}

@@ -1,0 +1,18 @@
+<div *ngIf="!presenterQuestion._destroy" class="presenter-question-item">
+  <button
+    *ngIf="length > 1 && presenterQuestion.title"
+    class="presenter-question-item__action-button"
+    type="button"
+    (click)="onQuestionAction()"
+  >
+    <img src="assets/icons/deletePresenterQuestionBtn@2x.png" alt="" />
+  </button>
+
+  <p
+    #inputRef
+    class="input presenter-question-item__title"
+    placeholder="Type your question..."
+    contenteditable="true"
+    (keyup)="onKeyUp()"
+  ></p>
+</div>

@@ -1,0 +1,153 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.conversation {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 48px 42px 24px 42px;
+  height: calc(100vh - 52px);
+
+  @media (min-width: $bp-small) {
+    height: calc(100vh - 72px);
+  }
+
+  @media (min-width: $desktop) {
+    min-height: 700px;
+    height: calc(100vh - 72px);
+  }
+  overflow: hidden;
+
+  @media (max-width: $desktop) {
+    padding: 0;
+  }
+
+  &.full-width & {
+    &__messages {
+      width: 100%;
+      margin-right: 0;
+
+      ::ng-deep {
+        .chat__container {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+
+  &__animation-container {
+    display: flex;
+    flex: 1;
+    max-width: 990px;
+
+    @media only screen and (min-width: $bp-medium) {
+      padding: 0;
+      margin-top: 0;
+    }
+  }
+
+  &__project {
+    width: 375px;
+
+    app-project-card-v2 {
+      @media only screen and (max-width: $bp-medium) {
+        max-width: 375px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &__menu {
+    @media only screen and (min-width: $bp-medium) {
+      display: none;
+    }
+  }
+
+  &__messages {
+    margin-right: 2rem;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: calc(100% - 375px);
+
+    app-conversation-detail {
+      @media only screen and (max-width: $bp-medium) {
+        width: 100%;
+        min-width: 20rem;
+        max-width: 80%;
+        border-radius: 6px;
+      }
+
+      @media only screen and (max-width: $bp-small) {
+        max-width: unset;
+      }
+    }
+  }
+
+  @media only screen and (min-width: $bp-medium) {
+    display: flex;
+    justify-content: center;
+
+    &__animation-container {
+      justify-content: center;
+    }
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    &:not(.full-width) {
+      padding: 1rem 0;
+    }
+
+    &:not(.full-width) &__animation-container {
+      width: 200vw;
+      max-width: unset;
+
+      .conversation__messages {
+        //max-height: calc(100vh - 148px);
+        //min-height: 240px;
+        background: none;
+
+        app-conversation-detail {
+          background: white;
+        }
+      }
+
+      > div {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        padding: 0 2rem;
+        margin: 0;
+
+        @media screen and (max-width: $bp-small) {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    &:not(.full-width) &__animation-container {
+      .conversation__messages {
+        padding: 0;
+      }
+    }
+  }
+}
+
+app-conversation-manage-panel {
+  display: flex;
+  max-width: 45.5rem;
+  flex: 1;
+
+  @media (max-width: $desktop) {
+    max-width: 100%;
+  }
+}

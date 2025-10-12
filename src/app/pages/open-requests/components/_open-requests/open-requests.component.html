@@ -1,0 +1,35 @@
+<div class="page-content">
+  <div class="open-request">
+    <div class="open-request_header-menu">
+      <app-main-content-menu
+        [menuItems]="menuItems"
+        (changeSelectedItem)="selectedMenuItem.set($event)"
+      ></app-main-content-menu>
+    </div>
+<!--    TODO need implement new filter-->
+<!--    <app-skill-filter-->
+<!--      [skills]="skills()"-->
+<!--      [allowMultiselect]="true"-->
+<!--      [displayStage]="false"-->
+<!--      [artCategories]="artCategories()"-->
+<!--      [(selectedSkills)]="selectedSkills"-->
+<!--    ></app-skill-filter>-->
+
+    <div #cardsContainer class="open-request_cards-container grid-list-default">
+
+      <app-typing-card [config]="typingCardConfig" [textWithSplit]="'greeter-card.text' | translate " [secondTextWithSplit]="'greeter-card.text2' | translate "></app-typing-card>
+
+      @for (openRequest of openRequests(); track openRequest.id) {
+        <app-open-request-card
+          [openRequestConversation]="openRequest"
+        ></app-open-request-card>
+      }
+      @if (isLoading()) {
+        <div class="open-request_loading">
+          <app-icon-spinner [sizeInput]="40"></app-icon-spinner>
+        </div>
+      }
+    </div>
+  </div>
+</div>
+

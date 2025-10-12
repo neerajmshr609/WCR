@@ -1,0 +1,350 @@
+{
+    "user_query": "Can I study at a university in Germany with my current residence permit?",
+    "user_context": {
+        "origin_country": "Ukraine",
+        "time_in_germany": "+5 years",
+        "age": "33"
+    },
+    "location": "Berlin"
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "language_detector",
+    "status_display": {
+        "status": "language_detector",
+        "display_message": "Detecting language."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "domain_detector",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "retriever",
+    "status_display": {
+        "status": "retriever",
+        "display_message": "Searching for sources to answer question."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "sensitive_topic_detector",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "intent_detector",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "clarification_decider",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "clarification_requester",
+    "status_display": {
+        "status": "clarification_requester",
+        "display_message": "Identifying missing information to provide response."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "output_parser",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": {
+        "answer": "Could you please specify the type of residence permit you currently hold in Germany? For example, is it a permit for work, family reunification, asylum, or another purpose? This information will help determine if your current permit allows you to study at a university or if you need to apply for a specific student residence permit.",
+        "improved_answer": "Could you please specify the type of residence permit you currently hold in Germany? For example, is it a permit for work, family reunification, asylum, or another purpose? This information will help determine if your current permit allows you to study at a university or if you need to apply for a specific student residence permit.",
+        "answer_found": false
+    },
+    "retriever_items": [
+        {
+            "document_name": "source-data",
+            "text": "seit Dezember 2015 auch ohne (vollständige) Vorlage von Bildungsnachweisen einen Hochschulzugang erreichen. Dafür gibt es bestimmte Verfahren, die von Universität zu Universität unterschiedlich sind. EU-Staatsangehörige sowie Personen aus den EWR-Staaten benötigen keine besondere Aufenthaltserlaubnis, um in Deutschland studieren zu können. Sie müssen lediglich nachweisen, dass sie krankenversichert sind und sowohl Semesterbeiträge als auch ihren Lebensunterhalt finanzieren können. Sobald sie ein Daueraufenthaltsrecht oder eine Niederlassungserlaubnis haben, haben sie Anspruch auf BAföG. Personen aus sonstigen Drittstaaten können ebenfalls in Deutschland studieren. Sie haben meist bereits in ihrem Heimatland bei einer deutschen Hochschule eine Zulassung erhalten und können aufgrund dessen ein Visum und nach Einreise eine Aufenthaltserlaubnis zu Studienzwecken beantragen, § 16b AufenthG. Stand: Dezember 2024",
+            "text_with_context": "source_name: Informationsverbund Asyl & Migration\nsource_domain: Asylum\ntext: seit Dezember 2015 auch ohne (vollständige) Vorlage von Bildungsnachweisen einen Hochschulzugang erreichen. Dafür gibt es bestimmte Verfahren, die von Universität zu Universität unterschiedlich sind. EU-Staatsangehörige sowie Personen aus den EWR-Staaten benötigen keine besondere Aufenthaltserlaubnis, um in Deutschland studieren zu können. Sie müssen lediglich nachweisen, dass sie krankenversichert sind und sowohl Semesterbeiträge als auch ihren Lebensunterhalt finanzieren können. Sobald sie ein Daueraufenthaltsrecht oder eine Niederlassungserlaubnis haben, haben sie Anspruch auf BAföG. Personen aus sonstigen Drittstaaten können ebenfalls in Deutschland studieren. Sie haben meist bereits in ihrem Heimatland bei einer deutschen Hochschule eine Zulassung erhalten und können aufgrund dessen ein Visum und nach Einreise eine Aufenthaltserlaubnis zu Studienzwecken beantragen, § 16b AufenthG. Stand: Dezember 2024",
+            "document_metadata": {},
+            "node_id": "c51e46fa5f7246b58ddbd354003c5fe8",
+            "parent_node_id": "f20f6263360a4d53a3fcc2199880f77f",
+            "chunk_size": 64,
+            "chunk_id": 1,
+            "keyword_score": 4.428,
+            "vector_score": 0.655,
+            "relative_hybrid_score": 0.971,
+            "collection_metadata": {
+                "name": "AsylNet",
+                "language": "de",
+                "documents": [],
+                "collector": "AsylNet",
+                "source_name": "Informationsverbund Asyl & Migration",
+                "source_author": "Informationsverbund Asyl & Migration",
+                "source_url": "https://www.asyl.net/themen",
+                "source_domain": "Asylum",
+                "source_type": "Administrative processes",
+                "source_region": "Berlin",
+                "source_date": "05-20-2025",
+                "source_description": "This page provides information on asylum and migration in Germany. It includes resources, articles, and news related to asylum seekers, refugees, and migration policies. The site aims to inform and support individuals navigating the asylum process in Germany."
+            },
+            "child_node_ids": []
+        },
+        {
+            "document_name": "source-data",
+            "text": "A foreign student is granted a residence permit for full-time studies at a state-recognised university or a comparable educational institution in Germany. The purpose of stay for the studies also includes preparatory measures and the completion of a compulsory internship. Preparatory measures for the studies are – attending a preparatory language course, if admission to the course of study is tied to attending a preparatory language course, and – attending a preparatory college or comparable institution. A residence permit cannot be issued for an intensive language course to learn a foreign language (e.g. English). This also applies if the desired course of study is only offered in this foreign language. The residence permit is generally granted and extended for two years. It entitles the holder to work for",
+            "text_with_context": null,
+            "document_metadata": {
+                "source_url": "https://www.berlin.de/einwanderung/dienstleistungen/service.871055.php/dienstleistung/305244/en/",
+                "source_author": "Landesamt für Einwanderung Berlin",
+                "source_name": "Overview of services - sorted by purpose of residence and living situation",
+                "source_domain": "Immigration",
+                "page": null,
+                "section": "All about training, school, studies",
+                "subsection": "Residence permit for the purpose of full-time studies",
+                "sub_subsection": null
+            },
+            "node_id": "b2188394fd2243529d54545e4d531c32",
+            "parent_node_id": "b289c5dbec9a4a3a8023e5b7182e205c",
+            "chunk_size": 128,
+            "chunk_id": 2,
+            "keyword_score": 2.75,
+            "vector_score": 0.633,
+            "relative_hybrid_score": 0.799,
+            "collection_metadata": {
+                "name": "BerlinImmigrationOffice",
+                "language": "en",
+                "documents": [],
+                "collector": "BerlinImmigrationOffice",
+                "source_name": "Berlin Immigration Office",
+                "source_author": "Landesamt für Einwanderung Berlin",
+                "source_url": "https://www.berlin.de/einwanderung/en/services/our-services/artikel.878265.en.php",
+                "source_domain": "Immigration",
+                "source_type": "Administrative processes",
+                "source_region": "Berlin",
+                "source_date": "01-23-2025",
+                "source_description": "This page provides information on how to book appointments for various immigration services offered by the Berlin Immigration Office. It includes details on the types of services available, such as applying for residence permits, citizenship, and other immigration-related matters."
+            },
+            "child_node_ids": [
+                "a428e062bdf549e183012a305bb11c83",
+                "04f57281c8484576bb8bfd7af58e32be"
+            ]
+        },
+        {
+            "document_name": "source-data",
+            "text": "What happens after I come to Germany? After entering the country, you must visit the Immigration Office at your new place of residence within three months and apply for a residence permit there. To do so, you must (again) submit the documents mentioned above as well as, in principle, a police registration certificate and a rental agreement. The authorities will check your papers and then decide whether you must be issued a residence permit. A residence permit for the purpose of studying is usually issued for one to two years but not less than a year . If you cannot finish your studies within this period, your residence permit will often be extended. If you are studying in Germany with a student’s residence permit, as of now, you are allowed to work 120 full days or 240 half days. With the amendment to the Skilled Workers’ Immigration Act, you will be allowed to work 140 full days or 280 half working days from 1 March 2024 . Important : If you drop out of university (\"exmatrikulation\"), e.g. to take up full-time employment or change your field of study, you must inform your local Immigration Office and obtain approval. Your residence permit may be terminated immediately without the approval of the Immigration Office. You are then obliged to leave Germany (§ 50 Para. 1, 2 Residence Act). Therefore, it is essential that you apply in advance for the approval of the immigration Office for a change of subject or place of study. A residence permit for those",
+            "text_with_context": null,
+            "document_metadata": {
+                "source_url": "https://handbookgermany.de/en/student-visa",
+                "source_author": "Handbook Germany",
+                "source_name": "Handbook Germany Immigration",
+                "source_domain": "Immigration",
+                "page": null,
+                "section": "Visa for University Education",
+                "subsection": null,
+                "sub_subsection": null
+            },
+            "node_id": "e6fcf3c2bfba45219a3702e743c1548f",
+            "parent_node_id": "",
+            "chunk_size": 256,
+            "chunk_id": 3,
+            "keyword_score": 3.576,
+            "vector_score": 0.595,
+            "relative_hybrid_score": 0.755,
+            "collection_metadata": {
+                "name": "HandbookGermanyImmigration",
+                "language": "en",
+                "documents": [],
+                "collector": "HandbookGermanyImmigration",
+                "source_name": "Handbook Germany Immigration",
+                "source_author": "Handbook Germany",
+                "source_url": "https://handbookgermany.de/en/search?filter%5Bfulltext%5D=&f1%5B0%5D=slug%3Amigration%2Fvisa&f1%5B1%5D=slug%3Amigration&f1%5B2%5D=slug%3Amigration%2Fnaturalisation&f1%5B3%5D=slug%3Amigration%2Fskilled-workers&f1%5B4%5D=slug%3Amigration%2Fother",
+                "source_domain": "Immigration",
+                "source_type": "Information curated by counseling centers and information portals",
+                "source_region": "Germany",
+                "source_date": "01-23-2025",
+                "source_description": ""
+            },
+            "child_node_ids": [
+                "b44f06148ee5458589a0ba39af82a682",
+                "bd98a16acee64424a8bd9f1efef1371f",
+                "c4beb515700840c98ab1678888329ea2",
+                "ca6456b25ed1454e9ccb2f3b6d7678df",
+                "0fa7a157da2c4d04a907e4448cdbe387",
+                "7186365778e74cbd9f7ce279136e9f32"
+            ]
+        },
+        {
+            "document_name": "source-data",
+            "text": "a residence permit for the purpose of vocational training or university education . You can do so at the local Immigration Office. You can only begin your vocational training or university programme with such residence permit s . However, you can also change the purpose of your residence if you find a suitable qualified job (§18a, §18b Residence Act) or vocational training (§16a Residence Act). You can find out how to find a suitable degree course and university spot at Hochschulkompass . In our chapter on school-based vocational training , you can learn what requirements you need to meet to start vocational training in Germany and how to find a training spot.",
+            "text_with_context": "source_name: Handbook Germany Immigration\nsource_domain: Immigration\ntext: a residence permit for the purpose of vocational training or university education . You can do so at the local Immigration Office. You can only begin your vocational training or university programme with such residence permit s . However, you can also change the purpose of your residence if you find a suitable qualified job (§18a, §18b Residence Act) or vocational training (§16a Residence Act). You can find out how to find a suitable degree course and university spot at Hochschulkompass . In our chapter on school-based vocational training , you can learn what requirements you need to meet to start vocational training in Germany and how to find a training spot.",
+            "document_metadata": {},
+            "node_id": "c9df4ed8f4e14e26947034da7495292f",
+            "parent_node_id": "384fd0318902456e96af2804fd06650f",
+            "chunk_size": 64,
+            "chunk_id": 4,
+            "keyword_score": 2.087,
+            "vector_score": 0.625,
+            "relative_hybrid_score": 0.734,
+            "collection_metadata": {
+                "name": "HandbookGermanyImmigration",
+                "language": "en",
+                "documents": [],
+                "collector": "HandbookGermanyImmigration",
+                "source_name": "Handbook Germany Immigration",
+                "source_author": "Handbook Germany",
+                "source_url": "https://handbookgermany.de/en/search?filter%5Bfulltext%5D=&f1%5B0%5D=slug%3Amigration%2Fvisa&f1%5B1%5D=slug%3Amigration&f1%5B2%5D=slug%3Amigration%2Fnaturalisation&f1%5B3%5D=slug%3Amigration%2Fskilled-workers&f1%5B4%5D=slug%3Amigration%2Fother",
+                "source_domain": "Immigration",
+                "source_type": "Information curated by counseling centers and information portals",
+                "source_region": "Germany",
+                "source_date": "01-23-2025",
+                "source_description": ""
+            },
+            "child_node_ids": []
+        }
+    ],
+    "status": null,
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": {
+        "language_code": "en",
+        "language_name": "English"
+    },
+    "domain": {
+        "domain": "Immigration",
+        "is_valid": true
+    },
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": "Validate information",
+    "topics": null,
+    "organizations": null,
+    "is_final_response": true,
+    "is_clarification": true,
+    "error": null
+}

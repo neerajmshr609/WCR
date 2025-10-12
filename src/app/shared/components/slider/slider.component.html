@@ -1,0 +1,44 @@
+<div class="emoji-slider emoji-slider-{{ projectID }}">
+  <div class="emoji-slider__face-panel">
+    <svg class="emoji-slider__face" *ngIf="!staticValue">
+      <use
+        [attr.xlink:href]="
+          'assets/emoji-neck-defs.svg#icon-Emoji-anim-fill-neck_' + currentValue
+        "
+      ></use>
+    </svg>
+
+    <svg
+      class="emoji-slider__face emoji-slider__face--visible emoji-slider__face--visible--static"
+      *ngIf="staticValue"
+    >
+      <use
+        [attr.xlink:href]="
+          'assets/emoji-neck-defs.svg#icon-Emoji-anim-fill-neck_' + staticValue
+        "
+      ></use>
+    </svg>
+  </div>
+
+  <div class="emoji-slider__slider">
+    <nouislider
+      [disabled]="disabled"
+      [config]="sliderConfig"
+      [ngModel]="sliderModel"
+      (slide)="onSlide($event)"
+      (change)="onChange($event)"
+    ></nouislider>
+
+    <svg class="emoji-slider__face-rated" *ngIf="rated">
+      <use
+        [attr.xlink:href]="
+          'assets/emoji-neck-defs.svg#icon-Emoji-anim-fill-neck_' + currentValue
+        "
+      ></use>
+    </svg>
+  </div>
+
+  <div class="emoji-slider__subtitle" *ngIf="!staticValue && ratingType">
+    <p class="slider-title">your overall opinion on {{ ratingType }}</p>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+{
+  "heading": {
+    "website-button": "Our Website",
+    "blog-button": "Our blog"
+  },
+  "get-help": {
+    "title": "Get help",
+    "subtitle": "To receive assistance from a counsellor choose a topic first."
+  },
+  "counsellors": {
+    "title": "Meet our Counsellors",
+    "subtitle": "Subheading"
+  },
+  "partners": {
+    "title": "Partners",
+    "subtitle": "Grateful for the fruitful collaboration"
+  },
+  "contact": {
+    "title": "Volunteer With Us",
+    "subtitle": "or any other contacts inquiries",
+    "name-field-label": "Name",
+    "name-field-placeholder": "John",
+    "surname-field-label": "Surname",
+    "surname-field-placeholder": "Doe",
+    "email-field-label": "Email",
+    "email-field-placeholder": "john.doe@org.com",
+    "message-field-label": "Message",
+    "message-field-placeholder": "Text",
+    "submit-button-text": "Submit"
+  },
+  "errors": {
+    "required": "Field is required",
+    "wrong-email": "Please enter valid email"
+  },
+  "footer": {
+    "blogposts": {
+      "title": "Trending Blogposts",
+      "item-1": "Evacuations from Ukraine",
+      "item-2": "Family Reunion",
+      "item-3": "Find childcare during crisis",
+      "item-4": "Childcare",
+      "item-5": "How to get pregnancy support",
+      "item-6": "My child was bullied in school",
+      "item-7": "Safe shelter list (update)"
+    },
+    "blog": {
+      "title": "Blog Topics",
+      "item-1": "Neurodivergence & Disability",
+      "item-2": "Finances",
+      "item-3": "Health",
+      "item-4": "Family & Children",
+      "item-5": "Education & Skills",
+      "item-6": "Legal Rights & Protection",
+      "item-7": "Community & Social Support"
+    },
+    "team-and-other": {
+      "title": "Team & More",
+      "item-1": "Imprint",
+      "privacy-policy": "Privacy Policy"
+    }
+  },
+  "message": {
+    "sent": "Sent!"
+  },
+  "card": {
+    "counselors": "consultants"
+  },
+  "ice-breaker-card": {
+    "start-conversation": "Start Conversation"
+  }
+}

@@ -1,0 +1,88 @@
+<div class="accordion-card" [class]="'idx' + user().id">
+  <input
+    [disabled]="!hasPermissions()"
+    type="checkbox"
+    [id]="user().id"
+    (click)="toggle($event)"
+    [checked]="accordionInpIsChecked()"
+  />
+  <label [for]="user().id">
+    <div class="header-content">
+      @if (!!actionList()?.length) {
+        <app-more-menu
+          [placement]="'right'"
+          [menuList]="actionList()"
+          [menuTitle]="'user_settings'"
+        ></app-more-menu>
+      }
+      <div class="avatar-section">
+        <img src="{{ user().image ?? getRandomAvatar(user()?.id) }}" alt="Avatar" />
+      </div>
+      <div class="info-section">
+        <h4 class="fullname">{{ user().username ?? user().email }}</h4>
+        <div class="statuses">
+          <span class="status">{{ user().status ?? user().state }}</span>
+          @if (user().city) {
+            <span class="city">{{ user().city }}</span>
+          }
+        </div>
+        @if (user().nickname) {
+          <span class="username">
+            <mat-icon>alternate_email</mat-icon>
+            {{ user().nickname }}
+          </span>
+        }
+      </div>
+
+      @if(hasPermissions()) {
+        <div class="arrows">
+          @if (accordionInpIsChecked()) {
+            <mat-icon>expand_less</mat-icon>
+          } @else {
+            <mat-icon>expand_more</mat-icon>
+          }
+        </div>
+      }
+    </div>
+  </label>
+  <div class="content">
+    <!-- <app-tabs
+      [tabs]="tabs"
+      [selected]="selected"
+      (selectTab)="selectTab($event)"
+    ></app-tabs> -->
+    <hr />
+    @if (form) {
+      <form [formGroup]="form" class="form">
+        @for (dataObj of formData; track dataObj.name) {
+          <div class="form-field">
+            @if (dataObj.type === 'select') {
+              <app-select
+                [control]="form.get(dataObj.name)"
+                inputName="{{ dataObj.name }}"
+                placeholder="{{ dataObj.placeholder | translate }}"
+                label="{{ dataObj.label | translate }}"
+                options="{{ dataObj.options }}"
+              ></app-select>
+            } @else if (dataObj.type === 'switch') {
+              <app-switch
+                [control]="form.get(dataObj.name)"
+                inputName="{{ dataObj.name }}"
+                label="{{ dataObj.label | translate }}"
+                description="{{ dataObj.description | translate }}"
+              ></app-switch>
+            } @else {
+              <app-input
+                [control]="form.get(dataObj.name)"
+                inputName="{{ dataObj.name }}"
+                placeholder="{{ dataObj.placeholder | translate }}"
+                type="dataObj.type"
+                label="{{ dataObj.label | translate }}"
+              ></app-input>
+            }
+          </div>
+        }
+      </form>
+    }
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="modal">
+  <div class="header">
+    <div class="screenshot-icon">
+      <img src="assets/flexfeedback/screenshot-icon.svg" />
+    </div>
+
+    <h2 class="title">Make a screenshot</h2>
+
+    <a mat-icon-button mat-dialog-close disableRipple class="btn--close">
+      <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+    </a>
+  </div>
+
+  <div class="tutorial">
+    <p class="tutorial__title">Tutorial</p>
+    <div class="tutorial__nav">
+      <button
+        class="tutorial__nav-item"
+        [ngClass]="{ 'tutorial__nav-item--active': selectedTutorial === item }"
+        (click)="selectTutorial(item)"
+        *ngFor="let item of tutorials"
+      >
+        {{ item.name }}
+      </button>
+    </div>
+
+    <div class="tutorial__body">
+      <div
+        plyr
+        *ngIf="showVideo && !videoLoading; else bgTpl"
+        [plyrOptions]="playerOptions"
+        [plyrPlaysInline]="true"
+        [plyrSources]="[{ src: selectedTutorial.video }]"
+      ></div>
+
+      <ng-template #bgTpl>
+        <img class="tutorial__image" [src]="selectedTutorial.image" />
+      </ng-template>
+      <button
+        class="tutorial__play-btn"
+        *ngIf="selectedTutorial.video && !showVideo"
+        (click)="playVideo()"
+      >
+        <img src="assets/icons/play-btn-white.svg" />
+      </button>
+      <app-small-spinner *ngIf="videoLoading" diameter="50"></app-small-spinner>
+    </div>
+  </div>
+
+  <div class="btns">
+    <p class="btns__title">Press button to upload image</p>
+    <app-button btnUIType="neutral" size="medium" (click)="openCropper.emit()"> Crop Image</app-button>
+    <app-button btnUIType="primary" size="medium" (click)="save()" [disabled]="isDisabled$ | async">Save</app-button>
+  </div>
+
+  <app-button btnUIType="neutral" size="medium" class="open-file" (click)="openBrowser.emit()">
+    <img src="assets/screenshot-modal/upload.svg" alt="" />
+    Open file browser
+  </app-button>
+
+  <p class="tip">
+    <b>pro tip</b>: Insert your screenshot directly in the comment field by
+    pressing <b>CTRL + V</b>.
+  </p>
+</div>

@@ -1,0 +1,81 @@
+<div class="why" #pageRef>
+  <!-- <app-main-content-menu
+    [menuItems]="menuItems"
+    (changeSelectedItem)="didSelectMenuItem($event)"
+  ></app-main-content-menu> -->
+
+  <app-home-title *ngIf="menuItem.param === 'home'"></app-home-title>
+  <div class="cards">
+    <ng-container *ngIf="menuItem.param === 'home'">
+      <app-step-card>
+        <ng-container header>{{
+            'home.step' | translate: { stepNumber: 1 }
+          }}
+        </ng-container>
+        <ng-container title>
+          <span [innerHTML]="'home.step-card-1' | translate"></span>
+        </ng-container>
+        <ng-container img>
+          <app-icon-hands></app-icon-hands>
+        </ng-container>
+        <ng-container footer-text>
+          <app-button
+            size="large"
+            btnUIType="primary"
+            (click)="navigateToGetHelpPage()"
+          >
+            <app-heart-icon
+              class="get-help-btn_icon"
+              color="#F5F5F5"
+            ></app-heart-icon>
+            <span [innerHTML]="'home.get-help-btn' | translate"></span>
+          </app-button>
+        </ng-container>
+      </app-step-card>
+      <app-step-card>
+        <ng-container header>{{
+            'home.step' | translate: { stepNumber: 2 }
+          }}
+        </ng-container>
+        <ng-container title>
+          <span [innerHTML]="(isMobile() ? 'step-card-2_mobile' : 'home.step-card-2') | translate"></span>
+        </ng-container>
+        <ng-container img>
+          <app-icon-shake-hands></app-icon-shake-hands>
+        </ng-container>
+      </app-step-card>
+      <app-step-card>
+        <ng-container header>{{
+            'home.step' | translate: { stepNumber: 3 }
+          }}
+        </ng-container>
+        <ng-container title>
+          <span [innerHTML]="'home.step-card-3' | translate"></span>
+        </ng-container>
+        <ng-container img>
+          <app-icon-hands-people-earth></app-icon-hands-people-earth>
+        </ng-container>
+      </app-step-card>
+      <!--      <app-welcome-animation-2 *ngIf="isPRMode"></app-welcome-animation-2>-->
+      <!--      <app-welcome-animation-3 *ngIf="!isPRMode"></app-welcome-animation-3>-->
+      <!--      <app-whycard [card]="cardManifest"></app-whycard>-->
+
+      <!--      &lt;!&ndash; <app-brilliant-animation></app-brilliant-animation> &ndash;&gt;-->
+      <!--      <app-maze-animation *ngIf="!isPRMode"></app-maze-animation>-->
+      <!--      <app-upload-card *ngIf="isPRMode"></app-upload-card>-->
+    </ng-container>
+
+    <app-whycard
+      [card]="card"
+      #cardRef
+      *ngFor="
+        let card of cards | cardFilter: selectedCategory : selectedSubCategory
+      "
+      [nowPlaying$]="nowPlaying$.asObservable()"
+      (selectedCardCategoryChange)="selectedCardCategoryChange($event)"
+      (ytPlayerStateChange)="ytPlayerStateChange($event)"
+      [(subCat)]="selectedSubCategory"
+    ></app-whycard>
+  </div>
+</div>
+

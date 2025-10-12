@@ -1,0 +1,99 @@
+@if(isVisible()){
+<div class="user-context-overlay" [class.show]="isVisible()" @slideInUpOnEnter @slideOutDownOnLeave
+    (click)="onOverlayClick($event)" (keydown.escape)="onClose()" tabindex="0" role="dialog" aria-modal="true"
+    aria-label="User context form">
+
+    <div class="user-context-form" 
+        (keydown)="$event.stopPropagation()" tabindex="-1" role="document">
+
+        <!-- Header -->
+        <div class="form-header">
+            <h2 class="form-title">{{ 'user_context_form.title' | translate }}</h2>
+            <p class="form-subtitle">Complete the required fields to improve answer accuracy, then ask your question.
+            </p>
+
+            <!-- Close button -->
+            <button class="close-button" (click)="onClose()" (keydown.enter)="onClose()" (keydown.space)="onClose()"
+                aria-label="Close form" type="button" tabindex="0">
+                <mat-icon>close</mat-icon>
+            </button>
+
+            <!-- Progress indicator -->
+            @if (!isFormComplete) {
+            <div class="progress-indicator">
+                <div class="progress-text">{{ getCompletedFieldsCountForProgress() }} {{
+                    'user_context_form.progress_text' | translate }}</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" [style.width.%]="getProgressPercentage()" role="progressbar"
+                        [attr.aria-valuenow]="getProgressPercentage()" aria-valuemin="0" aria-valuemax="100"
+                        [attr.aria-label]="getCompletedFieldsCountForProgress() + ' ' + ('user_context_form.progress_text' | translate)">
+                    </div>
+                </div>
+            </div>
+            }
+
+        </div>
+
+        <!-- Form Content -->
+        <form [formGroup]="contextForm" class="context-form">
+
+            <!-- Country of Origin -->
+            <div class="form-field">
+                <app-select [control]="contextForm.get('origin_country')" inputName="origin_country"
+                    [label]="'user_context_form.labels.origin_country' | translate" placeholder="e.g. Ukraine"
+                    [options]="countries" [viewModel]="['value', 'label']" (selectionChange)="onFormInteraction()">
+                    @if (contextForm.get('origin_country')?.touched &&
+                    contextForm.get('origin_country')?.errors?.['required']) {
+                    <span>This field is required</span>
+                    }
+                </app-select>
+            </div>
+
+            <!-- Current Area of Residence -->
+            <div class="form-field">
+                <app-select [control]="contextForm.get('current_area_of_residence')"
+                    inputName="current_area_of_residence"
+                    [label]="'user_context_form.labels.current_area_of_residence' | translate" placeholder="e.g. Berlin"
+                    [options]="residenceAreas" [viewModel]="['value', 'label']" (selectionChange)="onFormInteraction()">
+                </app-select>
+            </div>
+
+            <!-- Length of Stay in Germany -->
+            <div class="form-field">
+                <app-select [control]="contextForm.get('time_in_germany')" inputName="time_in_germany"
+                    [label]="'user_context_form.labels.time_in_germany' | translate" placeholder="e.g. 5 years"
+                    [options]="timeInGermanyOptions" [viewModel]="['value', 'label']"
+                    (selectionChange)="onFormInteraction()">
+                    @if (contextForm.get('time_in_germany')?.touched &&
+                    contextForm.get('time_in_germany')?.errors?.['required']) {
+                    <span>This field is required</span>
+                    }
+                </app-select>
+            </div>
+
+            <!-- Age of the Person -->
+            <div class="form-field">
+                <app-select [control]="contextForm.get('age')" inputName="age"
+                    [label]="'user_context_form.labels.age' | translate" placeholder="If unspecified, we say unknown"
+                    [options]="ageOptions" [viewModel]="['value', 'label']">
+                    @if (contextForm.get('age')?.touched && contextForm.get('age')?.errors?.['required']) {
+                    <span>This field is required</span>
+                    }
+                </app-select>
+            </div>
+
+            <!-- Submit Button -->
+
+
+            <app-button size="large" btnUIType="primary" [disabled]="!isFormValid" (click)="submitForm()">
+                <span [innerHTML]="'user_context_form.submit' | translate"></span>
+                <app-send-icon class="send-icon" [color]="isFormValid ? '#fff' : '#B3B3B3'"
+                    strokeWidth="4"></app-send-icon>
+            </app-button>
+
+
+        </form>
+
+    </div>
+</div>
+}

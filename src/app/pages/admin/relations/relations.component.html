@@ -1,0 +1,64 @@
+<br />
+<br />
+<br />
+<app-small-spinner [diameter]="50" *ngIf="isLoading"></app-small-spinner>
+
+<div class="relations" *ngIf="artfields && loadedRelations && !isLoading">
+  <div class="artfields" *ngFor="let artfield of artfields">
+    <h2 class="artfields__name">
+      {{ artfield.name }}
+      <mat-slider
+        min="0"
+        max="1"
+        step="0.1"
+        #input
+        [value]="valueForArtfield(artfield.id)"
+        [thumbLabel]="true"
+        (change)="onArtfieldChange(artfield.id, input.value)"
+      ></mat-slider>
+    </h2>
+
+    <div
+      class="artfields__parentcaregories"
+      *ngFor="let parentCategory of parentCategories"
+    >
+      <div
+        class="parentcategory__name"
+        *ngIf="parentCategory.artfield_id === artfield.id"
+      >
+        <h4>
+          {{ parentCategory.name }}
+        </h4>
+        <mat-slider
+          min="0"
+          max="1"
+          step="0.1"
+          #inpt
+          [value]="relationForParentCategory(parentCategory.id)"
+          [thumbLabel]="true"
+          (change)="
+            onParentCategoryRelationChange(parentCategory.id, inpt.value)
+          "
+        ></mat-slider>
+
+        <div class="artfields__categories" *ngFor="let category of categories">
+          <div
+            class="category__name"
+            *ngIf="category.parentcategory_id === parentCategory.id"
+          >
+            <p>{{ category.name }}</p>
+            <mat-slider
+              min="0"
+              max="1"
+              step="0.1"
+              #inpt
+              [value]="relationForCategory(category.id)"
+              [thumbLabel]="true"
+              (change)="onCategoryRelationChange(category.id, inpt.value)"
+            ></mat-slider>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

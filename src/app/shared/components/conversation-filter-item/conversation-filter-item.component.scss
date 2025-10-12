@@ -1,0 +1,42 @@
+.filter-btn {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  cursor: pointer;
+
+  color: var(--sds-color-text-default-default);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+}
+
+.counter {
+  color: #757575;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.counters {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.icon {
+  width: 11px;
+  height: 11px;
+  display: flex;
+}
+
+

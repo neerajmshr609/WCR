@@ -1,0 +1,35 @@
+<div class="filter-container">
+  <div class="counters">
+  @if(scheduled() > 0) {
+
+    <div class="counter">
+      <app-calendar-icon color="#757575" class="icon"></app-calendar-icon>
+      {{
+        scheduled()
+      }}
+    </div>
+  }
+  @if(mentions() > 0) {
+
+    <div  class="counter">
+      <app-mention-icon color="#D9D9D9" class="icon"></app-mention-icon>
+      {{
+        mentions()
+      }}
+    </div>
+  }
+  @if(messages() > 0) {
+
+    <div class="counter">
+      <app-message-icon color="#767676" class="icon"></app-message-icon>
+      {{
+        messages()
+      }}
+    </div>
+  }
+  </div>
+  <div class="filter-btn">
+    <ng-content></ng-content>
+  </div>
+
+</div>

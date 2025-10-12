@@ -1,0 +1,122 @@
+@import 'variables';
+
+:host ::ng-deep {
+  .Typewriter__cursor {
+    display: none;
+  }
+
+  .typewriter {
+    &--insight {
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.2;
+      font-size: var(--size-36-px);
+      display: inline-block;
+      letter-spacing: 0.03em;
+    }
+
+    &--portfolio {
+      font-weight: 700;
+      font-size: var(--size-59-px);
+      text-transform: uppercase;
+      line-height: 1;
+      display: inline-block;
+      letter-spacing: 0.02em;
+    }
+
+    &--review {
+      display: inline-block;
+      font-weight: 700;
+      font-size: var(--size-88-px);
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+
+    &--yellow {
+      color: $feed-accent-ember;
+    }
+
+    &--small {
+      margin: 0;
+      font-weight: 700;
+      font-size: var(--size-36-px);
+      line-height: 1;
+      text-align: left;
+    }
+
+    &--black {
+      color: #4e4e4e;
+      margin-top: 5px;
+    }
+  }
+}
+
+.animation-card {
+  --size-36-px: 36px;
+  --size-59-px: 59px;
+  --size-88-px: 88px;
+
+  box-shadow: 0px 0.4px 2px rgba(0, 0, 0, 0.25);
+  height: auto;
+  position: relative;
+  width: 100%;
+  border-radius: 6px;
+  text-align: center;
+  background-color: $--sds-color-grey-500;
+  color: #fafafa;
+
+  max-height: 80vh;
+  height: 66rem;
+  min-height: 52rem;
+
+  @media (max-width: $bp-smallest) {
+    max-height: 80vh;
+    height: 52rem;
+  }
+
+  @media (max-width: 340px) {
+    max-height: 90vh;
+    height: 48rem;
+  }
+}
+
+.button {
+  background: #4e4e4e;
+  box-shadow: 0px 0.9px 3.75px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 1.5rem 2.7rem;
+  position: absolute;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  font-size: 20px;
+  line-height: 24px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    background: #000fff;
+  }
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+}
+
+.footer {
+  height: calc(var(--size-36-px) * 3);
+  position: absolute;
+  width: 100%;
+  bottom: var(--size-36-px);
+}

@@ -1,0 +1,85 @@
+@import 'variables';
+
+::ng-deep .mat-dialog-container {
+  height: unset;
+}
+$max-width: 877px;
+
+.share-container {
+  .share-header {
+    text-align: center;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.03em;
+    margin-bottom: 15px;
+  }
+
+  .share-icon-container {
+    margin-left: 200px;
+    margin-bottom: 10px;
+
+    @media screen and (max-width: $max-width) {
+      margin-left: unset;
+      img {
+        width: 45px;
+      }
+    }
+  }
+
+  .image-container {
+    position: relative;
+    width: min-content;
+    margin-inline: auto;
+    margin-bottom: 14px;
+    img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .preview-text {
+      font-weight: 500;
+      font-size: 11px;
+      line-height: 16px;
+      transform: translateX(10px);
+    }
+  }
+
+  .text-content {
+    margin-left: 300px;
+    margin-right: 300px;
+
+    .title {
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 140.19%;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .description {
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 140.19%;
+      letter-spacing: 0.1em;
+      margin-bottom: 13px;
+    }
+
+    @media screen and (max-width: $max-width) {
+      margin-left: unset;
+      margin-right: unset;
+    }
+  }
+}
+
+.close-btn {
+  cursor: pointer;
+  display: block;
+  background-color: unset;
+  border: unset;
+  margin-left: auto;
+
+  img {
+    height: 33px;
+  }
+}

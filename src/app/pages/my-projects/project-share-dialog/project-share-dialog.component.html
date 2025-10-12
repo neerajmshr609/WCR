@@ -1,0 +1,28 @@
+<div class="project-share-dialog">
+  <div class="project-share-dialog__header">
+    <h1 mat-dialog-title>
+      <ng-container *ngIf="data.isEdit">Share updated project</ng-container>
+      <ng-container *ngIf="!data.isEdit">Share uploaded project</ng-container>
+    </h1>
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
+
+  <div mat-dialog-content class="project-share-dialog__content">
+    <p *ngIf="data.isEdit">
+      Your project was updated successfully. All changes will take effect also
+      to the previously uploaded project.
+    </p>
+    <p *ngIf="!data.isEdit">
+      Your project was uploaded successfully. To make any changes click in the
+      right upper menu of the project on edit. Copy your custom link and share
+      your project anywhere you want. Be aware that this project is not password
+      protected and reviewers do not need to register to leave feedback on your
+      project if they have this link.
+    </p>
+
+    <h2 ngxClipboard [cbContent]="data.projectShareURL">
+      {{ data.projectShareURL }}
+    </h2>
+    <span  ngxClipboard [cbContent]="data.projectShareURL" style="text-align: center">Click to copy</span>
+  </div>
+</div>

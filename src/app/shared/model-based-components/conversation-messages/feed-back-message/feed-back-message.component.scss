@@ -1,0 +1,52 @@
+@import 'variables';
+
+app-heart-icon {
+  display: flex;
+  width: 2.4rem;
+  height:  2.4rem;
+}
+
+.feedback-message {
+  display: flex;
+  gap: 8px;
+
+  &__user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+
+  &__user-image {
+    border-radius: 9999px 0px 9999px 9999px;
+    border: $--sds-size-stroke-border solid $--sds-color-border-default-secondary;
+    background: #757575;
+    width: 4rem;
+    height: 4rem;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__message {
+    padding: 1.2rem;
+    border-radius: 0 $--sds-size-radius-400 $--sds-size-radius-400 $--sds-size-radius-400;
+    border: $--sds-size-stroke-border solid $--sds-color-border-default-secondary;
+    background: $--sds-color-background-default-secondary;
+  }
+
+  &__text {
+    color: #191919;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+  }
+
+}

@@ -1,0 +1,29 @@
+<input
+  class="search-input"
+  [ngClass]="{
+    'placeholder': emptyValue(),
+    'disabled': disabled(),
+    'square': square()
+  }"
+  name="search"
+  type="text"
+  placeholder="{{ placeholder() | translate }}"
+  [value]="searchText()"
+  (input)="searchValueChanged($event)"
+  (focus)="focused.emit($event)"
+/>
+
+@if (emptyValue()) {
+  <app-search-icon
+    class="search-input_icon"
+    [color]="iconColor()"
+    strokeWidth="1.6"
+  ></app-search-icon>
+} @else {
+  <app-close-icon
+    class="search-input_icon search-input_close-icon"
+    [color]="iconColor()"
+    strokeWidth="4"
+    (click)="clear()"
+  ></app-close-icon>
+}

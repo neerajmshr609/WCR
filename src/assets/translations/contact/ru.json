@@ -1,0 +1,13 @@
+{
+  "contact_us_card": {
+    "title": "Свяжитесь с нами",
+    "textarea_placeholder": "Мы бы хотели получить от вас обратную связь."
+  },
+  "feedback_card": {
+    "title": "Нам бы очень хотелось получить<br/>ваш отзыв",
+    "textarea_placeholder": "Пожалуйста, поделитесь любым отзывом о том, как мы можем улучшить getme.global"
+  },
+  "email_placeholder": "Введите вашу электронную почту",
+  "thank_you": "Спасибо.",
+  "send_btn_text": "Отправить"
+}

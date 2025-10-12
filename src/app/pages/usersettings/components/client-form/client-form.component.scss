@@ -1,0 +1,111 @@
+@import 'variables';
+
+.form {
+  .form__group {
+    display: flex;
+    width: 100%;
+
+    &--left {
+      &_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border: 1px solid $--sds-color-border-default-default;
+        padding: 2rem 2rem 2rem 1.2rem;
+        border-radius: $--sds-size-radius-300;
+
+        .carousel-cell {
+          border-radius: 50%;
+          border: none;
+          cursor: pointer;
+          border: 3px solid transparent;
+
+          &.selected {
+            border: 3px solid black;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 41px!important;
+            width: 41px!important;
+
+
+            .avatars--img {
+              border: 2px solid white;
+              border-radius: 50%;
+              height: 36px;
+              width: 36px;
+            }
+          }
+
+          .avatars--img {
+            border: 1px solid $--sds-color-border-neutral-default;
+            height: 38px;
+            width: 38px;
+            object-fit: cover;
+            box-sizing: border-box;
+            border-radius: inherit;
+          }
+        }
+
+        .carousel_container {
+          margin-left: 1rem;
+          cursor: none;
+          z-index: 100;
+        }
+      }
+
+      &:first-child {
+        width: 230px;
+        margin-right: 4rem;
+      }
+
+      &:last-child {
+        width: calc(100% - 210px - 4rem);
+      }
+    }
+
+    &-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 2rem;
+      column-gap: 4rem;
+      width: 100%;
+    }
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      height: auto;
+      margin-top: 1rem;
+    }
+  }
+}
+
+.email-icon {
+  position: relative;
+  top: 2px;
+  right: 5px;
+}
+
+@media screen and (max-width: 700px) {
+  .form {
+    .form__group {
+      flex-direction: column;
+
+      &--left {
+        &:first-child,
+        &:last-child {
+          width: 100%;
+          margin: 0 0 20px;
+        }
+      }
+
+      &-row {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}

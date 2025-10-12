@@ -1,0 +1,57 @@
+<div class="trusted-advisor">
+  <h2 class="trusted-advisor__title">Trusted connector review</h2>
+
+  <div class="trusted-advisor__body">
+    <div class="trusted-advisor__receipt">
+      <app-receipt
+        [id]="feedbackSession.id"
+        [paymentRequest]="feedbackSession.payment_request"
+        [link]="link"
+        [approved]="feedbackSession.status === paymentSessionStatuses.approved"
+        [denied]="feedbackSession.status === paymentSessionStatuses.denied"
+        [isFeedbackSession]="true"
+        [showDateCreated]="false"
+      ></app-receipt>
+    </div>
+    <p class="trusted-advisor__text">
+      It is mandatory to pay trusted connector review upfront. Advisors can
+      choose their hourly rates for each creative individually.
+    </p>
+  </div>
+
+  <div class="trusted-advisor__payment-form">
+    <app-stripe-bank-card-form
+      *ngIf="bankCardPayment"
+      [secret]="secret"
+      (updatePaymentStatus)="updatePaymentStatus()"
+    ></app-stripe-bank-card-form>
+  </div>
+
+  <button
+    mat-button
+    class="trusted-advisor__btn trusted-advisor__btn--green"
+    *ngIf="
+      feedbackSession.status !== paymentSessionStatuses.approved &&
+      !paymentInProgress
+    "
+    (click)="pay()"
+  >
+    Pay & Unlock
+  </button>
+  <button
+    mat-button
+    class="trusted-advisor__btn"
+    disabled
+    *ngIf="paymentInProgress"
+  >
+    Processing...
+  </button>
+  <button
+    mat-button
+    class="trusted-advisor__btn"
+    disabled
+    *ngIf="feedbackSession.status === paymentSessionStatuses.approved"
+  >
+    Paid
+  </button>
+</div>

@@ -1,0 +1,35 @@
+@import 'variables';
+
+.create-org-container {
+  .process-info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    p {
+      margin-bottom: 8px;
+      color: $--sds-color-text-default-default;
+      font-size: $--sds-typography-subheading-size-medium;
+      font-style: normal;
+      font-weight: $--sds-typography-body-font-weight-regular;
+      line-height: 140%;
+      text-align: center;
+      margin: -1rem 1rem 3rem;
+    }
+  }
+
+  .submit_btn-wrapper {
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .create-org-container {
+    .process-info {
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<div class="artfields">
+  <div class="artfields__list">
+    <h2 (click)="onCreateRequest()" class="add-new">+</h2>
+    <app-small-spinner [diameter]="30" *ngIf="!artfields"></app-small-spinner>
+    <p
+      (click)="onSelect(artfield)"
+      class="artfield-item {{ artfield == selectedArtfield ? 'active' : '' }}"
+      *ngFor="let artfield of artfields"
+    >
+      {{ artfield.name }}
+    </p>
+  </div>
+
+  <div class="artfields__edit">
+    <!--    <h1 class="category-form__title">{{ selectedArtfield ? 'Edit Art field' : 'Add Art field' }}</h1>-->
+
+    <form
+      class="form"
+      #artfieldForm="ngForm"
+      (ngSubmit)="onSubmit(artfieldForm)"
+    >
+      <div class="actions-container">
+        <button type="submit" class="btn action-button action-button--submit">
+          <div *ngIf="isCreating" class="spinner" role="status">
+            <app-small-spinner [diameter]="20"></app-small-spinner>
+          </div>
+          {{ selectedArtfield && selectedArtfield.id ? 'Save changes' : 'Add' }}
+        </button>
+        <button
+          (click)="onDelete()"
+          type="button"
+          class="btn btn-danger action-button action-button--delete"
+          *ngIf="selectedArtfield && selectedArtfield.id"
+        >
+          <div *ngIf="isDeleting" class="spinner" role="status">
+            <app-small-spinner [diameter]="20"></app-small-spinner>
+          </div>
+          Delete
+        </button>
+      </div>
+
+      <div class="form__group">
+        <label class="form__label" for="name">Art field name</label>
+        <input class="form__input" type="text" id="name" ngModel name="name" />
+      </div>
+    </form>
+  </div>
+</div>

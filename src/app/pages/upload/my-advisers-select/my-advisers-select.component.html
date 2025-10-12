@@ -1,0 +1,41 @@
+<div class="my-advisers-select">
+  <app-small-spinner diameter="20" *ngIf="isLoading"></app-small-spinner>
+
+  <div class="no-advisors" *ngIf="!isLoading && !sortedAdvisors?.length">
+    You don't have any trusted advisors yet
+  </div>
+
+  <div class="my-advisers-select__grid" *ngIf="sortedAdvisors?.length">
+    <ng-container *ngFor="let adviser of sortedAdvisors">
+      <div
+        class="my-advisers-select__item"
+        [ngClass]="{
+          'my-advisers-select__item--selected':
+            selectedAdvisers.includes(adviser),
+        }"
+        *ngIf="adviser.id !== project.user_id"
+        (click)="didToggleAdviser(adviser)"
+      >
+        <img
+          [hidden]="!selectedAdvisers.includes(adviser)"
+          class="my-advisers-select__item--selected-advisor-badge"
+          src="assets/selected_advisor@2x.png"
+        />
+        <app-user-info [userId]="adviser.id"></app-user-info>
+
+        <p
+          class="my-advisers-select__item--badge"
+          [style.boxShadow]="
+            selectedAdvisers.includes(adviser)
+              ? shoeshineForBadge(adviser.advisorrate)
+              : 'none'
+          "
+          [style.borderColor]="colorForBadge(adviser.advisorrate)"
+          [style.color]="colorForBadge(adviser.advisorrate)"
+        >
+          {{ adviser.advisorrate | euroCurrency }}/h
+        </p>
+      </div>
+    </ng-container>
+  </div>
+</div>

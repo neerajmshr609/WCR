@@ -1,0 +1,38 @@
+<div class="payments payments-save">
+  <h2>{{ 'finances_stripe.save_money' | translate }}</h2>
+  <div class="payments-save-block">
+    <div class="commission">
+      <div class="block">
+        <p class="commission-percent">30%</p>
+        <p class="commission-info">
+          {{ 'finances_stripe.your_current_commission' | translate }}
+        </p>
+      </div>
+    </div>
+    <div class="payments-save-image">
+      <img
+        src="../../../assets/user-settings/finances/save_money.svg"
+        alt="Save money icon"
+      />
+    </div>
+    <div class="bonus">
+      @for (item of saveBonus; track item.info; let i = $index) {
+        <div class="bonus-block">
+          <p
+            [ngClass]="
+              i > 0 ? 'bonus-percent' : 'bonus-percent bonus-percent-first'
+            "
+          >
+            {{ item.percent }}
+          </p>
+          <p [ngClass]="i > 0 ? 'bonus-text' : 'bonus-text bonus-text-first'">
+            {{ item.info | translate }}
+          </p>
+        </div>
+      }
+    </div>
+  </div>
+  <p class="payments-save-inform">
+    {{ 'finances_stripe.once_lower' | translate }}
+  </p>
+</div>

@@ -1,0 +1,26 @@
+<mat-sidenav-container class="side-nav-container">
+  <mat-sidenav mode="side" opened>
+    <div class="admin__menu">
+      <ul class="nav">
+        <li class="nav__item">
+          <a
+            class="nav__link"
+            routerLinkActive="active"
+            routerLink="nextwork-settings"
+            >Settings</a
+          >
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" routerLinkActive="active" routerLink="relations"
+            >Relations</a
+          >
+        </li>
+      </ul>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="admin__content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

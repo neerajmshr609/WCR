@@ -1,0 +1,11 @@
+@if (item()) {
+  <div class="item">
+    <div class="item-icon">
+      <ng-container *ngComponentOutlet="item().icon; inputs: item().inputs"></ng-container>
+    </div>
+    @if(!onlyIconMenu()) {
+      <span [ngStyle]="{'color': item()?.inputs?.color}">{{ item().title | translate }}</span>
+    }
+  </div>
+}
+

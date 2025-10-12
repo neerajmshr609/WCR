@@ -1,0 +1,583 @@
+@import '_variables';
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $--sds-color-background-default-secondary;
+
+  @media (min-width: $desktop) {
+    padding-top: 4.5rem;
+  }
+}
+
+.authform-container {
+  border-radius: $--sds-size-radius-400;
+  border: 1px solid $--sds-color-border-default-default;
+  background: $--sds-color-background-default-default;
+  max-width: 120.9rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  //align-items: center;
+  background: white;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: $desktop) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    max-width: 100%;
+    width: 100%;
+
+    margin-top: 48px;
+  }
+
+
+  @media (max-width: $bp-small) {
+    height: auto;
+    display: block;
+    border-radius: 0;
+    overflow: hidden;
+    border: none;
+    margin-top: 0;
+  }
+}
+
+.animation-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+
+  .logo {
+    position: absolute;
+    right: 0;
+    top: 7rem;
+    height: 6.3rem;
+    transform: translateX(50%);
+
+    @media screen and (max-width: $bp-small) {
+      top: 3rem;
+      transform: translateX(-3rem);
+      height: 4rem;
+    }
+  }
+
+  &--green {
+    background: $feed-accent-green;
+  }
+  &--blue {
+    background: #000fff;
+  }
+  &--yellow {
+    background: $feed-accent-ember;
+  }
+
+  @media (max-width: $bp-small) {
+    padding: 2rem 0;
+  }
+}
+
+.login.authform {
+  @media (max-width: $desktop) {
+    padding: 2.4rem;
+    height: auto;
+  }
+
+  @media (max-width: $bp-small) {
+    border-radius: 128px 0 0 0;
+    border: 1px solid $--sds-color-border-default-default;
+    background: $--sds-color-background-default-default;
+    box-shadow: $--sds-size-depth-0 $--sds-size-depth-400 $--sds-size-depth-400 $--sds-size-depth-negative-200 $--sds-color-black-200, $--sds-size-depth-0 $--sds-size-depth-100 $--sds-size-depth-100 $--sds-size-depth-negative-100 $--sds-color-black-100;
+  }
+
+  @media (max-width: $desktop) and (orientation: portrait) {
+    padding: 2.4rem 2.4rem 3.2rem 2.4rem;
+    position: absolute;
+    bottom: -306px;
+  }
+
+  .authform__greeter {
+    margin-bottom: 134px;
+  }
+}
+
+//.login .authform {
+//  &__greeter {
+//    @media (max-width: $desktop) {
+//      display: none;
+//    }
+//  }
+//}
+
+.signup.authform {
+  @media (max-width: $bp-small) {
+    bottom: -541px;
+  }
+
+}
+
+.authform {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  padding: 4.8rem;
+
+
+  position: absolute;
+  width: 100%;
+  bottom: -360px;
+  z-index: 100;
+
+  border-radius: 128px 128px 0 0;
+  border-top: 1px solid $--sds-color-border-default-default;
+  border-right: 1px solid $--sds-color-border-default-default;
+  border-bottom: 1px solid $--sds-color-border-default-default;
+  background: $--sds-color-background-default-default;
+
+  box-shadow: $--sds-size-depth-0 $--sds-size-depth-400 $--sds-size-depth-800 $--sds-size-depth-negative-200 $--sds-color-black-400;
+  overflow: hidden;
+
+
+  @media (max-width: $bp-small) and (orientation: landscape) {
+    //position: relative !important;
+    //bottom: 0 !important;
+    height: 100%;
+
+  }
+
+  @media (max-width: $desktop)  {
+    padding: 1.6rem 2.4rem 2.4rem 2.4rem;
+  }
+
+  @media (min-width: $bp-small)  {
+    position: relative !important;
+    bottom: 0 !important;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    //flex: 1;
+  }
+
+  &__logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 3.2rem;
+    left: 3.2rem;
+    position: absolute;
+    border-radius: 3.7rem;
+    background: $--sds-color-background-utilities-scrim;
+
+    * {
+      width: 10.9rem;
+      height: 10.9rem;
+    }
+
+    @media (max-width: $desktop) {
+      display: none;
+    }
+
+  }
+
+  app-icon-new-user {
+    width: 4.6rem;
+    height: 4.8rem;
+  }
+
+  &__image-container {
+    width: 100%;
+
+    @media (orientation: landscape) {
+      height: 100%;
+    }
+
+    @media (min-width: $bp-small) {
+      height: auto;
+      width: 100%;
+      display: none;
+    }
+
+    @media (max-width: $bp-small)  and (orientation: landscape) {
+    height: 37.7rem;
+
+  }
+
+    @media (min-width: $bp-small) and (orientation: portrait) {
+      height: 55vh;
+    }
+
+    @media (min-width: $desktop) {
+      width: 61.8rem;
+      height:  86.2rem;
+      display: flex;
+
+      &.signup {
+        height: 100%;
+      }
+    }
+
+    @media ((min-width: $desktop) and (max-height: 1000px)) {
+      height:  80vh;
+
+      &.signup {
+        height: 100%;
+      }
+    }
+
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-position: center top;
+      object-fit: cover;
+
+      @media (max-width: 767px) and (orientation: portrait) {
+        height: calc(100vh - 61px);
+      }
+
+      @media (orientation: landscape) {
+        height: 100%;
+      }
+      @media (min-width: $bp-small) {
+        height: 55vh;
+      }
+
+      @media (min-width: $desktop) {
+        height:  100%;
+      }
+
+      @media ((min-width: $desktop) and (max-height: 1000px)) {
+        height:  100%
+      }
+    }
+  }
+
+  &__image-container.signup {
+    @media (max-width: $desktop) {
+      //display: none;
+      //width: 0;
+    }
+  }
+
+  &__greeter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5.1rem;
+
+    span {
+      color: $--sds-color-text-default-default;
+      text-align: center;
+      font-size: $--sds-typography-heading-size-base;
+      font-style: normal;
+      font-weight: $--sds-typography-heading-font-weight;
+      line-height: 120%;
+      letter-spacing: -0.48px;
+      padding: 0.8rem;
+    }
+
+    @media (max-width: $desktop) {
+      margin-bottom: 1.6rem
+    }
+
+    app-login-icon {
+      display: flex;
+      width: 4.6rem;
+      height: 4.8rem;
+    }
+  }
+
+  &__icon {
+    display: block;
+    margin: 0 auto;
+    height: 7rem;
+    width: auto;
+  }
+
+  &__title {
+    text-align: center;
+    transition: 0.2s;
+    font-size: $--sds-typography-heading-size-base;
+    color: $--sds-color-text-default-default;
+    margin-top: 1.6rem;
+
+  }
+
+  .btn-group {
+    margin-top: 6.8rem;
+    margin-bottom: 6.8rem;
+
+    @media (min-width: 1000px) {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: $desktop) {
+      margin-top: 2.4rem;
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  &__login-button {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    justify-self: start;
+    margin-bottom: 2rem;
+
+    &--green {
+      border-color: $feed-accent-green;
+      background: $feed-accent-green;
+    }
+    &--blue {
+      border-color: #000fff;
+      background: #000fff;
+    }
+    &--yellow {
+      color: black;
+      border-color: $feed-accent-ember;
+      background: $feed-accent-ember;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+    }
+  }
+}
+
+.mat-error {
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+  color: $--sds-color-text-danger-default;
+}
+
+.resend {
+  margin-top: 2rem !important;
+}
+
+.spinner {
+  margin-right: 1rem;
+}
+
+app-input {
+  margin-bottom: 2.4rem;
+
+  @media (max-width: $desktop) {
+    margin-bottom: 1.2rem;
+  }
+}
+
+app-input.valid-error {
+  margin-bottom: 0;
+}
+
+.submit-btn {
+  @media (max-width: $desktop) {
+    flex: 1;
+  }
+}
+
+.terms-checkbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  a {
+    margin-left: 3.3rem;
+    margin-top: -1.2rem;
+    color: $--sds-color-text-default-secondary;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+  }
+}
+
+.form-field {
+  margin-bottom: 2.6rem;
+  position: relative;
+
+  app-search-icon {
+    display: flex;
+    position: absolute;
+    width: 1.6rem;
+    height: 1.6rem;
+    right: 1.6rem;
+    top: 4.2rem;
+  }
+}
+
+.signup-switcher {
+  align-self: center;
+  max-width: 363px;
+
+  &-text {
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 100%;
+  }
+}
+
+.create-new-company {
+  display: flex;
+  gap: 1.6rem;
+  padding: 0.8rem;
+}
+
+app-user-icon, app-icon-double-right-arrow, app-login-icon {
+  display: flex;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.team-checkbox {
+  display: flex;
+
+  @media (max-width: $desktop) {
+    justify-content: center;
+  }
+}
+
+.sub-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.page-content {
+  width: 100%;
+
+
+  @media (max-width: $desktop) and (min-height: 1024px) {
+    height: auto;
+  }
+
+  @media (min-width: $bp-small) {
+    width: 68rem;
+  }
+
+  @media (min-width: $desktop) {
+    width: 127.1rem;
+  }
+}
+
+.password-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  color: #666;
+
+  &:hover {
+    color: #333;
+  }
+
+  &:focus {
+    outline: 2px solid #3f51b5;
+    outline-offset: 2px;
+  }
+}
+
+.eye-icon .eye {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+  }
+
+  &::before {
+    width: 100%;
+    height: 100%;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+  }
+
+  &::after {
+    // Eye pupil
+    width: 8px;
+    height: 8px;
+    background: currentColor;
+    border-radius: 50%;
+    top: 6px;
+    left: 6px;
+  }
+
+  &.closed::after {
+    width: 12px;
+    height: 2px;
+    top: 9px;
+    left: 4px;
+    border-radius: 1px;
+  }
+}
+
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.password-wrapper app-input ::ng-deep .form-input {
+  padding-right: 2.5rem !important;
+}
+
+.password-wrapper .input-details {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  z-index: 3;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.password-wrapper .input-details .password-toggle {
+  pointer-events: all;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.password-wrapper .input-details .password-toggle:hover {
+  color: #333;
+}
+
+.password-wrapper .input-details mat-icon {
+  font-size: 2.2rem;
+}

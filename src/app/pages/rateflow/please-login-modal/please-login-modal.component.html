@@ -1,0 +1,11 @@
+<div class="modal-header">
+  <app-close-icon (click)="close()"></app-close-icon>
+</div>
+<h2 class="modal-title" mat-dialog-title>{{ 'please-login-modal.title' | translate }}</h2>
+<mat-dialog-content>
+  <p class="modal-text">{{ 'please-login-modal.text' | translate }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <app-button size="medium" btnUIType="neutral" (click)="close()">{{ 'please-login-modal.cancel' | translate }}</app-button>
+  <app-button size="medium" btnUIType="primary" (click)="goLogin()">{{ 'please-login-modal.sign-up' | translate }}</app-button>
+</mat-dialog-actions>

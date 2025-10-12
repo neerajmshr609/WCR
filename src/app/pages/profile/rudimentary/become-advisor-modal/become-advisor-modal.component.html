@@ -1,0 +1,31 @@
+<section class="modal-container" mat-dialog-content>
+  <div class="close-section">
+    <button (click)="close()" class="close-btn">
+      <img src="../../../../../assets/close-modal-icon.svg" alt="Close  icon" />
+    </button>
+  </div>
+  <h1 class="header">
+    At Getme everyone can become <br />
+    an Connector and get paid for their <br />
+    time, knowledge and creativity.
+  </h1>
+  <img class="gif" src="../../../../../assets/gif/onboarding-2.gif" alt="" />
+  <p class="subtitle">
+    Complete your profile in the settings area, set your skills & tools.
+    <br />
+    Decide how much you want to be paid for your time spent.
+    <br />
+    <br />
+    It is absolutely risk free because
+    <br />
+    we are commission based business.
+  </p>
+  <button
+    routerLink="/settings"
+    [queryParams]="{ type: 'skills' }"
+    (click)="close()"
+    class="become-advisor-btn"
+  >
+    Become an Advisor
+  </button>
+</section>

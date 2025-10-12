@@ -1,0 +1,180 @@
+<div class="presentation-container" #containerRef>
+  <div
+    class="slider-presentation-nav"
+    [ngClass]="{ 'slider-presentation-nav--big': isRateflowPresentation }"
+    #sliderNavRef
+  >
+    <div class="slider-presentation-nav__item" *ngIf="!isSingleFileProject">
+      <svg><use xlink:href="assets/feather-icon-defs.svg#icon-grid"></use></svg>
+    </div>
+
+    <div class="slider-presentation-nav__item">
+      <mat-icon>info</mat-icon>
+    </div>
+
+    <ng-template ngFor let-item [ngForOf]="files">
+      <div
+        class="slider-presentation-nav__item"
+        [class]="'slider-presentation-nav__item--' + item.kind"
+      >
+        <img *ngIf="item.kind === 'image'" [src]="item.url" />
+        <img
+          *ngIf="item.kind === 'iframe'"
+          src="assets/projectfiles-types/iframe.svg"
+        />
+        <img
+          *ngIf="item.kind === 'pdf'"
+          src="assets/projectfiles-types/pdf.svg"
+        />
+        <img
+          *ngIf="item.kind === 'video' || item.kind === 'hostedvideo'"
+          src="assets/projectfiles-types/video.svg"
+        />
+        <img
+          *ngIf="item.kind === 'audio'"
+          src="assets/projectfiles-types/audio.svg"
+        />
+        <img
+          *ngIf="item.kind === 'dummy'"
+          src="assets/projectfiles-types/dummy.svg"
+        />
+
+        <div
+          class="slider-presentation-nav__item-info"
+          [ngClass]="{
+            'slider-presentation-nav__item-info--active': isFileInfoOpen,
+          }"
+          *ngIf="
+            !isMinimalPresentation &&
+            item.kind !== 'dummy' &&
+            item.showinfo &&
+            (item.lyrics || item.projectfile_title || item.filedescription)
+          "
+        >
+          i
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+  <div
+    *ngIf="!isMinimalPresentation"
+    class="slider-presentation"
+    [ngStyle]="{'height': dynamicSlideHeight() ? dynamicSlideHeight() : 'auto'}"
+    [ngClass]="{ 'slider-presentation--big': isRateflowPresentation }"
+    #bigPresentationRef
+  >
+    <div
+      [ngStyle]="{ 'width.px': containerRef.clientWidth }"
+      class="slider-presentation__item"
+      *ngIf="!isSingleFileProject"
+    >
+      <app-grid-presentation
+        [projectFiles]="files"
+        (clickItem)="manualFileSelect($event)"
+      ></app-grid-presentation>
+    </div>
+
+    <div
+      [ngStyle]="{ 'width.px': containerRef.clientWidth }"
+      class="slider-presentation__item"
+    >
+      <div
+        class="slider-presentation__content slider-presentation__content--info flickity-lazyloaded"
+      >
+        <app-project-info-cards
+          [project]="project"
+          [isSmall]="isNewsfeedPresentation"
+        ></app-project-info-cards>
+      </div>
+    </div>
+
+    <div
+      *ngFor="let item of files; let i = index"
+      [ngStyle]="{ 'width.px': containerRef.clientWidth }"
+      class="slider-presentation__item"
+    >
+      <div *ngIf="item.kind === 'image'" class="img-container">
+        <img
+          (click)="onSelectOpenImagePreview()"
+          [id]="item.id"
+          #imageRef
+          [attr.data-flickity-lazyload]="item.url"
+          src="https://dummyimage.com/600x600/000000/fff.jpg"
+          class="slider-presentation__content slider-presentation__content--image"
+        />
+      </div>
+
+      <div
+        *ngIf="item.kind === 'audio'"
+        class="slider-presentation__content slider-presentation__content--audio"
+      >
+        <app-avpresentation
+          *ngIf="!isNewsfeedPresentation"
+          [filesFeedback$]="filesFeedback$"
+          [avRatingParams]="item.avratingparams"
+          [file]="item"
+          [displayPlayBtn]="true"
+          [isAudio]="true"
+        ></app-avpresentation>
+
+        <app-newsfeed-avpresentation
+          *ngIf="isNewsfeedPresentation"
+          [style.width]="'100%'"
+          [file]="item"
+          [avRatingParams]="item.avratingparams"
+        ></app-newsfeed-avpresentation>
+      </div>
+
+      <div
+        *ngIf="item.kind === 'video' || item.kind === 'hostedvideo'"
+        class="slider-presentation__content slider-presentation__content--video"
+      >
+        <app-avpresentation-video
+          (videoHeight)="setSlideHeight($event)"
+          [fileDidChange$]="fileDidChange$"
+          [isNewsfeedPresentation]="isNewsfeedPresentation"
+          [filesFeedback$]="filesFeedback$"
+          [avRatingParams]="item.avratingparams"
+          [isRateflowPresentation]="isRateflowPresentation"
+          [file]="item"
+        ></app-avpresentation-video>
+      </div>
+
+      <div
+        class="slider-presentation__content slider-presentation__content--iframe"
+        *ngIf="item.kind === 'iframe'"
+      >
+        <app-iframe-presentation
+          [file]="item"
+          [isSingleFileProject]="isSingleFileProject"
+        ></app-iframe-presentation>
+      </div>
+
+      <div
+        class="slider-presentation__content slider-presentation__content--iframe"
+        *ngIf="item.kind === 'pdf'"
+      >
+        <app-pdf-presentation [file]="item"></app-pdf-presentation>
+      </div>
+
+      <div
+        class="slider-presentation__content slider-presentation__content--iframe"
+        *ngIf="item.kind === 'dummy'"
+      >
+        <app-dummy-file
+          #dummyFileComponent
+          [file]="item"
+          [isRateflowPresentation]="isRateflowPresentation"
+        ></app-dummy-file>
+      </div>
+    </div>
+  </div>
+
+  <app-file-info
+    *ngIf="!isMinimalPresentation"
+    [file]="selectedFile"
+    [showPopup]="isFileInfoOpen"
+    (toggle)="toggleFileInfo()"
+  ></app-file-info>
+</div>

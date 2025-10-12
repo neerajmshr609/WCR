@@ -1,0 +1,36 @@
+@import "_variables";
+@import "_mixins";
+
+:host {
+  display: block;
+  box-sizing: border-box;
+  border-radius: $--sds-size-radius-full;
+}
+
+.filter-btn {
+  background-color: $--sds-color-background-default-default;
+  border-radius: inherit;
+  border: $--sds-size-stroke-border--solid--sds-color-border-default-default;
+  padding: $--sds-size-space-300;
+  cursor: pointer;
+  // grid-area: filter-btn;
+
+  @include centeringFlex;
+  @include baseTransition;
+
+  &_icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &.active, &.active.opened {
+    background-color: $--sds-color-background-brand-default;
+    border: none;
+  }
+
+  &.opened {
+    border: $--sds-size-stroke-border solid $--sds-color-border-neutral-secondary;
+    background: $--sds-color-background-neutral-tertiary-hover;
+  }
+}
+

@@ -1,0 +1,27 @@
+<div class="gt-switch" #switchRef>
+  <div class="gt-switch__left-label" #leftLabelRef>
+    <ng-content select=".gt-switch-left"></ng-content>
+  </div>
+
+  <div
+    (click)="didClickToggle()"
+    #toggleContainerRef
+    class="gt-switch__toggle-container"
+    [ngClass]="{
+      'gt-switch__toggle-container--small': small,
+      'gt-switch__toggle-container--onoffMode': onoffMode,
+      'gt-switch__toggle-container--right': isSwitched,
+      'gt-switch__toggle-container--left': !isSwitched,
+    }"
+  >
+    <div #toggleRef class="gt-switch__toggle-container--toggle"></div>
+  </div>
+
+  <div
+    *ngIf="!onoffMode"
+    class="gt-switch__right-label"
+    (click)="didClickToggle()"
+  >
+    <ng-content select=".gt-switch-right"></ng-content>
+  </div>
+</div>

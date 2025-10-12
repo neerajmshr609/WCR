@@ -1,0 +1,39 @@
+
+  <div class="summery_content">
+    @if (summary()) {
+    <h4 class="summary_title">
+  <span class="summary_title-text">
+    {{ "summary.case_summary" | translate }}
+  </span>
+      @if (summary().is_ai_generated) {
+        &nbsp;
+        <span class="summary_title-ai-generated">
+      ({{ 'summary.ai_generated' | translate }})
+    </span>
+      }
+    </h4>
+    <ul class="summary_answers-wrap">
+      @for (answer of summary().answers; track answer) {
+        <li class="summary_answer">
+          {{ answer }}
+        </li>
+      }
+    </ul>
+    }
+  </div>
+  <app-button
+    class="summary_questions-answered-btn"
+    size="small"
+    btnUIType="subtle"
+    type="button"
+  >
+  <span class="summary_questions-answered-text">
+    {{ answeredQuestions() }}
+    {{ 'summary.questions_answered' | translate }}
+    @if (openRequestConversation().request_type === RequestType.ORGANIZATION_DIRECT) {
+      {{ 'summary.received_request_type' | translate }} {{ 'summary.organization_direct' | translate }}
+    } @else if (openRequestConversation().request_type === RequestType.CONSULT_DIRECT) {
+      {{ 'summary.received_request_type' | translate }} {{ 'summary.consult_direct' | translate }}
+    }
+  </span>
+  </app-button>

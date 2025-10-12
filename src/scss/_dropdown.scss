@@ -1,0 +1,87 @@
+@import 'variables';
+
+.wcr-mat-menu.mat-mdc-menu-panel {
+  padding: 8px;
+  max-width: 320px;
+  border-radius: $--sds-size-radius-200;
+  border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+  background: $--sds-color-background-default-default;
+  box-shadow: $--sds-size-depth-0 $--sds-size-depth-100 $--sds-size-depth-100 $--sds-size-depth-negative-025 $--sds-color-black-200, $--sds-size-depth-0 $--sds-size-depth-100 $--sds-size-depth-100 $--sds-size-depth-negative-025 $--sds-color-black-100;
+}
+
+.wcr-mat-menu-item.mat-mdc-menu-item.with-description  {
+  .mat-mdc-menu-item-text {
+    display: grid;
+    align-items: center;
+    column-gap: 1.2rem;
+    row-gap: 4px;
+    grid-template-columns: 2rem 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+    "icon text"
+    "spacer description";
+  }
+}
+
+.wcr-mat-menu-item.mat-mdc-menu-item  {
+  border-radius: $--sds-size-radius-200;
+
+  padding: 1.2rem 1.6rem;
+
+  overflow: hidden;
+  color: $--sds-color-text-default-default;
+  text-overflow: ellipsis;
+
+  /* Body Base */
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 140%;
+  transition: all 0.3s ease;
+
+
+  .mat-mdc-menu-item-text {
+    display: grid;
+    align-items: center;
+    gap: 1.2rem;
+    grid-template-columns: 2rem 1fr;
+    grid-template-areas:
+    "icon text";
+  }
+
+  .wcr-mat-menu-item-icon {
+    grid-area: icon;
+    align-self: center;
+  }
+
+  .wcr-mat-menu-item-text {
+    grid-area: text;
+    align-self: center;
+    //min-width: 240px;
+  }
+
+  .wcr-mat-menu-item-description {
+    width: 100%;
+    grid-area: description;
+    color: $--sds-color-text-default-secondary;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-small;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+  }
+}
+
+.wcr-mat-menu-item.mat-mdc-menu-item:not([disabled]):hover {
+  background-color: $--sds-color-background-brand-default;
+  color: $--sds-color-text-brand-on-brand;
+  svg {
+    path {
+      //fill: $--sds-color-icon-brand-on-brand !important;
+      stroke: $--sds-color-icon-brand-on-brand !important;
+    }
+  }
+}
+
+

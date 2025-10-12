@@ -1,0 +1,38 @@
+<app-section-header [title]="'organization_adjustments_title' | translate">
+  <app-topics-icon></app-topics-icon>
+</app-section-header>
+
+<div class="organization_adjustments">
+  @if (form) {
+    <form [formGroup]="form" class="form">
+      @for (dataObj of formData; track dataObj.name) {
+        <div class="form-field">
+          @if (dataObj.type === 'select') {
+            <app-select
+              [control]="form.get(dataObj.name)"
+              inputName="{{ dataObj.name }}"
+              placeholder="{{ dataObj.placeholder | translate }}"
+              label="{{ dataObj.label | translate }}"
+              options="{{ dataObj.options }}"
+            ></app-select>
+          } @else if (dataObj.type === 'switch') {
+            <app-switch
+              [control]="form.get(dataObj.name)"
+              inputName="{{ dataObj.name }}"
+              label="{{ dataObj.label | translate }}"
+              description="{{ dataObj.description | translate }}"
+            ></app-switch>
+          } @else {
+            <app-input
+              [control]="form.get(dataObj.name)"
+              inputName="{{ dataObj.name }}"
+              placeholder="{{ dataObj.placeholder | translate }}"
+              type="dataObj.type"
+              label="{{ dataObj.label | translate }}"
+            ></app-input>
+          }
+        </div>
+      }
+    </form>
+  }
+</div>

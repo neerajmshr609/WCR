@@ -1,0 +1,21 @@
+<div class="project-menu-top project-menu__white">
+  <a
+    (click)="onPrev()"
+    class="nav-arrow nav-arrow__left {{
+      activeItem == menuItems[0] ? 'nav-arrow__hidden' : ''
+    }}"
+  >
+    <img src="assets/greyt-arrow-left.svg" />
+  </a>
+  <div class="project-menu__current-item">
+    <h3>{{ activeItem.title ? activeItem.title : '' }}</h3>
+  </div>
+  <a
+    (click)="onNext()"
+    class="nav-arrow nav-arrow__right {{
+      activeItem == menuItems[menuItems.length - 1] ? 'nav-arrow__hidden' : ''
+    }}"
+  >
+    <img src="assets/greyt-arrow.svg" />
+  </a>
+</div>

@@ -1,0 +1,28 @@
+@import "_variables";
+
+:host {
+  display: block;
+  margin-left: $--sds-size-space-200;
+}
+
+.minimized-invitation {
+  &_content {
+    color: $--sds-color-text-brand-on-brand;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-wrap: wrap;
+    gap: $--sds-size-space-200;
+  }
+
+  &_icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &_text {
+    align-self: flex-end;
+    font-size: $--sds-typography-body-size-medium;
+    font-weight: $--sds-typography-body-font-weight-regular;
+  }
+}

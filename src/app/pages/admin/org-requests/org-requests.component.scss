@@ -1,0 +1,16 @@
+.org-requests-container {
+  padding: 5rem;
+  margin: 4rem auto 2rem;
+  max-width: 870px;
+}
+
+@media screen and (max-width: 700px) {
+  .org-requests-container {
+    margin: 7rem 1rem 2rem;
+    padding: 1rem;
+
+    .sectionTitle {
+      display: none;
+    }
+  }
+}

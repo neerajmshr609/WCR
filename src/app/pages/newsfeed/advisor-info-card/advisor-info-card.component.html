@@ -1,0 +1,44 @@
+<div
+  class="advisor-card"
+  [ngClass]="{ 'advisor-card--grey': isRemove }"
+  *ngIf="isInUserActionMode"
+>
+  <div class="advisor-card__button-post-action">
+    <h3 class="advisor-card__text"
+        *ngIf="!isRemove"
+        [innerHTML]="'advisor_info_card.added_title' | translate"
+    ></h3>
+    <h3 class="advisor-card__text"
+        *ngIf="isRemove"
+        [innerHTML]="'advisor_info_card.remove_title' | translate"
+    ></h3>
+
+    <div class="advisor-card__user">
+      <app-user-info [userId]="advisorId"></app-user-info>
+      <p class="advisor-card__user--badge" [style.color]="'#72D4BB'">
+        €{{ adviser.advisorrate }}/h
+      </p>
+    </div>
+
+    <h4 class="advisor-card__text" *ngIf="!isRemove">
+      {{ 'advisor_info_card.quick_access' | translate }}
+    </h4>
+    <h4 class="advisor-card__text my-8" *ngIf="isRemove">
+      {{ 'advisor_info_card.no_longer_see' | translate }}
+    </h4>
+
+    <p class="advisor-card__text" *ngIf="!isRemove">
+      {{ 'advisor_info_card.receive_feedback' | translate }}
+    </p>
+
+    <button
+      class="advisor-card__button"
+      (click)="close()"
+      *ngIf="!isInUserActionInFlightMode"
+    >{{ 'advisor_info_card.got_it_btn' | translate }}</button>
+
+    <button class="advisor-card__button" *ngIf="isInUserActionInFlightMode">
+      <app-small-spinner diameter="20"></app-small-spinner>
+    </button>
+  </div>
+</div>

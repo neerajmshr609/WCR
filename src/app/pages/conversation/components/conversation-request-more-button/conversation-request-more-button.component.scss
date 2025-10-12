@@ -1,0 +1,24 @@
+@import "_variables";
+
+app-conversation-request-more-button {
+  display: block;
+
+  .conversation-request-more-button {
+    button:not(:hover) {
+      background: transparent !important;
+      border-color: transparent !important;
+    }
+
+    &_content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: $--sds-size-space-200;
+    }
+
+    &_icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

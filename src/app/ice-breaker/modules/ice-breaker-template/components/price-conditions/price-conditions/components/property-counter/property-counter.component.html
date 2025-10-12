@@ -1,0 +1,33 @@
+<section
+  class="price-per-person-container"
+  [ngClass]="{ 'price-per-person-container__active': !isDisabled }"
+>
+  <ng-container *ngIf="!isDisplaySlider; else sliderControl">
+    <ng-content select="[icon]"> </ng-content>
+    <ng-content select="[title]"> </ng-content>
+  </ng-container>
+  <ng-template #sliderControl>
+    <app-price-control-slider
+      [minPrice]="PRICE_CONFIG.minPrice"
+      [maxPrice]="PRICE_CONFIG.maxPrice"
+      [step]="PRICE_CONFIG.step"
+      [(ngModel)]="count"
+      class="counter-slider"
+    >
+    </app-price-control-slider>
+  </ng-template>
+  <div class="price-window">
+    <ng-container *ngIf="isCurrency; else simpleCount">
+      {{ count | euroCurrency }}
+    </ng-container>
+    <ng-template #simpleCount>
+      {{ count }}
+    </ng-template>
+  </div>
+  <button *ngIf="!isDisabled" class="gear-btn" (click)="toggleChangeCount()">
+    <img
+      [src]="!isDisplaySlider ? 'assets/gear.svg' : 'assets/gear-check.svg'"
+      alt="Gear icon"
+    />
+  </button>
+</section>

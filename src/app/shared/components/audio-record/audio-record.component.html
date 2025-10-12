@@ -1,0 +1,56 @@
+<div
+  class="chat__message-box"
+  [ngClass]="{ 'chat__message-box--collapsed': isCollapsed }"
+>
+  <div
+    class="input-wrapper"
+    [ngStyle]="{ 'paddingRight.px': inputBtns.clientWidth }"
+  >
+    <div class="marquee" #marqueeRef *ngIf="!isRecordingStopped">
+      <div class="inner" *ngIf="showAnimation">
+        <p>{{ textPlaceholder | translate }}</p>
+      </div>
+      <ng-container *ngIf="!showAnimation">{{ textPlaceholder | translate }}</ng-container>
+    </div>
+
+    <input
+      class="input"
+      type="text"
+      *ngIf="isRecordingStopped"
+      #messageInput
+      (focus)="onInputFocus()"
+    />
+  </div>
+
+  <div class="chat__input-btns" #inputBtns>
+
+    <div class="chat__input-btns-wrap">
+      @if(!isAudioMessageUploading) {
+        <app-icon-cancel-bordered color="#2C2C2C" (click)="deleteRecording(true)"></app-icon-cancel-bordered>
+      }
+
+
+      <span
+        class="chat__recorded-time"
+        [ngClass]="{ 'pl-0': isAudioMessageUploading }"
+      >
+        <ng-container *ngIf="!(isRecordingStopped && isCollapsed)">
+          {{ recordedTime$ | async | hms }}
+        </ng-container>
+      </span>
+
+      <ng-container *ngIf="!isStopped">
+
+        @if(isRecordingPaused) {
+          <app-icon-play color="#2C2C2C" (click)="startAudioRecord()"></app-icon-play>
+        }@else {
+          <app-icon-stop color="#2C2C2C" (click)="pauseAudioRecord()"></app-icon-stop>
+        }
+      </ng-container>
+
+      <app-icon-audio-record [color]="!isRecordingPaused && !isRecordingStopped ? '#2C2C2C' : '#B3B3B3' "></app-icon-audio-record>
+      <app-send-icon strokeWidth="5" color="#2C2C2C" (click)="stopAudioRecord()"></app-send-icon>
+
+    </div>
+  </div>
+</div>

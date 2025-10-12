@@ -1,0 +1,429 @@
+{
+    "user_query": "My residence permit will expire soon. How can I renew it?",
+    "user_context": {
+        "origin_country": "Ukraine",
+        "time_in_germany": "1-5 years",
+        "age": "28"
+    },
+    "location": "Berlin"
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "language_detector",
+    "status_display": {
+        "status": "language_detector",
+        "display_message": "Detecting language."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "domain_detector",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "retriever",
+    "status_display": {
+        "status": "retriever",
+        "display_message": "Searching for sources to answer question."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "sensitive_topic_detector",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "intent_detector",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "clarification_decider",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "assitant",
+    "status_display": {
+        "status": "assitant",
+        "display_message": "Generating response."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "answer_improver",
+    "status_display": {
+        "status": "answer_improver",
+        "display_message": "Improving response."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "topic_detector",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "new_immigration_law_fixer",
+    "status_display": {
+        "status": "new_immigration_law_fixer",
+        "display_message": "Checking consistency with changes in migration law."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "organization_recommender",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "output_parser",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+
+{
+    "assistant_response": {
+        "answer": "To renew your residence permit in Germany, please follow these steps:\n\n1. Make an appointment with the relevant Immigration Office (\"Ausländerbehörde\") well before your current residence permit expires.\n2. Prepare the necessary documents for your appointment, including:\n   - Your current residence permit and passport.\n   - A biometric passport photo.\n   - Your employment contract and proof of income for the previous three months (or alternatively, a report from your tax adviser or a notice from the Jobcentre/Social Welfare Office).\n   - The confirmation of registration from your municipality (\"Meldebestätigung\").\n3. Attend the appointment and submit your documents.\n4. Pay the applicable fee for the renewal of your residence permit.\n\nImportant: You can only extend your residence permit if the BAMF has not renounced your entitlement to refugee protection, asylum, subsidiary protection, or a national ban on deportation. Also, if you wish, you can renew your passport at the same time.\n\nIf you have difficulty getting an appointment before your permit expires, you may try to go early without an appointment or send a fax to the Ausländerbehörde explaining your situation and requesting confirmation of receipt along with the required documents.",
+        "improved_answer": "To renew your residence permit in Germany, please follow these steps:\n\n1. Make an appointment with the relevant Immigration Office (\"Ausländerbehörde\") well before your current residence permit expires.\n2. Prepare the necessary documents for your appointment, including:\n   - Your current residence permit and passport.\n   - A biometric passport photo.\n   - Your employment contract and proof of income for the previous three months (or alternatively, a report from your tax adviser or a notice from the Jobcentre/Social Welfare Office).\n   - The confirmation of registration from your municipality (\"Meldebestätigung\").\n3. Attend the appointment and submit your documents.\n4. Pay the applicable fee for the renewal of your residence permit.\n\nImportant: You can only extend your residence permit if the BAMF has not renounced your entitlement to refugee protection, asylum, subsidiary protection, or a national ban on deportation. Also, if you wish, you can renew your passport at the same time.\n\nIf you have difficulty getting an appointment before your permit expires, you may try to go early without an appointment or send a fax to the Ausländerbehörde explaining your situation and requesting confirmation of receipt along with the required documents.",
+        "answer_found": true
+    },
+    "retriever_items": [
+        {
+            "document_name": "source-data",
+            "text": "for the previous three months (alternatively, a report from your tax adviser or a notice from the Jobcentre/Social Welfare Office) The confirmation of registration from the municipality (\"Meldebestätigung \"). You can also renew your passport at the same time. There is a fee to be paid for the renewal of the residence permit and the passport. Important : You can only extend your residence permit if the BAMF has not renounced your entitlement to refugee protection, asylum, subsidiary protection or national ban on deportation. For detailed information, look at the section \"Can I lose my residence permit?”.",
+            "text_with_context": "source_name: Handbook Germany Immigration\nsource_domain: Immigration\ntext: for the previous three months (alternatively, a report from your tax adviser or a notice from the Jobcentre/Social Welfare Office) The confirmation of registration from the municipality (\"Meldebestätigung \"). You can also renew your passport at the same time. There is a fee to be paid for the renewal of the residence permit and the passport. Important : You can only extend your residence permit if the BAMF has not renounced your entitlement to refugee protection, asylum, subsidiary protection or national ban on deportation. For detailed information, look at the section \"Can I lose my residence permit?”.",
+            "document_metadata": {},
+            "node_id": "0bf6bbc2db494eb088805b21cef26539",
+            "parent_node_id": "3c924ca38ebe4652b43b32bca9fe5af7",
+            "chunk_size": 64,
+            "chunk_id": 1,
+            "keyword_score": 2.272,
+            "vector_score": 0.585,
+            "relative_hybrid_score": 0.837,
+            "collection_metadata": {
+                "name": "HandbookGermanyImmigration",
+                "language": "en",
+                "documents": [],
+                "collector": "HandbookGermanyImmigration",
+                "source_name": "Handbook Germany Immigration",
+                "source_author": "Handbook Germany",
+                "source_url": "https://handbookgermany.de/en/search?filter%5Bfulltext%5D=&f1%5B0%5D=slug%3Amigration%2Fvisa&f1%5B1%5D=slug%3Amigration&f1%5B2%5D=slug%3Amigration%2Fnaturalisation&f1%5B3%5D=slug%3Amigration%2Fskilled-workers&f1%5B4%5D=slug%3Amigration%2Fother",
+                "source_domain": "Immigration",
+                "source_type": "Information curated by counseling centers and information portals",
+                "source_region": "Germany",
+                "source_date": "01-23-2025",
+                "source_description": ""
+            },
+            "child_node_ids": []
+        },
+        {
+            "document_name": "source-data",
+            "text": "How can I extend my residence permit? As a recognised refugee or an individual entitled to asylum, you will be issued a residence permit which is valid for three years. The residence permit issued for individuals with subsidiary protection or a national ban on deportation is, in principle, valid for one year. If you want to stay in Germany after this initial period, you must have your residence permit extended. To do so, you need to make an appointment with the relevant Immigration Office (\"Ausländerbehörde\") in due time before your residence permit expires . In this appointment, you must present the following documents: Your residence permit and your passport A biometric passport photo Your employment contract and proof of income for the previous three months (alternatively, a report",
+            "text_with_context": null,
+            "document_metadata": {
+                "source_url": "https://handbookgermany.de/en/right-of-residence",
+                "source_author": "Handbook Germany",
+                "source_name": "Handbook Germany Immigration",
+                "source_domain": "Immigration",
+                "page": null,
+                "section": "Residence Permits for Refugees",
+                "subsection": null,
+                "sub_subsection": null
+            },
+            "node_id": "349e534865b7458faae4c8c53f1e26b8",
+            "parent_node_id": "c04934e64a134bc38d12c00dec579ee6",
+            "chunk_size": 128,
+            "chunk_id": 2,
+            "keyword_score": 2.036,
+            "vector_score": 0.584,
+            "relative_hybrid_score": 0.81,
+            "collection_metadata": {
+                "name": "HandbookGermanyImmigration",
+                "language": "en",
+                "documents": [],
+                "collector": "HandbookGermanyImmigration",
+                "source_name": "Handbook Germany Immigration",
+                "source_author": "Handbook Germany",
+                "source_url": "https://handbookgermany.de/en/search?filter%5Bfulltext%5D=&f1%5B0%5D=slug%3Amigration%2Fvisa&f1%5B1%5D=slug%3Amigration&f1%5B2%5D=slug%3Amigration%2Fnaturalisation&f1%5B3%5D=slug%3Amigration%2Fskilled-workers&f1%5B4%5D=slug%3Amigration%2Fother",
+                "source_domain": "Immigration",
+                "source_type": "Information curated by counseling centers and information portals",
+                "source_region": "Germany",
+                "source_date": "01-23-2025",
+                "source_description": ""
+            },
+            "child_node_ids": [
+                "0575cc7aa8c34881ad52e602a7139d9f",
+                "4a3c36f309d64ac3bb1a125a0f322f1c"
+            ]
+        },
+        {
+            "document_name": "source-data",
+            "text": "Entré a Alemania como turista, ¿puedo quedarme en el país? No. Los visados de turista (Schengen) no se pueden cambiar ni prolongar. Tengo una visa Working Holiday y me quiero quedar en Alemania, ¿se puede? Sí. Se puede solicitar un permiso de estadía por ejemplo para fines de preparación de estudios, estudio o trabajo, entre otros. Mi visa/permiso de estadía vence y no hay citas en extranjería, ¿qué hago? Hay dos posibilidades, la primera es ir sin cita muy temprano por la mañana y hacer cola. La segunda, si es que tu visa/permiso de estadía no ha vencido aún, es insistir y sacar una cita aunque sea para después del vencimiento de tu permiso de estadía. Cuando se ha sacado una cita teniendo un estatus legal válido (no vencido), este se alarga hasta el día de la cita. Es decir, tu permiso de larga estadía será válido hasta la fecha de la cita. Si bien esto es suficiente en el día a día, legalmente, para que tu permiso de estadía se alargue es necesario pedir un nuevo permiso antes de que venza el que ya tienes. Para esto puedes mandar un fax al Ausländerbehörde (extranjería) señalando qué permiso se está pidiendo y solicitando un acuse de recibo. Idealmente también adjuntando los documentos requeridos, o señalando que serán entregados el día de la cita, además de una copia de tu pasaporte y permiso actual. Me quiero casar con una persona comunitaria fuera de Alemania (por ejemplo en Dinamarca) y pedir una visa de reunificación familiar, ¿tengo que",
+            "text_with_context": null,
+            "document_metadata": {
+                "source_url": "https://oficinaprecariaberlin.org/visados-extranjeria/visados-generalidades",
+                "source_author": "Oficina Precaria",
+                "source_name": "Information about visas (general)",
+                "source_domain": "Immigration",
+                "page": null,
+                "section": "Preguntas frecuentes (FAQ)",
+                "subsection": null,
+                "sub_subsection": null
+            },
+            "node_id": "0a5720ab69b445a083c3216ff2863bf8",
+            "parent_node_id": "",
+            "chunk_size": 256,
+            "chunk_id": 3,
+            "keyword_score": 1.086,
+            "vector_score": 0.601,
+            "relative_hybrid_score": 0.775,
+            "collection_metadata": {
+                "name": "VisaInfoEs",
+                "language": "es",
+                "documents": [],
+                "collector": "VisaInfoEs",
+                "source_name": "Information about visas in Spanish",
+                "source_author": "Oficina Precaria",
+                "source_url": "https://oficinaprecariaberlin.org/visados-extranjeria/visados-generalidades",
+                "source_domain": "Immigration",
+                "source_type": "Information curated by counseling centers and information portals",
+                "source_region": "Berlin",
+                "source_date": "01-23-2025",
+                "source_description": "This website provides comprehensive information on visa types and procedures for non-EU nationals entering and staying in Germany. It explains the differences between tourist visas (Schengen visas) and national visas for long-term stays, detailing requirements for study, work, family reunification, and humanitarian reasons. The page also covers the application process, necessary documentation, and answers frequently asked questions."
+            },
+            "child_node_ids": [
+                "5479c15fc8bc4e0299ac6121fd5eb06b",
+                "95d1a73528fa450d85a37058d07d985b",
+                "0d5e47bee95544a581b8ed12369aa36f",
+                "29872cdaf46848ebaa2186ca357631b6",
+                "8272d2fd71c7440ca2347d4d949bbf32",
+                "7ff36c74d42647d096a267f4183beea0"
+            ]
+        }
+    ],
+    "status": null,
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": {
+        "language_code": "en",
+        "language_name": "English"
+    },
+    "domain": {
+        "domain": "Immigration",
+        "is_valid": true
+    },
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": "Perform acction",
+    "topics": [
+        "Migration",
+        "Bureaucracy"
+    ],
+    "organizations": [
+        {
+            "name": "Refugee Law Clinic Berlin",
+            "description": "The Refugee Law Clinic Berlin e.V. is a student association at the Humboldt University of Berlin that offers free and independent legal advice for refugees and migrants in Berlin.",
+            "website": "https://www.rlc-berlin.org/",
+            "score": 1
+        },
+        {
+            "name": "KUB",
+            "description": "The KuB is a non-profit association in Berlin-Kreuzberg that has been supporting refugees and migrants since 1983. The organization offers advice on asylum and residence law, psychosocial support, and assistance with social issues. The goal is to promote secure residency status and equality.",
+            "website": "https://kub-berlin.org/es/",
+            "score": 1
+        },
+        {
+            "name": "Caritas",
+            "description": "The migration counseling for adults offers support for new immigrants aged 27 and over who live permanently in Germany. It provides support for up to three years after entry or obtaining a permanent residence status. The counseling is available in several languages and assists longer-resident immigrants with integration issues.",
+            "website": "https://www.caritas-berlin.de/beratungundhilfe/berlin/flucht-und-migration/beratung/fuer-erwachsene-migranten/fuer-erwachsene-migranten",
+            "score": 1
+        },
+        {
+            "name": "Bürgertelefon des BMAS",
+            "description": "The citizen's hotline of the BMAS competently answers questions on social topics such as pensions, citizen's income or minimum wage, and the inclusion of people with disabilities. Trained and experienced staff are available with advice and assistance for everyone.",
+            "website": "https://www.bmas.de/DE/Service/Kontakt/Buergertelefon/buergertelefon.html",
+            "score": 1
+        }
+    ],
+    "is_final_response": true,
+    "is_clarification": false,
+    "error": null
+}
+

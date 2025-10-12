@@ -1,0 +1,37 @@
+:host {
+  width: 100%;
+}
+
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    background-color: lightgray;
+  }
+}
+
+.spinner {
+  margin-top: 120px;
+}
+
+.mat-tree-node {
+  &.clickable:hover {
+    background-color: rgb(230, 230, 230);
+  }
+
+  &.selected {
+    font-weight: bold;
+    background-color: rgb(230, 230, 230);
+  }
+}

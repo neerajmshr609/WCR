@@ -1,0 +1,27 @@
+.relations {
+  display: flex;
+}
+
+.artfields {
+  margin-right: 4rem;
+
+  &__categories {
+    margin-left: 3rem;
+  }
+}
+
+.relation-input {
+  width: 3rem;
+}
+
+.parentcategory {
+  &__name {
+    align-items: center;
+  }
+}
+
+.category {
+  &__name {
+    align-items: center;
+  }
+}

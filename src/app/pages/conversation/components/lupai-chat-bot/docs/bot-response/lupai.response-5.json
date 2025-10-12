@@ -1,0 +1,151 @@
+{
+  "assistant_response": {
+    "answer": "To register your child at a local school in Hamburg, Germany, please follow these steps:\n\n1. Understand that school attendance is compulsory in Germany for all children, regardless of nationality, starting usually at age six.\n2. Upon your arrival in Germany, you must enroll your school-age child in a school. Local schools are obligated to accept children under the school attendance law.\n3. Contact the local school authority (Schulamt) in Hamburg to get information on the registration process and required documents.\n4. Provide necessary documents such as proof of residence, your child's identification, and any previous school records if available.\n5. If your child is younger than school age, you may also inquire about kindergarten options.\n\nSince you are newly arrived from Ukraine and living in Hamburg, it is important to register your child promptly to comply with the school attendance requirements.",
+    "improved_answer": "To register your child at a local school in Hamburg, Germany, please follow these steps:\n\n1. Understand that school attendance is compulsory in Germany for all children, regardless of nationality, starting usually at age six.\n2. Upon your arrival in Germany, you must enroll your school-age child in a school. Local schools are obligated to accept children under the school attendance law.\n3. Contact the local school authority (Schulamt) in Hamburg to get information on the registration process and required documents.\n4. Provide necessary documents such as proof of residence, your child's identification, and any previous school records if available.\n5. If your child is younger than school age, you may also inquire about kindergarten options.\n\nSince you are newly arrived from Ukraine and living in Hamburg, it is important to register your child promptly to comply with the school attendance requirements.",
+    "answer_found": true
+  },
+  "retriever_items": [
+    {
+      "document_name": "source-data",
+      "text": "What are the next steps? Upon your family’s arrival in Germany, you must do the following: You must register your family at a health insurance company. You can learn more in our chapter on health insurance . If you receive social benefits yourself, you must register your family at the Jobcenter or the Social Welfare Office responsible for you. If you have school-age children, you must enrol them in school. Read more about schooling in our chapter \" School \".",
+      "text_with_context": "source_name: Handbook Germany Immigration\nsource_domain: Immigration\ntext: What are the next steps? Upon your family’s arrival in Germany, you must do the following: You must register your family at a health insurance company. You can learn more in our chapter on health insurance . If you receive social benefits yourself, you must register your family at the Jobcenter or the Social Welfare Office responsible for you. If you have school-age children, you must enrol them in school. Read more about schooling in our chapter \" School \".",
+      "document_metadata": {},
+      "node_id": "1888f129027c410da68e8c360c631fb8",
+      "parent_node_id": "3a8c4f5b227f4f00b4e4ac08a6c13134",
+      "chunk_size": 64,
+      "chunk_id": 1,
+      "keyword_score": 3.21,
+      "vector_score": 0.581,
+      "relative_hybrid_score": 0.799,
+      "collection_metadata": {
+        "name": "HandbookGermanyImmigration",
+        "language": "en",
+        "documents": [],
+        "collector": "HandbookGermanyImmigration",
+        "source_name": "Handbook Germany Immigration",
+        "source_author": "Handbook Germany",
+        "source_url": "https://handbookgermany.de/en/search?filter%5Bfulltext%5D=&f1%5B0%5D=slug%3Amigration%2Fvisa&f1%5B1%5D=slug%3Amigration&f1%5B2%5D=slug%3Amigration%2Fnaturalisation&f1%5B3%5D=slug%3Amigration%2Fskilled-workers&f1%5B4%5D=slug%3Amigration%2Fother",
+        "source_domain": "Immigration",
+        "source_type": "Information curated by counseling centers and information portals",
+        "source_region": "Germany",
+        "source_date": "01-23-2025",
+        "source_description": ""
+      },
+      "child_node_ids": []
+    },
+    {
+      "document_name": "source-data",
+      "text": "Q: Kann mein Kind einen Kindergarten oder eine Schule besuchen?\nA: Ja, das Gesundheitsministerium erklärt für NRW, welche Möglichkeiten es gibt und wie die Anträge gestellt werden. Die Bezirksregierung Düsseldorf informiert über die individuellen Möglichkeiten für Schüler*innen.",
+      "text_with_context": "source_name: Informationsportal Das steht Dir zu!\nsource_domain: Social\ntext: Q: Kann mein Kind einen Kindergarten oder eine Schule besuchen?\nA: Ja, das Gesundheitsministerium erklärt für NRW, welche Möglichkeiten es gibt und wie die Anträge gestellt werden. Die Bezirksregierung Düsseldorf informiert über die individuellen Möglichkeiten für Schüler*innen.",
+      "document_metadata": {},
+      "node_id": "257f1b408710462a8caed4b9d4d62217",
+      "parent_node_id": "29a0ad60c1274eeb85f537c64c29d769",
+      "chunk_size": 37,
+      "chunk_id": 2,
+      "keyword_score": 3.722,
+      "vector_score": 0.558,
+      "relative_hybrid_score": 0.759,
+      "collection_metadata": {
+        "name": "DasStehtDirZu",
+        "language": "de",
+        "documents": [],
+        "collector": "DasStehtDirZu",
+        "source_name": "Informationsportal Das steht Dir zu!",
+        "source_author": "Caritas NRW",
+        "source_url": "https://www.das-steht-dir-zu.de",
+        "source_domain": "Social",
+        "source_type": "Administrative processes",
+        "source_region": "Berlin",
+        "source_date": "05-20-2025",
+        "source_description": "This page provides information on which social benefits you are entitled to in Germany. It covers various topics such as unemployment benefits, housing benefits, and child benefits. The information is provided by Caritas NRW, a charitable organization that offers support and assistance to people in need. The website is designed to help individuals navigate the complex social welfare system in Germany and understand their rights and entitlements."
+      },
+      "child_node_ids": []
+    },
+    {
+      "document_name": "source-data",
+      "text": "In Deutschland besteht neben dem Recht auf Schulbesuch auch eine Schulpflicht. Dieser unterliegen alle Personen ungeachtet ihrer Nationalität. Die Schulpflicht verlangt von Eltern unter Strafandrohung, ihre Kinder in die Schule zu schicken. Sie verpflichtet außerdem die örtlichen Schulen, Kinder aufzunehmen. Die Schulpflicht regeln die Bundesländer in ihren Schulgesetzen. Sie beginnt in der Regel im Alter von sechs Jahren und besteht aus zwei Teilen: Die sogenannte Vollzeitschulpflicht umfasst neun, in manchen Bundesländern auch zehn Jahre an einer allgemeinbildenden Schule. Anschließend kann man: weiter in Vollzeit die Schule bis zum Abitur besuchen (Sekundarstufe II) eine Berufsfachschule in Vollzeit besuchen eine Berufsschule in Teilzeit besuchen (duale Berufsausbildung) Die Schulpflicht endet in der Regel mit der Volljährigkeit oder, wenn man nach Vollendung des 18. Lebensjahres noch in einer Berufsausbildung ist, mit deren Ende. In Hessen und Rheinland-Pfalz gilt die Schulpflicht bis zum 21. Lebensjahr, in Berlin nur bis zum 16. Lebensjahr. In den Schulgesetzen der meisten Bundesländer ist ausdrücklich geregelt, dass die Schulpflicht auch für Personen mit Duldung sowie für Personen mit einer Aufenthaltsgestattung besteht. Ansonsten ergibt sich die Schulpflicht daraus, dass diese Personen ihren gewöhnlichen Aufenthalt – also ihren Lebensmittelpunkt – in dem jeweiligen Bundesland haben. Ausgenommen von der Schulpflicht sind dagegen Kinder und Jugendliche ohne Dokumente . Sie können die Schule zwar besuchen, haben aber keinen Anspruch auf einen Platz. Ausnahmen können auch für Kinder von Asylsuchenden gelten, die sich in der ersten Phase des Asylverfahrens in einer Erstaufnahmeeinrichtung befinden. Außer im Saarland und in Berlin gelten für sie besondere Regelungen. In den meisten Bundesländern haben sie in dieser Zeit nur ein Schulbesuchsrecht, jedoch keine Pflicht. Stand: Dezember 2024",
+      "text_with_context": null,
+      "document_metadata": {
+        "source_url": "https://www.asyl.net/themen/bildung-und-arbeit/zugang-zu-bildung/schule",
+        "source_author": "Informationsverbund Asyl & Migration",
+        "source_name": "Informationsverbund Asyl & Migration",
+        "source_domain": "Asylum",
+        "page": null,
+        "section": "Bildung und Arbeit",
+        "subsection": "Zugang zu Bildung",
+        "sub_subsection": "Schule"
+      },
+      "node_id": "0599df92424041eabcccb2ab93161b73",
+      "parent_node_id": "",
+      "chunk_size": 256,
+      "chunk_id": 3,
+      "keyword_score": 3.39,
+      "vector_score": 0.542,
+      "relative_hybrid_score": 0.686,
+      "collection_metadata": {
+        "name": "AsylNet",
+        "language": "de",
+        "documents": [],
+        "collector": "AsylNet",
+        "source_name": "Informationsverbund Asyl & Migration",
+        "source_author": "Informationsverbund Asyl & Migration",
+        "source_url": "https://www.asyl.net/themen",
+        "source_domain": "Asylum",
+        "source_type": "Administrative processes",
+        "source_region": "Berlin",
+        "source_date": "05-20-2025",
+        "source_description": "This page provides information on asylum and migration in Germany. It includes resources, articles, and news related to asylum seekers, refugees, and migration policies. The site aims to inform and support individuals navigating the asylum process in Germany."
+      },
+      "child_node_ids": [
+        "028d26c7feb141c3b8a53b25362dd68b",
+        "8c59084abcae4bc3974cc6155e390aeb",
+        "f33e0f55e631410fbe8759323206be44",
+        "527207d44d5244b6af46bf22b011b5b9",
+        "65f0677a18e240beb1c9a6521bca1715",
+        "2beea24f6bbe4ece96325937bb86eaae"
+      ]
+    }
+  ],
+  "status": null,
+  "status_display": {
+    "status": null,
+    "display_message": null
+  },
+  "language": {
+    "language_code": "en",
+    "language_name": "English"
+  },
+  "domain": {
+    "domain": "Immigration",
+    "is_valid": true
+  },
+  "improved_query": null,
+  "sensitive_topic": null,
+  "intent": "Perform acction",
+  "topics": ["Migration"],
+  "organizations": [
+    {
+      "name": "Refugee Law Clinic Berlin",
+      "description": "The Refugee Law Clinic Berlin e.V. is a student association at the Humboldt University of Berlin that offers free and independent legal advice for refugees and migrants in Berlin.",
+      "website": "https://www.rlc-berlin.org/",
+      "score": 1
+    },
+    {
+      "name": "KUB",
+      "description": "The KuB is a non-profit association in Berlin-Kreuzberg that has been supporting refugees and migrants since 1983. The organization offers advice on asylum and residence law, psychosocial support, and assistance with social issues. The goal is to promote secure residency status and equality.",
+      "website": "https://kub-berlin.org/es/",
+      "score": 1
+    },
+    {
+      "name": "Caritas",
+      "description": "The migration counseling for adults offers support for new immigrants aged 27 and over who live permanently in Germany. It provides support for up to three years after entry or obtaining a permanent residence status. The counseling is available in several languages and assists longer-resident immigrants with integration issues.",
+      "website": "https://www.caritas-berlin.de/beratungundhilfe/berlin/flucht-und-migration/beratung/fuer-erwachsene-migranten/fuer-erwachsene-migranten",
+      "score": 1
+    }
+  ],
+  "is_final_response": true,
+  "is_clarification": false,
+  "error": null
+}
+
+

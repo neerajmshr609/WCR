@@ -1,0 +1,28 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+app-select {
+  margin-top: 4px;
+}
+
+app-close-icon {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+}
+
+mat-dialog-actions {
+  margin-top: 2.4rem;
+}
+
+.modal-header {
+  margin-bottom: 1.6rem;
+}

@@ -1,0 +1,39 @@
+@if(isAudio) {
+  <div class="curves--audio-line">
+    <span class="curves--audio-line-point top">+5</span>
+    <span class="curves--audio-line-point center">0</span>
+    <span class="curves--audio-line-point bottom">-5</span>
+  </div>
+}
+<div
+  #curvesContainer
+  class="curves"
+  [ngClass]="{ 'curves--audio': isAudio, 'curves--feed': readMode }"
+  (click)="onTimelineClick($event)"
+  [style]="background ? 'background-image: url(' + background + ')' : null"
+>
+  <ng-container *ngIf="!isAudio && !readMode">
+    <h2 class="curves__range curves__range--top">+5</h2>
+    <h2 class="curves__range curves__range--bottom">-5</h2>
+  </ng-container>
+
+  <div class="curves__marker"></div>
+  <div class="curves__body" #canvas></div>
+
+  <div class="curves__lanes" #lanes>
+    <div class="curves__cursor" #cursor></div>
+    <div class="curves__played-fill" #fill *ngIf="!isAudio"></div>
+  </div>
+
+  <div class="faces">
+    <div
+      class="faces__item"
+      *ngFor="let trackface of trackFaces"
+      [style.top.px]="trackface.y"
+      [style.left.px]="trackface.x"
+      [style.backgroundColor]="trackface.color"
+    >
+      <img [src]="trackface.imagePath" />
+    </div>
+  </div>
+</div>

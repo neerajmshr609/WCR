@@ -1,0 +1,180 @@
+<ng-container *ngIf="currentUser$ | async as currentUser">
+  <section class="ice-breaker-template-container">
+    <article class="ice-breaker-template-container__animation-container">
+      <section class="ice-breaker-template-container__animation-container">
+        <article class="ice-breaker-template-container__template">
+          <article class="chat">
+            <div class="chat__header">
+              <a
+                routerLink="/profile/{{ currentUser.sharetoken }}/ice-breakers"
+                class="chat__header--back-link"
+              >
+                <img
+                  alt="Arrow left"
+                  src="assets/icons/chevron-left.svg"
+                  class="chat__header--back"
+                />
+              </a>
+              <app-user-info [user]="currentUser"></app-user-info>
+            </div>
+            <section class="message-container" #containerOfMessages>
+              <app-conversation-message
+                class="chat__message"
+                *ngFor="let message of messages$ | async; trackBy: trackByDate"
+                [userProfile]="currentUser"
+                [message]="message"
+              >
+              </app-conversation-message>
+              <app-share-profile-carousel
+                *ngIf="isCompleteIceBreaker$ | async"
+                [shareLink]="shareLink"
+              ></app-share-profile-carousel>
+              <div class="scroll-to-bottom-btn" *ngIf="isCanScroll">
+                <app-scroll-btn
+                  (clickedScrollDown)="scrollHistory()"
+                  (clickedScrollUp)="scrollHistory(false)"
+                ></app-scroll-btn>
+              </div>
+            </section>
+            <!-- <div class="title-info-container" *ngIf="showSetTitle | async">
+              {{ 'message-to-save' | translate }}
+            </div> -->
+            <section class="questions-actions">
+              <ng-container
+                *ngIf="
+                  stepQuestions.length &&
+                  (showCreateQuestion$ | async) &&
+                  !(isCompleteIceBreaker$ | async)
+                "
+              >
+                <button
+                  class="complete-btn"
+                  (click)="readyToSetIceBreakerType(true)"
+                >
+                  {{ 'buttons.complete' | translate }}
+                </button>
+                <button class="next-btn" (click)="nextQuestion()">
+                  <img
+                    src="assets/ice-breaker/ice-breaker-logo.svg"
+                    alt="Capsule logo"
+                  />
+                  {{ 'buttons.create-next' | translate }}
+                </button>
+              </ng-container>
+
+              <ng-container *ngIf="confirmationState$ | async">
+                <div class="done-container">
+                  <button
+                    class="icon-btn"
+                    (click)="confirmToSetIceBreakerType(false)"
+                  >
+                    <img src="assets/payments/deny.svg" alt="Deny icon" />
+                  </button>
+                  <span>{{ 'sure-done' | translate }}</span>
+                  <button
+                    class="icon-btn"
+                    (click)="confirmToSetIceBreakerType(true)"
+                  >
+                    <img src="assets/payments/accept.svg" alt="Accept icon" />
+                  </button>
+                </div>
+              </ng-container>
+
+              <ng-container *ngIf="showYesNoType$ | async">
+                <button class="complete-btn" (click)="saveYesNoAnswer(false, 'confirmation.false')">
+                  {{ 'confirmation.false' | translate }}
+                </button>
+                <button class="next-btn" (click)="saveYesNoAnswer(true, 'confirmation.true')">
+                  {{ 'confirmation.true' | translate }}
+                </button>
+              </ng-container>
+
+<!--              <ng-container *ngIf="isSetIceBreakerType$ | async">-->
+<!--                <section class="progress-container">-->
+<!--                  <div class="accept-block">-->
+<!--                    <img-->
+<!--                      class="accept-block__icon"-->
+<!--                      src="assets/icons/check.svg"-->
+<!--                      alt="Check icon"-->
+<!--                    />-->
+<!--                  </div>-->
+<!--                  <section-->
+<!--                    class="done-container progress-container__extra-block"-->
+<!--                  >-->
+<!--                    <button-->
+<!--                      class="confirm-btn confirm-btn__denied"-->
+<!--                      (click)="readyToSetPrice(ICEBREAKER_TYPES.I_WILL_PAY)"-->
+<!--                    >-->
+<!--                      <img-->
+<!--                        class="confirm-btn__icon"-->
+<!--                        src="assets/advisors.svg"-->
+<!--                        alt="Advisor icon"-->
+<!--                      />-->
+<!--                      {{ 'buttons.i-will-pay' | translate }}-->
+<!--                    </button>-->
+<!--                    <p-->
+<!--                      class="done-container__title"-->
+<!--                      [innerHTML]="'who-pay' | translate | safe: 'html'"-->
+<!--                    ></p>-->
+<!--                    <button-->
+<!--                      class="confirm-btn confirm-btn__accept"-->
+<!--                      (click)="readyToSetPrice(ICEBREAKER_TYPES.OTHERS_PAY_ME)"-->
+<!--                    >-->
+<!--                      <img-->
+<!--                        class="confirm-btn__icon"-->
+<!--                        src="assets/clients.svg"-->
+<!--                        alt="Client icon"-->
+<!--                      />-->
+<!--                      {{ 'buttons.other-pay' | translate }}-->
+<!--                    </button>-->
+<!--                  </section>-->
+<!--                </section>-->
+<!--              </ng-container>-->
+
+<!--              <ng-container *ngIf="showSetPrice$ | async">-->
+<!--                <section class="progress-container">-->
+<!--                  <div class="accept-block">-->
+<!--                    <img-->
+<!--                      class="accept-block__icon"-->
+<!--                      src="assets/icons/check.svg"-->
+<!--                      alt="Check icon"-->
+<!--                    />-->
+<!--                  </div>-->
+<!--                  <app-price-conditions-->
+<!--                    class="progress-container__extra-block"-->
+<!--                    [iceBreakerType]="iceBreakerType$ | async"-->
+<!--                    (stepBack)="backToSetType()"-->
+<!--                    (priceConditionsFinished)="onPriceChanged($event)"-->
+<!--                  >-->
+<!--                  </app-price-conditions>-->
+<!--                </section>-->
+<!--              </ng-container>-->
+            </section>
+            <div
+              class="questions-actions"
+              *ngIf="showSetRichMediaContentThumbnail$ | async"
+            >
+              <section class="next-step-container">
+                <button class="next-btn" (click)="skipStep()">
+                  {{ 'buttons.skip-test' | translate }}
+                  <img src="assets/arrow-white.svg" alt="Arrow right icon" />
+                </button>
+              </section>
+            </div>
+            <div class="input-message" *ngIf="!(isCompleteIceBreaker$ | async)">
+              <app-text-input
+                [allowImages]="showCreateQuestion$ | async"
+                [allowAudioMessage]="showCreateQuestion$ | async"
+                [messageSent$]="messageSentEvt"
+                [editable]="canTypeText$ | async"
+                (sendBtnClicked)="sendMessage($event)"
+                [user]="currentUser"
+              >
+              </app-text-input>
+            </div>
+          </article>
+        </article>
+      </section>
+    </article>
+  </section>
+</ng-container>

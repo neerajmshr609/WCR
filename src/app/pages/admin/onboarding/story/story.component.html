@@ -1,0 +1,33 @@
+<div class="story">
+  <div class="story__name">
+    <h1 contenteditable="true" #storyName>{{ story.name }}</h1>
+    <mat-slide-toggle
+      (change)="onStoryActiveToggle($event)"
+      [checked]="story.active"
+      >Enabled</mat-slide-toggle
+    >
+    <mat-icon class="delete-icon" (click)="onDelete()">delete</mat-icon>
+  </div>
+
+  <div class="cards">
+    <ng-template ngFor let-card [ngForOf]="story.cards">
+      <app-card
+        (cardDeleted)="onCardDelete($event)"
+        (cardUpdated)="onCardUpdate($event)"
+        (openUploader)="openUploader($event)"
+        [card]="card"
+        [cardImageSrc$]="cardImageSrc$"
+        [storyID]="story.id"
+      ></app-card>
+    </ng-template>
+
+    <app-card
+      (cardCreated)="onCardCreate($event)"
+      (openUploader)="openUploader($event)"
+      [storyID]="story.id"
+      [imageUrl]="imageUrl"
+    ></app-card>
+  </div>
+</div>
+
+<div class="uploader uploader--card-image"></div>

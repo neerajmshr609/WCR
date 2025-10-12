@@ -1,0 +1,7 @@
+<ul class="validation-errors_container">
+  @for (error of castedErrors(); track error.message) {
+    <li>{{ error.message | translate:error.data }}</li>
+  }
+</ul>
+
+

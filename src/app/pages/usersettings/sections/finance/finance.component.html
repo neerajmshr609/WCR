@@ -1,0 +1,43 @@
+<app-section-header [title]="'finance' | translate">
+  <app-secure-payment-icon></app-secure-payment-icon>
+</app-section-header>
+
+<app-finances-stripe
+  type="paying"
+  [connect]="studentCardConnected"
+  [balance]="stripeBalance"
+  [baseUrl]="baseUrl"
+  [lastTransactions]="lastItemTransactions"
+  [stripeClientID]="stripeClientID"
+  [currentUser]="currentUser()"
+></app-finances-stripe>
+
+<app-finances-stripe
+  type="getting"
+  [connect]="currentUser().stripe_user_id"
+  [balance]="stripeBalance"
+  [baseUrl]="baseUrl"
+  [stripeClientID]="stripeClientID"
+  [currentUser]="currentUser()"
+  [notSupport]="notSupport"
+  [advisorPayments]="advisorPayments"
+  (deleteStripeAccount)="onDeleteStripeAccount()"
+  (payout)="payoutMoney()"
+></app-finances-stripe>
+
+<app-finances-stripe
+  type="save"
+  [connect]="currentUser().stripe_user_id"
+  [balance]="stripeBalance"
+></app-finances-stripe>
+
+@if (!currentUser().stripe_user_id && !notSupport) {
+  <button class="not-support" (click)="onNotSupport()">
+    <p>
+      {{ 'not_support_country' | translate }}
+    </p>
+    <app-chevron-down-icon
+      style="width: 24px; height: 24px;"
+    ></app-chevron-down-icon>
+  </button>
+}

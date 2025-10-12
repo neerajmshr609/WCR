@@ -1,0 +1,30 @@
+@if (control()) {
+  <div class="switch" [ngClass]="{ disabled: disabled() }">
+    <div class="switch_header">
+      <label class="form-label" [for]="inputName()">{{
+        label() | translate
+      }}</label>
+      <div
+        class="switch-inp"
+        role="button"
+        (click)="!disabled() && control().setValue(!control().value)"
+      >
+        <input
+          class="form-input"
+          type="checkbox"
+          [id]="inputName()"
+          [readonly]="disabled()"
+          [disabled]="disabled()"
+          [formControl]="control()"
+          [checked]="control().value"
+        />
+        <span class="slider round"></span>
+      </div>
+    </div>
+    @if (description()) {
+      <div class="switch_content">
+        <p>{{ description() | translate }}</p>
+      </div>
+    }
+  </div>
+}

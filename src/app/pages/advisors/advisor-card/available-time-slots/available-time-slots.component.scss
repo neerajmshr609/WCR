@@ -1,0 +1,134 @@
+@import 'variables';
+
+.rule-sets-wrapper {
+  padding: 12px 12px;
+  border-radius: 6px;
+  display: flex;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  flex-direction: column;
+  gap: 16px;
+
+  .close {
+    margin-left: auto;
+    &__btn {
+      cursor: pointer;
+      background-color: unset;
+      border: unset;
+      img {
+        height: 24px;
+      }
+    }
+  }
+
+  .description {
+    font-size: 1.3rem;
+    font-weight: 500;
+    display: flex;
+    align-items: flex-end;
+    margin-left: auto;
+    span {
+      margin-right: 10px;
+    }
+  }
+}
+.icon-btn {
+  background-color: unset;
+  cursor: pointer;
+  border: unset;
+  img {
+    margin-top: 40%;
+    width: 21px;
+    vertical-align: bottom;
+  }
+}
+
+.add-days {
+  &__btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  &__btn-title {
+    font-weight: bold;
+    font-size: 17.5443px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #212429;
+  }
+
+  &__btn-img {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+  }
+
+  &__rulesets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 50px;
+    padding-top: 30px;
+  }
+
+  &__ruleset {
+    background: #f2f2f2;
+    border-radius: 8px;
+    padding-right: 9px;
+    padding-left: 2px;
+    padding-bottom: 9px;
+  }
+
+  &__element {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 13px;
+    text-align: center;
+    color: #828282;
+    margin: 5px 0;
+  }
+
+  &__days {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+    color: $feed-light-gray-text;
+    margin-top: 10px;
+  }
+
+  &__time {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 33px;
+    text-align: center;
+    color: #000000;
+
+    &__period {
+      font-size: 13px;
+      color: $feed-light-gray-text;
+      margin-right: 10px;
+      vertical-align: top;
+    }
+
+    &__range {
+      margin-right: 20px;
+    }
+  }
+}
+
+::ng-deep.custom-week .schedule {
+  width: unset !important;
+  font-size: 16px;
+  column-gap: 16px;
+}

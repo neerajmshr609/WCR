@@ -1,0 +1,41 @@
+{
+  "user_info": {
+    "name_anon": "Аноним",
+    "city_global": "ГЛОБАЛЬНО"
+  },
+  "text_input": {
+    "placeholder": "Начните печатать..."
+  },
+  "ice-breaker-card": {
+    "ice-breaker": "CAPSULE",
+    "share": "ПОДЕЛИТЬСЯ CAPSULE {{id}}",
+    "delete": "Удалить Capsule",
+    "single-reviews": "ОТДЕЛЬНЫЕ ОТЗЫВЫ",
+    "reviews": "Отзывы",
+    "select-topic": "Выбрать тему",
+    "create": "Создать Capsule",
+    "rating": {
+      "title": "ОБЩИЙ РЕЙТИНГ",
+      "knowledge": "Знания",
+      "articulation": "Артикуляция",
+      "explanation": "Объяснение",
+      "politeness": "Вежливость"
+    },
+    "select-profile": "Выберите тему из карточки вашего профиля для создания разговора-капсулы.",
+    "click-button": "Нажмите кнопку ниже, чтобы начать создание этого Capsule",
+    "pick-topic": "Выберите тему перед созданием Capsule",
+    "adjust-price": "Настроить<br>Цену",
+    "want-share": "хочет поделиться этим Capsule с вами:",
+    "preview": "Предпросмотр",
+    "click-to-copy": "НАЖМИТЕ, ЧТОБЫ СКОПИРОВАТЬ",
+    "share-your-getme": "<span style=\"font-weight: 700;color: #000000;\">Поделитесь</span> вашим Getme <br>Capsule сейчас",
+    "if-you-have": "Если у вас еще нет настроенных тем, перейдите в <a href=\"/settings?type=skills\" style=\"text-decoration: underline\">раздел настроек</a> и выберите темы, в которых вы компетентны.",
+    "buttons": {
+      "enter-and-pay": "ВОЙТИ в разговор",
+      "enter-and-get-paid": "ВОЙТИ в разговор",
+      "go-chat-room": "Перейти в чат-комнату",
+      "connections-will-get-paid": "Связи",
+      "connections-will-pay": "Связи"
+    }
+  }
+}

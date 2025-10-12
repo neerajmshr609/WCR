@@ -1,0 +1,22 @@
+<section class="btn-container">
+  <button
+    title="Scroll to top"
+    (click)="clickedScrollUp.emit()"
+    class="scroll-btn"
+    label="Scroll to top"
+  >
+    <img src="assets/icons/arrow-black.svg" alt="Arrow down circle" />
+  </button>
+  <button
+    title="Scroll to bottom"
+    (click)="clickedScrollDown.emit()"
+    class="scroll-btn"
+    label="Scroll to bottom"
+  >
+    <img
+      class="scroll-btn__down"
+      src="assets/icons/arrow-black.svg"
+      alt="Arrow down circle"
+    />
+  </button>
+</section>

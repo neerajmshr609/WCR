@@ -1,0 +1,30 @@
+<div class="counsellor-desk">
+  <div class="counsellor-desk_expertise-card">
+    @for (filter of filterService.skillFilters(); track filter.id) {
+      <app-expertise-card
+        [skill]="filter"
+        (close)="filterService.remove(filter)"
+      >
+        <img [src]="filter.icon" class="Filter icon" />
+      </app-expertise-card>
+    }
+  </div>
+
+  <div class="counsellor-desk_cards-container">
+    <app-typing-card [textWithSplit]="'greeter-card.text' | translate"></app-typing-card>
+    @for (card of cards; track card.id) {
+      <div
+        class="image-container"
+        [ngClass]="{ 'active': isHoveredItem === card.id }"
+      >
+        <img [src]="card.img" alt="Card" class="desk-card" />
+
+        @if (card.id !== 1) {
+          <div class="overlay" (click)="addHoverState(card.id)">
+            <div class="text">Comming soon</div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

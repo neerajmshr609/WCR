@@ -1,0 +1,15 @@
+@import "_variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: $--sds-size-space-300;
+}
+
+.skills-button-list {
+  padding: $--sds-size-space-300;
+}
+
+.edit-button {
+  padding: 0 $--sds-size-space-300;
+}

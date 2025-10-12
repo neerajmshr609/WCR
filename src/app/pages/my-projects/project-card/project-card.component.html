@@ -1,0 +1,312 @@
+<div class="project-card-placeholder" *ngIf="isUploadPlaceholder">
+  <img src="assets/upload/upload-new.svg" alt="" />
+  <div class="project-card-placeholder__upload-cta">
+    <button class="greytme-button btn" routerLink="/upload">
+      <img src="assets/header/upload.svg" alt="upload-project-icon" />
+      <h3>Upload new project</h3>
+    </button>
+  </div>
+</div>
+
+<div class="project-card" *ngIf="!isUploadPlaceholder">
+  <div class="project-card__top-info">
+    <h1>{{ project.title || 'Untitled' }}</h1>
+
+    <div class="project__actions">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <a
+          mat-menu-item
+          class="menu-item"
+          [routerLink]="'/upload/' + project.id"
+        >
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </a>
+        <button
+          mat-menu-item
+          class="menu-item"
+          *ngIf="project.published"
+          (click)="togglePublished()"
+        >
+          <mat-icon>public_off</mat-icon>
+          <span>Unpublish</span>
+        </button>
+        <button
+          mat-menu-item
+          class="menu-item"
+          *ngIf="!project.published"
+          (click)="togglePublished()"
+        >
+          <mat-icon>public</mat-icon>
+          <span>Publish</span>
+        </button>
+        <a
+          mat-menu-item
+          class="menu-item"
+          [routerLink]="'/rateflow/' + project.sharetoken"
+          target="_blank"
+        >
+          <mat-icon>remove_red_eye_rounded</mat-icon>
+          <span>Preview project (new tab)</span>
+        </a>
+        <button mat-menu-item class="menu-item" (click)="didSelectDelete()">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <div class="project-card__buttons">
+    <a
+      class="btn project-card__btn project-card__btn--blue"
+      [ngClass]="{ 'project-card__btn--disabled': !newFeedbackCount }"
+      [routerLink]="'/insights/' + project.id"
+      [queryParams]="{ channel: insightsChannels.inbox }"
+    >
+      <ng-container *ngIf="!newFeedbackCount">No new reviews</ng-container>
+      <ng-container *ngIf="newFeedbackCount as count">
+        {{ count }} new review{{ count > 1 ? 's' : '' }}
+      </ng-container>
+    </a>
+
+    <a
+      class="btn project-card__btn project-card__btn--grey"
+      [ngClass]="{ 'project-card__btn--disabled': !oldFeedbackCount }"
+      [routerLink]="'/insights/' + project.id"
+      [queryParams]="{ channel: insightsChannels.latest }"
+    >
+      all reviews
+    </a>
+  </div>
+
+  <div class="project-card__gallery-container">
+    <h2 *ngIf="!project.published" class="draft-notice">Unpublished draft</h2>
+    <div
+      class="project-card__gallery {{ hasReviews ? 'active' : 'inactive' }} "
+    >
+      <div class="card-nav-single" *ngIf="project.projectfiles.length === 1">
+        <ng-container *ngIf="project.projectfiles[0] as file">
+          <app-round-slider [score]="file.total_score"></app-round-slider>
+
+          <img [src]="file.url" *ngIf="file.kind === 'image'" />
+          <img
+            [src]="file.thumbnail || 'assets/newsfeed/mediatype-video.png'"
+            *ngIf="file.kind === 'video' || file.kind === 'hostedvideo'"
+          />
+          <img
+            [src]="file.thumbnail || 'assets/newsfeed/mediatype-sound.png'"
+            *ngIf="file.kind === 'audio'"
+          />
+          <img
+            [src]="file.thumbnail || 'assets/projectfiles-types/iframe.svg'"
+            *ngIf="file.kind === 'iframe'"
+          />
+          <img
+            [src]="file.thumbnail || 'assets/projectfiles-types/pdf.svg'"
+            *ngIf="file.kind === 'pdf'"
+          />
+          <img
+            [src]="file.thumbnail || 'assets/projectfiles-types/dummy.svg'"
+            *ngIf="file.kind === 'dummy'"
+          />
+
+          <div
+            class="score"
+            [appScoreColor]="file.total_score"
+            [ngClass]="{
+              'score--pl-4':
+                file.total_score === null || file.total_score === 50,
+            }"
+          >
+            <p>{{ file.total_score | projectScore }}</p>
+          </div>
+        </ng-container>
+      </div>
+
+      <app-round-slider
+        [score]="selectedFile?.total_score"
+        *ngIf="project.projectfiles.length > 1"
+      ></app-round-slider>
+
+      <div
+        class="card-nav"
+        #presentationNavRef
+        *ngIf="project.projectfiles.length > 1"
+      >
+        <div class="card-nav__item card-nav__content--info">
+          <svg>
+            <use xlink:href="assets/feather-icon-defs.svg#icon-grid"></use>
+          </svg>
+
+          <div
+            class="score"
+            [appScoreColor]="project.project_score"
+            [ngClass]="{
+              'score--pl-4':
+                project.project_score === null || project.project_score === 50,
+            }"
+          >
+            <p>{{ project.project_score | projectScore }}</p>
+          </div>
+        </div>
+
+        <div class="card-nav__item card-nav__item-projectinfo">
+          <div class="card-nav__content card-nav__content--info">
+            <mat-icon>info</mat-icon>
+          </div>
+          <div
+            class="score"
+            [appScoreColor]="project.total_score"
+            [ngClass]="{
+              'score--pl-4':
+                project.total_score === null || project.total_score === 50,
+            }"
+          >
+            <p>{{ project.total_score | projectScore }}</p>
+          </div>
+        </div>
+
+        <div
+          *ngFor="let item of project.projectfiles"
+          class="card-nav__item card-nav__item-{{ item.kind }}"
+        >
+          <img
+            *ngIf="item.kind === 'iframe'"
+            src="assets/projectfiles-types/iframe.svg"
+            class="card-nav__content card-nav__content"
+          />
+          <img
+            *ngIf="item.kind === 'pdf'"
+            src="assets/projectfiles-types/pdf.svg"
+            class="card-nav__content card-nav__content"
+          />
+          <img
+            *ngIf="item.kind === 'image'"
+            [src]="item.url"
+            class="card-nav__content card-nav__content--image"
+          />
+          <img
+            *ngIf="item.kind === 'video' || item.kind === 'hostedvideo'"
+            src="assets/projectfiles-types/video.svg"
+            class="card-nav__content card-nav__content"
+          />
+          <img
+            *ngIf="item.kind === 'audio'"
+            src="assets/projectfiles-types/audio.svg"
+            class="card-nav__content card-nav__content"
+          />
+          <img
+            *ngIf="item.kind === 'dummy'"
+            src="assets/projectfiles-types/dummy.svg"
+            class="card-nav__content card-nav__content"
+          />
+
+          <div
+            class="score"
+            [appScoreColor]="item.total_score"
+            [ngClass]="{
+              'score--pl-4':
+                item.total_score === null || item.total_score === 50,
+            }"
+          >
+            <p>{{ item.total_score | projectScore }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card__ratebacks">
+    <div class="project-card__ratebacks--items">
+      <p class="project-card__ratebacks--items-title feedbacktypes--title">
+        This project received <span>{{ feedbacksCount }}</span> comments
+      </p>
+
+      <div class="feedbacktypes" *ngIf="ratings">
+        <app-rateback-selector
+          [readonly]="true"
+          [type]="'feedbacktypes'"
+          [ratebacks]="ratings"
+          (selectedRateback)="didSelectRatingsType($event)"
+        ></app-rateback-selector>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card__ratebacks">
+    <div class="project-card__ratebacks--items">
+      <div class="feedbacktypes-reply" *ngIf="ratebacks">
+        <app-rateback-selector
+          [readonly]="true"
+          [ratebacks]="ratebacks"
+          (selectedRateback)="didSelectRateback($event)"
+        ></app-rateback-selector>
+      </div>
+      <p class="project-card__ratebacks--items-title">
+        you reviewed <span>{{ ratebacksCount }}</span> comments
+      </p>
+    </div>
+  </div>
+
+  <div class="public-link" *ngIf="project.sharetoken">
+    <p class="public-link__title">Project Url</p>
+    <div class="public-link__container">
+      <p class="public-link__link">{{ publicLink }}</p>
+      <button
+        (cbOnSuccess)="copyToClipboard()"
+        type="button"
+        class="public-link__btn"
+        ngxClipboard
+        [cbContent]="publicLink"
+      >
+        {{ copied ? 'Copied!' : 'Copy link' }}
+      </button>
+    </div>
+  </div>
+
+  <h2 *ngIf="project.private" class="private-notice private-notice-stats">
+    <mat-icon>lock</mat-icon> This project is private.
+  </h2>
+
+  <div class="overlay" *ngIf="isCompressing">
+    <button class="overlay__close" (click)="isCompressing = false">
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <a
+      class="overlay__edit"
+      [routerLink]="'/upload/' + project.id"
+      *ngIf="errorFiles.length"
+    >
+      <mat-icon>edit</mat-icon>
+      Edit project
+    </a>
+
+    <div class="overlay__container">
+      <p class="overlay__title">Compressing Files</p>
+      <img class="overlay__icon" src="/assets/projectcards/overlay-icon.svg" />
+      <p *ngIf="!errorFiles.length" class="overlay__text">
+        We notify you once it's ready
+      </p>
+      <div *ngIf="errorFiles.length" class="overlay__text">
+        <p class="overlay__error-title">Error</p>
+        <p class="overlay__error-subtitle">
+          Error occured while compressing files. Please change them or try to
+          delete them and upload again.
+        </p>
+        <div class="overlay__error-files">Relates to following files:</div>
+        <p class="overlay__error-file" *ngFor="let file of errorFiles">
+          {{ file }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

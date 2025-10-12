@@ -1,0 +1,140 @@
+@import "variables";
+
+:host {
+
+  min-width: 2.9rem;
+  min-height: 5.6rem;
+}
+
+.last-message {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  background-color: $--sds-color-background-default-default;
+  border-radius: 9.3rem;
+  border: 1px solid $--sds-color-border-default-default;
+  padding: 0.8rem 1.6rem;
+  position: relative;
+}
+
+
+.messages-wrapper {
+  display: flex;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  height: 2.8rem;
+
+  span {
+    color: $--sds-color-text-brand-tertiary;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.1rem;
+  }
+}
+
+.icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.message-counters {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.message-body {
+  display: flex;
+  flex: 1;
+  gap: 2px;
+  align-items: center;
+  color: $--sds-color-text-warning-default;
+  font-size: $--sds-typography-body-size-small;
+  overflow: hidden;
+}
+
+.subtitle {
+  overflow: hidden;
+  color: $--sds-color-text-default-default;
+  text-overflow: ellipsis;
+  font-size: $--sds-typography-body-size-small;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-strong;
+  line-height: 140%;
+  text-transform: uppercase;
+
+  @media (max-width: $desktop) {
+    overflow: hidden;
+    color: $--sds-color-text-default-default;
+    text-overflow: ellipsis;
+    font-size: $--Body-Size-XS;
+    font-style: normal;
+    font-weight: $--sds-typography-weight-medium;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+}
+
+.message-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  line-height: 140%;
+  max-width: 10.9rem;
+  flex: 1;
+
+  @media (max-width: $desktop) {
+    flex: 0;
+  }
+}
+
+.message-text {
+  display: flex;
+  align-items: center;
+  max-width: 47rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 4rem;
+  line-height: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  @media (max-width: $desktop) {
+    display: -webkit-box;
+    white-space: normal;
+    height: auto;
+    max-height: 3rem;
+  }
+}
+
+.message-meta {
+  display: flex;
+  flex: 1;
+  max-width: 9rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: $desktop) {
+    max-width: 7.6rem;
+  }
+}
+
+.message-meta.with-subtitle {
+  margin-top: -2.4rem;
+}
+
+.message-created {
+  color: $--sds-color-text-default-tertiary;
+  font-size: $--Body-Size-XS;
+  font-weight: $--sds-typography-weight-medium;
+  line-height: normal;
+  text-transform: uppercase;
+}

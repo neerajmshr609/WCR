@@ -1,0 +1,44 @@
+<section class="share-carousel">
+  <button
+    class="next-btn next-btn__left"
+    (click)="$event.preventDefault(); carouselComponent.prev()"
+  >
+    <img height="19" src="/assets/arrow-white.svg" alt="Arrow left" />
+  </button>
+  <carousel
+    [cellWidth]="40"
+    [height]="40"
+    [width]="isMobile ? 200 : 270"
+    [freeScroll]="true"
+    [arrows]="false"
+    [arrowsOutside]="true"
+    [loop]="true"
+    [lightDOM]="false"
+    [margin]="0"
+    [cellsToShow]="isMobile ? 3 : 4"
+    #carouselComponent
+  >
+    <div
+      class="carousel-cell"
+      *ngFor="let shareIcon of shareSocialButtonsIcons"
+    >
+      <button
+        [url]="shareLink"
+        class="share-button"
+        [shareButton]="shareIcon.name"
+      >
+        <img [src]="shareIcon.icon" alt="Share icon" />
+      </button>
+    </div>
+  </carousel>
+  <button
+    class="next-btn next-btn__right"
+    (click)="$event.preventDefault(); carouselComponent.next()"
+  >
+    <img height="19" src="/assets/arrow-white.svg" alt="Arrow Right" />
+  </button>
+</section>
+<div class="link-container">{{ shareLink }}</div>
+<button class="copy-btn" (click)="copyLink()">
+  {{ 'ice-breaker-card.click-to-copy' | translate }}
+</button>

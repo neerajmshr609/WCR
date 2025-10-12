@@ -1,0 +1,316 @@
+<div class="message-content" [@messageAnimation] [ngClass]="[(direction() === 'left' ? 'message-content--left' : 'message-content--right'), isInternalChat() ? 'internal' : '']">
+  <section class="user-avatar">
+    <ng-container
+      *ngIf="
+        isAuthor &&
+        canReply &&
+        !(feedback && !feedbackQuestion && isRater)
+      "
+    >
+
+      <button
+        class="reply-btn"
+        [disabled]="
+          (message().attachment && message().attachment.loadState === 0) ||
+          (message().audio_message && !message().audio_message.url)
+        "
+        (click)="showReplyMenu = !showReplyMenu"
+        cdkOverlayOrigin
+        #trigger="cdkOverlayOrigin"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <ng-template
+        cdkConnectedOverlay
+        cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+        (detach)="showReplyMenu = false"
+        (backdropClick)="showReplyMenu = false"
+        [cdkConnectedOverlayPositions]="positions"
+        [cdkConnectedOverlayOrigin]="trigger"
+        [cdkConnectedOverlayHasBackdrop]="true"
+        [cdkConnectedOverlayOpen]="showReplyMenu"
+      >
+        <section class="reply-menu reply-menu__author">
+          <section class="actions-list">
+            <button
+              class="action-btn"
+              (click)="reply.emit(); showReplyMenu = false"
+            >
+              <img src="assets/icons/reply.svg" alt="Reply icon" />
+              <span>{{ 'message.reply' | translate }}</span>
+            </button>
+            <button
+              *ngIf="canEdit"
+              (click)="editMessage(); showReplyMenu = false"
+              class="action-btn"
+            >
+              <img
+                width="16"
+                height="13"
+                src="assets/ice-breaker/round-arrow.svg"
+                alt="Rounded arrow icon"
+              />
+              {{ 'message.edit_original' | translate }}
+            </button>
+            <button
+              *ngIf="message().attachment"
+              (click)="downloadFile(message().attachment)"
+              class="action-btn"
+            >
+              <app-download-icon strokeWidth="3"></app-download-icon>
+              {{ 'message.download' | translate }}
+            </button>
+            <button
+              *ngIf="isAuthor"
+              (click)="softDeleteMessage()"
+              class="action-btn"
+            >
+              <app-trash-icon strokeWidth="4"></app-trash-icon>
+              {{ 'message.remove' | translate }}
+            </button>
+          </section>
+          <button class="btn-close">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </section>
+      </ng-template>
+    </ng-container>
+    <img
+      [src]="avatarSrc()"
+      alt="User avatar"
+    />
+    <ng-container
+      *ngIf="
+        !isAuthor &&
+        canReply &&
+        !(feedback && !feedbackQuestion && isRater)
+      "
+    >
+      <button
+        class="reply-btn"
+        (click)="showReplyMenu = !showReplyMenu"
+        cdkOverlayOrigin
+        #trigger="cdkOverlayOrigin"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <ng-template
+        cdkConnectedOverlay
+        cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+        (detach)="showReplyMenu = false"
+        (backdropClick)="showReplyMenu = false"
+        [cdkConnectedOverlayPositions]="recipientPositionsReplyMenu"
+        [cdkConnectedOverlayOrigin]="trigger"
+        [cdkConnectedOverlayHasBackdrop]="true"
+        [cdkConnectedOverlayOpen]="showReplyMenu"
+      >
+        <section class="reply-menu reply-menu__recipient">
+          <button class="btn-close btn-close__recipient">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <button
+            class="action-btn"
+            (click)="reply.emit(); showReplyMenu = false"
+          >
+            <img src="assets/icons/reply.svg" alt="Reply icon" />
+            <span>{{ 'message.reply' | translate }}</span>
+          </button>
+          <!--          <section class="actions-list">-->
+          <!--            <button class="action-btn" (click)="reply.emit(); showReplyMenu = false">-->
+          <!--              <img src="assets/icons/reply.svg" alt="Reply icon">-->
+          <!--              <span>Reply</span>-->
+          <!--            </button>-->
+          <!--            <button *ngIf="canEdit" (click)="editMessage(); showReplyMenu = false" class="action-btn">-->
+          <!--              <img height="13" src="assets/ice-breaker/round-arrow.svg" alt="Rounded arrow icon">-->
+          <!--              Edit Original-->
+          <!--            </button>-->
+          <!--          </section>-->
+        </section>
+      </ng-template>
+      @if (!isAuthor) {
+        <app-bell-warning-icon></app-bell-warning-icon>
+      }
+    </ng-container>
+  </section>
+
+  <div class="message__container"
+       [ngClass]="[isInternalChat() ? 'internal' : '']">
+    <div
+      class="message__container-inner"
+      [ngClass]="{
+        'message__container-inner--unread': !message().read && isMessageOwner(),
+        'message__container-inner--red': isRed,
+        'message__container-inner--green': isGreen,
+        'message__container-inner--yellow': isYellow,
+        'message__container-inner--black': paymentSessionId,
+        'cursor-pointer': !message().audio_message && !hasLinks,
+        'overflow-hidden': feedback && !feedbackQuestion,
+      }"
+    >
+      <div
+        class="message__feedback"
+        [class]="'message__feedback--' + feedback.avratingparam?.color"
+        *ngIf="feedback && !feedbackQuestion"
+      >
+        <p class="message__feedback-header">{{ 'message.initial_comment' | translate }}</p>
+        <div class="message__feedback-find">
+          <button (click)="find.emit(feedback)">
+            <img src="/assets/conversations/find-message.svg" />
+          </button>
+          <p>{{ 'message.find' | translate }}</p>
+        </div>
+        <p class="message__feedback-text" *ngIf="feedback.text">
+          {{ feedback.text }}
+        </p>
+        <div
+          class="message__feedback-audio"
+          [ngClass]="{ 'mt-1': !feedback.text }"
+        >
+          @if(feedback.audio_message) {
+            <app-audio-message
+              [direction]="direction()"
+              [audioMessage]="feedback.audio_message"
+              [canSelectLanguage]="false"
+            ></app-audio-message>
+          }
+
+        </div>
+      </div>
+
+      <div
+        class="message__initial-message"
+        *ngIf="feedbackQuestion && !initialMessage"
+        (click)="scrollToInitialMessage.emit()"
+      >
+        <span class="message__initial-message-header">{{ 'message.initial_question' | translate }}</span>
+        <span>{{ feedbackQuestion.body }}</span>
+      </div>
+
+      <div
+        class="message__initial-message"
+        *ngIf="!feedbackQuestion && initialMessage"
+        (click)="scrollToInitialMessage.emit()"
+      >
+        <span class="message__initial-message-header">{{ 'message.initial_message' | translate }}</span>
+        <span class="message__initial-message-text">
+          @if (initialMessage.body && !initialReplyText()) {
+            <span [innerHTML]="initialMessage.body | safe: 'html'"></span>
+          } @else if (initialMessage.body && initialReplyText()) {
+            <span [innerHTML]="initialReplyText() | safe: 'html'"></span>
+          }
+
+          <ng-template #noBodyTpl>
+            <ng-container *ngIf="initialMessage.audio_message"
+            >{{ 'message.audio_message' | translate }}</ng-container
+            >
+            <ng-container *ngIf="initialMessage.message_screenshots?.length"
+            >{{ 'message.image' | translate }}</ng-container
+            >
+          </ng-template>
+        </span>
+      </div>
+
+      <ng-container *ngIf="isLinkMessage; else regularMessage">
+        <div
+          class="embed-container"
+          *ngIf="message().body | getIframe | async as iframe"
+        >
+          <app-iframely-embed [iframe]="$any(iframe)"></app-iframely-embed>
+          <h2 class="message__text">{{ icebreakerTitle }}</h2>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="message().attachment">
+        <app-grid-presentation-placeholder
+          class="file-placeholder"
+          [ngClass]="message().attachment.kind"
+          [file]="message().attachment"
+          (click)="openFile(message().attachment)"
+        ></app-grid-presentation-placeholder>
+      </ng-container>
+
+      <ng-template #regularMessage>
+        <h2
+          class="message__text"
+          *ngIf="messageText"
+        >
+          <p class="message__question" *ngIf="feedback && !feedbackQuestion">
+            {{ 'message.question' | translate }}
+          </p>
+          <ng-container *ngIf="youtubeEmbedVideoId; else regularText">
+            <div [innerHTML]="messageText | safe: 'html'"></div>
+            <youtube-player
+              [id]="'player' + youtubeEmbedVideoId"
+              [videoId]="youtubeEmbedVideoId"
+              [startSeconds]="youtubeStartTime"
+              height="100%"
+              width="100%"
+            >
+            </youtube-player>
+          </ng-container>
+          <ng-template #regularText>
+            @if (message()?.replay_message?.special === 'regular' || !message()?.replay_message?.special) {
+              <span [innerHTML]="messageText | safe: 'html'"
+                    [ngClass]="{'highlighted-reply': initialMessageType() === 'yes_no_question'}"></span>
+            } @else if (message()?.replay_message?.special === 'yes_no_question') {
+              <app-yes-no-question-reply [messageText]="messageText"
+                                         [initialMessage]="message().replay_message"></app-yes-no-question-reply>
+            }
+          </ng-template>
+        </h2>
+      </ng-template>
+
+      <img
+        class="message__screenshot"
+        *ngIf="message().message_screenshots?.length"
+        [src]="message().message_screenshots[0].url"
+        alt=""
+      />
+
+      <div
+        *ngIf="message().audio_message as audioMsg"
+        class="message__audio-container"
+        [ngClass]="{ 'pt-16': !message().body }"
+      >
+        <app-audio-message
+          [direction]="direction()"
+          [audioMessage]="audioMsg"
+          [canSelectLanguage]="isAuthor"
+          [languages]="languages"
+          [paymentRequestAmount]="
+            !isAuthor &&
+            !message().paymentrequestapproved &&
+            message().paymentrequestamount
+          "
+          (selectLang)="onAudioMsgLangChange($event)"
+        ></app-audio-message>
+      </div>
+
+      <a
+        class="message__feedback-answer"
+        [routerLink]="'/rateflow/' + message().body"
+        *ngIf="message().special === 'paid_feedback_request'"
+      > {{ 'message.give_feedback' | translate }} </a>
+
+      <button
+        class="message__feedback-answer"
+        *ngIf="feedback && !feedbackQuestion && isRater"
+        (click)="reply.emit()"
+      >
+        {{ 'message.answer' | translate }}
+      </button>
+
+      <button
+        class="message__feedback-answer"
+        *ngIf="allowCopyMessage"
+        (click)="copyMessage()"
+      >
+        {{ (copied ? 'message.copied' : 'message.copy') | translate }}
+      </button>
+    </div>
+
+    <p class="message__info" *ngIf="message().created_at">
+      {{ formattedTimeAgo() }}
+    </p>
+  </div>
+</div>

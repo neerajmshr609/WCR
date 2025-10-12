@@ -1,0 +1,18 @@
+
+<app-mail-icon></app-mail-icon>
+<h2 class="check-email-title">{{ 'check-email.check' | translate }}</h2>
+<span class="user-email">{{ email() }}</span>
+<span class="login-link"> {{'check-email.click-on' | translate }} <a (click)="goLogin()">{{ 'link' | translate }}</a> {{ 'check-email.to-login' | translate }}</span>
+<app-button size="medium" btnUIType="subtle" (click)="resend()"><span class="resend-text">{{ 'check-email.resend' | translate }}</span></app-button>
+<div class="actions">
+  <app-button  class="signup-switcher" size="small" btnUIType="subtle" (click)="goLogin()">
+    <app-user-icon color="#1E1E1E"></app-user-icon>
+    <span class="go-login-text">
+      {{ 'check-email.go-to-login' | translate }}
+    </span>
+    <app-icon-double-right-arrow color="#1E1E1E"></app-icon-double-right-arrow>
+  </app-button>
+  <app-button  class="close" size="small" btnUIType="subtle" (click)="close()">
+    <app-close-icon color="#1E1E1E"></app-close-icon>
+  </app-button>
+</div>

@@ -1,0 +1,19 @@
+@import "_variables";
+
+.overlay-container {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: $--sds-color-background-utilities-overlay;
+  backdrop-filter: blur(calc($--sds-size-blur-100 / 2));
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

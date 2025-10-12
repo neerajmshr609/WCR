@@ -1,0 +1,19 @@
+<canvas class="absolute" id="canvas_confetti"></canvas>
+<div class="modal-wrapper">
+  <div class="modal-header">
+    <h2 class="modal-title">{{ 'modal.success-signup-title' | translate }}</h2>
+    <app-close-icon (click)="close()"></app-close-icon>
+  </div>
+  <mat-dialog-content>
+    <p class="modal-text">{{ 'modal.success-signup-text' | translate }}</p>
+    <p class="modal-text"><strong>{{'modal.success-signup-next' | translate}}</strong>{{ 'modal.success-signup-text2' | translate }}</p>
+    <p class="modal-text">{{ 'modal.success-signup-text3' | translate }}</p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <app-button size="medium" btnUIType="neutral" (click)="close()">{{ 'modal.close' | translate }}</app-button>
+    <app-button size="medium" btnUIType="primary" (click)="goBlog()">{{ 'modal.go-blog' | translate }}</app-button>
+  </mat-dialog-actions>
+</div>
+
+
+

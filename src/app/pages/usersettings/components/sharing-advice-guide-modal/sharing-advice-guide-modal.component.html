@@ -1,0 +1,32 @@
+
+<h2 class="modal-title" mat-dialog-title>{{ (data.type === 'personal_opinion' ? 'sharing_advice_guide.title_personal_opinion' : 'sharing_advice_guide.title_certified') | translate }}</h2>
+<mat-dialog-content>
+
+  <p class="modal-text sharing-advice-subtitle">
+    {{ (data.type === 'personal_opinion' ? 'sharing_advice_guide.personal_opinion.subtitle' : 'sharing_advice_guide.certified_professional.subtitle') | translate}}
+  </p>
+
+  <mat-dialog-actions>
+    <div class="allow-btn" (click)="allow()"><app-mark-icon color="#1E1E1E" strokeWidth="5"></app-mark-icon> {{ 'sharing_advice_guide.confirm' | translate }}</div>
+    <div class="allow-cancel-btn" (click)="cancel()"><app-close-icon color="#1E1E1E" strokeWidth="5"></app-close-icon>{{ 'sharing_advice_guide.cancel' | translate }}</div>
+
+  </mat-dialog-actions>
+
+  @if(data.type === 'personal_opinion') {
+    <ul>
+      <li>{{'sharing_advice_guide.personal_opinion.p1' | translate}}</li>
+      <li>{{'sharing_advice_guide.personal_opinion.p2' | translate}}</li>
+      <li>{{'sharing_advice_guide.personal_opinion.p3' | translate}}</li>
+    </ul>
+  }
+
+  @if(data.type === 'certified_professional') {
+    <ul>
+      <li>{{'sharing_advice_guide.certified_professional.p1' | translate}}</li>
+      <li>{{'sharing_advice_guide.certified_professional.p1' | translate}}</li>
+      <li>{{'sharing_advice_guide.certified_professional.p1' | translate}}</li>
+      <li>{{'sharing_advice_guide.certified_professional.p1' | translate}}</li>
+    </ul>
+  }
+</mat-dialog-content>
+

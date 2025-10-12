@@ -1,0 +1,284 @@
+<div
+  cdkDrag
+  class="file-preview__file-list-item"
+  #itemRef
+  (cdkDragMoved)="dragMoved.emit($event)"
+>
+  <div class="row">
+    <mat-icon class="handle" cdkDragHandle>reorder</mat-icon>
+
+    <div class="type-icon">
+      <img
+        draggable="false"
+        *ngIf="isFileVideo"
+        src="assets/projectfiles-types/video.svg"
+      />
+      <img
+        draggable="false"
+        *ngIf="isFileIframe"
+        src="assets/projectfiles-types/iframe.svg"
+      />
+      <img
+        draggable="false"
+        *ngIf="isFilePdf"
+        src="assets/projectfiles-types/pdf.svg"
+      />
+      <img
+        draggable="false"
+        *ngIf="isFileImage"
+        src="assets/projectfiles-types/image.svg"
+      />
+      <img
+        draggable="false"
+        *ngIf="isFileAudio"
+        src="assets/projectfiles-types/audio.svg"
+      />
+      <img
+        draggable="false"
+        *ngIf="isFileDummy"
+        src="assets/projectfiles-types/dummy.svg"
+      />
+    </div>
+
+    <button
+      type="button"
+      class="file-preview__fileaction"
+      (click)="deleteFile.emit()"
+    >
+      <div *ngIf="file.deleting" class="spinner" role="status">
+        <app-small-spinner diameter="20"></app-small-spinner>
+      </div>
+      <mat-icon class="trashcan">delete</mat-icon>
+    </button>
+  </div>
+
+  <div class="first-row">
+    <img
+      draggable="false"
+      (click)="onSelectOpenImagePreview()"
+      [src]="thumbnailSrc | safe: 'url'"
+    />
+
+    <p class="row-title">Title</p>
+    <input class="file-preview__name-edit" [(ngModel)]="file.name" />
+  </div>
+
+  <div class="tabs second-row">
+    <div class="tabs__titles">
+      <p
+        class="tabs__title"
+        [ngClass]="{ 'tabs__title--active': activeTab === tab.name }"
+        *ngFor="let tab of tabs"
+        (click)="tabClick(tab.name)"
+      >
+        {{ tab.displayName }}
+      </p>
+    </div>
+
+    <div
+      *ngIf="activeTab === 'ratings'"
+      class="tabs__content ratings-container"
+    >
+      <div class="ratings">
+        <div
+          class="ratings__item"
+          *ngFor="let item of file.avratingparams; let i = index"
+        >
+          <input
+            class="ratings__setup"
+            [class]="'ratings__setup--' + colors[i]"
+            [ngClass]="{ empty: !item.name }"
+            [(ngModel)]="item.name"
+            [placeholder]="placeholders[i]"
+            maxlength="40"
+            #input
+          />
+          <span
+            class="ratings__example-overlay"
+            *ngIf="!input.value || !input.focus"
+            >Example</span
+          >
+          <button
+            type="button"
+            class="ratings__brilliant-btn"
+            (click)="getExample(i)"
+          >
+            <img
+              class="ratings__btn-img"
+              src="./assets/upload/brilliant-lamp.svg"
+            />
+          </button>
+        </div>
+
+        <div
+          class="ratings__btn-grid"
+          *ngIf="file.avratingparams?.length !== 3"
+        >
+          <button (click)="clickPlus()" type="button" class="ratings__btn-plus">
+            <img class="ratings__btn-img" src="./assets/upload/plus.svg" />
+          </button>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="ratings__menu"
+        mat-button
+        [matMenuTriggerFor]="menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button
+          type="button"
+          mat-menu-item
+          (click)="applyToAllFiles.emit(file)"
+        >
+          <img class="ratings__menu-img" src="./assets/upload/paste.svg" />
+          Apply to all video files
+        </button>
+        <button type="button" mat-menu-item (click)="showAVHowItWorks.emit()">
+          <img class="ratings__menu-img" src="./assets/upload/info.svg" />
+          How it works?
+        </button>
+      </mat-menu>
+    </div>
+
+    <div *ngIf="activeTab === 'lyrics'" class="tabs__content">
+      <textarea
+        class="file-preview__description-edit"
+        [(ngModel)]="file.lyrics"
+        placeholder="Write lyrics here..."
+      ></textarea>
+    </div>
+
+    <div *ngIf="activeTab === 'description'" class="tabs__content">
+      <textarea
+        class="file-preview__description-edit"
+        [(ngModel)]="file.filedescription"
+        placeholder="Write a description here..."
+      ></textarea>
+    </div>
+
+    <div *ngIf="activeTab === 'thumbnail'" class="tabs__content">
+      <div class="thumbnail-time" *ngIf="isVideoNotYoutube && !uploadManually">
+        <div>
+          <p class="thumbnail-time__label">Thumbnail time</p>
+          <input
+            type="text"
+            class="thumbnail-time__input"
+            [dropSpecialCharacters]="false"
+            [clearIfNotMatch]="true"
+            placeholder="hh:mm:ss"
+            mask="00:00:00"
+            [formControl]="thumbTime"
+          />
+        </div>
+        <button
+          type="button"
+          class="thumbnail-time__add-btn"
+          (click)="addTimeThumb.emit(thumbTime.value)"
+          [disabled]="!thumbTime.valid || thumbUploading"
+          [ngClass]="{ 'btn--disabled': !thumbTime.valid || thumbUploading }"
+        >
+          <app-small-spinner
+            *ngIf="thumbUploading"
+            [diameter]="15"
+          ></app-small-spinner>
+          Add thumbnail
+        </button>
+        <mat-error *ngIf="thumbError">{{ thumbError }}</mat-error>
+        <button class="upload-manually" (click)="uploadManually = true">
+          Upload manually
+        </button>
+      </div>
+
+      <div class="thumb" *ngIf="!isVideoNotYoutube || uploadManually">
+        <div>
+          <p class="thumb__label">Project preview image</p>
+          <div class="thumb__input-wrapper">
+            <input
+              type="text"
+              placeholder="Paste image here"
+              class="thumb__input"
+              (paste)="pasteFile($event)"
+              [formControl]="thumbInput"
+              #input
+              [ngClass]="{ 'thumb__input--has-image': thumbSrc }"
+            />
+            <div
+              class="thumb__input-img"
+              [ngClass]="{ 'thumb__input-img--cropped': thumbUploaded }"
+              *ngIf="thumbSrc"
+              (click)="input.focus()"
+            >
+              <img [src]="thumbSrc | safe: 'blob'" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="thumb__buttons">
+          <button
+            type="button"
+            class="btn"
+            (click)="openFileInput()"
+            [disabled]="thumbUploading"
+            [ngClass]="{ 'btn--disabled': thumbUploading }"
+          >
+            Browse files
+          </button>
+          <button
+            type="button"
+            class="btn btn--black"
+            (click)="uploadThumbnail(fileInput.value)"
+            [disabled]="!thumbInput.valid || thumbUploading"
+            [ngClass]="{ 'btn--disabled': !thumbInput.valid || thumbUploading }"
+          >
+            <app-small-spinner
+              diameter="15"
+              *ngIf="thumbUploading"
+              [isWhite]="true"
+            ></app-small-spinner>
+            Add thumb
+          </button>
+        </div>
+        <button
+          class="upload-manually mt-2 w-100"
+          *ngIf="isVideoNotYoutube"
+          (click)="uploadManually = false"
+        >
+          Select time
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="activeTab === 'link'" class="tabs__content">
+      <textarea
+        class="file-preview__description-edit"
+        [(ngModel)]="file.url"
+        placeholder="Write a link here..."
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="third-row">
+    <app-gt-switch
+      [isSwitched]="!file.showinfo"
+      [onoffMode]="true"
+      [small]="true"
+      (didChangeEvent)="file.showinfo = !file.showinfo"
+    >
+      <span class="gt-switch-left">Hide file infos</span>
+    </app-gt-switch>
+  </div>
+</div>
+
+<input
+  class="screenshot-input"
+  hidden
+  #fileInputRef
+  type="file"
+  accept="image/*"
+  (change)="onFileInputChange($event.target.files)"
+/>

@@ -1,0 +1,235 @@
+@import 'variables';
+
+:host {
+  --pulse-color: 190, 190, 190;
+
+  &.red {
+    --pulse-color: 241, 126, 126;
+  }
+
+  &.green {
+    --pulse-color: 0, 198, 126;
+  }
+
+  &.yellow {
+    --pulse-color: 227, 190, 48;
+  }
+
+  &.blue {
+    --pulse-color: 0, 175, 254;
+  }
+}
+
+.hidden:not(.active) {
+  * {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+#ytplayer {
+  z-index: 15000;
+}
+
+.helpnavigation {
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    animation: 3s colorPulse infinite;
+    background: white;
+    height: 4rem;
+    width: 4rem;
+    position: fixed;
+    bottom: 1rem;
+    right: 3rem;
+    border-radius: 50%;
+    z-index: 14104;
+    box-shadow: 0 1rem 3rem rgba(25, 25, 25, 0.2);
+    text-align: center;
+    cursor: pointer;
+
+    transition: all 0.3s;
+
+    @media only screen and (max-width: $bp-medium) {
+      bottom: 0.5rem;
+      right: 2.5rem;
+    }
+    @media only screen and (max-width: $bp-small) {
+      right: 1.9rem;
+    }
+
+    @media only screen and (max-width: $bp-smallest) {
+      bottom: 0.8rem;
+    }
+
+    .opened {
+      display: none;
+    }
+
+    .closed {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &--active {
+      animation: none;
+    }
+  }
+
+  &__background {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 1.5rem;
+    right: 3.5rem;
+    background-color: $--sds-color-background-brand-default;
+    z-index: 14102;
+    transition: transform 0.35s cubic-bezier(0.86, 0, 0.07, 1);
+
+    @media only screen and (max-width: $bp-medium) {
+      bottom: 0.8rem;
+      right: 2.8rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      right: 2rem;
+    }
+
+    @media only screen and (max-width: $bp-smallest) {
+      bottom: 1rem;
+    }
+  }
+
+  &__nav {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 14103;
+    opacity: 0;
+    width: 0;
+    transition: all 0.35s ease-in-out;
+    visibility: hidden;
+
+    display: grid;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  &__list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+    width: 100%;
+  }
+
+  &__item {
+    margin: 1rem;
+  }
+
+  &__checkbox:checked + &__button {
+    &--hidden {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .closed {
+      display: none;
+    }
+
+    .opened {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      img {
+        width: 3.1rem;
+      }
+    }
+  }
+
+  &__checkbox:checked ~ &__background {
+    transform: scale(180);
+  }
+
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 100%;
+    visibility: visible;
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+
+  // ICONS
+  &__icon {
+    margin-top: 2rem;
+    position: relative;
+
+    &,
+    &::before,
+    &::after {
+      display: inline-block;
+      width: 2rem;
+      height: 2px;
+      background-color: #212529;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+
+    &::before {
+      top: -0.7rem;
+    }
+
+    &::after {
+      top: 0.7rem;
+    }
+  }
+}
+
+@keyframes colorPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--pulse-color), 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--pulse-color), 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--pulse-color), 0);
+  }
+}

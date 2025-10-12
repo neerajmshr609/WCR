@@ -1,0 +1,18 @@
+.organization_adjustments {
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2rem;
+    column-gap: 4rem;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .organization_adjustments {
+    .form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

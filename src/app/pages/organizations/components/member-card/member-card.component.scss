@@ -1,0 +1,45 @@
+@import '_variables';
+
+.member-card{
+  display: flex;
+  flex-direction: column;
+  min-width: 240px;
+  min-height: 100%;
+  padding: $--sds-size-space-600;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex: 1 0 0;
+  flex-wrap: wrap;
+  border-radius: $--sds-size-radius-400;
+  border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+  background: $--sds-color-background-default-default;
+
+  &__image{
+    height: 160px;
+    width: 100%;
+    min-width: 160px;
+    border-radius: $--sds-size-radius-200;
+    background: lightgray 50% / cover no-repeat;
+    margin-bottom: $--sds-size-space-600;
+  }
+
+  &__name{
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-heading-font-family;
+    font-size: $--sds-typography-heading-size-base;
+    font-weight: $--sds-typography-heading-font-weight;
+    line-height: 120%;
+    letter-spacing: -0.48px;
+    margin-bottom: $--sds-size-space-200;
+  }
+
+  &__description{
+    color: $--sds-color-text-default-secondary;
+    align-self: stretch;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+  }
+}

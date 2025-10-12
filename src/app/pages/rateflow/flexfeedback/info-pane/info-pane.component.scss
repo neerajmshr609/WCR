@@ -1,0 +1,21 @@
+.info-pane {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  grid-row-gap: 1rem;
+
+  padding: 1.4rem;
+
+  &__title {
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 1.8rem;
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: 1.2rem;
+  }
+}

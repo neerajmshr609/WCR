@@ -1,0 +1,19 @@
+@import 'variables';
+
+$elementsBorderRadius: 4px;
+
+@mixin priceElement {
+  background-color: $feed-light-gray-text;
+  border: unset;
+  color: white;
+  border-radius: $elementsBorderRadius;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+}

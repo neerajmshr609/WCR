@@ -1,0 +1,27 @@
+<app-button
+  btnUIType="subtle"
+  size="small"
+  [ngClass]="{'invert-colors': isAlreadyRecommended()}"
+  [disabled]="!userIsSignedIn() || isProfileOfCurrentUser()"
+  (click)="recommend()"
+>
+  <app-icon-recommended
+    class="btn-icon"
+  ></app-icon-recommended>
+  <span
+    [innerHTML]=" (isAlreadyRecommended() ? 'recommend-or-share.recommended' : 'recommend-or-share.recommend') | translate"
+  ></span>
+</app-button>
+
+<app-button
+  btnUIType="subtle"
+  size="small"
+  (click)="shareProfile()"
+>
+  <span
+    [innerHTML]=" 'recommend-or-share.share' | translate"
+  ></span>
+  <app-icon-share-second
+    class="btn-icon"
+  ></app-icon-share-second>
+</app-button>

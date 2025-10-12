@@ -1,0 +1,17 @@
+<div class="ice-breakers-container">
+    @if (isProfileOwner() && selectedUserProfileSkill()) {
+      <app-ice-breakers-list-card
+        [isOwner]="isProfileOwner()"
+        [userSkill]="selectedUserProfileSkill()"
+      ></app-ice-breakers-list-card>
+    }
+
+    @for (icebreaker of displayIceBreakers(); track icebreaker.id) {
+      <app-ice-breakers-list-card
+        [iceBreaker]="icebreaker"
+        [isOwner]="isProfileOwner()"
+        [userSkill]="getIceBreakerSkill(icebreaker)"
+        [scrollToCard]="scrollToIceBreaker(icebreaker)"
+      ></app-ice-breakers-list-card>
+    }
+</div>

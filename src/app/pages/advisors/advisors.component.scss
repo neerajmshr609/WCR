@@ -1,0 +1,39 @@
+@import 'variables';
+
+.advisors {
+  padding: 1rem 2rem;
+  overflow-x: hidden;
+
+  @media only screen and (max-width: $bp-smallest) {
+    padding: 1rem;
+  }
+}
+
+.cards-grid {
+  padding-top: 3rem;
+
+  > * {
+    max-height: 80vh;
+    height: 62rem;
+    min-height: 42rem;
+  }
+
+  padding-left: unset;
+  padding-right: unset;
+  overflow-x: hidden;
+}
+
+.search-bar {
+  padding: 0 1rem;
+}
+
+.skill-select-container {
+  max-width: calc(1200px + 4rem);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+}
+
+.search-result {
+  margin-top: 1.5rem;
+}

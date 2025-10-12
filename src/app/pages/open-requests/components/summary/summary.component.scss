@@ -1,0 +1,79 @@
+@import "variables";
+
+:host {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $--sds-size-space-350;
+}
+
+.summary {
+  &-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: $--sds-size-space-350;
+  }
+  &_title {
+    text-transform: uppercase;
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-small;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-strong;
+    line-height: 140%;
+  }
+  &_title-text {
+    color: $--sds-color-text-default-default;
+    font-weight: $--sds-typography-body-font-weight-strong;
+  }
+  &_title-ai-generated {
+    color: $--sds-color-text-default-tertiary;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-small;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+    text-transform: uppercase;
+  }
+
+  &_answers-wrap {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 190px;
+    scrollbar-color: $--sds-color-border-default-default transparent;
+    scrollbar-width: thin;
+    list-style-position: inside;
+    list-style-type: '\2022';
+    margin-left: 10px;
+
+    color: $--sds-color-text-default-default;
+
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+  }
+
+  &_answer {
+    font-size: $--sds-typography-body-size-medium;
+    line-height: $line-height-140;
+  }
+
+  &_questions-answered-btn {
+    align-self: flex-end;
+  }
+
+  &_questions-answered-text {
+    padding: $--sds-size-space-200;
+    color: $--sds-color-text-warning-tertiary;
+    font-size: $--sds-typography-body-size-small;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: $line-height-100;
+    font-style: normal;
+    text-wrap: wrap;
+    text-align: right;
+  }
+}

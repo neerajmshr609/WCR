@@ -1,0 +1,30 @@
+<div class="resort">
+  <div class="resort__title">
+    <button (click)="closeResort.emit()">
+      <img src="assets/conversation-back@2x.png" class="chat__header--back" />
+      Close resort
+    </button>
+    <span> Drag and drop images to change their order </span>
+  </div>
+
+  <div
+    class="resort__gallery"
+    id="dragdrop-tab"
+    #galleryRef
+    [sortablejs]="projectfiles"
+    [sortablejsOptions]="sortOptions"
+  >
+    <div
+      *ngFor="let item of projectfiles"
+      class="handle resort__item resort__item-{{ item.kind }}"
+    >
+      <app-grid-presentation-placeholder
+        [file]="item"
+      ></app-grid-presentation-placeholder>
+
+      <div class="resort__order">
+        <span>{{ item.order }}</span>
+      </div>
+    </div>
+  </div>
+</div>

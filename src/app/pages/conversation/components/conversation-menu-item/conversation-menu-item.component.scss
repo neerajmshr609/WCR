@@ -1,0 +1,27 @@
+@import "variables";
+
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  color: $--sds-color-text-brand-on-brand;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-strong;
+  line-height: 140%;
+
+  &-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+
+    * {
+      display: flex;
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+  }
+}

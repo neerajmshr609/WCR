@@ -1,0 +1,43 @@
+{
+  "start_conversation": {
+    "title": "The easiest<br/>way to get<br/>conversations<br/>started",
+    "ice_breaker_question": "An ice breaker question is<br/>all you need to get started",
+    "community_wants": "Your community wants<br/>to go deeper with you",
+    "easily_enter": "Easily enter Into meaningful<br/>conversations with anyone",
+    "never_give_away": "Never give away your<br/>valuable knowledge for<br/>free again"
+  },
+  "focus_on": {
+    "title": "Focus on<br/>solving<br/>problems<br/>first",
+    "helping_others": "Helping others first leads<br/>to real opportunity",
+    "charge": "Easily charge for your<br/>knowledge & creativity",
+    "pay": "Easily pay for the advice<br/>you need in that<br/>moment"
+  },
+  "never_pay_more":{
+    "title": "Never pay<br/>more than<br/>what’s fair",
+    "simple_time_tracker": "Pay by the second using<br/>our simple time tracker",
+    "integrated_chat": "Use our integrated<br/>chat invoicing",
+    "one_click_pay": "Pay with just<br/>one click"
+  },
+  "self_mastery": {
+    "title": "Self mastery<br/>made easy",
+    "become_expert": "Become a skilled expert<br/>much quicker",
+    "learn_effectively": "Learn more effectively<br/>by giving & getting<br/>advice",
+    "get_paid_immediately": "Get paid immediately<br/>while you master your<br/>skills",
+    "blind_spots": "The best way to uncover<br/>your blind spots"
+  },
+  "being_helpful": {
+    "title": "FOCUS ON<br/>BEING HELPFUL<br/>WE DO THE<br/>REST",
+    "one_solution": "<strong>All in one solution</strong>",
+    "chat_room": "Unique chat room experience",
+    "integrated_video": "Integrated video<br/>conferencing & screen-sharing",
+    "crm": "Integrated CRM funnel",
+    "feedback": "Quality feedback<br/>loop"
+  },
+  "creative_soulmate": {
+    "title": "Find your<br/>Creative<br/>soulmate",
+    "perfect_ice_breaker": "The perfect Capsule",
+    "impress_people": "Impress people with your knowledge first",
+    "connect_with_people": "Connect with people based<br/>on your interests & skills",
+    "discover_those": "Discover those<br/>who truly get you"
+  }
+}

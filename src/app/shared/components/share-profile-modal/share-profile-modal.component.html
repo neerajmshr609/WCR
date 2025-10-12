@@ -1,0 +1,18 @@
+<section class="share-container" mat-dialog-content>
+  <button class="close-btn" (click)="close()">
+    <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+  </button>
+  <article class="share-icon-container">
+    <img src="assets/icons/share.svg" alt="Share icon" />
+  </article>
+  <h1 class="share-header">Share your getme profile with your network</h1>
+  <article class="image-container">
+    <p class="preview-text">Preview:</p>
+    <img [src]="imgSrc" alt="user preview image" />
+  </article>
+  <article class="text-content">
+    <p class="title">{{ title }}</p>
+    <p class="description">{{ description }}</p>
+  </article>
+  <app-share-profile-carousel [shareLink]="link"></app-share-profile-carousel>
+</section>

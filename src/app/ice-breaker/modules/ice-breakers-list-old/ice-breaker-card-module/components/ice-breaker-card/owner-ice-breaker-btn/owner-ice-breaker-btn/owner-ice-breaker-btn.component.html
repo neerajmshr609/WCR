@@ -1,0 +1,69 @@
+<section class="wrapper">
+  <ng-container
+    *ngIf="
+      iceBreaker.icebreaker_type === ICE_BREAKER_TYPES.I_WILL_PAY;
+      else regular
+    "
+  >
+    <button class="owner-btn">
+<!--      <img-->
+<!--        class="owner-btn__icon"-->
+<!--        src="assets/ice-breaker/coins.svg"-->
+<!--        alt="Coin icon"-->
+<!--      />-->
+      <span>{{
+        'ice-breaker-card.buttons.connections-will-get-paid'
+          | translate
+            : { currency: price / iceBreaker.allow_quantity | euroCurrency }
+      }}</span>
+    </button>
+  </ng-container>
+  <ng-template #regular>
+    <button
+      class="owner-btn"
+      [ngClass]="{ 'owner-btn__change-price': isCanChangePrice }"
+    >
+      <ng-container *ngIf="!isCanChangePrice; else priceSlider">
+<!--        <img-->
+<!--          class="owner-btn__icon"-->
+<!--          src="assets/ice-breaker/coins.svg"-->
+<!--          alt="Coin icon"-->
+<!--        />-->
+        <span>
+          {{
+            'ice-breaker-card.buttons.connections-will-pay'
+              | translate: { currency: price | euroCurrency }
+          }}
+        </span>
+      </ng-container>
+      <ng-template #priceSlider>
+        <section class="price-section-change">
+          <div
+            class="text-price"
+            [innerHTML]="'ice-breaker-card.adjust-price' | translate"
+          ></div>
+<!--          <img-->
+<!--            class="coins-icon"-->
+<!--            src="assets/payments/coins.svg"-->
+<!--            alt="coins-icon"-->
+<!--          />-->
+          <app-price-control-slider
+            class="slider"
+            [ngModel]="price"
+            [minPrice]="PRICE_CONFIG.minPrice"
+            [maxPrice]="PRICE_CONFIG.maxPrice"
+            [step]="PRICE_CONFIG.step"
+            (ngModelChange)="priceChange($event)"
+          >
+          </app-price-control-slider>
+        </section>
+      </ng-template>
+    </button>
+<!--    <button (click)="toggleChangePrice()" class="icon-btn change-price-icon">-->
+<!--      <img-->
+<!--        [src]="!isCanChangePrice ? 'assets/gear.svg' : 'assets/gear-check.svg'"-->
+<!--        alt="Gear icon"-->
+<!--      />-->
+<!--    </button>-->
+  </ng-template>
+</section>

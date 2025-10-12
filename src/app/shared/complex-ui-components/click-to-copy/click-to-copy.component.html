@@ -1,0 +1,10 @@
+<div class="click-to-copy_content">
+  {{ text() }}
+</div>
+
+<app-button
+  [size]="'small'"
+  [btnUIType]="'neutral'"
+  (click)="copy()"
+>{{ copyBtnText() || ('click-to-copy.btn-text' | translate) }}
+</app-button>

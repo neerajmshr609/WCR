@@ -1,0 +1,123 @@
+@import 'variables';
+:host {
+  perspective: 150rem;
+
+  &.h-100 {
+    height: 100%;
+  }
+
+  ::ng-deep {
+    .modal {
+      &__body {
+        position: relative;
+        transform-style: preserve-3d;
+        padding-bottom: 1.6rem;
+      }
+
+      &__container {
+        position: relative;
+      }
+
+      &__img {
+        width: 10rem;
+        height: 10rem;
+        min-height: 10rem;
+      }
+
+      &__title {
+        width: 100%;
+      }
+
+      &__more {
+        display: block;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+
+        a {
+          text-decoration: none;
+        }
+      }
+
+      &__actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        justify-items: center;
+        align-content: center;
+
+        .btn {
+          background: black;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .spinner {
+            margin-right: 1.2rem;
+          }
+        }
+
+        a {
+          font-weight: bold;
+          color: $--sds-color-black-400;
+        }
+
+        .signin {
+          color: $--sds-color-black-400;
+          font-size: 1.3rem;
+        }
+
+        .forgot-password {
+          font-size: 11px;
+          color: $feed-light-gray-text;
+
+          a {
+            color: $feed-light-gray-text;
+          }
+        }
+
+        .terms {
+          font-size: 1.1rem;
+          color: $--sds-color-black-400;
+          text-transform: uppercase;
+        }
+
+        .stripe {
+          display: inline-block;
+          margin: 0 auto;
+          width: auto;
+          height: auto;
+        }
+      }
+    }
+
+    .form {
+      &__input {
+        padding: 0.7rem;
+      }
+    }
+  }
+
+  .cards {
+    position: relative;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card {
+    transition: all 0.4s ease;
+    position: absolute;
+    backface-visibility: hidden;
+    width: 100%;
+    height: calc(100% - 24px);
+
+    &--rotate {
+      transform: rotateY(180deg);
+    }
+  }
+}

@@ -1,0 +1,33 @@
+<div class="files-container" cdkDropListGroup>
+  <div
+    cdkDropList
+    [cdkDropListEnterPredicate]="dropListEnterPredicate"
+    (cdkDropListDropped)="dropListDropped($event)"
+  ></div>
+
+  <div
+    class="drag-list"
+    cdkDropList
+    *ngFor="let file of items; let index = index"
+    [cdkDropListEnterPredicate]="dropListEnterPredicate"
+    (cdkDropListDropped)="dropListDropped($event)"
+  >
+    <app-drag-n-drop-grid-item
+      [file]="file"
+      [thumbUploading]="thumbUploading[file.id]"
+      [thumbError]="thumbError[file.id]"
+      [thumbTime$]="thumbTime$"
+      [errorAVFiles$]="errorAVFiles$"
+      [index]="index"
+      (dragMoved)="dragMoved($event)"
+      (deleteFile)="onDelete(file)"
+      (addFileThumb)="addFileThumb(file, $event)"
+      (addTimeThumb)="addTimeThumb(file, $event)"
+      (getDefaultThumbnail)="getDefaultThumbnail(file)"
+      (getAudioThumbnail)="getAudioThumbnail(file)"
+      (addDuration)="addDuration(file)"
+      (showAVHowItWorks)="showAVHowItWorks.emit()"
+      (applyToAllFiles)="applyToAllFiles.emit($event)"
+    ></app-drag-n-drop-grid-item>
+  </div>
+</div>

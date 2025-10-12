@@ -1,0 +1,18 @@
+<section style="width: 100%">
+  <div id="card-element"></div>
+
+  <div id="card-errors" role="alert"></div>
+
+  <button
+    class="payment-form__submit-btn"
+    id="submit"
+    [disabled]="isLoading"
+    (click)="addPaymentCard()"
+  >
+    <div class="btn-body">
+      <ng-container *ngIf="!isLoading"> Add Payment Method </ng-container>
+      <app-small-spinner *ngIf="isLoading" diameter="16" [isWhite]="true">
+      </app-small-spinner>
+    </div>
+  </button>
+</section>

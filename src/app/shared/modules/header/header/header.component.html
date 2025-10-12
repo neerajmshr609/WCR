@@ -1,0 +1,132 @@
+@if (conversationHeaderContent() && (isNotDesktop$ | async)) {
+
+
+@if(conversationHeaderContent()?.component) {
+    @if(conversationHeaderContent().isComponent) {
+        <ng-container [ngComponentOutlet]="conversationHeaderContent().component"
+                      [ngComponentOutletInputs]="conversationHeaderContent().inputs"></ng-container>
+    } @else {
+    <ng-container *ngTemplateOutlet="conversationHeaderContent().component"></ng-container>
+  }
+}
+} @else {
+  <a class="header_logo" routerLink="/home">
+
+    @if (organization()) {
+      <img
+        [src]="organization().org_icon"
+        [alt]="'header.org_icon' | translate"
+      >
+    } @else {
+      <app-ngo-ngo-logo-icon></app-ngo-ngo-logo-icon>
+    }
+  </a>
+}
+
+<div class="header_announcement">
+  @if (displayMiniMinimizedInvitation()) {
+    <app-minimized-invitation-page></app-minimized-invitation-page>
+  }
+</div>
+
+<nav class="header_navigation-items" [ngClass]="{'is-without-login': !userIsSignedIn()}">
+  @if (!userIsSignedIn()) {
+  @if (isNotDesktop$ | async) {
+  <div (click)="openSignupModal()">
+    <img src="assets/signupicon.png" alt="SignUp Icon" class="header-sign-up-btn" width="42" height="42" />
+  </div>
+
+  <app-button class="login-btn" size="medium" iconBtn btnUIType="neutral" (click)="openLoginModal()">
+    <app-login-icon class="login-btn_icon" [strokeWidth]="2.5"></app-login-icon>
+  </app-button>
+  }
+  }
+
+  @if (isDesktop()) {
+  <ng-container *ngTemplateOutlet="mainMenu"></ng-container>
+
+  @if (userIsSignedIn()) {
+  <app-dropdown-menu (logoutEvent)="onLogout()"></app-dropdown-menu>
+  }
+  }
+
+
+  @if (isNotDesktop$ | async) {
+  <div class="header_mobile-menu" [ngClass]="{open: openMobileMenu()}">
+    <app-dropdown-menu class="menu-alignment" (logoutEvent)="onLogout()"
+      (mobileMenuIsOpen)="onMobileMenuOpen($event)"></app-dropdown-menu>
+  </div>
+  }
+</nav>
+
+
+<ng-template #mainMenu>
+  <app-header-nav-bar-item link="''" title="{{languageService.currentLanguageTitle()}}"
+                           [matMenuTriggerFor]="langSelect">
+    <app-icon-globe></app-icon-globe>
+  </app-header-nav-bar-item>
+  <mat-menu #langSelect="matMenu">
+    @for (language of languageService.languagesCodeTitle; track language[0]) {
+      <button mat-menu-item (click)="languageService.setCurrentLanguage(language[0])">
+        {{ language[1] }}
+      </button>
+    }
+  </mat-menu>
+  @if (!userIsSignedIn()) {
+    <app-header-nav-bar-item link="/home" title="header.home">
+      <app-home-icon [strokeWidth]="2.5"></app-home-icon>
+    </app-header-nav-bar-item>
+  }
+  <app-header-nav-bar-item
+    (click)="navigateToBlogPage()"
+    title="header.blog"
+  >
+    <app-blog-icon></app-blog-icon>
+  </app-header-nav-bar-item>
+
+
+  <app-header-nav-bar-item link="publicfeed" title="header.news">
+    <app-news-icon [strokeWidth]="2.5"></app-news-icon>
+  </app-header-nav-bar-item>
+
+  @if (!isSignedInCounselor()) {
+    <app-header-nav-bar-item link="/help" title="header.get-help">
+      <app-like-icon></app-like-icon>
+    </app-header-nav-bar-item>
+  }
+
+  @if (isSignedInCounselor()) {
+    @if (isDesktop()) {
+      <app-header-nav-bar-item link="open-requests" title="header.request_desk">
+        <app-request-icon></app-request-icon>
+      </app-header-nav-bar-item>
+    }
+
+    <app-header-nav-bar-item link="counsellor-desk" title="header.counsellor_desk">
+      <app-counsellor-desk-icon></app-counsellor-desk-icon>
+    </app-header-nav-bar-item>
+  }
+
+  @if (userIsSignedIn()) {
+    <app-header-nav-bar-item class="conversation-icon" link="conversations" [title]="'header.inbox'">
+      <app-conversations-icon [strokeWidth]="0.6"></app-conversations-icon>
+    </app-header-nav-bar-item>
+  }
+
+  @if (!userIsSignedIn()) {
+    <div class="signup-menu-item">
+      <a (click)="openSignupModal()"
+         [innerHTML]="'header.sign_up' | translate"
+      ></a>
+    </div>
+
+    <app-header-nav-bar-item
+      [title]="'header.login'"
+      (click)="openLoginModal()"
+    >
+      <app-login-icon [strokeWidth]="2.5"></app-login-icon>
+    </app-header-nav-bar-item>
+  }
+
+</ng-template>
+

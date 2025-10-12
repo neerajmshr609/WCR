@@ -1,0 +1,5 @@
+<button class="close-btn" (click)="close()">
+  <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+</button>
+<app-stripe-bank-card-form [secret]="secret" (updatePaymentStatus)="paid()">
+</app-stripe-bank-card-form>

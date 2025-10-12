@@ -1,0 +1,4 @@
+<div class="screenshot">
+  <img class="rotating" src="/assets/loader.svg" *ngIf="isLoading" />
+  <img [src]="src" *ngIf="!isLoading" />
+</div>

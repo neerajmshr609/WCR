@@ -1,0 +1,40 @@
+{
+  "stats": {
+    "last_interaction": "последнее взаимодействие",
+    "total_income": "общий доход",
+    "spent_total": "всего потрачено",
+    "time_spent": "потраченное время",
+    "hourly_rate": "почасовая ставка",
+    "no_last_interaction": "НЕТ",
+    "rate_backs": {
+      "disrespectful": "неуважительный",
+      "unhelpful": "бесполезный",
+      "helpful": "полезный",
+      "brilliant_insight": "гениальное озарение",
+      "strengths": "сильные стороны",
+      "weaknesses": "слабые стороны",
+      "next_steps": "следующие шаги",
+      "links": "ссылки"
+    },
+    "total_score": "Общий счет",
+    "knowledge": "Знания",
+    "explanation": "объяснение",
+    "pronunciation": "произношение",
+    "politeness": "вежливость",
+    "no_skill": "Нет навыков",
+    "stands_out": "Выделяется",
+    "could_be_improved": "Может быть улучшено",
+    "no_reviews": "Нет отзывов",
+    "less_info": "меньше информации",
+    "more_info": "больше информации",
+    "hide_analytics": "скрыть аналитику",
+    "show_analytics": "показать аналитику"
+  },
+  "audio_record": {
+    "paused": "На паузе"
+  },
+  "item_resort_view": {
+    "resort": "Курорт",
+    "original": "Оригинал"
+  }
+}

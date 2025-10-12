@@ -1,0 +1,113 @@
+.pqa-card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0px 0.3px 2px rgba(0, 0, 0, 0.25);
+  height: 52rem !important;
+
+  ::ng-deep {
+    .presentation-container {
+      grid-template-rows: 1fr;
+    }
+
+    .slider-presentation-nav {
+      margin: 0 1rem;
+    }
+
+    .message {
+      &__container {
+        max-width: unset;
+      }
+
+      &__info {
+        display: none;
+      }
+    }
+  }
+
+  &__current-user {
+    margin: 0 2rem;
+  }
+
+  &__question {
+    max-height: 10rem;
+    overflow: auto;
+    background: #000000;
+    border-radius: 0px 8px 8px 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #ffffff;
+    margin: 1rem 2rem;
+    padding: 1rem;
+    width: 80%;
+  }
+
+  &__header {
+    padding: 1rem;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  &__gallery-area {
+    border-top: 1px solid #f7f7f7;
+    background-color: #fafafa;
+
+    app-presentation-slider {
+      pointer-events: none;
+      filter: grayscale(1);
+      opacity: 0.87;
+    }
+  }
+
+  &__slider {
+    width: 100%;
+    flex-grow: 1;
+
+    ::ng-deep {
+      .flickity-prev-next-button {
+        transform: scale(0.6);
+        opacity: 0.3;
+        top: auto;
+        bottom: 0rem;
+      }
+
+      .flickity-page-dots {
+        bottom: 1rem;
+        transform: scale(0.6);
+        opacity: 0.3;
+      }
+    }
+
+    &--item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+
+      .item-container {
+        width: 30rem;
+        display: grid;
+        gap: 1rem;
+        text-align: left;
+      }
+    }
+  }
+}
+
+app-message {
+  overflow: auto;
+}
+
+.gt-separator {
+  border: 1px solid #f7f7f7;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

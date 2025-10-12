@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h2 mat-dialog-title>{{ (errorState() ? 'escalation.title_error'  : 'escalation.title') | translate }}</h2> <app-close-icon strokeWidth="3" (click)="onCancel()"></app-close-icon>
+</div>
+
+<mat-dialog-content >
+  <p>{{  (errorState() ? 'escalation.description_error' : 'escalation.description') | translate }}</p>
+  <app-select [control]="escalationControl"
+              inputName="conversation_type"
+              [options]="escalationOptions"
+              [viewModel]="viewModel">
+
+  </app-select>
+  @if (errorState()) {
+    <a class="feedback">{{ 'escalation.feedback' | translate }}</a>
+  }
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <app-button size="medium" btnUIType="neutral" (click)="onCancel()">{{ 'escalation.cancel' | translate }}</app-button>
+  <app-button size="medium" btnUIType="primary" (click)="shareCase()" [disabled]="escalationControl.invalid">{{ (errorState() ? 'escalation.share_case_repeat' : 'escalation.share_case') | translate }}</app-button>
+</mat-dialog-actions>

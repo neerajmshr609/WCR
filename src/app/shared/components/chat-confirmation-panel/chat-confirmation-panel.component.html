@@ -1,0 +1,18 @@
+<section class="panel">
+  <div class="panel__content">
+    @for(option of options(); track option.answer_id){
+      <button class="panel__btn panel__btn--confirm" (click)="reply.emit(option)">
+        @if(option.answer_id === 2){
+          <app-no-x-icon></app-no-x-icon>
+        }
+
+        {{getOptionValue(option.answer_id) | translate}}
+
+        @if(option.answer_id === 1){
+          <app-check-icon [fill]="'#1E1E1E'"></app-check-icon>
+        }
+
+      </button>
+    }
+  </div>
+</section>

@@ -1,0 +1,162 @@
+<button mat-icon-button mat-dialog-close class="close-btn">
+  <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+</button>
+
+<div class="modal__body">
+  <div class="modal-img">
+    <img src="assets/onboarding-modal/sign-up.svg" alt="sing-up" />
+  </div>
+
+  <h2 class="auth-title">{{ title }}</h2>
+  <p class="auth-subtitle">{{ subtitle }}</p>
+
+  <form class="auth-form" [formGroup]="form">
+    <div
+      [style.visibility]="mode === 'signIn' ? 'hidden' : 'visible'"
+      class="auth-form-field"
+      *ngIf="form.get('username') as nameForm"
+    >
+      <label for="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        [ngClass]="{
+          'auth-form-field__invalid': nameForm.invalid && nameForm.touched,
+        }"
+        name="username"
+        required
+        formControlName="username"
+      />
+      <span class="hint" *ngIf="nameForm.pristine"
+        >Use your real name or a user name</span
+      >
+      <span class="auth-form-field__hint">
+        <span *ngIf="nameForm.touched && nameForm.errors?.required"
+          >This field is required</span
+        >
+        <span *ngIf="nameForm.value && nameForm.errors?.pattern"
+          >Username can only contain numbers, letters and underscores</span
+        >
+      </span>
+    </div>
+
+    <div class="auth-form-field" *ngIf="form.get('email') as emailForm">
+      <label for="email">E-mail</label>
+      <input
+        type="email"
+        [ngClass]="{
+          'auth-form-field__invalid': emailForm.invalid && emailForm.touched,
+        }"
+        name="email"
+        required
+        formControlName="email"
+      />
+      <span class="hint" *ngIf="emailForm.pristine"
+        >Valid email is required</span
+      >
+      <span class="auth-form-field__hint">
+        <span *ngIf="emailForm.touched && emailForm.errors?.required"
+          >This field is required</span
+        >
+        <span *ngIf="emailForm.value && emailForm.errors?.email"
+          >Email is invalid</span
+        >
+      </span>
+    </div>
+
+    <div class="auth-form-field" *ngIf="form.get('password') as passwordForm">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        [ngClass]="{
+          'auth-form-field__invalid':
+            passwordForm.invalid && passwordForm.touched,
+        }"
+        name="new-password"
+        autocomplete="new-password"
+        required
+        minlength="6"
+        formControlName="password"
+      />
+      <span class="hint" *ngIf="passwordForm.pristine"
+        >Minimum 6 characters required</span
+      >
+      <span
+        class="auth-form-field__hint"
+        [ngClass]="{ 'form__validator--visible': passwordForm.invalid }"
+      >
+        <span *ngIf="passwordForm.touched && passwordForm.errors?.required"
+          >This field is required</span
+        >
+        <span *ngIf="passwordForm.value && passwordForm.errors?.minlength"
+          >Minimum 6 characters required</span
+        >
+      </span>
+    </div>
+
+    <p class="mat-error">{{ error }}</p>
+
+    <div class="modal__actions">
+      <ng-container *ngIf="mode === 'singUp'; else signIpRef">
+        <button
+          (click)="signup.emit()"
+          [disabled]="form.invalid"
+          class="action-btn action-btn__blue"
+          aria-label="Sign Up button"
+        >
+          <span *ngIf="isLoading" class="spinner" role="status">
+            <app-small-spinner
+              [isWhite]="true"
+              diameter="16"
+            ></app-small-spinner>
+          </span>
+          Sign Up
+        </button>
+        <p class="auth-actions__additional-text">
+          Have an account already?
+          <a class="link link__green" (click)="switchToSignIn()">
+            Sign in
+            <span>here</span></a
+          >.
+        </p>
+      </ng-container>
+
+      <ng-template #signIpRef>
+        <button
+          [disabled]="form.invalid"
+          (click)="signIn.emit()"
+          class="action-btn action-btn__green"
+          aria-label="Sign In button"
+        >
+          <span *ngIf="isLoading" class="spinner" role="status">
+            <app-small-spinner
+              [isWhite]="true"
+              diameter="16"
+            ></app-small-spinner>
+          </span>
+          Sign In
+        </button>
+        <p class="auth-actions__additional-text">
+          Don’t have an account?
+          <a (click)="switchToSignUp()" class="link link__blue">
+            Sign Up <span>here</span>
+          </a>
+        </p>
+      </ng-template>
+      <p class="auth-actions__additional-text">
+        <span class="second-text">Forgot password? </span>
+        <a
+          mat-dialog-close
+          routerLink="/auth"
+          [queryParams]="{ mode: 'resetpassword' }"
+          class="link link__grey"
+          >Reset password</a
+        >
+      </p>
+      <p class="privacy-policy">
+        <a routerLink="/terms" mat-dialog-close class="link">Our Terms</a> &
+        <a routerLink="policy" mat-dialog-close class="link">Privacy Policy</a>
+      </p>
+    </div>
+  </form>
+</div>

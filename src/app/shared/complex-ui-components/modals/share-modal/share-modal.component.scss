@@ -1,0 +1,51 @@
+@import '_variables';
+@import '_mixins';
+
+$logo-size: $--sds-typography-scale-09;
+
+:host {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: $--sds-size-space-300;
+    background: $--sds-color-background-default-default;
+    box-sizing: border-box;
+    padding: $--sds-size-space-800 $--sds-size-space-400;
+    width: 346px;
+    max-width: 80vw;
+    height: fit-content;
+    @include baseTransition;
+}
+
+.share-modal {
+    &_close-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+
+  &_title-container {
+    display: flex;
+    align-items: center;
+    padding: 0 $--sds-size-space-500;
+    gap: $--sds-size-space-500;
+  }
+
+  &_title-logo {
+    width: $logo-size;
+    height: $logo-size;
+  }
+
+  &_title-text {
+    justify-self: center;
+    color: $--sds-color-text-default-default;
+    text-wrap: wrap;
+
+    @include heading;
+  }
+
+  &_horizontal-line {
+    padding: $--sds-size-space-200 0;
+  }
+}

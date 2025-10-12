@@ -1,0 +1,46 @@
+@if (meet()) {
+  <app-button
+    class="video-call-invite"
+    btnUIType="primary"
+    size="medium"
+    [disabled]="meet().finished"
+    [ngClass]="{'is-receiver': !isSender(), 'active': joined()}"
+    (click)="accept()">
+    <app-icon-video-call strokeWidth="0.4"
+                         [color]="meet().finished ? '#1E1E1E' : joined() ? '#975102' : '#F5F5F5'"
+                         [fill]="meet().finished ? '#1E1E1E' : joined() ? '#975102' : '#F5F5F5'"></app-icon-video-call>
+    @if(meet().finished) {
+      {{ 'video_call_invite.finished' | translate }}
+    } @else {
+      @if (joined()) {
+        {{ 'video_call_invite.in-progress' | translate }}
+      } @else {
+        @if (joined()) {
+          {{ 'video_call_invite.active-meet' | translate }}
+        } @else {
+          {{ 'video_call_invite.join' | translate }}
+        }
+      }
+
+    }
+
+  </app-button>
+  @if (isSender()) {
+    <span>{{ 'video_call_invite.sender' | translate }}</span>
+  } @else {
+    <span>{{ 'video_call_invite.receiver' | translate:{ username: hostName() } }}</span>
+  }
+} @else {
+  <app-button
+    class="video-call-invite"
+    btnUIType="primary"
+    size="medium"
+    [ngClass]="{'is-receiver': !isSender(), 'active': joined()}"
+    (click)="accept()">
+    <app-icon-video-call strokeWidth="0.4"
+                         color="#F5F5F5"
+                         fill="#F5F5F5"></app-icon-video-call>
+    {{ 'video_call_invite.join' | translate }}
+  </app-button>
+    <span>{{ 'video_call_invite.sender' | translate }}</span>
+}

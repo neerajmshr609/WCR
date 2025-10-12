@@ -1,0 +1,68 @@
+{
+  "heading": {
+    "website-button": "Unsere Website",
+    "blog-button": "Unser Blog"
+  },
+  "get-help": {
+    "title": "Hilfe erhalten",
+    "subtitle": "Wählen Sie zuerst ein Thema aus, um Unterstützung von einem Berater zu erhalten."
+  },
+  "counsellors": {
+    "title": "Lernen Sie unsere Berater kennen",
+    "subtitle": "Unterüberschrift"
+  },
+  "partners": {
+    "title": "Partner",
+    "subtitle": "Dankbar für die erfolgreiche Zusammenarbeit"
+  },
+  "contact": {
+    "title": "Werden Sie Freiwilliger bei uns",
+    "subtitle": "oder bei anderen Kontaktanfragen",
+    "name-field-label": "Name",
+    "name-field-placeholder": "Max",
+    "surname-field-label": "Nachname",
+    "surname-field-placeholder": "Mustermann",
+    "email-field-label": "E-Mail",
+    "email-field-placeholder": "max.mustermann@org.com",
+    "message-field-label": "Nachricht",
+    "message-field-placeholder": "Text",
+    "submit-button-text": "Absenden"
+  },
+  "errors": {
+    "required": "Dieses Feld ist erforderlich",
+    "wrong-email": "Bitte geben Sie eine gültige E-Mail-Adresse ein"
+  },
+  "footer": {
+    "blogposts": {
+      "title": "Beliebte Blogbeiträge",
+      "item-1": "Evakuierungen aus der Ukraine",
+      "item-2": "Familienzusammenführung",
+      "item-3": "Kinderbetreuung in Krisenzeiten finden",
+      "item-4": "Kinderbetreuung",
+      "item-5": "Wie Sie Unterstützung während der Schwangerschaft erhalten",
+      "item-6": "Mein Kind wurde in der Schule gemobbt",
+      "item-7": "Liste sicherer Unterkünfte (Aktualisierung)"
+    },
+    "blog": {
+      "title": "Blogthemen",
+      "item-1": "Neurodivergenz und Behinderung",
+      "item-2": "Finanzen",
+      "item-3": "Gesundheit",
+      "item-4": "Familie und Kinder",
+      "item-5": "Bildung und Fähigkeiten",
+      "item-6": "Rechte und rechtlicher Schutz",
+      "item-7": "Gemeinschaft und soziale Unterstützung"
+    },
+    "team-and-other": {
+      "title": "Team und mehr",
+      "item-1": "Impressum",
+      "privacy-policy": "Datenschutzerklärung"
+    }
+  },
+  "card": {
+    "counselors": "Berater"
+  },
+  "ice-breaker-card": {
+    "start-conversation": "Dialog starten"
+  }
+}

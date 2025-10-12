@@ -1,0 +1,11 @@
+<app-segment-title
+  title="email-notification.title"
+></app-segment-title>
+
+
+<app-input-switch-checkbox-labeled
+  class="email-notification_switch"
+  [formControl]="notificationMutedControl"
+  [label]="'email-notification.label' | translate"
+  [description]="'email-notification.description' | translate"
+></app-input-switch-checkbox-labeled>

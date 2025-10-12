@@ -1,0 +1,441 @@
+
+
+@if(!isInUserActionMode && isProjectInfoMode) {
+  <app-project-card-v2
+    *ngIf="project"
+    [isConversationsProject]="false"
+    [isNewsfeedPresentation]="true"
+    [project]="project"
+    [currentUser]="currentUser"
+    [raterID]="feedback.commenter_id"
+  ></app-project-card-v2>
+
+  <div class="newsfeed-item__actions-area">
+    <div (click)="closeProject()" class="action">
+      <img src="assets/newsfeed/x-circle.svg" alt="" />
+      Close project
+    </div>
+  </div>
+} @else {
+  <app-advisor-info-card
+    [addToAdvisorsDidChange$]="addToAdvisorsDidChangeBehaviorSubject$"
+    (didSendStart)="isInUserActionMode = true"
+    (didSendClose)="closeUserActionMode()"
+    [currentUser]="currentUser"
+  ></app-advisor-info-card>
+}
+
+
+<ng-template [ngIf]="!isInUserActionMode && !isProjectInfoMode && project">
+  <ng-template [ngIf]="!isCTB && !isPresenterQuestion">
+    <div class="newsfeed-item__card-container">
+      <div
+        #contentContainer
+        class="newsfeed-item"
+        [ngClass]="{ 'newsfeed-item-feedback_rateback_stage': isInsights }"
+      >
+        <div class="newsfeed-item__user-header" *ngIf="isDefaultFeedbackCard">
+          <h3>{{ project.title || 'Untitled' }}</h3>
+        </div>
+
+        <div
+          class="newsfeed-item__image-area"
+          [ngClass]="{ 'mah-40': feedback.display_type !== 'file' }"
+        >
+          <app-screenshot-overlay
+            *ngIf="showScreenshot"
+            [isLoading]="screenshotLoading"
+            [src]="feedback.screenshot"
+          ></app-screenshot-overlay>
+
+          <div
+            class="newsfeed-item__image-area-loaded"
+            *ngIf="feedback.display_type === 'file'"
+          >
+            <app-item-media-view
+              [category]="isInsights ? null : feedback.project_category"
+              [feedbackItem]="feedback"
+              [variousHeight]="true"
+              [showDrawing$]="showDrawingEvt.asObservable()"
+              [file]="projectFile"
+              (init)="selectFeedback()"
+            ></app-item-media-view>
+          </div>
+
+          <div
+            class="newsfeed-item__image-area-loaded"
+            *ngIf="feedback.feedbacktype === 'resortItems'"
+          >
+            <app-item-resort-view
+              [raterID]="feedback.commenter_id"
+              [project]="project"
+            ></app-item-resort-view>
+          </div>
+
+          <div
+            class="newsfeed-item__image-area-info"
+            *ngIf="feedback.display_type === 'concept'"
+          >
+            <app-project-info-cards
+              [project]="project"
+              [isSmall]="true"
+            ></app-project-info-cards>
+          </div>
+
+          <div
+            class="newsfeed-item__project-details-gallery-area"
+            *ngIf="
+              feedback.display_type === 'project' &&
+              feedback.feedbacktype !== 'resortItems'
+            "
+          >
+            <app-presentation-slider
+              [isNewsfeedPresentation]="true"
+              [isSingleFileProject]="project.projectfiles.length === 1"
+              [files]="project.projectfiles"
+              [project]="project"
+            ></app-presentation-slider>
+          </div>
+        </div>
+
+        <div class="newsfeed-item__title-area" *ngIf="isGameCard">
+          <h1>
+            {{ titleText }}
+            <span #titleTextHighlight>
+              {{ titleTextHighlightString }}
+            </span>
+          </h1>
+        </div>
+
+        <app-feedback-selector
+          *ngIf="isInsights && feedback.feedbacktype !== 'resortItems'"
+          [selectedFeedbackType]="feedback.feedbacktype"
+        ></app-feedback-selector>
+
+        <div
+          class="newsfeed-item__question-area"
+          [ngClass]="{
+            'newsfeed-item__question-area-feedback': isDefaultFeedbackCard,
+          }"
+        >
+          <div class="newsfeed-item__question-area--tool" *ngIf="isGameCard">
+            <div
+              *ngIf="
+                feedback.newsfeed_question_type === 'guess_feedback_category'
+              "
+              class="feed-category-select"
+            >
+              <p
+                (click)="
+                  newsfeedQuestionTypeDidSelect(
+                    'strengthsItems',
+                    $event.currentTarget
+                  )
+                "
+              >
+                Strengths
+              </p>
+              <p
+                (click)="
+                  newsfeedQuestionTypeDidSelect(
+                    'weaknessesItems',
+                    $event.currentTarget
+                  )
+                "
+              >
+                Weaknesses
+              </p>
+              <p
+                (click)="
+                  newsfeedQuestionTypeDidSelect(
+                    'nextstepsItems',
+                    $event.currentTarget
+                  )
+                "
+              >
+                Next steps
+              </p>
+            </div>
+
+            <div
+              *ngIf="
+                project &&
+                feedback.newsfeed_question_type === 'guess_comment_lane'
+              "
+              class="feed-category-select"
+            >
+              <p
+                (click)="newsfeedLaneDidSelect(lane, $event.currentTarget)"
+                *ngFor="let lane of projectFile.avratingparams"
+              >
+                {{ lane.name }}
+              </p>
+            </div>
+
+            <app-rateback-selector
+              *ngIf="feedback.newsfeed_question_type === 'guess_rateback'"
+              [readonly]="false"
+              [showWinLose]="true"
+              [isFilledIcon]="true"
+              [winner]="feedback.rateback_score"
+              (selectedRateback)="didSelectRateback($event)"
+            ></app-rateback-selector>
+          </div>
+
+          <div class="feedback" [ngClass]="{ 'mb-2': isInsights }">
+            <app-feedback-bubble
+              [feedback]="
+                isDefaultFeedbackCard
+                  ? feedbacksForSelectedCategory[0]
+                  : feedback
+              "
+              [isAuthor]="isAuthor"
+              [isSelected]="feedbackSelected"
+              [canSelectLanguage]="isInsights"
+              [isGameCard]="isGameCard"
+              [rater]="rater"
+              [project]="project"
+              [hideTag]="
+                feedback.newsfeed_question_type === 'guess_comment_lane'
+              "
+              (selectFeedback)="selectFeedback()"
+              (didSelectRerateRateback)="didSelectRerateRateback($event)"
+            ></app-feedback-bubble>
+          </div>
+
+          <ng-container *ngIf="isInsights">
+            <app-rateback-selector
+              [readonly]="false"
+              [showOutline]="true"
+              [isFilledIcon]="true"
+              [preselectedRateback]="selectedRateback"
+              (selectedRateback)="didSelectRatebackForItem($event)"
+              *ngIf="directMessageParsed"
+            ></app-rateback-selector>
+
+            <div class="direct-question" *ngIf="!isAnon">
+              <app-text-input
+                *ngIf="directMessageParsed"
+                inputPlaceholder="Send message..."
+                audioPage="insights"
+                [user]="rater"
+                [audioOrder]="feedback.id"
+                [showSendBtn]="false"
+                [savedMessage]="savedRatebackMessage"
+                [savedAudioMessage]="savedRatebackAudio"
+                (messageUpdate)="directMessageKeyUp($event)"
+              ></app-text-input>
+
+              <p
+                class="direct-question__text"
+                *ngIf="savedRatebackMessage || savedRatebackAudio"
+              >
+                Saved temporarily
+              </p>
+            </div>
+          </ng-container>
+        </div>
+
+        <div
+          class="newsfeed-item__actions-area"
+          *ngIf="isDefaultFeedbackCard || isGameCard"
+        >
+          <div (click)="openProject()" class="action">
+            <app-icon-brief fill="#757575" color="#757575"></app-icon-brief>
+            Full review
+          </div>
+
+          <ng-template [ngIf]="isLogged && project">
+            <ng-template
+              [ngIf]="
+                currentUser && !currentUser.queuedprojects.includes(project.id)
+              "
+            >
+              <div class="action" (click)="onAddToReviewQueue(project.id)">
+               <app-plus-icon color="#757575" strokeWidth="3"></app-plus-icon>
+                Review queue
+              </div>
+            </ng-template>
+
+            <ng-template
+              [ngIf]="
+                currentUser && currentUser.queuedprojects.includes(project.id)
+              "
+            >
+              <div class="action" (click)="onRemoveFromReviewQueue(project.id)">
+                <img src="assets/heart-cancel-newsfeed.svg" alt="" />
+                Review queue
+              </div>
+            </ng-template>
+          </ng-template>
+
+<!--          <ng-template [ngIf]="isLogged">-->
+<!--            <ng-template-->
+<!--              [ngIf]="!currentUser?.adviserIDs?.includes(feedback.commenter_id)"-->
+<!--            >-->
+<!--              <div-->
+<!--                class="action"-->
+<!--                (click)="addToAdvisorsDidChange(feedback.commenter_id)"-->
+<!--                matTooltip="Add connector to My Advisors"-->
+<!--              >-->
+<!--                <app-plus-icon color="#757575" strokeWidth="3"></app-plus-icon>-->
+<!--                My Advisors-->
+<!--              </div>-->
+<!--            </ng-template>-->
+
+<!--            <ng-template-->
+<!--              [ngIf]="currentUser?.adviserIDs?.includes(feedback.commenter_id)"-->
+<!--            >-->
+<!--              <div-->
+<!--                class="action"-->
+<!--                (click)="addToAdvisorsDidChange(feedback.commenter_id)"-->
+<!--                matTooltip="Remove connector to My Advisors"-->
+<!--              >-->
+<!--                <img src="assets/heart-cancel-newsfeed.svg" alt="" />-->
+<!--                My Advisors-->
+<!--              </div>-->
+<!--            </ng-template>-->
+<!--          </ng-template>-->
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="isCTB">
+    <div
+      class="newsfeed-item__card-container newsfeed-item__card-container--ctb"
+    >
+      <div class="newsfeed-item newsfeed-item-ctb" #contentContainer>
+        <div class="newsfeed-item-ctb__image-area newsfeed-item__image-area">
+          <div class="newsfeed-item__image-area--category">
+            <p>{{ feedback.project_category }}</p>
+          </div>
+
+          <div class="newsfeed-item__image-area-loaded">
+            <app-item-ctb-media-view
+              (didSelectFile)="ctbDidSelectFile()"
+              [readonly]="false"
+              [files]="ctbFiles"
+              *ngIf="ctbFiles"
+            ></app-item-ctb-media-view>
+          </div>
+        </div>
+
+        <div class="newsfeed-item__title-area">
+          <h1>{{ titleText }}</h1>
+        </div>
+
+        <div class="newsfeed-item__actions-area">
+          <ng-template [ngIf]="isLogged && project">
+            <ng-template
+              [ngIf]="
+                currentUser && !currentUser.queuedprojects.includes(project.id)
+              "
+            >
+              <div class="action" (click)="onAddToReviewQueue(project.id)">
+                <app-plus-icon color="#757575" strokeWidth="3"></app-plus-icon>
+                Review queue
+              </div>
+            </ng-template>
+
+            <ng-template
+              [ngIf]="
+                currentUser && currentUser.queuedprojects.includes(project.id)
+              "
+            >
+              <div class="action" (click)="onRemoveFromReviewQueue(project.id)">
+                <img src="assets/heart-cancel-newsfeed.svg" alt="" />
+                Review queue
+              </div>
+            </ng-template>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="isPresenterQuestion">
+    <div
+      class="newsfeed-item__card-container newsfeed-item__card-container--presenterquestion"
+    >
+      <div
+        class="newsfeed-item newsfeed-item-presenterquestion"
+        #contentContainer
+      >
+        <div class="newsfeed-item__project-details-title-area">
+          <h1>{{ project.title || 'Untitled' }}</h1>
+        </div>
+
+        <div class="newsfeed-item__project-details-gallery-area">
+          <app-presentation-slider
+            [isNewsfeedPresentation]="true"
+            [isSingleFileProject]="isSingleFileProject"
+            [files]="project.projectfiles"
+            [project]="project"
+          ></app-presentation-slider>
+        </div>
+
+<!--        <div class="newsfeed-item__title-area">-->
+<!--          <h1>{{ titleText }}</h1>-->
+<!--        </div>-->
+
+        <div class="newsfeed-item__question-area">
+          <div
+            class="newsfeed-item__question-area--text newsfeed-item__question-area--text--presenterquestion"
+          >
+            <app-message
+              [isFeedbackMessage]="true"
+              class="chat__message--left"
+              [message]="{ body: project.presenterquestion, read: true, user: project.user }"
+            ></app-message>
+          </div>
+
+          <div>
+
+            <app-message
+              class="chat__message chat__message--right"
+              *ngIf="presenterQuestionAnswerSaved"
+              [recipient]="project.user"
+              [canSelectLanguage]="true"
+              [message]="currentPresenterQuestionAnswer"
+            ></app-message>
+          </div>
+        </div>
+
+        <div class="newsfeed-item__actions-area">
+          <div
+            class="action"
+            (click)="openProject()"
+            *ngIf="feedback.newsfeed_question_type !== 'presenter_question'"
+          >
+            <app-icon-brief fill="#757575" color="#757575"></app-icon-brief>
+            Full review
+          </div>
+
+          <ng-template [ngIf]="isLogged && project">
+            <ng-template
+              [ngIf]="
+                currentUser && !currentUser.queuedprojects.includes(project.id)
+              "
+            >
+              <div class="action" (click)="onAddToReviewQueue(project.id)">
+                <app-plus-icon color="#757575" strokeWidth="3"></app-plus-icon>
+                Review queue
+              </div>
+            </ng-template>
+            <ng-template
+              [ngIf]="
+                currentUser && currentUser.queuedprojects.includes(project.id)
+              "
+            >
+              <div class="action" (click)="onRemoveFromReviewQueue(project.id)">
+                <img src="assets/heart-cancel-newsfeed.svg" alt="" />
+                Review queue
+              </div>
+            </ng-template>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>

@@ -1,0 +1,101 @@
+<div class="payout-modal">
+  <table matTable>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="comment">
+        <th mat-header-cell *matHeaderCellDef>Comment</th>
+        <td mat-cell *matCellDef="let element">{{ element.comment }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="wallet_to">
+        <th mat-header-cell *matHeaderCellDef>Wallet to</th>
+        <td mat-cell *matCellDef="let element" class="wallet">
+          <b>
+            {{ element.wallet_to }}
+          </b>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="created_at">
+        <th mat-header-cell *matHeaderCellDef>Created at</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.created_at | date: 'MMM y HH:mm' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount_requested">
+        <th mat-header-cell *matHeaderCellDef>Amount requested</th>
+        <td mat-cell *matCellDef="let element" class="amount">
+          <b> Eur {{ element.amount_requested / 100 }} </b>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef>Currency</th>
+        <td mat-cell *matCellDef="let element" class="currency">
+          {{ element.currency.toUpperCase() }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef>Username</th>
+        <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns"></tr>
+    </table>
+  </table>
+
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>From wallet:</mat-label>
+      <input
+        autocomplete="off"
+        type="text"
+        matInput
+        formControlName="wallet_from"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Amount sent:</mat-label>
+      <input
+        autocomplete="off"
+        type="number"
+        matInput
+        formControlName="amount_sent"
+      />
+      <span matPrefix>{{ data.currency.toUpperCase() }}</span>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Change status to:</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="in_progress">In progress</mat-option>
+        <mat-option value="success">Success</mat-option>
+        <mat-option value="error">Error</mat-option>
+        <mat-option value="declined">Declined</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="showReasonInput">
+      <mat-label>Reason declined:</mat-label>
+      <input
+        autocomplete="off"
+        type="text"
+        matInput
+        formControlName="reason_declined"
+      />
+    </mat-form-field>
+  </form>
+
+  <mat-dialog-actions>
+    <button mat-flat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+  </mat-dialog-actions>
+</div>

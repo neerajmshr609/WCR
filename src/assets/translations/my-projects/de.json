@@ -1,0 +1,40 @@
+{
+  "stats": {
+    "last_interaction": "letzte Interaktion",
+    "total_income": "Gesamteinnahmen",
+    "spent_total": "gesamt ausgegeben",
+    "time_spent": "verbrachte Zeit",
+    "hourly_rate": "Stundensatz",
+    "no_last_interaction": "NEIN",
+    "rate_backs": {
+      "disrespectful": "respektlos",
+      "unhelpful": "nicht hilfreich",
+      "helpful": "hilfreich",
+      "brilliant_insight": "brillanter Einblick",
+      "strengths": "Stärken",
+      "weaknesses": "Schwächen",
+      "next_steps": "nächste Schritte",
+      "links": "Links"
+    },
+    "total_score": "Gesamtpunktzahl",
+    "knowledge": "Wissen",
+    "explanation": "Erklärung",
+    "pronunciation": "Aussprache",
+    "politeness": "Höflichkeit",
+    "no_skill": "Keine Fertigkeit",
+    "stands_out": "Fällt auf",
+    "could_be_improved": "Könnte verbessert werden",
+    "no_reviews": "Keine Bewertungen erhalten",
+    "less_info": "weniger Informationen",
+    "more_info": "mehr Informationen",
+    "hide_analytics": "Analysen ausblenden",
+    "show_analytics": "Analysen anzeigen"
+  },
+  "audio_record": {
+    "paused": "Pausiert"
+  },
+  "item_resort_view": {
+    "resort": "Ferienort",
+    "original": "Original"
+  }
+}

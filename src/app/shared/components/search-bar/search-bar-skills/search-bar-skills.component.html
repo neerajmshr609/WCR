@@ -1,0 +1,30 @@
+<div class="search">
+  <button
+    class="search__online-status"
+    [ngClass]="{ 'search__online-status--active': isFilteredByOnline$ | async }"
+    (click)="filterByOnline()"
+  >
+    {{ ((isFilteredByOnline$ | async) ? 'search_bar.skills.connectors_online' :  'search_bar.skills.all_connectors') | translate }}
+  </button>
+
+  <div class="search__filter">
+    <input
+      type="text"
+      placeholder="{{ 'search_bar.skills.input.placeholder' | translate }}"
+      [formControl]="mySkillsControl"
+      [matAutocomplete]="auto"
+      name="search-skill"
+      autocomplete="off"
+      #autocomplete
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let skill of filteredSkills$ | async"
+        [value]="skill"
+        (click)="didSelectSkill(skill)"
+      >
+        {{ skill }}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+</div>

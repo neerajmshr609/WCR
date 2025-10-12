@@ -1,0 +1,70 @@
+@import 'variables';
+
+.welcome-card {
+  width: 100%;
+  background-color: $feed-accent-green;
+  height: 57rem;
+  border-radius: 6px;
+  padding: 6rem 1rem;
+  text-align: center;
+
+  @media only screen and (max-width: $bp-small) {
+    height: 48rem;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    padding: 4rem 1rem;
+  }
+}
+
+::ng-deep .Typewriter__wrapper {
+  .welcome-card-slide-1 {
+    font-weight: 900;
+    font-size: 5.8rem;
+    line-height: 95%;
+    text-align: center;
+    letter-spacing: -0.02rem;
+
+    color: #fafafa;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 4.8rem;
+    }
+  }
+
+  .welcome-card-slide-2 {
+    font-weight: 900;
+    font-size: 5rem;
+    line-height: 95%;
+    text-align: center;
+    letter-spacing: -0.02rem;
+    color: #fafafa;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 4.5rem;
+    }
+
+    @media only screen and (max-width: $bp-smallest) {
+      font-size: 4rem;
+      line-height: 100%;
+    }
+  }
+
+  .subtext {
+    font-size: 3.5rem;
+    line-height: 155%;
+    color: #000000;
+    font-weight: 900;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 3rem;
+    }
+  }
+}
+
+::ng-deep .Typewriter__cursor {
+  background: $--sds-color-background-neutral-default;
+  height: 33px;
+  width: 4px;
+  display: inline-block;
+}

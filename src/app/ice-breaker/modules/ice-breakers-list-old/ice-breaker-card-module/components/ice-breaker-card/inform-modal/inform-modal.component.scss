@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 30px;
+
+  h2 {
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 123%;
+    color: black;
+    letter-spacing: 0.1em;
+  }
+}
+
+.close-btn {
+  align-self: baseline;
+  margin-left: auto;
+  background-color: unset;
+  border: unset;
+  cursor: pointer;
+
+  img {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.img-emoji {
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 30px;
+  img {
+    max-width: 100%;
+    object-fit: contain;
+  }
+}
+
+.footer-text {
+  font-weight: 500;
+  font-size: 17.6051px;
+  line-height: 123%;
+  letter-spacing: 0.1em;
+}

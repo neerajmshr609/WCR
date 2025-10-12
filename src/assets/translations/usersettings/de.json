@@ -1,0 +1,156 @@
+{
+  "menu": {
+    "individual": {
+      "name": "Einzelperson",
+      "text": "Stellen Sie Ihre grundlegenden Informationen und die Sprachen ein, die Sie fließend sprechen."
+    },
+    "organization": {
+      "name": "Organisation",
+      "text": "Stellen Sie Ihre grundlegenden Informationen und die Sprachen ein, die Sie fließend sprechen."
+    },
+    "my_topics": {
+      "name": "Meine Themen & Fachgebiete",
+      "text": "Wählen Sie Themen aus, in denen Sie sich auskennen oder für die Sie sich interessieren."
+    },
+    "user-management": {
+      "name": "Benutzerverwaltung",
+      "text": "Stellen Sie Ihre grundlegenden Informationen und die Sprachen ein, die Sie fließend sprechen."
+    },
+    "finances": {
+      "name": "Finanzen",
+      "text": "Richten Sie Ihre finanziellen Transaktionen ein und sehen Sie diese anschließend ein. Gesetzlich ist es erforderlich, Zahlungen (als Connection) und Auszahlungen (als Connector) auf Getme.Global separat zu registrieren."
+    },
+    "scheduling": {
+      "name": "Terminplanung",
+      "text": "Legen Sie Zeiten und Bedingungen fest, zu denen Connections Termine mit Ihnen vereinbaren können."
+    },
+    "notifications": {
+      "name": "Benachrichtigungen",
+      "text": "Legen Sie genau fest, wann und über welchen Kanal wir Sie informieren sollen."
+    },
+    "privacy": {
+      "name": "Datenschutz",
+      "text": "Sehen Sie alle Daten, die wir über Sie erfassen, auf einen Blick. Entscheiden Sie selbst, welche Daten Sie teilen möchten und welche nicht."
+    },
+    "visibility": {
+      "name": "Öffentliche Sichtbarkeit",
+      "text": "Wählen Sie Themen aus, in denen Sie über Fachwissen verfügen."
+    },
+    "create-organisation": {
+      "name": "Organisation erstellen",
+      "text": ""
+    },
+    "org_requests": {
+      "name": "Organisationsanfragen",
+      "text": ""
+    }
+  },
+  "forms": {
+    "individual": {
+      "title": "Einzelperson – Profilinformationen",
+      "description": "Erzählen Sie uns mehr über sich selbst, Ihre Erfahrung und Ihre Kenntnisse.",
+      "fields": {
+        "first_name": "Vorname",
+        "last_name": "Nachname",
+        "email": "E-Mail-Adresse",
+        "phone": "Telefonnummer",
+        "languages": "Sprachen",
+        "bio": "Über mich",
+        "save_button": "Speichern"
+      }
+    },
+    "organization": {
+      "title": "Organisation – Profilinformationen",
+      "description": "Erzählen Sie uns mehr über Ihre Organisation, Ihr Team und Ihre Dienstleistungen.",
+      "fields": {
+        "org_name": "Organisationsname",
+        "org_type": "Organisationstyp",
+        "email": "E-Mail-Adresse",
+        "phone": "Telefonnummer",
+        "languages": "Sprachen",
+        "description": "Beschreibung",
+        "website": "Webseite",
+        "save_button": "Speichern"
+      }
+    },
+    "scheduling": {
+      "title": "Terminplanung",
+      "description": "Legen Sie Ihre Verfügbarkeit für Buchungen fest.",
+      "fields": {
+        "timezone": "Zeitzone",
+        "available_days": "Verfügbare Tage",
+        "available_hours": "Verfügbare Stunden",
+        "duration": "Dauer eines Treffens",
+        "buffer_time": "Pufferzeit zwischen Terminen",
+        "save_button": "Speichern"
+      }
+    },
+    "notifications": {
+      "title": "Benachrichtigungen",
+      "description": "Wählen Sie aus, wie Sie benachrichtigt werden möchten.",
+      "fields": {
+        "email_notifications": "E-Mail-Benachrichtigungen",
+        "sms_notifications": "SMS-Benachrichtigungen",
+        "push_notifications": "Push-Benachrichtigungen",
+        "save_button": "Speichern"
+      }
+    },
+    "privacy": {
+      "title": "Datenschutz-Einstellungen",
+      "description": "Verwalten Sie, welche Daten geteilt werden.",
+      "fields": {
+        "profile_visibility": "Sichtbarkeit des Profils",
+        "data_export": "Datenexport",
+        "data_delete": "Daten löschen",
+        "save_button": "Speichern"
+      }
+    }
+  },
+  "buttons": {
+    "back": "Zurück",
+    "next": "Weiter",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "confirm": "Bestätigen"
+  },
+  "messages": {
+    "success_save": "Änderungen wurden erfolgreich gespeichert.",
+    "error_save": "Beim Speichern ist ein Fehler aufgetreten.",
+    "confirm_delete": "Sind Sie sicher, dass Sie dies löschen möchten?",
+    "loading": "Laden...",
+    "no_data": "Keine Daten vorhanden."
+  },
+  "empty-skills": " Alle verfügbaren Fähigkeiten sind bereits ausgewählt",
+  "sharing_advice_as": "Ratschläge geben als...",
+  "organisation": "Organisation",
+  "represent_organisation": "Organisation vertreten als...",
+  "member_volunteer": "Mitglied (Ehrenamtlich)",
+  "external_contractor": "Externer Auftragnehmer",
+  "member_employed": "Mitglied (Angestellt)",
+  "personal_opinion": "Persönliche Meinung",
+  "certified_professional": "Zertifizierte Fachkraft",
+  "Beginner": "Anfänger",
+  "Intermediate": "Fortgeschritten",
+  "Professional": "Professionell",
+  "Expert": "Experte",
+  "sharing_advice_guide": {
+    "personal_opinion": {
+      "subtitle": "Sie geben Einblicke und Ratschläge basierend auf Ihren Erfahrungen, aber Ihre Ratschläge sind Ihre persönliche und unverbindliche Meinung.",
+      "p1": "Geben Sie Ratschläge auf Grundlage persönlicher Erfahrungen oder informellen Wissens.",
+      "p2": "Erinnern Sie die Nutzer regelmäßig daran, dass Ihre Ratschläge persönliche Meinungen sind.",
+      "p3": "Unterstützen Sie die Nutzer bei Entscheidungen, ermutigen Sie sie jedoch, bei Bedarf professionelle Beratung einzuholen."
+    },
+    "certified_professional": {
+      "subtitle": "Sie sind ein ausgebildeter Experte (z. B. Anwalt, Psychologe oder zertifizierter Berater). Ihre Ratschläge haben rechtliche oder professionelle Bedeutung.",
+      "p1": "Geben Sie professionelle Ratschläge, die rechtlich oder ethisch fundiert sind und innerhalb Ihrer zertifizierten Expertise liegen.",
+      "p2": "Machen Sie stets deutlich, wenn Ihr Ratschlag rechtlich bindend oder formell relevant ist.",
+      "p3": "Machen Sie immer klar, wann Sie beraten und wann Sie nur Ihre Meinung äußern.",
+      "p4": "Sie sind vollständig verantwortlich für die Richtigkeit und die Folgen Ihrer Ratschläge."
+    },
+    "title_personal_opinion": "Als jemand, der nur seine Meinung äußert",
+    "title_certified": "Als zertifizierter Fachmann",
+    "cancel": "Nicht erlaubt",
+    "confirm": "Erlaubt"
+  }
+}

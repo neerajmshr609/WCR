@@ -1,0 +1,21 @@
+@import "variables";
+
+.option {
+  padding: 0 16px;
+  display: flex;
+  min-height: 40px;
+  font-style: normal;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  align-items: center;
+  color: $--sds-color-text-default-default;
+
+  font-size: $--sds-typography-body-size-medium;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 100%;
+}
+
+.option:hover {
+  background-color: $--sds-color-background-default-secondary-hover;
+}
+

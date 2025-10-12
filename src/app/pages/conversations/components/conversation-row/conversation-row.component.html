@@ -1,0 +1,23 @@
+<a class="conversation-item" [routerLink]="['/conversations', conversation().id]">
+  <div class="conversation-user">
+    <app-conversation-users
+      [conversation]="conversation()"
+      [conversationPartner]="conversationPartner()"
+      [currentUserId]="currentUser().id"
+      [members]="members()"
+      [type]="convertType(conversation())"
+      [name]="
+          conversation().name || conversation().conversation_userskill?.skill?.name
+        "
+    >
+    </app-conversation-users>
+  </div>
+
+<!--  TODO remove mock after BE integrations -->
+  <app-last-message [message]="conversation().last_message"></app-last-message>
+  <app-conversation-type [type]="convertType(conversation())"></app-conversation-type>
+  <button class="conversation-btn" [routerLink]="['/conversations', conversation().id]">
+    <app-right-arrow-icon color="#D9D9D9" strokeWidth="3.4"></app-right-arrow-icon>
+  </button>
+</a>
+

@@ -1,0 +1,30 @@
+<section class="dialog">
+  <div class="dialog__close">
+    <button (click)="close()" class="dialog__close-btn">
+      <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+    </button>
+  </div>
+  <div class="modal__title dialog__title">
+    <img class="search-icon" src="assets/search-question.svg" alt="" />
+    <span class="align-middle">CAN’T FIND YOUR TOPIC</span>
+  </div>
+  <form [formGroup]="form" (submit)="submit()">
+    <textarea
+      rows="5"
+      formControlName="text"
+      class="dialog__message"
+      placeholder="Please type the topic your missing in here"
+    ></textarea>
+    <input
+      class="dialog__email"
+      formControlName="email"
+      placeholder="email (optional)"
+    />
+    <section class="dialog__actions">
+      <button class="submit-btn" type="submit" [disabled]="form.invalid">
+        <span>Send Request</span>
+        <img src="assets/icons/send.svg" alt="Send icon" />
+      </button>
+    </section>
+  </form>
+</section>

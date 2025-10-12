@@ -1,0 +1,30 @@
+@import 'variables';
+
+.org-skills {
+  margin-top: 4rem;
+  padding: 4rem;
+  max-width: 80rem;
+
+  .org-skills_wrapper {
+    width: 100%;
+
+    &_inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      .user_skills {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .org-skills {
+    margin-top: 10rem;
+    padding: 0;
+    max-width: unset;
+  }
+}

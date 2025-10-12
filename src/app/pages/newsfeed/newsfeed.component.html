@@ -1,0 +1,63 @@
+<div class="newsfeed">
+  <div class="search-bar" *ngIf="isMobile">
+    <app-search-bar></app-search-bar>
+  </div>
+
+  <app-search-results *ngIf="selectedCategories.length"></app-search-results>
+
+  <div class="newsfeed__menu-area" *ngIf="!selectedCategories.length">
+
+    <app-main-content-menu
+      [menuItems]="menuItems"
+    ></app-main-content-menu>
+
+    <ng-container *ngIf="menuItem.param === 'following'">
+      <p
+        class="browser-cache-message"
+        *ngIf="!authService.userIsSignedIn(); else signedTpl"
+      >
+        {{ 'temporary_stored_interactions' | translate }}
+        <a routerLink="/auth" [queryParams]="{ mode: 'signup' }">
+          {{ 'create_account' | translate }}
+        </a>
+        {{ 'save_your_followed' | translate }}
+      </p>
+
+      <ng-template #signedTpl>
+        <p class="browser-cache-message">
+          {{ 'follow_creative' | translate }}
+        </p>
+      </ng-template>
+    </ng-container>
+  </div>
+
+  <div class="masonry" appLoadMoreOnscroll (loadMoreEvt)="loadMore()">
+    <div
+      class="masonry__column"
+      *ngFor="let column of cards; let number = index"
+    >
+<!--      <app-welcome-card-->
+<!--        *ngIf="!noContent && !menuItem.param && number === 0"-->
+<!--      ></app-welcome-card>-->
+      @if(!noContent && !menuItem.param && number === 0) {
+        <app-typing-card [config]="typingCardConfig" [textWithSplit]="'greeter-card.text' | translate " [secondTextWithSplit]="'greeter-card.text2' | translate "></app-typing-card>
+      }
+      <app-newsfeed-item
+        [currentUser]="currentUser"
+        [readonly]="false"
+        [feedback]="feedback"
+        [index]="index"
+        *ngFor="let feedback of column; let index = index"
+      >
+      </app-newsfeed-item>
+    </div>
+  </div>
+
+  <app-small-spinner diameter="30" *ngIf="isLoading"></app-small-spinner>
+</div>
+
+<app-helpnavigation
+  page="publicfeed"
+  url="3xrIQ1O1nW0"
+  class="green"
+></app-helpnavigation>

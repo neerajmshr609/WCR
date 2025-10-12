@@ -1,0 +1,21 @@
+@import "_variables";
+
+$meter-size: 83px;
+
+:host {
+  display: flex;
+  justify-content: center;
+  border: 2px solid $--Light-Grey;
+  border-top-left-radius: $--sds-size-radius-full;
+  border-top-right-radius: $--sds-size-radius-full;
+  border-bottom: none;
+  padding: $--sds-size-space-125 $--sds-size-space-125 $--sds-size-space-050 $--sds-size-space-125;
+  width: $meter-size;
+  height: calc($meter-size / 2);
+}
+
+.review-score {
+  &_vector-icon {
+    width: fit-content;
+  }
+}

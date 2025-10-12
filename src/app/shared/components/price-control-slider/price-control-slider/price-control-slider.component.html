@@ -1,0 +1,16 @@
+<div class="slider-container">
+  <button class="slide-btn" (click)="down()">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <nouislider
+    [config]="sliderConfig"
+    [(ngModel)]="value"
+    (ngModelChange)="sliderValueChanged()"
+  ></nouislider>
+  <button class="slide-btn" (click)="up()">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+  <div class="price-body">
+    {{ value | euroCurrency }}
+  </div>
+</div>

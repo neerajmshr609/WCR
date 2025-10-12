@@ -1,0 +1,67 @@
+@import "_variables";
+
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.menu-btn {
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  padding: 0;
+
+  @media (max-width: $desktop) {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background: none !important;
+  }
+}
+
+app-more-vertical-icon {
+  display: flex;
+  width: 30px;
+  height: 30px;
+
+  @media (max-width: $desktop) {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.mobile {
+  display: flex;
+
+  @media (min-width: $desktop) {
+    display: none;
+  }
+}
+
+mat-divider {
+  margin: 8px 0;
+}
+
+.icon-alignment {
+  margin-top:10px;  
+  color:grey;
+  
+}
+
+::ng-deep .wcr-header-menu.counsellor-menu-shift {
+  margin-top: 400x;
+}
+
+.counsellor-menu-panel.mat-menu-panel {
+  transform: translateY(20px) !important;
+}
+
+.wcr-header-menu {
+  margin-top: 20px;
+}
+
+
+

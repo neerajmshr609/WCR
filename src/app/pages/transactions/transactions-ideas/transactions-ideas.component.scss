@@ -1,0 +1,85 @@
+@import 'variables';
+
+.ideas {
+  display: grid;
+
+  width: 90%;
+  margin: 0 auto;
+
+  &__subtitle {
+    font-size: 1.4rem;
+    font-weight: 400 !important;
+    text-align: center;
+  }
+
+  @media only screen and (min-width: $bp-large) {
+    width: 85%;
+    background-color: white;
+    margin: 0 auto;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    overflow: hidden;
+    padding-bottom: 4rem;
+    box-shadow: var(--shadow-light);
+  }
+
+  &__item {
+    padding: 2rem;
+
+    display: flex;
+    align-items: center;
+    border-bottom: 1px #f7f7f7 solid;
+
+    &--title {
+      flex: 1;
+      margin-left: 1rem;
+
+      display: grid;
+
+      h3 {
+        //font-size: 1.8rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 1.4rem;
+        margin-bottom: 1.4rem;
+        font-weight: 400;
+        max-width: 43rem;
+      }
+    }
+  }
+
+  &__item-leftside {
+    padding: 2rem;
+
+    p {
+      background-color: #f7f7f7;
+      padding: 1rem;
+      font-weight: 400;
+    }
+
+    &--btn {
+      color: white;
+      background-color: black;
+      font-size: 1.4rem;
+      padding: 1rem;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    &--video {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    &--howto {
+      p {
+        text-transform: uppercase;
+        color: rgba(150, 150, 150, 0.87);
+        font-weight: 400;
+      }
+    }
+  }
+}

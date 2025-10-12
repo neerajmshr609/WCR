@@ -1,0 +1,771 @@
+{
+    "user_query": "How do  I apply for Rote Karte?",
+    "user_context": {
+        "origin_country": "Ukraine",
+        "time_in_germany": "0-1 year",
+        "age": "21"
+    },
+    "location": "Berlin"
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "language_detector",
+    "status_display": {
+        "status": "language_detector",
+        "display_message": "Detecting language."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "domain_detector",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "retriever",
+    "status_display": {
+        "status": "retriever",
+        "display_message": "Searching for sources to answer question."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "query_optimizer",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "retriever",
+    "status_display": {
+        "status": "retriever",
+        "display_message": "Searching for sources to answer question."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "sensitive_topic_detector",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "intent_detector",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "clarification_decider",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "clarification_requester",
+    "status_display": {
+        "status": "clarification_requester",
+        "display_message": "Identifying missing information to provide response."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "output_parser",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": {
+        "answer": "Could you please clarify if you are referring to the 'Rote Karte' as a specific residence permit or work authorization in Germany? There is detailed information available about the 'Blaue Karte EU' (Blue Card EU) for highly qualified workers, but 'Rote Karte' is not a commonly used term for a residence permit. Are you perhaps referring to a different type of permit or card? Any additional details about the purpose or context of the 'Rote Karte' would be helpful.",
+        "improved_answer": "Could you please clarify if you are referring to the 'Rote Karte' as a specific residence permit or work authorization in Germany? There is detailed information available about the 'Blaue Karte EU' (Blue Card EU) for highly qualified workers, but 'Rote Karte' is not a commonly used term for a residence permit. Are you perhaps referring to a different type of permit or card? Any additional details about the purpose or context of the 'Rote Karte' would be helpful.",
+        "answer_found": false
+    },
+    "retriever_items": [
+        {
+            "document_name": "source-data",
+            "text": "Die sogenannte Blaue Karte EU ist ein Aufenthaltstitel, der für bis zu vier Jahre erteilt werden kann und darauf abzielt, ein Aufenthaltsrecht für Hochqualifizierte auf EU-Ebene einzuführen. Seit November 2023 finden sich die dafür maßgeblichen Bestimmungen im deutschen Aufenthaltsrecht in § 18g des Aufenthaltsgesetzes (AufenthG). Die Blaue Karte EU ermöglicht es verschiedenen Gruppen von Drittstaatsangehörigen – also Personen, die nicht die Staatsangehörigkeit eines EU-Mitgliedstaates besitzen – eine Beschäftigung in Deutschland aufzunehmen. Beantragt werden kann sie von diesen Personengruppen: Personen mit einer akademischen Ausbildung (wobei erleichterte Voraussetzungen gelten für Personen, die in einem sogenannten \"Engpassberuf\" – z.B. als Ärzt*innen, IT-Spezialist*innen, Ingenieur*innen – arbeiten sowie für Personen, die ihren Hochschulabschluss innerhalb der letzten drei Jahre erworben haben), IT-Fachkräfte mit mehrjähriger Berufserfahrung, Personen, die über einen Bildungsabschluss verfügen, der mit einem",
+            "text_with_context": null,
+            "document_metadata": {
+                "source_url": "https://www.asyl.net/themen/aufenthaltsrecht/aufenthaltstitel/blaue-karte-eu",
+                "source_author": "Informationsverbund Asyl & Migration",
+                "source_name": "Informationsverbund Asyl & Migration",
+                "source_domain": "Asylum",
+                "page": null,
+                "section": "Aufenthaltsrecht",
+                "subsection": "Aufenthaltstitel",
+                "sub_subsection": "Blaue Karte EU"
+            },
+            "node_id": "ec0d7b3744bb40aeae0fda8307b24cf1",
+            "parent_node_id": "a2faf9f9eb5e4593b62c4c24361a665a",
+            "chunk_size": 128,
+            "chunk_id": 1,
+            "keyword_score": 13.645,
+            "vector_score": 0.633,
+            "relative_hybrid_score": 0.92,
+            "collection_metadata": {
+                "name": "AsylNet",
+                "language": "de",
+                "documents": [],
+                "collector": "AsylNet",
+                "source_name": "Informationsverbund Asyl & Migration",
+                "source_author": "Informationsverbund Asyl & Migration",
+                "source_url": "https://www.asyl.net/themen",
+                "source_domain": "Asylum",
+                "source_type": "Administrative processes",
+                "source_region": "Berlin",
+                "source_date": "05-20-2025",
+                "source_description": "This page provides information on asylum and migration in Germany. It includes resources, articles, and news related to asylum seekers, refugees, and migration policies. The site aims to inform and support individuals navigating the asylum process in Germany."
+            },
+            "child_node_ids": [
+                "42c63cea318e4f2daf98cf422c67f3a3",
+                "3ea16ab3bac04c4f87253a443e38863f"
+            ]
+        },
+        {
+            "document_name": "source-data",
+            "text": "die über einen Bildungsabschluss verfügen, der mit einem Hochschulabschluss vergleichbar ist. Voraussetzung für die Erteilung der Blauen Karte EU ist, dass ein konkretes Arbeitsplatzangebot vorliegt und ein bestimmtes Mindestgehalt erreicht wird. Für die Blaue Karte EU ist der Nachweis von Deutschkenntnissen nicht erforderlich. Personen mit einer Blauen Karte EU haben nach 27 Monaten Anspruch auf eine Niederlassungserlaubnis , sofern sie in diesem Zeitraum beschäftigt waren und entsprechende Rentenversicherungsbeiträge gezahlt haben (§ 18c Abs. 2 AufenthG). Die Erteilung der Niederlassungserlaubnis ist bereits nach 21 Monaten möglich, wenn ausreichende Deutschkenntnisse (Niveau B1) nachgewiesen werden können. Stand: Dezember 2024",
+            "text_with_context": "source_name: Informationsverbund Asyl & Migration\nsource_domain: Asylum\ntext: die über einen Bildungsabschluss verfügen, der mit einem Hochschulabschluss vergleichbar ist. Voraussetzung für die Erteilung der Blauen Karte EU ist, dass ein konkretes Arbeitsplatzangebot vorliegt und ein bestimmtes Mindestgehalt erreicht wird. Für die Blaue Karte EU ist der Nachweis von Deutschkenntnissen nicht erforderlich. Personen mit einer Blauen Karte EU haben nach 27 Monaten Anspruch auf eine Niederlassungserlaubnis , sofern sie in diesem Zeitraum beschäftigt waren und entsprechende Rentenversicherungsbeiträge gezahlt haben (§ 18c Abs. 2 AufenthG). Die Erteilung der Niederlassungserlaubnis ist bereits nach 21 Monaten möglich, wenn ausreichende Deutschkenntnisse (Niveau B1) nachgewiesen werden können. Stand: Dezember 2024",
+            "document_metadata": {},
+            "node_id": "0f7c5f0e049f40ffabf79943025b68e1",
+            "parent_node_id": "4f493989e67944ffbe0b47ee2d3a3904",
+            "chunk_size": 64,
+            "chunk_id": 2,
+            "keyword_score": 9.62,
+            "vector_score": 0.659,
+            "relative_hybrid_score": 0.901,
+            "collection_metadata": {
+                "name": "AsylNet",
+                "language": "de",
+                "documents": [],
+                "collector": "AsylNet",
+                "source_name": "Informationsverbund Asyl & Migration",
+                "source_author": "Informationsverbund Asyl & Migration",
+                "source_url": "https://www.asyl.net/themen",
+                "source_domain": "Asylum",
+                "source_type": "Administrative processes",
+                "source_region": "Berlin",
+                "source_date": "05-20-2025",
+                "source_description": "This page provides information on asylum and migration in Germany. It includes resources, articles, and news related to asylum seekers, refugees, and migration policies. The site aims to inform and support individuals navigating the asylum process in Germany."
+            },
+            "child_node_ids": []
+        },
+        {
+            "document_name": "source-data",
+            "text": "jeder Art erlaubt. - selbstständige Tätigkeit erlaubt Im Fall der sei es nach Einreise mit einem oder einer zuvor erteilten Verlängerung der Blauen Karte EU, Blauen Karte EU, ist regelmäßig zu prüfen, ob der Betroffene bereits ein Jahr versicherungspflichtig beschäftigt war. Ist dies der Fall, ist zwingend die Nebenbestimmung Erwerbstätigkeit erlaubt auf der verlängerten Blauen Karte EU zu verfügen. 18g.1.2.2. Berufsanfänger - Blaue Karte EU mit Zustimmung der Bundesagentur für Arbeit Die RL (EU) 2021/1883 ermöglicht, für die Dauer eines bestimmten Zeitraums nach dem Hochschulabschluss die niedrigere Gehaltsschwelle von 45,3 Prozent der jährlichen Bemessungsgrenze, die für Mangelberufe gilt, auch für Berufsanhänger anzuwenden. Auf die Ausübung eines Mangelberufs durch den Berufsanfänger kommt es dabei nicht an. Auch Regelberufe sind in die Regelung eingeschlossen. Als Berufsanfänger gilt jeder Akademiker, dessen Hochschulabschluss nicht länger als drei Jahre zurückliegt. Der",
+            "text_with_context": null,
+            "document_metadata": {
+                "source_url": "https://www.berlin.de/einwanderung/_assets/20191129.pdf",
+                "source_author": "Landesamt für Einwanderung Berlin",
+                "source_name": "Procedural instructions",
+                "source_domain": "Immigration",
+                "page": 197,
+                "section": "A.18g. Blaue Karte EU",
+                "subsection": null,
+                "sub_subsection": null
+            },
+            "node_id": "78fa0330d0c04c0ab629aad9b5686ace",
+            "parent_node_id": "6c26f6a76c1549bb8cf6b5431896ebfe",
+            "chunk_size": 128,
+            "chunk_id": 3,
+            "keyword_score": 11.106,
+            "vector_score": 0.611,
+            "relative_hybrid_score": 0.806,
+            "collection_metadata": {
+                "name": "ProceduralInstructions",
+                "language": "de",
+                "documents": [],
+                "collector": "ProceduralInstructions",
+                "source_name": "Procedural instructions",
+                "source_author": "Landesamt für Einwanderung Berlin",
+                "source_url": "https://www.berlin.de/einwanderung/_assets/20191129.pdf",
+                "source_domain": "Immigration",
+                "source_type": "Laws",
+                "source_region": "Berlin",
+                "source_date": "01-23-2025",
+                "source_description": "The document titled \"Verfahrenshinweise zum Aufenthalt in Berlin\" (Procedural Instructions for Residence in Berlin) is a comprehensive guide created by the Landesamt für Einwanderung (State Office for Immigration) in Berlin. It details the procedures and regulations governing the entry, stay, and integration of foreigners in Berlin. It contains the interpretation that the State Office for Immigration of Berlin makes of the general migration law."
+            },
+            "child_node_ids": [
+                "27df04a9052248d5bf385fef48f83368",
+                "ec32fd3561e649c3948a1a954928b10d"
+            ]
+        },
+        {
+            "document_name": "source-data",
+            "text": "verlängerten Blauen Karte EU zu verfügen. Für die Verlängerung einer Blauen Karte EU für Berufsanfänger gilt wiederum im Regelfall Ausnahmen und damit die abgesenkte Mindestgehaltsgrenze kommen insbesondere in Betracht, Mindestgehaltsgrenze. wenn die Ersterteilung der Blauen Karte EU weniger als zwei Jahre zurückliegt. Beachte die VAB A.18g.6. 18g.1.3. -4. Vorbesitz einer Aufenthaltserlaubnis nach § 18b Ist für die Ausübung des Berufs eine Berufsausübungserlaubnis erforderlich, entfällt die Prüfung, wenn der Betroffene bereits Inhaber einer Aufenthaltserlaubnis nach § 18b ist und für die Ausübung der Beschäftigung mit der Blauen Karte EU dieselbe Berufsausübungserlaubnis erforderlich ist wie für die Beschäftigung, die mit der Aufenthaltserlaubnis nach § 18b ausgeübt wird. Gleiches gilt für die Prüfung nach § 18 Abs. 2 Nr. 4., wenn nach Aktenlage für die Erteilung dieser Aufenthaltserlaubnis derselbe Hochschulabschluss vorgelegt wurde, wie für die beantragte Blaue Karte EU. 18g.1.5. Tertiäres Bildungsprogramm Ein abgeschlossenes deutsches oder ausländisches Hochschulstudium ist keine Erteilungsvoraussetzung, wenn ein gleichwertiges tertiäres Bildungsprogramm erfolgreich abgeschlossen wurde. Von der Ausländerbehörde ist insoweit zunächst zu prüfen, ob die erforderliche dreijährige Ausbildungsdauer vorliegt. Ist dies der Fall, ist der Antragsteller darauf zu verweisen, sich an die für die inhaltliche Gleichwertigkeitsprüfung zuständige Stelle gemäß www.anerkennung-in-deutschland.de zu wenden. Liegt sodann die volle Gleichwertigkeit laut der zuständigen Stelle vor, ist im letzten Schritt das Erreichen des Ausbildungsniveaus der Stufe 6 oder höher zu prüfen. Die Qualifikationssuche erfolgt über die Website des. Deutschen Qualifikationsrahmens (DQR) Wird danach das Niveau 6 nicht erreicht, etwa bei Zahntechniker des Niveaus 4, kommt sodann bei Vorliegen der Merke: übrigen Erteilungsvoraussetzungen eine Aufenthaltserlaubnis nach § 18a in Betracht.",
+            "text_with_context": null,
+            "document_metadata": {
+                "source_url": "https://www.berlin.de/einwanderung/_assets/20191129.pdf",
+                "source_author": "Landesamt für Einwanderung Berlin",
+                "source_name": "Procedural instructions",
+                "source_domain": "Immigration",
+                "page": 197,
+                "section": "A.18g. Blaue Karte EU",
+                "subsection": null,
+                "sub_subsection": null
+            },
+            "node_id": "8a59143634564d959c82872fab58f187",
+            "parent_node_id": "",
+            "chunk_size": 256,
+            "chunk_id": 4,
+            "keyword_score": 12.454,
+            "vector_score": 0.597,
+            "relative_hybrid_score": 0.798,
+            "collection_metadata": {
+                "name": "ProceduralInstructions",
+                "language": "de",
+                "documents": [],
+                "collector": "ProceduralInstructions",
+                "source_name": "Procedural instructions",
+                "source_author": "Landesamt für Einwanderung Berlin",
+                "source_url": "https://www.berlin.de/einwanderung/_assets/20191129.pdf",
+                "source_domain": "Immigration",
+                "source_type": "Laws",
+                "source_region": "Berlin",
+                "source_date": "01-23-2025",
+                "source_description": "The document titled \"Verfahrenshinweise zum Aufenthalt in Berlin\" (Procedural Instructions for Residence in Berlin) is a comprehensive guide created by the Landesamt für Einwanderung (State Office for Immigration) in Berlin. It details the procedures and regulations governing the entry, stay, and integration of foreigners in Berlin. It contains the interpretation that the State Office for Immigration of Berlin makes of the general migration law."
+            },
+            "child_node_ids": [
+                "13673077a9cd4f269c706f91a01252fb",
+                "a386bbf34acb4c5e88bca528bec05a92",
+                "1c2d2d50ca7f46c6afda9bbf1d30c630",
+                "4ddbde68811345b089b100ab58374760",
+                "122c668a2364446ea77c9cc6920ad841",
+                "becf3d1a1a20478ebb02e690ee5e4336"
+            ]
+        }
+    ],
+    "status": null,
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": {
+        "language_code": "en",
+        "language_name": "English"
+    },
+    "domain": {
+        "domain": "Immigration",
+        "is_valid": true
+    },
+    "improved_query": {
+        "query": "How can a 21-year-old Ukrainian who has been in Germany for less than a year apply for a Blue Card (Blaue Karte EU)?",
+        "warning": "The following results were obtained using a reformulated version of the original query."
+    },
+    "sensitive_topic": {
+        "topic": "Asylum",
+        "warning": "We are sorry to hear that you are going through this situation. Given the sensitivity of this issue, it is advisable to seek qualified counsel. They will be able to provide you with personalized and confidential advice tailored to your specific situation."
+    },
+    "intent": "Perform acction",
+    "topics": null,
+    "organizations": null,
+    "is_final_response": true,
+    "is_clarification": true,
+    "error": null
+}
+
+
+
+{
+    "user_query": "i dont know how to clarify ?",
+    "user_context": {
+        "origin_country": "Ukraine",
+        "time_in_germany": "0-1 year",
+        "age": "21"
+    },
+    "location": "Berlin"
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "clarification_checkpoint",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "assitant",
+    "status_display": {
+        "status": "assitant",
+        "display_message": "Generating response."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "answer_improver",
+    "status_display": {
+        "status": "answer_improver",
+        "display_message": "Improving response."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "topic_detector",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "new_immigration_law_fixer",
+    "status_display": {
+        "status": "new_immigration_law_fixer",
+        "display_message": "Checking consistency with changes in migration law."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "organization_recommender",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "response_sensitizer",
+    "status_display": {
+        "status": "response_sensitizer",
+        "display_message": "Improving response tone."
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+
+{
+    "assistant_response": null,
+    "retriever_items": [],
+    "status": "output_parser",
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": null,
+    "domain": null,
+    "improved_query": null,
+    "sensitive_topic": null,
+    "intent": null,
+    "topics": null,
+    "organizations": null,
+    "is_final_response": false,
+    "is_clarification": false,
+    "error": null
+}
+
+{
+    "assistant_response": {
+        "answer": "It seems you might be referring to the 'Blaue Karte EU' (Blue Card EU), which is a residence permit for highly qualified workers in Germany. Here are the steps to apply:\n\n1. Ensure you have an academic degree or a comparable qualification. Recent graduates within the last three years or professionals in shortage occupations (e.g., doctors, IT specialists, engineers) may have easier requirements.\n2. Obtain a concrete job offer in Germany that meets the minimum salary threshold.\n3. Prepare your application documents, including proof of your qualifications and the job offer.\n4. Submit your application to the relevant German immigration authority (Ausländerbehörde).\n\nNote that German language skills are not mandatory for the Blue Card EU. After holding the Blue Card EU and working for 21 to 27 months, you may apply for permanent residence, with shorter time if you have sufficient German skills.\n\nIf you meant something else by 'Rote Karte,' please provide more details.",
+        "improved_answer": "It seems you might be referring to the 'Blaue Karte EU' (Blue Card EU), which is a residence permit for highly qualified workers in Germany. Here are some general steps to apply:\n\n1. Make sure you have an academic degree or a comparable qualification. Recent graduates within the last three years or professionals in shortage occupations (such as doctors, IT specialists, engineers) may have somewhat easier requirements.\n2. Obtain a concrete job offer in Germany that meets the minimum salary threshold.\n3. Prepare your application documents, including proof of your qualifications and the job offer.\n4. Submit your application to the relevant German immigration authority (Ausländerbehörde).\n\nPlease remember that the process can sometimes feel overwhelming or confusing. If you feel unsure or need help preparing your application, you might find it helpful to visit advice centers or support organizations that can assist you with questions.\n\nAlso, German language skills are not mandatory for the Blue Card EU. After holding the Blue Card EU and working for 21 to 27 months, you may be able to apply for permanent residence, with a shorter time if you have sufficient German skills.\n\nIf you meant something else by 'Rote Karte,' please feel free to provide more details, and I'll do my best to help you.",
+        "answer_found": true
+    },
+    "retriever_items": [
+        {
+            "document_name": "source-data",
+            "text": "Die sogenannte Blaue Karte EU ist ein Aufenthaltstitel, der für bis zu vier Jahre erteilt werden kann und darauf abzielt, ein Aufenthaltsrecht für Hochqualifizierte auf EU-Ebene einzuführen. Seit November 2023 finden sich die dafür maßgeblichen Bestimmungen im deutschen Aufenthaltsrecht in § 18g des Aufenthaltsgesetzes (AufenthG). Die Blaue Karte EU ermöglicht es verschiedenen Gruppen von Drittstaatsangehörigen – also Personen, die nicht die Staatsangehörigkeit eines EU-Mitgliedstaates besitzen – eine Beschäftigung in Deutschland aufzunehmen. Beantragt werden kann sie von diesen Personengruppen: Personen mit einer akademischen Ausbildung (wobei erleichterte Voraussetzungen gelten für Personen, die in einem sogenannten \"Engpassberuf\" – z.B. als Ärzt*innen, IT-Spezialist*innen, Ingenieur*innen – arbeiten sowie für Personen, die ihren Hochschulabschluss innerhalb der letzten drei Jahre erworben haben), IT-Fachkräfte mit mehrjähriger Berufserfahrung, Personen, die über einen Bildungsabschluss verfügen, der mit einem",
+            "text_with_context": null,
+            "document_metadata": {
+                "source_url": "https://www.asyl.net/themen/aufenthaltsrecht/aufenthaltstitel/blaue-karte-eu",
+                "source_author": "Informationsverbund Asyl & Migration",
+                "source_name": "Informationsverbund Asyl & Migration",
+                "source_domain": "Asylum",
+                "page": null,
+                "section": "Aufenthaltsrecht",
+                "subsection": "Aufenthaltstitel",
+                "sub_subsection": "Blaue Karte EU"
+            },
+            "node_id": "ec0d7b3744bb40aeae0fda8307b24cf1",
+            "parent_node_id": "a2faf9f9eb5e4593b62c4c24361a665a",
+            "chunk_size": 128,
+            "chunk_id": 1,
+            "keyword_score": 13.645,
+            "vector_score": 0.633,
+            "relative_hybrid_score": 0.92,
+            "collection_metadata": {
+                "name": "AsylNet",
+                "language": "de",
+                "documents": [],
+                "collector": "AsylNet",
+                "source_name": "Informationsverbund Asyl & Migration",
+                "source_author": "Informationsverbund Asyl & Migration",
+                "source_url": "https://www.asyl.net/themen",
+                "source_domain": "Asylum",
+                "source_type": "Administrative processes",
+                "source_region": "Berlin",
+                "source_date": "05-20-2025",
+                "source_description": "This page provides information on asylum and migration in Germany. It includes resources, articles, and news related to asylum seekers, refugees, and migration policies. The site aims to inform and support individuals navigating the asylum process in Germany."
+            },
+            "child_node_ids": [
+                "42c63cea318e4f2daf98cf422c67f3a3",
+                "3ea16ab3bac04c4f87253a443e38863f"
+            ]
+        },
+        {
+            "document_name": "source-data",
+            "text": "die über einen Bildungsabschluss verfügen, der mit einem Hochschulabschluss vergleichbar ist. Voraussetzung für die Erteilung der Blauen Karte EU ist, dass ein konkretes Arbeitsplatzangebot vorliegt und ein bestimmtes Mindestgehalt erreicht wird. Für die Blaue Karte EU ist der Nachweis von Deutschkenntnissen nicht erforderlich. Personen mit einer Blauen Karte EU haben nach 27 Monaten Anspruch auf eine Niederlassungserlaubnis , sofern sie in diesem Zeitraum beschäftigt waren und entsprechende Rentenversicherungsbeiträge gezahlt haben (§ 18c Abs. 2 AufenthG). Die Erteilung der Niederlassungserlaubnis ist bereits nach 21 Monaten möglich, wenn ausreichende Deutschkenntnisse (Niveau B1) nachgewiesen werden können. Stand: Dezember 2024",
+            "text_with_context": "source_name: Informationsverbund Asyl & Migration\nsource_domain: Asylum\ntext: die über einen Bildungsabschluss verfügen, der mit einem Hochschulabschluss vergleichbar ist. Voraussetzung für die Erteilung der Blauen Karte EU ist, dass ein konkretes Arbeitsplatzangebot vorliegt und ein bestimmtes Mindestgehalt erreicht wird. Für die Blaue Karte EU ist der Nachweis von Deutschkenntnissen nicht erforderlich. Personen mit einer Blauen Karte EU haben nach 27 Monaten Anspruch auf eine Niederlassungserlaubnis , sofern sie in diesem Zeitraum beschäftigt waren und entsprechende Rentenversicherungsbeiträge gezahlt haben (§ 18c Abs. 2 AufenthG). Die Erteilung der Niederlassungserlaubnis ist bereits nach 21 Monaten möglich, wenn ausreichende Deutschkenntnisse (Niveau B1) nachgewiesen werden können. Stand: Dezember 2024",
+            "document_metadata": {},
+            "node_id": "0f7c5f0e049f40ffabf79943025b68e1",
+            "parent_node_id": "4f493989e67944ffbe0b47ee2d3a3904",
+            "chunk_size": 64,
+            "chunk_id": 2,
+            "keyword_score": 9.62,
+            "vector_score": 0.659,
+            "relative_hybrid_score": 0.901,
+            "collection_metadata": {
+                "name": "AsylNet",
+                "language": "de",
+                "documents": [],
+                "collector": "AsylNet",
+                "source_name": "Informationsverbund Asyl & Migration",
+                "source_author": "Informationsverbund Asyl & Migration",
+                "source_url": "https://www.asyl.net/themen",
+                "source_domain": "Asylum",
+                "source_type": "Administrative processes",
+                "source_region": "Berlin",
+                "source_date": "05-20-2025",
+                "source_description": "This page provides information on asylum and migration in Germany. It includes resources, articles, and news related to asylum seekers, refugees, and migration policies. The site aims to inform and support individuals navigating the asylum process in Germany."
+            },
+            "child_node_ids": []
+        },
+        {
+            "document_name": "source-data",
+            "text": "jeder Art erlaubt. - selbstständige Tätigkeit erlaubt Im Fall der sei es nach Einreise mit einem oder einer zuvor erteilten Verlängerung der Blauen Karte EU, Blauen Karte EU, ist regelmäßig zu prüfen, ob der Betroffene bereits ein Jahr versicherungspflichtig beschäftigt war. Ist dies der Fall, ist zwingend die Nebenbestimmung Erwerbstätigkeit erlaubt auf der verlängerten Blauen Karte EU zu verfügen. 18g.1.2.2. Berufsanfänger - Blaue Karte EU mit Zustimmung der Bundesagentur für Arbeit Die RL (EU) 2021/1883 ermöglicht, für die Dauer eines bestimmten Zeitraums nach dem Hochschulabschluss die niedrigere Gehaltsschwelle von 45,3 Prozent der jährlichen Bemessungsgrenze, die für Mangelberufe gilt, auch für Berufsanhänger anzuwenden. Auf die Ausübung eines Mangelberufs durch den Berufsanfänger kommt es dabei nicht an. Auch Regelberufe sind in die Regelung eingeschlossen. Als Berufsanfänger gilt jeder Akademiker, dessen Hochschulabschluss nicht länger als drei Jahre zurückliegt. Der",
+            "text_with_context": null,
+            "document_metadata": {
+                "source_url": "https://www.berlin.de/einwanderung/_assets/20191129.pdf",
+                "source_author": "Landesamt für Einwanderung Berlin",
+                "source_name": "Procedural instructions",
+                "source_domain": "Immigration",
+                "page": 197,
+                "section": "A.18g. Blaue Karte EU",
+                "subsection": null,
+                "sub_subsection": null
+            },
+            "node_id": "78fa0330d0c04c0ab629aad9b5686ace",
+            "parent_node_id": "6c26f6a76c1549bb8cf6b5431896ebfe",
+            "chunk_size": 128,
+            "chunk_id": 3,
+            "keyword_score": 11.106,
+            "vector_score": 0.611,
+            "relative_hybrid_score": 0.806,
+            "collection_metadata": {
+                "name": "ProceduralInstructions",
+                "language": "de",
+                "documents": [],
+                "collector": "ProceduralInstructions",
+                "source_name": "Procedural instructions",
+                "source_author": "Landesamt für Einwanderung Berlin",
+                "source_url": "https://www.berlin.de/einwanderung/_assets/20191129.pdf",
+                "source_domain": "Immigration",
+                "source_type": "Laws",
+                "source_region": "Berlin",
+                "source_date": "01-23-2025",
+                "source_description": "The document titled \"Verfahrenshinweise zum Aufenthalt in Berlin\" (Procedural Instructions for Residence in Berlin) is a comprehensive guide created by the Landesamt für Einwanderung (State Office for Immigration) in Berlin. It details the procedures and regulations governing the entry, stay, and integration of foreigners in Berlin. It contains the interpretation that the State Office for Immigration of Berlin makes of the general migration law."
+            },
+            "child_node_ids": [
+                "27df04a9052248d5bf385fef48f83368",
+                "ec32fd3561e649c3948a1a954928b10d"
+            ]
+        },
+        {
+            "document_name": "source-data",
+            "text": "verlängerten Blauen Karte EU zu verfügen. Für die Verlängerung einer Blauen Karte EU für Berufsanfänger gilt wiederum im Regelfall Ausnahmen und damit die abgesenkte Mindestgehaltsgrenze kommen insbesondere in Betracht, Mindestgehaltsgrenze. wenn die Ersterteilung der Blauen Karte EU weniger als zwei Jahre zurückliegt. Beachte die VAB A.18g.6. 18g.1.3. -4. Vorbesitz einer Aufenthaltserlaubnis nach § 18b Ist für die Ausübung des Berufs eine Berufsausübungserlaubnis erforderlich, entfällt die Prüfung, wenn der Betroffene bereits Inhaber einer Aufenthaltserlaubnis nach § 18b ist und für die Ausübung der Beschäftigung mit der Blauen Karte EU dieselbe Berufsausübungserlaubnis erforderlich ist wie für die Beschäftigung, die mit der Aufenthaltserlaubnis nach § 18b ausgeübt wird. Gleiches gilt für die Prüfung nach § 18 Abs. 2 Nr. 4., wenn nach Aktenlage für die Erteilung dieser Aufenthaltserlaubnis derselbe Hochschulabschluss vorgelegt wurde, wie für die beantragte Blaue Karte EU. 18g.1.5. Tertiäres Bildungsprogramm Ein abgeschlossenes deutsches oder ausländisches Hochschulstudium ist keine Erteilungsvoraussetzung, wenn ein gleichwertiges tertiäres Bildungsprogramm erfolgreich abgeschlossen wurde. Von der Ausländerbehörde ist insoweit zunächst zu prüfen, ob die erforderliche dreijährige Ausbildungsdauer vorliegt. Ist dies der Fall, ist der Antragsteller darauf zu verweisen, sich an die für die inhaltliche Gleichwertigkeitsprüfung zuständige Stelle gemäß www.anerkennung-in-deutschland.de zu wenden. Liegt sodann die volle Gleichwertigkeit laut der zuständigen Stelle vor, ist im letzten Schritt das Erreichen des Ausbildungsniveaus der Stufe 6 oder höher zu prüfen. Die Qualifikationssuche erfolgt über die Website des. Deutschen Qualifikationsrahmens (DQR) Wird danach das Niveau 6 nicht erreicht, etwa bei Zahntechniker des Niveaus 4, kommt sodann bei Vorliegen der Merke: übrigen Erteilungsvoraussetzungen eine Aufenthaltserlaubnis nach § 18a in Betracht.",
+            "text_with_context": null,
+            "document_metadata": {
+                "source_url": "https://www.berlin.de/einwanderung/_assets/20191129.pdf",
+                "source_author": "Landesamt für Einwanderung Berlin",
+                "source_name": "Procedural instructions",
+                "source_domain": "Immigration",
+                "page": 197,
+                "section": "A.18g. Blaue Karte EU",
+                "subsection": null,
+                "sub_subsection": null
+            },
+            "node_id": "8a59143634564d959c82872fab58f187",
+            "parent_node_id": "",
+            "chunk_size": 256,
+            "chunk_id": 4,
+            "keyword_score": 12.454,
+            "vector_score": 0.597,
+            "relative_hybrid_score": 0.798,
+            "collection_metadata": {
+                "name": "ProceduralInstructions",
+                "language": "de",
+                "documents": [],
+                "collector": "ProceduralInstructions",
+                "source_name": "Procedural instructions",
+                "source_author": "Landesamt für Einwanderung Berlin",
+                "source_url": "https://www.berlin.de/einwanderung/_assets/20191129.pdf",
+                "source_domain": "Immigration",
+                "source_type": "Laws",
+                "source_region": "Berlin",
+                "source_date": "01-23-2025",
+                "source_description": "The document titled \"Verfahrenshinweise zum Aufenthalt in Berlin\" (Procedural Instructions for Residence in Berlin) is a comprehensive guide created by the Landesamt für Einwanderung (State Office for Immigration) in Berlin. It details the procedures and regulations governing the entry, stay, and integration of foreigners in Berlin. It contains the interpretation that the State Office for Immigration of Berlin makes of the general migration law."
+            },
+            "child_node_ids": [
+                "13673077a9cd4f269c706f91a01252fb",
+                "a386bbf34acb4c5e88bca528bec05a92",
+                "1c2d2d50ca7f46c6afda9bbf1d30c630",
+                "4ddbde68811345b089b100ab58374760",
+                "122c668a2364446ea77c9cc6920ad841",
+                "becf3d1a1a20478ebb02e690ee5e4336"
+            ]
+        }
+    ],
+    "status": null,
+    "status_display": {
+        "status": null,
+        "display_message": null
+    },
+    "language": {
+        "language_code": "en",
+        "language_name": "English"
+    },
+    "domain": {
+        "domain": "Immigration",
+        "is_valid": true
+    },
+    "improved_query": {
+        "query": "How can a 21-year-old Ukrainian who has been in Germany for less than a year apply for a Blue Card (Blaue Karte EU)?",
+        "warning": "The following results were obtained using a reformulated version of the original query."
+    },
+    "sensitive_topic": {
+        "topic": "Asylum",
+        "warning": "We are sorry to hear that you are going through this situation. Given the sensitivity of this issue, it is advisable to seek qualified counsel. They will be able to provide you with personalized and confidential advice tailored to your specific situation."
+    },
+    "intent": "Perform acction",
+    "topics": [],
+    "organizations": [],
+    "is_final_response": true,
+    "is_clarification": false,
+    "error": null
+}

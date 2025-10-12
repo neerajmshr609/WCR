@@ -1,0 +1,8 @@
+@for (iceBreaker of iceBreakers(); track iceBreaker.id) {
+  <app-ice-breaker-card
+    [iceBreaker]="iceBreaker"
+    [fullView]="isOpened(iceBreaker)"
+    [orgId]="orgId()"
+    (emitFullViewToggle)="toggleOpened(iceBreaker)"
+  ></app-ice-breaker-card>
+}

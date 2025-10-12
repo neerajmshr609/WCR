@@ -1,0 +1,38 @@
+<span class="conversation-tag" [ngClass]="getTypeClass(type())">
+  @switch (type()) {
+    @case (types().COMMUNITY_CHAT) {
+      <app-communities-icon class="icon" color="black" strokeWidth="0.7"></app-communities-icon>
+      {{ 'conversation_types.community_chat' | translate }}
+    }
+    @case (types().DIRECT_CHAT) {
+      <app-message-icon class="icon" color="#1E1E1E" strokeWidth="1.6"></app-message-icon>
+      {{ 'conversation_types.direct_chat' | translate }}
+    }
+    @case (types().GET_SUPPORT) {
+      <app-get-support-icon class="icon" fill="#1E1E1E" color="#1E1E1E" strokeWidth="0.3"></app-get-support-icon>
+      {{ 'conversation_types.get_support' | translate }}
+    }
+    @case (types().ORG_CHAT) {
+      <app-organization-icon fill="#1E1E1E" class="icon"></app-organization-icon>
+      {{ 'conversation_types.org_chat' | translate }}
+    }
+    @case (types().REQUESTS) {
+      <app-request-icon fill="#303030" class="icon"></app-request-icon>
+      {{ 'conversation_types.requests' | translate }}
+    }
+    @case (types().SCHEDULED) {
+      <app-time-icon class="icon"></app-time-icon>
+      {{ 'conversation_types.scheduled' | translate }}
+    }
+    @case (types().WE_CARE) {
+      <app-we-care-icon fill="#303030" color="#303030" class="icon"></app-we-care-icon>
+      {{ 'conversation_types.we_care' | translate }}
+    }
+    @case (types().FEEDBACK_CHAT) {
+      {{ 'conversation_types.feedback_chat' | translate }}
+    }
+    @default {
+      {{ 'conversation_types.unknown' | translate }}
+    }
+  }
+</span>

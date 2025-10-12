@@ -1,0 +1,114 @@
+@if (isNotDesktop() && activeStepValue == 0) {
+<app-mobile-header [@collapseFade]="focused() || !!textFilter() || textFilter() !=='' ? 'closed' : 'open'"
+  [title]="'title' | translate" [subtitle]="'subtitle' | translate"></app-mobile-header>
+} @else if(activeStepValue == 0) {
+<app-desktop-header [@collapseFade]="focused() || !!textFilter() || textFilter() !=='' ? 'closed' : 'open'"
+  [title]="'title_desktop' | translate " [subtitle]="'subtitle_desktop' | translate"></app-desktop-header>
+}
+
+<tui-stepper
+  [activeItemIndex]="activeStepValue"
+  (activeItemIndexChange)="onStepChangeAttempt($event)"
+  class="custom-stepper"
+>
+  <button tuiStep type="button">
+    <div class="step">
+      <div
+        class="circle"
+        [ngClass]="{
+          error: step0HasError(),
+          active: activeStepValue === 0
+        }"
+      >
+        1
+      </div>
+      <div
+        class="label"
+        [ngClass]="{
+          activeLabel: activeStepValue === 0
+        }"
+      >
+        {{ 'step_1' | translate }}
+      </div>
+     
+    </div>
+  </button>
+
+  <button tuiStep type="button">
+    <div class="step">
+      <div
+        class="circle"
+        [ngClass]="{
+          error: step1HasError(),
+          active: activeStepValue === 1
+        }"
+      >
+        2
+      </div>
+      <div
+        class="label"
+        [ngClass]="{
+          activeLabel: activeStepValue === 1
+        }"
+      >
+        {{ 'step_2' | translate }}
+      </div>
+    
+    </div>
+  </button>
+
+  <button tuiStep type="button">
+    <div class="step">
+      <div
+        class="circle"
+        [ngClass]="{
+          error: step2HasError(),
+          active: activeStepValue === 2
+        }"
+      >
+        3
+      </div>
+      <div
+        class="label"
+        [ngClass]="{
+          activeLabel: activeStepValue === 2
+        }"
+      >
+        {{ 'step_3' | translate }}
+      </div>
+     
+    </div>
+  </button>
+</tui-stepper>
+
+
+@if (isLoading()) {
+<app-icon-spinner></app-icon-spinner>
+} @else {
+<app-skill-filter [displayColumn]="true" [skills]="loadedSkills()" [artCategories]="artCategories()"
+  (filterChanged)="filtersChanged($event)" [(selectedSkills)]="selectedSkills" [getFilterResult]="true"
+  (focusTextInput)="focused.set(!!$event)" (selectedSkillsChange)="onSkillsSelected($event)"></app-skill-filter>
+
+@if(selectedSkills().length > 0) {
+<div class="ice-breakers-subtitle">
+  @if (isNotDesktop()) {
+  {{ 'ice-breakers-subtitle.mobile' | translate | uppercase }}
+  } @else {
+  <ng-container *ngTemplateOutlet="chevronDownIcon"></ng-container>
+  {{ 'ice-breakers-subtitle.not-mobile' | translate | uppercase }}
+  <ng-container *ngTemplateOutlet="chevronDownIcon"></ng-container>
+  }
+</div>
+
+@if(iceBreakers() && iceBreakers().length > 0) {
+<app-ice-breakers-list [@fadeInUpOnEnter] [@bounceOutDownOnLeave] [iceBreakers]="iceBreakers()"
+  (iceBreakerSelected)="onIceBreakerSelected($event)" (stepperNext)="stepper.next()"></app-ice-breakers-list>
+}
+}
+
+}
+
+<ng-template #chevronDownIcon>
+  <app-chevron-down-icon class="ice-breakers-subtitle_chevron-down" color="#757575"
+    strokeWidth="1.6"></app-chevron-down-icon>
+</ng-template>

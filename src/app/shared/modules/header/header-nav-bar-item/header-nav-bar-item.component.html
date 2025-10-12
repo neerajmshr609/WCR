@@ -1,0 +1,11 @@
+<a
+  class="header-nav-item"
+  [routerLink]="navigateUrl()"
+  [queryParams]="queryParams()"
+  [routerLinkActive]="routerLinkActive()"
+>
+  <div class="header-nav-item__icon">
+    <ng-content></ng-content>
+  </div>
+  <span class="header__item-text" [innerHTML]="title() | translate"></span>
+</a>

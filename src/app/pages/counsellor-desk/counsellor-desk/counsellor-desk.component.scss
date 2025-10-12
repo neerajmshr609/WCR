@@ -1,0 +1,133 @@
+@import 'variables';
+
+app-counsellor-desk {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+
+
+  .counsellor-desk {
+    width: 100%;
+    padding: 3rem 0;
+
+    @media (min-width: $desktop) {
+      width: 1280px;
+      padding: 48px 0 22px 0;
+    }
+
+    &_header-menu {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    &_expertise-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 48px;
+
+      @media (min-width: $desktop) {
+        justify-content: flex-start;
+      }
+
+      app-expertise-card {
+        .card {
+          border-radius: $--sds-size-radius-200;
+          border: 1px solid $--sds-color-border-default-default;
+          background: $--sds-color-background-brand-default;
+          padding: 0.8rem 1.8rem;
+        }
+
+        .card:hover {
+          background: $--sds-color-background-brand-default;
+        }
+
+        .card__name {
+          overflow: hidden;
+          color: $--sds-color-text-neutral-on-neutral;
+          text-overflow: ellipsis;
+          font-family: $--sds-typography-body-font-family;
+          font-size: $--sds-typography-body-size-medium;
+          font-style: normal;
+          font-weight: $--sds-typography-body-font-weight-regular;
+          line-height: 140%;
+        }
+
+        .card__counselors {
+          color: $--sds-color-text-default-tertiary;
+          font-family: $--sds-typography-family-sans;
+          font-size: $--Body-Size-XS;
+          font-style: normal;
+          font-weight: $--sds-typography-weight-medium;
+          line-height: normal;
+          letter-spacing: $--letter-spacing-3;
+          text-transform: uppercase;
+        }
+      }
+
+    }
+
+    &_cards-container {
+      display: grid;
+      grid-template-columns: repeat(1, 39.3rem);
+      justify-content: center;
+
+      gap: 44px;
+      margin: 48px 0 0 0;
+
+      @media (min-width: $desktop) {
+        grid-template-columns: repeat(3, 395px);
+        margin: 48px 0 0 0;
+      }
+
+      .image-container {
+        position: relative;
+        box-sizing: border-box;
+
+        &.active{
+          .overlay {
+            opacity: 1;
+          }
+        }
+
+        .desk-card {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+
+        .overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          border-radius: $--sds-size-space-400;
+          cursor: pointer;
+
+          .text {
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            user-select: none;
+          }
+        }
+
+        &:hover .overlay {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+}
+

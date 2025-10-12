@@ -1,0 +1,17 @@
+@if(messageType() === 'member_added'){
+  @if(activeUserName() && passiveUserName()){
+    <span>{{ 'user_add_leave_chat_message.member_added' | translate:{ active: activeUserName(), passive: passiveUserName() } }}</span>
+  }
+  @if(activeUserName() && !passiveUserName()){
+    <span>{{ 'user_add_leave_chat_message.user_joined' | translate:{ active: activeUserName() } }}</span>
+  }
+}
+@if(messageType() === 'member_removed'){
+  @if(activeUserName() && passiveUserName()){
+    <span>{{ 'user_add_leave_chat_message.member_removed' | translate:{ active: activeUserName(), passive: passiveUserName() } }}</span>
+  }
+  @if(activeUserName() && !passiveUserName()){
+    <span>{{ 'user_add_leave_chat_message.user_left' | translate:{ active: activeUserName() } }}</span>
+  }
+}
+

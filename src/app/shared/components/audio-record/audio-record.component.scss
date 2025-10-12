@@ -1,0 +1,197 @@
+@import 'variables';
+
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+app-icon-cancel-bordered, app-icon-play, app-icon-stop, app-icon-audio-record, app-send-icon {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.chat {
+  &__message-box {
+    display: flex;
+    justify-items: center;
+    position: relative;
+
+    .input-wrapper {
+      width: 100%;
+      height: 4.8rem;
+      overflow: hidden;
+      border-radius: $--sds-size-radius-200;
+      border: 1px solid $--sds-color-border-neutral-default;
+      background: $--sds-color-background-default-secondary;
+
+      input::placeholder {
+        color: $--sds-color-text-default-tertiary;
+        font-family: $--sds-typography-body-font-family;
+        font-size: $--sds-typography-body-size-medium;
+        font-style: normal;
+        font-weight: $--sds-typography-body-font-weight-regular;
+        line-height: 140%;
+      }
+
+    }
+
+    .input {
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+      margin-top: 0;
+      text-align: left;
+      display: flex;
+      word-break: break-word;
+      align-items: center;
+      outline: none;
+      border: none;
+      white-space: nowrap;
+      font-size: $--sds-typography-body-size-medium;
+      font-style: normal;
+      font-weight: $--sds-typography-body-font-weight-regular;
+      line-height: 140%; /* 22.4px */
+
+      &:active,
+      &:focus {
+        outline: none;
+        border: none;
+      }
+
+      &.add-title {
+        color: $--sds-color-text-default-default;
+        font-family: $--sds-typography-body-font-family;
+        font-size: $--sds-typography-body-size-medium;
+        font-style: normal;
+        font-weight: $--sds-typography-body-font-weight-regular;
+        line-height: 140%;
+      }
+    }
+  }
+
+  &__input-btns {
+    height: 4.8rem;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-left: 1px solid $--sds-color-border-neutral-default;
+
+
+    &-wrap {
+      display: flex;
+      gap: 1.2rem;
+      padding: 1.2rem 1.6rem;
+      width: 100%;
+      align-items: center;
+    }
+  }
+
+
+  &__recorded-time {
+    padding: 0 1.2rem;
+    align-items: center;
+    display: inline-flex;
+    flex: 1;
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-strong;
+    line-height: 140%;
+  }
+
+  &__message-box {
+    &--collapsed {
+      flex-direction: column;
+      height: 9.4rem;
+      border: $--sds-size-stroke-border solid $--sds-color-border-neutral-default;
+      background: $--sds-color-background-default-secondary;
+      border-radius: $--sds-size-radius-200 $--sds-size-radius-200 $--sds-size-radius-200 0;
+      overflow: hidden;
+
+      .input-wrapper {
+        padding-right: 0 !important;
+        //background: black;
+        border: none;
+        border-radius: 0;
+        height: 4.6rem;
+      }
+
+      .input {
+        //background: black;
+        padding: 1rem 2rem;
+        color: $--sds-color-grey-500;
+
+        @media (max-width: 360px) {
+          padding: 1rem;
+        }
+
+        &.add-title {
+          color: white;
+        }
+      }
+
+
+      .chat {
+        &__input-btns {
+          width: 100%;
+          position: static;
+          border-left: none;
+          border-top: 1px solid $--sds-color-border-brand-default;
+
+          &-black {
+            width: 100%;
+            border-radius: 0;
+            padding: 0 2rem;
+
+            @media (max-width: 360px) {
+              padding: 0 1rem;
+            }
+          }
+        }
+
+        &__recorded-time {
+          flex-grow: 1;
+        }
+      }
+
+      .marquee {
+        height: 100%;
+        //padding: 1rem 2rem 0.5rem;
+        color: $--sds-color-grey-500;
+
+        * {
+          color: $--sds-color-grey-500;
+        }
+      }
+    }
+  }
+}
+
+.marquee {
+  padding: 1rem 1.6rem;
+  margin-top: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: left;
+  color: $--Blue-Active-Light;
+  background: $--sds-color-background-default-default;
+
+  .inner {
+    width: 100%;
+    display: flex;
+    //color: $--Blue-Active-Light;
+
+    p {
+      white-space: nowrap;
+      padding-right: 1rem;
+     // color: $--Blue-Active-Light;
+    }
+  }
+}

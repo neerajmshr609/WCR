@@ -1,0 +1,61 @@
+{
+  "title": "Privacy Policy",
+  "paragraph_1": "We, {{ name }} (hereinafter «{{ docName }}»), egard the protection and the confidentiality of your data as very important. We collect and use your personal data in accordance with the relevant provisions of German data protection legislation. In this Privacy Policy, we would like to tell you which personal data we collect and what we use it for.",
+  "paragraph_2": "Below,  {{ docName }} tells you about the type and extent of and the purposes for which personal data are collected and used. You can call up this information on our website anytime.",
+  "controller": "Controller",
+  "paragraph_controller": "The controller within the meaning of German data protection laws is:",
+  "street_building": "Richard str. 11",
+  "city": "Berlin",
+  "country": "Deutschland",
+  "ust_idnr": "USt-IdNr.",
+  "city_2": "Charlottenburg",
+  "paragraph_support": "If you have any questions or concerns about data protection, you are welcome to also contact us by email at this address: {{ supportEmail }}",
+  "data_protection": {
+    "title": "Subject of Data Protection",
+    "paragraph": "The subject of data protection is personal data. According to Section 3, Subsection 1 of the German Federal Data Protection Act (\"Bundesdatenschutzgesetz\"), these are individual details on personal or objective circumstances of a certain person or certain persons. These include details such as your name, your postal address, your email address, your telephone number or, where appropriate, even use-data."
+  },
+  "data_collection": {
+    "title": "Collection and Use of Data- Automated Data Collection",
+    "paragraph_1": "When you access  {{ docName }} websites, your internet browser automatically transmits data for technical reasons. The following data are stored separately from other data that you may have sent us:",
+    "paragraph_2": "your date and time of access, your browser-type and version, the operating system you use, the URL of the website you have previously visited, the quantity of data transmitted.",
+    "paragraph_3": "For technical reasons these data are stored and are not assigned to any identifiable person at any time."
+  },
+  "entered_data": {
+    "title": "Data Entered by Users",
+    "paragraph_1": "You can not use the {{ docName }} product without registering. However, you can only access  {{ docName }} using certain terminals such as an iPhone, iPod, iPad, Windows, Mac or Android and without additional functions. In order to make use of all its advantages, you have to register. To do this, you must enter your email address and select a password. We require these data in order to guarantee that you are able to make full use of our entire offer. We need these and possibly other data not least in order to respond to your wishes, questions and criticism.",
+    "paragraph_2": "In future, we plan to introduce an option which will allow you to design your account personally. For example, you will be able to add a photo, choose a username and set up a connection to your Facebook user account. You will not be obliged to design your account personally; this will be entirely voluntary. The central function of {{ docName }} product is to provide tools for media rating purposes. {{ docName }} can only be used online. If you use {{ docName }} in combination with a registered account, all data and Ratings entered will be integrated into a database. The purpose of this database is to allow you to use {{ docName }} at various different levels and call up your Ratings anywhere and at any time.",
+    "paragraph_3": "We use personal data in order to enable secure, effective and user-related use of {{ docName }} services, including for: calling up the Rating results via the internet; anonymously processed rating statistics for press releases by {{ docName }} and studies; recommending {{ docName }} by using the \"Invite\" function for friends and acquaintances (email address)."
+  },
+  "data_transfer": {
+    "title": "Transfer of Data",
+    "paragraph_1": "We will not transfer your data to third parties as a matter of course without letting you know in advance or asking for your prior permission. We may only transfer your data to third parties without informing you separately beforehand in the following exceptional cases as explained below:",
+    "paragraph_2": "If required for investigating the illegal use of {{ docName }} or for legal proceedings, personal data will be transferred to the criminal investigation authorities and, if appropriate, to injured third parties. We will only do this if there are concrete indications of illegal and/or abusive behavior. We can only transfer on your personal data if this is used to enforce General Terms and Conditions of Business or other agreements. We are also legally obliged to give certain public authorities information. These are criminal investigation authorities, public authorities which prosecute administrative offences entailing fines and the German finance authorities.",
+    "paragraph_3": "Occasionally we depend on contractually affiliated external companies and external service providers to supply services such as the supply of advertising measures (only if you have given your explicit prior consent), processing payments (PayPal, credit card etc.), storing your data and customer service. In such cases, information is transferred to these companies or individuals in order to enable them to process this information further. We carefully select these external service providers and review them regularly to ensure that your privacy is preserved. The service providers may only use the data for the purposes stipulated by us. We also contractually require the service providers to treat your data solely in accordance with this Privacy Policy and the German data protection laws.",
+    "paragraph_4": "In order to further develop our business, we may alter the corporate structure of {{ docName }} by changing its legal form. We may also form, sell or buy subsidiaries, divisions or parts of the company. In such transactions, customer information together with the part of the company to be transferred will be passed on. Every time personal data are transferred to third parties to the extent prescribed, {{ docName }} will ensure that this is done in accordance with this Privacy Policy and the relevant data protection laws."
+  },
+  "news_letter": {
+    "title": "Newsletter",
+    "paragraph_1": "{{ docName }} provides a newsletter service free of charge. We use the newsletter to inform you about new products and send you general information about {{ docName }}. We need your email address in order to send you the newsletter. You can enter your email address on {{ docName }}'s start page, which is available at {{ appUrl }}. We will store and use your email address solely to send you the newsletter.",
+    "paragraph_2": "Of course, you can unsubscribe the newsletter at any time. Every newsletter contains the information on how you can unsubscribe the newsletter with effect for the future."
+  },
+  "cookies": {
+    "title": "Cookies",
+    "paragraph": "{{ docName }} stores so-called \"cookies\" in order to be able to offer you a comprehensive range of functions and to make it easier to use our websites. \"Cookies\" are small files which are stored on your computer with the help of the internet browser. If you do not want to use \"cookies\", you can prevent \"cookies\" from being stored on your computer using the corresponding settings on your internet browser. Please note that this may restrict the functional capability and the range of functions of our offer."
+  },
+  "analysis": {
+    "title": "Analysis of {{ docName }}"
+  },
+  "statistical_data": {
+    "title": "Statistical Data",
+    "paragraph": "When {{ docName }} is used, we collect statistical data which can be traced to you. We use it to improve {{ docName }}."
+  },
+  "google_analytics": {
+    "title": "Google Analytics",
+    "paragraph_1": "{{ docName }} uses Google Analytics, a web analysis service of Google Inc. (\"Google\"). Google Analytics uses so-called \"cookies\", text files which are stored on your computer and which enable you to analyze your use of {{ docName }}. The information generated by the cookie on your use of Getme.Global (including your abbreviated IP address) is transmitted to a Google server in the USA and are stored there. Google will use this information to assess your use of {{ docName }}, to compile reports on the activities for us and to provide more services connected with use of {{ docName }} and the internet. It is also possible that Google may transmit this information to third parties if this is prescribed by law or if third parties process this information on behalf of Google.",
+    "paragraph_2": "You can deactivate Google Analytics by means of a browser add-on if you do not want {{ docName }} analysis. You can download this here:"
+  },
+  "delete_data": {
+    "title": "Deleting Your Data",
+    "paragraph": ""
+  }
+}

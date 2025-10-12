@@ -1,0 +1,46 @@
+{
+  "menu": {
+    "latest": "Latest",
+    "review_queue": "Review Queue"
+  },
+  "uploader": {
+    "upload_file": "Upload file"
+  },
+  "welcome_card": {
+    "access": "access",
+    "filter": "filter",
+    "pick_the_cases": "Pick the<br/>cases where<br/>your<br/>feedback<br/>could<br/>really<br/>make a",
+    "difference": "difference"
+  },
+  "expertise-card": {
+    "counselors": "counselors",
+    "counselor": "counselor"
+  },
+  "open_request_card": {
+    "enter_chatroom": "Enter Chatroom",
+    "image_of": "Image of"
+  },
+  "add_to_review_queue": "add to review queue",
+  "added_to_review_queue": "added to review queue",
+  "queued_by": {
+    "queued_by": "queued by"
+  },
+  "summary": {
+    "case_summary": "Case summary",
+    "ai_generated": "AI Generated",
+    "questions_answered": "Questions Answered",
+    "received_request_type": "This request was addressed to ",
+    "platform": "all",
+    "organization_direct": "your organization",
+    "consult_direct": "you personally"
+  },
+  "card": {
+    "counselors": "counsellors"
+  },
+  "select-stage-1": "Select the Topic closest to your needs",
+  "select-stage-2": "Select the best matching topic focus and start conversation",
+  "greeter-card": {
+    "text": "No one is | assigned | yet. These | cases are | open for | helpers and | NGOs. Read, | ask, and | decide if | you’re NGO | is the right | match.",
+    "text2": "Once you | decide to take | over, confirm | inside the | chat. Until | then, it’s a | shared space | for finding | the best | problem fix | for each case | together. "
+  }
+}

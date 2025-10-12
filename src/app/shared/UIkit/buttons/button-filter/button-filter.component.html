@@ -1,0 +1,8 @@
+<button class="filter-btn"
+        [ngClass]="{active: isActive(), opened: isOpened()}"
+>
+  <app-settings-icon
+    class="filter-btn_icon"
+    [color]="isActive() ? '#F5F5F5' : '#1E1E1E'"
+  ></app-settings-icon>
+</button>

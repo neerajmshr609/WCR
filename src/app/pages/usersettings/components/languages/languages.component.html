@@ -1,0 +1,27 @@
+<div class="language_container">
+  <app-section-header
+    [title]="'languages.title' | translate"
+    [subtitle]="'languages.choose' | translate"
+  >
+    <app-language-icon></app-language-icon>
+  </app-section-header>
+  
+  <div class="setting--languages">
+    <div class="setting--languages__box">
+      <label class="form__label" for="languages">
+        {{ 'languages.input_title' | translate }}
+      </label>
+      <mat-select
+        id="languages"
+        [formControl]="languages()"
+        multiple
+        (selectionChange)="chooseLanguage($event.value)"
+        placeholder="{{ 'languages.placeholder' | translate }}"
+      >
+        @for (lang of languagesList; track lang) {
+          <mat-option [value]="lang">{{ lang | translate}}</mat-option>
+        }
+      </mat-select>
+    </div>
+  </div>
+</div>

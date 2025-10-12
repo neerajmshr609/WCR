@@ -1,0 +1,13 @@
+<app-button
+  class="conversation-request-more-button"
+  size="medium"
+  btnUIType="subtle"
+  [disabled]="disable()"
+>
+  <div class="conversation-request-more-button_content">
+    <app-icon-more-vertical
+      class="conversation-request-more-button_icon"
+      [color]="disable() ? '#b3b3b3' : textColor()"
+    ></app-icon-more-vertical>
+  </div>
+</app-button>

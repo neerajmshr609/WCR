@@ -1,0 +1,17 @@
+@import 'variables';
+
+.creatives {
+  padding-top: 1rem;
+}
+
+.search-bar {
+  padding: 0 1rem 0.5rem;
+}
+
+.newsfeed__menu-area {
+  padding-top: 1rem;
+
+  @media (max-width: $bp-large) {
+    padding-top: 0.5rem;
+  }
+}

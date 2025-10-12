@@ -1,0 +1,7 @@
+@for (skill of skills(); track skill.name) {
+  <app-button-chip
+    [chipItem]="skill"
+    [isSelected]="isSelected(skill)"
+    (click)="buttonClickHandler(skill)"
+  ></app-button-chip>
+}

@@ -1,0 +1,92 @@
+@import '_variables';
+
+.newsfeed {
+  padding-top: 2rem;
+  height: 100%;
+
+  @media (max-width: $bp-large) {
+    padding-top: 1rem;
+
+    ::ng-deep {
+      .search-results {
+        padding: 0 0.5rem;
+      }
+    }
+  }
+
+  > .search-bar {
+    padding: 0 1rem 1rem;
+  }
+}
+
+app-rateback-summary-card {
+  width: 100%;
+  height: 100%;
+}
+
+.newsfeed-item__actions-area {
+  p {
+    img {
+      @media only screen and (max-width: $bp-large) {
+        height: 18px;
+        width: 18px;
+      }
+    }
+  }
+}
+
+app-typing-card {
+  height: 685px;
+}
+
+.masonry {
+  display: grid;
+  gap: 4rem;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns: repeat(3, 397px);
+
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: none;
+  height: 100%;
+
+  position: relative;
+  padding: 2rem 2rem 4rem;
+
+  @media (max-width: 1279px) {
+    grid-template-columns: repeat(2, 395px);
+  }
+
+  @media (max-width: 819px) {
+    grid-template-columns: 395px;
+  }
+
+  @media (max-width: 420px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: $bp-medium) {
+    gap: 2rem;
+  }
+
+  @media (max-width: $bp-smallest) {
+    padding: 1rem 1rem 4rem;
+  }
+
+  &__column {
+    display: grid;
+    align-content: start;
+    gap: 4rem;
+    width: 100%;
+
+    @media (max-width: $bp-medium) {
+      gap: 2rem;
+    }
+
+    > * {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<textarea
+  class="content-editable-field"
+  cdkTextareaAutosize
+  (keydown.enter)="$event.preventDefault()"
+  [placeholder]="placeHolder"
+  [maxlength]="maxLength"
+  [disabled]="disabled"
+  [cdkAutosizeMinRows]="minRows"
+  [ngModel]="value"
+  (ngModelChange)="onChangeValue($event)"
+  [readOnly]="isReadOnly"
+  (mouseover)="isReadOnly = false"
+  (mouseleave)="focusOut()"
+></textarea>

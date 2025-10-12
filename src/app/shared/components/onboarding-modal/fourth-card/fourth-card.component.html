@@ -1,0 +1,33 @@
+<button mat-icon-button mat-dialog-close class="modal__btn--close">
+  <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+</button>
+
+<div class="modal__body">
+  <img
+    class="modal__img"
+    src="assets/onboarding-modal/feedbackrequest-modal-image-9.svg"
+    alt="feedbackrequest-modal-image"
+  />
+
+  <h1 class="modal__title">
+    {{ data.student.username }} wants to pay you for your review on the
+    {{ data.project.category_name.toLowerCase() }} project with title: “{{
+      data.project.title || 'Untitled'
+    }}”, but we can't wire you the money.
+  </h1>
+
+  <div class="modal__actions">
+    <a
+      class="btn btn-primary"
+      mat-dialog-close
+      routerLink="/settings"
+      [queryParams]="{ type: 'finance' }"
+      >Setup payment</a
+    >
+    <img
+      src="/assets/powered-by-stripe.png"
+      alt="powered by stripe"
+      class="stripe"
+    />
+  </div>
+</div>

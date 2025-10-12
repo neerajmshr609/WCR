@@ -1,0 +1,22 @@
+<app-share-modal
+  shareTitle="ice-breaker-share-modal.share-your-capsule"
+  [shareLink]="iceBreakerUrl"
+>
+    <div class="ice-breaker-share-modal_title-row">
+        <h4 class="ice-breaker-share-modal_title">{{ titleText }}</h4>
+    </div>
+
+    <div class="ice-breaker-share-modal_title-row">
+        <app-icon-render
+            class="ice-breaker-share-modal_icon"
+            [icon]="skillIcon"
+        ></app-icon-render>
+        
+        <h4 class="ice-breaker-share-modal_title">{{ skillName }}</h4>
+    </div>
+
+    <app-horizontal-line
+        class="ice-breaker-share-modal_horizontal-line"
+    ></app-horizontal-line>
+
+</app-share-modal>

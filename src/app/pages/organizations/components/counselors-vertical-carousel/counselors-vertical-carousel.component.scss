@@ -1,0 +1,31 @@
+@import '_variables';
+
+.counselors-carousel{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $--sds-size-space-600;
+
+  &__wrapper{
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $--sds-size-space-600;
+    transition: transform .4s ease-in;
+  }
+
+  &__card{
+    width: 100%;
+  }
+
+  &__btn{
+    width: 36px;
+    height: 36px;
+  }
+}

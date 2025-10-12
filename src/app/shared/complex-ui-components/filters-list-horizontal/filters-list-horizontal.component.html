@@ -1,0 +1,7 @@
+@for (item of filtersList(); track item.id) {
+  <app-chips-item
+    [chipsItem]="item"
+    [isSelected]="isSelected(item)"
+    (click)="toggleSelected(item)"
+  ></app-chips-item>
+}

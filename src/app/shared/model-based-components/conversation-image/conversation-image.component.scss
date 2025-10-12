@@ -1,0 +1,19 @@
+@import "variables";
+
+:host {
+  background: $--sds-color-background-brand-default;
+  border-radius: $--sds-size-radius-full;
+  padding: 1px;
+  line-height: normal;
+  display: inline-flex;
+
+  & img {
+    border-radius: $--sds-size-radius-full;
+    width: $--sds-size-icon-large;
+    height: $--sds-size-icon-large;
+  }
+
+  & img:not(:first-child) {
+    margin-left: - calc($--sds-size-icon-large * 0.275);
+  }
+}

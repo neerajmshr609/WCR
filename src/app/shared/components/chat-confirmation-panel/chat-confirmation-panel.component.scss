@@ -1,0 +1,49 @@
+@import '_variables';
+
+.panel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $--sds-size-space-300 0;
+  border-top: 1px solid $--sds-color-border-default-default;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 58px;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $--sds-size-space-200;
+
+    border-radius: $--sds-size-radius-200;
+    border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+    background: $--sds-color-background-default-default;
+
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 100%;
+    cursor: pointer;
+
+    &:hover {
+      background: $--sds-color-background-default-secondary-hover;
+    }
+  }
+
+  &__btn--confirm {
+    padding: 16px $--sds-size-space-600;
+  }
+
+  &__btn--decline {
+    padding: $--sds-size-space-300;
+  }
+}
+

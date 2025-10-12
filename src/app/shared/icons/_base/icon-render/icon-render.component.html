@@ -1,0 +1,16 @@
+@if (parsedIcon()) {
+  @if (parsedIcon().isTemplateRef()) {
+    <ng-container *ngTemplateOutlet="parsedIcon().icon"></ng-container>
+  } @else if (parsedIcon().isImgSrc()) {
+    <img
+      width="100%"
+      height="100%"
+      [src]="parsedIcon().icon"
+      [alt]="(icon().icon_alt || '') | translate "
+    />
+  } @else if (parsedIcon().isComponent()) {
+    <div class="component-icon">
+      <ng-container *ngComponentOutlet="parsedIcon().icon; inputs: componentIconInputs()"></ng-container>
+    </div>
+  }
+}

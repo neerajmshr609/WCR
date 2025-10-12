@@ -1,0 +1,108 @@
+@import '_variables';
+
+:host {
+  justify-self: stretch;
+  @media (min-width: $bp-small) {
+    padding-right: $--sds-size-space-250;
+  }
+}
+
+.card {
+  display: flex;
+  height: 62px;
+  padding: 13px 18px;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: $--sds-size-radius-200;
+  border: 1px solid $--sds-color-border-default-default;
+  background: $--sds-color-background-default-default;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    flex: 1 0 0;
+  }
+
+  &__icon-container {
+    width: calc(#{$--sds-size-icon-medium} * 1.6);
+    height: calc(#{$--sds-size-icon-medium} * 1.6);
+  }
+
+  &__icon {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transform: translateY(5px);
+  }
+
+  &__icon.active {
+    filter: invert(1);
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  &__name {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    align-self: stretch;
+    overflow: hidden;
+    color: $--sds-color-text-default-default;
+    text-overflow: ellipsis;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+  }
+
+  &__counselors {
+    color: $--sds-color-text-default-secondary;
+    font-family: $--sds-typography-font-family;
+    font-size: $--Body-Size-XS;
+    font-style: normal;
+    font-weight: $--sds-typography-weight-medium;
+    line-height: normal;
+    letter-spacing: $--letter-spacing-3;
+    text-transform: uppercase;
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    transform: translate(40%, -40%);
+  }
+
+  &:hover {
+    background: $--sds-color-background-default-secondary-hover;
+  }
+
+  &.active {
+    background: $--sds-color-background-brand-default;
+    color: $--sds-color-text-neutral-on-neutral;
+
+    .card__name {
+      color: $--sds-color-text-neutral-on-neutral;
+    }
+  }
+}
+
+
+@media screen and (min-width: $bp-small) {
+  :host {
+    padding-right: unset;
+    justify-self: center;
+  }
+}

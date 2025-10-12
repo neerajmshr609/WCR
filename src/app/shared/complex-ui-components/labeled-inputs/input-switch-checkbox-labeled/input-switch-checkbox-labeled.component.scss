@@ -1,0 +1,51 @@
+@import "_variables";
+@import "_mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: $--sds-size-space-050;
+  user-select: none;
+  @include bodyBaseText;
+
+  .input-switch-checkbox {
+    &_label-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &_label {
+      align-self: flex-start;
+      color: $--sds-color-text-default-default;
+
+    }
+
+    &_description {
+      color: $--sds-color-text-default-secondary;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .input-switch-checkbox_label-container {
+      cursor: pointer;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+
+    .input-switch-checkbox {
+      &_label-container {
+        cursor: not-allowed;
+        color: $--sds-color-text-disabled-default;
+      }
+
+      &_description {
+        color: $--sds-color-text-disabled-default;
+      }
+    }
+
+  }
+}

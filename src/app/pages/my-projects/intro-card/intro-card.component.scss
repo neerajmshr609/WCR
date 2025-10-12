@@ -1,0 +1,62 @@
+@import 'variables';
+
+.intro-card {
+  height: 674px;
+  width: 100%;
+  width: 100%;
+  background: #00affe;
+  padding: 70px 10px;
+  border-radius: 8px;
+  text-align: center;
+  justify-content: center;
+
+  @media (max-width: $bp-medium) {
+    height: 73rem;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  @media (max-width: $bp-smallest) {
+    height: 62rem;
+    padding: 40px 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+::ng-deep .Typewriter__wrapper {
+  .intro-card-slide {
+    font-weight: 900;
+    font-size: 70px;
+    line-height: 95%;
+    text-align: center;
+    letter-spacing: -0.02rem;
+    color: #fafafa;
+
+    @media (max-width: $bp-medium) {
+      font-size: 60px;
+    }
+
+    @media (max-width: $bp-smallest) {
+      font-size: 48px;
+    }
+  }
+  .intro-card-subtext {
+    font-size: 44px;
+    line-height: 155%;
+    color: #000000;
+    font-weight: 900;
+    @media (max-width: $bp-medium) {
+      font-size: 40px;
+    }
+    @media (max-width: $bp-smallest) {
+      font-size: 40px;
+    }
+  }
+}
+
+::ng-deep .Typewriter__cursor {
+  background: $--sds-color-background-neutral-default;
+  height: 33px;
+  width: 4px;
+  display: inline-block;
+}

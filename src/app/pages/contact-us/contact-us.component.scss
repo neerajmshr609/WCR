@@ -1,0 +1,131 @@
+@import 'variables';
+
+.contact-us {
+  display: grid;
+  margin-top: 6rem;
+  align-content: center;
+  height: 100%;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(375px, 395px));
+  padding-bottom: 10rem;
+  width: 100vw;
+
+  @media only screen and (max-width: $bp-small) {
+    margin-top: 200px;
+    gap: 4rem;
+  }
+
+  .text-form {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .form-text-area {
+    width: 100%;
+    background: white;
+    resize: none;
+    border: unset;
+    padding-top: 2rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 6px;
+    caret-color: unset;
+
+    &::placeholder {
+      font-family: 'Roboto';
+      color: $feed-light-gray-text;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  &__card {
+    background-color: #f2f2f2;
+    min-width: 30rem;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    color: white;
+    box-shadow: 0 0.4px 2px rgba(0, 0, 0, 0.25);
+    position: relative;
+    height: auto;
+    width: 37.5rem;
+    border-radius: 6px;
+    overflow: hidden;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+
+    @media only screen and (max-width: $bp-small) {
+      width: 98%;
+    }
+
+    section {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    h3 {
+      margin-top: 15px;
+      color: $feed-accent-red;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .image-container {
+      background-color: white;
+      padding-top: 3.5rem;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      height: 311px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .email-form-container {
+      padding: 1rem 2rem;
+      background-color: white;
+      display: flex;
+    }
+
+    .email-form {
+      width: 100%;
+      padding-left: 20px;
+      border: unset;
+      background-color: transparent;
+
+      &::placeholder {
+        color: $feed-light-gray-text;
+      }
+    }
+
+    &--title {
+      font-family: 'Roboto';
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: #000000;
+      font-size: 22px;
+      line-height: 133%;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    .button-enabled {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    input,
+    textarea {
+      color: black;
+    }
+  }
+}

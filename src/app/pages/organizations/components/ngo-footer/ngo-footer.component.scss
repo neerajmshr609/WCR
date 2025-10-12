@@ -1,0 +1,92 @@
+@import '_variables';
+
+:host{
+  width: 100%;
+}
+
+.ngo-footer{
+  display: flex;
+  width: 100%;
+  padding: $--sds-size-space-800 $--sds-size-space-800 $--sds-size-space-4000 $--sds-size-space-800;
+  //border-top: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+  background: $--sds-color-background-default-secondary;
+
+  @media (max-width: 593px) {
+    padding: $--sds-size-space-800;
+  }
+
+  &__content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    justify-content: space-between;
+    gap: 50px;
+
+    @media (max-width: 593px) {
+      gap: $--sds-size-space-600;
+    }
+  }
+
+  &__social-block{
+    display: flex;
+    width: 100%;
+    min-width: 240px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $--sds-size-space-600;
+    flex-shrink: 0;
+
+
+  }
+
+  &__social{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap:$--sds-size-space-400;
+  }
+
+  &__block{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $--sds-size-space-300;
+    flex-shrink: 0;
+
+    @media (max-width: 593px) {
+      gap: $--sds-size-space-200;
+
+      &.ngo-footer__social-block{
+        width: 100%;
+        max-width: 311px;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__title{
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-strong;
+    line-height: 140%;
+    padding-bottom: $--sds-size-space-400;
+
+    @media (max-width: 593px) {
+      padding-bottom: $--sds-size-space-300;
+    }
+  }
+
+  &__link{
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+    text-decoration: none;
+  }
+}

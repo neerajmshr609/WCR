@@ -1,0 +1,236 @@
+<div class="advisor-card">
+  <div class="advisor-card__badge" *ngIf="advisor.pinned">
+    <img
+      src="assets/icons/pin.svg"
+      alt="badge-pin"
+      class="advisor-card__badge-icon black-to-white"
+    />
+  </div>
+
+  <div class="advisor-card__header">
+    <app-user-info *ngIf="advisor" [user]="advisor"></app-user-info>
+    <ng-content select="[header]"></ng-content>
+    <div class="advisor-card__header--right">
+      <div
+        class="advisor-card__online-status"
+        *ngIf="advisor.online; else pickDate"
+        [ngClass]="{ 'advisor-card__online-status--online': advisor.online }"
+      >
+        ONLINE
+      </div>
+
+      <ng-template #pickDate>
+        <ng-container *ngIf="advisor.rulesets.length">
+          <app-available-time-slots
+            [rulsets]="advisor.rulesets"
+          ></app-available-time-slots>
+        </ng-container>
+      </ng-template>
+      <!-- <button mat-icon-button [matMenuTriggerFor]="scheduleMenu" class="schedule-btn" *ngIf="!!advisor.rulesets?.length" matTooltip="Available time slots">
+        <img src="assets/schedule.svg" alt="schedule-icon">
+      </button> -->
+
+      <mat-menu #scheduleMenu="matMenu" class="advisor-schedule">
+        <div class="advisor-schedule__items">
+          <app-advisor-schedule
+            *ngFor="let item of advisor.rulesets"
+            [ruleset]="item"
+          ></app-advisor-schedule>
+        </div>
+      </mat-menu>
+
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        #menuTrigger="matMenuTrigger"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          (click)="onPinToTopClick($event)"
+          class="menu-item"
+          *ngIf="currentUser"
+          [disabled]="processing"
+        >
+          <img
+            [src]="'assets/icons/' + (advisor.pinned ? 'unpin.svg' : 'pin.svg')"
+            [alt]="advisor.pinned ? 'unpin' : 'pin'"
+            *ngIf="!processing; else spinnerTpl"
+          />
+
+          <ng-template #spinnerTpl>
+            <app-small-spinner diameter="20"></app-small-spinner>
+          </ng-template>
+
+          <span>{{
+            advisor.pinned ? 'Unpin connector from top' : 'Pin connector to top'
+          }}</span>
+        </button>
+
+        <a
+          mat-menu-item
+          [routerLink]="['/profile', advisor.sharetoken]"
+          target="_blank"
+          class="menu-item"
+        >
+          <img src="assets/icons/user.svg" />
+          <span>Public profile (new tab)</span>
+        </a>
+
+        <a
+          mat-menu-item
+          *ngIf="conversation"
+          [routerLink]="['/conversations', conversation.id]"
+          class="menu-item"
+        >
+          <img src="assets/messages.svg" alt="messages" />
+          <span>Go to chat room</span>
+        </a>
+
+        <a
+          mat-menu-item
+          *ngIf="conversation"
+          [routerLink]="['/conversations', conversation.id]"
+          target="_blank"
+          class="menu-item"
+        >
+          <img src="assets/messages-tabs.svg" alt="messages-tabs" />
+          <span>Go to chat room (new tab)</span>
+        </a>
+
+        <ng-container *ngIf="currentUser">
+          <a
+            mat-menu-item
+            class="menu-item"
+            *ngIf="!currentUser.adviserIDs?.includes(advisor.id)"
+            (click)="onAddToMyAdvisors(advisor.id)"
+          >
+            <img src="assets/newsfeed/heart.svg" alt="messages-tabs" />
+            <span>Add to My Trusted Advisors</span>
+          </a>
+
+          <a
+            mat-menu-item
+            class="menu-item"
+            *ngIf="currentUser.adviserIDs?.includes(advisor.id)"
+            (click)="onRemoveFromMyAdvisors(advisor.id)"
+          >
+            <img src="assets/heart-cancel-newsfeed.svg" alt="messages-tabs" />
+            <span>Remove from My Trusted Advisors</span>
+          </a>
+        </ng-container>
+      </mat-menu>
+    </div>
+  </div>
+
+  <div class="advisor-card__skills-list">
+    <app-small-spinner *ngIf="hidden" diameter="20"></app-small-spinner>
+    <carousel
+      [cellWidth]="48"
+      [height]="66"
+      [freeScroll]="true"
+      [arrows]="false"
+      [margin]="0"
+      [lightDOM]="true"
+      *ngIf="!hidden"
+    >
+      <div
+        class="carousel-cell"
+        [ngClass]="{ 'is-nav-selected': selectedDisplayType === 'overview' }"
+      >
+        <div
+          class="carousel-cell__body slider-presentation-nav__content--info"
+          (click)="selectSkill(null)"
+        >
+          <svg class="slider-presentation-nav__content">
+            <use
+              xlink:href="assets/feather-icon-defs.svg#icon-list-outline"
+            ></use>
+          </svg>
+        </div>
+      </div>
+
+      <div
+        class="carousel-cell"
+        [ngClass]="{
+          'is-nav-selected':
+            selectedUserSkill && selectedUserSkill.id === userSkill.id,
+        }"
+        *ngFor="let userSkill of advisor.user_skills; trackBy: trackById"
+        (click)="selectSkill(userSkill)"
+      >
+        <div class="carousel-cell__body">
+          <img [src]="userSkill.skill.icon" />
+        </div>
+      </div>
+    </carousel>
+  </div>
+  <div class="advisor-card-lang">
+    <p class="advisor-card-lang__text advisor-card-lang__text--title">
+      FLUENT IN:
+    </p>
+    <div class="advisor-card-lang__listblock">
+      <span *ngFor="let lang of langs" class="advisor-card-lang__text">{{
+        lang
+      }}</span>
+    </div>
+    <app-round-slider
+      class="small-round-slider"
+      [hideDigits]="true"
+      *ngIf="selectedDisplayType === 'overview'"
+      [score]="selectedOverviewSkill?.overall_skill_score"
+    ></app-round-slider>
+  </div>
+  <div
+    class="advisor-card__detail-view"
+    [ngClass]="{
+      'advisor-card__detail-view--big': selectedDisplayType === 'detail',
+    }"
+  >
+    <div
+      class="advisor-card__detail-view--overview"
+      *ngIf="selectedDisplayType === 'overview'"
+    >
+      <app-skill-card-list-item
+        (selectionStateChange)="skillDidChangeSelectionState(skill)"
+        [unselect$]="unselectEvt.asObservable()"
+        [isDetailPresentation]="false"
+        [userSkill]="skill"
+        [isShowRatingScoreGraph]="false"
+        [currentUserId]="currentUser?.id"
+        [advisorId]="advisor.id"
+        *ngFor="let skill of advisor.user_skills"
+      ></app-skill-card-list-item>
+    </div>
+
+    <div
+      class="advisor-card__detail-view--detail"
+      *ngIf="selectedDisplayType === 'detail'"
+    >
+      <app-skill-card-list-item
+        class="custom-skill-card-list-item"
+        [selectedUserSkill$]="selectedSkillChanged$"
+        [isDetailPresentation]="true"
+        [currentUserId]="currentUser?.id"
+        [advisorId]="advisor.id"
+        [userSkill]="selectedUserSkill"
+      ></app-skill-card-list-item>
+    </div>
+  </div>
+
+  <div class="advisor-card__message-view">
+    <app-skill-card-request
+      *ngIf="advisor?.id !== currentUser?.id"
+      [selectedSkillUpdated$]="selectedSkillUpdated$"
+      [selectedSkillChanged$]="selectedSkillChanged$"
+      [advisor]="advisor"
+      [currentUser]="currentUser"
+      [currentUserProjects]="currentUserProjects"
+      [conversation]="conversation"
+      (conversationCreated)="conversation = $event"
+    ></app-skill-card-request>
+  </div>
+</div>

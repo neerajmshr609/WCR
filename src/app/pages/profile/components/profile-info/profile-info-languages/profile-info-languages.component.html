@@ -1,0 +1,12 @@
+<app-segment-title
+  title="languages.title"
+></app-segment-title>
+
+<div class="languages-list">
+  @for (language of languages(); track language.name) {
+    <app-button-chip
+      [chipItem]="language"
+      [canBeSelectedStyled]="false"
+    ></app-button-chip>
+  }
+</div>

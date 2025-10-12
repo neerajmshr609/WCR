@@ -1,0 +1,67 @@
+@if (displayStageComputed()) {
+  <div class="topic-select-stage">
+    @if (skillsAreSelected()) {
+      2. {{ 'select-stage-2' | translate }}
+    } @else {
+      1. {{ 'select-stage-1' | translate }}
+    }
+  </div>
+}
+
+
+<app-filter-panel
+  class="filter-panel"
+  [ngClass]="{'column': displayColumn()}"
+  [filterItems]="artCategories()"
+  (filtersChanged)="filtersChanged($event)"
+  [displayColumn]="displayColumn()"
+  [placeholder]="placeholder()"
+  [isHiddenFilters]="true"
+  (focusTextInput)="focusTextInput.emit($event)"
+></app-filter-panel>
+
+
+@if (isAddSkill()) {
+  <div class="skills-grid skills-list">
+    @for (skill of notSelectedSkills(); track skill.id) {
+      <div class="add-skill-wrap" (click)="addSkill(skill)"> <app-expertise-card
+        [skill]="skill"
+      ></app-expertise-card>
+        <button class="add-skill-wrap-btn" >
+          <app-plus-icon color="#1E1E1E" strokeWidth="5"></app-plus-icon>
+        </button>
+      </div>
+
+    }
+  </div>
+} @else {
+  @if (skillsAreSelected()) {
+    <div class="skills-grid selected-skills">
+      @for (skill of selectedSkills(); track skill.id) {
+        <app-expertise-card
+          [@pulseOnEnter]
+          class="test 2"
+          [active]="true"
+          [skill]="skill"
+          (close)="removeFromSelected(skill)"
+        ></app-expertise-card>
+      }
+    </div>
+  }
+  @if (allowSelectMore() && (!this.getFilterResult() || (this.getFilterResult() && !skillFilters()?.textFilter))) {
+    <div class="skills-grid skills-list" [@slideOutLeftOnLeave]>
+      @for (skill of notSelectedSkills(); track skill.id) {
+        <app-expertise-card
+          [skill]="skill"
+          (click)="addToSelected(skill)"
+        ></app-expertise-card>
+      }
+    </div>
+  }
+}
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+@import 'variables';
+
+.slide-recommend {
+  //width: 395px;
+  min-height: 53rem;
+  background: $feed-accent-green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &--tips {
+    justify-content: space-around;
+    align-items: unset;
+    padding: 2rem;
+  }
+
+  &--tips & {
+    &__header {
+      display: grid;
+      grid-template-columns: max-content 1fr max-content;
+      align-items: center;
+      gap: 2rem;
+      width: 100%;
+      margin-bottom: 4rem;
+    }
+
+    &__title {
+      text-align: left;
+      font-size: 2.5rem;
+      line-height: 2.5rem;
+    }
+
+    &__img {
+      width: 5rem;
+      padding: 0;
+    }
+
+    &__button {
+      width: auto;
+      height: auto;
+      margin: 0;
+      font-weight: 900;
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      text-align: center;
+      text-transform: uppercase;
+      color: #000fff;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    width: auto;
+  }
+
+  &__header {
+    width: 200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-weight: 900;
+    font-size: 31px;
+    line-height: 36px;
+    text-align: right;
+    color: #fafafa;
+  }
+
+  &__text {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #ffffff;
+    padding: 40px 60px 20px;
+    @media only screen and (max-width: $bp-small) {
+      padding: 25px 30px 10px;
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+
+  &__button {
+    width: 138px;
+    height: 45px;
+    background: #ffffff;
+    border: 3px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 17px;
+    text-align: center;
+    color: #000000;
+    margin: 40px;
+  }
+
+  &__img {
+    padding-bottom: 15px;
+    padding-top: 25px;
+    align-self: flex-end;
+  }
+}

@@ -1,0 +1,24 @@
+<section class="skill-select-container">
+  <div class="header-illustration">
+    <ng-content select="[header-illustration]"></ng-content>
+    <h2 class="header-illustration__title">
+      <ng-content select="[header-text]"></ng-content>
+    </h2>
+    <p class="header-illustration__subtitle">
+      <img
+        class="info-icon"
+        src="./assets/upload/info-grey.svg"
+        alt="Info icon"
+      />
+      <ng-content select="[sub-header-text]"></ng-content>
+    </p>
+  </div>
+  @if (isLoading()) {
+    <app-small-spinner diameter="30"></app-small-spinner>
+  } @else {
+    <app-my-skills-select
+      [isSingleSelect]="singleSelectSkill()"
+      (selectedSkillsChanged)="pickedSkill.emit($event)"
+    ></app-my-skills-select>
+  }
+</section>

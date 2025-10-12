@@ -1,0 +1,44 @@
+<div class="counselors-carousel">
+  @if (allowSlidesNav()) {
+    <div class="counselors-carousel__btn" [style.opacity]="scrolledSlides() === 0 ? 0 : 1">
+      <app-button
+        type="button"
+        iconBtn
+        size="small"
+        btnUIType="neutral"
+        (click)="scrollToPreviousSlide()"
+        [disabled]="scrolledSlides() === 0"
+      >
+        <app-arrow-up-icon type="long"></app-arrow-up-icon>
+      </app-button>
+    </div>
+  }
+
+  <div class="counselors-carousel__wrapper" [style.max-height.px]="shownCardsNumber() * (cardHeight() + gap()) - gap()">
+    <div class="counselors-carousel__content"
+         [style.transform]="'translateY(' + scrolledSlides() * -(cardHeight() + gap())  + 'px)'">
+      @for (counselor of counselors(); track counselor.id) {
+        <div class="counselors-carousel__card" [style.height.px]="cardHeight()">
+          <app-member-card [member]="counselor"></app-member-card>
+        </div>
+
+      }
+    </div>
+  </div>
+  @if (allowSlidesNav()) {
+    <div class="counselors-carousel__btn">
+      <app-button
+        type="button"
+        iconBtn
+        size="small"
+        btnUIType="neutral"
+        (click)="scrollToNextSlide()"
+        [disabled]="scrolledSlides() === counselors().length - shownCardsNumber()"
+        [style.opacity]="scrolledSlides() === counselors().length - shownCardsNumber() ? 0 : 1"
+      >
+        <app-arrow-down-icon type="long"></app-arrow-down-icon>
+      </app-button>
+    </div>
+  }
+
+</div>

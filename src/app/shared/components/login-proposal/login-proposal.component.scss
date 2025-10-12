@@ -1,0 +1,63 @@
+@import '_variables';
+
+:host {
+  display: flex;
+  width: 100%;
+  flex: 1;
+}
+
+.login-proposal {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background: $--sds-color-background-default-secondary;
+  gap: $--sds-size-space-300;
+  padding: $--sds-size-space-300;
+
+  &__title {
+    display: flex;
+    min-height: 4rem;
+    padding: $--sds-size-space-300;
+    align-items: center;
+    gap: $--sds-size-space-200;
+    flex: 1 0 0;
+    color: $--sds-color-text-default-default;
+    border-radius: $--sds-size-radius-200;
+    border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+
+    font-family: $--sds-typography-family-sans;
+    font-size: $--Body-Size-XS;
+    font-style: normal;
+    font-weight: $--sds-typography-weight-medium;
+    line-height: normal;
+    letter-spacing: $--letter-spacing-3;
+    text-transform: uppercase;
+
+    app-icon-info {
+      display: flex;
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: $--sds-size-space-800;
+    justify-content: flex-end;
+
+    app-button {
+      flex: 1;
+
+      @media (min-width: $bp-small) {
+        flex: 0;
+      }
+    };
+
+    app-login-icon, app-icon-sign-up {
+      display: flex;
+      width: 1.6rem;
+      height: 1.6rem;
+
+    }
+  }
+}

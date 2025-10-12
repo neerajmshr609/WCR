@@ -1,0 +1,145 @@
+<section class="modal-container" *ngIf="currentUser$ | async as currentUser">
+  <button (click)="close()" class="close-modal-btn close-btn">
+    <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+  </button>
+  <ng-container *ngIf="isNewQuestionsState; else updateQuestions">
+    <h1 class="title">
+      <img
+        class="rounded-arrow-icon"
+        src="assets/ice-breaker/new-questions.svg"
+        alt="New questions illustration"
+      />
+      Add more Questions to original Capsule
+    </h1>
+    <p class="subtitle">
+      You can add more questions if you feel it would improve your Capsule.
+      These changes will only affect unpurchased Capsules sessions.
+    </p>
+  </ng-container>
+  <ng-template #updateQuestions>
+    <h1 class="title">
+      <img
+        class="rounded-arrow-icon"
+        src="assets/ice-breaker/round-arrow.svg"
+        alt="Rounded arrow icon"
+      />
+      Edit Original Capsule Question / Entry
+    </h1>
+    <p class="subtitle">
+      To improve your original Capsule you can now overwrite this initial
+      entry. These changes will only affect unpurchased (new) Capsules.
+    </p>
+  </ng-template>
+  <section class="messages-wrapper">
+    <article class="message-container" #containerOfMessages>
+      <app-conversation-message
+        *ngFor="let message of messages$ | async"
+        class="chat__message"
+        [userProfile]="currentUser"
+        [message]="message"
+      >
+      </app-conversation-message>
+      <app-share-profile-carousel
+        *ngIf="isCompleteIceBreaker$ | async"
+        [shareLink]="shareLink"
+      ></app-share-profile-carousel>
+      <div class="scroll-to-bottom-btn" *ngIf="isCanScroll">
+        <app-scroll-btn
+          (clickedScrollDown)="scrollHistory()"
+          (clickedScrollUp)="scrollHistory(false)"
+        ></app-scroll-btn>
+      </div>
+    </article>
+    <section class="questions-actions">
+      <ng-container
+        *ngIf="
+          stepQuestions.length &&
+          !(showSetPrice | async) &&
+          !(showSetTitle | async) &&
+          !(isCompleteIceBreaker$ | async)
+        "
+      >
+        <button class="complete-btn" (click)="readyToSetPrice(true)">
+          Complete
+        </button>
+        <button class="next-btn" (click)="nextQuestion()">
+          <img
+            src="assets/ice-breaker/ice-breaker-logo.svg"
+            alt="Capsule logo"
+          />
+          Create Next Capsule Question
+        </button>
+      </ng-container>
+      <ng-container *ngIf="(showSetPrice | async) && !(showSetTitle | async)">
+        <div class="done-container">
+          <button (click)="readyToSetPrice(false)">
+            <img src="assets/payments/deny.svg" alt="Deny icon" />
+          </button>
+          <span>Sure you’re done</span>
+          <button (click)="readyToSetTitle()">
+            <img src="assets/payments/accept.svg" alt="Accept icon" />
+          </button>
+        </div>
+        <app-price-slider
+          [advisorRate]="0"
+          [showHourPrefix]="false"
+          [isAdvisor]="true"
+          [minPrice]="0"
+          [showSubTitle]="false"
+          title="Set a price"
+          [maxPrice]="1000"
+          (sliderValueChange)="onPriceChanged($event)"
+        >
+        </app-price-slider>
+      </ng-container>
+      <ng-container *ngIf="questionToSetOriginalTitle$ | async">
+        <div class="done-container">
+          <button (click)="wantSetNewTitle()">
+            <img src="assets/payments/deny.svg" alt="Deny icon" />
+          </button>
+          <span>Do you want to keep your original title?</span>
+          <button (click)="keepOriginalTitle()">
+            <img src="assets/payments/accept.svg" alt="Accept icon" />
+          </button>
+        </div>
+      </ng-container>
+    </section>
+    <button
+      *ngIf="isCanFinishChanges$ | async"
+      class="finish-btn"
+      (click)="complete()"
+    >
+      <span>Finish Changes</span>
+      <img src="assets/arrow-white.svg" alt="Arrow forward right" />
+    </button>
+    <div class="input-message" *ngIf="!(isCompleteIceBreaker$ | async)">
+      <app-text-input
+        [allowImages]="
+          !(
+            (showSetPrice | async) ||
+            (isCompleteIceBreaker$ | async) ||
+            (questionToSetOriginalTitle$ | async)
+          )
+        "
+        [allowAudioMessage]="
+          !(
+            (showSetPrice | async) ||
+            (isCompleteIceBreaker$ | async) ||
+            (questionToSetOriginalTitle$ | async)
+          )
+        "
+        [messageSent$]="messageSentEvt"
+        [editable]="
+          !(
+            (showSetPrice | async) ||
+            (isCompleteIceBreaker$ | async) ||
+            (questionToSetOriginalTitle$ | async)
+          )
+        "
+        (sendBtnClicked)="sendMessage($event)"
+        [user]="currentUser"
+      >
+      </app-text-input>
+    </div>
+  </section>
+</section>

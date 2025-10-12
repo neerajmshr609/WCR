@@ -1,0 +1,36 @@
+.tutorial {
+  &__body {
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+
+  &__play-btn {
+    background: none;
+    border: none;
+    outline: none;
+    z-index: 1;
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 8rem;
+      height: auto;
+    }
+  }
+
+  app-small-spinner {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

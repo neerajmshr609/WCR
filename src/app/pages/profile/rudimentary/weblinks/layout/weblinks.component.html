@@ -1,0 +1,26 @@
+<ng-container *ngIf="webLinks; else loaderTpl">
+  <div class="profile-weblinks">
+    <app-weblinks-item
+      *ngFor="let webLink of webLinks"
+      [webLink]="webLink"
+      [isAuthUser]="isAuthUser"
+    ></app-weblinks-item>
+  </div>
+
+  <div *ngIf="isAuthUser" class="profile-weblinks-footer">
+    <button
+      class="btn btn-primary btn-weblinks"
+      (click)="save()"
+      [disabled]="isSaving"
+    >
+      <div *ngIf="isSaving">
+        <app-small-spinner [diameter]="15"></app-small-spinner>
+      </div>
+      Save
+    </button>
+  </div>
+</ng-container>
+
+<ng-template #loaderTpl>
+  <app-small-spinner [diameter]="40"></app-small-spinner>
+</ng-template>

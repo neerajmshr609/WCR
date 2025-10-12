@@ -1,0 +1,54 @@
+@import "variables";
+
+.scroll-down-btn {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 10rem; // Default value, can be overridden by ngStyle
+  right: 2.2rem; // Default value, can be overridden by ngStyle
+  z-index: 99; // Increased z-index to ensure it's above other elements
+  border-radius: 50%;
+  cursor: pointer;
+  border: $--sds-size-stroke-border solid $--sds-color-border-neutral-secondary;
+  background: $--sds-color-background-default-secondary;
+  pointer-events: auto; // Ensure button is clickable
+
+  &:hover{
+    box-shadow: 0 0 7px 0 rgba(0,0,0,0.25);
+  }
+
+  &:active{
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.25);
+  }
+
+  &__number{
+    position: absolute;
+    top: 0;
+    left: 0.8rem;
+    transform: translate(0, -50%);
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background-color: $feed-accent-blue;
+    color: $--sds-color-text-neutral-on-neutral;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon{
+    transform: translateY(3px);
+  }
+
+  app-icon-arrow {
+    display: flex;
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}
+
+

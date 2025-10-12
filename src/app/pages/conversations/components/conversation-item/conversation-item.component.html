@@ -1,0 +1,263 @@
+<div class="conversation">
+  <div class="conversation__header">
+    <div
+      class="conversation__badge"
+      *ngIf="conversation.sum_awaiting && conversation.lastmeetingfinished"
+    >
+      <p class="conversation__badge-to-pay" [innerHTML]="'conversation_item.to_pay' | translate"></p>
+    </div>
+
+    <div
+      class="conversation__badge"
+      *ngIf="
+        conversation.lastmeetingconfirmed && !conversation.lastmeetingfinished
+      "
+    >
+      <img src="assets/conversations/scheduled.svg" alt="" />
+    </div>
+    @if (conversationPartner) {
+      <app-user-info
+        [user]="conversationPartner"
+        [noBorder]="true"
+      ></app-user-info>
+    } @else {
+      <app-conversation-users
+        [currentUserId]="currentUser.id"
+        [members]="conversation.members"
+        [conversationImage]="conversation.image"
+        [name]="
+          conversation.name || conversation.conversation_userskill?.skill?.name
+        "
+      >
+      </app-conversation-users>
+    }
+    <div class="conversation__project-stats">
+      <p class="conversation__time-spent">
+        {{ 'conversation_item.time_spent' | translate }}
+        {{ conversation.time_spent || 0 | hms }}
+      </p>
+      <ng-container *ngIf="feedbackPath$?.value === 'my_advice'">
+        <p
+          class="conversation__money"
+          *ngIf="sumType === 1"
+          (click)="sumType = 2"
+        >
+          <ng-container *ngIf="conversation.sum_spent; else noIncomeTpl">
+            {{ 'conversation_item.earned' | translate }}
+            {{ conversation.sum_spent | euroCurrency: '0.2-2' }}</ng-container
+          >
+        </p>
+        <p
+          class="conversation__money conversation__money--awaiting"
+          *ngIf="sumType === 2"
+          (click)="sumType = 3"
+        >
+          <ng-container *ngIf="conversation.sum_awaiting; else noAwaitingTpl">
+            {{ "conversation_item.awaiting" | translate }}
+            {{ conversation.sum_awaiting | euroCurrency: '0.2-2' }}
+          </ng-container>
+        </p>
+        <p
+          class="conversation__money conversation__money--unpaid"
+          *ngIf="sumType === 3"
+          (click)="sumType = 1"
+        >
+          <ng-container *ngIf="conversation.sum_denied; else noUnpaidTpl">
+            {{ "conversation_item.unpaid" | translate }}
+            {{ conversation.sum_denied | euroCurrency: '0.2-2' }}</ng-container
+          >
+        </p>
+      </ng-container>
+      <ng-container *ngIf="feedbackPath$?.value === 'my_works'">
+        <p
+          class="conversation__money"
+          *ngIf="sumType === 1"
+          (click)="sumType = 2"
+        >
+          <ng-container *ngIf="conversation.sum_spent; else noPaidTpl">
+            {{ "conversation_item.paid" | translate }}
+            {{ conversation.sum_spent | euroCurrency: '0.2-2' }}
+          </ng-container>
+        </p>
+        <p
+          class="conversation__money conversation__money--awaiting"
+          *ngIf="sumType === 2"
+          (click)="sumType = 3"
+        >
+          <ng-container *ngIf="conversation.sum_awaiting; else noAwaitingTpl">
+            {{ "conversation_item.waiting" | translate }}
+            {{ conversation.sum_awaiting | euroCurrency: '0.2-2' }}
+          </ng-container>
+        </p>
+        <p
+          class="conversation__money conversation__money--unpaid"
+          *ngIf="sumType === 3"
+          (click)="sumType = 1"
+        >
+          <ng-container *ngIf="conversation.sum_denied; else noUnpaidTpl">
+            {{ "conversation_item.not_paid" | translate }}
+            {{ conversation.sum_denied | euroCurrency: '0.2-2' }}</ng-container
+          >
+        </p>
+      </ng-container>
+
+      <ng-template #noIncomeTpl>{{'conversation_item.no_income' | translate}}</ng-template>
+      <ng-template #noPaidTpl>{{'conversation_item.no_costs' | translate}}</ng-template>
+      <ng-template #noAwaitingTpl>{{'conversation_item.no_awaiting' | translate}}</ng-template>
+      <ng-template #noUnpaidTpl>{{'conversation_item.no_unpaid' | translate}}</ng-template>
+      <ng-template #noCostTpl>{{'conversation_item.no_costs' | translate}}</ng-template>
+
+      <p class="conversation__last-activity">{{ lastActivityTime }}</p>
+      <p
+        *ngIf="feedbackPath$?.value === 'my_advice'"
+        class="conversation__user-funnel"
+        [class]="'conversation__user-funnel--' + funnelColors[funnelNumber]"
+      >
+        <ng-container [ngSwitch]="funnelNumber">
+          <img *ngSwitchCase="1" src="assets/inbox/new-icon.svg" alt="" />
+          <img
+            *ngSwitchCase="2"
+            src="assets/inbox/interested-icon.svg"
+            alt=""
+          />
+          <img *ngSwitchCase="3" src="assets/inbox/regular-icon.svg" alt="" />
+          <img *ngSwitchDefault src="assets/inbox/archived-icon.svg" alt="" />
+        </ng-container>
+        <span class="name">{{ 'conversation_item.connection' | translate }}</span>
+      </p>
+      <p
+        *ngIf="feedbackPath$?.value === 'my_works'"
+        class="conversation__user-funnel"
+        [class]="'conversation__user-funnel--' + funnelColors[funnelNumber]"
+      >
+        <ng-container [ngSwitch]="funnelNumber">
+          <img *ngSwitchCase="1" src="assets/inbox/new-icon.svg" alt="" />
+          <img
+            *ngSwitchCase="2"
+            src="assets/inbox/interested-icon.svg"
+            alt=""
+          />
+          <img *ngSwitchCase="3" src="assets/inbox/regular-icon.svg" alt="" />
+          <img *ngSwitchDefault src="assets/inbox/archived-icon.svg" alt="" />
+        </ng-container>
+        <span class="name">{{ 'conversation_item.connector' | translate }}</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="conversation__body" #conversationBodyRef>
+    <div class="conversation__project-info">
+      <h3 [style.width.px]="widthProjectInfo">
+        {{
+          conversation.project?.title ||
+            conversation.title ||
+            conversation.conversation_userskill?.skill.name ||
+            conversation.icebreaker_member?.title ||
+            conversation.icebreaker?.title ||
+          ( 'conversation_item.untitled' | translate )
+        }}
+      </h3>
+      <div class="conversation__tags">
+        <p
+          class="conversation__tag conversation__tag--blue"
+          *ngIf="
+            conversation.isclarification && feedbackPath$?.value === 'my_works'
+          "
+        > {{ 'conversation_item.question_raised' | translate }} </p>
+
+        <p
+          class="conversation__tag conversation__tag--green"
+          *ngIf="conversation.has_feedback_request"
+        >
+          {{ 'conversation_item.paid_feedback_request' | translate }}
+        </p>
+
+        <p class="conversation__tag">
+          {{
+            conversation.project?.category_name ||
+              conversation.category_name ||
+              (
+                conversation.icebreaker?.skill.artcategory_skills.length
+                ? conversation.icebreaker.skill.artcategory_skills[0].name
+                : ('conversation_item.no_project_attached' | translate)
+              )
+            || ('conversation_item.no_project_attached' | translate)
+          }}
+        </p>
+
+        <p
+          class="conversation__tag conversation__tag--scheduled"
+          *ngIf="
+            conversation.lastmeetingconfirmed &&
+            !conversation.lastmeetingfinished
+          "
+          [matMenuTriggerFor]="menu"
+        >
+          <span class="material-icons">{{ 'conversation_item.add' | translate }}</span>
+          <span>{{ conversation.lastmeetingtime | greytDate }}</span>
+        </p>
+
+        <mat-menu #menu="matMenu">
+          <a
+            mat-menu-item
+            *ngFor="let item of calendars"
+            [href]="item.url"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <img height="18" [src]="item.icon" [alt]="item.displayName" />
+            <span>{{ item.displayName | translate }}</span>
+          </a>
+        </mat-menu>
+      </div>
+    </div>
+
+    <div class="conversation__left" #conversationLeftRef>
+      <div
+        class="conversation__skill"
+        *ngIf="
+          conversation.conversation_userskill ||
+          conversation.icebreaker as userSkill
+        "
+      >
+        <img
+          height="36"
+          width="36"
+          [src]="userSkill.skill.icon"
+          [alt]="userSkill.skill.name"
+          [matTooltip]="userSkill.skill.name"
+        />
+      </div>
+
+      <ng-container
+        *ngIf="conversation.project !== undefined; else feedbackLinkTpl"
+      >
+        <a
+          class="conversation__arrow"
+          [class]="'conversation__arrow--' + funnelColors[funnelNumber]"
+          [routerLink]="['/conversations', conversation.id]"
+          [matBadge]="conversation.unread_message_count"
+          [matBadgeHidden]="!conversation.unread_message_count"
+        >
+          <img src="assets/arrow-white.svg" />
+        </a>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #feedbackLinkTpl>
+  <a
+    class="conversation__arrow"
+    [class]="'conversation__arrow--' + funnelColors[funnelNumber]"
+    routerLink="newconversation"
+    [queryParams]="{
+      conversationPartnerID: conversation.user.id,
+      projectID: conversation.id,
+    }"
+    [matBadge]="conversation.unread_message_count"
+    [matBadgeHidden]="!conversation.unread_message_count"
+  >
+    <img src="assets/arrow-white.svg" />
+  </a>
+</ng-template>

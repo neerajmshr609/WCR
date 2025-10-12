@@ -1,0 +1,36 @@
+<div [ngClass]="{ hidden: hidden, active: control.value }">
+  <input
+    type="checkbox"
+    class="helpnavigation__checkbox"
+    id="navi-toggle-help"
+    [formControl]="control"
+  />
+  <label
+    for="navi-toggle-help"
+    #buttonRef
+    (click)="disablePulse()"
+    class="helpnavigation__button"
+    [ngClass]="{ 'helpnavigation__button--active': control.value }"
+  >
+    <span class="closed">
+      <img src="assets/icons/question-mark.svg" alt="" />
+    </span>
+    <span class="opened">
+      <img src="assets/newsfeed/x-circle.svg" alt="" />
+    </span>
+  </label>
+
+  <div class="helpnavigation__background">&nbsp;</div>
+  <nav class="helpnavigation__nav">
+    <iframe
+      id="ytplayer"
+      type="text/html"
+      width="100%"
+      height="100%"
+      [src]="src"
+      #iframe
+      allowscriptaccess="always"
+      frameborder="0"
+    ></iframe>
+  </nav>
+</div>

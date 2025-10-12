@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <mat-form-field>
+    <mat-label>Tags</mat-label>
+    <mat-chip-grid #chipList>
+      <mat-chip
+        *ngFor="let option of selectedOptions; let i = index"
+        [disabled]="true"
+        [removable]="true"
+        (removed)="remove(i)"
+      >
+        {{ option.name }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        #input
+        [formControl]="control"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+      />
+    </mat-chip-grid>
+    <mat-autocomplete
+      autoActiveFirstOption
+      #auto="matAutocomplete"
+      (opened)="panelOpened()"
+      (optionSelected)="selected($event)"
+    >
+      <cdk-virtual-scroll-viewport
+        #viewPort
+        [itemSize]="12"
+        [style.height.px]="height"
+      >
+        <mat-option
+          *cdkVirtualFor="let option of options$ | async"
+          [value]="option"
+          [disabled]="isSelected(option)"
+        >
+          {{ option.name }}
+        </mat-option>
+      </cdk-virtual-scroll-viewport>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

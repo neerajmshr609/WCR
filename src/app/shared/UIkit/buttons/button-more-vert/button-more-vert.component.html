@@ -1,0 +1,10 @@
+<app-icon-more-vertical
+  class="button-more-vert"
+  [color]="currentColor()"
+  [ngStyle]="{
+    'border-color': currentBorderColor(),
+    'background-color': currentBackgroundColor()
+  }"
+  (mouseover)="mouseoverHandler()"
+  (mouseleave)="mouseleaveHandler()"
+></app-icon-more-vertical>

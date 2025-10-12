@@ -1,0 +1,63 @@
+@import 'variables';
+
+.form {
+  margin-top: 1rem;
+
+  &__group {
+    margin-bottom: 0 !important;
+  }
+
+  &__input {
+    background: #f2f2f2;
+    border-radius: 2px;
+  }
+
+  &__validator {
+    margin-top: 2px;
+  }
+
+  &__label {
+    margin-top: 4px;
+  }
+}
+
+.reveal-identity {
+  &__btn {
+    display: block;
+    width: auto;
+    margin: 0 auto;
+    text-transform: uppercase;
+    background: none;
+    outline: none;
+    transition: 0.2s;
+    color: black;
+    text-align: center;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid transparent;
+
+    &:first-child {
+      margin-bottom: 0.5rem;
+    }
+
+    &--active {
+      border-color: $feed-accent-green;
+      color: $feed-accent-green;
+      cursor: default;
+    }
+
+    &--fade#{&}--active {
+      opacity: 0.5;
+    }
+  }
+
+  &__img {
+    display: block;
+    margin: 2rem auto;
+    width: 7.8rem;
+    height: auto;
+    cursor: pointer;
+  }
+}

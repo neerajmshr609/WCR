@@ -1,0 +1,53 @@
+<div class="slide-recommend" [ngClass]="{ 'slide-recommend--tips': tips }">
+  <ng-container *ngIf="tips; else closedWithoutTipsTpl">
+    <div class="slide-recommend__header">
+      <img
+        class="slide-recommend__img"
+        src="assets/ratebacks/recommend.svg"
+        alt="recommend"
+      />
+
+      <div>
+        <p class="slide-recommend__title">Recommend</p>
+        <p class="slide-recommend__title">Advisor</p>
+      </div>
+
+      <button (click)="copyLinkToClipboard()" class="slide-recommend__button">
+        {{ urlCopied ? 'url copied' : 'copy link' }}
+      </button>
+    </div>
+
+    <app-heart class="tips__heart"></app-heart>
+
+    <app-receipt
+      [link]="link"
+      [paymentRequest]="tips"
+      [approved]="true"
+      [showDateCreated]="false"
+      [isTips]="true"
+      [isFeedbackSession]="true"
+      [tipsValue]="tips.percent"
+    ></app-receipt>
+  </ng-container>
+
+  <ng-template #closedWithoutTipsTpl>
+    <div class="slide-recommend__header">
+      <img
+        class="slide-recommend__img"
+        src="assets/ratebacks/recommend.svg"
+        alt="recommend"
+      />
+      <p class="slide-recommend__title">Recommend</p>
+      <p class="slide-recommend__title">Advisor</p>
+    </div>
+
+    <p class="slide-recommend__text">
+      It seemed you loved this advisors review. Help this connector to gain more
+      connections by sharing the public profile amongst your friends.
+    </p>
+
+    <button (click)="copyLinkToClipboard()" class="slide-recommend__button">
+      {{ urlCopied ? 'url copied' : 'copy link' }}
+    </button>
+  </ng-template>
+</div>

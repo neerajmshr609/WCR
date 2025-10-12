@@ -1,0 +1,18 @@
+<app-segment-title
+  title="profile-topics-expertise.title"
+></app-segment-title>
+
+<app-skills-button-list
+  class="skills-button-list"
+  [skills]="skills()"
+  [selected]="selectedSkill()"
+  (selectedChange)="skillsService.selectSkill($event)"
+></app-skills-button-list>
+
+@if (isProfileOwner()) {
+  <app-button-edit
+    class="edit-button"
+    [editTargetName]="'profile-topics-expertise.edit-target-name' | translate"
+    (click)="editClickHandler()"
+  ></app-button-edit>
+}

@@ -1,0 +1,31 @@
+@import 'variables';
+
+.slider {
+  position: relative;
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.digit {
+  font-size: 1rem;
+  color: $feed-light-gray-text;
+  margin-top: -5px;
+  padding: 0 2px;
+  font-weight: bold;
+}
+
+.round {
+  width: 7rem;
+  transform: rotate(180deg);
+}
+
+.arrow {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  transform-origin: center 23.75%;
+  transition: 0.2s;
+}

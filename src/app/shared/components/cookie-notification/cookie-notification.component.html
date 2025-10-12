@@ -1,0 +1,27 @@
+<div class="cn__wrapper">
+  <div class="cn__text" [smoothHeight]="showMore">
+    <span
+      >Your data security and privacy is deadly important to us. All your
+      temporary actions on our website will be deleted once you close
+      Getme.Global.</span
+    >
+    <span *ngIf="showMore"
+      >We transfer them only towards our database once you register. All saved
+      behaviors are only analyzed by our algorithms to quicker find you a
+      suiting advisor. None of this data are being accessed by any other party
+      then Greyt.IT UG, Richardstr. 11, 12043 Berlin.</span
+    >
+  </div>
+  <div class="cn__btns">
+    <button class="btn btn--black" (click)="agree.emit()">I agree</button>
+    <a (click)="showMore = true" *ngIf="!showMore">More info</a>
+    <a href="/policy" target="_blank" *ngIf="showMore">Privacy policy</a>
+  </div>
+  <button mat-icon-button mat-dialog-close class="cn__close">
+    <img
+      src="assets/close-modal-icon.svg"
+      alt="close-modal-icon"
+      (click)="hideNotification.emit()"
+    />
+  </button>
+</div>

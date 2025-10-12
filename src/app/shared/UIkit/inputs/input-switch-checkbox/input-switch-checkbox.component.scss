@@ -1,0 +1,59 @@
+@use 'sass:math';
+@import "_variables";
+@import "_mixins";
+
+
+$borderWidth: $--sds-size-stroke-border;
+$padding: $--sds-size-stroke-border;
+$height: $--sds-typography-body-size-medium * 1.5;
+$width: math.div($height, 0.6);
+$bordersHeight: $borderWidth * 2 + $padding * 2;
+
+
+:host {
+  @include baseTransition;
+  display: block;
+  width: $--sds-typography-scale-07;
+  height: $--sds-typography-scale-05;
+  box-sizing: border-box;
+  background: $--sds-color-white-1000;
+  border: $borderWidth solid $--sds-color-border-brand-tertiary;
+  padding: $padding;
+  border-radius: $--sds-size-radius-full;
+
+  .input-switch-checkbox_slider {
+    @include baseTransition;
+    width: calc($height - $bordersHeight);
+    height: calc($height - $bordersHeight);
+    background: $--sds-color-border-brand-tertiary;
+    border-radius: $--sds-size-radius-full;
+  }
+
+  &.checked {
+    border-color: $--sds-color-border-brand-default;
+    background: $--sds-color-background-brand-default;
+
+    .input-switch-checkbox_slider {
+      background: $--sds-color-background-brand-tertiary;
+      margin-left: 100%;
+      transform: translateX(-100%);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.disabled {
+    border-color: $--sds-color-border-disabled-default;
+    background-color: $--sds-color-background-disabled-default;
+
+    .input-switch-checkbox_slider {
+      background-color: $--sds-color-grey-400;
+    }
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+}

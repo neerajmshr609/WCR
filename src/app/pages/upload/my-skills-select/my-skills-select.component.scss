@@ -1,0 +1,242 @@
+@import 'variables';
+
+.my-skills-select {
+  display: grid;
+  justify-items: center;
+  gap: 2rem;
+
+  background-color: #fafafa;
+  padding: 2rem;
+  box-shadow: 0 1.5px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  overflow: hidden;
+
+  .my-skills-filter {
+    width: 100%;
+    position: relative;
+
+    img {
+      position: absolute;
+
+      top: 50%;
+      width: 24px;
+      height: 24px;
+
+      opacity: 0;
+      right: 0;
+
+      transform: translate(-50%, -50%);
+      filter: invert(1);
+      z-index: 10;
+
+      transition: all 0.24s ease-in-out;
+
+      cursor: pointer;
+    }
+
+    .close_active {
+      right: 10px;
+      opacity: 1;
+    }
+  }
+
+  input {
+    margin: 4px 12px;
+    transition: all 0.45s;
+    background: #f7f7f7;
+    cursor: pointer;
+    min-width: 152px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.15);
+    -webkit-appearance: none;
+    --web-kit-box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    border: none;
+    padding: 16px 20px;
+    width: 98%;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+
+    @media only screen and (max-width: $bp-small) {
+      margin: 0;
+      width: 100%;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 16px;
+      color: $--sds-color-grey-500;
+    }
+  }
+
+  &-flex-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+    gap: 2rem;
+    align-content: start;
+
+    height: 50rem;
+    max-height: 60vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: calc(100% + 3rem);
+    margin: 0;
+    margin-top: -1rem;
+    padding: 1.2rem 1.5rem;
+    -webkit-appearance: none;
+
+    @media screen and (max-width: $bp-small) {
+      gap: 7.7px;
+    }
+  }
+
+  &__item {
+    box-shadow: 0 0.17px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    transition: all 0.45s;
+    background: white;
+    cursor: pointer;
+    height: 8rem;
+    width: 100%;
+    min-width: 15rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 1.6rem 2rem;
+
+    app-user-info {
+      margin-left: 2rem;
+    }
+
+    &--icon {
+      width: 4.8rem;
+      height: 4.8rem;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-right: 1rem;
+    }
+
+    &--skill-detail {
+      display: flex;
+      flex-direction: column;
+      height: 4.8rem;
+      justify-content: space-evenly;
+
+      h3 {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        color: $--sds-color-black-400;
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 1.1rem;
+        line-height: 1.1rem;
+        color: $feed-light-gray-text;
+      }
+    }
+
+    &--selected-skill-badge {
+      transition: all 0.45s;
+      height: 40px;
+      width: 40px;
+      position: absolute;
+
+      right: -18px;
+      top: -16px;
+    }
+
+    &:hover {
+      background: #f6ebc4;
+    }
+
+    &--selected {
+      background: black;
+      box-shadow: 0px 0.25641px 1.7094px rgba(0, 0, 0, 0.25);
+
+      .icon {
+        border-color: #484848;
+        filter: invert(1);
+      }
+
+      &:hover {
+        background: black;
+        box-shadow: 0px 0.25641px 1.7094px rgba(0, 0, 0, 0.25);
+      }
+
+      h3 {
+        color: white;
+      }
+
+      .my-advisers-select__item--badge {
+        color: white;
+        border-color: white;
+      }
+    }
+  }
+}
+
+.tags {
+  justify-self: start;
+  padding-top: 0;
+  overflow: auto;
+  white-space: nowrap;
+  width: 100%;
+
+  &::-webkit-scrollbar-thumb {
+    background: #f2f2f2;
+  }
+
+  &__item {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    display: inline-block;
+    background: none;
+    border: none;
+    outline: none;
+    color: $feed-light-gray-text;
+    cursor: pointer;
+    padding: 0;
+    padding-right: 23px;
+
+    @media screen and (max-width: $bp-small) {
+      height: 40px;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &--active {
+      color: blue;
+      font-weight: bold;
+    }
+  }
+}
+
+.cant-find-skill-btn {
+  cursor: pointer;
+  background-color: unset;
+  border: unset;
+  padding: unset;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.03em;
+  color: $--sds-color-grey-500;
+  margin-left: auto;
+}
+
+::placeholder {
+  color: #dddddd;
+}
+
+app-small-spinner {
+  grid-column: 1 / 6;
+}

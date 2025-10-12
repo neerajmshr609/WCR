@@ -1,0 +1,38 @@
+<div class="sign-up-message-modal__container">
+  <button
+    mat-icon-button
+    mat-dialog-close
+    class="sign-up-message-modal__btn--close"
+  >
+    <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+  </button>
+
+  <img
+    class="sign-up-message-modal__img"
+    src="assets/none-sign-up.svg"
+    alt="none-sign-up"
+  />
+
+  <p class="sign-up-message-modal__text">{{ msg }}</p>
+
+  <div class="sign-up-message-modal__actions">
+    <button
+      class="sign-up-message-modal__btn accented-btn"
+      (click)="onSignUp()"
+      mat-dialog-close
+    >
+      Sign Up
+    </button>
+    <button
+      class="sign-up-message-modal__btn accented-btn"
+      (click)="onSignIn()"
+      mat-dialog-close
+    >
+      Sign In
+    </button>
+  </div>
+
+  <a class="sign-up-message-modal__link" routerLink="/why" mat-dialog-close
+    >more info</a
+  >
+</div>

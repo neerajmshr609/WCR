@@ -1,0 +1,28 @@
+<div class="minimal-switcher">
+  <app-switch [control]="viewModeControl" label="Minimalistic Version"></app-switch>
+</div>
+<ul>
+  @for (item of items(); track item.param) {
+    @if (item.id === 'lupai') {
+      <div class="line"></div>
+      <app-dropdown-list-item
+        [menuItem]="item"
+        [disabled]="isDisabled(item)"
+        [selected]="isSelected(item)"
+        (click)="clickItemHandler(item)"
+        [theme]="theme()"
+        [withoutHover]="true"
+
+      ></app-dropdown-list-item>
+    } @else {
+      <app-dropdown-list-item
+        [menuItem]="item"
+        [disabled]="isDisabled(item)"
+        [selected]="isSelected(item)"
+        (click)="clickItemHandler(item)"
+        [theme]="theme()"
+        [withoutHover]="true"
+      ></app-dropdown-list-item>
+    }
+  }
+</ul>

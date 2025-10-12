@@ -1,0 +1,228 @@
+@import '_variables';
+@import "_mixins";
+
+app-get-help {
+  @include pageContent;
+  padding: 0 1.2rem 2.4rem 1.2rem;
+
+  @media screen and (min-width: $desktop) {
+    padding: $--sds-size-space-1600 5rem 2.4rem 5rem;
+  }
+
+  app-desktop-header {
+    margin-bottom: 1.6rem;
+  }
+
+  .ice-breakers-subtitle {
+    color: $--sds-color-text-default-secondary;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-small;
+    font-weight: $--sds-typography-body-font-weight-strong;
+    line-height: $line-height-140;
+    margin-bottom: 1.2rem;
+
+    @media screen and (min-width: $bp-medium) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: $--sds-size-space-250;
+      margin-bottom: $--sds-size-space-850;
+
+      &_chevron-down {
+        width: $--sds-typography-body-size-medium;
+        height: $--sds-typography-body-size-medium;
+      }
+    }
+  }
+
+  app-ice-breakers-list {
+    //display: flex;
+    //flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @media (min-width: $desktop) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: 1740px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media (min-width: 2220px) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+  }
+
+  app-skill-filter {
+    width: 100%;
+  }
+
+  app-ice-breaker-card {
+    display: flex;
+    width: auto !important;
+
+    .head {
+      &_text {
+        @media (min-width: $desktop) {
+          max-width: 164px;
+        }
+
+        @media (min-width: 1400px) {
+          max-width: 190px;
+        }
+
+        @media (min-width: 1920px) {
+          max-width: 220px;
+        }
+
+      }
+    }
+  }
+
+  app-skill-filter {
+    width: 100% !important;
+    display: flex;
+
+    @media (min-width: $bp-small) {
+      width: 100% !important;
+    }
+
+    .skills-grid.skills-list {
+      gap: 2rem;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+
+      @media (min-width: $desktop) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      @media (min-width: 1740px) {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      @media (min-width: 2220px) {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      app-expertise-card {
+        display: flex;
+        width: 100%;
+      }
+    }
+  }
+
+  app-expertise-card {
+    .card {
+
+      flex-grow: 1;
+
+      &__text {
+        @media (min-width: $desktop) {
+          max-width: 200px;
+        }
+
+        @media (min-width: 1800px) {
+          max-width: 260px;
+        }
+      }
+    }
+  }
+}
+
+.custom-stepper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+  width: 100%;
+  margin-bottom: 40px;
+
+  button[tuiStep] {
+    background: none;
+    border: none;
+    padding: 0;
+    flex: none;
+    display: flex;
+
+    .step {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+
+    .circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.4rem;
+      color: #333;
+      margin-bottom: 0.8rem;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+
+    .circle.active {
+      background-color: black;
+      color: white;
+      border-color: black;
+    }
+
+    .label {
+      font-size: 20px !important;
+      font-weight: normal;
+      color: grey;
+      text-align: center;
+      max-width: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 4px 0;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      transition: font-weight 0.3s ease, color 0.3s ease;
+    }
+
+    .t-marker {
+      display: none;
+    }
+
+
+    .circle.active+.label,
+    button[tuiStep].active .label {
+      font-weight: 700;
+      color: black;
+      font-size: 20px !important;
+    }
+  }
+}
+
+.step {
+  display: flex;
+}
+
+.custom-stepper .label {
+  font-size: 20px;
+  color: #333;
+  max-width: 180px;
+  transition: all 0.3s ease;
+
+}
+
+.custom-stepper .label.activeLabel {
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+}

@@ -1,0 +1,114 @@
+@import '_variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.4rem;
+  width: 100%;
+}
+
+
+.login-modal-title {
+  color: $--sds-color-text-default-default;
+  text-align: center;
+  font-family: $--sds-typography-heading-font-family;
+  font-size: $--sds-typography-heading-size-base;
+  font-style: normal;
+  font-weight: $--sds-typography-heading-font-weight;
+  line-height: 120%;
+  letter-spacing: -0.48px;
+  margin-bottom: 4.8rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  width: 100%;
+}
+
+app-icon-new-user {
+  display: flex;
+  width: 5.5rem;
+  height: 5.5rem;
+}
+
+.form-field {
+  position: relative;
+
+  app-search-icon {
+    display: flex;
+    position: absolute;
+    width: 1.6rem;
+    height: 1.6rem;
+    right: 1.6rem;
+    top: 4.2rem;
+  }
+}
+
+.terms-checkbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  a {
+    margin-left: 3.5rem;
+    margin-top: -1.2rem;
+    color: $--sds-color-text-default-secondary;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+  }
+}
+
+
+.team-checkbox {
+  display: flex;
+
+  @media (max-width: $desktop) {
+    justify-content: center;
+  }
+}
+
+.sub-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.signup-switcher {
+  align-self: center;
+  max-width: 363px;
+
+  &-text {
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 100%;
+  }
+}
+
+app-user-icon, app-icon-double-right-arrow, app-login-icon {
+  display: flex;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.create-new-company {
+  display: flex;
+  gap: 1.6rem;
+  padding: 0.8rem;
+}

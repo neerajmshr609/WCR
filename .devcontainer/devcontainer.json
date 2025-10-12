@@ -1,0 +1,13 @@
+{
+  "name": "Basic Frontend Container",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Angular.ng-template",
+        "streetsidesoftware.code-spell-checker",
+        "GitHub.copilot"
+      ]
+    }
+  },
+  "forwardPorts": [4200]
+}

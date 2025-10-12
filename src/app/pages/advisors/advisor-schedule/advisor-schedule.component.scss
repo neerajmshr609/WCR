@@ -1,0 +1,41 @@
+@import 'variables';
+
+.schedule {
+  background: #fafafa;
+  border-radius: 6px;
+
+  &__days {
+    display: flex;
+  }
+
+  &__day {
+    margin: 0 0.75rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #f2f2f2;
+
+    &--active {
+      color: #000;
+    }
+  }
+
+  &__time-range {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0 0.75rem;
+  }
+
+  &__time {
+    color: #000;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  &__label {
+    color: #b0b0b0;
+    font-weight: 600;
+    font-size: 1.4rem;
+  }
+}

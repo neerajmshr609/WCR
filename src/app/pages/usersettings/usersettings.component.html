@@ -1,0 +1,77 @@
+<div class="settings">
+  <app-main-content-menu
+    [menuItems]="menuItems()"
+    (changeSelectedItem)="didSelectMenuItem($event)"
+  ></app-main-content-menu>
+
+  <div class="settings_content">
+    <h1 class="sectionTitle">{{ 'settings' | translate }}</h1>
+
+    @switch (selectedMenu) {
+      @case ('general') {
+        <app-account-information
+          [currentUser]="currentUser"
+          (onSave)="onSave($event)"
+        ></app-account-information>
+      }
+      @case ('organization') {
+        <app-org-information
+          [organization]="organization()"
+          [currentUser]="currentUser"
+          (onSave)="onSave($event)"
+        ></app-org-information>
+      }
+      @case ('skills') {
+        <app-topics-and-expertise
+          (onSave)="onSave($event)"
+          [currentUser]="currentUser"
+        ></app-topics-and-expertise>
+      }
+      @case ('user-managemaent') {
+        <app-user-management [currentUser]="currentUser"></app-user-management>
+      }
+      @case ('notifications') {
+        <app-notifications [currentUser]="currentUser"></app-notifications>
+      }
+      @case ('create-organisation') {
+        <app-create-org [organization]="organization()" (deletedOrgEvent)="deleteOrgVisually($event)"></app-create-org>
+      }
+      <!-- @case ('visibility') {
+        <app-public-visibility></app-public-visibility>
+      } -->
+      <!-- @case (2) {
+        <app-finance [currentUser]="currentUser"></app-finance>
+      }
+      @case (3) {
+        <app-scheduling
+          (onSave)="onSave($event)"
+          [userData]="currentUser"
+        ></app-scheduling>
+      }
+      @case (5) {
+        <app-section-header [subtitle]="'privacy_seriously' | translate">
+          <app-lock-icon></app-lock-icon>
+        </app-section-header>
+      } -->
+      @default {
+        <app-section-header [title]="'coming_soon.title' | translate">
+          <app-lock-icon></app-lock-icon>
+        </app-section-header>
+      }
+    }
+
+    <ng-template>
+      @for (item of comingSoon; track item.text) {
+        @if (currentUser && selectedMenu === i + 4) {
+          <div class="coming-soon-settings">
+            <app-coming-soon
+              [color]="item.color"
+              [text]="item.text"
+              [url]="item.img"
+            ></app-coming-soon>
+          </div>
+        }
+      }
+    </ng-template>
+  </div>
+</div>

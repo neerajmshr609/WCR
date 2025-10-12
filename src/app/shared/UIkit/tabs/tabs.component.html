@@ -1,0 +1,12 @@
+<div class="tabs">
+  @for (tab of tabs(); track tab.name) {
+    <div
+      class="tab-label selected"
+      [ngClass]="{ selected: selected() === tab.value, disabled: tab.disabled }"
+    >
+      <button class="tab" (click)="selectTab.emit(tab.value)">
+        {{ tab.name | translate }}
+      </button>
+    </div>
+  }
+</div>

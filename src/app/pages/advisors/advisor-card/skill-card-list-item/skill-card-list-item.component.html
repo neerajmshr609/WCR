@@ -1,0 +1,205 @@
+<div class="skill__container">
+  <div
+    (click)="toggleSelected()"
+    class="skill"
+    [ngClass]="{
+      'skill--selected': isSelected,
+      'skill--detail-presentation': isDetailPresentation,
+    }"
+  >
+    <img
+      [hidden]="!isSelected"
+      class="skill__selected-advisor-badge"
+      src="assets/selected_advisor@2x.png"
+    />
+    <div class="skill__left">
+      <img class="skill__icon" [src]="userSkill.skill.icon" />
+      <div class="skill__body">
+        <h2>{{ userSkill.skill.name }}</h2>
+        <p>{{ userSkill.rate | euroCurrency }}/h</p>
+      </div>
+    </div>
+    <div>
+      <section class="round-slider">
+        <app-round-slider
+          *ngIf="isShowRatingScoreGraph"
+          [score]="userSkill.overall_skill_score"
+          [hideDigits]="true"
+        ></app-round-slider>
+      </section>
+      <app-total-score
+        [smallBtn]="!isShowRatingScoreGraph"
+        [userSkill]="userSkill"
+      ></app-total-score>
+    </div>
+  </div>
+
+  <ng-template [ngIf]="isDetailPresentation">
+    <div class="skill-score">
+      <div class="time-teached">
+        <span>Total advice time</span>
+        <span>{{ userSkill.hours_skill_score | hours }}</span>
+      </div>
+    </div>
+
+    <div class="reviews">
+      <div class="review" *ngIf="!reviews.length">
+        <div class="review__header">
+          <div class="review__actions">
+            <h3 class="review__title">Single reviews</h3>
+            <div class="review__btns">
+              <button class="review__arrow-btn" [disabled]="true">
+                <div class="review__arrow-btn__content">
+                  <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+                </div>
+              </button>
+              <button
+                class="review__arrow-btn review__arrow-btn--rotate"
+                [disabled]="true"
+              >
+                <div class="review__arrow-btn__content">
+                  <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div class="review__tags">
+            <div class="tags tags--secondary">
+              <p class="tag">Knowledge <span class="tag--gray">-.-</span></p>
+              <p class="tag">Explanation <span class="tag--gray">-.-</span></p>
+              <p class="tag">Articulation <span class="tag--gray">-.-</span></p>
+              <p class="tag">Politeness <span class="tag--gray">-.-</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review__body">
+          <div class="review__user">
+            <app-user-info
+              [disableLink]="true"
+              [isGrey]="true"
+              [user]="{
+                id: 1,
+                username: 'No comment',
+                city: 'LEFT',
+                image: 'assets/advisors/no-reviews.svg',
+              }"
+            ></app-user-info>
+
+            <div class="review__switch">
+              <button class="review__switch-btn" [disabled]="true">
+                <img src="assets/advisors/positive-feedback.svg" alt="" />
+              </button>
+              <button
+                class="review__switch-btn review__switch-btn--right"
+                [disabled]="true"
+              >
+                <img src="assets/advisors/negative-feedback.svg" alt="" />
+              </button>
+            </div>
+          </div>
+          <div class="review__text empty-image">
+            <img
+              [src]="'' | emptyPlaceholderImage"
+              alt="Empty image placeholder"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="review" *ngIf="reviews.length">
+        <div class="review__header">
+          <div class="review__actions">
+            <h3 class="review__title">Single reviews</h3>
+            <div class="review__btns">
+              <button
+                class="review__arrow-btn"
+                [disabled]="selectedReviewIndex === 0"
+                (click)="changeReview(-1)"
+              >
+                <div class="review__arrow-btn__content">
+                  <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+                </div>
+              </button>
+              <button
+                class="review__arrow-btn review__arrow-btn--rotate"
+                [disabled]="selectedReviewIndex === reviews.length - 1"
+                (click)="changeReview(1)"
+              >
+                <div class="review__arrow-btn__content">
+                  <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="review__tags">
+            <div class="tags tags--secondary">
+              <p class="tag">
+                Knowledge
+                <span>
+                  {{ selectedReview.knowledge_rate | projectScore }}
+                </span>
+              </p>
+              <p class="tag">
+                Explanation
+                <span>
+                  {{ selectedReview.explanation_rate | projectScore }}
+                </span>
+              </p>
+              <p class="tag">
+                Articulation
+                <span>
+                  {{ selectedReview.pronunciation_rate | projectScore }}
+                </span>
+              </p>
+              <p class="tag">
+                Politeness
+                <span>
+                  {{ selectedReview.politeness_rate | projectScore }}
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="review__body review__body-filled">
+          <div class="review__user">
+            <app-user-info
+              class="custom-review-user-info"
+              [isWhite]="false"
+              [noBorder]="true"
+              [userId]="selectedReview.student_id"
+            ></app-user-info>
+            <div class="review__switch">
+              <button
+                class="review__switch-btn"
+                [disabled]="!selectedReview.positive_comment"
+                (click)="switchComment('positive')"
+                [ngClass]="{
+                  'review__switch-btn--selected':
+                    selectedComment === 'positive_comment',
+                }"
+              >
+                <img src="assets/advisors/positive-feedback.svg" alt="" />
+              </button>
+              <button
+                class="review__switch-btn"
+                [disabled]="!selectedReview.negative_comment"
+                (click)="switchComment('negative')"
+                [ngClass]="{
+                  'review__switch-btn--selected':
+                    selectedComment === 'negative_comment',
+                }"
+              >
+                <img src="assets/advisors/negative-feedback.svg" alt="" />
+              </button>
+            </div>
+          </div>
+          <div class="review__text">
+            {{ selectedReview[selectedComment] }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

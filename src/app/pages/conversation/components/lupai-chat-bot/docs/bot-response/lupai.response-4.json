@@ -1,0 +1,303 @@
+{
+  "assistant_response": {
+    "answer": "To get your birth certificate or other documents translated and certified in Germany, follow these steps:\n\n1. Find a certified translator: Your foreign documents, such as your birth certificate, must be translated into German by a sworn or certified translator. You can find state-recognised translators on websites like justiz-dolmetscher.de.\n\n2. Certification of translation: The translation must be certified, meaning it is officially recognized. This is often done by the translation agency or the sworn translator.\n\n3. Document authentication: If your documents need to be certified (authenticated), you can do this at the local Municipal Office (Bürgeramt), the Civil Registry Office (Standesamt) that issued the original document, or a notary (Notar). Note that the Bürgeramt is usually less expensive than a notary.\n\n4. Apostille or legalization: Depending on your country of origin, you may also need an apostille or confirmation of authenticity for your documents. This is usually done in your home country or at your country's embassy in Germany. Since the German Embassy in Damascus is currently closed, Syrians can use the German diplomatic mission in Beirut, Lebanon.\n\n5. Check embassy websites: Before starting, check the website of the German embassy responsible for you to find specific instructions and requirements.\n\n6. Prepare for costs: Be aware that translation and certification services involve additional costs.\n\nBy following these steps, you can have your birth certificate and other documents properly translated and certified for use in Germany.",
+    "improved_answer": "To get your birth certificate or other documents translated and certified in Germany, follow these steps:\n\n1. Find a certified translator: Your foreign documents, such as your birth certificate, must be translated into German by a sworn or certified translator. You can find state-recognised translators on websites like justiz-dolmetscher.de.\n\n2. Certification of translation: The translation must be certified, meaning it is officially recognized. This is often done by the translation agency or the sworn translator.\n\n3. Document authentication: If your documents need to be certified (authenticated), you can do this at the local Municipal Office (Bürgeramt), the Civil Registry Office (Standesamt) that issued the original document, or a notary (Notar). Note that the Bürgeramt is usually less expensive than a notary.\n\n4. Apostille or legalization: Depending on your country of origin, you may also need an apostille or confirmation of authenticity for your documents. This is usually done in your home country or at your country's embassy in Germany. Since the German Embassy in Damascus is currently closed, Syrians can use the German diplomatic mission in Beirut, Lebanon.\n\n5. Check embassy websites: Before starting, check the website of the German embassy responsible for you to find specific instructions and requirements.\n\n6. Prepare for costs: Be aware that translation and certification services involve additional costs.\n\nBy following these steps, you can have your birth certificate and other documents properly translated and certified for use in Germany.",
+    "answer_found": true
+  },
+  "retriever_items": [
+    {
+      "document_name": "source-data",
+      "text": "most cases, you must submit all documents, some along with a certified translation into German. For instance, you don't have to have your passport translated, but often your birth certificate needs to be translated into German and certified. That means you need to find translation agencies in your country who can translate and certify documents . So, there are some additional costs to consider. Check out the website of the embassy responsible for you beforehand to find out more.",
+      "text_with_context": "source_name: Handbook Germany Immigration\nsource_domain: Immigration\ntext: most cases, you must submit all documents, some along with a certified translation into German. For instance, you don't have to have your passport translated, but often your birth certificate needs to be translated into German and certified. That means you need to find translation agencies in your country who can translate and certify documents . So, there are some additional costs to consider. Check out the website of the embassy responsible for you beforehand to find out more.",
+      "document_metadata": {},
+      "node_id": "edd14aa277144965a05c1ee40fa9770f",
+      "parent_node_id": "129c3ae7ef2644b28382bac0608f94bc",
+      "chunk_size": 64,
+      "chunk_id": 1,
+      "keyword_score": 5.702,
+      "vector_score": 0.651,
+      "relative_hybrid_score": 0.91,
+      "collection_metadata": {
+        "name": "HandbookGermanyImmigration",
+        "language": "en",
+        "documents": [],
+        "collector": "HandbookGermanyImmigration",
+        "source_name": "Handbook Germany Immigration",
+        "source_author": "Handbook Germany",
+        "source_url": "https://handbookgermany.de/en/search?filter%5Bfulltext%5D=&f1%5B0%5D=slug%3Amigration%2Fvisa&f1%5B1%5D=slug%3Amigration&f1%5B2%5D=slug%3Amigration%2Fnaturalisation&f1%5B3%5D=slug%3Amigration%2Fskilled-workers&f1%5B4%5D=slug%3Amigration%2Fother",
+        "source_domain": "Immigration",
+        "source_type": "Information curated by counseling centers and information portals",
+        "source_region": "Germany",
+        "source_date": "01-23-2025",
+        "source_description": ""
+      },
+      "child_node_ids": []
+    },
+    {
+      "document_name": "source-data",
+      "text": "located in Beirut (Lebanon) and you can obtain your certified copies from there. You can find a full list of the German embassies and diplomatic missions online. If you have documents in another language, you must enclose a German translation by a sworn interpreter. If you want to use certificates or diplomas from your home country in Germany and need them to be certified (legalisation/apostille), you must have them certified in your country of origin or at your country's embassy in Germany.",
+      "text_with_context": "source_name: Handbook Germany Work\nsource_domain: Work\ntext: located in Beirut (Lebanon) and you can obtain your certified copies from there. You can find a full list of the German embassies and diplomatic missions online. If you have documents in another language, you must enclose a German translation by a sworn interpreter. If you want to use certificates or diplomas from your home country in Germany and need them to be certified (legalisation/apostille), you must have them certified in your country of origin or at your country's embassy in Germany.",
+      "document_metadata": {},
+      "node_id": "e0b171e98d3c429491a44700c75bf4ec",
+      "parent_node_id": "7353f8f47ad048dda111455d88a64c82",
+      "chunk_size": 64,
+      "chunk_id": 2,
+      "keyword_score": 3.439,
+      "vector_score": 0.688,
+      "relative_hybrid_score": 0.881,
+      "collection_metadata": {
+        "name": "HandbookGermanyWork",
+        "language": "en",
+        "documents": [],
+        "collector": "HandbookGermanyWork",
+        "source_name": "Handbook Germany Work",
+        "source_author": "Handbook Germany",
+        "source_url": "https://handbookgermany.de/en/search?filter%5Bfulltext%5D=&f1%5B0%5D=slug%3Awork&f1%5B1%5D=slug%3Awork%2Frecognition&f1%5B2%5D=slug%3Awork%2Fworking-rights&f1%5B3%5D=slug%3Awork%2Fsocial-insurance&f1%5B4%5D=slug%3Awork%2Femployment&f1%5B5%5D=slug%3Awork%2Ftax&f1%5B6%5D=slug%3Awork%2Fother",
+        "source_domain": "Work",
+        "source_type": "Information curated by counseling centers and information portals",
+        "source_region": "Germany",
+        "source_date": "01-23-2025",
+        "source_description": ""
+      },
+      "child_node_ids": []
+    },
+    {
+      "document_name": "source-data",
+      "text": "Where Can I have my documents certified? Local Municipal Office (“Bürgeramt“): Here you can have both documents issued by the German authorities and those required by them authenticated. You are expected to pay ca. 4 euros per page for the authentication process. In large cities, you often need to make an appointment to have your certificates authenticated- without one, you may have to wait in line for a long time. Notary („Notar“): You can also go to a notary and have your documents certified there. But the Notary's service is often much more expensive than that of the \"Bürgeramt\". At notar.de , you can find notary offices nearby. Civil Registry Office („Standesamt“): Copies of birth certificates, marriage certificates or death certificates can be certified by the Civil Registry Office that issued them. Here you are often expected to pay about €5 to €8 per page. Schools and universities: You can have copies of your school diplomas or graduation certificates authenticated at the school or university where you graduated. Many schools and universities provide cost-free certified copies of your diplomas along with the original certificate. Students often have to pay a few euros for more copies. If you are not in Germany but need a certified copy of a document for German authorities, you can go to the German embassy in your country. However, the service will cost you money. Please note : The German Embassy in Damascus is currently closed. The next German diplomatic mission for Syrians is located in Beirut (Lebanon) and you can obtain",
+      "text_with_context": null,
+      "document_metadata": {
+        "source_url": "https://handbookgermany.de/en/certifiedcopies",
+        "source_author": "Handbook Germany",
+        "source_name": "Handbook Germany Work",
+        "source_domain": "Work",
+        "page": null,
+        "section": "Certified Copies",
+        "subsection": null,
+        "sub_subsection": null
+      },
+      "node_id": "5b6d4bcc46e7450785c8dc78e161d391",
+      "parent_node_id": "",
+      "chunk_size": 256,
+      "chunk_id": 3,
+      "keyword_score": 3.614,
+      "vector_score": 0.682,
+      "relative_hybrid_score": 0.876,
+      "collection_metadata": {
+        "name": "HandbookGermanyWork",
+        "language": "en",
+        "documents": [],
+        "collector": "HandbookGermanyWork",
+        "source_name": "Handbook Germany Work",
+        "source_author": "Handbook Germany",
+        "source_url": "https://handbookgermany.de/en/search?filter%5Bfulltext%5D=&f1%5B0%5D=slug%3Awork&f1%5B1%5D=slug%3Awork%2Frecognition&f1%5B2%5D=slug%3Awork%2Fworking-rights&f1%5B3%5D=slug%3Awork%2Fsocial-insurance&f1%5B4%5D=slug%3Awork%2Femployment&f1%5B5%5D=slug%3Awork%2Ftax&f1%5B6%5D=slug%3Awork%2Fother",
+        "source_domain": "Work",
+        "source_type": "Information curated by counseling centers and information portals",
+        "source_region": "Germany",
+        "source_date": "01-23-2025",
+        "source_description": ""
+      },
+      "child_node_ids": [
+        "5a971f523e074c84a1ac8e20c38097bb",
+        "a9f9ea61cf5642fe9292de47f26bd4b0",
+        "50de1da654ab4c6097ddf659e6ed1ea4",
+        "4728cb567427405c985be9f0927e8b4f",
+        "27a45bdca6fb4362ad5aade29ceb342d",
+        "9dbbcdf0408649fa91d4c917a68eac58"
+      ]
+    },
+    {
+      "document_name": "source-data",
+      "text": "Documents required Form \"Angaben zur Ausstellung einer Aufenthaltskarte\" (filled out) Valid passport 1 current biometric photo 35mm x 45mm, frontal shot with neutral facial expression and closed mouth, looking straight into the camera, light background Proof of relationship i.e. certificate of birth, marriage certificate, partnership certificate For all foreign documents: translation, possibly with an additional apostil or confirmation of authenticity Please provide an authenticated translation of all foreign documents. Depending on your country of origin, you may also need an apostil or confirmation of authenticity (issued by a German consular official) for your document(s). You can find out more about this topic for example on the website of the Federal Foreign Office: International recognition/Legalisation of documents (see section \"More information\"). Proof of registered residence of the EU or",
+      "text_with_context": null,
+      "document_metadata": {
+        "source_url": "https://www.berlin.de/einwanderung/dienstleistungen/service.871055.php/dienstleistung/324282/en/",
+        "source_author": "Landesamt für Einwanderung Berlin",
+        "source_name": "Overview of services - sorted by purpose of residence and living situation",
+        "source_domain": "Immigration",
+        "page": null,
+        "section": "EU, EEA and Switzerland",
+        "subsection": "Residency permit card for family members of nationals of EU member states (except Germany), Norway, Iceland or Liechtenstein",
+        "sub_subsection": "Documents required"
+      },
+      "node_id": "1f0b5664f93f46bda2ce6ac4c8a46807",
+      "parent_node_id": "33f4ff05c1ac424291e44ca02fabe9e7",
+      "chunk_size": 128,
+      "chunk_id": 4,
+      "keyword_score": 4.096,
+      "vector_score": 0.635,
+      "relative_hybrid_score": 0.787,
+      "collection_metadata": {
+        "name": "BerlinImmigrationOffice",
+        "language": "en",
+        "documents": [],
+        "collector": "BerlinImmigrationOffice",
+        "source_name": "Berlin Immigration Office",
+        "source_author": "Landesamt für Einwanderung Berlin",
+        "source_url": "https://www.berlin.de/einwanderung/en/services/our-services/artikel.878265.en.php",
+        "source_domain": "Immigration",
+        "source_type": "Administrative processes",
+        "source_region": "Berlin",
+        "source_date": "01-23-2025",
+        "source_description": "This page provides information on how to book appointments for various immigration services offered by the Berlin Immigration Office. It includes details on the types of services available, such as applying for residence permits, citizenship, and other immigration-related matters."
+      },
+      "child_node_ids": [
+        "fdc2b830eee84bfbbc5c317046fd77b5",
+        "fc5bc07b8de14163a58bd9d569578ab7"
+      ]
+    },
+    {
+      "document_name": "source-data",
+      "text": "How can I apply for the recognition of my qualifications? If you have found the proper recognition office, you can apply for the recognition of your degrees directly. But first: clarify how you want to fund the recognition process. You can read more in this regard in the section \"Where can I obtain financial aid to pay for the recognition process? Gather all the relevant certificates and documents in advance. Certified copies and translations are not always required. You can have the documents required for recognition translated by a state-recognised translator. Check out the website justiz-dolmetscher.de for a list of state-recognised translators. If you do not have any documents that prove the qualifications you have obtained, seek advice from a counselling centre. After your degree has been checked,",
+      "text_with_context": null,
+      "document_metadata": {
+        "source_url": "https://handbookgermany.de/en/recognition",
+        "source_author": "Handbook Germany",
+        "source_name": "Handbook Germany Work",
+        "source_domain": "Work",
+        "page": null,
+        "section": "Recognition of foreign certificates",
+        "subsection": null,
+        "sub_subsection": null
+      },
+      "node_id": "75c34352a45c4cbf8ef5209be020f12d",
+      "parent_node_id": "17b3196d8fd54bc2ae783697343585c4",
+      "chunk_size": 128,
+      "chunk_id": 5,
+      "keyword_score": 3.321,
+      "vector_score": 0.63,
+      "relative_hybrid_score": 0.734,
+      "collection_metadata": {
+        "name": "HandbookGermanyWork",
+        "language": "en",
+        "documents": [],
+        "collector": "HandbookGermanyWork",
+        "source_name": "Handbook Germany Work",
+        "source_author": "Handbook Germany",
+        "source_url": "https://handbookgermany.de/en/search?filter%5Bfulltext%5D=&f1%5B0%5D=slug%3Awork&f1%5B1%5D=slug%3Awork%2Frecognition&f1%5B2%5D=slug%3Awork%2Fworking-rights&f1%5B3%5D=slug%3Awork%2Fsocial-insurance&f1%5B4%5D=slug%3Awork%2Femployment&f1%5B5%5D=slug%3Awork%2Ftax&f1%5B6%5D=slug%3Awork%2Fother",
+        "source_domain": "Work",
+        "source_type": "Information curated by counseling centers and information portals",
+        "source_region": "Germany",
+        "source_date": "01-23-2025",
+        "source_description": ""
+      },
+      "child_node_ids": [
+        "8166b5fce25245bc9401775de0e8e1b3",
+        "a6ee3755e1994bdc80d916e99ac4c6a3"
+      ]
+    },
+    {
+      "document_name": "source-data",
+      "text": "What documents does my family have present at their appointment at the embassy? Your family must bring (at least) the following documents: The confirmation email from the embassy about the appointment Visa applications for all family members An extract from the family register (if available in your country) Birth certificates of all family members Your marriage certificate A copy of your residence permit in Germany Please keep in mind that foreign documents (such as court judgments, family registers, custody declarations, etc.) must always be translated into German, i.e. you must also submit the documents with a German translation (by a recogni s ed translation agency). These documents may have to be verified by the German embassy - which means their authenticity must be checked. The embassy can also request further documents from you. Therefore, before your appointment, check the embassy website where your family has their appointment.",
+      "text_with_context": null,
+      "document_metadata": {
+        "source_url": "https://handbookgermany.de/en/family-reunification-for-immigrants",
+        "source_author": "Handbook Germany",
+        "source_name": "Handbook Germany Immigration",
+        "source_domain": "Immigration",
+        "page": null,
+        "section": "Family Reunification for Immigrants",
+        "subsection": null,
+        "sub_subsection": null
+      },
+      "node_id": "b76a78a850344713aeb25fdb91d6e16b",
+      "parent_node_id": "0a5e3ec7b69f4fd681478501e71045be",
+      "chunk_size": 128,
+      "chunk_id": 6,
+      "keyword_score": 3.03,
+      "vector_score": 0.636,
+      "relative_hybrid_score": 0.733,
+      "collection_metadata": {
+        "name": "HandbookGermanyImmigration",
+        "language": "en",
+        "documents": [],
+        "collector": "HandbookGermanyImmigration",
+        "source_name": "Handbook Germany Immigration",
+        "source_author": "Handbook Germany",
+        "source_url": "https://handbookgermany.de/en/search?filter%5Bfulltext%5D=&f1%5B0%5D=slug%3Amigration%2Fvisa&f1%5B1%5D=slug%3Amigration&f1%5B2%5D=slug%3Amigration%2Fnaturalisation&f1%5B3%5D=slug%3Amigration%2Fskilled-workers&f1%5B4%5D=slug%3Amigration%2Fother",
+        "source_domain": "Immigration",
+        "source_type": "Information curated by counseling centers and information portals",
+        "source_region": "Germany",
+        "source_date": "01-23-2025",
+        "source_description": ""
+      },
+      "child_node_ids": [
+        "f9228ded8095403587f20ebd21883583",
+        "bcfd922ecb75482a956d385c60cf5c32"
+      ]
+    },
+    {
+      "document_name": "source-data",
+      "text": "must go to the Youth Welfare Office of their place of residence together - you can find the responsible office at jugendaemter.de . The paternity recognition service is free of charge. The mother has to bring along her \"Mutterpass\", ID card and birth certificate. The father also has to present his ID card and birth certificate. Foreign birth certificates must have been translated by a certified interpreter. If you are trying to",
+      "text_with_context": "source_name: Handbook Germany Immigration\nsource_domain: Immigration\ntext: must go to the Youth Welfare Office of their place of residence together - you can find the responsible office at jugendaemter.de . The paternity recognition service is free of charge. The mother has to bring along her \"Mutterpass\", ID card and birth certificate. The father also has to present his ID card and birth certificate. Foreign birth certificates must have been translated by a certified interpreter. If you are trying to",
+      "document_metadata": {},
+      "node_id": "4e3596c07cde4113a1c2efbc63971bdb",
+      "parent_node_id": "0d23d18cf74c42dfa032b54fd18667f8",
+      "chunk_size": 64,
+      "chunk_id": 7,
+      "keyword_score": 5.461,
+      "vector_score": 0.546,
+      "relative_hybrid_score": 0.642,
+      "collection_metadata": {
+        "name": "HandbookGermanyImmigration",
+        "language": "en",
+        "documents": [],
+        "collector": "HandbookGermanyImmigration",
+        "source_name": "Handbook Germany Immigration",
+        "source_author": "Handbook Germany",
+        "source_url": "https://handbookgermany.de/en/search?filter%5Bfulltext%5D=&f1%5B0%5D=slug%3Amigration%2Fvisa&f1%5B1%5D=slug%3Amigration&f1%5B2%5D=slug%3Amigration%2Fnaturalisation&f1%5B3%5D=slug%3Amigration%2Fskilled-workers&f1%5B4%5D=slug%3Amigration%2Fother",
+        "source_domain": "Immigration",
+        "source_type": "Information curated by counseling centers and information portals",
+        "source_region": "Germany",
+        "source_date": "01-23-2025",
+        "source_description": ""
+      },
+      "child_node_ids": []
+    }
+  ],
+  "status": null,
+  "status_display": {
+    "status": null,
+    "display_message": null
+  },
+  "language": {
+    "language_code": "en",
+    "language_name": "English"
+  },
+  "domain": {
+    "domain": "Immigration",
+    "is_valid": true
+  },
+  "improved_query": null,
+  "sensitive_topic": null,
+  "intent": "Perform acction",
+  "topics": ["Bureaucracy", "Migration"],
+  "organizations": [
+    {
+      "name": "Refugee Law Clinic Berlin",
+      "description": "The Refugee Law Clinic Berlin e.V. is a student association at the Humboldt University of Berlin that offers free and independent legal advice for refugees and migrants in Berlin.",
+      "website": "https://www.rlc-berlin.org/",
+      "score": 1
+    },
+    {
+      "name": "KUB",
+      "description": "The KuB is a non-profit association in Berlin-Kreuzberg that has been supporting refugees and migrants since 1983. The organization offers advice on asylum and residence law, psychosocial support, and assistance with social issues. The goal is to promote secure residency status and equality.",
+      "website": "https://kub-berlin.org/es/",
+      "score": 1
+    },
+    {
+      "name": "Caritas",
+      "description": "The migration counseling for adults offers support for new immigrants aged 27 and over who live permanently in Germany. It provides support for up to three years after entry or obtaining a permanent residence status. The counseling is available in several languages and assists longer-resident immigrants with integration issues.",
+      "website": "https://www.caritas-berlin.de/beratungundhilfe/berlin/flucht-und-migration/beratung/fuer-erwachsene-migranten/fuer-erwachsene-migranten",
+      "score": 1
+    },
+    {
+      "name": "Bürgertelefon des BMAS",
+      "description": "The citizen's hotline of the BMAS competently answers questions on social topics such as pensions, citizen's income or minimum wage, and the inclusion of people with disabilities. Trained and experienced staff are available with advice and assistance for everyone.",
+      "website": "https://www.bmas.de/DE/Service/Kontakt/Buergertelefon/buergertelefon.html",
+      "score": 1
+    }
+  ],
+  "is_final_response": true,
+  "is_clarification": false,
+  "error": null
+}

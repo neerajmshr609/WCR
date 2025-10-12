@@ -1,0 +1,44 @@
+<div
+  class="project-info-card-single"
+  [class]="'project-info-card-single-' + projectInfoCard.cardType"
+  [ngClass]="{
+    'px-0': projectInfoCard.cardType === cardTypes.feedback_focus_card,
+    'project-info-card-single--small': isSmall,
+  }"
+  #cardRef
+>
+  <ng-template
+    [ngIf]="
+      projectInfoCard.cardType !== cardTypes.skill_card &&
+      projectInfoCard.cardType !== cardTypes.feedback_focus_card
+    "
+  >
+    <p class="top-title">{{ projectInfoCard.topText }}</p>
+    <div class="gt-separator"></div>
+    <p class="main-text">{{ projectInfoCard.title }}</p>
+  </ng-template>
+
+  <ng-template [ngIf]="projectInfoCard.cardType === cardTypes.skill_card">
+    <img
+      [src]="projectInfoCard.iconURL"
+      [matTooltip]="projectInfoCard.title"
+      #tooltip="matTooltip"
+      (click)="tooltip.toggle()"
+    />
+  </ng-template>
+
+  <ng-template
+    [ngIf]="projectInfoCard.cardType === cardTypes.feedback_focus_card"
+  >
+    <p class="top-title">{{ projectInfoCard.topText }}</p>
+    <div class="gt-separator"></div>
+    <div class="feedback-focus">
+      <app-feedback-focus-area
+        [coordinates]="projectInfoCard.feedbackFocus"
+        [disabled]="true"
+        [markerColor]="'black'"
+        [fullWidth]="cardWidth"
+      ></app-feedback-focus-area>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,43 @@
+<button
+  class="icon-btn"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+  (click)="isOpen = !isOpen"
+>
+  <img src="assets/Calendar-pick.svg" alt="" />
+</button>
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  [cdkConnectedOverlayPositions]="positions"
+  (backdropClick)="isOpen = false"
+  [cdkConnectedOverlayOffsetX]="offsetX"
+  [cdkConnectedOverlayOffsetY]="offsetY"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+  <article>
+    <section class="rule-sets-wrapper">
+      <div class="description">
+        <span>AVAILABLE TIME SLOTS</span>
+        <button class="icon-btn" alt="">
+          <img src="assets/Calendar-pick.svg" alt="" />
+        </button>
+      </div>
+      <ng-container *ngFor="let item of rulsets">
+        <div class="add-days__ruleset">
+          <div class="add-days__days">
+            <app-week class="custom-week" [weekData]="item.weekdays"></app-week>
+          </div>
+          <p class="add-days__time">
+            <span class="add-days__time__period">from</span>
+            <span class="add-days__time__range">{{ item.time_from }}</span>
+            <span class="add-days__time__period">until</span>
+            {{ item.time_until }}
+          </p>
+        </div>
+      </ng-container>
+    </section>
+  </article>
+</ng-template>

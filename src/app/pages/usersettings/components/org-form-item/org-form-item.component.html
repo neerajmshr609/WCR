@@ -1,0 +1,79 @@
+@if (isAddMode) {
+  <h5 class="form-label org-bg-title">
+    {{ formData().name | translate }}
+  </h5>
+}
+
+<div class="org-form-item">
+  @if (form) {
+    <form [formGroup]="form" class="form">
+      <div class="form__group-container">
+        <div class="form__group-row">
+          @if (isAddMode) {
+            <button
+              class="action add"
+              [ngClass]="{ active: isActive }"
+              [disabled]="!isActive"
+              (click)="onSave()"
+            >
+              @if (isActive) {
+                <app-save-icon color="#F3F3F3"></app-save-icon>
+              } @else {
+                <app-plus-icon [strokeWidth]="3" [color]="form.invalid ? '#B3B3B3' : '#1E1E1E'"></app-plus-icon>
+              }
+
+            </button>
+          } @else {
+            @if (!isSaveModeActive) {
+              <div class="action">
+                <app-reorder-icon class="action__icon"></app-reorder-icon>
+              </div>
+            } @else {
+              <div class="action active" (click)="onUpdate()">
+                <app-save-icon
+                  class="action__icon"
+                  color="#F3F3F3"
+                  strokeWidth="2"
+                ></app-save-icon>
+              </div>
+            }
+          }
+
+          @for (inputObj of formData()?.array; track inputObj.name) {
+            <div class="form-field">
+              @if (inputObj.type === 'image') {
+                <div class="form__group--left_container">
+                  <app-image-uploader
+                    [formData]="inputObj"
+                    (save)="saveImg($event)"
+                    [image]="
+                      form.value[inputObj.name] ? form.get(inputObj.name) : null
+                    "
+                    [folder]="folder()"
+                  ></app-image-uploader>
+                  <div class="uploader--organization-partner-avatar"></div>
+                </div>
+              } @else {
+                <app-input
+                  [control]="form.get(inputObj.name)"
+                  inputName="{{ inputObj.name }}"
+                  placeholder="{{ inputObj.placeholder | translate }}"
+                  type="{{ inputObj.type }}"
+                  label="{{ inputObj.label | translate }}"
+                ></app-input>
+              }
+            </div>
+          }
+
+          <div class="skill-menu">
+            <app-more-menu
+              [placement]="'bottom'"
+              [menuList]="actionList"
+              [menuTitle]="'parner_settings'"
+            ></app-more-menu>
+          </div>
+        </div>
+      </div>
+    </form>
+  }
+</div>

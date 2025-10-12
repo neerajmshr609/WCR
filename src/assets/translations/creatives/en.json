@@ -1,0 +1,107 @@
+{
+  "menu": {
+    "latest": "Latest",
+    "review_queue": "Review Queue",
+    "drafts": "Drafts",
+    "highest_review_price": "Highest Review Price",
+    "highest_payment_frequency": "Highest Payment Frequency",
+    "highest_rated_projects": "Highest Rated Projects",
+    "lowest_rated_projects": "Lowest Rated Projects",
+    "most_often_reviewed": "Most Often Reviewed",
+    "paid_feedback_requests": "Paid Feedback Requests"
+  },
+  "search_bar": {
+    "categories": {
+      "input_placeholder": "Search by art category"
+    },
+    "skills": {
+      "input_placeholder": "Search by art category",
+      "connectors_online": "CONNECTORS ONLINE",
+      "all_connectors": "All connectors"
+    }
+  },
+  "not_finished_feedback": "Here we store all the projects you haven't finished feedback to.",
+  "create": "Create a free account",
+  "to_enable": "to enable this feature",
+  "review_queue": "Add a project to \"Review queue\" to see it next time you Give Feedback.",
+  "to_do_this": "to do this",
+  "creatives_info_card": {
+    "access": "access",
+    "filter": "filter",
+    "learn_how": "Learn how to give inspiring feedback with our practice focused tutorial",
+    "resort_projects": "resort projects",
+    "by_desired": "by desired focus",
+    "reset": "Reset"
+  },
+  "user_info": {
+    "name_anon": "Anonymous",
+    "city_global": "GLOBAL"
+  },
+  "creatives_project_card": {
+    "set_first": "Set first in queue",
+    "give_feedback": "Give feedback (new tab)",
+    "remove_from_que": "Remove from Review Queue",
+    "add_to_que": "Add to Review Queue",
+    "delete_draft": "Delete Draft"
+  },
+  "load_iframe_btn": {
+    "text": "Load project"
+  },
+  "load_pdf_btn": {
+    "text": "Load file"
+  },
+  "dummy_file": {
+    "overview": "Overview",
+    "description": "Description",
+    "how_to": "how to use"
+  },
+  "file_info": {
+    "lyrics": "Lyrics",
+    "description": "Description"
+  },
+  "not_enough_data": "not enough data",
+  "payment_frequency": "payment frequency",
+  "per_review": "per inspiring review",
+  "paid_feedback_request": "paid_feedback_request",
+  "finish_feedback": "Finish feedback",
+  "audio_record": {
+    "error_uploading": "Error while uploading audio",
+    "paused": "Paused",
+    "uploading": "Uploading audio",
+    "uploading_1_dot": "Uploading audio.",
+    "uploading_2_dot": "Uploading audio..",
+    "uploading_3_dot": "Uploading audio...",
+    "skip": "Skip",
+    "add_title": "Add Title (Optional)...",
+    "write_title": "Write title here"
+  },
+  "audio_message_loading": "LOADING",
+  "text_input": {
+    "placeholder": "Start typing...",
+    "internal": "Write in internal chat",
+    "client": "Write in client chat"
+  },
+  "ask_question": "Ask a clarifying question...",
+  "sign_up": "Sign up to ask a clarifying question...",
+  "message": {
+    "was_deleted": "Message was deleted by the user",
+    "reply": "Reply",
+    "edit_original": "Edit Original",
+    "download": "Download",
+    "remove": "Remove",
+    "initial_comment": "Initial comment",
+    "find": "Find",
+    "initial_question": "Initial question",
+    "initial_message": "Initial message",
+    "audio_message": "Audio message",
+    "image": "Image",
+    "question": "Question",
+    "give_feedback": "Go to Give Feedback",
+    "answer": "Answer",
+    "copied": "Copied!",
+    "copy": "Copy message"
+  },
+  "question_sent": "Clarification question sent",
+  "add_to_review_queue": "Add to Review Queue",
+  "remove_from_que": "remove_from_review_queue"
+}

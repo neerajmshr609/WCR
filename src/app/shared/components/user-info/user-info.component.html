@@ -1,0 +1,91 @@
+<div class="user-info" [ngClass]="{ 'user-info--right': isRight }">
+  <ng-template [ngIf]="!isAnon">
+    <ng-template [ngIf]="!loadedUser">
+      <div class="loader-icon">
+        <app-small-spinner
+          diameter="20"
+          [isWhite]="isWhite"
+        ></app-small-spinner>
+      </div>
+    </ng-template>
+
+    <ng-template [ngIf]="loadedUser">
+      <ng-container
+        *ngIf="disableLink"
+        [ngTemplateOutlet]="userAvatarTpl"
+      ></ng-container>
+
+      <a
+        *ngIf="!disableLink"
+        class="user-info__avatar"
+        [routerLink]="'/profile/' + loadedUser.sharetoken"
+        target="_blank"
+      >
+        <ng-container [ngTemplateOutlet]="userAvatarTpl"></ng-container>
+      </a>
+
+      <div
+        class="user-info__text"
+        [ngClass]="{ 'user-info__text--right': isRight }"
+        *ngIf="!noName"
+      >
+        <p
+          *ngIf="disableLink"
+          class="user-info__name"
+          [ngClass]="{ white: isWhite, 'grey-color': isGrey }"
+        >
+          <ng-container [ngTemplateOutlet]="userNameTpl"></ng-container>
+        </p>
+        <a
+          *ngIf="!disableLink"
+          [routerLink]="'/profile/' + loadedUser.sharetoken"
+          target="_blank"
+          class="user-info__name"
+          [ngClass]="{ white: isWhite }"
+        >
+          <ng-container [ngTemplateOutlet]="userNameTpl"></ng-container>
+        </a>
+        <p
+          class="user-info__city"
+          [ngClass]="{ white: isWhite, 'grey-color': isGrey }"
+        >
+          {{ loadedUser.city || ('user_info.city_global' | translate ) }}
+        </p>
+        <ng-content select="[additional-content]"></ng-content>
+      </div>
+    </ng-template>
+  </ng-template>
+
+  <ng-template [ngIf]="isAnon">
+    <ng-container [ngTemplateOutlet]="userAvatarTpl"></ng-container>
+    <div
+      class="user-info__text"
+      [ngClass]="{ 'user-info__userinfo--right': isRight }"
+      *ngIf="!noName"
+    >
+      <p class="user-info__name" [ngClass]="{ white: isWhite }">{{ 'user_info.name_anon' | translate }}</p>
+      <p class="user-info__city" [ngClass]="{ white: isWhite }">{{ 'user_info.city_global' | translate }}</p>
+    </div>
+  </ng-template>
+</div>
+
+<ng-template #userNameTpl>
+  {{ loadedUser.display_name }}
+</ng-template>
+
+<ng-template #userAvatarTpl>
+  <img
+    class="user-info__img"
+    [ngClass]="{
+      'user-info__img--no-border': noBorder,
+      'user-info__img--round': isRound,
+      'user-info__img--anon': isAnon,
+    }"
+    [src]="avatar"
+    [style]="'border-color: ' + borderColor"
+    [ngStyle]="{
+      borderColor: borderColor,
+      'borderWidth.px': borderWidth,
+    }"
+  />
+</ng-template>

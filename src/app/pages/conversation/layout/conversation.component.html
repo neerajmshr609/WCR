@@ -1,0 +1,31 @@
+<div class="conversation full-width">
+  @if ((isDesktop$ | async)) {
+    <div class="conversation__animation-container">
+      <div class="conversation__messages" [@slide]="activePane">
+        <app-conversation-detail
+          [conversation]="conversation"
+          [activeConversationRater]="activeConversationRater"
+          [activeConversationPartners]="activeConversationPartners"
+          (selectFeedbackFromConversationEvt)="
+          selectFeedbackFromConversationEvt.emit($event)
+        "
+        ></app-conversation-detail>
+      </div>
+
+    </div>
+  }
+
+  @if(!(isDesktop$ | async)) {
+    <app-mobile-conversation
+      [conversation]="conversation"
+      [activeConversationRater]="activeConversationRater"
+      [activeConversationPartners]="activeConversationPartners"></app-mobile-conversation>
+  } @else {
+    @if(!currentUser.isAnonymous) {
+      <app-conversation-manage-panel [activeConversationRater]="activeConversationRater"
+                                     [activeConversationPartners]="activeConversationPartners"
+                                     [conversation]="conversation"
+                                     [internalConversationId]="conversation.internal_chat_id" [currentUser]="currentUser"></app-conversation-manage-panel>
+    }
+  }
+</div>

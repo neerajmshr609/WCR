@@ -1,0 +1,15 @@
+<button
+  class="visible-menu-button"
+  [ngClass]="{
+    'visible-menu-button_selected': selected(),
+    'visible-menu-button_disabled': menuItem().disabled
+  }"
+>
+  @if (menuItem().icon) {
+    <app-icon-render
+      class="visible-menu-button_icon"
+      [icon]="icon()"
+    ></app-icon-render>
+  }
+  {{ menuItem().title | translate }}
+</button>

@@ -1,0 +1,53 @@
+<div class="text-input__wrapper" #wrapperRef [ngClass]="{ 'pb-0': isRecording || audioMessage?.url }">
+  <section class="text-input-area">
+    <div class="text-input-area__field" (click)="messageInputRef.focus()">
+      <p #messageInputRef class="text-input__input" [style.color]="editable ? '#2c2c2c' : '#757575'"
+        [contentEditable]="editable" [attr.placeholder]="inputPlaceholder | translate" (keyup)="onMessageKeyUp()"
+        (paste)="detectPaste($event)" (focus)="onFocusInput.emit(true)">{{editable ? '' : (inputPlaceholder |
+        translate)}}</p>
+    </div>
+    <div class="text-input__btns" #inputBnts>
+      <button (click)="insertMessage()" [disabled]="!messagesService.copiedMessage"
+        class="text-input__btn text-input__insert-btn" *ngIf="showInsertBtn">
+        <img src="assets/plus.svg" alt="" />
+      </button>
+
+      <button *ngIf="withAdditionalMenu()" (click)="displayAdditionalMenu()"
+        class="text-input__btn text-input__record-btn" [disabled]="
+          additionalMenu() || (recordingProcess() && !isStartUploadAudio())
+        ">
+        <app-plus-icon color="#2C2C2C" strokeWidth="4"></app-plus-icon>
+      </button>
+
+      <button (click)="record()" *ngIf="allowAudioMessage" [disabled]="recordBtnDisabled || additionalMenu()"
+        class="text-input__btn text-input__record-btn">
+        <app-audio-icon color="#2C2C2C"></app-audio-icon>
+      </button>
+
+      <button (click)="send()" *ngIf="showSendBtn && inputIsEnabled" class="text-input__btn text-input__send-btn"
+        [ngClass]="{ 'scale-send-btn': scaleSendBtn }" [disabled]="!inputIsEnabled">
+        <img [src]="sendBtnSrc" />
+      </button>
+    </div>
+  </section>
+
+  <div class="record-audio" *ngIf="isRecording">
+    <app-audio-record [isFlexFeedback]="true" [user]="user" [stopRecording$]="stopRecordingEvt.asObservable()"
+      (uploadingFinished)="audioMessageUploaded($event)" (close)="deleteAudioMessage()"></app-audio-record>
+  </div>
+
+  <div class="audio-message" *ngIf="audioMessage?.url">
+    <app-audio-message [audioMessage]="audioMessage" [disablePreload]="true" [canSelectLanguage]="true"
+      [languages]="user.lang"></app-audio-message>
+    <app-icon-cancel-bordered (click)="deleteAudioMessage(true)"></app-icon-cancel-bordered>
+  </div>
+
+  <div class="file" *ngIf="file">
+    <div class="file__preview">
+      <img [src]="fileBase64" alt="" />
+    </div>
+    <button (click)="deleteFile()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>

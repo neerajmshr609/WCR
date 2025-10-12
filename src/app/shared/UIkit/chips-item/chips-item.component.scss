@@ -1,0 +1,30 @@
+@import '_variables';
+@import "_mixins";
+
+$--mark-icon--size: 1.6rem;
+
+.chips-item {
+  display: flex;
+  padding: $--sds-size-space-200;
+  border-radius: $--sds-size-radius-200;
+  background-color: $--sds-color-background-default-default;
+  color: $--sds-color-text-default-default;
+  font-size: $--sds-typography-body-size-medium;
+  line-height: $line-height-100;
+  gap: $--sds-size-space-200;
+  cursor: pointer;
+  user-select: none;
+  @include baseTransition;
+
+  app-mark-icon {
+    width: $--mark-icon--size;
+    height: $--mark-icon--size;
+  }
+  &:hover {
+    background-color: $--sds-color-background-default-tertiary;
+  }
+  &.selected {
+    color: $--sds-color-text-brand-on-brand;
+    background-color: $--sds-color-background-brand-default;
+  }
+}

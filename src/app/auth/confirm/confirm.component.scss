@@ -1,0 +1,30 @@
+@import 'variables';
+
+.confirmation {
+  display: grid;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  justify-items: center;
+
+  @media only screen and (min-width: $bp-large) {
+    width: 85%;
+
+    margin: 0 auto;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    margin-top: 4rem;
+  }
+
+  &__logo {
+    transform: scale(0.8);
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 400;
+    font-family: Poppins;
+  }
+}

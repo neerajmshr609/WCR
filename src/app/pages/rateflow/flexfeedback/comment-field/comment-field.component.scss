@@ -1,0 +1,366 @@
+@import 'variables';
+
+app-comment-field {
+  app-close-card-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  .feedback {
+    &__container {
+      position: relative;
+      padding: 3rem 1.2rem 0.8rem 0.5rem;
+      min-height: 7.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      background: #f2f2f2;
+      border-radius: 8px;
+      border-top-left-radius: 0;
+      margin-top: 2rem;
+
+      &--colored {
+        textarea {
+          color: $--sds-color-text-default-default;
+
+          &::placeholder {
+            color: white;
+          }
+        }
+
+        .feedback__badge {
+          background: black;
+        }
+
+        .feedback__controls {
+          background: black;
+
+          mat-icon {
+            color: white;
+          }
+        }
+
+        ::ng-deep {
+          .plyr__time {
+            color: white;
+          }
+        }
+      }
+
+      &--mustard {
+        &,
+        textarea {
+          background-color: #F1EACB;
+        }
+      }
+
+      &--green {
+        &,
+        textarea {
+          background-color: #CAEBDF;
+        }
+      }
+
+      &--blue {
+        &,
+        textarea {
+          background-color: #B2D0DD;
+        }
+      }
+    }
+
+    &__sidebtns {
+      position: absolute;
+      transition: 0.2s;
+      right: 2.3rem;
+      top: -1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__sidebtn {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.4rem;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      background: #f2f2f2;
+      margin-left: 1rem;
+      border: 1px solid #f2f2f2;
+
+      &:disabled {
+        opacity: 0.5;
+      }
+
+      &--focused {
+        border-color: $feed-light-gray-text;
+      }
+
+      &--active {
+        background: black;
+        border-color: black;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &__input-group {
+      transition: 0.15s;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0 0.7rem;
+      height: 1.8rem;
+      background: $feed-light-gray-text;
+      border-bottom-right-radius: 8px;
+      display: flex;
+      align-items: center;
+
+      img {
+        height: 1.1rem;
+        width: auto;
+      }
+    }
+
+    &__count {
+      padding-right: 1rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    &__microphone {
+      background: none;
+      border: none;
+      padding: 0.5rem 0.7rem;
+      margin-right: 0.5rem;
+      cursor: pointer;
+
+      img {
+        width: 2.3rem;
+        height: auto;
+      }
+
+      &:disabled {
+        opacity: 0.4;
+      }
+    }
+
+    &__controls {
+      background: $--sds-color-background-danger-default;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 50%;
+      border: none;
+      position: absolute;
+      top: -0.5rem;
+      right: -0.5rem;
+      padding: 0.3rem;
+
+      mat-icon {
+        transition: transform 0.3s;
+        width: 100%;
+        height: 100%;
+        font-size: 1rem;
+        color: black;
+        transform: rotate(-135deg);
+      }
+
+      &:not(:disabled) {
+        mat-icon {
+          transform: rotate(0deg);
+          transition-delay: 0.5s;
+        }
+      }
+
+      &:disabled {
+        mat-icon {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    &__tag {
+      color: white;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      width: 100%;
+      padding-left: 4rem;
+
+      .inner-container {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 5rem;
+        background-color: black;
+      }
+
+      p {
+        padding: 0.3rem 1rem;
+        border: 3px solid black;
+        border-radius: 5rem;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 15px;
+      }
+
+      span {
+        margin-left: 0.5rem;
+        display: block;
+        color: white;
+        margin-right: 1.2rem;
+        word-break: keep-all;
+      }
+    }
+
+    &__image {
+      width: 120px;
+      margin-left: 4rem;
+      position: relative;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &__image-loader {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__hint {
+      font-size: 10px;
+      margin-left: 4rem;
+      width: calc(100% - 9rem);
+    }
+
+    &__delete-image {
+      position: absolute;
+      top: -1rem;
+      right: -1rem;
+    }
+
+    &__audio-message {
+      position: relative;
+      width: 100%;
+      margin-top: 1.2rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      padding-right: 2.4rem;
+
+      app-audio-message {
+        display: block;
+        width: 100%;
+
+        ::ng-deep {
+          .wrapper {
+            padding: 0 4rem 0 1.6rem;
+            display: flex;
+            align-items: center;
+
+            > div {
+              width: 100%;
+            }
+          }
+
+          .plyr__controls {
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    &__delete-audio {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+    }
+
+    &__audio-record {
+      width: calc(100% - 0.7rem);
+      margin: 0.5rem 0 1rem 0.7rem;
+    }
+  }
+
+  .delete-btn {
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: none;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    mat-icon {
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+      width: auto;
+      height: auto;
+    }
+  }
+
+  .auto-expandable-textarea {
+    font-size: 14px;
+    line-height: 2rem;
+    height: 3rem;
+    padding: 0.5rem 0;
+    display: block;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    resize: none;
+    width: 100%;
+    font-weight: 400;
+    overflow: hidden;
+    background: #f2f2f2;
+  }
+
+  app-icon-audio-record {
+    display: flex;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  app-button {
+    .btn-entity {
+      background: none !important;
+      border: none !important;
+    }
+  }
+}

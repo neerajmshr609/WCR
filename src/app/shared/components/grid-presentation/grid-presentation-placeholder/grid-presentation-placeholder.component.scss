@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border: 2px solid #b0b0b0;
+  border-radius: 4px;
+}
+
+.image-preview {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.badge {
+  opacity: 0.29;
+  width: auto;
+  height: 100%;
+  border-radius: 4px;
+
+  &__container {
+    height: 28px;
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #f2f2f2;
+    border-radius: 4px;
+  }
+}
+
+.file-uploading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+}

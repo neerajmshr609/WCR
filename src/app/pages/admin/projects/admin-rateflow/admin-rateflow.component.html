@@ -1,0 +1,84 @@
+<app-small-spinner [diameter]="50" *ngIf="!project"></app-small-spinner>
+<div class="admin-rateflow">
+  <div class="admin-rateflow__presentation" *ngIf="!noprojects">
+    <app-presentation-slider
+      [isRateflowPresentation]="true"
+      [isSingleFileProject]="isSingleFileProject"
+      [filesFeedbacks$]="filesFeedbacks$"
+      (didSelectFile)="onSelectedFileChange($event)"
+      (didSelectProjectInfo)="onSelectedProjectInfo()"
+      (didSelectGrid)="onSelectedGrid()"
+      (didClose)="onFileDetailClose()"
+      [selectedFile]="selectedFile"
+      *ngIf="project && !dragDrop && !drawingDesktop"
+      [files]="project.projectfiles"
+      [project]="project"
+    ></app-presentation-slider>
+
+    <app-resort-presentation
+      [projectfiles]="elementsToDrop"
+      [sortOptions]="sortOptions"
+      *ngIf="elementsToDrop && dragDrop && !drawingDesktop"
+    ></app-resort-presentation>
+
+    <app-draw
+      [selectedFile]="selectedFile"
+      [linesPoints]="linesPoints"
+      *ngIf="!dragDrop && drawingDesktop"
+      (drawing)="addDraw($event)"
+    ></app-draw>
+    <app-modal *ngIf="!dragDrop && drawingMobile">
+      <app-draw
+        [selectedFile]="selectedFile"
+        [linesPoints]="linesPoints"
+        (drawing)="addDraw($event)"
+      >
+      </app-draw>
+    </app-modal>
+  </div>
+
+  <div class="rateflow__feedback" *ngIf="!noprojects">
+    <app-flexfeedback
+      [selectedFileDidChange$]="selectedFileDidChange$"
+      [selectedFile]="selectedFile"
+      [singleFileProject]="isSingleFileProject"
+      (skipRateUpdate)="onRate()"
+      [project]="project"
+      [files]="droppedElements"
+      (resortOpen)="toggleDragDrop($event)"
+      (drawOpen)="toggleDraw($event)"
+      [sortablejsOptions]="sortOptions"
+      *ngIf="activeFeedbackObject"
+      [feedbackObject]="activeFeedbackObject"
+      (feedbackObjectUpdate)="onFeedbackObjectUpdate($event)"
+    >
+    </app-flexfeedback>
+    <div class="button-container">
+      <mat-form-field>
+        <mat-label>Select rater</mat-label>
+        <mat-select>
+          <mat-option
+            *ngFor="let user of greytmeUsers"
+            [value]="user.id"
+            (onSelectionChange)="didChangeRater($event)"
+          >
+            {{ user.email }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button
+        class="greytme-button btn"
+        #greytBtnRef
+        [disabled]="isSaving"
+        *ngIf="selectedRaterID"
+        (click)="onRate()"
+      >
+        <div *ngIf="isSaving" class="spinner" role="status">
+          <mat-spinner [diameter]="20"></mat-spinner>
+        </div>
+        <h3>Submit rating</h3>
+      </button>
+    </div>
+  </div>
+</div>

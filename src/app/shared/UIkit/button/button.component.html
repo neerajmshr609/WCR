@@ -1,0 +1,7 @@
+<button class="btn-entity"
+        [ngClass]="[size(), btnUIType(), (dangerBtn() ? 'danger' : ''), (iconBtn() ? 'icon': ''), (selected() ? 'selected': ''), (rounded() ? 'rounded': '')]"
+        [disabled]="disabled()"
+        [type]="type()"
+>
+  <ng-content></ng-content>
+</button>

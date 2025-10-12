@@ -1,0 +1,137 @@
+@import "variables";
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-bottom: 80px;
+
+  @media (min-width: $desktop) {
+    padding-bottom: 0;
+  }
+}
+.mock-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: auto;
+  border: 1px solid $--sds-color-border-default-default;
+  border-radius: $--sds-size-radius-200;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(73, 73, 73, 0.80);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    backdrop-filter: blur(calc($--sds-size-blur-100 / 2));
+    cursor: pointer;
+    height: 0;
+    flex-direction: column;
+    flex: 1 1 100%;
+    z-index: 10;
+
+    .text {
+      color: #FFF;
+      font-family: $--sds-typography-font-family-mono;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: $--sds-typography-weight-regular;
+      line-height: normal;
+    }
+  }
+
+  &.active {
+    .overlay {
+      opacity: 1;
+      z-index: 20;
+      height: calc(100% - 80px);
+
+      @media (min-width: $desktop) {
+        height: 100%;
+      }
+    }
+  }
+}
+.stretch-block {
+  z-index: 15;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  border-radius: $--sds-size-radius-200;
+  box-sizing: border-box;
+  flex: 1;
+
+  @media ((min-width: $desktop) and (min-height: 1000px)) {
+    height: 100%;
+    overflow: auto;
+  }
+
+  .mock-screen {
+    user-select: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .desk-card {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+.scroll-block {
+  z-index: 15;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  .mock-screen {
+    user-select: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .desk-card {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+.screen-3 {
+  flex: 1;
+  display: flex;
+  object-fit: contain;
+  object-position: bottom;
+  align-items: flex-end;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+  cursor: pointer;
+
+  .text {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+  }
+}

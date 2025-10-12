@@ -1,0 +1,19 @@
+@if (isLoading()){
+  <div class="loading-container">
+    <app-small-spinner></app-small-spinner>
+  </div>
+}
+
+@if (conversation()){
+  <div class="conversation">
+    <app-conversation-detail
+      [conversation]="conversation()"
+      [activeConversationPartners]="conversation().members"
+      [isInternal]="true"
+      [activeConversationRater]="conversation()?.members[0]"
+      [showChatHeading]="false"
+      [showFinishQuestionnaireButton]="true"
+      [anonUser]="this._userIsAnon() ? currentUser() : null"
+    ></app-conversation-detail>
+  </div>
+}

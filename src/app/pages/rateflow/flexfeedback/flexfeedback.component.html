@@ -1,0 +1,487 @@
+<div class="flexfeedback">
+  <div class="slider-container" *ngIf="feedbackObject">
+    <app-slider
+      *ngIf="showSlider"
+      [ratingType]="feedbackObject.display_name"
+      [projectID]="project.id"
+      [currentValue]="feedbackObject.slidervalue"
+      (sliderValue)="sliderValueDidChange($event)"
+      (sliderDragged)="onSliderDragged()"
+    ></app-slider>
+
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      *ngIf="
+        (selectedFile?.mimetype.includes('video', 0) ||
+          selectedFile?.mimetype.includes('audio', 0)) &&
+        project?.avratingparams?.length
+      "
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button
+        class="feedback-menu-item"
+        mat-menu-item
+        (click)="toggleMode(true)"
+        [disabled]="allParamsIsInactive"
+      >
+        <svg
+          width="35"
+          height="23"
+          viewBox="0 0 35 23"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M34.2057 3.40282C35.4359 4.63354 34.9564 6.6112 33.8334 7.73372L22.0081 19.5633L15.2385 20.5823L16.2514 13.807L28.079 1.9751C29.1997 0.854458 31.1816 0.378706 32.4123 1.60612L34.2057 3.40282ZM1.96654 21.5551C1.34858 22.7646 -0.492538 21.8244 0.12542 20.613L4.17852 12.6864C4.61742 11.8312 5.89444 11.7882 6.10988 12.9264L7.25933 17.9239L8.94502 14.501C9.31305 13.7517 10.2579 13.7489 10.7479 14.4023L13.9836 19.3459C14.7277 20.4869 12.9896 21.6151 12.2512 20.4789L10.0019 17.0423L7.83147 21.4516C7.40626 22.32 6.10421 22.1731 5.89161 21.2253L4.72609 16.1593L1.96654 21.5551ZM27.6052 5.38473L30.4271 8.20617L32.366 6.26678C32.6414 5.99135 33.0978 5.22693 32.7378 4.86976L30.9444 3.07306C30.5882 2.71684 29.82 3.17369 29.5441 3.44487L27.6052 5.38473ZM28.9592 9.67358L26.1396 6.85403L18.1945 14.7982L17.6994 18.1166L21.016 17.6196L28.9592 9.67358Z"
+            fill="black"
+          />
+        </svg>
+        <span>Write | all sliders</span>
+      </button>
+      <button
+        class="feedback-menu-item"
+        mat-menu-item
+        (click)="toggleMode(false)"
+        [disabled]="!allParamsIsInactive"
+      >
+        <svg
+          width="37"
+          height="16"
+          viewBox="0 0 37 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M35.0651 6.48H34.9051C34.2251 3.04 31.1451 0.440002 27.5051 0.440002C25.5051 0.440002 23.7051 1.24 22.3451 2.48C21.1451 2.12 19.8251 1.92 18.4651 1.92C17.1051 1.92 15.7851 2.12 14.5851 2.48C13.2251 1.2 11.4251 0.440002 9.42509 0.440002C5.78509 0.440002 2.74509 3.04 2.02509 6.48H1.86509C1.02509 6.48 0.345093 7.16 0.345093 8C0.345093 8.84 1.02509 9.52 1.86509 9.52H2.02509C2.70509 12.96 5.78509 15.56 9.42509 15.56C13.5851 15.56 16.9851 12.2 16.9851 8C16.9851 7 16.7851 6.04 16.4251 5.16C17.0651 5.04 17.7451 4.96 18.4651 4.96C19.1851 4.96 19.8651 5.04 20.5051 5.16C20.1451 6.04 19.9451 7 19.9451 8C19.9451 12.16 23.3051 15.56 27.5051 15.56C31.1451 15.56 34.1851 12.96 34.9051 9.52H35.0651C35.9051 9.52 36.5851 8.84 36.5851 8C36.5851 7.16 35.9051 6.48 35.0651 6.48ZM9.42509 12.52C6.94509 12.52 4.90509 10.48 4.90509 8C4.90509 5.52 6.94509 3.48 9.42509 3.48C11.9051 3.48 13.9451 5.52 13.9451 8C13.9451 10.48 11.9051 12.52 9.42509 12.52ZM27.5051 12.52C25.0251 12.52 22.9851 10.48 22.9851 8C22.9851 5.52 25.0251 3.48 27.5051 3.48C29.9851 3.48 32.0251 5.52 32.0251 8C32.0251 10.48 29.9851 12.52 27.5051 12.52Z"
+            fill="black"
+          />
+        </svg>
+        <span>Read | all sliders</span>
+      </button>
+    </mat-menu>
+  </div>
+
+  <div class="flexfeedback__container">
+    <div #cardsFrontRef class="flexfeedback__cards flexfeedback__cards--front">
+      <button
+        (click)="openInspiringrateModal()"
+        *ngIf="project.inspiringrate && !isPublicFeedbackRequest"
+        class="inspiringrate"
+      >
+        <ng-template [ngIf]="!project.paid_feedback_request">
+          <img src="/assets/euro-sign.svg" alt="€" />
+          {{ project.inspiringrate }}
+        </ng-template>
+
+        <ng-template [ngIf]="project.paid_feedback_request">
+          <img src="/assets/euro-sign.svg" alt="€" />
+          {{ currentUser?.advisorrate }}
+        </ng-template>
+        <span class="inspiringrate__badge">?</span>
+      </button>
+
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [ngClass]="{'media': currentFirstTabFunctionality === 'av'}"
+            (click)="onChangeTab('extra_functionality-tab')"
+            id="extra_functionality-tab"
+            data-toggle="tab"
+            href="#extra_functionality"
+            role="tab"
+            aria-controls="extra_functionality"
+            aria-selected="false"
+          >
+            <ng-template [ngIf]="currentFirstTabFunctionality === 'resort'">
+              Resort
+              <img
+                id="resort-img"
+                class="typeimage"
+                src="assets/flexfeedback/resort-menu.png"
+              />
+            </ng-template>
+
+            <ng-template [ngIf]="currentFirstTabFunctionality === 'info'">
+              {{ project.presenterquestions.length ? 'Questions' : 'Info' }}
+              <img
+                class="typeimage"
+                [src]="
+                  project.presenterquestions.length > 0
+                    ? 'assets/flexfeedback/question-menu.png'
+                    : 'assets/flexfeedback/info-menu.png'
+                "
+              />
+            </ng-template>
+
+            <ng-template [ngIf]="currentFirstTabFunctionality === 'av'">
+              <img class="typeimage" src="assets/flexfeedback/av-menu.png" />
+              <img
+                class="typeimage-av typeimage-av-v2 pulse"
+                width="64"
+                height="64"
+                src="assets/flexfeedback/av-menu-active-v2.png"
+                (click)="avControlDidClick()"
+              />
+            </ng-template>
+          </a>
+        </li>
+
+        <li class="nav-item" *ngFor="let tab of simpleTabs">
+          <a
+            class="nav-link"
+            (click)="onChangeTab(tab.name + '-tab')"
+            [id]="tab.name + '-tab'"
+            data-toggle="tab"
+            [href]="'#' + tab.name"
+            role="tab"
+            [aria-controls]="tab.name"
+            aria-selected="false"
+          >
+            {{ tab.displayName }}
+            <img
+              [id]="tab.name + '-img'"
+              class="typeimage"
+              [src]="'assets/flexfeedback/' + tab.name + '-menu.png'"
+            />
+          </a>
+        </li>
+      </ul>
+
+      <form [formGroup]="feedbackForm" *ngIf="feedbackForm">
+        <div class="tab-content" id="myTabContent"
+             [ngClass]="{'presenterquestions': currentFirstTabFunctionality === 'info' && project.presenterquestions.length }">
+          <div
+            class="tab-pane fade show"
+            [ngClass]="{ 'pt-1': currentFirstTabFunctionality !== 'resort' }"
+            id="extra_functionality"
+            role="tabpanel"
+            aria-labelledby="extra_functionality-tab"
+            formArrayName="resortItems"
+          >
+            <ng-template [ngIf]="currentFirstTabFunctionality === 'av'">
+              <ng-container>
+                <app-av-pane
+                  *ngIf="author"
+                  [selectedFileDidChange$]="selectedFileDidChange$"
+                  [project]="project"
+                  [noAvParams]="!selectedFile?.avratingparams?.length"
+                  [author]="author"
+                  (avfeedbackUpdate)="didAddAVFeedback($event)"
+                >
+                </app-av-pane>
+              </ng-container>
+            </ng-template>
+
+            <ng-template
+              [ngIf]="
+                currentFirstTabFunctionality === 'info' &&
+                project.presenterquestions.length
+              "
+            >
+              <app-presenter-questions-pane
+                [project]="project"
+                [author]="author"
+                [currentUser]="currentUser"
+                (recordingStarted)="
+                  presenterQuestionAudioRecordingStarted($event)
+                "
+              ></app-presenter-questions-pane>
+            </ng-template>
+
+            <ng-template
+              [ngIf]="
+                currentFirstTabFunctionality === 'info' &&
+                !project.presenterquestions.length
+              "
+            >
+              <app-info-pane></app-info-pane>
+            </ng-template>
+
+            <ng-template [ngIf]="currentFirstTabFunctionality === 'resort'">
+              <div id="resort" *ngIf="getControls('resortItems') as controls">
+                <div *ngFor="let control of controls; let index = index">
+                  <app-comment-field
+                    *ngIf="author"
+                    clickOutside
+                    (clickOutside)="control.focus = false"
+                    [control]="control"
+                    [tab]="{
+                      name: 'resort',
+                      inputText: 'Write why you think it\'s better this way.',
+                    }"
+                    [index]="index"
+                    [author]="author"
+                    [currentUser]="currentUser"
+                    [drawActive]="
+                      draw.active &&
+                      draw.tab === 'resort' &&
+                      draw.order === index
+                    "
+                    [form]="control"
+                    (keyUp)="onKeyupUpdate(index, 'resort', $event)"
+                    (keyDownEnter)="
+                      onKeydownEnter($event.event, 'resort', $event.text)
+                    "
+                    (recordingStarted)="
+                      audioRecordingStarted(index, 'resort', 'comment')
+                    "
+                    (recordingFinished)="
+                      audioRecordingFinished(index, 'resort', $event)
+                    "
+                    (valueChanges)="
+                      handleControlValueChanges($event, index, 'resort')
+                    "
+                    (deleteItem)="onDeleteItem('resort', index)"
+                  ></app-comment-field>
+                </div>
+              </div>
+
+              <div
+                class="resort mt-1"
+                [ngClass]="{ active: files && files.length }"
+              >
+                <div *ngIf="!files || !files.length" class="resort__tip">
+                  <img
+                    src="assets/icons/trashbin.svg"
+                    class="resort__tip-icon"
+                  />
+                  <p class="resort__tip-title">
+                    drag here to remove files from this project
+                  </p>
+                </div>
+
+                <button
+                  class="btn btn-scroll btn-scroll-back"
+                  (click)="back()"
+                  *ngIf="files?.length"
+                >
+                  <i class="material-icons">chevron_left</i>
+                </button>
+
+                <div class="resort-wrapper" #scroll>
+                  <div
+                    class="resort-container"
+                    [sortablejs]="files"
+                    [sortablejsOptions]="sortablejsOptions"
+                  >
+                    <div
+                      *ngFor="let item of files"
+                      class="handle resort-container__item resort-container__item-{{
+                        item.kind
+                      }}"
+                    >
+                      <img
+                        *ngIf="item.kind === 'iframe'"
+                        src="assets/projectfiles-types/iframe.svg"
+                        class="resort-container__content resort-container__content--image"
+                      />
+
+                      <img
+                        *ngIf="item.kind === 'pdf'"
+                        src="assets/projectfiles-types/pdf.svg"
+                        class="resort-container__content resort-container__content--image"
+                      />
+
+                      <img
+                        *ngIf="item.kind === 'image'"
+                        [src]="item.url"
+                        class="resort-container__content resort-container__content--image"
+                      />
+
+                      <img
+                        *ngIf="
+                          item.kind === 'video' || item.kind === 'hostedvideo'
+                        "
+                        src="assets/projectfiles-types/video.svg"
+                        class="resort-container__content resort-container__content--image"
+                      />
+
+                      <img
+                        *ngIf="item.kind === 'audio'"
+                        src="assets/projectfiles-types/audio.svg"
+                        class="resort-container__content resort-container__content--image"
+                      />
+
+                      <img
+                        *ngIf="item.kind === 'dummy'"
+                        src="assets/projectfiles-types/dummy.svg"
+                        class="resort-container__content resort-container__content--image"
+                      />
+
+                      <div class="resort-container__file-feedbacks">
+                        <div class="resort-container__file-feedbacks--item">
+                          {{ item.order }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  class="btn btn-scroll btn-scroll-forward"
+                  (click)="forward()"
+                  *ngIf="files && files.length && files.length > 3"
+                >
+                  <i class="material-icons">chevron_right</i>
+                </button>
+              </div>
+            </ng-template>
+          </div>
+
+          <ng-container *ngFor="let tab of simpleTabs">
+            <ng-container *ngIf="getControls(tab.formControlName) as controls">
+              <div
+                class="tab-pane fade"
+                [id]="tab.name"
+                role="tabpanel"
+                *ngIf="tab.name + '-tab' === selectedTab"
+              >
+                <div *ngFor="let control of controls; let index = index">
+                  <app-comment-field
+                    *ngIf="author"
+                    clickOutside
+                    (clickOutside)="control.focus = false"
+                    [control]="control"
+                    [tab]="tab"
+                    [index]="index"
+                    [author]="author"
+                    [drawActive]="
+                      draw.active &&
+                      draw.tab === tab.name &&
+                      draw.order === index
+                    "
+                    [feedbackHasDraw]="feedbackHasDraw(index, tab.name)"
+                    [feedbackHasScreenshot]="!!control.value.screenshot"
+                    [selectedFile]="selectedFile"
+                    (openDrawer)="openDrawer(index, tab.name)"
+                    (deleteScreenshot)="deleteScreenshot(index, tab.name)"
+                    (openScreenshotModal)="openScreenshotModal(index, tab.name)"
+                    (detectPaste)="detectPaste($event, index, tab.name)"
+                    (keyUp)="onKeyupUpdate(index, tab.name, $event)"
+                    (keyUpLink)="onKeyupUpdateLinkURL(index, tab.name, $event)"
+                    (keyDownEnter)="
+                      onKeydownEnter($event.event, tab.name, $event.text)
+                    "
+                    (recordingStarted)="
+                      audioRecordingStarted(index, tab.name, 'comment')
+                    "
+                    (recordingFinished)="
+                      audioRecordingFinished(index, tab.name, $event)
+                    "
+                    (valueChanges)="
+                      handleControlValueChanges($event, index, tab.name)
+                    "
+                    (deleteItem)="onDeleteItem(tab.name, index)"
+                  ></app-comment-field>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+
+          <h2
+            *ngIf="backsideEnabled && !isPublicFeedbackRequest"
+            class="skip-link"
+            (click)="onProjectSkip()"
+          >
+            Skip this project →
+          </h2>
+          <app-payment-counter
+            [user]="currentUser"
+            [isFeedback]="true"
+            [closeTimer$]="closeTimer$"
+            (didUpdate)="counterDidUpdate($event)"
+            [hourlyRate]="currentUser.advisorrate"
+            (changeBillableSeconds)="onChangeBillableSeconds($event)"
+            *ngIf="
+              currentUser && project.paid_feedback_request && backsideEnabled
+            "
+          ></app-payment-counter>
+        </div>
+
+        <h2 *ngIf="project.private" class="private-notice">
+          <mat-icon>lock</mat-icon> This project is private.
+        </h2>
+      </form>
+
+      <ng-content></ng-content>
+    </div>
+
+    <div
+      #cardsBackRef
+      class="flexfeedback__cards flexfeedback__cards--back"
+      *ngIf="backsideEnabled && !isPublicFeedbackRequest"
+    >
+      <ul class="nav nav-tabs" id="myTab1" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="skip-tab"
+            data-toggle="tab"
+            href="#skip"
+            role="tab"
+            aria-controls="skip"
+            aria-selected="true"
+            >Skip</a
+          >
+        </li>
+
+        <mat-icon class="close-bt" (click)="onProjectSkipCancel()"
+          >cancel</mat-icon
+        >
+      </ul>
+
+      <div class="tab-content" id="myTabContent1">
+        <div
+          class="tab-pane fade show active pt-1"
+          id="skip"
+          role="tabpanel"
+          aria-labelledby="skip-tab"
+        >
+          <h3>Don’t show me again</h3>
+          <mat-radio-group
+            #skipOptionsGroup
+            (change)="onSkipChange($event)"
+            aria-labelledby="group-label"
+            class="example-radio-group"
+          >
+            <mat-radio-button #firstSkipChoice [checked]="true" value="-1"
+              >Just this project</mat-radio-button
+            >
+            <mat-radio-button *ngFor="let cat of skipCategories" [value]="cat">
+              All in <span>{{ cat.name }}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div class="skip-times">
+          <button
+            *ngFor="let item of skipTimes | keyvalue: keepOriginalOrder"
+            mat-button
+            (click)="selectSkipTime(item.key)"
+            [color]="item.key === skipTime ? 'primary' : ''"
+          >
+            {{ item.value }}
+          </button>
+        </div>
+      </div>
+
+      <button class="greytme-button-skip btn" (click)="onSkipRate()">
+        Skip
+      </button>
+    </div>
+  </div>
+</div>
+
+<input
+  class="screenshot-input"
+  hidden
+  #screenshotInput
+  type="file"
+  accept="image/*"
+  [formControl]="fileInput"
+  (change)="onFileInputChange($event.target.files)"
+/>

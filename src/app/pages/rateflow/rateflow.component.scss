@@ -1,0 +1,94 @@
+@import 'variables';
+@import 'rateflow';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 4rem;
+}
+
+.no-rate {
+  text-transform: uppercase;
+  color: $feed-accent-red;
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0 2rem;
+}
+
+app-icon-submit {
+  display: flex;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.rateflow__presentation {
+  width: 100%;
+
+  //@media (min-width: $bp-small) {
+  //  width: 620px;
+  //}
+  //@media (min-width: 940px) {
+  //  width: 260px;
+  //}
+  //
+  //@media (min-width: $desktop) {
+  //  width: 720px;
+  //}
+  //
+  //@media (min-width: 1440px) {
+  //  width: 851px;
+  //}
+}
+.confirm-submit {
+  padding-top: 2rem;
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    &:first-child {
+      margin-right: 1rem;
+    }
+
+    img {
+      width: 5rem;
+      height: 3.2rem;
+    }
+  }
+
+  &__btns-text {
+    color: $--sds-color-red-400;
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  &__toggle {
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__toggle-text {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: grey;
+    font-weight: 500;
+
+    &--green {
+      color: $feed-accent-green;
+    }
+  }
+}

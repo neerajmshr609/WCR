@@ -1,0 +1,86 @@
+@import 'variables';
+
+.skip-link {
+  display: none;
+}
+
+.admin-rateflow {
+  display: flex;
+  align-items: flex-start;
+
+  @media only screen and (min-width: $bp-large) {
+    background-color: white;
+    height: 100%;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    display: grid;
+  }
+
+  &__no-projects {
+    text-align: center;
+    width: 30rem;
+    margin: 0 auto;
+  }
+
+  &__presentation {
+    height: 100%;
+    flex: 0 0 60vw;
+
+    @media only screen and (max-width: $bp-medium) {
+      background-color: #f7f7f7;
+    }
+
+    @media only screen and (min-width: $bp-large) {
+      flex: 0 0 64vw;
+    }
+  }
+
+  &__feedback {
+    display: grid;
+    justify-items: center;
+
+    flex: 0 0 40vw;
+    //align-self: flex-start;
+    margin-top: 10rem;
+
+    @media only screen and (min-width: $bp-large) {
+      flex: 0 0 30vw;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      justify-self: center;
+      margin-top: 0;
+    }
+  }
+}
+
+.button-container {
+  margin-top: 2rem;
+
+  display: grid;
+
+  button {
+    justify-self: center;
+  }
+}
+
+.greytme-button {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  height: 4.5rem;
+
+  mat-spinner {
+    margin-right: 1rem;
+  }
+}
+
+app-small-spinner {
+  height: 90vh;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -1,0 +1,41 @@
+{
+
+  "stats": {
+    "last_interaction": "остання взаємодія",
+    "total_income": "загальний дохід",
+    "spent_total": "всього витрачено",
+    "time_spent": "витрачений час",
+    "hourly_rate": "погодинна ставка",
+    "no_last_interaction": "НІ",
+    "rate_backs": {
+      "disrespectful": "неповажний",
+      "unhelpful": "не корисний",
+      "helpful": "корисний",
+      "brilliant_insight": "геніальне розуміння",
+      "strengths": "сильні сторони",
+      "weaknesses": "слабкі сторони",
+      "next_steps": "наступні кроки",
+      "links": "посилання"
+    },
+    "total_score": "Загальний рахунок",
+    "knowledge": "Знання",
+    "explanation": "пояснення",
+    "pronunciation": "вимова",
+    "politeness": "ввічливість",
+    "no_skill": "Без навичок",
+    "stands_out": "Виділяється",
+    "could_be_improved": "Може бути покращено",
+    "no_reviews": "Відгуки відсутні",
+    "less_info": "менше інформації",
+    "more_info": "більше інформації",
+    "hide_analytics": "приховати аналітику",
+    "show_analytics": "показати аналітику"
+  },
+  "audio_record": {
+    "paused": "Призупинено"
+  },
+  "item_resort_view": {
+    "resort": "Курорт",
+    "original": "Оригінал"
+  }
+}

@@ -1,0 +1,148 @@
+<div
+  class="skill-card-request skill-card-request__active"
+  *ngIf="!feedbackChatMessageSaved"
+>
+  <!--  <ng-container *ngIf="(isAuth$ | async)?.id">-->
+  <!--    <div [matMenuTriggerFor]="menu" class="skill-card-request__input skill-card-request__project-input"-->
+  <!--         [ngClass]="{'skill-card-request__project-input&#45;&#45;active': selectedProject !== undefined}">-->
+  <!--      <p class="skill-card-request__input&#45;&#45;title" [innerHTML]="requestInputTitle"></p>-->
+  <!--      <div class="skill-card-request__input&#45;&#45;rate-container" *ngIf="selectedSkill">-->
+  <!--        <div class="skill-card-request__input&#45;&#45;rate-block">-->
+  <!--          <p class="skill-card-request__input&#45;&#45;rate">RATE</p>-->
+  <!--          <p class="skill-card-request__input&#45;&#45;rating">{{ selectedSkill?.rate | euroCurrency }}/h</p>-->
+  <!--        </div>-->
+  <!--        <img height="33px" [src]="selectedSkill.skill.icon">-->
+  <!--      </div>-->
+  <!--      <div *ngIf="currentUser">-->
+  <!--        <svg class="skill-card-request__input&#45;&#45;button">-->
+  <!--          <use xlink:href="assets/feather-icon-defs.svg#icon-arrow-down"></use>-->
+  <!--        </svg>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <mat-menu class='mat-menu-content' #menu="matMenu" yPosition="above" xPosition="before">-->
+  <!--      <button class="select-project-menu__btn" mat-menu-item (click)="didSelectProject(null)">-->
+  <!--        <img class="no-project" src="assets/icons/no-project.svg" alt="">-->
+  <!--        <span class="select-project-menu__header">Contact without project</span>-->
+  <!--      </button>-->
+  <!--      <ng-container *ngIf="currentUserProjects?.length">-->
+  <!--        <div class="select-project-menu__title select-project-menu__btn" mat-menu-item disabled>-->
+  <!--          YOUR PROJECTS-->
+  <!--        </div>-->
+  <!--        <button class="select-project-menu__btn" mat-menu-item (click)="didSelectProject(project)"-->
+  <!--                *ngFor="let project of currentUserProjects">-->
+  <!--          <span class="select-project-menu__header">{{ project.title || 'Untitled' }}</span>-->
+  <!--        </button>-->
+  <!--        <a class="select-project-menu__link select-project-menu__btn" mat-menu-item routerLink="/upload">-->
+  <!--          <img src="assets/advisors/plus-circle.svg">-->
+  <!--          <span class="select-project-menu__addproject">add project</span>-->
+  <!--        </a>-->
+  <!--      </ng-container>-->
+  <!--    </mat-menu>-->
+  <!--  </ng-container>-->
+
+  <div
+    *ngIf="selectedSkill && isShowDatePicker"
+    class="skill-card-request__input skill-card-request__datetime-input"
+    [ngClass]="{
+      'skill-card-request__datetime-input-done': selectedDate && selectedTime,
+    }"
+  >
+    <div class="skill-card-request__datetime-input--date">
+      <input
+        [matDatepickerFilter]="calendarFilter"
+        placeholder="Select date"
+        class="skill-card-request__input--title"
+        matInput
+        [formControl]="selectedDate"
+        [matDatepicker]="picker"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <svg class="skill-card-request__input--button">
+          <use xlink:href="assets/feather-icon-defs.svg#icon-calendar"></use>
+        </svg>
+      </mat-datepicker-toggle>
+      <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+    </div>
+
+    <div class="skill-card-request__datetime-input--time">
+      <mat-select #timer placeholder="Select time" [formControl]="selectedTime">
+        <mat-option
+          class="skill-card-request__input--select-title"
+          *ngFor="let time of availableHours"
+          [disabled]="time.viewValue | canPickTime: selectedDate.value"
+          [value]="time.value"
+        >
+          {{ time.viewValue }}
+        </mat-option>
+      </mat-select>
+
+      <svg class="skill-card-request__input--button" (click)="timer.open()">
+        <use xlink:href="assets/feather-icon-defs.svg#icon-clock"></use>
+      </svg>
+    </div>
+  </div>
+
+  <div
+    *ngIf="selectedSkill && !feedbackChatMessageSaved"
+    class="skill-card-request__input skill-card-request__message-input"
+  >
+    <app-text-input
+      inputPlaceholder="Ask your question here"
+      (focusin)="showDatePicker()"
+      [user]="advisor"
+      [showSendBtn]="true"
+      [showInsertBtn]="false"
+      [canSendMessage]="!!(isAuth$ | async)"
+      audioPage="advisors"
+      [audioOrder]="advisor.id"
+      [messageSent$]="messageSentEvt.asObservable()"
+      (sendBtnClicked)="sendRequest($event)"
+    ></app-text-input>
+  </div>
+</div>
+
+<div class="skill-card-request-sent" *ngIf="feedbackChatMessageSaved">
+  <p class="skill-card-request-sent__hint">
+    Your request has been sent. We will send you a calendar reminder as soon as
+    the connector confirms it.
+  </p>
+  <div class="chat" *ngIf="conversation" #chat>
+    <app-message
+      *ngFor="let message of messages; let index = index"
+      class="chat__message"
+      [message]="message"
+      [conversation]="conversation"
+      [recipient]="advisor"
+      [allowCopyMessage]="index === 0"
+      [isAdvisorsPage]="true"
+      [ngClass]="{
+        'chat__message--left': message.user_id !== currentUser.id,
+        'chat__message--right': message.user_id === currentUser.id,
+      }"
+    ></app-message>
+    <div
+      *ngIf="messages.length > 0 && isBlink && advisor.online"
+      class="message__feedback--blue"
+    >
+      <p class="blink">Request sent, awaiting response...</p>
+    </div>
+    <div *ngIf="instantMeeting" class="btn-room" id="drawing_canvas">
+      <a
+        [routerLink]="'/conversations/' + conversationID"
+        [queryParams]="{ instant_meeting: true }"
+      >
+        ENTER CONSULTATION ROOM
+      </a>
+    </div>
+    <app-text-input
+      inputPlaceholder="Start typing..."
+      audioPage="advisors"
+      [user]="advisor"
+      [audioOrder]="advisor.id"
+      (focusin)="isShowDatePicker = true"
+      (focusout)="isShowDatePicker = false"
+      [messageSent$]="messageSentEvt.asObservable()"
+      (sendBtnClicked)="sendMessage($event)"
+    ></app-text-input>
+  </div>
+</div>

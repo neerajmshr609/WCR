@@ -1,0 +1,6 @@
+<app-close-icon mat-dialog-close></app-close-icon>
+@if (data.mode === 'login') {
+  <app-login-modal [conversationId]="data.conversationId" (closeModal)="close($event)"></app-login-modal>
+} @else {
+  <app-signup-modal [conversationId]="data.conversationId" (closeModal)="close($event)"></app-signup-modal>
+}

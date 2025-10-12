@@ -1,0 +1,73 @@
+<div class="lupai-right-menu" [ngClass]="{'lupai-right-menu--open': isOpen()}">
+    <div class="lupai-right-menu__header">
+        <h3>{{ 'lupai_chatbot.right_sidebar.title' | translate }}</h3>
+        <button class="lupai-right-menu__close" (click)="onCloseMenu()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div class="lupai-right-menu__content">
+        <button class="lupai-menu-item" (click)="onMenuAction('adjust-robot')"
+            (keydown.enter)="onMenuAction('adjust-robot')" (keydown.space)="onMenuAction('adjust-robot')">
+            <div class="lupai-menu-item__content">
+                <h4>{{ 'lupai_chatbot.right_sidebar.menu_items.adjust_robot.title' | translate }}</h4>
+                <p>{{ 'lupai_chatbot.right_sidebar.menu_items.adjust_robot.description' | translate }}</p>
+            </div>
+        </button>
+
+        <button class="lupai-menu-item" (click)="onMenuAction('robot-info')"
+            (keydown.enter)="onMenuAction('robot-info')" (keydown.space)="onMenuAction('robot-info')">
+            <div class="lupai-menu-item__icon">
+                <mat-icon>info</mat-icon>
+            </div>
+            <div class="lupai-menu-item__content">
+                <h4>{{ 'lupai_chatbot.right_sidebar.menu_items.robot_info.title' | translate }}</h4>
+                <p>{{ 'lupai_chatbot.right_sidebar.menu_items.robot_info.description' | translate }}</p>
+            </div>
+        </button>
+
+        <button class="lupai-menu-item" (click)="onMenuAction('system-settings')"
+            (keydown.enter)="onMenuAction('system-settings')" (keydown.space)="onMenuAction('system-settings')">
+            <div class="lupai-menu-item__icon">
+                <mat-icon>settings</mat-icon>
+            </div>
+            <div class="lupai-menu-item__content">
+                <h4>{{ 'lupai_chatbot.right_sidebar.menu_items.system_settings.title' | translate }}</h4>
+                <p>{{ 'lupai_chatbot.right_sidebar.menu_items.system_settings.description' | translate }}</p>
+            </div>
+        </button>
+
+        <button class="lupai-menu-item" (click)="onMenuAction('daily-tools')"
+            (keydown.enter)="onMenuAction('daily-tools')" (keydown.space)="onMenuAction('daily-tools')">
+            <div class="lupai-menu-item__icon">
+                <mat-icon>integration_instructions</mat-icon>
+            </div>
+            <div class="lupai-menu-item__content">
+                <h4>{{ 'lupai_chatbot.right_sidebar.menu_items.daily_tools.title' | translate }}</h4>
+                <p>{{ 'lupai_chatbot.right_sidebar.menu_items.daily_tools.description' | translate }}</p>
+            </div>
+        </button>
+
+        <button class="lupai-menu-item" (click)="onMenuAction('used-files')"
+            (keydown.enter)="onMenuAction('used-files')" (keydown.space)="onMenuAction('used-files')">
+            <div class="lupai-menu-item__icon">
+                <mat-icon>folder</mat-icon>
+            </div>
+            <div class="lupai-menu-item__content">
+                <h4>{{ 'lupai_chatbot.right_sidebar.menu_items.used_files.title' | translate }}</h4>
+                <p>{{ 'lupai_chatbot.right_sidebar.menu_items.used_files.description' | translate }}</p>
+            </div>
+        </button>
+
+        <button class="lupai-menu-item lupai-menu-item--help" (click)="onMenuAction('need-help')"
+            (keydown.enter)="onMenuAction('need-help')" (keydown.space)="onMenuAction('need-help')">
+            <div class="lupai-menu-item__icon">
+                <mat-icon>add</mat-icon>
+            </div>
+            <div class="lupai-menu-item__content">
+                <h4>{{ 'lupai_chatbot.right_sidebar.menu_items.need_help.title' | translate }}</h4>
+                <p>{{ 'lupai_chatbot.right_sidebar.menu_items.need_help.description' | translate }}</p>
+            </div>
+        </button>
+    </div>
+</div>

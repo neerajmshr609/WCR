@@ -1,0 +1,117 @@
+<div class="presenter-question">
+  <div class="presenter-question__container">
+    <p class="presenter-question__message">{{ question.title }}</p>
+    <app-user-info
+      *ngIf="author"
+      [isRound]="true"
+      [noName]="true"
+      [user]="author"
+    ></app-user-info>
+  </div>
+
+  <div
+    class="presenter-question__answer-container"
+    *ngIf="!questionHasSavedAnswer"
+  >
+    <p
+      #answerRef
+      (focusout)="focusOut.emit(answerRef)"
+      (keydown)="keyDown.emit(answerRef)"
+      (paste)="detectPaste($event)"
+      [contentEditable]="true"
+      class="presenter-question__answer-input"
+      placeholder="Write your answer..."
+    ></p>
+
+    <div class="presenter-question__btns">
+      <button
+        class="presenter-question__btn presenter-question__record-btn"
+        (click)="startAudioRecording()"
+        [disabled]="isRecording"
+      >
+        <app-audio-icon color="#2C2C2C"></app-audio-icon>
+      </button>
+      <button
+        (click)="didClickSend(answerRef.innerText)"
+        class="presenter-question__btn presenter-question__answer-send"
+        [disabled]="
+          messageInFlight || (!audioMessage?.url && !answerRef.innerText)
+        "
+      >
+        <app-send-icon [strokeWidth]="4" [color]=" messageInFlight || (!audioMessage?.url && !answerRef.innerText) ? '#b3b3b3' : '#2C2C2C'"></app-send-icon>
+      </button>
+    </div>
+
+    <div class="record-audio" *ngIf="isRecording">
+      <app-audio-record
+        [user]="author"
+        [isFlexFeedback]="true"
+        [stopRecording$]="stopRecordingEvt.asObservable()"
+        (uploadingFinished)="audioMessageUploaded($event)"
+        (close)="deleteAudioMessage()"
+      ></app-audio-record>
+    </div>
+
+    <div class="audio-message" *ngIf="audioMessage?.url">
+      <app-audio-message
+        [audioMessage]="audioMessage"
+        [disablePreload]="true"
+        [languages]="author.lang"
+        [canSelectLanguage]="true"
+        (selectLang)="audioMessage.language = $event"
+      ></app-audio-message>
+      <button
+        class="delete-audio delete-btn"
+        (click)="deleteAudioMessage($event)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="presenter-question-warning"
+    *ngIf="
+      showWarning &&
+      answerRef?.nativeElement.innerText &&
+      !questionHasSavedAnswer
+    "
+  >
+    Press send to save answer!
+  </div>
+
+  <div
+    class="presenter-question__answer-container presenter-question__answer-container--sent"
+    *ngIf="questionHasSavedAnswer"
+  >
+    <p
+      class="presenter-question__answer-input"
+      [ngClass]="{ 'pb-0': questionSavedAnswer.audio_message?.url }"
+      *ngIf="questionSavedAnswer.answer as answer"
+    >
+      {{ answer }}
+    </p>
+
+    <div
+      class="audio-message"
+      *ngIf="questionSavedAnswer.audio_message?.url as answerAudioMessage"
+    >
+      <app-audio-message
+        [audioMessage]="answerAudioMessage"
+        [disablePreload]="true"
+        [userLanguages]="author.lang"
+        [canSelectLanguage]="true"
+        (selectLang)="audioMessage.language = $event"
+      ></app-audio-message>
+    </div>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="more">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="didClickDelete.emit()">
+        Delete my answer
+      </button>
+    </mat-menu>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="payments-not-support">
+  <div class="payments-not-support-text">
+    <p>{{ 'finances_stripe.not_support_text.paragraph_1' | translate }}</p>
+    <p>{{ 'finances_stripe.not_support_text.paragraph_2' | translate }}</p>
+    <p class="payments-not-support-down">
+      {{ 'finances_stripe.not_support_text.paragraph_3' | translate }}
+    </p>
+  </div>
+  <h3 class="payments-not-support-h3">
+    {{ 'finances_stripe.multi_cur_acc_wise.title' | translate }}
+  </h3>
+
+  <youtube-player
+    [id]="'player-' + srcLink"
+    [videoId]="srcLink"
+    class="player"
+  ></youtube-player>
+  
+  <h2 class="payments-not-support-title">
+    {{ 'finances_stripe.multi_cur_acc_wise.sub_title' | translate }}
+  </h2>
+  <p class="payments-not-support-label">
+    {{
+      'finances_stripe.multi_cur_acc_wise.support_countries_title' | translate
+    }}
+  </p>
+  <div class="payments-not-support-select">
+    <select class="payments-not-support-select-options">
+      <option value="CN">
+        {{ 'finances_stripe.country.china' | translate }}
+      </option>
+    </select>
+  </div>
+  <p class="payments-not-support-weblink">
+    {{ 'finances_stripe.multi_cur_acc_wise.visit' | translate }}
+    <a href="https://wise.com/gb/multi-currency-account/#features">wise.com</a>
+  </p>
+</div>

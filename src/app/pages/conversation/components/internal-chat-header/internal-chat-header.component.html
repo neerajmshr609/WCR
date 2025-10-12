@@ -1,0 +1,32 @@
+<div class="users-block">
+  <div class="users">
+    @for (user of conversation().members; let last = $last; track user.user_id) {
+      <img class="user" [ngClass]="{shifted: !last}" [ngSrc]="user.avatar || getDefaultAvatar(user.id)" [alt]="'Chat member ' + user.username"
+           [width]="50" [height]="50">
+    }
+  </div>
+
+  <button class="add-new-user" (click)="openAddUserPopup()">
+    <app-add-user-icon fill="black"></app-add-user-icon>
+  </button>
+</div>
+
+<app-button
+  class="menu"
+  size="medium"
+  btnUIType="subtle"
+>
+  <app-icon-more-vertical
+    color="#1E1E1E"
+    class="conversation-request-more-button_icon"
+  ></app-icon-more-vertical>
+</app-button>
+<!--    // TODO need implemented-->
+<!--    @if (isOpened()) {-->
+<!--      <app-dropdown-list-->
+<!--        [items]="menuItems()"-->
+<!--        alignBy='right'-->
+<!--        (selectedChange)="selectMenuItem($event)"-->
+<!--      ></app-dropdown-list>-->
+<!--    }-->
+

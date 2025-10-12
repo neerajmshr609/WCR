@@ -1,0 +1,11 @@
+<h1 class="home_title">
+  <span
+    class="title_we-care"
+    [innerHTML]="'home.we_care' | translate"
+  ></span>
+  <app-string-typer
+    class="title_care-about"
+    [stringsToType]="titleText$ | async"
+  ></app-string-typer>
+</h1>
+<h2 class="home_subtitle" [innerHTML]="'home.subtitle' | translate"></h2>

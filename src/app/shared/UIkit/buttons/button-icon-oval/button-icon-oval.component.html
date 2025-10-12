@@ -1,0 +1,9 @@
+<button
+  [ngClass]="{ active: isActive() }"
+  [disabled]="disabled()"
+  class="action"
+>
+  <div class="icon">
+    <ng-content></ng-content>
+  </div>
+</button>

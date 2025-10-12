@@ -1,0 +1,30 @@
+.project-share-dialog {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 20px;
+
+    h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+  }
+
+  &__content {
+    display: grid;
+
+    p {
+      font-size: 18px;
+      line-height: 140.19%;
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      padding: 1rem;
+      background: #f7f7f7;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import "_variables";
+@import "_mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $--sds-size-space-300;
+}
+
+.click-to-copy_content {
+  padding: $--sds-size-space-150 $--sds-size-space-750;
+  border-radius: $--sds-size-radius-100;
+  background: $--sds-color-grey-old;
+  box-shadow: 0 .3rem .6rem 0 rgba(0, 0, 0, 0.15) inset;
+  color: $--sds-color-text-brand-on-brand-secondary;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-xs;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-medium;
+  line-height: $line-height-160;
+  letter-spacing: $--letter-spacing-3
+}

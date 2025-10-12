@@ -1,0 +1,29 @@
+@import "_mixins";
+@import "variables";
+
+app-conversation-menu {
+  display: block;
+  position: relative;
+  @include baseTransition;
+
+
+  app-dropdown-list {
+    @media (max-width: $desktop) {
+      left: 90px !important;
+    }
+
+    app-icon-render {
+      min-width: 24px !important;
+      min-height: 24px !important;
+    }
+  }
+
+  app-button {
+    .btn-entity.medium.subtle {
+      @media (max-width: 450px) {
+        padding: 0 !important;
+      }
+    }
+  }
+}
+

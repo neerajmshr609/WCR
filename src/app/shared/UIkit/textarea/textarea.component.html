@@ -1,0 +1,29 @@
+@if(control()) {
+  <div class="form-field">
+    <label class="form-label" [for]="inputName()" [ngClass]="{disabled: disabled()}">{{ label() }}</label>
+    <textarea
+      class="form-textarea"
+      [placeholder]="placeholder()"
+      [id]="inputName()"
+      [name]="inputName()"
+      [disabled]="disabled()"
+      [readonly]="disabled()"
+      [formControl]="control()"
+      [rows]="rows()"
+      [cols]="cols()"
+      [minlength]="minLength()"
+      [required]="required()"
+    ></textarea>
+    <small
+      class="form__validator"
+      [ngClass]="{
+            'form__validator--visible':
+              (control().touched && control().errors?.required) ||
+              (control().value && control().errors?.pattern),
+          }"
+    >
+      <ng-content></ng-content>
+    </small>
+  </div>
+}
+

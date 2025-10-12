@@ -1,0 +1,247 @@
+@import 'variables';
+
+.feedback {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  word-break: break-word;
+
+  &__bubble {
+    position: relative;
+    cursor: pointer;
+    background-color: $feed-chat-bubble-background;
+    border-radius: 16px;
+    border-top-left-radius: 0;
+    min-height: 4rem;
+    width: 100%;
+    min-width: 24rem;
+    word-break: break-word;
+    display: grid;
+    padding: 1rem;
+    padding-top: 3rem;
+    border: 2px solid;
+    border-color: $feed-chat-bubble-background;
+
+    color: #000;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140.188%;
+
+    ::ng-deep {
+      app-audio-message {
+        .wrapper {
+          padding: 0 1rem;
+        }
+      }
+    }
+
+    &.pt-1 {
+      padding-top: 1rem;
+    }
+
+    &--null {
+      &:hover {
+        background-color: #e8e8e8;
+      }
+    }
+
+    &--active {
+      border-color: black !important;
+
+      .feedback__order {
+        background: black;
+        color: white;
+      }
+
+      &.feedback__bubble--project-card {
+        &:not(.feedback__bubble--active-screenshot):not(
+            .feedback__bubble--active-curves
+          ) {
+          .feedback__drawing-icon {
+            background: black;
+          }
+        }
+
+        &.feedback__bubble--active-screenshot {
+          .feedback__screenshot-icon {
+            background: black;
+          }
+        }
+
+        &.feedback__bubble--active-curves {
+          .feedback__curves-icon {
+            background: black;
+          }
+        }
+      }
+
+      &:not(.feedback__bubble--project-card) {
+        .feedback__additions-icon {
+          background: black;
+        }
+      }
+    }
+
+    &--mustard {
+      color: white;
+      border-color: $feed-accent-ember;
+      background-color: $feed-accent-ember;
+    }
+
+    &--green {
+      color: white;
+      border-color: $feed-accent-green;
+      background-color: $feed-accent-green;
+    }
+
+    &--blue {
+      color: white;
+      border-color: $feed-accent-blue;
+      background-color: $feed-accent-blue;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  h2 {
+    text-align: left;
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 0 1rem;
+
+    .av-link {
+      display: inline-block;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 340px;
+
+      &:hover {
+        color: $feed-accent-selection;
+      }
+
+      &--black {
+        color: #000;
+      }
+    }
+  }
+
+  &__order {
+    position: absolute;
+    top: -0.2rem;
+    left: -0.2rem;
+    font-size: 1rem;
+    height: 2rem;
+    min-width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #ddd;
+    background: $--sds-color-background-neutral-default;
+    border-bottom-right-radius: 8px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+
+    &.pl {
+      padding-left: 0.8rem;
+    }
+  }
+
+  &__rateback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0 0.8rem 0 0.6rem;
+
+    img {
+      height: 2.8rem;
+      margin-right: 0.8rem;
+    }
+  }
+
+  &__additions-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1.4rem;
+    top: -1.4rem;
+  }
+
+  &__additions-icon {
+    background: #b0b0b0;
+    border: none;
+    outline: none;
+    height: 3.2rem;
+    width: 3.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    img {
+      width: 2.6rem;
+      height: auto;
+    }
+
+    &--small {
+      img {
+        width: 2.2rem;
+      }
+    }
+
+    &:last-child {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.tag {
+  transition: all 0.2s ease-in-out;
+  cursor: default;
+  margin: 1rem 1.4rem 0 0;
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: 600;
+  align-self: self-start;
+  color: white;
+
+  .inner-container {
+    border-radius: 5rem;
+    background-color: black;
+    display: flex;
+    align-items: center;
+  }
+
+  p {
+    padding: 0.6rem 1rem;
+    border-radius: 5rem;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+  }
+
+  span {
+    display: block;
+    margin-left: 0.5rem;
+    color: white;
+    margin-right: 1.2rem;
+    word-break: keep-all;
+  }
+}
+
+app-user-info {
+  display: block;
+  margin-right: 1rem;
+}

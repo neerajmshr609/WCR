@@ -1,0 +1,63 @@
+@import 'variables';
+
+.slide-connected {
+  width: 395px;
+  min-height: 53rem;
+  background: $feed-accent-green;
+  box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 6px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: $bp-small) {
+    width: auto;
+  }
+  &__title {
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 36px;
+    text-align: right;
+    color: #fafafa;
+    padding-top: 5px;
+  }
+  &__text {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #ffffff;
+    padding: 25px 45px 25px;
+    @media only screen and (max-width: $bp-small) {
+      padding: 20px 35px 10px;
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+  &__footer {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 5px;
+  }
+  &__button {
+    width: 235px;
+    height: 47px;
+    background: #e3be30;
+    border-radius: 8px;
+    border: none;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 40px;
+    margin-top: 20px;
+  }
+  &__img {
+    padding-top: 25px;
+  }
+}

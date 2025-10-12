@@ -1,0 +1,92 @@
+@import 'variables';
+
+.container {
+  position: relative;
+}
+
+.maze-animation {
+  --size-36-px: 36px;
+  --size-42-px: 42px;
+  --dude-left: 0px;
+  --dude-top: 0px;
+
+  font-weight: bold;
+  text-align: center;
+  color: #fafafa;
+  box-shadow: 0px 0.4px 2px rgb(0 0 0 / 25%);
+  position: relative;
+  border-radius: 6px;
+  font-size: 12px;
+  background-color: $--sds-color-grey-500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  max-height: 80vh;
+  height: 66rem;
+  min-height: 42rem;
+
+  @media (max-width: $bp-smallest) {
+    max-height: 80vh;
+    height: 52rem;
+  }
+
+  @media (max-width: 340px) {
+    max-height: 90vh;
+    height: 48rem;
+  }
+
+  &__header {
+    font-size: var(--size-36-px);
+  }
+
+  &__footer {
+    font-size: var(--size-42-px);
+  }
+
+  &__footer,
+  &__header {
+    height: var(--size-36-px);
+    margin: var(--size-36-px) 0;
+  }
+
+  &__body {
+    height: 50%;
+    position: relative;
+    width: 100%;
+  }
+
+  &__maze {
+    height: 100%;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__bridge {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  &__dude {
+    height: auto;
+  }
+
+  img {
+    position: absolute;
+    transition: 0.2s;
+  }
+}
+
+:host ::ng-deep {
+  .typewriter {
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #4e4e4e;
+    line-height: 1;
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+}

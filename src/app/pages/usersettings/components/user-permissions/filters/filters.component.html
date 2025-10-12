@@ -1,0 +1,40 @@
+<div class="filters">
+  <div class="filter_row"></div>
+  <div class="filter_row">
+    <app-button
+      size="medium"
+      btnUIType="{{ selectedFilter() === 'all' ? 'primary' : 'neutral' }}"
+      type="button"
+      (click)="filterUsers('all')"
+    >
+      {{ 'all_users' | translate }}
+    </app-button>
+    <app-button
+      size="medium"
+      btnUIType="{{ selectedFilter() === 'pending' ? 'primary' : 'neutral' }}"
+      type="button"
+      (click)="filterUsers('pending')"
+    >
+      {{ 'pending_users' | translate }}
+    </app-button>
+    <app-button
+      size="medium"
+      btnUIType="{{ selectedFilter() === 'active' ? 'primary' : 'neutral' }}"
+      type="button"
+      (click)="filterUsers('active')"
+    >
+      {{ activeUsersCount() }}
+      {{ 'active' | translate }}
+    </app-button>
+
+    <app-button size="medium" btnUIType="primary" (click)="invite()"
+      ><app-plus-icon color="#F5F5F5"></app-plus-icon>
+      {{ 'invite_user' | translate }}
+    </app-button>
+    <!-- <app-more-menu
+      [placement]="'right'"
+      [menuList]="[]"
+      [menuTitle]="'user_settings'"
+    ></app-more-menu> -->
+  </div>
+</div>

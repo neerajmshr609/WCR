@@ -1,0 +1,166 @@
+@import 'variables';
+
+.modal__img--fifth-card {
+  width: 14rem;
+  height: 10rem;
+  min-height: 10rem;
+}
+
+.modal-img {
+  margin-left: 16px;
+  margin-top: 24px;
+}
+
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: unset;
+  border: unset;
+  cursor: pointer;
+
+  img {
+    height: 35px;
+  }
+}
+
+.auth {
+  &-title {
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    margin-bottom: 20px;
+  }
+
+  &-subtitle {
+    color: $feed-light-gray-text;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 127.19%;
+    letter-spacing: 0.03em;
+    margin-bottom: 20px;
+  }
+
+  &-form {
+    height: 410px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .hint {
+      color: #858585;
+    }
+
+    &-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 10px;
+
+      label {
+        width: 100%;
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 15px;
+      }
+
+      input {
+        width: 100%;
+        border: unset;
+        background-color: #f2f2f2;
+        border-radius: 2px;
+        padding: 10px;
+      }
+
+      &__invalid {
+        background-color: #f9bfbf !important;
+      }
+
+      &__hint {
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 9px;
+        color: $feed-accent-red;
+      }
+    }
+  }
+
+  &-actions {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    &__additional-text {
+      text-align: center;
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 11px;
+    }
+  }
+}
+
+.second-text {
+  color: $feed-light-gray-text;
+}
+
+.action-btn {
+  display: flex;
+  padding: 7px 20px;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  border: unset;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+
+  &__blue {
+    background-color: $feed-accent-selection;
+  }
+
+  &__green {
+    background-color: $feed-accent-green;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
+
+.link {
+  font-weight: 900;
+  font-size: 1.2rem;
+  line-height: 11px;
+  cursor: pointer;
+  color: black;
+  text-decoration: unset;
+
+  &__green {
+    color: $feed-accent-green !important;
+  }
+
+  &__blue {
+    color: $feed-accent-selection !important;
+  }
+
+  &__grey {
+    color: $feed-light-gray-text !important;
+  }
+
+  span {
+    font-weight: 400;
+  }
+}
+
+.privacy-policy {
+  margin-top: 5px;
+  color: $--sds-color-black-400;
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}

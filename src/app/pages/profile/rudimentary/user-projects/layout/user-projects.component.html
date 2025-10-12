@@ -1,0 +1,16 @@
+<div
+  class="cards-grid"
+  *ngIf="userProjects$ | async as userProjects; else loaderTpl"
+>
+  <p class="no-content" *ngIf="!userProjects.length">Nothing here for now</p>
+  <app-project-card-v2
+    *ngFor="let project of userProjects"
+    [isPublicProfileProject]="true"
+    [project]="project"
+    [currentUser]="currentUser"
+  ></app-project-card-v2>
+</div>
+
+<ng-template #loaderTpl>
+  <app-small-spinner [diameter]="40"></app-small-spinner>
+</ng-template>

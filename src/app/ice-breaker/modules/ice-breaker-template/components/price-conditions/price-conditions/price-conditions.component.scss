@@ -1,0 +1,70 @@
+@import 'mixins';
+@import 'control-elements.mixins';
+
+.price-conditions-container {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ice-breaker-type-element {
+  @include priceElement;
+  padding-left: 16px;
+  padding-right: 16px;
+  cursor: pointer;
+
+  img {
+    vertical-align: bottom;
+    margin-right: 7px;
+    @include invertColor;
+  }
+
+  @media screen and (max-width: $bp-small) {
+    flex: 1;
+  }
+}
+
+@mixin counterTitle {
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.42px;
+  color: white;
+}
+
+.price-per-complete-icebreaker-title {
+  @include counterTitle;
+}
+
+.count-people-title {
+  @include counterTitle;
+  font-weight: 400;
+}
+
+.property-counter-icon {
+  height: 24px;
+  cursor: pointer;
+}
+
+.pay-btn {
+  align-self: center;
+  background: $feed-accent-green;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  padding: 12px 25px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.42px;
+
+  @media screen and (max-width: $bp-small) {
+    flex: 1;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

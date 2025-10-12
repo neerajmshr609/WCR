@@ -1,0 +1,7 @@
+<app-mobile-conversation-details
+  [conversation]="isInternal() ? internalChatConversation() : conversation()"
+  [(isInternal)]="isInternal"
+  (isRecordingEvent)="handleAudioRecord($event)"
+  [activeConversationRater]="activeConversationRater()"
+  [activeConversationPartners]="activeConversationPartners()"></app-mobile-conversation-details>
+

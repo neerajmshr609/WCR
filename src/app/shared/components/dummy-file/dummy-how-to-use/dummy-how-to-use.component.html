@@ -1,0 +1,32 @@
+<div class="modal__container">
+  <button mat-icon-button mat-dialog-close class="modal__btn--close">
+    <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+  </button>
+
+  <div class="modal__body tutorial">
+    <div class="tutorial__body">
+      <div
+        plyr
+        *ngIf="showVideo && !videoLoading; else bgTpl"
+        [plyrOptions]="playerOptions"
+        [plyrPlaysInline]="true"
+        [plyrSources]="[{ src: videoSrc }]"
+      ></div>
+
+      <ng-template #bgTpl>
+        <img
+          class="tutorial__image"
+          src="/assets/dummy/explainer-placeholder.svg"
+        />
+      </ng-template>
+      <button
+        class="tutorial__play-btn"
+        *ngIf="!showVideo"
+        (click)="playVideo()"
+      >
+        <img src="assets/icons/play-btn-white.svg" />
+      </button>
+      <app-small-spinner *ngIf="videoLoading" diameter="50"></app-small-spinner>
+    </div>
+  </div>
+</div>

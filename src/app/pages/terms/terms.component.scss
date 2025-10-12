@@ -1,0 +1,62 @@
+@import '_variables';
+
+.terms {
+  display: block;
+  -webkit-box-pack: center;
+ 
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 2rem;
+  color: $--sds-color-text-default-default;
+  font-size: $--sds-typography-body-size-medium;
+
+  ul {
+    margin-left: 1rem;
+  }
+
+  li, p {
+    margin-bottom: 1rem;
+  }
+
+  .header-title {
+    font-family: $--sds-typography-title-page-font-family;
+    font-size: $--sds-typography-subtitle-size-base;
+    font-weight: $--sds-typography-subtitle-font-weight;
+  }
+  
+  .heading {
+    font-family: $--sds-typography-heading-font-family;
+      color: $--sds-color-text-default-default;
+      font-size: $--sds-typography-heading-size-base;
+      font-weight: $--sds-typography-heading-font-weight;
+      line-height: $line-height-120;
+      letter-spacing: $--letter-spacing--0048;
+      margin-bottom: 1rem;
+  }
+  
+  .subheading {
+      color: $--sds-color-text-default-default;
+      font-family: $--sds-typography-subheading-font-family;
+      font-size: $--sds-typography-body-size-medium;
+      font-weight: $--sds-typography-subheading-font-weight;
+      line-height: $line-height-120;
+      margin-bottom: 1rem;
+  }
+  
+  .terms-container {
+    margin: 1rem 0 auto;
+  }
+  
+  .terms-section {
+    margin-bottom: 2rem;
+  }
+  
+  ol.terms-list {
+    list-style-type: none;
+  }
+  
+  ol.terms-sublist {
+    list-style-type: none;
+    padding-left: 1rem;
+  }
+}

@@ -1,0 +1,265 @@
+@import 'variables';
+
+:host {
+  ::ng-deep {
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+      background: white;
+      box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    mat-select-trigger {
+      font-weight: bold;
+    }
+  }
+}
+
+.payout-request {
+  position: relative;
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 322px;
+  margin: 0 auto;
+
+  &__btns {
+    position: absolute;
+    left: 70%;
+    top: -6px;
+    display: flex;
+  }
+
+  &__btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+
+    &:first-child {
+      margin-right: 6px;
+    }
+
+    &:disabled {
+      cursor: unset;
+      opacity: 0.4;
+    }
+  }
+
+  &__edit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: $feed-accent-ember;
+    border-radius: 3px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: white;
+    padding: 0 8px;
+    height: 2.2rem;
+
+    img {
+      padding-right: 4px;
+    }
+  }
+
+  &__cancel {
+    height: 2.2rem;
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &__body {
+    border: 7px solid black;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+    color: white;
+    padding: 6px 10px;
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-size: 14px;
+    font-weight: 500;
+
+    &--yellow {
+      background: $feed-accent-ember;
+    }
+
+    &--pink {
+      background: $--sds-color-background-danger-secondary;
+    }
+
+    &--red {
+      background: $feed-accent-red;
+    }
+
+    &--gray {
+      background: $--sds-color-background-neutral-default;
+    }
+
+    &--beige {
+      background: #d3c795;
+    }
+  }
+
+  &__line {
+    position: absolute;
+    top: -8px;
+    left: -1px;
+    width: 70%;
+  }
+
+  &__success-img {
+    position: absolute;
+    height: 7rem;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -4.5rem;
+  }
+
+  &__lock {
+    width: 8rem;
+    height: auto;
+    margin-right: -20px;
+    margin-left: auto;
+  }
+
+  &__title {
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 4px;
+  }
+
+  &__data {
+    flex-grow: 1;
+  }
+
+  &__date {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    img {
+      width: auto;
+      height: 2rem;
+    }
+  }
+
+  &__success {
+    margin-top: -3rem;
+    padding-bottom: 12px;
+  }
+
+  &__amount {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    p {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      img {
+        width: 2.4rem;
+      }
+    }
+
+    span {
+      text-transform: uppercase;
+
+      &:last-child {
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    align-items: center;
+    gap: 5px;
+
+    > * {
+      width: 100%;
+    }
+  }
+
+  &__currency {
+    &-label {
+      text-align: center;
+      font-weight: 500;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: black;
+    }
+
+    &-display {
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+
+      span {
+        &:first-child {
+          text-transform: uppercase;
+          color: black;
+        }
+
+        &:last-child {
+          text-transform: uppercase;
+          padding: 3px 15px;
+          background: black;
+          border-radius: 4px;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  &__address {
+    &-label {
+      color: black;
+      font-size: 12px;
+    }
+
+    &-value {
+      text-align: right;
+    }
+
+    &-form {
+      position: relative;
+    }
+
+    &-input {
+      box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.15);
+      border-radius: 4px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      resize: none;
+      padding: 4px;
+      border: none;
+      width: 100%;
+    }
+  }
+}
+
+mat-form-field {
+  margin-bottom: -1.3438em;
+}
+
+mat-error {
+  font-size: 11px;
+  margin-bottom: 5px;
+}

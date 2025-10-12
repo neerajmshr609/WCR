@@ -1,0 +1,9 @@
+@import '_variables';
+
+:host {
+  user-select: none;
+  display: block;
+  position: relative;
+  margin-top: $--sds-size-space-750;
+  margin-bottom: $--sds-size-space-550;
+}

@@ -1,0 +1,22 @@
+<div class="enter-to-video-call">
+  <div class="close">
+    <app-close-card-icon color="#1e1e1e" (click)="close.emit()"></app-close-card-icon>
+  </div>
+  <h6 class="enter-to-video-call__title" [innerHTML]="'video_call_invite.title' | translate"></h6>
+  <p class="enter-to-video-call__description"> {{ 'video_call_invite.description' | translate }} </p>
+  <app-button
+    btnUIType="primary"
+    size="large"
+    (click)="goJoin()"
+  >
+    @if(loading()){
+      <app-small-spinner
+        [isWhite]="true"
+        diameter="16"
+      ></app-small-spinner>
+    } @else {
+      <app-icon-video-call strokeWidth="0.3" color="#F5F5F5" fill="#F5F5F5"></app-icon-video-call>
+    }
+    {{ 'video_call_invite.join-call' | translate }}
+  </app-button>
+</div>

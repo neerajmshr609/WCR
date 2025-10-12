@@ -1,0 +1,16 @@
+@if (isLoading()) {
+  <app-icon-spinner></app-icon-spinner>
+} @else if (publicProfile()) {
+  <app-profile-image
+    class="profile_image"
+  ></app-profile-image>
+  <div class="profile_content-container">
+    <app-profile-info-card
+      class="profile_info-card"
+    ></app-profile-info-card>
+    <div class="profile_nav-container">
+      <app-profile-navigation></app-profile-navigation>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+}

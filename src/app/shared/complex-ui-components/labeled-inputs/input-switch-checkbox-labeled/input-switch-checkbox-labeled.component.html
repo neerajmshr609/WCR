@@ -1,0 +1,22 @@
+@if (label()) {
+  <label class="input-switch-checkbox_label-container"
+         (click)="labelClickHandler()"
+  >
+    <span class="input-switch-checkbox_label">{{ label() }}</span>
+    <ng-container *ngTemplateOutlet="switchInput"></ng-container>
+  </label>
+} @else {
+  <ng-container *ngTemplateOutlet="switchInput"></ng-container>
+}
+
+@if (description()) {
+  <p class="input-switch-checkbox_description">{{ description() }}</p>
+}
+
+<ng-template #switchInput>
+  <app-input-switch-checkbox
+    [(value)]="value"
+    [(disabled)]="disabled"
+    [disableClickListener]="true"
+  ></app-input-switch-checkbox>
+</ng-template>

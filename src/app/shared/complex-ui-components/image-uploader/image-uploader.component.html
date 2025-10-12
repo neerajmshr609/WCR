@@ -1,0 +1,17 @@
+<div class="image-uploader" role="button" (click)="openUploader()">
+  <img
+    class="profile-img"
+    [src]="image() ? (image()?.value ? image()?.value : image()) : defaultBg"
+    #avatar
+    alt="Avatar"
+  />
+
+  <span class="image-label">
+    <app-upload-btn-icon
+      class="icon"
+      color="#1E1E1E"
+      strokeWidth="1.6"
+    ></app-upload-btn-icon>
+    {{ 'uploader.upload_file' | translate }}
+  </span>
+</div>

@@ -1,0 +1,56 @@
+@import "_variables";
+
+:host {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.uploader-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: $--sds-color-background-default-secondary;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1.6rem;
+
+    app-close-icon {
+      display: flex;
+      width: 2.4rem;
+      height: 2.4rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.profile-image {
+  &_upload-button {
+    width: fit-content;
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.upload-button {
+  &_icon {
+    width: $--sds-typography-body-size-medium;
+    height: $--sds-typography-body-size-medium;
+  }
+}
+
+@media screen and (min-width: $bp-medium) {
+  .profile-image {
+    &_upload-button {
+      top: 66%;
+    }
+  }
+}

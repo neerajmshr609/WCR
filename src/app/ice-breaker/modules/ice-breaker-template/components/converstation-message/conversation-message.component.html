@@ -1,0 +1,84 @@
+<ng-container *ngIf="!rawMessage.isOwner; else author">
+  <img
+    src="assets/conversations/robot.svg"
+    class="user-avatar"
+    alt="Robot avatar"
+  />
+</ng-container>
+<ng-template #author>
+  <img
+    [src]="userProfile | userAvatar"
+    class="user-avatar user-avatar__author"
+    alt="User avatar"
+  />
+</ng-template>
+<article
+  class="message-container"
+  [ngClass]="{ 'message-container__own': rawMessage.isOwner }"
+>
+  <section
+    class="message"
+    [ngClass]="{
+      message__own: rawMessage.isOwner,
+      'message__payment-request': !!rawMessage.paymentRequest,
+    }"
+  >
+    <ng-container *ngIf="!rawMessage.isTitle; else titleMessage">
+      <div
+        class="image-messages-container"
+        *ngIf="
+          rawMessage.message_screenshots_attributes.length &&
+          rawMessage.message_screenshots_attributes[0].url
+        "
+      >
+        <img
+          *ngFor="let image of rawMessage.message_screenshots_attributes"
+          [src]="image.url"
+          alt="Message image"
+        />
+      </div>
+      <app-iframely-embed
+        *ngIf="rawMessage.isRichMedia"
+        class="custom-embed-container"
+        [iframe]="rawMessage.body"
+        [subtitle]="rawMessage.subtitle"
+      >
+      </app-iframely-embed>
+      <ng-container *ngIf="messageText">
+        <div
+          class="regular-message"
+          [innerHTML]="messageText | translate: rawMessage?.translateParams"
+        ></div>
+      </ng-container>
+
+      <ng-container *ngIf="rawMessage.paymentRequest">
+        <app-receipt
+          [paymentRequest]="rawMessage.paymentRequest"
+          [awaitingPayment]="false"
+          [showAdditions]="true"
+          [approved]="true"
+          receiptTitle="Confirmed budget"
+          [showDateCreated]="false"
+          [peopleAmount]="rawMessage.paymentRequest.countOfPeople"
+          incomeText="Connections Income"
+          class="custom-payment-request"
+        >
+        </app-receipt>
+      </ng-container>
+      <app-audio-message
+        *ngIf="rawMessage.audio_message as audioMessage"
+        [audioMessage]="audioMessage"
+        [languages]="userProfile.lang"
+      ></app-audio-message>
+    </ng-container>
+    <ng-template #titleMessage>
+      <div class="regular-message title-message">
+        <h4>{{ 'my-title' | translate }}</h4>
+        {{ messageText }}
+      </div>
+    </ng-template>
+  </section>
+  <div class="message-date">
+    {{ rawMessage.created_at | amLocal | amTimeAgo }}
+  </div>
+</article>

@@ -1,0 +1,43 @@
+<div class="lupai-header">
+    <!-- Top row: Title and navigation -->
+    <div class="lupai-header__top">
+        @if (showNavigationButtons()) {
+        <button class="lupai-header__nav-btn" (click)="onNavigateLeftClick($event)">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        }
+
+        <div class="lupai-header__title-main">
+            {{ title() || ('lupai_chatbot.title' | translate) }}
+        </div>
+
+        @if (showNavigationButtons()) {
+        <button class="lupai-header__nav-btn" (click)="onNavigateRightClick($event)">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        }
+    </div>
+
+    <!-- Bottom row: Description and menu -->
+    <div class="lupai-header__bottom">
+        <!-- Robot Image - Far Left -->
+        <img [src]="robotIconSrc()" class="lupai-header__robot-icon" alt="Robot" />
+
+        <!-- Description Text - Center with Maximum Width -->
+        <div class="lupai-header__subtitle">
+            {{ subtitle() || ('lupai_chatbot.subtitle' | translate) }}
+        </div>
+
+        <!-- Action Buttons - Far Right -->
+        @if (showActionButtons()) {
+        <div class="lupai-header__actions">
+            <button class="lupai-header__menu-btn" (click)="onPlusClick()">
+                <mat-icon>add</mat-icon>
+            </button>
+            <button class="lupai-header__menu-btn" (click)="onMenuClick()">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+        </div>
+        }
+    </div>
+</div>

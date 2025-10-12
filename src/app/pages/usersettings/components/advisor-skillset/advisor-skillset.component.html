@@ -1,0 +1,18 @@
+@if (isLoading) {
+  <app-small-spinner [diameter]="50" class="mt-2"></app-small-spinner>
+}
+
+@if (!!allSkills && !!userSkills()) {
+  <div cdkDropList (cdkDropListDropped)="drop($event)">
+    <div class="select-skill">
+      <app-skill-filter  [displayColumn]="true" [displayStage]="false" [isAddSkill]="true" [artCategories]="tags" [skills]="filteredSkills"  (addedSkill)="addedSkill($event)"></app-skill-filter>
+    </div>
+
+    <app-topics
+      (userSkillDeleted)="onUserSkillDelete($event)"
+      [filteredSkills]="filteredSkills"
+      [allSkills]="allSkills"
+      [(skills)]="userSkills"
+    ></app-topics>
+  </div>
+}

@@ -1,0 +1,645 @@
+<app-small-spinner
+  class="spinner"
+  diameter="60"
+  *ngIf="!project || !currentUser"
+></app-small-spinner>
+
+<form
+  *ngIf="project && currentUser"
+  class="project-form form"
+  #uploadForm="ngForm"
+>
+  <div class="project-form__content">
+    <div class="form__group uploader">
+      <img
+        src="assets/upload/upload-files.svg"
+        alt=""
+        class="form__group-icon"
+      />
+      <h3 class="form__group-title">Upload Files</h3>
+
+      <div
+        class="uploader"
+        [class]="projectID ? 'uploader--edit-project' : 'uploader--add-project'"
+      ></div>
+    </div>
+
+    <div class="form__group">
+      <div class="files-preview">
+        <div class="form__link">
+          <img src="assets/youtube.svg" />
+          <div>
+            <input
+              class="form__input"
+              type="text"
+              id="youtube"
+              name="youtube"
+              autocomplete="off"
+              [formControl]="ytLink"
+              [ngClass]="{ invalid: ytLink.hasError('pattern') }"
+              placeholder="Paste youtube link in here"
+            />
+          </div>
+
+          <button
+            [disabled]="!ytLink.valid || !ytLink.value"
+            class="accented-btn"
+            type="button"
+            (click)="onAddYoutube()"
+          >
+            Add
+          </button>
+          <button
+            class="form__delete-link"
+            type="button"
+            (click)="clearFormControl(ytLink)"
+            [disabled]="!ytLink.value"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+
+          <mat-error *ngIf="!ytLink.valid">
+            <span *ngIf="ytLink.hasError('pattern')"
+              >Invalid url. Please paste the correct url.</span
+            >
+            <span *ngIf="videoNotFound">Video not found</span>
+          </mat-error>
+        </div>
+
+        <div class="form__link">
+          <img src="assets/upload/iframe.svg" />
+          <div>
+            <input
+              class="form__input"
+              type="text"
+              id="iframe"
+              name="iframe"
+              autocomplete="off"
+              [formControl]="iframeLink"
+              placeholder="Paste any url link in here"
+            />
+          </div>
+
+          <button
+            [disabled]="!iframeLink.valid || !iframeLink.value || iframeLoading"
+            class="accented-btn"
+            type="button"
+            (click)="onAddIframe()"
+          >
+            Add
+          </button>
+          <button
+            class="form__delete-link"
+            type="button"
+            (click)="clearFormControl(iframeLink)"
+            [disabled]="!iframeLink.value"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+
+          <mat-error *ngIf="!iframeLink.valid && !iframeError">
+            <span *ngIf="iframeLink.hasError('pattern')"
+              >Invalid url. Please paste the correct url.</span
+            >
+            <span *ngIf="iframeLink.hasError('alreadyExists')"
+              >A file with such link already exists.</span
+            >
+          </mat-error>
+
+          <mat-error *ngIf="iframeError && iframeLink.valid">
+            <span>{{ iframeError }}</span>
+          </mat-error>
+        </div>
+
+        <p class="form__group-subtitle dummy-hint">
+          <img class="who-can-see__info" src="./assets/upload/info-grey.svg" />
+          If the frame function drops an error use instead the dummy file
+          workflow. This way you can get online feedback anywhere. E.g. Mobile
+          Apps, Websites, Social Media.
+        </p>
+
+        <div class="form__link">
+          <img src="assets/upload/dummy.svg" />
+          <div>
+            <input
+              class="form__input"
+              type="text"
+              id="dummy"
+              name="dummy"
+              autocomplete="off"
+              [formControl]="dummyLink"
+              placeholder="Paste any url link in here"
+            />
+          </div>
+
+          <button
+            [disabled]="!dummyLink.valid || !dummyLink.value"
+            class="accented-btn"
+            type="button"
+            (click)="onAddDummy()"
+          >
+            Add
+          </button>
+          <button
+            class="form__delete-link"
+            type="button"
+            (click)="clearFormControl(dummyLink)"
+            [disabled]="!dummyLink.value"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+
+          <mat-error *ngIf="!dummyLink.valid">
+            <span *ngIf="dummyLink.hasError('pattern')"
+              >Invalid url. Please paste the correct url.</span
+            >
+            <span *ngIf="dummyLink.hasError('alreadyExists')"
+              >A file with such link already exists.</span
+            >
+          </mat-error>
+        </div>
+
+        <app-drag-n-drop-grid
+          [project]="project"
+          [items]="project.projectfiles"
+          [files]="uploader?.files"
+          [errorAVFiles$]="errorAVFiles$.asObservable()"
+          (deleteEvt)="onDelete($event)"
+          (showAVHowItWorks)="showAVHowItWorks()"
+          (applyToAllFiles)="applyToAllFiles($event)"
+        >
+        </app-drag-n-drop-grid>
+      </div>
+    </div>
+
+    <div class="project-info">
+      <img class="form__group-icon" src="./assets/upload/project-info.svg" />
+      <h2 class="form__group-title">Project description</h2>
+    </div>
+
+    <div class="form__group">
+      <h3 class="form__input-label" for="name">Project title</h3>
+      <input
+        class="form__input"
+        type="text"
+        id="name"
+        name="title"
+        [(ngModel)]="project.title"
+        placeholder='If left empty, project will be named "Untitled"'
+      />
+    </div>
+
+    <div class="form__group">
+      <h3 class="form__input-label" for="name">Project description</h3>
+      <textarea
+        class="form__input"
+        type="text"
+        id="decription"
+        rows="4"
+        name="description"
+        #description
+        [(ngModel)]="project.description"
+      ></textarea>
+      <small
+        class="form__validator {{
+          !description.validity.valid ? 'form__validator--visible' : ''
+        }}"
+        >Required</small
+      >
+    </div>
+
+    <div class="form__group">
+      <h3 class="form__input-label" for="purpose">Project purpose</h3>
+      <input
+        class="form__input"
+        type="text"
+        id="purpose"
+        name="purpose"
+        [(ngModel)]="project.purpose"
+        placeholder="e.g. for exhibition, university project, experiments"
+      />
+    </div>
+
+    <div class="form__group">
+      <div class="form__required"></div>
+      <h3 class="form__input-label form__input-label--black" for="name">
+        Category
+      </h3>
+      <p class="form__text">
+        Choose one genre or art field that closest describes your project.
+      </p>
+
+      <input
+        ngModel
+        class="form__input"
+        type="text"
+        [formControl]="artCategoryControl"
+        required
+        #autocomplete
+        placeholder="Start typing to choose a category"
+        name="category"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let cat of filteredOptions | async"
+          [value]="cat.name"
+        >
+          {{ cat.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+
+    <div class="form__group mb-13">
+      <img
+        src="assets/upload/feedback-focus.svg"
+        alt=""
+        class="form__group-icon mt-13"
+      />
+      <h2 class="form__group-title mb-2">Desired feedback focus</h2>
+      <p class="form__group-subtitle">
+        If you wish advisors to focus more on a specific area of your review
+        please drag the blue button to the designated area, otherwise leave it
+        as it is.
+      </p>
+
+      <div class="feedback-focus-area">
+        <app-feedback-focus-area
+          [fullWidth]="430"
+          [coordinates]="project.feedback_focus_area"
+          (coordinatesChange)="project.feedback_focus_area = $event"
+        ></app-feedback-focus-area>
+      </div>
+    </div>
+
+    <div class="form__group">
+      <img
+        src="assets/upload/custom-question.svg"
+        alt=""
+        class="form__group-icon"
+      />
+      <h2 class="form__group-title mb-2">Custom questions</h2>
+      <p class="form__group-subtitle">
+        Ask reviewers your own personal questions directly, type in as many
+        questions as you want.
+      </p>
+
+      <div class="presenter-question-grid">
+        <app-presenter-question-item
+          *ngFor="let pquestion of filteredQuestions"
+          (addQuestion)="onPresenterQuestionAdd()"
+          (deleteQuestion)="onPresenterQuestionDelete(pquestion)"
+          [presenterQuestion]="pquestion"
+          [length]="filteredQuestions.length"
+        ></app-presenter-question-item>
+      </div>
+    </div>
+
+    <div class="who-can-see">
+      <img src="assets/upload/eye.svg" alt="" class="form__group-icon" />
+      <h2 class="form__group-title mb-3">Who can see your project</h2>
+      <p class="form__group-subtitle">
+        <img class="who-can-see__info" src="./assets/upload/info-grey.svg" />
+        Setup who can see your project once is uploaded and compressed. Can be
+        edited also after upload.
+      </p>
+
+      <div class="who-can-see__container">
+        <div class="who-can-see__item">
+          <img class="who-can-see__logo" src="./assets/upload/self-test.svg" />
+          <p class="who-can-see__title">Self Test</p>
+          <p class="who-can-see__text">
+            You will be able to answer a below selected set of questions to
+            yourself.
+          </p>
+
+          <p style="text-align: center; font-size: 1.4rem">Coming soon</p>
+          <!-- <app-gt-switch
+            [isSwitched]="isSelfTest"
+            [onoffMode]="true"
+            (didChangeEvent)="isSelfTest = !isSelfTest"
+          ></app-gt-switch> -->
+        </div>
+
+        <div class="who-can-see__item">
+          <img
+            class="who-can-see__logo"
+            src="./assets/upload/greytme-advisor.svg"
+          />
+          <p class="who-can-see__title">Getme.Global Advisors</p>
+          <p class="who-can-see__text">
+            Introduce this project to our network of advisors. Gain inspiring
+            feedback and connect with new mentors that truly match your current
+            interests and needs.
+          </p>
+
+          <app-gt-switch
+            [isSwitched]="project.show_in_give_feedback"
+            [onoffMode]="true"
+            (didChangeEvent)="changeToggle('show_in_give_feedback')"
+          ></app-gt-switch>
+        </div>
+
+        <div class="who-can-see__item">
+          <img
+            class="who-can-see__logo"
+            src="./assets/upload/private-invite.svg"
+          />
+          <p class="who-can-see__title">Private Invite</p>
+          <p class="who-can-see__text">
+            Personal invite will be sent to these emails
+          </p>
+
+          <app-gt-switch
+            [isSwitched]="shareWithFriends"
+            [onoffMode]="true"
+            (didChangeEvent)="shareWithFriends = !shareWithFriends"
+          ></app-gt-switch>
+        </div>
+
+        <div class="who-can-see__item">
+          <img class="who-can-see__logo" src="./assets/upload/show-in.svg" />
+          <p class="who-can-see__title">Show in public feed</p>
+          <p class="who-can-see__text">
+            Collect more feedback for free by viewing your project & individual
+            questions in our public feed area.
+          </p>
+
+          <app-gt-switch
+            [switchID]="4"
+            [isSwitched]="project.show_in_public_feed"
+            [onoffMode]="true"
+            (didChangeEvent)="changeToggle('show_in_public_feed')"
+          ></app-gt-switch>
+        </div>
+
+        <p
+          class="who-can-see__hint"
+          *ngIf="!project.show_in_public_feed && !project.show_in_give_feedback"
+        >
+          The project will be private, only people with a shareable link will
+          have access to it
+        </p>
+      </div>
+    </div>
+
+    <div class="form__group">
+      <div class="invite-box" [@inOutAnimation] [hidden]="!shareWithFriends">
+        <img src="" alt="" id="testImage" *ngIf="project.projectfiles.length" />
+
+        <div
+          #screenshot
+          id="project-email-pres"
+          class="project-email-presentation"
+          *ngIf="project.projectfiles.length"
+        >
+          <div class="project-email-presentation__category-and-files">
+            <p class="category badge">{{ artCategoryControl.value }}</p>
+            <p class="badge">
+              {{ project.projectfiles.length }} file{{
+                project.projectfiles.length !== 1 ? 's' : ''
+              }}
+            </p>
+          </div>
+
+          <h1 class="project-email-presentation__title">
+            {{ project.title || 'Untitled' }}
+          </h1>
+
+          <div
+            class="project-email-presentation__files"
+            *ngIf="project.projectfiles.length > 2"
+          >
+            <div
+              class="project-email-presentation__files--item"
+              *ngFor="let file of project.projectfiles"
+            >
+              <img
+                [src]="file.url"
+                class="file-preview__file file-preview__file--invite"
+                *ngIf="file.mimetype.includes('image')"
+              />
+              <img
+                src="assets/newsfeed/mediatype-video.png"
+                class="file-preview__file file-preview__file--invite file-preview__file--video"
+                *ngIf="file.mimetype.includes('video', 0)"
+              />
+              <img
+                src="assets/newsfeed/mediatype-sound.png"
+                class="file-preview__file file-preview__file--invite file-preview__file--audio"
+                *ngIf="file.mimetype.includes('audio', 0)"
+              />
+            </div>
+          </div>
+
+          <div
+            class="project-email-presentation__files-2"
+            *ngIf="project.projectfiles.length === 2"
+          >
+            <div
+              class="project-email-presentation__files-2--item"
+              *ngFor="let file of project.projectfiles"
+            >
+              <img
+                [src]="file.url"
+                class="file-preview__file file-preview__file--invite"
+                *ngIf="file.mimetype.includes('image')"
+              />
+              <img
+                src="assets/newsfeed/mediatype-video.png"
+                class="file-preview__file file-preview__file--invite file-preview__file--video"
+                *ngIf="file.mimetype.includes('video', 0)"
+              />
+              <img
+                src="assets/newsfeed/mediatype-sound.png"
+                class="file-preview__file file-preview__file--invite file-preview__file--audio"
+                *ngIf="file.mimetype.includes('audio', 0)"
+              />
+            </div>
+          </div>
+
+          <div
+            class="project-email-presentation__files-single"
+            *ngIf="project.projectfiles.length === 1"
+          >
+            <div
+              class="project-email-presentation__files-single--item"
+              *ngFor="let file of project.projectfiles"
+            >
+              <img
+                [src]="file.url"
+                class="file-preview__file file-preview__file--invite"
+                *ngIf="file.mimetype.includes('image')"
+              />
+              <img
+                src="assets/newsfeed/mediatype-video.png"
+                class="file-preview__file file-preview__file--invite file-preview__file--video"
+                *ngIf="file.mimetype.includes('video', 0)"
+              />
+              <img
+                src="assets/newsfeed/mediatype-sound.png"
+                class="file-preview__file file-preview__file--invite file-preview__file--audio"
+                *ngIf="file.mimetype.includes('audio', 0)"
+              />
+            </div>
+          </div>
+        </div>
+
+        <h2>Invite your friends</h2>
+        <mat-form-field class="example-chip-list">
+          <mat-chip-grid #chipList>
+            <mat-chip
+              *ngFor="let email of emails"
+              [disabled]="selectable"
+              [removable]="removable"
+              (removed)="onRemoveEmail(email)"
+            >
+              {{ email }}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <input
+              placeholder="Add emails..."
+              [matChipInputFor]="chipList"
+              [matChipInputAddOnBlur]="addOnBlur"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (paste)="paste($event)"
+              (matChipInputTokenEnd)="onAddEmail($event)"
+              pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            />
+          </mat-chip-grid>
+        </mat-form-field>
+
+        <div class="form__group form__group--invite">
+          <label class="form__label" for="name"
+            >Your name (only visible to friends you invite)</label
+          >
+          <input
+            class="form__input"
+            type="text"
+            id="inviteName"
+            ngModel
+            placeholder="How should we introduce you?"
+            name="inviteName"
+          />
+        </div>
+
+        <div class="form__group form__group--invite">
+          <label class="form__label" for="name">Your message</label>
+          <textarea
+            class="form__input"
+            type="text"
+            id="inviteText"
+            rows="2"
+            ngModel="I found this website that helps me gather structured feedback from people I know.  Would be lovely if you could write down your honest thoughts on the attached project.  The feedback is anonymous, no registration is required on your part, and it is free for everyone.  Just follow the link and write down what you like, dislike and would do differently. Thank you in advance for your time and energy. Your feedback will help me a lot to become better than yesterday."
+            name="inviteText"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="inspiring">
+        <img src="assets/upload/advisor.svg" alt="" class="form__group-icon" />
+        <h3 class="form__group-title mb-2">
+          What's a new inspiring advisor worth to you?
+        </h3>
+        <div (click)="showHowItWorks()" class="inspiring__block">
+          <img
+            class="who-can-see__info mb-0"
+            src="./assets/upload/info-grey.svg"
+          />
+          <p class="inspiring__text">How it works</p>
+        </div>
+      </div>
+
+      <div class="form__group pay-for-feedback">
+        <app-payment-slider
+          [inputValue]="project.inspiringrate"
+          (changes)="project.inspiringrate = $event"
+        ></app-payment-slider>
+      </div>
+
+      <div class="trusted-advisor">
+        <img
+          src="assets/upload/trusted-advisor.svg"
+          alt=""
+          class="form__group-icon"
+        />
+        <h2 class="form__group-title mb-2">My already trusted Advisors</h2>
+        <p class="form__group-subtitle">
+          <img class="who-can-see__info" src="./assets/upload/info-grey.svg" />
+          Select which of your favorite consultants you would like to show this
+          project as well. You agree to pay the consultant the hourly rates
+          shown next to their name. You only pay for the time actually spent. In
+          addition, we always ask for your consent before each payment process.
+        </p>
+      </div>
+
+      <div class="form__group">
+        <app-my-advisers-select
+          (selectedAdvisersChanged)="changeTrustedAdvisors($event)"
+          [project]="project"
+          [adviserIDs]="currentUser.adviserIDs"
+        ></app-my-advisers-select>
+      </div>
+
+      <div class="trusted-advisor">
+        <img
+          src="assets/upload/skill-tool.svg"
+          alt=""
+          class="form__group-icon"
+        />
+        <h2 class="form__group-title mb-2">
+          Skills & Tools used during creation
+        </h2>
+        <p class="form__group-subtitle">
+          <img class="who-can-see__info" src="./assets/upload/info-grey.svg" />
+          Select the skills and software that you used for this project. It will
+          improve your selection of potential advisors.
+        </p>
+      </div>
+
+      <div class="form__group">
+        <app-my-skills-select
+          [inDiscoverySearchMode]="false"
+          (selectedSkillsChanged)="selectedSkillsChanged($event)"
+          [project]="project"
+        ></app-my-skills-select>
+      </div>
+    </div>
+
+    <div class="submit-container">
+      <button
+        type="button"
+        class="submit-project submit-project--outlined"
+        [disabled]="!project.projectfiles.length || isSaving"
+        (click)="onSubmit(uploadForm)"
+      >
+        <app-small-spinner
+          *ngIf="isSaving"
+          diameter="20"
+          [isWhite]="false"
+        ></app-small-spinner>
+        Save as Draft
+      </button>
+
+      <button
+        type="button"
+        class="submit-project"
+        [disabled]="!project.projectfiles.length || isSaving"
+        (click)="onSubmit(uploadForm, true)"
+      >
+        <app-small-spinner
+          *ngIf="isSaving"
+          diameter="20"
+          [isWhite]="true"
+        ></app-small-spinner>
+        {{ project.id ? 'Update' : 'Publish' }}
+      </button>
+    </div>
+  </div>
+</form>
+
+<app-helpnavigation
+  [toggle]="showIframe.asObservable()"
+  page="upload"
+  url="jEi2tr-C6mY"
+></app-helpnavigation>

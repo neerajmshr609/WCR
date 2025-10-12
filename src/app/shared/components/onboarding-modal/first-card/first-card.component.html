@@ -1,0 +1,151 @@
+<button mat-icon-button mat-dialog-close class="modal__btn--close">
+  <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+</button>
+
+<div class="modal__body">
+  <img
+    class="modal__img"
+    src="assets/onboarding-modal/feedbackrequest-modal-image-1.svg"
+    alt="feedbackrequest-modal-image"
+  />
+
+  <h2 class="modal__title">
+    Thank you for providing feedback to this project.
+  </h2>
+  <p class="modal__text">
+    Giving constructive feedback is the fastest way to boost your own
+    creativity. Earn a substantial income, at any time, from anywhere just by
+    advising other creatives on their works.
+  </p>
+
+  <form class="form" [formGroup]="form" (submit)="signup.emit(revealIdentity)">
+    <div class="form__group" *ngIf="form.get('username') as nameForm">
+      <label class="form__label" for="username">Username</label>
+      <input
+        type="text"
+        class="form__input"
+        id="username"
+        nameuser="name"
+        required
+        formControlName="username"
+      />
+      <small
+        class="form__validator"
+        [ngClass]="{ 'form__validator--visible': !nameForm.valid }"
+      >
+        <span *ngIf="nameForm.touched && nameForm.errors?.required"
+          >This field is required</span
+        >
+        <span *ngIf="nameForm.value && nameForm.errors?.pattern"
+          >Username can only contain numbers, letters and underscores</span
+        >
+      </small>
+    </div>
+
+    <div class="form__group" *ngIf="form.get('email') as emailForm">
+      <label class="form__label" for="email">E-mail</label>
+      <input
+        type="email"
+        class="form__input"
+        name="email"
+        required
+        formControlName="email"
+      />
+      <small
+        class="form__validator"
+        [ngClass]="{ 'form__validator--visible': !emailForm.valid }"
+      >
+        <span *ngIf="emailForm.touched && emailForm.errors?.required"
+          >This field is required</span
+        >
+        <span *ngIf="emailForm.value && emailForm.errors?.email"
+          >Email is invalid</span
+        >
+      </small>
+    </div>
+
+    <div class="form__group" *ngIf="form.get('password') as passwordForm">
+      <label class="form__label" for="password">Password</label>
+      <input
+        type="password"
+        class="form__input"
+        name="new-password"
+        autocomplete="new-password"
+        required
+        minlength="6"
+        formControlName="password"
+      />
+      <small
+        class="form__validator"
+        [ngClass]="{ 'form__validator--visible': !passwordForm.valid }"
+      >
+        <span *ngIf="passwordForm.touched && passwordForm.errors?.required"
+          >This field is required</span
+        >
+        <span *ngIf="passwordForm.value && passwordForm.errors?.minlength"
+          >Minimum 6 characters required</span
+        >
+      </small>
+    </div>
+
+    <p class="mat-error">{{ error }}</p>
+
+    <div class="reveal-identity">
+      <div class="reveal-itentity__btns">
+        <button
+          class="reveal-identity__btn"
+          [ngClass]="{ 'reveal-identity__btn--active': revealIdentity }"
+          (click)="revealIdentity = true"
+          type="button"
+        >
+          Reveal my identity
+        </button>
+        <button
+          class="reveal-identity__btn reveal-identity__btn--fade"
+          [ngClass]="{ 'reveal-identity__btn--active': !revealIdentity }"
+          (click)="revealIdentity = false"
+          type="button"
+        >
+          Keep this feedback anonymous
+        </button>
+      </div>
+
+      <img
+        [src]="
+          'assets/onboarding-modal/' +
+          (revealIdentity ? 'happy.svg' : 'secret.svg')
+        "
+        class="reveal-identity__img"
+        (click)="revealIdentity = !revealIdentity"
+      />
+    </div>
+
+    <div class="modal__actions">
+      <button class="btn btn-primary" type="submit" [disabled]="isLoading">
+        <div *ngIf="isLoading" class="spinner" role="status">
+          <app-small-spinner diameter="20" [isWhite]="true"></app-small-spinner>
+        </div>
+        Sign Up
+      </button>
+      <p class="signin">
+        Already have an account?
+        <a mat-dialog-close routerLink="/auth" [queryParams]="{ mode: 'login' }"
+          >Sign in here</a
+        >.
+      </p>
+      <p class="forgot-password">
+        Forgot password?
+        <a
+          mat-dialog-close
+          routerLink="/auth"
+          [queryParams]="{ mode: 'resetpassword' }"
+          >Reset password</a
+        >.
+      </p>
+      <p class="terms">
+        Our <a href="/terms" target="_blank">Terms</a> &
+        <a href="/policy" target="_blank">Privacy Policy</a>
+      </p>
+    </div>
+  </form>
+</div>

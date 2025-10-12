@@ -1,0 +1,12 @@
+<div class="placeholder" #itemRef [ngStyle]="{ 'height.px': height }">
+  <img class="image-preview" [src]="src" *ngIf="src" />
+
+  <div class="badge__container">
+    <img class="badge" [src]="badgeSrc" *ngIf="badgeSrc" />
+  </div>
+</div>
+@if (file.loadState === 0) {
+  <div class="file-uploading" @fadeInOut>
+    <app-small-spinner diameter="40"></app-small-spinner>
+  </div>
+}

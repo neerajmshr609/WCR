@@ -1,0 +1,185 @@
+<div class="rateflow__no-projects" *ngIf="noprojects">
+  <h2>There are no new projects for now</h2>
+  <p>You rated all projects, come back later</p>
+</div>
+
+<ng-container *ngIf="!noprojects">
+  <app-small-spinner [diameter]="50" *ngIf="!project"></app-small-spinner>
+
+  <div class="rateflow" CdkDropListGroup>
+    <div class="rateflow__presentation">
+      <app-presentation-slider
+        *ngIf="project && !dragDrop && loaded"
+        [isRateflowPresentation]="true"
+        [isSingleFileProject]="isSingleFileProject"
+        [filesFeedback$]="filesFeedback$"
+        [selectedFile]="selectedFile"
+        [files]="project.projectfiles"
+        [project]="project"
+        (didSelectFile)="onSelectedFileChange($event)"
+        (didSelectProjectInfo)="onSelectedProjectInfo()"
+        (didSelectGrid)="onSelectedGrid()"
+        (didClose)="onFileDetailClose()"
+      ></app-presentation-slider>
+
+      <app-resort-presentation
+        [projectfiles]="elementsToDrop"
+        [sortOptions]="sortOptions"
+        (closeResort)="closeResort()"
+        *ngIf="elementsToDrop && dragDrop && !drawingDesktop && showResort"
+      ></app-resort-presentation>
+
+      <app-draw
+        [selectedFile]="selectedFile"
+        [linesPoints]="linesPoints"
+        *ngIf="!dragDrop && drawingDesktop"
+        (drawing)="addDraw($event)"
+      ></app-draw>
+
+      <app-modal *ngIf="!dragDrop && drawingMobile" (close)="authShown = false">
+        <app-draw
+          [selectedFile]="selectedFile"
+          [linesPoints]="linesPoints"
+          (drawing)="addDraw($event)"
+        >
+        </app-draw>
+      </app-modal>
+    </div>
+
+    <div class="rateflow__feedback">
+      <app-flexfeedback
+        *ngIf="activeFeedbackObject && loaded"
+        [selectedFileDidChange$]="selectedFileDidChange$"
+        [project]="project"
+        [paymentRequest]="paymentRequest"
+        [closeTimer$]="closeTimer$"
+        [feedbackObject]="activeFeedbackObject"
+        [files]="droppedElements"
+        [projectfiles]="elementsToDrop"
+        [sortablejsOptions]="sortOptions"
+        [singleFileProject]="isSingleFileProject"
+        [selectedFile]="selectedFile"
+        [isPublicFeedbackRequest]="!authService.userIsSignedIn()"
+        (resortOpen)="toggleDragDrop($event)"
+        (drawOpen)="toggleDraw($event)"
+        (skipRateUpdate)="onRate()"
+        (paymentCounterUpdate)="onPaymentCounterUpdate($event)"
+        (changeBillableSeconds)="onChangeBillableSeconds($event)"
+        (skipModeChangedUpdate)="onSkipModeChanged($event)"
+        (skipModeToggledUpdate)="onSkipModeToggled($event)"
+        [(skipTime)]="skipTime"
+        (sliderDragged)="sliderDragged = true"
+        (feedbackObjectUpdate)="onFeedbackObjectUpdate($event)"
+      >
+      </app-flexfeedback>
+
+      <p class="no-rate" *ngIf="loaded && project.rated">
+        You already rated this project
+      </p>
+      <p
+        class="no-rate"
+        *ngIf="
+          loaded && project.user_id === currentUser?.id && project.published
+        "
+      >
+        You can't rate your own projects
+      </p>
+      <p
+        class="no-rate"
+        *ngIf="
+          loaded && project.user_id === currentUser?.id && !project.published
+        "
+      >
+        This project is a draft, only you can see it
+      </p>
+
+      <app-button
+        btnUIType="neutral"
+        size="medium"
+        *ngIf="
+          !isSkipMode &&
+          loaded &&
+          !project.rated &&
+          project.user_id !== currentUser?.id &&
+          project.published &&
+          !showSubmitConfirm
+        "
+        class="greytme-button"
+        #greytBtnRef
+        (click)="onRate()"
+        [disabled]="isSaving"
+        [ngClass]="{ 'btn--disabled': isSaving, 'btn-grey': !sliderDragged }"
+        matTooltip="Drag the slider at least once or alternatively use the skip function"
+      >
+        @if(isSaving) {
+          <app-small-spinner
+            class="spinner"
+            diameter="20"
+          ></app-small-spinner>
+        } @else {
+          <app-icon-submit strokeWidth="0.494" color="#1E1E1E"></app-icon-submit>
+        }
+
+        <h3>Submit review</h3>
+      </app-button>
+
+      <div class="confirm-submit" *ngIf="showSubmitConfirm">
+        <div class="confirm-submit__btns">
+          <button class="confirm-submit__btn" (click)="confirmSubmit()">
+            <img src="assets/payments/accept.svg" />
+          </button>
+          <button
+            class="confirm-submit__btn"
+            (click)="showSubmitConfirm = false"
+          >
+            <img src="assets/payments/deny.svg" />
+          </button>
+        </div>
+        <p class="confirm-submit__btns-text">
+          Are you sure you want to finish <br />
+          the feedback for this project?
+        </p>
+        <div class="confirm-submit__toggle">
+          <app-gt-switch
+            (didChangeEvent)="submitConfirmedStorage = !submitConfirmedStorage"
+            [small]="true"
+            [isSwitched]="submitConfirmedStorage"
+            [onoffMode]="true"
+          ></app-gt-switch>
+          <p
+            class="confirm-submit__toggle-text"
+            [ngClass]="{
+              'confirm-submit__toggle-text--green': submitConfirmedStorage,
+            }"
+          >
+            <ng-container *ngIf="submitConfirmedStorage"
+              >Submit reviews without confirmation</ng-container
+            >
+            <ng-container *ngIf="!submitConfirmedStorage"
+              >Skip this confirmation next time</ng-container
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<app-onboarding-presentation
+  [flow]="'rateflow'"
+  *ngIf="project"
+></app-onboarding-presentation>
+
+<app-helpnavigation
+  page="rateflow"
+  class="blue"
+  [url]="iframeUrl"
+  *ngIf="!iframeOpened"
+  [toggle]="showIframe2.asObservable()"
+></app-helpnavigation>
+<app-helpnavigation
+  [url]="iframeUrl"
+  [toggle]="showIframe.asObservable()"
+  (closed)="iframeOpened = false"
+  [hidden]="true"
+></app-helpnavigation>

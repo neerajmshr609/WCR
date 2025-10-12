@@ -1,0 +1,15 @@
+@if(control()) {
+  <div class="form-field">
+    <input
+      class="form-input search"
+      type="text"
+      [placeholder]="placeholder()"
+      [id]="inputName()"
+      [name]="inputName()"
+      [disabled]="disabled()"
+      [readonly]="disabled()"
+      [formControl]="control()"
+    />
+    <app-search-icon color="#1E1E1E" strokeWidth="1.6"></app-search-icon>
+  </div>
+}

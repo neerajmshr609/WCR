@@ -1,0 +1,86 @@
+@import "_variables";
+@import "_mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  box-sizing: border-box;
+  width: 37.5rem;
+  max-width: 90vw;
+  height: 49.7rem;
+  border-radius: $--sds-size-radius-400;
+  border: $--sds-size-stroke-border--solid--sds-color-border-default-default;
+  background: $--sds-color-background-default-secondary;
+  padding: 0 $--sds-size-space-525 $--sds-size-space-675 $--sds-size-space-750;
+}
+
+.capsule-card {
+  &_number-row {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    padding-right: $--sds-size-space-325;
+  }
+
+  &_number {
+    padding: $--sds-size-space-375 $--sds-size-space-250 $--sds-size-space-250;
+    border-bottom-left-radius: $--sds-size-radius-200;
+    border-bottom-right-radius: $--sds-size-radius-200;
+    
+    color: $--Text-Default-Brigth;
+    font-size: $--sds-typography-body-size-medium;
+    font-weight: $--sds-typography-body-font-weight-medium;
+    line-height: $line-height-100;
+    letter-spacing: $--letter-spacing-016;
+    user-select: none;
+    
+  }
+
+  &_numerb-ckickable {
+    background: $--sds-color-background-neutral-secondary;
+    cursor: pointer;
+    &:hover {
+      background-color: $--sds-color-background-brand-hover;
+      color: $--sds-color-text-brand-on-brand;
+    }
+  }
+
+  &_number-non-clickable {
+    background-color: $--sds-color-background-brand-hover;
+    color: $--sds-color-text-brand-on-brand;
+  }
+  &_title-row {
+    display: flex;
+    gap: $--sds-size-space-400;
+    align-items: center;
+    padding-left: $--sds-size-space-375;
+    margin-top: $--sds-size-space-575;
+  }
+
+  &_icon {
+    width: $--sds-size-title-icon;
+    height: $--sds-size-title-icon;
+  }
+
+  &_title {
+    color: $--sds-color-text-default-default;
+    @include heading;
+  }
+
+  &_description {
+    @include bodySmall;
+    color: $--sds-color-grey-450;
+    max-height: 15.8rem;
+    margin-top: $--sds-size-space-550;
+    margin-bottom: $--sds-size-space-550;
+  }
+
+  &_button-text {
+    text-transform: capitalize;
+  }
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}

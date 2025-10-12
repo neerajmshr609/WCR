@@ -1,0 +1,88 @@
+<section *ngIf="publicProfile$ | async as publicProfile">
+  <article class="skills-tools-container">
+    <ng-container *ngIf="publicProfile.user_skills.length; else setSettings">
+      <section class="skills-card">
+        <app-advisor-card
+          [advisor]="publicProfile"
+          [sortSkillsChange]="sortSkillsChange.asObservable()"
+          [currentUser]="currentUser$ | async"
+          [pickedSkill]="(pickedProfileSkill$ | async)?.skill"
+          (selectCardSkill)="pickCardSkill($event)"
+        >
+          <ng-container header
+            ><div class="skill-card-header">SKILL REVIEWS</div></ng-container
+          >
+        </app-advisor-card>
+      </section>
+      <section
+        class="available-time-slots-card"
+        *ngIf="publicProfile.rulesets.length"
+      >
+        <div class="available-time-slots-card__header">
+          <svg
+            width="38"
+            height="38"
+            viewBox="0 0 38 38"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.73055 32.3985H17.594C18.5757 33.5877 19.8048 34.5487 21.1957 35.2145C22.5867 35.8803 24.106 36.2349 25.6479 36.2537C27.0214 36.2587 28.3824 35.9932 29.6532 35.4722C30.9241 34.9513 32.0798 34.1851 33.0546 33.2174C34.0293 32.2498 34.8039 31.0997 35.3341 29.8327C35.8643 28.5657 36.1398 27.2066 36.1448 25.8332C36.1159 24.1169 35.6784 22.4322 34.8685 20.9188C34.0587 19.4053 32.8999 18.1066 31.488 17.1303V7.39688C31.488 5.71738 29.9994 4.5341 28.3199 4.5341H25.7625V2.47289C25.7755 2.38971 25.7687 2.30463 25.7426 2.22458C25.7165 2.14452 25.6719 2.07177 25.6124 2.01223C25.5529 1.9527 25.4801 1.90807 25.4 1.88199C25.32 1.85592 25.2349 1.84912 25.1517 1.86217H21.5255C21.1057 1.86217 20.8003 2.05302 20.8003 2.47289V4.5341H12.4028V2.47289C12.4028 2.05302 11.9066 1.86217 11.4867 1.86217H7.86053C7.44065 1.86217 7.05895 2.05302 7.05895 2.47289V4.5341H4.73055C3.05105 4.5341 1.71509 5.71738 1.71509 7.39688V29.5357C1.71509 31.2152 3.05105 32.3985 4.73055 32.3985ZM34.5798 25.9095C34.5723 27.6744 34.042 29.3976 33.056 30.8614C32.07 32.3252 30.6724 33.4641 29.0397 34.1342C27.4069 34.8044 25.6122 34.9759 23.8821 34.6269C22.152 34.278 20.5641 33.4243 19.3188 32.1737C18.0734 30.923 17.2266 29.3315 16.885 27.5999C16.5434 25.8683 16.7225 24.0744 17.3997 22.4445C18.0768 20.8147 19.2216 19.4219 20.6896 18.4422C22.1576 17.4624 23.883 16.9395 25.6479 16.9395C26.8241 16.9395 27.9887 17.1718 29.0749 17.623C30.161 18.0743 31.1474 18.7356 31.9773 19.569C32.8072 20.4025 33.4643 21.3917 33.9109 22.4797C34.3575 23.5678 34.5848 24.7334 34.5798 25.9095ZM25.7243 15.4127C24.3526 15.4026 22.9925 15.6635 21.7219 16.1802C20.4513 16.697 19.2952 17.4596 18.32 18.4242C17.3447 19.3888 16.5695 20.5364 16.0388 21.8013C15.5082 23.0662 15.2324 24.4233 15.2274 25.795C15.2127 27.576 15.6739 29.3286 16.5634 30.8717H4.73055C3.8908 30.8717 3.2419 30.3755 3.2419 29.5357V13.695H29.9612V16.3288C28.6201 15.7564 27.182 15.4455 25.7243 15.4127ZM22.3271 3.38898H24.2356V6.82432H22.3271V3.38898ZM8.58576 3.38898H10.876V6.82432H8.58576V3.38898ZM4.73055 6.06091H7.05895V7.51139C7.06744 7.72494 7.15355 7.92807 7.30112 8.08266C7.4487 8.23726 7.6476 8.33272 7.86053 8.35114H11.4867C11.7122 8.33637 11.9259 8.2451 12.0925 8.0924C12.259 7.93971 12.3685 7.73474 12.4028 7.51139V6.06091H20.8003V7.51139C20.7895 7.71788 20.859 7.92054 20.9941 8.07703C21.1293 8.23352 21.3197 8.33172 21.5255 8.35114H25.1517C25.5716 8.35114 25.7625 7.93126 25.7625 7.51139V6.06091H28.3199C29.1596 6.06091 29.9612 6.55713 29.9612 7.39688V12.1682H3.2419V7.39688C3.2419 6.55713 3.8908 6.06091 4.73055 6.06091Z"
+              fill="black"
+            />
+            <path
+              d="M24.2356 21.3288V26.6727C24.272 26.8884 24.3844 27.0839 24.5524 27.2239C24.7204 27.3639 24.933 27.4392 25.1517 27.4361H29.2359C29.4384 27.4361 29.6326 27.3557 29.7757 27.2125C29.9189 27.0693 29.9993 26.8752 29.9993 26.6727C29.9993 26.4702 29.9189 26.2761 29.7757 26.1329C29.6326 25.9897 29.4384 25.9093 29.2359 25.9093H25.7624V21.3288C25.7624 21.1264 25.682 20.9322 25.5388 20.789C25.3956 20.6459 25.2015 20.5654 24.999 20.5654C24.7965 20.5654 24.6024 20.6459 24.4592 20.789C24.316 20.9322 24.2356 21.1264 24.2356 21.3288Z"
+              fill="black"
+            />
+          </svg>
+          <span>AVAILABLE TIME SLOTS</span>
+        </div>
+        <ng-container *ngFor="let item of publicProfile.rulesets">
+          <div class="add-days__ruleset">
+            <div class="add-days__days">
+              <app-week
+                class="custom-week"
+                [weekData]="item.weekdays"
+              ></app-week>
+            </div>
+            <p class="add-days__time">
+              <span class="add-days__time__period">from</span>
+              <span class="add-days__time__range">{{ item.time_from }}</span>
+              <span class="add-days__time__period">until</span>
+              {{ item.time_until }}
+            </p>
+          </div>
+        </ng-container>
+      </section>
+    </ng-container>
+
+    <ng-template #setSettings>
+      <section
+        *ngIf="publicProfile.id === (currentUser$ | async)?.id"
+        class="select-skill-card"
+      >
+        <p class="title">
+          At Getme everyone can become <br />
+          an Connector by simply selecting <br />
+          skills, software, expertise &
+          <br />
+          tools they’re knowlegable in.
+          <br />
+          <br />
+          It is absolutely risk free <br />
+          because we are commission <br />
+          based business.
+        </p>
+        <p class="subtitle">SELECT SKILL NOW</p>
+        <button
+          routerLink="/settings"
+          [queryParams]="{ type: 'skills' }"
+          class="settings-btn"
+        >
+          <img src="../../../../../../../assets/header/settings.svg" alt="Setting icon" />
+          <span>Go to settings</span>
+        </button>
+      </section>
+    </ng-template>
+  </article>
+</section>

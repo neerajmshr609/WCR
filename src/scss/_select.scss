@@ -1,0 +1,91 @@
+@import "variables";
+
+.mat-mdc-select-arrow-wrapper {
+  margin-right: 12px;
+}
+
+.mat-mdc-select-value-text {
+  margin-left: 16px;
+}
+
+.mat-mdc-select-trigger {
+  height: 100%;
+}
+
+.mat-mdc-select {
+  padding: 0;
+}
+
+div.mat-mdc-select-panel {
+  margin-top: $--sds-size-space-150 !important;
+  background-color: $--sds-color-background-default-default !important;
+  border-radius: $--sds-size-radius-200 !important;
+  border: 1px solid $--sds-color-border-default-default;
+  padding: $--sds-size-space-300 0 !important;
+  font-size: $--sds-typography-body-size-medium !important;
+  width: 100%;
+  display: block;
+  box-shadow: none !important;
+}
+
+.mat-mdc-option:hover:not(.mdc-list-item--disabled) {
+  background-color: $--sds-color-background-default-secondary-hover !important;
+}
+
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(.mat-mdc-option-multiple) {
+  background-color: $--sds-color-background-default-secondary-hover !important;
+}
+
+.mat-mdc-option .mdc-list-item__primary-text, .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
+  color: $--sds-color-text-default-default !important;
+  font-size: $--sds-typography-body-size-medium !important;
+  font-weight: $--sds-typography-body-font-weight-regular !important;
+  line-height: 100% !important;
+}
+
+.mat-mdc-option {
+  min-height: 40px !important;
+}
+
+.mat-pseudo-checkbox {
+  display: none !important;
+}
+
+.mat-mdc-select-placeholder {
+  color: $--sds-color-text-default-tertiary !important;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 100%;
+
+}
+
+.mdc-select-value-text {
+  color: $--sds-color-text-default-default;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 100%;
+}
+
+.mat-mdc-select-value {
+  padding: 1rem 1.6rem;
+}
+
+.mat-mdc-select-value-text  {
+  display: inline-flex;
+  margin-left: 0;
+  color: $--sds-color-text-default-default;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: $--sds-typography-body-size-medium;
+  height: $--sds-typography-body-size-medium;
+}
+
+.mat-mdc-select-trigger {
+  height: 4rem;
+}

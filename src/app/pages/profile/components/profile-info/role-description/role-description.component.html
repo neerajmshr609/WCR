@@ -1,0 +1,73 @@
+@if (hasJobTitle() && isTitleReadMode()) {
+  <ng-container *ngTemplateOutlet="readTitle"></ng-container>
+} @else if (isProfileOwner() && isTitleEditMode()) {
+  <ng-container *ngTemplateOutlet="editTitle"></ng-container>
+}
+
+@if (hasRoleDescription() && isDescriptionReadMode()) {
+  <ng-container *ngTemplateOutlet="readDescription"></ng-container>
+} @else if (isProfileOwner() && isDescriptionEditMode()) {
+  <ng-container *ngTemplateOutlet="editDescription"></ng-container>
+}
+
+<ng-template #readTitle>
+  <div class="role-description_role-name-container">
+    <h5 class="role-description_role-name">
+      {{ jobTitle() }}
+    </h5>
+    @if (isProfileOwner()) {
+      <app-button-icon-edit
+        class="role-description_role-name-edit-btn"
+        (click)="switchTitleToEditMode()"
+      ></app-button-icon-edit>
+    }
+  </div>
+</ng-template>
+
+<ng-template #editTitle>
+  <div class="role-description_role-name-input-container">
+    <app-input-text
+      class="role-description_role-name-input"
+      [formControl]="titleControl"
+      [placeholder]="'role-description.title-placeholder' | translate"
+    >
+    </app-input-text>
+    <app-button-icon-save
+      class="role-description_role-name-btn"
+      (click)="saveTitle()"
+    ></app-button-icon-save>
+  </div>
+</ng-template>
+
+<ng-template #readDescription>
+  <p class="role-description_text">
+    {{ jobDescription() }}
+  </p>
+
+  @if (isProfileOwner()) {
+    <app-button-edit
+      class="role-description_action-btn"
+      (click)="switchToDescriptionEditMode()"
+    ></app-button-edit>
+  }
+</ng-template>
+
+<ng-template #editDescription>
+  <app-input-textarea
+    class="role-description_input"
+    [formControl]="descriptionControl"
+    [invalid]="isDescriptionInvalid()"
+    [placeholder]="'role-description.description-placeholder' | translate:DESCRIPTION_VALIDATORS.maxSigns.errorDescription.data"
+  ></app-input-textarea>
+
+  <app-validation-errors
+    [errorOrErrorsInput]="validationErrors()"
+  ></app-validation-errors>
+
+  <app-button-save
+    class="role-description_action-btn"
+    [disabled]="isDescriptionInvalid()"
+    (click)="saveDescription()"
+  ></app-button-save>
+</ng-template>
+

@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "downlevelIteration": true,
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2022", "dom"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "useDefineForClassFields": false,
+    "paths": {
+      "@icons/*": ["src/app/shared/icons/*"],
+      "@helpers-lib/*": ["src/app/shared/lib/*"],
+      "@ui-components/*": ["src/app/shared/complex-ui-components/*"],
+      "@ui-kit/*": ["src/app/shared/UIkit/*"]
+    }
+  }
+}

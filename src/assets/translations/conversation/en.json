@@ -1,0 +1,339 @@
+{
+  "adding_user": {
+    "add_people": "Add People to",
+    "internal_chat": "Internal Team Chat",
+    "chat": "Chat",
+    "name_groups_emails": "Name, groups or emails",
+    "e_g": "e.g.",
+    "note": {
+      "title": "Note",
+      "internal_chat_note": "Clients can not read this chatroom, its purpose is to discuss the clients situation with more people. Please be handle all personal information, with discretion."
+    },
+    "protection": {
+      "protected_by": "THIS SITE IS PROTECTED BY RECAPTCHA AND OUR",
+      "privacy_policy": "Privacy policy",
+      "and": "AND",
+      "terms_of_service": "terms of service",
+      "apply": "APPLY"
+    },
+    "cancel_button_text": "Cancel",
+    "add_button_text": "Add"
+  },
+  "price-slider": {
+    "change_hourly_rate": "CHANGE HOURLY RATE"
+  },
+  "conversation_menu": {
+    "tasks": "Tasks",
+    "accept_case": "Accept Case",
+    "reject_case": "Reject Case",
+    "accept_case_description": "You take over this person or family. You're responsible for their support and data.",
+    "reject_case_description": "The request disappears from your board. They'll get a short message.",
+    "escalate_case": "Escalate",
+    "video_call_request": "Request video call",
+    "video_call_requested": "Video call requested",
+    "video_call_request_icon_alt": "Vide camera illustration",
+    "add_user_title": "Add Counsellor to Client Chat",
+    "add_user_description": "People you add this way directly may talk to the client."
+  },
+  "user_context_form": {
+    "title": "Start your request",
+    "progress_text": "of 4 required fields completed",
+    "countries": {
+      "ukraine": "Ukraine",
+      "syria": "Syria",
+      "afghanistan": "Afghanistan",
+      "turkey": "Turkey",
+      "poland": "Poland",
+      "romania": "Romania",
+      "other": "Other"
+    },
+    "residence_areas": {
+      "bavaria": "Bavaria",
+      "berlin": "Berlin",
+      "baden_wuerttemberg": "Baden-Württemberg",
+      "north_rhine_westphalia": "North Rhine-Westphalia",
+      "schleswig_holstein": "Schleswig-Holstein",
+      "lower_saxony": "Lower Saxony",
+      "mecklenburg_western_pomerania": "Mecklenburg-Western Pomerania",
+      "saxony": "Saxony",
+      "hesse": "Hesse",
+      "rhineland_palatinate": "Rhineland-Palatinate",
+      "brandenburg": "Brandenburg",
+      "thuringia": "Thuringia",
+      "hamburg": "Hamburg",
+      "saxony_anhalt": "Saxony-Anhalt",
+      "bremen": "Bremen",
+      "saarland": "Saarland",
+      "other": "Other"
+    },
+    "time_in_germany": {
+      "not_living": "I don't live in Germany",
+      "tourist": "I am in Germany as a tourist",
+      "0_1_year": "0-1 year",
+      "1_5_years": "1-5 years",
+      "5_plus_years": "+5 years"
+    },
+    "age_options": {
+      "18_25": "18-25",
+      "26_35": "26-35",
+      "36_45": "36-45",
+      "46_55": "46-55",
+      "55_plus": "55+",
+      "unspecified": "I prefer not to say"
+    },
+    "labels": {
+      "origin_country": "What is your country of origin?",
+      "current_area_of_residence": "Current area of residence in Germany",
+      "time_in_germany": "How long have you been in Germany?",
+      "age": "Your age range"
+    },
+    "context_info": "User Context",
+    "submit": "Send selection and start typing"
+  },
+  "lupai_chatbot": {
+    "input_placeholder": "Write in Lupai Chatbot...",
+    "title": "Lupai Chatbot",
+    "subtitle": "Best for: Questions around German Law, Bureaucracy, Policies, Community Integration...",
+    "right_sidebar": {
+      "title": "Lupai Chatbot",
+      "menu_items": {
+        "adjust_robot": {
+          "title": "Adjust your Robot",
+          "description": "Customize and configure your robot's behavior and responses."
+        },
+        "robot_info": {
+          "title": "Robot infos",
+          "description": "Understand better what the robot does, and what data we send."
+        },
+        "system_settings": {
+          "title": "Adjust robot system settings",
+          "description": "Menu description."
+        },
+        "daily_tools": {
+          "title": "Connect with your daily tools",
+          "description": "Integrate this Robot better, by letting it access more data."
+        },
+        "used_files": {
+          "title": "Used files with this robot",
+          "description": "All uploaded data that was used in a compact overview."
+        },
+        "need_help": {
+          "title": "Not quite what i need :-/",
+          "description": "Can't find the robot, that solves your problem? Send us an inquiry."
+        }
+      }
+    },
+    "user_context_saved": "Please write your question now, your question will be filtered via the following parameters:",
+    "welcome_message": "Welcome! I'm Lupai, your AI assistant for German integration. How can I help you today?"
+  },
+  "conversation-request-more-button": {
+    "request": "Request"
+  },
+  "confirmation_message": {
+    "accept_case_title": "Accept case",
+    "accept_case_message": "Accept case means that you will become a coordinator for this person and will help him/her/them to resolve his/her/their problem.",
+    "accept_case_question": "Do you want to accept the case?",
+    "accept_case_btn": "Accept",
+    "reject_case_title": "Reject case",
+    "reject_case_message": "Reject case means that you do not want to continue with this case. You will be removed from this chat.",
+    "reject_case_question": "Do you want to reject the case?",
+    "reject_case_btn": "Reject",
+    "escalate_case_title": "Escalate case",
+    "escalate_case_message_organization": "Escalation means that the case will be visible to the other consultants in your organization.",
+    "escalate_case_message_platform": "Escalation means that the case will be visible to the other organizations on the platform.",
+    "escalate_case_question": "Do you want to continue?",
+    "escalate_case_btn": "Escalate",
+    "cancel_btn": "Cancel"
+  },
+  "message": {
+    "was_deleted": "Message was deleted by the user",
+    "reply": "Reply",
+    "edit_original": "Edit Original",
+    "download": "Download",
+    "remove": "Remove",
+    "initial_comment": "Initial comment",
+    "find": "Find",
+    "initial_question": "Initial question",
+    "initial_message": "Initial message",
+    "audio_message": "Audio message",
+    "image": "Image",
+    "question": "Question",
+    "give_feedback": "Go to Give Feedback",
+    "answer": "Answer",
+    "copied": "Copied!",
+    "copy": "Copy message"
+  },
+  "audio_message_loading": "LOADING",
+  "lesson_start_at": "your lesson will start today at",
+  "enter_room": "Enter consultation room",
+  "additional_menu": {
+    "photos": "Photos",
+    "camera": "Camera",
+    "location": "Location",
+    "contact": "Contact",
+    "files": "Files",
+    "capsule": "Capsule",
+    "scanner": "Scanner",
+    "timer": "Timer",
+    "summary-description": "See all important details about the case here.",
+    "internal-description": "Discuss with other Teams the case without the client seeing the conversation",
+    "lupai-description": "Ask any legal or bureaucratic questions regarding german law."
+  },
+  "pay_btn_text": "Pay",
+  "resolve_and_close": "Resolve & close",
+  "resolve_and_queue": "Resolve & add to Queue",
+  "audio_message": "Audio message",
+  "image": "Image",
+  "text-input_placeholder": "Start typing...",
+  "tips_want_leave": "Want to leave a tip?",
+  "tip_paid_additionally": "tip paid additionally",
+  "tip_payment_declined": "tip payment declined",
+  "no_tip_paid_yet": "no tip paid yet",
+  "user_info": {
+    "name_anon": "Anonymous",
+    "city_global": "GLOBAL"
+  },
+  "conversation_manage_panel": {
+    "tasks": "Tasks",
+    "lupai": "Lupai Bot",
+    "robots": "Robots",
+    "file_vault": " File Vault",
+    "internal_chat": "Internal Chat",
+    "client_chat": "Client Chat",
+    "summary": "Summary",
+    "coming_soon": "Coming soon..",
+    "events": "Events",
+    "subgroups": "Subgroups",
+    "public_boards": "Public Boards",
+    "summary-description": "See all important details about the case here.",
+    "internal-description": "Discuss with other Teams the case without the client seeing the conversation",
+    "lupai-description": "Ask any legal or bureaucratic questions regarding german law.",
+    "robots-description": "Interact with AI assistants",
+    "talk": "Talk"
+  },
+  "conversation_header" : {
+    "online": "online"
+  },
+  "text_input": {
+    "placeholder": "Start typing...",
+    "internal": "Write in internal chat",
+    "client": "Write in client chat",
+    "disabled": "add additional info after pressing any button"
+  },
+  "conversation_item": {
+    "to_pay": "<span>to</span> pay",
+    "group_conversation_info": {
+      "img_alt": "Conversation Image",
+      "person": "PERSON"
+    }
+  },
+  "finish_questionnare_btn_text": "Finish Questionnaire",
+  "confirmation": {
+    "yes": "Yes",
+    "no": "No"
+  },
+  "ice-breaker":{
+    "propose-finish_btn_text": "Register to finish Request",
+    "finish_btn_text": "Complete Capsule {{ title }}",
+    "finish_btn_text-without-title": "Complete Capsule",
+    "next_btn_text": "Next question"
+  },
+  "user_add_leave_chat_message": {
+    "member_added": "User {{active}} added {{passive}} to chat.",
+    "user_joined": "User {{active}} joined chat.",
+    "member_removed": "User {{active}} removed {{passive}} from chat.",
+    "user_left": "User {{active}} left chat."
+  },
+  "audio_record": {
+    "error_uploading": "Error while uploading audio",
+    "paused": "Paused",
+    "uploading": "Uploading audio",
+    "uploading_1_dot": "Uploading audio.",
+    "uploading_2_dot": "Uploading audio..",
+    "uploading_3_dot": "Uploading audio...",
+    "skip": "Skip",
+    "add_title": "Add Title (Optional)...",
+    "write_title": "Write title here"
+  },
+  "payout_request": {
+    "cancel_dialog": {
+      "cancel_btn_text": "Cancel",
+      "confirm_btn_text": "Confirm"
+    }
+  },
+  "conversation": {
+    "service_message": {
+      "case_taken": " is now your coordinator. You can start a chat with him/her/them.",
+      "shared_with_organization": "{{consultantName}} shared your request with his/her/their organization {{organizationName}}",
+      "shared_with_platform": "{{consultantName}} shared your case with the other organizations on the platform."
+    }
+  },
+  "auth": {
+    "sign_up": "Sign up",
+    "sign_in": "Log in"
+  },
+  "auth-header": {
+    "sign-up": "Sign up",
+    "sign-in": "Sign in",
+    "reset": "Reset",
+    "reset-password": "Reset Password",
+    "image-alt": "Sing Up Image"
+  },
+  "fields": {
+    "reset-password": "Reset password",
+    "username": "Username",
+    "password": "Password",
+    "email": "Email",
+    "team-account": "Set up as a team account",
+    "accept-terms": "I accept the terms",
+    "read-terms": "Read our T&Cs",
+    "org": "Select your organization",
+    "org-placeholder": "e.g. Sunflower Care e.V.",
+    "org-name": "Название организации",
+    "org-placeholder-name": "Введите название вашей организации",
+    "no-result": "Нет собственной компании?",
+    "create-new-company": "Создать свою",
+    "optional": "Optional"
+  },
+  "validation": {
+    "unique": "Your unique handle",
+    "error": "Error",
+    "required-field": "This is a required field",
+    "username-valid": "Username can only contain numbers, letters and underscores",
+    "email-valid": "Valid email is required",
+    "min-length": "Minimum {{min}} characters required",
+    "password-placeholder": "min. {{min}} letters, 1 number, 1 special character"
+  },
+  "actions": {
+    "resend-confirmation-email": "Resend confirmation email",
+    "already-have-an-account": "Already have an account?",
+    "sign-in-here": "Go to Sign In",
+    "without-acc": "Don't have an account yet?",
+    "sign-up-here": "Sign up here",
+    "forgot-password": "Forgot password?",
+    "reset-password": "Reset password",
+    "cancel": "Cancel",
+    "sign-in": "Sign in",
+    "sign-up": "Sign up"
+  },
+  "modal": {
+    "success-signup-title": "First Bridge to Support Built",
+    "close": "Close",
+    "success-signup-text": "The details you've shared create a bridge between your specific needs and the NGOs who can actually help. This matters because one-size-fits-all support often fails where personal connections succeed.",
+    "success-signup-next": "What happens next:",
+    "success-signup-text2": " We'll match you with organizations that fit your situation. You'll get an email as soon as there's a connection - please check your inbox regularly, including spam.",
+    "success-signup-text3": "Thank you for trusting us with your story.",
+    "go-blog": "Visit our Blog"
+  },
+  "video_call_invite": {
+    "sender": "You requested to create a live online live call. By default audio or camera are always deactivated from our side. Adjust this settings in the lobby.",
+    "receiver": "{{username}} send you a request to join this online live call. By default audio or camera are always deactivated from our side. Adjust this settings by entering the lobby. ",
+    "join": "Enter Live Call Lobby",
+    "title": "Live Video Call <br> Start Session",
+    "join-call": "Proceed to the video call lobby",
+    "description": "Welcome to the open-source live video conferencing tool from Jitsi that we host ourselves. By default, your camera and microphone are disabled, please enable them in the next step.",
+    "finished": "Live Call Ended",
+    "in-progress": "You Currently live in here",
+    "active-meet": "Join Active Live Call"
+  }
+}

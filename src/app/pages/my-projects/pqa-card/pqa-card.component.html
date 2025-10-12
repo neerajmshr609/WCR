@@ -1,0 +1,51 @@
+<div class="pqa-card" #cardRef *ngIf="project">
+  <div>
+    <h2 class="pqa-card__header">{{ project.title || 'Untitled' }}</h2>
+
+    <div class="pqa-card__gallery-area">
+      <app-presentation-slider
+        [isNewsfeedPresentation]="true"
+        [isSingleFileProject]="isSingleFileProject"
+        [files]="project.projectfiles"
+        [project]="project"
+        [isMinimalPresentation]="true"
+      ></app-presentation-slider>
+    </div>
+  </div>
+
+  <br />
+
+  <app-user-info
+    class="pqa-card__current-user"
+    [userId]="project.user.id"
+  ></app-user-info>
+  <h1 class="pqa-card__question">{{ PQACard.presenterQuestion.title }}</h1>
+
+  <div class="pqa-card__slider" #pqaSliderRef>
+    <div
+      class="pqa-card__slider--item"
+      *ngFor="let answer of PQACard.answers"
+      #sliderRef
+    >
+      <div class="item-container">
+        <app-user-info
+          [userId]="answer.user_id"
+          [isRight]="true"
+        ></app-user-info>
+
+        <app-message
+          [ngStyle]="{ 'maxHeight.px': maxHeight }"
+          class="chat__message--right"
+          [recipient]="project.user"
+          type="pqa"
+          [pqaId]="answer.id"
+          [message]="{
+            body: answer.answer,
+            audio_message: answer.audio_message,
+            read: true,
+          }"
+        ></app-message>
+      </div>
+    </div>
+  </div>
+</div>

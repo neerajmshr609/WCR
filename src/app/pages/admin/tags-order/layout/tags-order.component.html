@@ -1,0 +1,27 @@
+<div class="tags">
+  <h2 class="tags__title">Tags appearance order</h2>
+  <div cdkDropList (cdkDropListDropped)="drop($event)">
+    <div
+      class="tag"
+      [ngClass]="{ 'tag--active': tag.is_active }"
+      *ngFor="let tag of tags; let i = index"
+      cdkDrag
+      cdkDragLockAxis="y"
+    >
+      <div class="tag__handle" cdkDragHandle>
+        <mat-icon>menu</mat-icon>
+      </div>
+      <div class="tag__placeholder" *cdkDragPlaceholder></div>
+
+      <div class="tag__body">
+        <div class="tag__name">{{ tag.name }}</div>
+        <button class="tag__btn" *ngIf="!tag.is_active" (click)="activate(i)">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button class="tag__btn" *ngIf="tag.is_active" (click)="deactivate(i)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

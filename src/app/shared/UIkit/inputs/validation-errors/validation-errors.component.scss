@@ -1,0 +1,15 @@
+@import "_variables";
+@import "_mixins";
+
+:host {
+  display: block;
+  color: $--sds-color-text-danger-default;
+  padding: $--sds-size-space-200;
+  @include bodyBaseText;
+}
+
+.validation-errors {
+  &_container {
+    list-style: none;
+  }
+}

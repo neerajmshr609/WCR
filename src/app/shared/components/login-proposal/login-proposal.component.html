@@ -1,0 +1,10 @@
+<div class="login-proposal">
+  <div class="login-proposal__title">
+    <app-icon-info color="#1E1E1E" strokeWidth="1.6"></app-icon-info>
+    <span>{{ title() }}</span>
+  </div>
+  <div class="login-proposal__actions">
+    <app-button size="large" btnUIType="neutral" (click)="login()">{{ 'auth.sign_in' | translate }} <app-login-icon></app-login-icon></app-button>
+    <app-button size="large" btnUIType="primary" (click)="signup()">{{ 'auth.sign_up' | translate }}<app-icon-sign-up color="#F5F5F5" strokeWidth="1.6"></app-icon-sign-up></app-button>
+  </div>
+</div>

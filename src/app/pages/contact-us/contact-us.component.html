@@ -1,0 +1,169 @@
+<div class="contact-us">
+  <div class="contact-us__card support-card" [formGroup]="contactUsFormGroup">
+    <div class="image-container">
+      <img class="contact-us__card--header" src="assets/support-card@2x.svg" />
+      <h2 class="contact-us__card--title">{{ 'contact_us_card.title' | translate }}</h2>
+    </div>
+
+    <ng-template [ngIf]="didSubmitSupport">
+      <div style="align-self: center; margin-bottom: 25%">
+        <svg
+          id="heart"
+          style="align-self: center; visibility: hidden"
+          width="129"
+          height="118"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0)" stroke="#fff">
+            <rect
+              x="6"
+              y="6.75"
+              width="117"
+              height="102"
+              rx="29"
+              stroke-width="12"
+              stroke-linecap="round"
+            />
+            <path
+              d="M84.071 74.887h0c-4.419 5.257-10.864 8.344-17.678 8.482a23.72 23.72 0 01-18.004-7.763h-.002a2.396 2.396 0 013.54-3.229l.002.002c7.44 8.162 21.36 7.892 28.472-.571a2.407 2.407 0 013.38-.294 2.396 2.396 0 01.29 3.373z"
+              stroke-width="6.547"
+            />
+            <path
+              d="M25.19 42.429h80.62c.42 0 .761.34.761.761v11.62c0 .42-.341.761-.761.761H25.19a.762.762 0 01-.761-.761V43.19c0-.42.34-.761.762-.761z"
+              stroke-width="6.857"
+              stroke-linecap="round"
+            />
+            <path stroke-width="2" stroke-linecap="round" d="M32 49h61" />
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <path
+                stroke-linecap="round"
+                fill="#fff"
+                d="M0 0h129v117.291H0z"
+              />
+            </clipPath>
+          </defs>
+        </svg>
+        <br />
+        <h1 style="text-align: center">{{ 'thank_you' | translate }}</h1>
+      </div>
+    </ng-template>
+
+    <ng-template [ngIf]="!didSubmitSupport">
+      <section>
+        <div class="text-form">
+          <textarea
+            rows="9"
+            class="form-text-area"
+            type="text"
+            formControlName="text"
+            placeholder="{{ 'contact_us_card.textarea_placeholder' | translate }}"
+            name="name"
+            matInput
+          ></textarea>
+        </div>
+        <h3 *ngIf="error">{{ error }}</h3>
+      </section>
+
+      <div class="email-form-container">
+        <input
+          class="email-form"
+          formControlName="email"
+          placeholder="{{ 'email_placeholder' | translate }}"
+          type="text"
+        />
+        <button
+          class="btn btn--black btn-primary"
+          (click)="onSubmitSupport()"
+          [disabled]="contactUsFormGroup.invalid"
+        >{{ 'send_btn_text' | translate }}</button>
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="contact-us__card positive-card" [formGroup]="feedbackFormGroup">
+    <div class="image-container">
+      <img class="contact-us__card--header" src="assets/ideas-card@2x.svg" />
+      <h2 class="contact-us__card--title" [innerHTML]="'feedback_card.title' | translate"></h2>
+    </div>
+
+    <ng-template [ngIf]="didSubmitIdeas">
+      <div style="align-self: center; margin-bottom: 25%">
+        <svg
+          id="heart-ideas"
+          style="align-self: center; visibility: hidden"
+          width="129"
+          height="118"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0)" stroke="#fff">
+            <rect
+              x="6"
+              y="6.75"
+              width="117"
+              height="102"
+              rx="29"
+              stroke-width="12"
+              stroke-linecap="round"
+            />
+            <path
+              d="M84.071 74.887h0c-4.419 5.257-10.864 8.344-17.678 8.482a23.72 23.72 0 01-18.004-7.763h-.002a2.396 2.396 0 013.54-3.229l.002.002c7.44 8.162 21.36 7.892 28.472-.571a2.407 2.407 0 013.38-.294 2.396 2.396 0 01.29 3.373z"
+              stroke-width="6.547"
+            />
+            <path
+              d="M25.19 42.429h80.62c.42 0 .761.34.761.761v11.62c0 .42-.341.761-.761.761H25.19a.762.762 0 01-.761-.761V43.19c0-.42.34-.761.762-.761z"
+              stroke-width="6.857"
+              stroke-linecap="round"
+            />
+            <path stroke-width="2" stroke-linecap="round" d="M32 49h61" />
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <path
+                stroke-linecap="round"
+                fill="#fff"
+                d="M0 0h129v117.291H0z"
+              />
+            </clipPath>
+          </defs>
+        </svg>
+        <br />
+        <h1 style="text-align: center">{{ 'thank_you' | translate }}</h1>
+      </div>
+    </ng-template>
+
+    <ng-template [ngIf]="!didSubmitIdeas">
+      <section>
+        <div class="text-form">
+          <textarea
+            rows="9"
+            class="form-text-area"
+            type="text"
+            formControlName="text"
+            placeholder="{{ 'feedback_card.textarea_placeholder' | translate }}"
+            name="name"
+            matInput
+          ></textarea>
+          <h3 *ngIf="error">{{ error }}</h3>
+        </div>
+      </section>
+
+      <div class="email-form-container">
+        <input
+          class="email-form"
+          formControlName="email"
+          placeholder="{{ 'email_placeholder' | translate }}"
+          type="text"
+        />
+        <button
+          class="btn btn--black btn-primary"
+          (click)="onSubmitIdeas()"
+          [disabled]="feedbackFormGroup.invalid"
+        >{{ 'send_btn_text' | translate }} </button>
+      </div>
+    </ng-template>
+  </div>
+</div>

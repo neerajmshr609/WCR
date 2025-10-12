@@ -1,0 +1,60 @@
+{
+  "header": {
+    "counsellor-sign-up": "Counsellor Sign up",
+    "sign-up": "Sign up",
+    "sign-in": "Sign in",
+    "reset": "Reset",
+    "reset-password": "Reset Password",
+    "image-alt": "Sing Up Image"
+  },
+  "fields": {
+    "reset-password": "Reset password",
+    "username": "Username",
+    "password": "Password",
+    "email": "Email",
+    "team-account": "Set up as a team account",
+    "accept-terms": "I accept the terms",
+    "read-terms": "Read our T&Cs",
+    "org": "Select your organization",
+    "org-name": "Organization Name",
+    "org-placeholder-name": "Enter your organization's name",
+    "org-placeholder": "e.g. Sunflower Care e.V.",
+    "no-result": "Don't have your own organisation?",
+    "create-new-company": "Create your own",
+    "optional": "Optional"
+  },
+  "validation": {
+    "unique": "Your unique handle",
+    "error": "Error",
+    "required-field": "This is a required field",
+    "username-valid": "Username can only contain numbers, letters and underscores",
+    "email-valid": "Valid email is required",
+    "min-length": "Minimum {{min}} characters required",
+    "password-placeholder": "min. {{min}} letters, 1 number, 1 special character",
+    "min-simbols": "At least 6 letters required",
+    "min-number": "At least one number required",
+    "min-special-simbol": "At least one special character required",
+    "password-match-error": "Passwords do not match"
+  },
+  "actions": {
+    "resend-confirmation-email": "Resend confirmation email",
+    "already-have-an-account": "Already have an account?",
+    "sign-in-here": "Go to Sign In",
+    "without-acc": "Don't have an account yet?",
+    "sign-up-here": "Sign up here",
+    "forgot-password": "Forgot password?",
+    "reset-password": "Reset password",
+    "cancel": "Cancel"
+  },
+  "organization-invitations-conditions": {
+    "decline_invitation": "Decline Invitation",
+    "confirm-invite": "Confirm Invitation",
+    "join_organization": "{{ organization.legal_name }} invites you to join",
+    "accept": "Join Organisation",
+    "accept-counsellor": "Join as a counsellor",
+    "subtitles": "and discover brave new sea routes of solidarity, where others see hopeless horizons",
+    "text-p1": "Still finding our sea legs, but we're proud to reclaim the digital waters. Our adversary: the harsh sea of reality.",
+    "text-p2": "Our first journeys lead us to refugees from Ukraine. We want to help them online not only in emergency to reach safe harbor as quickly as possible, but to weave new nets together that transform shipwrecked souls back into bold captains who courageously take the helm even in rough waters.",
+    "text-p3": "As dedicated helpers, we are happy if you join us in shaping We Care in our still small harbor. Together with smart technologies, we are finding new ways to help people in need quickly and sustainably, and to overcome bureaucratic hurdles."
+  }
+}

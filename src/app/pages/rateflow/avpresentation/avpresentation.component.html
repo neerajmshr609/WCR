@@ -1,0 +1,49 @@
+<div class="avpresentation">
+  @if (isAudio()) {
+    <h6 class="avpresentation__audio-title">{{ file.name }}</h6>
+  }
+  <div class="avpresentation__wave" [ngClass]="{ 'is-audio': isAudio() }">
+    <div #waveformRef></div>
+
+    <app-curves
+      [file]="file"
+      [avRatingParams]="avRatingParams"
+      [duration]="duration"
+      [playerExists]="!!wavesurfer"
+      [toggleTimer$]="toggleTimer$"
+      [filesFeedback$]="filesFeedback$"
+      [mediaFileIsOver$]="mediaFileIsOver$"
+      (seekTo)="seekTo($event)"
+    ></app-curves>
+  </div>
+
+  <div class="avpresentation__rec-controls" [ngClass]="{ 'is-audio': isAudio() }">
+    <div class="avpresentation__track-controls">
+      @if (displayPlayBtn()) {
+
+        <div class="avpresentation__track-controls--track-play-btn">
+          @if (!statusIsPlaying) {
+            <app-icon-play (click)="playpause()" color="#f5f5f5"></app-icon-play>
+          } @else {
+            <app-icon-stop (click)="playpause()" color="#f5f5f5"></app-icon-stop>
+          }
+
+        </div>
+      }
+      <div class="avpresentation__track-controls--track">
+
+        <p class="current-time">
+          {{ currentTime | hms }}
+        </p>
+
+        <div class="track-line">
+          <div class="track-line-progress" [style.width]="trackTimeWidth"></div>
+        </div>
+
+        <p class="track-time">
+          {{ duration - currentTime | hms }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,252 @@
+<div class="payout-request">
+  <div class="payout-request__btns">
+    @if (mode === 'new' || mode === 'edit') {
+      <ng-container>
+        <button
+          class="payout-request__btn"
+          (click)="submitForm()"
+          matTooltip="{{ 'payout_request.accept_btn.tooltip' | translate }}"
+        >
+          <img
+            alt="{{ 'payout_request.accept_btn.img_alt' | translate }}"
+            src="assets/payments/accept.svg"
+          />
+        </button>
+        <button
+          class="payout-request__btn"
+          mat-dialog-close
+          matTooltip="{{ 'payout_request.deny_btn.tooltip' | translate }}"
+        >
+          <img
+            alt="{{ 'payout_request.deny_btn.img_alt' | translate }} "
+            src="assets/payments/deny.svg"
+          />
+        </button>
+      </ng-container>
+    }
+
+    <ng-template #elseTpl>
+      @if (
+        request.status === 'created' ||
+        request.status === 'error' ||
+        request.status === 'declined'
+      ) {
+        <button
+          class="payout-request__btn payout-request__edit"
+          (click)="editRequest()"
+          matTooltip="{{ 'payout_request.edit_btn.tooltip' | translate }}"
+        >
+          <img src="assets/icons/edit.svg" alt="" />
+          {{ 'payout_request.edit_btn.text' | translate }}
+        </button>
+
+        <button
+          class="payout-request__btn payout-request__cancel"
+          (click)="cancelRequest()"
+          matTooltip="{{ 'payout_request.cancel_btn.tooltip' | translate }}"
+        >
+          <img src="assets/payments/deny.svg" alt="Deny icon" />
+        </button>
+      }
+    </ng-template>
+  </div>
+
+  <img
+    class="payout-request__line"
+    src="assets/user-settings/finances/line.svg"
+    alt="Line"
+  />
+  <img
+    class="payout-request__success-img"
+    src="assets/user-settings/finances/success.svg"
+    alt="Success"
+  />
+
+  <div
+    class="payout-request__body"
+    [ngClass]="{
+      'payout-request__body--yellow':
+        request?.status === 'created' || mode === 'new' || mode === 'edit',
+      'payout-request__body--red':
+        mode !== 'edit' && request?.status === 'declined',
+      'payout-request__body--pink':
+        mode !== 'edit' && request?.status === 'error',
+      'payout-request__body--gray': request?.status === 'success',
+      'payout-request__body--beige': request?.status === 'in_progress',
+    }"
+  >
+    <p class="payout-request__title">{{ title | translate }}</p>
+
+    <div class="payout-request__data">
+      <div class="payout-request__amount">
+        @if (mode === 'created') {
+          <img src="assets/user-settings/finances/stamp.svg" alt="Stamp icon" />
+          {{
+            (mode === 'new' || mode === 'edit'
+              ? 'payout_request.request_for_payout'
+              : 'payout_request.request_sent'
+            ) | translate
+          }}
+        }
+        <span>Eur {{ amount / 100 }}</span>
+      </div>
+      <p class="payout-request__date">
+        {{ dateCreated | date: 'MMM d HH:mm' }}
+      </p>
+    </div>
+    <img
+      class="payout-request__lock"
+      src="assets/user-settings/finances/payout-lock.svg"
+      alt="Lock icon"
+    />
+
+    @if (request?.status === 'success') {
+      <div class="payout-request__data payout-request__success">
+        <p class="payout-request__date">
+          <img src="assets/user-settings/finances/stamp.svg" alt="Stamp icon" />
+          {{ 'payout_request.payment_sent' | translate }}
+        </p>
+
+        <div class="payout-request__amount">
+          <span>{{ request.completed_at | date: 'MMM d HH:mm' }}</span>
+          <span>{{ selectedCurrency }} {{ request.amount_sent / 100 }}</span>
+        </div>
+      </div>
+    }
+
+    <div class="payout-request__details pb-1">
+      <div class="payout-request__currency">
+        <img
+          class="payout-request__currency-img"
+          src="assets/user-settings/finances/currency-img.svg"
+          alt="Currency icon"
+        />
+      </div>
+      @if (mode === 'new' || mode === 'edit') {
+        <mat-form-field appearance="fill">
+          <mat-label>Select method / currency</mat-label>
+          <mat-select [(ngModel)]="selectedCurrency" disableRipple>
+            <mat-select-trigger>{{
+              selectedCurrency.toUpperCase()
+            }}</mat-select-trigger>
+            <mat-option *ngFor="let currency of currencies" [value]="currency">
+              {{ currency.toUpperCase() }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      }
+
+      @if (mode === 'created') {
+        <div class="payout-request__currency-display">
+          <span>{{ 'payout_request.receive_payment_in' | translate }} </span>
+          <span>{{ selectedCurrency }}</span>
+        </div>
+      }
+    </div>
+
+    @if (mode === 'created') {
+      <div class="payout-request__details payout-request__address">
+        <div class="payout-request__address-label">
+          {{ 'payout_request.wallet_address' | translate }}
+        </div>
+        <p class="payout-request__address-value">
+          {{ request.account_number }}
+        </p>
+      </div>
+    }
+
+    @if (request?.status === 'error' || request?.status === 'declined') {
+      <div class="payout-request__details payout-request__address">
+        <div class="payout-request__address-label">
+          {{ 'payout_request.reason_declined' | translate }}
+        </div>
+        <p class="payout-request__address-value">
+          {{
+            request.reason_declined ||
+              ('payout_request.not_specified' | translate)
+          }}
+        </p>
+      </div>
+    }
+
+    @if (mode === 'new' || mode === 'edit') {
+      <form [formGroup]="walletForm">
+        <div class="payout-request__details payout-request__address">
+          <div class="payout-request__address-label">
+            {{ 'payout_request.account_holders_name' | translate }}:
+          </div>
+          <div class="payout-request__address-form">
+            <textarea
+              class="payout-request__address-input"
+              formControlName="account_holders_name"
+            ></textarea>
+            @if (
+              walletForm.get('account_holders_name').touched &&
+              !walletForm.get('account_holders_name').valid
+            ) {
+              <mat-error>
+                {{ 'payout_request.required_field' | translate }}
+              </mat-error>
+            }
+          </div>
+        </div>
+        <div class="payout-request__details payout-request__address">
+          <div class="payout-request__address-label">
+            {{ 'payout_request.account_number' | translate }}:
+          </div>
+          <div class="payout-request__address-form">
+            <textarea
+              class="payout-request__address-input"
+              formControlName="account_number"
+            ></textarea>
+            @if (
+              walletForm.get('account_number').touched &&
+              !walletForm.get('account_number').valid
+            ) {
+              <mat-error>
+                {{ 'payout_request.required_field' | translate }}
+              </mat-error>
+            }
+          </div>
+        </div>
+        <div class="payout-request__details payout-request__address">
+          <div class="payout-request__address-label">SWIFT/BIC:</div>
+          <div class="payout-request__address-form">
+            <textarea
+              class="payout-request__address-input"
+              formControlName="swift_bic"
+            ></textarea>
+            @if (
+              walletForm.get('swift_bic').touched &&
+              !walletForm.get('swift_bic').valid
+            ) {
+              <mat-error>{{
+                'payout_request.required_field' | translate
+              }}</mat-error>
+            }
+          </div>
+        </div>
+        <div class="payout-request__details payout-request__address">
+          <div class="payout-request__address-label">
+            {{ 'payout_request.bank' | translate }}
+          </div>
+          <div class="payout-request__address-form">
+            <textarea
+              class="payout-request__address-input"
+              formControlName="bank_info"
+            ></textarea>
+
+            @if (
+              walletForm.get('bank_info').touched &&
+              !walletForm.get('bank_info').valid
+            ) {
+              <mat-error>{{
+                'payout_request.required_field' | translate
+              }}</mat-error>
+            }
+          </div>
+        </div>
+      </form>
+    }
+  </div>
+</div>

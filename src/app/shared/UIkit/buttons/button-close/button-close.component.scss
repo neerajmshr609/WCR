@@ -1,0 +1,14 @@
+@import "_variables";
+
+:host {
+  display: block;
+}
+
+.close-button {
+  width: fit-content;
+
+  &_icon {
+    width: $--sds-typography-scale-04;
+    height: $--sds-typography-scale-04;
+  }
+}

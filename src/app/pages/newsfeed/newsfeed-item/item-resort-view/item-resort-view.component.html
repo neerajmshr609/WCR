@@ -1,0 +1,34 @@
+<div class="resort">
+  <div class="resort__header">
+    <app-gt-switch (didChangeEvent)="didToggleResort()">
+      <p class="gt-switch-left" (click)="didSelectResort()">
+        {{ 'item_resort_view.resort' | translate }}
+      </p>
+      <p class="gt-switch-right" (click)="didSelectOriginal()">
+        {{ 'item_resort_view.original' | translate }}
+      </p>
+    </app-gt-switch>
+  </div>
+
+  <div class="resort__images" *ngIf="resortedFiles.length">
+    <div
+      class="resort__images--item"
+      *ngFor="let item of galleryItems | orderBy: 'order'"
+    >
+      <app-grid-presentation-placeholder
+        [file]="item"
+      ></app-grid-presentation-placeholder>
+      <p class="img-order">
+        {{ item.old_order ? item.old_order : item.order }}
+      </p>
+    </div>
+  </div>
+
+  <div class="resort__images" *ngIf="!resortedFiles.length">
+    <div class="loader-icon">
+      <app-small-spinner diameter="20"></app-small-spinner>
+    </div>
+  </div>
+
+  <div class="resort__images--gradient"></div>
+</div>

@@ -1,0 +1,15 @@
+.btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: 3rem 0 0;
+}
+
+@media screen and (max-width: 700px) {
+  .btn-wrapper {
+    width: 100%;
+
+    .reset {
+      width: 100%;
+    }
+  }
+}

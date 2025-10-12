@@ -1,0 +1,58 @@
+<div  class="invite-user">
+  <form [formGroup]="addUserForm">
+    <div class="invite-user__header">
+      <h3 class="invite-user__title">{{ 'inviteUser.title' | translate }} {{ organization() }}</h3>
+      <app-close-icon color="#1E1E1E" class="invite-user__close" (click)="close()"></app-close-icon>
+    </div>
+
+    <div class="invite-user__inputs">
+
+
+      <app-input class="invite-user__email" [control]="addUserForm.get('email')" inputName="email"
+                 label="Email"
+                 placeholder="e.g. Marta, Evacteam, marta@ngo.org">
+         <span>{{'inviteUser.validation.required-field' | translate}}</span>
+        <span>{{'inviteUser.validation.email-valid' | translate}}</span>
+      </app-input>
+
+
+      <app-select [options]="userRoles()" placeholder="Client Counsellor" [viewModel]="['name', 'title']" [control]="addUserForm.get('role')">
+        <span>{{'inviteUser.validation.required-field' | translate}}</span>
+      </app-select>
+
+      <p class="invite-user__note">
+        <strong>{{ 'inviteUser.note' | translate }}</strong>
+        {{ 'inviteUser.note-text'| translate }}
+      </p>
+
+      <p class="invite-user__site-protection">
+        {{ 'inviteUser.protected_by' | translate }}
+        <a target="_blank" href="{{ PRIVACY_POLICY_ROUTE }}">
+          {{ 'inviteUser.privacy_policy' | translate }}
+        </a>
+        {{ 'inviteUser.and' | translate }}
+        <a target="_blank" href="{{ TERMS_OF_SERVICE_ROUTE }}">
+          {{ 'inviteUser.terms_of_service' | translate }}
+        </a>
+        {{ 'inviteUser.apply' | translate }}
+      </p>
+    </div>
+    <div class="invite-user__actions" >
+      <app-button size="medium" btnUIType="subtle"  (click)="cancel()">
+        {{ 'inviteUser.cancel' | translate }}
+      </app-button>
+
+      <app-button
+        size="medium"
+        btnUIType="primary"
+        (click)="add()"
+        [disabled]="addUserForm.invalid"
+      >
+        <mat-icon class="button-add__icon">add</mat-icon>
+        <span>{{ 'inviteUser.add' | translate }}</span>
+      </app-button>
+    </div>
+  </form>
+</div>
+
+

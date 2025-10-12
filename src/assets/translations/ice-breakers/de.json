@@ -1,0 +1,66 @@
+{
+  "message-to-save": "Um deinen Fragebogen zu speichern, gib einen Titel ein",
+  "buttons": {
+    "create-next": "Erstelle nächste Frage",
+    "complete": "Fertigstellen",
+    "other-pay": "Andere bezahlen mich",
+    "i-will-pay": "Ich bezahle Andere",
+    "skip-test": "Schritt überspringen"
+  },
+  "confirmation": {
+    "true": "Ja",
+    "false": "Nein"
+  },
+  "sure-done": "Sicher, dass du fertig bist?",
+  "who-pay": "Wer wird <strong>beim Antworten</strong> diesen Fragebogen zahlen?",
+  "my-title": "MEIN FRAGEBOGEN TITEL",
+  "template-messages": {
+    "hi-there": "Hallo, ich bin hier, um dir zu helfen, diesen Fragebogen zu erstellen.",
+    "start-asking": "Fragen Beginne damit, deine erste Fragebogen Frage zu stellen, um das Gespräch zu starten.",
+    "good-start": "Guter Start! Jetzt füge so viele Links, Inhalte, Sprachnachrichten und Kommentare hinzu, um sicherzustellen, dass sie wirklich deinen Sichtpunkt verstehen.",
+    "once-done": "Wenn du fertig bist, erstelle die nächste Frage ODER drücke Fertigstellen, um abzuschließen.",
+    "well-done": "Gut gemacht!",
+    "choose-title": "Bitte wähle einen Titel, der diesen Fragebogen beschreibt.",
+    "set-description": "Bitte geben Sie eine kurze Beschreibung für diesen Fragebogen an.",
+    "allow-org-level": "Erlauben Sie, dass Ihr Fragebogen auf der Seite Ihrer Organisation (falls vorhanden) angezeigt wird?",
+    "allow-platform-level": "Erlauben Sie, dass Ihr Fragebogen auf der GetHelp-Seite der gesamten Plattform angezeigt wird?",
+    "you-reade": "Jetzt bist du bereit, deinen Fragebogen mit deiner Gemeinschaft zu teilen.",
+    "link-not-supported": "Dieser Link wird derzeit nicht vollständig unterstützt. Gib lieber einen anderen Link ein (unterstützte Websites) oder drücke „Diesen Schritt überspringen“, um deine erste Fragebogen Frage zu stellen und das Gespräch zu starten.",
+    "no-problem": "Kein Problem, gib bitte deinen neuen Fragebogen Titel ein.",
+    "perfect": "Perfekt! du bist nun bereit, deinen Fragebogen mit deinem Netzwerk zu teilen.",
+    "next-question": "Erstelle jetzt Frage Nummer {{stepNumber}}",
+    "excellent": "Ausgezeichnet! So wird die Vorschau deines Fragebogens aussehen.\n Stelle jetzt deine erste Frage, um das Gespräch zu starten."
+  },
+  "ice-breaker-card": {
+    "ice-breaker": "Fragebogen",
+    "share": "FRAGEBOGEN {{id}} TEILEN",
+    "delete": "Fragebogen löschen",
+    "single-reviews": "EINZELNE BEWERTUNGEN",
+    "reviews": "Bewertungen",
+    "select-topic": "Wähle ein Thema",
+    "create": "Fragebogen erstellen",
+    "rating": {
+      "title": "GESAMTBEWERTUNGEN",
+      "knowledge": "Fachkenntniss",
+      "articulation": "Sprachgewandheit",
+      "explanation": "Verständlichkeit",
+      "politeness": "Höflichkeit"
+    },
+    "select-profile": "Wähle ein Thema aus deiner Profilkarte, um ein Fragebogen Gespräch zu erstellen.",
+    "click-button": "Klicke auf den Button unten, um diesen Fragebogen zu erstellen",
+    "pick-topic": "Wähle ein Thema, bevor du einen Fragebogen erstellst",
+    "adjust-price": "Preis<br>anpassen",
+    "want-share": "möchte diesen Fragebogen mit dir teilen:",
+    "preview": "Vorschau",
+    "click-to-copy": "ZUM KOPIEREN KLICKEN",
+    "share-your-getme": "<span style=\"font-weight: 700;color: #000000;\">Teile</span> jetzt deinen <br>Fragebogen",
+    "if-you-have": "Wenn du noch keine Themen eingerichtet hast, gehe in den <a href=\"/settings?type=skills\" style=\"text-decoration: underline\">Einstellungsbereich</a> und wähle Themen, in denen du dich auskennst.",
+    "buttons": {
+      "enter-and-pay": "Gespräch BETRETEN",
+      "enter-and-get-paid": "Gespräch BETRETEN & {{currency}} Verdienen",
+      "go-chat-room": "Zum Chatraum gehen",
+      "connections-will-get-paid": "Nutzer werden {{currency}} verdienen",
+      "connections-will-pay": "Nutzer werden mir {{currency}} zahlen"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+<section
+  class="ice-breaker-page"
+  *ngIf="publicProfile$ | async as publicProfile"
+>
+  <app-ice-breaker-card
+    *ngIf="(isOwner$ | async) && !publicProfile.icebreakers.length"
+    [selectedSkill]="pickedSkill$ | async"
+    [currentUser]="currentUser$ | async"
+    [publicProfile]="publicProfile"
+    [payed]="false"
+    [iceBreakerData]="undefined"
+    [index]="publicProfile.icebreakers.length + 1"
+  >
+  </app-ice-breaker-card>
+  <ng-container *ngIf="publicProfile.icebreakers.length">
+    <app-ice-breaker-card
+      *ngFor="
+        let iceBreaker of publicProfile.icebreakers
+          | preselectedIceBreaker: selectedIceBreaker;
+        trackBy: trackById;
+        let i = index
+      "
+      [selectedSkill]="iceBreaker.user_skill_id | userSkill: publicProfile"
+      [currentUser]="currentUser$ | async"
+      [publicProfile]="publicProfile"
+      [payed]="false"
+      [iceBreakerData]="iceBreaker"
+      [index]="i + 1"
+      [isLoading]="iceBreaker.loading"
+      (delete)="removeIceBreaker($event, publicProfile.sharetoken)"
+      (onPriceChanged)="changePrice($event, iceBreaker.id)"
+      (join)="joinToIceBreaker($event)"
+    >
+    </app-ice-breaker-card>
+  </ng-container>
+  <div
+    class="preselected-content"
+    *ngIf="!(isOwner$ | async) && selectedIceBreaker"
+  >
+    <div
+      class="text-content"
+      [innerHTML]="'preselected-content' | translate | safe: 'html'"
+    ></div>
+    <button (click)="showAll()" class="show-all-btn">
+      <span [innerHTML]="'load-more-btn' | translate | safe: 'html'"></span>
+      <img src="../../../../../../../../assets/eye.svg" alt="Eye icon" />
+    </button>
+  </div>
+  <div class="text-content" *ngIf="isOwner$ | async as isOwner">
+    <ng-container
+      *ngIf="
+        isOwner && !publicProfile.icebreakers.length && !(pickedSkill$ | async)
+      "
+    >
+      {{ 'perfect-opportunity' | translate }}
+      <!--      Ice breaker are your perfect opportunity to convert connections quickly, by prerecording a set of messages-->
+      <!--      combined-->
+      <!--      with additional information to get quickly great detailed insights on your connections problem, and <span-->
+      <!--      class="red-text">thus you can-->
+      <!--      make-->
+      <!--      it a specific experience.</span>-->
+    </ng-container>
+    <ng-container
+      *ngIf="
+        isOwner && !publicProfile.icebreakers.length && pickedSkill$ | async
+      "
+    >
+      {{ 'create-interactive' | translate }}
+    </ng-container>
+
+    <ng-container *ngIf="!isOwner && publicProfile.icebreakers.length === 1">
+      {{ 'preselected-content' | translate | safe: 'html' }}
+    </ng-container>
+  </div>
+</section>

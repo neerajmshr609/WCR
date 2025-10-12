@@ -1,0 +1,15 @@
+<div class="card" [ngClass]="card.class" [style.backgroundColor]="card.color">
+  <div class="card__title" [innerHTML]="card.title | translate"></div>
+
+  <div class="card__img" *ngIf="card.img">
+    <img [src]="card.img" alt="about card image" />
+  </div>
+
+  <div class="card__text">
+    <ul>
+      <li *ngFor="let option of card.textOptions" [innerHTML]="option | translate"></li>
+    </ul>
+  </div>
+
+  <div class="card__index" *ngIf="index + 1">{{ index + 1 }}</div>
+</div>

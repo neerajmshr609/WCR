@@ -1,0 +1,29 @@
+<app-filter-panel [currentUser]="currentUser" (filterChanged)="handleFilterChange($event)" (selectedEntity)="handleSelectedEntities($event)"
+                  (newConversation)="addNewConversation($event)"></app-filter-panel>
+
+<div class="activity-container">
+  @if (currentUser) {
+    <div
+      infinite-scroll
+      (scrolled)="loadMore()"
+      [infiniteScrollDisabled]="isLoading"
+      [infiniteScrollDistance]="3"
+      class="conversations"
+    >
+      @if (conversations$ | async; as conversations) {
+        @for (conversation of conversations; track conversation.id) {
+          <app-conversation-row
+            [conversation]="conversation"
+            [currentUser]="currentUser"
+            class="conversation"
+          ></app-conversation-row>
+        } @empty {
+          @if(!isLoading) {
+            <app-empty-conversations [filteredTypes]="selectedFilterList()"></app-empty-conversations>
+          }
+        }
+      }
+      <app-small-spinner [diameter]="50" *ngIf="isLoading"></app-small-spinner>
+    </div>
+  }
+</div>

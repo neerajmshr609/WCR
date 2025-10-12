@@ -1,0 +1,90 @@
+
+    <img
+      src="assets/conversations/robot.svg"
+      class="user-avatar"
+      alt="Robot avatar"
+    />
+  <div class="message__container" [ngClass]="[isInternalChat() ? 'internal' : '']">
+    <div
+      class="message__container-inner"
+      [@messageAnimation]
+      [ngClass]="{
+        'message__container-inner--unread': !message().read && message().user?.id !== currentUser.id,
+        'message__container-inner--red': isRed,
+        'message__container-inner--green': isGreen,
+        'message__container-inner--yellow': isYellow,
+        'message__container-inner--black': paymentSessionId,
+        'cursor-pointer': !message().audio_message && !hasLinks,
+        'overflow-hidden': feedback && !feedbackQuestion,
+        'video-invite': message().special === 'meeting_request'
+      }"
+    >
+      @if(showUserAddDeleteMessage()){
+        <app-user-add-remove-message [message]="message()"></app-user-add-remove-message>
+      } @else {
+        <ng-container *ngIf="isLinkMessage; else regularMessage">
+          <div
+            class="embed-container"
+            *ngIf="message().body | getIframe | async as iframe"
+          >
+            <app-iframely-embed [iframe]="$any(iframe)"></app-iframely-embed>
+            <h2 class="message__text">{{ icebreakerTitle }}</h2>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="message().attachment">
+          <app-grid-presentation-placeholder
+            class="file-placeholder"
+            [ngClass]="message().attachment.kind"
+            [file]="message().attachment"
+            (click)="openFile(message().attachment)"
+          ></app-grid-presentation-placeholder>
+        </ng-container>
+
+        <ng-template #regularMessage>
+          <h2
+            class="message__text"
+            *ngIf="messageText"
+          >
+            <ng-container *ngIf="youtubeEmbedVideoId; else regularText">
+              <div [innerHTML]="messageText | safe: 'html'"></div>
+              <youtube-player
+                [id]="'player' + youtubeEmbedVideoId"
+                [videoId]="youtubeEmbedVideoId"
+                [startSeconds]="youtubeStartTime"
+                height="100%"
+                width="100%"
+              >
+              </youtube-player>
+            </ng-container>
+            <ng-template #regularText>
+              @if (message().special === 'meeting_request') {
+              <app-video-call-invite
+                [meet]="message().service_info"
+                [isSender]="isAuthor"
+                [hostName]="message()?.user?.username || message()?.username"
+                (enterMeet)="onEnterClasroomClick($event)"
+              ></app-video-call-invite>
+              } @else {
+                <span [innerHTML]="messageText | safe: 'html'"></span>
+              }
+            </ng-template>
+          </h2>
+        </ng-template>
+
+        <img
+          class="message__screenshot"
+          *ngIf="message().message_screenshots?.length"
+          [src]="message().message_screenshots[0].url"
+          alt=""
+        />
+
+        <a
+          class="message__feedback-answer"
+          [routerLink]="'/rateflow/' + message().body"
+          *ngIf="message().special === 'paid_feedback_request'"
+        > {{ 'message.give_feedback' | translate }} </a>
+      }
+    </div>
+  </div>
+

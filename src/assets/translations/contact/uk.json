@@ -1,0 +1,13 @@
+{
+  "contact_us_card": {
+    "title": "Зв'яжіться з нами",
+    "textarea_placeholder": "Раді дізнатись від вас..."
+  },
+  "feedback_card": {
+    "title": "Ваше враження",
+    "textarea_placeholder": "Будь ласка, залиште відгук, щоб ми могли покращити роботу getme.global"
+  },
+  "email_placeholder": "Вкажіть ваш email",
+  "thank_you": "Дякую",
+  "send_btn_text": "Надіслати"
+}

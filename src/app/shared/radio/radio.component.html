@@ -1,0 +1,46 @@
+@if (control()) {
+  <div
+    class="input-wrapper"
+    [ngClass]="{
+      disabled: disabled(),
+      active: !disabled(),
+      radio: type() === 'radio',
+      checkbox: type() === 'checkbox',
+    }"
+  >
+    <div class="header">
+      <div
+        class="input-field"
+        role="button"
+        (click)="!disabled() && control().setValue(!control().value)"
+      >
+        <input
+          class="form-input"
+          type="checkbox"
+          [id]="inputName()"
+          [readonly]="disabled()"
+          [disabled]="disabled()"
+          [formControl]="control()"
+          [checked]="control().value"
+        />
+        <span class="slider round"></span>
+      </div>
+      <label class="form-label" [for]="inputName()">{{ label() }}</label>
+    </div>
+    @if (description()) {
+      <div class="content">
+        <p>{{ description() }}</p>
+      </div>
+    }
+    <small
+      class="form__validator"
+      [ngClass]="{
+        'form__validator--visible':
+          (control().touched && control().errors?.required) ||
+          (control().value && control().errors?.pattern),
+      }"
+    >
+      <ng-content></ng-content>
+    </small>
+  </div>
+}

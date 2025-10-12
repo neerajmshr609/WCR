@@ -1,0 +1,55 @@
+<div class="dummy-container">
+  <div
+    class="tabs"
+    [ngClass]="{ 'tabs--small': !isRateflowPresentation }"
+    #tabsRef
+  >
+    <div class="tabs__titles">
+      <p
+        class="tabs__title"
+        [ngClass]="{ 'tabs__title--active': activeTab === tab.name }"
+        *ngFor="let tab of tabs"
+        (click)="tabClick(tab.name)"
+      >
+        {{ tab.displayName | translate }}
+      </p>
+    </div>
+
+    <div *ngIf="activeTab === 'title'" class="tabs__content">
+      <div
+        class="dummy"
+        [ngClass]="{ 'dummy--small': !isRateflowPresentation }"
+      >
+        <h2 class="dummy__title dummy__title--small">{{ file.name }}</h2>
+
+        <div class="dummy__thumb" [ngStyle]="{ 'height.px': imgHeight }">
+          <img [src]="thumbSrc" #dummyThumbRef />
+        </div>
+
+        <a [href]="file.url" target="_blank" class="dummy__link">{{
+          file.url
+        }}</a>
+
+        <button
+          class="how-to-use"
+          *ngIf="isRateflowPresentation"
+          (click)="openHowToUse()"
+        >
+          {{ 'dummy_file.how_to' | translate }}
+          <mat-icon>info</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="activeTab === 'description'" class="tabs__content">
+      <div class="dummy">
+        <h2 class="dummy__title">{{ file.name }}</h2>
+        <div class="dummy__description">{{ file.filedescription }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div #explainerRef *ngIf="isRateflowPresentation" class="explainer">
+    <app-dummy-explainer></app-dummy-explainer>
+  </div>
+</div>

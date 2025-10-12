@@ -1,0 +1,15 @@
+.modal {
+  &__body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__title {
+    font-size: 3.15rem;
+    line-height: 3.4rem;
+    flex-grow: 1;
+    text-align: center;
+    margin-top: 3rem;
+  }
+}

@@ -1,0 +1,389 @@
+@import 'variables';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 50px;
+  padding: 30px 50px 75px 35px;
+  height: 50px;
+
+  &__title {
+    font-size: 32px;
+    line-height: 51px;
+    color: #191919;
+  }
+
+  &__time-zone {
+    width: 250px;
+
+    ng-moment-timezone-picker {
+      ::ng-deep {
+        .wrapper {
+          width: 250px;
+        }
+      }
+    }
+  }
+
+  &__time-zone-label {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $--sds-color-grey-500;
+  }
+
+  &__time-zone-datepicker {
+    font-size: 19.7578px;
+    line-height: 23px;
+    color: #212429;
+  }
+}
+
+.switches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 50px;
+  padding: 35px 60px 20px 65px;
+
+  &__switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    padding-top: 10px;
+  }
+
+  &__switch-text {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 133.19%;
+    color: #212429;
+  }
+}
+
+.create-ruleset {
+  background: #f2f2f2;
+  box-shadow: 0px 0.3px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  margin: 0 50px;
+  padding: 35px 60px 20px 65px;
+
+  &__title {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: $--sds-color-grey-500;
+  }
+
+  &__users {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__user-change {
+    display: flex;
+    align-items: center;
+  }
+
+  &__user-text {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 133.19%;
+    color: #212429;
+  }
+
+  &__select-days {
+    display: flex;
+    flex-direction: column;
+    margin: auto 150px;
+  }
+
+  &__select-days-label {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: $--sds-color-grey-500;
+    margin-top: 35px;
+  }
+
+  &__select-days-week {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  &__select-day {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+    color: #000000;
+  }
+
+  &__select-day-block {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    cursor: pointer;
+  }
+
+  &__add-days-time {
+    margin-top: 25px;
+  }
+
+  &__add-days-label {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: $--sds-color-grey-500;
+  }
+
+  &__add-days-select {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+    color: #000000;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__add-days-timepicker {
+    width: 70px;
+    text-align: center;
+    color: #0000ff;
+    cursor: pointer;
+  }
+}
+
+.add-days {
+  &__btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-inline: auto;
+    background-color: unset;
+    border: unset;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+
+  &__btn-title {
+    font-weight: bold;
+    font-size: 17.5443px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #212429;
+  }
+
+  &__btn-img {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+  }
+
+  &__rulesets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 50px;
+    padding-top: 30px;
+  }
+
+  &__ruleset {
+    background: #f2f2f2;
+    box-shadow: 0px 1.5px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    width: 360px;
+    height: 121px;
+    padding: 5px;
+  }
+
+  &__element {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 13px;
+    text-align: center;
+    color: #828282;
+    margin: 5px 0;
+  }
+
+  &__student {
+    background: #dddddd;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+    margin-right: 5px;
+
+    &--new {
+      background: #00affe;
+      margin-right: 5px;
+      color: #ffffff;
+    }
+
+    &--interesting {
+      background: #e3be30;
+      margin-right: 5px;
+      color: #ffffff;
+    }
+
+    &--regular {
+      background: $feed-accent-green;
+      color: #ffffff;
+    }
+  }
+
+  &__days {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+    color: $feed-light-gray-text;
+    margin-top: 10px;
+  }
+
+  &__time {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+    color: #000000;
+  }
+
+  &__delete {
+    display: flex;
+    margin: 10px 0 45px 0;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__delete-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__delete-text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: $--sds-color-grey-500;
+    margin-left: 15px;
+  }
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 52px;
+
+  &__image {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 23px;
+    line-height: 27px;
+    color: #000000;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: $--sds-color-grey-500;
+    padding-top: 8px;
+    margin-bottom: 44px;
+    text-align: center;
+    word-break: break-word;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .create-ruleset {
+    &__select-days {
+      margin: auto 200px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .header {
+    margin: 30px 10px 70px 10px;
+    padding: 0;
+
+    &__title {
+      display: none;
+    }
+
+    &__time-zone {
+      width: 100%;
+
+      ng-moment-timezone-picker {
+        ::ng-deep {
+          .wrapper {
+            height: 50px;
+          }
+        }
+      }
+    }
+
+    &__time-zone-label {
+      text-align: center;
+    }
+  }
+
+  .switches,
+  .create-ruleset {
+    margin: 0;
+    padding: 20px;
+
+    &__user-change {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &__select-days {
+      margin: 0;
+    }
+  }
+
+  .add-days {
+    &__rulesets {
+      margin: 0;
+    }
+
+    &__ruleset {
+      width: 300px;
+    }
+  }
+}

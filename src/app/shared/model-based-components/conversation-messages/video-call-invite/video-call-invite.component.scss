@@ -1,0 +1,45 @@
+@import '_variables';
+
+app-video-call-invite {
+  display: flex;
+  border-radius: $--sds-size-radius-300 0 $--sds-size-radius-300 $--sds-size-radius-300;
+  border: 1px solid $--sds-color-border-default-default;
+  background: $--sds-color-background-default-secondary;
+  padding: $--sds-size-space-700 $--sds-size-space-550 $--sds-size-space-400 $--sds-size-space-350;
+  position: relative;
+
+  span {
+    color: $--sds-color-text-neutral-default;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+  }
+
+  .video-call-invite {
+    position: absolute;
+    left: -$--sds-size-space-400;
+    top: -$--sds-size-space-600;
+  }
+
+  .video-call-invite.is-receiver {
+    right: -$--sds-size-space-400;
+    left: auto;
+  }
+
+  app-icon-video-call {
+    display: flex;
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+
+  app-button.video-call-invite.active {
+    .btn-entity {
+      border: $--sds-size-stroke-border solid $--sds-color-border-warning-secondary;
+      background: $--sds-color-background-neutral-tertiary;
+      color: $--sds-color-text-warning-default;
+    }
+  }
+}
+

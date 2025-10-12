@@ -1,0 +1,71 @@
+<div class="my-skills-select">
+  <div class="my-skills-filter" *ngIf="loadedSkills">
+    <img
+      src="/assets/payments/timer-close@2x.png"
+      class="{{ mySkillsControl.value ? 'close_active' : '' }}"
+      (click)="didCancelFilter()"
+    />
+    <input
+      type="text"
+      [matAutocomplete]="auto"
+      placeholder="Start typing to filter from {{
+        skillsCount
+      }} available topics"
+      #autocomplete
+      [formControl]="mySkillsControl"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let skill of typeHeadSkillFiltered"
+        [value]="skill.name"
+        (click)="didToggleSkill(skill)"
+      >
+        {{ skill.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+
+  <div class="tags">
+    <button
+      *ngFor="let tag of tags"
+      class="tags__item"
+      type="button"
+      [ngClass]="{ 'tags__item--active': tag.id === selectedTag }"
+      (click)="selectTag(tag.id)"
+    >
+      {{ tag.name }}
+    </button>
+  </div>
+
+  <div class="my-skills-select-flex-container">
+    <app-small-spinner diameter="40" *ngIf="isLoading()"></app-small-spinner>
+
+    <div
+      class="my-skills-select__item"
+      [ngClass]="{
+        'my-skills-select__item--selected': selectedSkills.includes(skill),
+      }"
+      *ngFor="let skill of loadedFilteredSkills"
+      (click)="didToggleSkill(skill)"
+    >
+      <img
+        [hidden]="!selectedSkills.includes(skill)"
+        class="my-skills-select__item--selected-skill-badge"
+        src="assets/selected_advisor@2x.png"
+      />
+
+      <img [src]="skill.icon" class="my-skills-select__item--icon icon" />
+      <div class="my-skills-select__item--skill-detail">
+        <h3>{{ skill.shortname }}</h3>
+        <p>
+          {{ skill.advisors_count }} Connector{{
+            skill.advisors_count === 1 ? '' : 's'
+          }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <button (click)="cantFindSkillPopup()" class="cant-find-skill-btn">
+    Can’t find your topic?
+  </button>
+</div>

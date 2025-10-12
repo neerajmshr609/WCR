@@ -1,0 +1,104 @@
+@import 'variables';
+
+.notifications {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .notification {
+    width: 44%;
+    margin: 2rem 2rem 3rem;
+
+    &_header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      .title {
+        color: $--sds-color-black-400;
+        font-size: $--sds-typography-body-size-medium;
+        font-style: normal;
+        font-weight: $--sds-typography-body-font-weight-regular;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 24px;
+
+        input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+
+          &:checked + .slider {
+            background-color: $--sds-color-background-brand-default
+          }
+
+          &:focus + .slider {
+            box-shadow: 0 0 1px $--sds-color-background-brand-default
+          }
+
+          &:checked + .slider:before {
+            -webkit-transform: translateX(15px);
+            -ms-transform: translateX(15px);
+            transform: translateX(15px);
+          }
+        }
+
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color:$--sds-color-border-neutral-secondary;
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+
+          &.round {
+            border-radius: 34px;
+
+            &:before {
+              border-radius: 50%;
+            }
+          }
+
+          &:before {
+            position: absolute;
+            content: '';
+            height: 19px;
+            width: 19px;
+            left: 4px;
+            bottom: 2px;
+            background-color: $--sds-color-background-default-default;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+          }
+        }
+      }
+    }
+
+    &_content {
+      p {
+        color: $--sds-color-text-default-secondary;
+        font-size: $--sds-typography-body-size-medium;
+        font-style: normal;
+        font-weight: $--sds-typography-body-font-weight-regular;
+      }
+    }
+  }
+}
+
+:host
+  ::ng-deep
+  .custom-toggle.mat-slide-toggle.mat-checked
+  .mat-slide-toggle-bar {
+  background-color: #4caf50;
+}
+:host ::ng-deep .custom-toggle .mat-slide-toggle-thumb {
+  background-color: #ff5722;
+}

@@ -1,0 +1,50 @@
+@import "_variables";
+
+:host {
+  width: 100%;
+  display: flex;
+  justify-items: stretch;
+  align-items: center;
+}
+
+.card-title {
+  align-items: stretch;
+  flex-basis: 40%;
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-wrap: nowrap;
+  display: flex;
+  flex-direction: column;
+  justify-items: stretch;
+  margin-left: $--sds-typography-body-size-medium;
+
+  &_name {
+    text-transform: capitalize;
+    color: $--sds-color-text-default-default;
+    font-size: $--sds-typography-body-size-small;
+    font-weight: $--sds-typography-body-font-weight-strong;
+    line-height: $line-height-140;
+  }
+
+  &_sub-name {
+    text-transform: uppercase;
+    color: $--sds-color-text-default-secondary;
+    font-family: $--sds-typography-family-sans;
+    font-size: $--Body-Size-XXS;
+    font-weight: $--sds-typography-weight-bold;
+    letter-spacing: $--letter-spacing-3;
+  }
+}
+
+.sub-name {
+  &_icon {
+    width: $--sds-typography-body-size-medium;
+    height: $--sds-typography-body-size-medium;
+    margin-right: $--sds-size-space-125;;
+    display: inline-flex;
+  }
+  &_text {
+    vertical-align: text-bottom;
+  }
+}

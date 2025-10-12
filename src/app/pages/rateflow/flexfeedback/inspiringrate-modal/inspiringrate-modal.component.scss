@@ -1,0 +1,61 @@
+.ratebacks {
+  display: flex;
+  justify-content: center;
+
+  &__item {
+    transition: all 0.2s;
+    text-align: center;
+
+    &:hover {
+      transform: translateY(-0.4rem);
+    }
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    img {
+      height: 6rem;
+      width: 6rem;
+    }
+
+    &-name {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    &-amount {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+  }
+
+  .disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
+.how-it-works {
+  margin-top: 2rem;
+
+  &__title {
+    font-weight: 500;
+    color: darkgray;
+    font-size: 11px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+  }
+}
+
+.modal {
+  &__actions {
+    margin-top: 2rem;
+  }
+}

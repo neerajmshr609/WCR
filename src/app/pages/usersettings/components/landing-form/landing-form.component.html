@@ -1,0 +1,61 @@
+@if (form) {
+  <form [formGroup]="form" class="form">
+    <div class="form__group-row">
+      @for (dataObj of formData?.inputs; track dataObj.name) {
+        @if (dataObj.type === 'image') {
+          <div class="form-field w-100">
+            <h5 class="form-label">{{ dataObj.name | translate }}</h5>
+            <div class="image-container">
+              <app-image-uploader
+                [formData]="dataObj"
+                (save)="save($event)"
+                [image]="
+                  form.value[dataObj.name] ? form.get(dataObj.name) : null
+                "
+                [folder]="folder()"
+              ></app-image-uploader>
+              <div class="uploader--organization-landing-avatar"></div>
+            </div>
+          </div>
+        } @else if (dataObj.type === 'array') {
+          <div class="form-field w-100">
+            <app-org-form-item
+              [formData]="dataObj"
+              [orgId]="orgatizationData()?.id"
+              (save)="savePartner($event)"
+            ></app-org-form-item>
+
+            @for (formItem of partnersForm(); track formItem.name) {
+              <app-org-form-item
+                [formData]="dataObj"
+                [formItem]="formItem"
+                [orgId]="orgatizationData()?.id"
+                (delete)="deletePartner($event)"
+                (update)="updatePartner($event)"
+              ></app-org-form-item>
+            }
+          </div>
+        } @else if (dataObj.type === 'switch') {
+          <div class="form-field w-50 m-12">
+            <app-switch
+              [control]="form.get(dataObj.name)"
+              inputName="{{ dataObj.name }}"
+              label="{{ dataObj.label | translate }}"
+              description="{{ dataObj.description | translate }}"
+            ></app-switch>
+          </div>
+        } @else {
+          <div class="form-field w-50">
+            <app-input
+              [control]="form.get(dataObj.name)"
+              inputName="{{ dataObj.name }}"
+              placeholder="{{ dataObj.placeholder | translate }}"
+              type="{{ dataObj.type }}"
+              label="{{ dataObj.label | translate }}"
+            ></app-input>
+          </div>
+        }
+      }
+    </div>
+  </form>
+}

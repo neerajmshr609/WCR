@@ -1,0 +1,36 @@
+<div class="modal-select">
+  <app-button-close
+    class="modal-select_close-icon_btn"
+    (click)="close()"
+  ></app-button-close>
+  <h4 class="modal-select_title"
+      [innerHTML]="data.title | translate"
+  ></h4>
+  <label class="modal-select_label"
+         [innerHTML]="data.label | translate"
+  ></label>
+  <mat-select
+    [value]="selected().name"
+    (selectionChange)="changeSelected($event)"
+  >
+    @for (option of data.options; track option.name) {
+      <mat-option [value]="option.name">{{ option.name }}</mat-option>
+    }
+  </mat-select>
+
+  <div class="modal-select_action">
+    <app-button
+      size="medium"
+      btnUIType="neutral"
+      (click)="cancel()"
+    >{{ data.cancel_btn_text | translate }}
+    </app-button>
+    <app-button
+      size="medium"
+      btnUIType="primary"
+      (click)="confirmSelected()"
+    >
+      {{ data.save_btn_text | translate }}
+    </app-button>
+  </div>
+</div>

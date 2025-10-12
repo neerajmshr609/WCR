@@ -1,0 +1,144 @@
+<ng-container *ngIf="!noAvParams; else noAvParamsTpl">
+  <div class="avsliders-container">
+    @for(avparam of selectedFile.avratingparams; track avparam.id) {
+      <div
+        class="slider-item-v2 {{
+        !activeAVParam?.color ? 'avsliders-disabled' : ''
+      }} "
+      >
+        <app-av-rating-slider
+          (click)="focusActive(avparam)"
+          (activateParam)="onActivateParam(avparam)"
+          (selectParam)="onParamSelect(avparam)"
+          (sliderDidChange)="sliderDidChange($event.param, $event.value)"
+          [param]="avparam"
+          [color]="avparam.color"
+          [name]="avparam.name"
+        ></app-av-rating-slider>
+      </div>
+    }
+
+
+    <div
+      class="avsliders-comment"
+      [style.color]="colorForActiveParam()"
+      [style.borderColor]="colorForActiveParam()"
+    >
+      <p
+        (focusin)="didFocusOnText()"
+        (paste)="detectPaste($event)"
+        #commentInput
+        placeholder="Move cursor & leave comment here..."
+        [contentEditable]="hasActiveParam"
+        type="text"
+        class="avsliders-comment__input"
+      ></p>
+
+      <div class="avsliders__btns">
+        <app-button (click)="startAudioRecording()" iconBtn btnUIType="subtle" size="small" [disabled]="!hasActiveParam || !author">
+          <app-icon-audio-record color="black"></app-icon-audio-record>
+        </app-button>
+        <app-button [matMenuTriggerFor]="sendmenu" iconBtn btnUIType="subtle" size="small"  [disabled]="!hasActiveParam || !commentInput.innerText">
+          <app-send-icon color="black" strokeWidth="4.6"></app-send-icon>
+        </app-button>
+
+        <mat-menu #sendmenu="matMenu">
+          <button mat-menu-item disabled>Send comment to:</button>
+          <button
+            class="feedback-menu-item"
+            mat-menu-item
+            (click)="sendComment('strengths')"
+            style="display: flex; align-items: center"
+          >
+            <img
+              src="assets/strengthsItems.png"
+              class="feedbacktype-icon"
+              [style.width]="'34px'"
+              [style.height]="'34px'"
+            />
+            <span style="margin-left: 0.6rem">Strength</span>
+          </button>
+
+          <button
+            class="feedback-menu-item"
+            mat-menu-item
+            (click)="sendComment('weaknesses')"
+            style="display: flex; align-items: center"
+          >
+            <img
+              src="assets/weaknessesItems.png"
+              class="feedbacktype-icon"
+              [style.width]="'34px'"
+              [style.height]="'34px'"
+            />
+            <span style="margin-left: 0.6rem">Weakness</span>
+          </button>
+
+          <button
+            class="feedback-menu-item"
+            mat-menu-item
+            (click)="sendComment('nextsteps')"
+            style="display: flex; align-items: center"
+          >
+            <img
+              src="assets/nextstepsItems.png"
+              class="feedbacktype-icon"
+              [style.width]="'34px'"
+              [style.height]="'34px'"
+            />
+            <span style="margin-left: 0.6rem">Next step</span>
+          </button>
+
+          <button
+            class="feedback-menu-item"
+            mat-menu-item
+            (click)="sendComment('links')"
+            style="display: flex; align-items: center"
+          >
+            <img
+              src="assets/linksItems.png"
+              class="feedbacktype-icon"
+              [style.width]="'34px'"
+              [style.height]="'34px'"
+            />
+            <span style="margin-left: 0.6rem">Link</span>
+          </button>
+        </mat-menu>
+      </div>
+
+      <div class="audio-record" *ngIf="isRecording">
+        <app-audio-record
+          [user]="author"
+          [isFlexFeedback]="true"
+          [stopRecording$]="stopRecordingEvt.asObservable()"
+          (uploadingFinished)="audioMessageUploaded($event)"
+          (close)="deleteAudioMessage()"
+        ></app-audio-record>
+      </div>
+
+      <div class="audio-message" *ngIf="audioMessage?.url">
+        <app-audio-message
+          [audioMessage]="audioMessage"
+          [disablePreload]="true"
+          [languages]="author.lang"
+          [canSelectLanguage]="true"
+          (selectLang)="audioMessage.language = $event"
+        ></app-audio-message>
+        <button class="delete-audio" (click)="deleteAudioMessage($event)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="avsliders-warning blink"
+      *ngIf="showWarning && commentInput.innerText"
+    >
+      Press send to save comment!
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #noAvParamsTpl>
+  <p class="no-av">Rating options not configured.</p>
+</ng-template>

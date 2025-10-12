@@ -1,0 +1,291 @@
+<div [class]="getAllClasses()">
+
+    <!-- User Message -->
+    @if (isUserMessage()) {
+    <div class="lupai-message__user">
+        <div class="lupai-message__avatar">
+            <img [src]="avatarSrc()" alt="User avatar" />
+        </div>
+        <div class="lupai-message__content">
+            <div class="lupai-message__text">{{ message().content }}</div>
+
+            <!-- User Context Information -->
+            @if (hasUserContext() || hasUserLocation()) {
+            <div class="lupai-message__user-context">
+                <div class="lupai-message__user-context-header">
+                    <mat-icon>person</mat-icon>
+                    <span>{{ 'user_context_form.context_info' | translate }}</span>
+                </div>
+                <div class="lupai-message__user-context-items">
+                    @if (message().userContext?.origin_country) {
+                    <div class="lupai-message__user-context-item">
+                        <mat-icon>flag</mat-icon>
+                        <span>{{ getCountryLabel(message().userContext!.origin_country) | translate }}</span>
+                    </div>
+                    }
+                    @if (message().userContext?.time_in_germany) {
+                    <div class="lupai-message__user-context-item">
+                        <mat-icon>schedule</mat-icon>
+                        <span>{{ getTimeInGermanyLabel(message().userContext!.time_in_germany) | translate }}</span>
+                    </div>
+                    }
+                    @if (message().userContext?.age) {
+                    <div class="lupai-message__user-context-item">
+                        <mat-icon>cake</mat-icon>
+                        <span>{{ getAgeLabel(message().userContext!.age) | translate }}</span>
+                    </div>
+                    }
+                    @if (hasUserLocation()) {
+                    <div class="lupai-message__user-context-item">
+                        <mat-icon>location_on</mat-icon>
+                        <span>{{ message().userLocation }}</span>
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+        </div>
+        <!-- Zaman göstergesi: balonun dışına al -->
+        <div class="lupai-message__time">{{ getFormattedTime() }}</div>
+    </div>
+    }
+
+    <!-- Lupai Bot Message -->
+    @if (isLupaiMessage()) {
+    <div class="lupai-message__lupai">
+        <div class="lupai-message__avatar">
+            <img [src]="avatarSrc()" alt="Lupai Bot" />
+        </div>
+        <div class="lupai-message__content">
+            <!-- Processing Status -->
+            @if (isProcessing()) {
+            <div class="lupai-message__processing">
+                <div class="lupai-message__processing-header">
+                    <mat-icon class="lupai-message__processing-icon">sync</mat-icon>
+                    <span class="lupai-message__processing-text">{{ currentStageDisplay() || 'Processing your
+                        request...' }}</span>
+                </div>
+                @if (stageProgress() > 0) {
+                <mat-progress-bar mode="determinate" [value]="stageProgress()"
+                    class="lupai-message__progress-bar"></mat-progress-bar>
+                }
+            </div>
+            }
+
+            <!-- Error State -->
+            @if (hasError()) {
+            <div class="lupai-message__error">
+                <mat-icon class="lupai-message__error-icon">error</mat-icon>
+                <div class="lupai-message__error-content">
+                    <h4>Error Processing Request</h4>
+                    <p>{{ message().error }}</p>
+                </div>
+            </div>
+            }
+
+            <!-- Main Response Content -->
+            @if (!isProcessing() && !hasError() && message().content) {
+            <!-- Sensitive Topic Warning -->
+            @if (hasSensitiveTopic()) {
+            <div class="lupai-message__warning">
+                <mat-icon class="lupai-message__warning-icon">warning</mat-icon>
+                <div class="lupai-message__warning-content">
+                    <h4>{{ message().sensitiveTopic!.topic }} Topic Detected</h4>
+                    <p>{{ message().sensitiveTopic!.warning }}</p>
+                </div>
+            </div>
+            }
+
+            <!-- Improved Query Notice -->
+            @if (hasImprovedQuery()) {
+            <div class="lupai-message__improved-query">
+                <mat-icon>auto_fix_high</mat-icon>
+                <p>Query was automatically improved for better results</p>
+            </div>
+            }
+
+            <!-- Message Content -->
+            <div class="lupai-message__text"
+                [innerHTML]="isTranslationKey(message().content) ? (message().content | translate) : formattedContent()">
+            </div>
+
+            <!-- Saved User Context (for Lupai info messages) -->
+            @if (message().userContext) {
+            <div class="lupai-message__user-context" style="margin-top: 1rem;">
+                <div class="lupai-message__user-context-header">
+                    <mat-icon>person</mat-icon>
+                    <span>{{ 'user_context_form.context_info' | translate }}</span>
+                </div>
+                <div class="lupai-message__user-context-items">
+                    @if (message().userContext?.origin_country) {
+                    <div class="lupai-message__user-context-item">
+                        <mat-icon>flag</mat-icon>
+                        <span>{{ getCountryLabel(message().userContext!.origin_country) | translate }}</span>
+                    </div>
+                    }
+                    @if (message().userContext?.time_in_germany) {
+                    <div class="lupai-message__user-context-item">
+                        <mat-icon>schedule</mat-icon>
+                        <span>{{ getTimeInGermanyLabel(message().userContext!.time_in_germany) | translate }}</span>
+                    </div>
+                    }
+                    @if (message().userContext?.age) {
+                    <div class="lupai-message__user-context-item">
+                        <mat-icon>cake</mat-icon>
+                        <span>{{ getAgeLabel(message().userContext!.age) | translate }}</span>
+                    </div>
+                    }
+                    @if (message().userLocation) {
+                    <div class="lupai-message__user-context-item">
+                        <mat-icon>location_on</mat-icon>
+                        <span>{{ message().userLocation }}</span>
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+
+            <!-- Message Metadata -->
+            @if (message().intent || message().language || message().domain) {
+            <div class="lupai-message__metadata">
+                @if (message().intent) {
+                <div class="lupai-message__intent">
+                    <mat-icon>{{ getIntentIcon() }}</mat-icon>
+                    <span>{{ message().intent }}</span>
+                </div>
+                }
+
+                @if (message().language) {
+                <div class="lupai-message__language">
+                    <mat-icon>language</mat-icon>
+                    <span>{{ message().language!.language_name }}</span>
+                </div>
+                }
+
+                @if (message().domain) {
+                <div class="lupai-message__domain">
+                    <mat-icon>domain</mat-icon>
+                    <span>{{ message().domain!.domain }}</span>
+                </div>
+                }
+            </div>
+            }
+
+            <!-- Topics -->
+            @if (hasTopics()) {
+            <div class="lupai-message__topics">
+                <h4>Related Topics</h4>
+                <mat-chip-listbox class="lupai-message__topics-list">
+                    @for (topic of message().topics; track topic) {
+                    <mat-chip-option (click)="onTopicClick(topic)" class="lupai-message__topic-chip"
+                        [attr.title]="'Click to ask about: ' + topic">
+                        {{ topic }}
+                    </mat-chip-option>
+                    }
+                </mat-chip-listbox>
+            </div>
+            }
+            }
+
+            <!-- Sources Section -->
+            @if (hasSources()) {
+            <div class="lupai-message__sources">
+                <button class="lupai-message__sources-header" (click)="toggleSources()" (keyup.enter)="toggleSources()"
+                    (keyup.space)="toggleSources()" [attr.aria-expanded]="expandedSources()"
+                    aria-label="Toggle sources section">
+                    <h4>
+                        <mat-icon>library_books</mat-icon>
+                        Check out source ({{ message().retrieverItems!.length }})
+                    </h4>
+                    <mat-icon class="lupai-message__expand-icon"
+                        [class]="{'lupai-message__expand-icon--expanded': expandedSources()}">
+                        expand_more
+                    </mat-icon>
+                </button>
+
+                @if (expandedSources()) {
+                <div class="lupai-message__sources-content">
+                    @for (source of message().retrieverItems!.slice(0, 5); track source.node_id) {
+                    <div class="lupai-message__source-item">
+                        <div class="lupai-message__source-header">
+                            <div class="lupai-message__source-title">
+                                {{ source.collection_metadata.source_name }}
+                            </div>
+                            <div class="lupai-message__source-score">
+                                {{ formatRelevanceScore(source.relative_hybrid_score) }} relevant
+                            </div>
+                        </div>
+
+                        @if (source.collection_metadata.source_description) {
+                        <p class="lupai-message__source-description">
+                            {{ source.collection_metadata.source_description }}
+                        </p>
+                        }
+
+                        @if (source.document_metadata.section) {
+                        <div class="lupai-message__source-section">
+                            Section: {{ source.document_metadata.section }}
+                        </div>
+                        }
+
+                        @if (source.collection_metadata.source_url) {
+                        <button class="lupai-message__source-link"
+                            (click)="openLink(source.collection_metadata.source_url)">
+                            <mat-icon>open_in_new</mat-icon>
+                            View Source
+                        </button>
+                        }
+                    </div>
+                    }
+                </div>
+                }
+            </div>
+            }
+
+            <!-- Organizations Section -->
+            @if (hasOrganizations()) {
+            <div class="lupai-message__organizations">
+                <button class="lupai-message__organizations-header" (click)="toggleOrganizations()"
+                    (keyup.enter)="toggleOrganizations()" (keyup.space)="toggleOrganizations()"
+                    [attr.aria-expanded]="expandedOrganizations()" aria-label="Toggle organizations section">
+                    <h4>
+                        <mat-icon>business</mat-icon>
+                        Recommended Organizations ({{ message().organizations!.length }})
+                    </h4>
+                    <mat-icon class="lupai-message__expand-icon"
+                        [class]="{'lupai-message__expand-icon--expanded': expandedOrganizations()}">
+                        expand_more
+                    </mat-icon>
+                </button>
+
+                @if (expandedOrganizations()) {
+                <div class="lupai-message__organizations-content">
+                    @for (org of message().organizations; track org.name) {
+                    <div class="lupai-message__organization-item">
+                        <div class="lupai-message__organization-header">
+                            <h5 class="lupai-message__organization-name">{{ org.name }}</h5>
+                            <div class="lupai-message__organization-score">
+                                {{ formatMatchScore(org.score) }}
+                            </div>
+                        </div>
+
+                        <p class="lupai-message__organization-description">{{ org.description }}</p>
+
+                        @if (org.website) {
+                        <button class="lupai-message__organization-link" (click)="openLink(org.website)">
+                            <mat-icon>language</mat-icon>
+                            Visit Website
+                        </button>
+                        }
+                    </div>
+                    }
+                </div>
+                }
+            </div>
+            }
+        </div>
+        <!-- Zaman göstergesi: balonun dışına al -->
+        <div class="lupai-message__time">{{ getFormattedTime() }}</div>
+    </div>
+    }
+</div>

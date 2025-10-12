@@ -1,0 +1,13 @@
+{
+  "contact_us_card": {
+    "title": "Contact US",
+    "textarea_placeholder": "We would love to here from you."
+  },
+  "feedback_card": {
+    "title": "We would love to get<br/>your feedback",
+    "textarea_placeholder": "Please share any feedback you have for how we can best improve getme.global"
+  },
+  "email_placeholder": "Enter your Email please",
+  "thank_you": "Thank you.",
+  "send_btn_text": "Send"
+}

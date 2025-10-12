@@ -1,0 +1,73 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<div class="capsule-card_number-row">
+  @if (isOwner() && !!iceBreaker()) {
+    <app-ice-breaker-card-menu
+      class="capsule-card_dropdown-menu"
+      [dropdownItems]="dropdownItems"
+    ></app-ice-breaker-card-menu>
+  }
+  <div class="flex-spacer"></div>
+  <span
+    class="capsule-card_number"
+    [ngClass]="[!!iceBreaker() ? 'capsule-card_numerb-ckickable' : 'capsule-card_number-non-clickable']"
+    (click)="openShareIceBreakerModal()"
+  >
+    @if (!!iceBreaker()) {
+      {{ 'ice-breakers-list-card.share-capsule' | translate }} {{ number() }}
+    } @else {
+      {{ 'ice-breakers-list-card.capsule' | translate }}
+    }
+  </span>
+</div>
+
+@if (icebreakerTitle()) {
+  <div class="capsule-card_title-row">
+    <h4 class="capsule-card_title">{{ iceBreaker()?.title }}</h4>
+  </div>
+}
+
+<div class="capsule-card_title-row">
+  @if (icon()) {
+    <app-icon-render
+      class="capsule-card_icon"
+      [icon]="{icon: icon()}"
+    ></app-icon-render>
+  }
+  <h4 class="capsule-card_title">{{ skill()?.name }}</h4>
+</div>
+
+<app-review-score
+  [score]="score()"
+  [maxScore]="maxScore"
+  [totalReviews]="totalReviews()"
+  [allowPositiveReview]="allowReview()"
+  [allowNegativeReview]="allowReview()"
+></app-review-score>
+
+<div class="flex-spacer"></div>
+<p class="capsule-card_description">{{ description() | translate }}</p>
+@if (isOwner()) {
+  <app-button
+    class="capsule-card_button"
+    btnUIType="primary"
+    size="large"
+    [disabled]="!!iceBreaker()"
+    (click)="createNewIceBreaker()"
+  >
+  <span
+    class="capsule-card_button-text"
+    [innerHTML]="btnText() | translate"></span>
+  </app-button>
+} @else {
+  <app-button
+    class="capsule-card_button"
+    btnUIType="primary"
+    size="large"
+    (click)="createNewChat()"
+  >
+  <span
+    class="capsule-card_button-text"
+    [innerHTML]="btnText() | translate"></span>
+  </app-button>
+}

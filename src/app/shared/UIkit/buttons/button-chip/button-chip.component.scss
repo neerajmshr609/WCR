@@ -1,0 +1,32 @@
+@import "_variables";
+
+:host {
+  display: block;
+  box-sizing: border-box;
+  padding: $--sds-size-space-100 $--sds-size-space-250;
+  border-radius: $--sds-size-radius-100;
+  border: $--sds-size-stroke-border--solid--sds-color-border-default-default;
+
+  color: $--sds-color-text-default-secondary;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-xs;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-medium;
+  line-height: $line-height-149-7;
+  text-transform: capitalize;
+  user-select: none;
+
+  &.can-be-selected {
+    &:hover {
+      cursor: pointer;
+      border-color: $--sds-color-border-neutral-secondary;
+      color: $--sds-color-text-default-default;
+    }
+
+    &.selected {
+      border-color: $--sds-color-border-brand-default;
+      background: $--sds-color-border-brand-default;
+      color: $--sds-color-text-brand-on-brand;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+<div class="newsfeed-avpresentation">
+  <div class="newsfeed-avpresentation__track-controls">
+    <p class="newsfeed-avpresentation__track-controls--title">
+      {{ file.projectfile_title }}
+    </p>
+
+    <div class="newsfeed-avpresentation__track-controls--track">
+      <img
+        (click)="playpause()"
+        class="playpause"
+        src="assets/av/av-pause.png"
+        *ngIf="isPlaying && !waveIsLoading"
+      />
+      <img
+        (click)="playpause()"
+        class="playpause"
+        src="assets/av/av-play.png"
+        *ngIf="!isPlaying && !waveIsLoading"
+      />
+      <div class="playpause" *ngIf="waveIsLoading">
+        <app-small-spinner [diameter]="16" [isWhite]="true"></app-small-spinner>
+      </div>
+
+      <p class="current-time">
+        {{ currentTime | hms }}
+      </p>
+
+      <div class="track-line">
+        <div class="track-line-progress" [style.width]="trackTimeWidth"></div>
+      </div>
+
+      <p class="track-time">
+        {{ duration | hms }}
+      </p>
+    </div>
+  </div>
+
+  <div class="newsfeed-avpresentation__wave" #lanesRef>
+    <div class="newsfeed-item__image-area--category" *ngIf="category">
+      <p>{{ category }}</p>
+    </div>
+
+    <div #waveformRef class="waveform"></div>
+
+    <app-curves
+      [readMode]="readMode"
+      [file]="file"
+      [background]="
+        (waveLoaded$ | async)
+          ? null
+          : file.thumbnail || 'assets/default-thumbnails/audio-thumb.jpg'
+      "
+      [lanesToPrint$]="lanesToPrint$"
+      [feedbackItems]="allFeedbacksFromUser || [feedbackItem]"
+      [duration]="duration || file.duration"
+      [playerExists]="!!wavesurfer"
+      [toggleTimer$]="toggleTimer$"
+      [mediaFileIsOver$]="mediaFileIsOver$"
+      (seekTo)="seekTo($event)"
+    ></app-curves>
+  </div>
+</div>

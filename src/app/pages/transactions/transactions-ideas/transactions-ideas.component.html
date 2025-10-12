@@ -1,0 +1,31 @@
+<div class="ideas">
+  <h2 class="ideas__subtitle">How to make extra money on our platform</h2>
+  <div class="ideas__item">
+    <div class="ideas__item--title">
+      <h3>Invite your friends</h3>
+      <p class="ideas__item--text">
+        Tell your friends about Getme.Global and
+        <b>earn $10 for each friend who joins</b>. Copy your unique sharing URL
+        and use it to spread the word about Getme.Global
+      </p>
+    </div>
+
+    <div class="ideas__item-leftside">
+      <p>{{ referral_link }}</p>
+      <button
+        #buttonElement
+        (cbOnSuccess)="copyToClipboard()"
+        type="button"
+        class="ideas__item-leftside--btn"
+        ngxClipboard
+        [cbContent]="referral_link"
+      >
+        Copy URL to clipboard
+      </button>
+      <!--      <div class="ideas__item-leftside&#45;&#45;video">-->
+      <!--        <img src="assets/play-video.svg">-->
+      <!--      </div>-->
+      <!--      <div class="ideas__item-leftside&#45;&#45;howto"><p>how to</p></div>-->
+    </div>
+  </div>
+</div>

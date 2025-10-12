@@ -1,0 +1,12 @@
+<app-section-header [title]="'notification.title' | translate">
+  <app-notification-bell-icon></app-notification-bell-icon>
+</app-section-header>
+
+@for (permission of permissions; track permission.name) {
+  <app-switch
+    [control]="permission.control"
+    inputName="{{ permission.name }}"
+    label="{{ permission.name }}"
+    description="{{ permission.description }}"
+  ></app-switch>
+}

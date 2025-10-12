@@ -1,0 +1,688 @@
+<ng-container *ngIf="state === 'selectSkill'">
+  <section class="ice-breaker">
+    <section class="ice-breaker__promotion">
+      <section class="ice-breaker__header">
+        <div class="title-container not-owner-title">
+          <div class="title">
+            {{ 'ice-breaker-card.ice-breaker' | translate }} #{{ index }}
+          </div>
+        </div>
+      </section>
+      <div class="ice-breaker__title">
+        <div class="ice-breaker__title-text ice-breaker__title-text-small">
+          {{ 'ice-breaker-card.select-profile' | translate }}
+        </div>
+      </div>
+    </section>
+    <section class="ice-breaker__info">
+      <div class="skill-info">
+        <img
+          src="../../../../../../assets/ice-breaker/head.svg"
+          alt="Skill icon"
+        />
+        <div class="skill-info-body">
+          <p class="skill-info-body__name">
+            {{ 'ice-breaker-card.select-topic' | translate }}
+          </p>
+        </div>
+      </div>
+      <div class="skill-review">
+        <div class="skill-review__actions">
+          <div class="skill-review__actions-btns">
+            <button class="skill-review__arrow-btn" [disabled]="true">
+              <div class="skill-review__arrow-btn__content">
+                <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+              </div>
+            </button>
+            <button
+              class="skill-review__arrow-btn skill-review__arrow-btn--rotate"
+              [disabled]="true"
+            >
+              <div class="skill-review__arrow-btn__content">
+                <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+              </div>
+            </button>
+          </div>
+          <p class="skill-review__actions-title">
+            {{ 'ice-breaker-card.single-reviews' | translate }}
+          </p>
+        </div>
+        <div class="skill-review__rate">
+          <app-round-slider
+            [score]="null"
+            [hideDigits]="true"
+          ></app-round-slider>
+          <app-total-score [smallBtn]="false"> </app-total-score>
+          <p class="skill-review__rate__reviews">
+            <strong>0</strong> {{ 'ice-breaker-card.reviews' | translate }}
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="action">
+      <button class="submit-btn" (click)="openSelectSkillModal()">
+<!--        <img-->
+<!--          src="../../../../../../assets/ice-breaker/coins.svg"-->
+<!--          alt="Coin icon"-->
+<!--        />-->
+        <span>{{ 'ice-breaker-card.select-topic' | translate }}</span>
+      </button>
+    </div>
+  </section>
+</ng-container>
+<ng-container *ngIf="state === 'Create'">
+  <section class="ice-breaker">
+    <section
+      class="ice-breaker__promotion"
+      [ngClass]="{ 'ice-breaker__promotion-bg': !selectedReviewIndex }"
+    >
+      <section class="ice-breaker__header">
+        <div class="title-container not-owner-title">
+          <div class="title">
+            {{ 'ice-breaker-card.ice-breaker' | translate }} #{{ index }}
+          </div>
+        </div>
+      </section>
+      <div class="ice-breaker__title">
+        <ng-container *ngIf="!selectedReviewIndex; else reviewText">
+          <span class="ice-breaker__title-text">
+            {{ 'ice-breaker-card.click-button' | translate }}
+          </span>
+        </ng-container>
+        <ng-template #reviewText>
+          <div class="ice-breaker__title-text ice-breaker__title-text-small">
+            {{ 'ice-breaker-card.click-button' | translate }}
+          </div>
+        </ng-template>
+        <ng-container *ngIf="selectedReviewIndex">
+          <div class="review">
+            {{ selectedReview[selectedComment] }}
+          </div>
+          <div class="review__switch">
+            <button
+              class="review__switch-btn"
+              [disabled]="!selectedReview.positive_comment"
+              (click)="switchComment('positive')"
+              [ngClass]="{
+                'review__switch-btn--selected':
+                  selectedComment === 'positive_comment',
+              }"
+            >
+              <img
+                src="../../../../../../assets/advisors/positive-feedback.svg"
+                alt=""
+              />
+            </button>
+            <button
+              class="review__switch-btn review__switch-btn--right"
+              [disabled]="!selectedReview.negative_comment"
+              (click)="switchComment('negative')"
+              [ngClass]="{
+                'review__switch-btn--selected':
+                  selectedComment === 'negative_comment',
+              }"
+            >
+              <img
+                src="../../../../../../assets/advisors/negative-feedback.svg"
+                alt=""
+              />
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </section>
+
+    <section class="ice-breaker__info">
+      <div class="skill-info">
+        <img [src]="userSkill?.skill.icon" alt="Skill icon" />
+        <div class="skill-info-body">
+          <p class="skill-info-body__name">{{ userSkill?.skill.name }}</p>
+        </div>
+      </div>
+      <div class="skill-review">
+        <div class="skill-review__actions">
+          <div class="skill-review__actions-btns">
+            <button
+              class="skill-review__arrow-btn"
+              [disabled]="selectedReviewIndex === 0 || !reviews.length"
+              (click)="changeReview(-1)"
+            >
+              <div class="skill-review__arrow-btn__content">
+                <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+              </div>
+            </button>
+            <button
+              class="skill-review__arrow-btn skill-review__arrow-btn--rotate"
+              [disabled]="
+                selectedReviewIndex === reviews.length - 1 || !reviews.length
+              "
+              (click)="changeReview(1)"
+            >
+              <div class="skill-review__arrow-btn__content">
+                <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+              </div>
+            </button>
+          </div>
+
+          <p class="skill-review__actions-title">
+            {{ 'ice-breaker-card.single-reviews' | translate }}
+          </p>
+        </div>
+        <div class="skill-review__rate">
+          <app-round-slider
+            [score]="userSkill?.overall_skill_score"
+            [hideDigits]="true"
+          ></app-round-slider>
+          <app-total-score [userSkill]="userSkill" [smallBtn]="false">
+          </app-total-score>
+          <p class="skill-review__rate__reviews">
+            <strong>{{ reviews.length }}</strong>
+            {{ 'ice-breaker-card.reviews' | translate }}
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="action">
+      <button
+        class="submit-btn"
+        routerLink="/profile/create-ice-breaker/{{ userSkill?.id }}"
+      >
+<!--        <img-->
+<!--          src="../../../../../../assets/ice-breaker/coins.svg"-->
+<!--          alt="Coin icon"-->
+<!--        />-->
+        <span>{{ 'ice-breaker-card.create' | translate }}</span>
+      </button>
+    </div>
+  </section>
+</ng-container>
+<ng-container *ngIf="state === 'Created'">
+  <section class="ice-breaker">
+    <section
+      class="ice-breaker__promotion"
+      [ngClass]="{ 'ice-breaker__promotion-bg': !selectedReviewIndex }"
+    >
+      <section class="ice-breaker__header">
+        <div>
+          <button
+            class="context-btn"
+            [ngClass]="{ 'context-btn__white': selectedReviewIndex }"
+            [matMenuTriggerFor]="menu"
+            #menuTrigger="matMenuTrigger"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button (click)="deleteIceBreaker()" mat-menu-item>
+              {{ 'ice-breaker-card.delete' | translate }}
+            </button>
+          </mat-menu>
+        </div>
+        <div class="title-container not-owner-title">
+          <div
+            class="title share-element"
+            (click)="shareIceBreaker(iceBreakerData.title)"
+          >
+            <img
+              class="share-icon"
+              src="../../../../../../../../../assets/icons/share.svg"
+              alt="Share icon"
+            />
+            {{ 'ice-breaker-card.share' | translate: { id: index } }}
+          </div>
+          <!--          <div class="custom-price-slider">-->
+          <!--            <app-price-slider [advisorRate]="iceBreakerData.price"-->
+          <!--                              gearIcon="assets/gear-grey.svg"-->
+          <!--                              [isDisabledSelect]="false"-->
+          <!--                              [minPrice]="0"-->
+          <!--                              (confirmChangedPrice)="priceChanged($event)"-->
+          <!--                              title=""-->
+          <!--                              [isAdvisor]="1">-->
+          <!--            </app-price-slider>-->
+          <!--          </div>-->
+        </div>
+      </section>
+      <div
+        class="ice-breaker__title"
+        *ngIf="!iceBreakerData.preview_media_url; else embedContent"
+      >
+        <ng-container *ngIf="!selectedReviewIndex; else reviewText">
+          <span class="ice-breaker__title-text">
+            {{ iceBreakerData.title }}
+          </span>
+        </ng-container>
+        <ng-template #reviewText>
+          <div class="ice-breaker__title-text ice-breaker__title-text-small">
+            {{ iceBreakerData.title }}
+          </div>
+        </ng-template>
+        <ng-container *ngIf="selectedReviewIndex">
+          <div class="review">
+            {{ selectedReview[selectedComment] }}
+          </div>
+          <div class="review__switch">
+            <button
+              class="review__switch-btn"
+              [disabled]="!selectedReview.positive_comment"
+              (click)="switchComment('positive')"
+              [ngClass]="{
+                'review__switch-btn--selected':
+                  selectedComment === 'positive_comment',
+              }"
+            >
+              <img
+                src="../../../../../../assets/advisors/positive-feedback.svg"
+                alt=""
+              />
+            </button>
+            <button
+              class="review__switch-btn review__switch-btn--right"
+              [disabled]="!selectedReview.negative_comment"
+              (click)="switchComment('negative')"
+              [ngClass]="{
+                'review__switch-btn--selected':
+                  selectedComment === 'negative_comment',
+              }"
+            >
+              <img
+                src="../../../../../../assets/advisors/negative-feedback.svg"
+                alt=""
+              />
+            </button>
+          </div>
+        </ng-container>
+      </div>
+      <ng-template #embedContent>
+        <ng-container
+          *ngIf="iceBreakerData.preview_media_url | getIframe | async as iFrame"
+        >
+          <app-iframely-embed [iframe]="$any(iFrame)"></app-iframely-embed>
+        </ng-container>
+      </ng-template>
+    </section>
+    <section class="ice-breaker__info">
+      <div class="skill-info">
+        <img [src]="userSkill?.skill.icon" alt="Skill icon" />
+        <div class="skill-info-body">
+          <p class="skill-info-body__name">{{ userSkill?.skill.name }}</p>
+        </div>
+      </div>
+      <div class="skill-review">
+        <div class="skill-review__actions">
+          <div class="skill-review__actions-btns">
+            <button
+              class="skill-review__arrow-btn"
+              [disabled]="!selectedReviewIndex || !reviews.length"
+              (click)="changeReview(-1)"
+            >
+              <div class="skill-review__arrow-btn__content">
+                <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+              </div>
+            </button>
+            <button
+              class="skill-review__arrow-btn skill-review__arrow-btn--rotate"
+              [disabled]="
+                selectedReviewIndex === reviews.length - 1 || !reviews.length
+              "
+              (click)="changeReview(1)"
+            >
+              <div class="skill-review__arrow-btn__content">
+                <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+              </div>
+            </button>
+          </div>
+          <p class="skill-review__actions-title">
+            {{ 'ice-breaker-card.single-reviews' | translate }}
+          </p>
+        </div>
+        <div class="skill-review__rate">
+          <app-round-slider
+            [score]="userSkill?.overall_skill_score"
+            [hideDigits]="true"
+          ></app-round-slider>
+          <app-total-score [userSkill]="userSkill" [smallBtn]="false">
+          </app-total-score>
+          <p class="skill-review__rate__reviews">
+            <strong>{{ reviews.length }}</strong>
+            {{ 'ice-breaker-card.reviews' | translate }}
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="action">
+      <app-owner-ice-breaker-btn
+        [price]="iceBreakerData.price"
+        [iceBreaker]="iceBreakerData"
+        (priceChanged)="priceChanged($event)"
+      >
+      </app-owner-ice-breaker-btn>
+    </div>
+  </section>
+</ng-container>
+<ng-container *ngIf="state === 'Buy'">
+  <section class="ice-breaker">
+    <section
+      class="ice-breaker__promotion"
+      [ngClass]="{ 'ice-breaker__promotion-bg': !selectedReviewIndex }"
+    >
+      <section class="ice-breaker__header">
+        <div class="title-container not-owner-title">
+          <div
+            class="title share-element"
+            (click)="shareIceBreaker(iceBreakerData.title)"
+          >
+            <img
+              class="share-icon"
+              src="../../../../../../../../../assets/icons/share.svg"
+              alt="Share icon"
+            />
+            {{ 'ice-breaker-card.share' | translate: { id: index } }}
+          </div>
+          <!--          <app-price-slider [advisorRate]="21"-->
+          <!--                            gearIcon="assets/gear-grey.svg"-->
+          <!--                            class="custom-price-slider"-->
+          <!--                            [isDisabledSelect]="true"-->
+          <!--                            [fixedPrice]="iceBreakerData.price"-->
+          <!--                            [isAdvisor]="1">-->
+          <!--          </app-price-slider>-->
+        </div>
+      </section>
+      <div
+        class="ice-breaker__title"
+        *ngIf="!iceBreakerData.preview_media_url; else embedContent"
+      >
+        <ng-container *ngIf="!selectedReviewIndex; else reviewText">
+          <span class="ice-breaker__title-text">
+            {{ iceBreakerData.title }}
+          </span>
+        </ng-container>
+        <ng-template #reviewText>
+          <div class="ice-breaker__title-text ice-breaker__title-text-small">
+            {{ iceBreakerData.title }}
+          </div>
+        </ng-template>
+        <ng-container *ngIf="selectedReviewIndex">
+          <div class="review">
+            {{ selectedReview[selectedComment] }}
+          </div>
+          <div class="review__switch">
+            <button
+              class="review__switch-btn"
+              [disabled]="!selectedReview.positive_comment"
+              (click)="switchComment('positive')"
+              [ngClass]="{
+                'review__switch-btn--selected':
+                  selectedComment === 'positive_comment',
+              }"
+            >
+              <img
+                src="../../../../../../assets/advisors/positive-feedback.svg"
+                alt=""
+              />
+            </button>
+            <button
+              class="review__switch-btn review__switch-btn--right"
+              [disabled]="!selectedReview.negative_comment"
+              (click)="switchComment('negative')"
+              [ngClass]="{
+                'review__switch-btn--selected':
+                  selectedComment === 'negative_comment',
+              }"
+            >
+              <img
+                src="../../../../../../assets/advisors/negative-feedback.svg"
+                alt=""
+              />
+            </button>
+          </div>
+        </ng-container>
+      </div>
+      <ng-template #embedContent>
+        <ng-container
+          *ngIf="iceBreakerData.preview_media_url | getIframe | async as iFrame"
+        >
+          <app-iframely-embed [iframe]="$any(iFrame)"></app-iframely-embed>
+        </ng-container>
+      </ng-template>
+    </section>
+    <section class="ice-breaker__info">
+      <div class="skill-info">
+        <img [src]="userSkill?.skill.icon" alt="Skill icon" />
+        <div class="skill-info-body">
+          <p class="skill-info-body__name">{{ userSkill?.skill.name }}</p>
+        </div>
+      </div>
+      <div class="skill-review">
+        <div class="skill-review__actions">
+          <div class="skill-review__actions-btns">
+            <button
+              class="skill-review__arrow-btn"
+              [disabled]="!selectedReviewIndex || !reviews.length"
+              (click)="changeReview(-1)"
+            >
+              <div class="skill-review__arrow-btn__content">
+                <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+              </div>
+            </button>
+            <button
+              class="skill-review__arrow-btn skill-review__arrow-btn--rotate"
+              [disabled]="
+                selectedReviewIndex === reviews.length - 1 || !reviews.length
+              "
+              (click)="changeReview(1)"
+            >
+              <div class="skill-review__arrow-btn__content">
+                <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+              </div>
+            </button>
+          </div>
+
+          <p class="skill-review__actions-title">
+            {{ 'ice-breaker-card.single-reviews' | translate }}
+          </p>
+        </div>
+        <div class="skill-review__rate">
+          <app-round-slider
+            [score]="userSkill?.overall_skill_score"
+            [hideDigits]="true"
+          ></app-round-slider>
+          <app-total-score [userSkill]="userSkill" [smallBtn]="false">
+          </app-total-score>
+          <p class="skill-review__rate__reviews">
+            <strong>{{ reviews.length }}</strong>
+            {{ 'ice-breaker-card.reviews' | translate }}
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="action">
+      <button
+        [disabled]="isLoading"
+        class="submit-btn"
+        (click)="joinToIceBreaker(iceBreakerData)"
+      >
+        <ng-container *ngIf="!isLoading; else loadingSpinner">
+<!--          <img-->
+<!--            src="../../../../../../assets/ice-breaker/coins.svg"-->
+<!--            alt="Coin icon"-->
+<!--          />-->
+          <span>
+            <ng-container
+              *ngIf="
+                iceBreakerData.icebreaker_type ===
+                  ICE_BREAKER_TYPES.OTHERS_PAY_ME;
+                else willPay
+              "
+            >
+              {{
+                'ice-breaker-card.buttons.enter-and-pay'
+                  | translate: { currency: userIceBreaker.price | euroCurrency }
+              }}
+            </ng-container>
+            <ng-template #willPay>
+              {{
+                'ice-breaker-card.buttons.enter-and-get-paid'
+                  | translate
+                    : {
+                        currency:
+                          userIceBreaker.price / userIceBreaker.allow_quantity
+                          | euroCurrency,
+                      }
+              }}
+              <!--                ENTER conversation & Get Paid {{(userIceBreaker.price / userIceBreaker.allow_quantity) | euroCurrency}}-->
+            </ng-template>
+          </span>
+        </ng-container>
+        <ng-template #loadingSpinner>
+          <app-small-spinner [diameter]="26"></app-small-spinner>
+        </ng-template>
+      </button>
+    </div>
+  </section>
+</ng-container>
+<ng-container *ngIf="state === 'Payed'">
+  <section class="ice-breaker">
+    <section
+      class="ice-breaker__promotion"
+      [ngClass]="{ 'ice-breaker__promotion-bg': !selectedReviewIndex }"
+    >
+      <section class="ice-breaker__header">
+        <div class="title-container not-owner-title">
+          <div
+            class="title share-element"
+            (click)="shareIceBreaker(iceBreakerData.title)"
+          >
+            <img
+              class="share-icon"
+              src="../../../../../../../../../assets/icons/share.svg"
+              alt="Share icon"
+            />
+            {{ 'ice-breaker-card.share' | translate: { id: index } }}
+          </div>
+          <!--          <app-price-slider [advisorRate]="21"-->
+          <!--                            gearIcon="assets/gear-grey.svg"-->
+          <!--                            class="custom-price-slider"-->
+          <!--                            [isDisabledSelect]="true"-->
+          <!--                            [fixedPrice]="iceBreakerData.price"-->
+          <!--                            [isAdvisor]="1">-->
+          <!--          </app-price-slider>-->
+        </div>
+      </section>
+      <div
+        class="ice-breaker__title"
+        *ngIf="!iceBreakerData.preview_media_url; else embedContent"
+      >
+        <ng-container *ngIf="!selectedReviewIndex; else reviewText">
+          <span class="ice-breaker__title-text">
+            {{ iceBreakerData.title }}
+          </span>
+        </ng-container>
+        <ng-template #reviewText>
+          <div class="ice-breaker__title-text ice-breaker__title-text-small">
+            {{ iceBreakerData.title }}
+          </div>
+        </ng-template>
+        <ng-container *ngIf="selectedReviewIndex">
+          <div class="review">
+            {{ selectedReview[selectedComment] }}
+          </div>
+          <div class="review__switch">
+            <button
+              class="review__switch-btn"
+              [disabled]="!selectedReview.positive_comment"
+              (click)="switchComment('positive')"
+              [ngClass]="{
+                'review__switch-btn--selected':
+                  selectedComment === 'positive_comment',
+              }"
+            >
+              <img
+                src="../../../../../../assets/advisors/positive-feedback.svg"
+                alt=""
+              />
+            </button>
+            <button
+              class="review__switch-btn review__switch-btn--right"
+              [disabled]="!selectedReview.negative_comment"
+              (click)="switchComment('negative')"
+              [ngClass]="{
+                'review__switch-btn--selected':
+                  selectedComment === 'negative_comment',
+              }"
+            >
+              <img
+                src="../../../../../../assets/advisors/negative-feedback.svg"
+                alt=""
+              />
+            </button>
+          </div>
+        </ng-container>
+      </div>
+      <ng-template #embedContent>
+        <ng-container
+          *ngIf="iceBreakerData.preview_media_url | getIframe | async as iFrame"
+        >
+          <app-iframely-embed [iframe]="$any(iFrame)"></app-iframely-embed>
+        </ng-container>
+      </ng-template>
+    </section>
+    <section class="ice-breaker__info">
+      <div class="skill-info">
+        <img [src]="userSkill?.skill.icon" alt="Skill icon" />
+        <div class="skill-info-body">
+          <p class="skill-info-body__name">{{ userSkill?.skill.name }}</p>
+        </div>
+      </div>
+      <div class="skill-review">
+        <div class="skill-review__actions">
+          <div class="skill-review__actions-btns">
+            <button
+              class="skill-review__arrow-btn"
+              [disabled]="!selectedReviewIndex || !reviews.length"
+              (click)="changeReview(-1)"
+            >
+              <div class="skill-review__arrow-btn__content">
+                <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+              </div>
+            </button>
+            <button
+              class="skill-review__arrow-btn skill-review__arrow-btn--rotate"
+              [disabled]="
+                selectedReviewIndex === reviews.length - 1 || !reviews.length
+              "
+              (click)="changeReview(1)"
+            >
+              <div class="skill-review__arrow-btn__content">
+                <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+              </div>
+            </button>
+          </div>
+          <p class="skill-review__actions-title">
+            {{ 'ice-breaker-card.single-reviews' | translate }}
+          </p>
+        </div>
+        <div class="skill-review__rate">
+          <app-round-slider
+            [score]="userSkill?.overall_skill_score"
+            [hideDigits]="true"
+          ></app-round-slider>
+          <app-total-score [userSkill]="userSkill" [smallBtn]="false">
+          </app-total-score>
+          <p class="skill-review__rate__reviews">
+            <strong>{{ reviews.length }}</strong>
+            {{ 'ice-breaker-card.reviews' | translate }}
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="action">
+      <button
+        (click)="joinToIceBreaker(iceBreakerData)"
+        class="submit-btn"
+      >
+<!--        <img src="assets/ice-breaker/coins.svg" alt="Coin icon" />-->
+        <span>{{ 'ice-breaker-card.buttons.go-chat-room' | translate }}</span>
+      </button>
+    </div>
+  </section>
+</ng-container>

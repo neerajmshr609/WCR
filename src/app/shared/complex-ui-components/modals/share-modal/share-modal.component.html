@@ -1,0 +1,24 @@
+<app-button-close
+  class="share-modal_close-btn"
+  (click)="close()"
+></app-button-close>
+
+<div class="share-modal_title-container">
+    <app-ngo-ngo-logo-icon
+      class="share-modal_title-logo"
+    ></app-ngo-ngo-logo-icon>
+  
+    <h4
+      class="share-modal_title-text"
+    >{{ shareTitle() | translate }}</h4>
+</div>
+
+<app-horizontal-line
+  class="share-modal_horizontal-line"
+></app-horizontal-line>
+
+<ng-content></ng-content>
+
+<app-click-to-copy
+  [text]="shareLink()"
+></app-click-to-copy>

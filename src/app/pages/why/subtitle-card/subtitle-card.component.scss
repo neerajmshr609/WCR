@@ -1,0 +1,18 @@
+@import 'variables';
+
+.subtitle-card {
+  line-height: 140%;
+  text-align: center;
+  letter-spacing: 0.1em;
+  border-radius: 6px;
+  background-color: black;
+  padding-right: 4.0rem;
+  padding-left: 4.0rem;
+  color: white;
+  height: 60rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 3.5rem;
+}

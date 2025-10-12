@@ -1,0 +1,59 @@
+<div
+  class="feedback-focus__container"
+  #feedbackFocusRef
+  [ngStyle]="{
+    'paddingTop.rem': textPT,
+    'paddingLeft.rem': textPX,
+    'paddingRight.rem': textPX,
+    'paddingBottom.rem': textPB,
+  }"
+>
+  <div
+    *ngFor="let text of texts"
+    class="feedback-focus__text"
+    [class]="
+      'feedback-focus__text--' +
+      text.type +
+      ' feedback-focus__text--' +
+      textColor
+    "
+    [ngStyle]="{
+      'fontSize.rem': fontSize,
+      'lineHeight.rem': lineHeight,
+    }"
+    [style]="text.type !== 'emotions' ? 'top: ' + textTop : ''"
+    [innerHTML]="text.text | translate"
+  ></div>
+
+  <div
+    class="feedback-focus"
+    #triangleContainerRef
+    [ngStyle]="{ padding: paddingY + 'px ' + paddingX + 'px' }"
+  >
+    <img
+      class="feedback-focus__triangle"
+      #triangleRef
+      [src]="'assets/feedback-focus-area/triangle-' + triangleColor + '.svg'"
+      draggable="false"
+      [ngStyle]="{
+        'width.px': width,
+        'height.px': height,
+      }"
+    />
+
+    <div
+      class="feedback-focus__handle"
+      *ngIf="showCursor"
+      #dragRef
+      cdkDrag
+      cdkDragBoundary=".feedback-focus"
+      [cdkDragDisabled]="disabled"
+      (cdkDragMoved)="dragMoved()"
+    >
+      <img
+        [src]="'assets/feedback-focus-area/marker-' + markerColor + '.svg'"
+      />
+      <div class="feedback-focus__pixel" #pixelRef></div>
+    </div>
+  </div>
+</div>

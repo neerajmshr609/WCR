@@ -1,0 +1,156 @@
+@import 'variables';
+
+// Right sidebar menu
+.lupai-right-menu {
+  position: fixed;
+  top: 0;
+  right: -350px; // Hidden by default
+  width: 350px;
+  height: 100vh;
+  background: $--sds-color-background-default-default;
+  border-left: 1px solid $--sds-color-border-default-default;
+  z-index: 1000;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+
+  @media (max-width: $bp-small) {
+    width: 100%;
+    right: -100%;
+  }
+
+  &--open {
+    right: 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid $--sds-color-border-default-default;
+    background: $--sds-color-background-default-secondary;
+
+    h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: $--sds-color-text-default-default;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: $--sds-color-text-default-secondary;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      color: $--sds-color-text-default-default;
+      background-color: $--sds-color-background-default-default-hover;
+    }
+
+    &:focus {
+      outline: 2px solid $--sds-color-border-brand-default;
+      outline-offset: 2px;
+    }
+  }
+
+  &__content {
+    padding: 24px;
+  }
+}
+
+// Menu items styling
+.lupai-menu-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: $--sds-color-background-default-default;
+  border: 1px solid $--sds-color-border-default-default;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+
+  &:hover {
+    background: $--sds-color-background-default-default-hover;
+    border-color: $--sds-color-border-default-secondary;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus {
+    outline: 2px solid $--sds-color-border-brand-default;
+    outline-offset: 2px;
+  }
+
+  &--help {
+    border-color: $--sds-color-border-positive-tertiary;
+
+    &:hover {
+      background: $--sds-color-background-positive-tertiary;
+      border-color: $--sds-color-border-positive-tertiary;
+    }
+
+    .lupai-menu-item__content h4 {
+      color: $--sds-color-text-positive-tertiary;
+    }
+  }
+
+  &__icon {
+    margin-right: 12px;
+    color: $--sds-color-text-default-secondary;
+    flex-shrink: 0;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__content {
+    flex: 1;
+
+    h4 {
+      margin: 0 0 4px 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: $--sds-color-text-default-default;
+      line-height: 1.3;
+    }
+
+    p {
+      margin: 0;
+      font-size: 12px;
+      color: $--sds-color-text-default-secondary;
+      line-height: 1.4;
+    }
+  }
+}
+
+// Mobile responsive
+@media (max-width: 768px) {
+  .lupai-menu-item {
+    padding: 12px;
+
+    &__content h4 {
+      font-size: 13px;
+    }
+
+    &__content p {
+      font-size: 11px;
+    }
+  }
+}

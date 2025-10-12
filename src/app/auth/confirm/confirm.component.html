@@ -1,0 +1,15 @@
+<div class="confirmation">
+  <svg class="confirmation__logo">
+    <use
+      [attr.xlink:href]="
+        'assets/emoji-neck-defs.svg#icon-Emoji-anim-fill-neck_80'
+      "
+    ></use>
+  </svg>
+
+  <h1 class="confirmation__title">Your account has been confirmed!</h1>
+
+  <a routerLink="/auth" [queryParams]="{ mode: 'login' }" class="accented-btn"
+    >Log in</a
+  >
+</div>

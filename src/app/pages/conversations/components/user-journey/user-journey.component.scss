@@ -1,0 +1,153 @@
+@import 'variables';
+@import 'mixins';
+
+.user-journey {
+  &__header {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: $feed-light-gray-text;
+    text-align: center;
+  }
+
+  &__items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    filter: drop-shadow(0px 1.5px 6px rgba(0, 0, 0, 0.25));
+    border-radius: 8px;
+
+    .disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    .selected {
+      border-color: $feed-accent-selection;
+      border-radius: 6px;
+
+      .user-journey-item__count {
+        color: $feed-accent-selection;
+      }
+    }
+  }
+}
+
+.user-journey-item {
+  display: flex;
+  border-radius: 4px;
+  align-items: center;
+  height: 3.8rem;
+  margin-left: 4px;
+  margin-right: 4px;
+  cursor: pointer;
+
+  @media screen and (max-width: 1170px) {
+    height: 3.5rem;
+  }
+
+  @media screen and (max-width: 1170px) {
+    height: 3.8rem;
+  }
+
+  p {
+    letter-spacing: 0.03em;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 9px;
+    padding-right: 9px;
+
+    @media screen and (max-width: 1170px) {
+      font-size: 1.3rem;
+    }
+
+    @media screen and (max-width: 970px) {
+      font-size: 1.5rem;
+    }
+
+    @media screen and (max-width: $bp-small) {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+
+  &__text {
+    margin-left: 1rem;
+  }
+
+  &--first-time {
+    background-color: $feed-accent-blue;
+  }
+
+  &--interesting,
+  &--interested {
+    background-color: $feed-accent-ember;
+  }
+
+  &--regular {
+    background-color: $feed-accent-green;
+  }
+
+  &--disconnected {
+    background-color: $feed-light-gray-text;
+  }
+
+  &__count {
+    color: $--sds-color-grey-500;
+    background-color: #dddddd;
+    margin: unset;
+    border-radius: 4px 0 0 4px;
+
+    @media screen and (max-width: $bp-small) {
+      //padding: 0 5px;
+    }
+  }
+
+  &__desc {
+    color: #fff;
+
+    img {
+      @include blackToLightGrey;
+    }
+  }
+
+  &__arrow {
+    margin: 0 1rem;
+    height: 2rem;
+    box-sizing: border-box;
+
+    &--reverted {
+      transform: rotate(180deg);
+    }
+
+    @media screen and (max-width: 970px) {
+      margin: 0px 2rem;
+    }
+
+    @media screen and (max-width: $bp-small) {
+      margin: 0px 1rem;
+      height: 1.4rem;
+      width: unset;
+    }
+
+    @media screen and (max-width: 460px) {
+      margin: 0px 0.3rem;
+    }
+  }
+}
+
+.border {
+  border: 3px solid transparent;
+  padding: 4px 0;
+}
+
+.small-paddings-journey-item {
+  @media screen and (max-width: $bp-small) {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+  }
+}

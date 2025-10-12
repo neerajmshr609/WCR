@@ -1,0 +1,34 @@
+<div class="draw" #drawRef [ngClass]="{ mobile: isMobile }">
+  <canvas #canvasRef></canvas>
+
+  <div class="actions">
+    <button
+      class="action"
+      [disabled]="!lines || !lines.length"
+      (click)="undo()"
+    >
+      <img src="/assets/draw/undo.svg" alt="undo" *ngIf="!isMobile" />
+      <p class="action-btn-text" *ngIf="isMobile">Undo</p>
+    </button>
+    <button
+      class="action"
+      [disabled]="!lines || !lines.length"
+      (click)="delete()"
+    >
+      <img
+        src="/assets/draw/trashbin-black.svg"
+        alt="delete"
+        *ngIf="!isMobile"
+      />
+      <img
+        src="/assets/draw/trashbin-white.svg"
+        alt="delete"
+        *ngIf="isMobile"
+      />
+    </button>
+    <button class="action" (click)="save()">
+      <img src="/assets/draw/done.svg" alt="save" *ngIf="!isMobile" />
+      <p class="action-btn-text" *ngIf="isMobile">Done</p>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="data-deletion">
+  <h1 class="header-title">{{ 'title' | translate }}</h1>
+
+  <p>{{ 'intro' | translate }}</p>
+
+  <h2 class="heading">{{ 'how_heading' | translate }}</h2>
+  <ul>
+    <li [innerHTML]="'step_email' | translate"></li>
+    <li [innerHTML]="'step_subject' | translate"></li>
+    <li [innerHTML]="'step_details' | translate"></li>
+  </ul>
+
+  <h2 class="heading">{{ 'what_next' | translate }}</h2>
+  <p>{{ 'next_detail' | translate }}</p>
+
+  <p class="note">{{ 'note' | translate }}</p>
+</div>

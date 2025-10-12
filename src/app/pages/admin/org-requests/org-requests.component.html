@@ -1,0 +1,15 @@
+<div class="org-requests-container">
+  <app-section-header [title]="'Org requests'">
+    <app-organization-icon></app-organization-icon>
+  </app-section-header>
+
+  <div>
+    @for (org of pendingOrgs(); track org.id) {
+      <app-org-accordion
+        (expand)="expandUserPermissionCard($event)"
+        [org]="org"
+        (updateOrg)="updateOrg($event)"
+      ></app-org-accordion>
+    }
+  </div>
+</div>

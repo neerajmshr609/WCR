@@ -1,0 +1,169 @@
+<div
+  class="payment-counter"
+  [ngClass]="{
+    'payment-counter--student':
+      advisorId !== user.id && !isFeedback && !isOwnerOfIceBreaker,
+    'payment-counter--feedback': isFeedback,
+  }"
+  *ngIf="
+    advisorId === user.id ||
+    meetingInProgress ||
+    isFeedback ||
+    isOwnerOfIceBreaker
+  "
+>
+  <div
+    class="payment-counter__active-state"
+    *ngIf="isActive || paymentSessionStarted; else inactiveTpl"
+  >
+    <ng-container
+      *ngIf="advisorId === user.id || isFeedback || isOwnerOfIceBreaker"
+    >
+      <button
+        *ngIf="!isRecording; else pauseTpl"
+        (click)="startTimer()"
+        class="payment-counter__button"
+        type="button"
+      >
+        <img
+          src="assets/payments/coins.svg"
+          alt="coins-icon"
+          class="payment-counter__coins-icon"
+        />
+        <img
+          src="assets/payments/play.svg"
+          class="payment-counter__play-icon"
+        />
+      </button>
+
+      <ng-template #pauseTpl>
+        <button
+          (click)="pauseTimer()"
+          class="payment-counter__button"
+          type="button"
+        >
+          <img
+            src="assets/payments/coins.svg"
+            alt="coins-icon"
+            class="payment-counter__coins-icon"
+          />
+          <img
+            src="assets/payments/pause.svg"
+            class="payment-counter__pause-icon"
+          />
+        </button>
+      </ng-template>
+    </ng-container>
+
+    <div
+      class="payment-counter__active-state--timers"
+      [ngClass]="{ paused: !isRecording, meeting: isMeeting }"
+    >
+      <ng-container
+        *ngIf="
+          advisorId === user.id ||
+          isFeedback ||
+          isMeeting ||
+          isOwnerOfIceBreaker
+        "
+      >
+        <p
+          class="payment-counter__active-state--minutes"
+          *ngIf="isRecording || isMeeting; else timeEditTpl"
+        >
+          {{ displayTime | hms }}
+        </p>
+      </ng-container>
+
+      <div class="payment-counter__active-state--divider"></div>
+
+      <p class="payment-counter__active-state--money">
+        {{
+          (isRecording ? earnings : earnings + extraMoney)
+            | euroCurrency: '0.2-2'
+        }}
+      </p>
+
+      <div
+        class="payment-counter__active-state--extra"
+        *ngIf="
+          (advisorId === user.id && isRecording) ||
+          isMeeting ||
+          isFeedback ||
+          isOwnerOfIceBreaker
+        "
+      >
+        <img src="assets/payments/scissors.svg" alt="extra-icon" />
+        <p class="payment-counter__active-state--extra-money">
+          +{{ extraMoney | euroCurrency: '0.2-2' }}
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="confirm-btns"
+      *ngIf="
+        (advisorId === user.id && !meetingInProgress) ||
+        (isOwnerOfIceBreaker && !meetingInProgress)
+      "
+    >
+      <button
+        mat-button
+        type="button"
+        class="confirm-btn"
+        [matRippleColor]="rippleColor"
+        *ngIf="!isRecording"
+        (click)="onConfirmClick()"
+      >
+        SEND INVOICE
+      </button>
+
+      <button
+        type="button"
+        class="payment-counter__button"
+        (click)="onConfirmClick()"
+      >
+        <img src="assets/payments/check.svg" alt="check-icon" class="icon" />
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #inactiveTpl>
+  <div
+    class="payment-counter__inactive-state"
+    *ngIf="!(isActive || paymentSessionStarted)"
+  >
+    <button
+      class="payment-counter__button"
+      (click)="startTimer()"
+      type="button"
+    >
+      <img
+        src="assets/payments/coins.svg"
+        alt="coins-icon"
+        class="payment-counter__coins-icon"
+      />
+      <img src="assets/payments/play.svg" class="payment-counter__play-icon" />
+    </button>
+
+    <section class="content-container">
+      <p
+        class="payment-counter__inactive-state--info"
+        [innerHTML]="infoMessage | safe: 'html'"
+      ></p>
+      <ng-content select="[payment-container]"></ng-content>
+    </section>
+  </div>
+</ng-template>
+
+<ng-template #timeEditTpl>
+  <input
+    type="text"
+    [formControl]="timeControl"
+    mask="00:00:00"
+    [dropSpecialCharacters]="false"
+    [clearIfNotMatch]="true"
+    placeholder="hh:mm:ss"
+  />
+</ng-template>

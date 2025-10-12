@@ -1,0 +1,59 @@
+<div class="lupai-main">
+    @if (mobileHeaderVisible() === false) {
+    <app-lupai-header (plusAction)="handlePlusAction()" (menuAction)="toggleRightMenu()" />
+    }
+
+    <div class="chat">
+        <div class="chat__history" #chatContainer>
+            @for (message of messages(); track message.id) {
+            <div class="chat__item">
+                <app-lupai-message [message]="message" (topicClicked)="onTopicClicked($event)" />
+            </div>
+            }
+        </div>
+
+        <div class="chat__bottom" [ngClass]="{ 'no-border': showUserContextForm() }">
+            <div class="user-context-form-overlay">
+                <app-user-context-form [isVisible]="showUserContextForm()" [currentUserContext]="userContext()"
+                    (userContextUpdated)="onUserContextUpdated($event)"
+                    (locationUpdated)="onUserLocationUpdated($event)" (formClosed)="onUserContextFormClosed()"
+                    (formSubmitted)="onUserContextFormSubmitted($event)" />
+            </div>
+
+            <app-text-input #textInput [inputPlaceholder]="'lupai_chatbot.input_placeholder' | translate"
+                [sendBtnSrc]="sendBtnSrc" [scaleSendBtn]="scaleSendBtn" [externalAudioRecord]="false"
+                [allowImages]="false" [recordBtnDisabled]="true" [messageSent$]="messageSentEvt.asObservable()"
+                [focusInput$]="focusInput.asObservable()" (sendBtnClicked)="onSendClick($event)"
+                (onFocusInput)="onInputFocus()" [withAdditionalMenu]="false" [recordingProcess]="false"
+                [editable]="inputEditable()" />
+        </div>
+        <div class="content__actions">
+            <app-button class="lupai__actions-back" rounded btnUIType="neutral" size="medium"
+                (click)="navigateBackClickHandler()">
+                <app-icon-arrow direction="left"></app-icon-arrow>
+            </app-button>
+
+            @if (showScrollBottomButton()) {
+            <app-scroll-down-btn (clickedScrollDown)="scrollToLastMessage()" />
+            }
+        </div>
+    </div>
+
+</div>
+
+
+<app-lupai-right-sidebar [isOpen]="showRightMenu()" (closeMenu)="closeRightMenu()" (menuAction)="handleMenuAction()" />
+
+@if (showRightMenu()) {
+<button (click)="closeRightMenu()" (keydown.enter)="closeRightMenu()" (keydown.space)="closeRightMenu()"
+    aria-label="Close menu"></button>
+}
+
+
+
+<ng-template #lupaiHeaderTemplate>
+    @if (mobileHeaderVisible()) {
+    <app-lupai-mobile-header (plusAction)="handlePlusAction()" (menuAction)="toggleRightMenu()"
+        (navigateLeft)="handleNavigateLeft()" (navigateRight)="handleNavigateRight()" />
+    }
+</ng-template>

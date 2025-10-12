@@ -1,0 +1,315 @@
+{
+    "adding_user": {
+      "add_people": "Personen hinzufügen zu",
+      "internal_chat": "Interner Team-Chat",
+      "chat": "Chat",
+      "name_groups_emails": "Name, Gruppen oder E-Mails",
+      "e_g": "z. B.",
+      "note": {
+        "title": "Hinweis",
+        "internal_chat_note": "Klienten können diesen Chatraum nicht lesen. Er dient dazu, die Situation der Klienten mit anderen zu besprechen. Bitte gehen Sie mit allen persönlichen Informationen diskret um."
+      },
+      "protection": {
+        "protected_by": "DIESE SEITE IST GESCHÜTZT DURCH RECAPTCHA UND UNSERE",
+        "privacy_policy": "Datenschutzrichtlinie",
+        "and": "UND",
+        "terms_of_service": "Nutzungsbedingungen",
+        "apply": "ANWENDEN"
+      },
+      "cancel_button_text": "Abbrechen",
+      "add_button_text": "Hinzufügen"
+    },
+    "price-slider": {
+      "change_hourly_rate": "STUNDENSATZ ÄNDERN"
+    },
+    "conversation_menu": {
+      "tasks": "Aufgaben",
+      "accept_case": "Fall annehmen",
+      "reject_case": "Fall ablehnen",
+      "accept_case_description": "Sie übernehmen diese Person oder Familie. Sie sind für deren Unterstützung und Daten verantwortlich.",
+      "reject_case_description": "Die Anfrage verschwindet von Ihrem Board. Sie erhalten eine kurze Nachricht.",
+      "escalate_case": "Eskalieren",
+      "video_call_request": "Videoanruf anfordern",
+      "video_call_requested": "Videoanruf angefordert",
+      "video_call_request_icon_alt": "Videokamera-Illustration",
+      "add_user_title": "Berater zum Klienten-Chat hinzufügen",
+      "add_user_description": "Personen, die Sie auf diese Weise hinzufügen, können direkt mit dem Klienten sprechen."
+    },
+    "user_context_form": {
+      "title": "Starten Sie Ihre Anfrage",
+      "progress_text": "von 4 Pflichtfeldern ausgefüllt",
+      "countries": {
+        "ukraine": "Ukraine",
+        "syria": "Syrien",
+        "afghanistan": "Afghanistan",
+        "turkey": "Türkei",
+        "poland": "Polen",
+        "romania": "Rumänien",
+        "other": "Andere"
+      },
+      "residence_areas": {
+        "bavaria": "Bayern",
+        "berlin": "Berlin",
+        "baden_wuerttemberg": "Baden-Württemberg",
+        "north_rhine_westphalia": "Nordrhein-Westfalen",
+        "schleswig_holstein": "Schleswig-Holstein",
+        "lower_saxony": "Niedersachsen",
+        "mecklenburg_western_pomerania": "Mecklenburg-Vorpommern",
+        "saxony": "Sachsen",
+        "hesse": "Hessen",
+        "rhineland_palatinate": "Rheinland-Pfalz",
+        "brandenburg": "Brandenburg",
+        "thuringia": "Thüringen",
+        "hamburg": "Hamburg",
+        "saxony_anhalt": "Sachsen-Anhalt",
+        "bremen": "Bremen",
+        "saarland": "Saarland",
+        "other": "Andere"
+      },
+      "time_in_germany": {
+        "not_living": "Ich lebe nicht in Deutschland",
+        "tourist": "Ich bin als Tourist in Deutschland",
+        "0_1_year": "0-1 Jahr",
+        "1_5_years": "1-5 Jahre",
+        "5_plus_years": "+5 Jahre"
+      },
+      "age_options": {
+        "18_25": "18-25",
+        "26_35": "26-35",
+        "36_45": "36-45",
+        "46_55": "46-55",
+        "55_plus": "55+",
+        "unspecified": "Ich möchte es nicht sagen"
+      },
+      "labels": {
+        "origin_country": "Was ist Ihr Herkunftsland?",
+        "current_area_of_residence": "Aktueller Wohnort in Deutschland",
+        "time_in_germany": "Wie lange sind Sie schon in Deutschland?",
+        "age": "Ihr Altersbereich"
+      },
+      "context_info": "Benutzerkontext",
+      "submit": "Auswahl senden und mit dem Tippen beginnen"
+    },
+    "lupai_chatbot": {
+      "input_placeholder": "Schreiben Sie in Lupai Chatbot...",
+      "title": "Lupai Chatbot",
+      "subtitle": "Geeignet für: Fragen zu deutschem Recht, Bürokratie, Richtlinien, Community-Integration...",
+      "right_sidebar": {
+        "title": "Lupai Chatbot",
+        "menu_items": {
+          "adjust_robot": {
+            "title": "Roboter anpassen",
+            "description": "Verhalten und Antworten Ihres Roboters anpassen und konfigurieren."
+          },
+          "robot_info": {
+            "title": "Roboter-Informationen",
+            "description": "Verstehen Sie besser, was der Roboter tut und welche Daten wir senden."
+          },
+          "system_settings": {
+            "title": "Roboter-Systemeinstellungen anpassen",
+            "description": "Menübeschreibung."
+          },
+          "daily_tools": {
+            "title": "Mit Ihren täglichen Tools verbinden",
+            "description": "Integrieren Sie diesen Roboter besser, indem Sie ihm Zugriff auf mehr Daten gewähren."
+          },
+          "used_files": {
+            "title": "Mit diesem Roboter verwendete Dateien",
+            "description": "Alle hochgeladenen Daten, die in einer kompakten Übersicht verwendet wurden."
+          },
+          "need_help": {
+            "title": "Nicht ganz was ich brauche :-/",
+            "description": "Können Sie den Roboter nicht finden, der Ihr Problem löst? Senden Sie uns eine Anfrage."
+          }
+        }
+      },
+      "user_context_saved": "Bitte schreibe jetzt deine Frage, sie wird anhand der folgenden Parameter gefiltert:",
+      "welcome_message": "Willkommen! Ich bin Lupai, dein KI-Assistent für Integration in Deutschland. Wie kann ich dir heute helfen?"
+    },
+    "conversation-request-more-button": {
+      "request": "Anfordern"
+    },
+    "confirmation_message": {
+      "accept_case_title": "Fall übernehmen",
+      "accept_case_message": "Einen Fall zu übernehmen bedeutet, dass Sie zum Koordinator für diese Person werden und ihr helfen, ihr Problem zu lösen.",
+      "accept_case_question": "Möchten Sie den Fall übernehmen?",
+      "accept_case_btn": "Übernehmen",
+      "reject_case_title": "Fall ablehnen",
+      "reject_case_message": "Einen Fall abzulehnen bedeutet, dass Sie nicht weiter an diesem Fall arbeiten möchten. Sie werden aus diesem Chat entfernt.",
+      "reject_case_question": "Möchten Sie den Fall ablehnen?",
+      "reject_case_btn": "Ablehnen",
+      "escalate_case_title": "Fall eskalieren",
+      "escalate_case_message_organization": "Eine Eskalation bedeutet, dass der Fall für die anderen Berater in Ihrer Organisation sichtbar wird.",
+      "escalate_case_message_platform": "Eine Eskalation bedeutet, dass der Fall für die anderen Organisationen auf der Plattform sichtbar wird.",
+      "escalate_case_question": "Möchten Sie fortfahren?",
+      "escalate_case_btn": "Eskalieren",
+      "cancel_btn": "Abbrechen"
+    },
+    "message": {
+      "was_deleted": "Nachricht wurde vom Benutzer gelöscht",
+      "reply": "Antworten",
+      "edit_original": "Original bearbeiten",
+      "download": "Herunterladen",
+      "remove": "Entfernen",
+      "initial_comment": "Erster Kommentar",
+      "find": "Finden",
+      "initial_question": "Erste Frage",
+      "initial_message": "Erste Nachricht",
+      "audio_message": "Audio-Nachricht",
+      "image": "Bild",
+      "question": "Frage",
+      "give_feedback": "Feedback geben",
+      "answer": "Antwort",
+      "copied": "Kopiert!",
+      "copy": "Nachricht kopieren"
+    },
+    "audio_message_loading": "LÄDT",
+    "lesson_start_at": "Ihr Unterricht beginnt heute um",
+    "enter_room": "Beratungsraum betreten",
+    "additional_menu": {
+      "photos": "Fotos",
+      "camera": "Kamera",
+      "location": "Standort",
+      "contact": "Kontakt",
+      "files": "Dateien",
+      "capsule": "Kapsel",
+      "scanner": "Scanner",
+      "timer": "Timer"
+    },
+    "pay_btn_text": "Bezahlen",
+    "resolve_and_close": "Lösen & schließen",
+    "resolve_and_queue": "Lösen & zur Warteschlange hinzufügen",
+    "audio_message": "Audio-Nachricht",
+    "image": "Bild",
+    "text-input_placeholder": "Tippen Sie hier...",
+    "tips_want_leave": "Möchten Sie ein Trinkgeld geben?",
+    "tip_paid_additionally": "Trinkgeld zusätzlich bezahlt",
+    "tip_payment_declined": "Trinkgeldzahlung abgelehnt",
+    "no_tip_paid_yet": "Noch kein Trinkgeld bezahlt",
+    "user_info": {
+      "name_anon": "Anonym",
+      "city_global": "GLOBAL"
+    },
+    "conversation_manage_panel": {
+      "tasks": "Aufgaben",
+      "lupai": "Lupai Bot",
+      "robots": "Roboter",
+      "robots-description": "Mit KI-Assistenten interagieren",
+      "file_vault": "Dateitresor",
+      "internal_chat": "Interner Chat",
+      "client_chat": "Klienten-Chat",
+      "summary": "Zusammenfassung",
+      "coming_soon": "Demnächst verfügbar...",
+      "events": "Ereignisse",
+      "subgroups": "Untergruppen",
+      "public_boards": "Öffentliche Tafeln"
+    },
+    "conversation_header": {
+      "online": "online"
+    },
+    "text_input": {
+      "placeholder": "Tippen Sie hier...",
+      "internal": "Im internen Chat schreiben",
+      "client": "Im Klienten-Chat schreiben",
+      "disabled": "Zusätzliche Informationen nach dem Drücken einer beliebigen Schaltfläche hinzufügen"
+    },
+    "conversation_item": {
+      "to_pay": "<span>zu</span> bezahlen",
+      "group_conversation_info": {
+        "img_alt": "Gesprächsbild",
+        "person": "PERSON"
+      }
+    },
+    "finish_questionnare_btn_text": "Fragebogen abschließen",
+    "confirmation": {
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "ice-breaker": {
+      "propose-finish_btn_text": "Registrieren, um die Anfrage abzuschließen",
+      "finish_btn_text": "Kapsel {{ title }} abschließen",
+      "finish_btn_text-without-title": "Kapsel abschließen",
+      "next_btn_text": "Nächste Frage"
+    },
+    "user_add_leave_chat_message": {
+      "member_added": "Benutzer {{active}} hat {{passive}} zum Chat hinzugefügt.",
+      "user_joined": "Benutzer {{active}} ist dem Chat beigetreten.",
+      "member_removed": "Benutzer {{active}} hat {{passive}} aus dem Chat entfernt.",
+      "user_left": "Benutzer {{active}} hat den Chat verlassen."
+    },
+    "audio_record": {
+      "error_uploading": "Fehler beim Hochladen der Audiodatei",
+      "paused": "Pausiert",
+      "uploading": "Audiodatei wird hochgeladen",
+      "uploading_1_dot": "Audiodatei wird hochgeladen.",
+      "uploading_2_dot": "Audiodatei wird hochgeladen..",
+      "uploading_3_dot": "Audiodatei wird hochgeladen...",
+      "skip": "Überspringen",
+      "add_title": "Titel hinzufügen...",
+      "write_title": "Titel hier eingeben"
+    },
+  "conversation": {
+    "service_message": {
+      "case_taken": " ist jetzt Ihr Koordinator. Sie können einen Chat mit ihm/ihr beginnen.",
+      "shared_with_organization": "{{consultantName}} hat Ihre Anfrage mit seiner/ihrer Organisation {{organizationName}} geteilt",
+      "shared_with_platform": "{{consultantName}} hat Ihre Anfrage mit den anderen Organisationen auf der Plattform geteilt."
+    }
+  },
+  "auth": {
+    "sign_up": "Registrieren",
+    "sign_in": "Einloggen"
+  },
+  "auth-header": {
+    "sign-up": "Registrieren",
+    "sign-in": "Anmelden",
+    "reset": "Zurücksetzen",
+    "reset-password": "Passwort zurücksetzen",
+    "image-alt": "Registrierungsbild"
+  },
+  "fields": {
+    "reset-password": "Passwort zurücksetzen",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "email": "E-Mail",
+    "team-account": "Als Teamkonto einrichten",
+    "accept-terms": "Ich akzeptiere die Bedingungen",
+    "read-terms": "Lies unsere AGB",
+    "org": "Wähle deine Organisation",
+    "org-placeholder": "z. B. Sunflower Care e.V.",
+    "org-name": "Name der Organisation",
+    "org-placeholder-name": "Geben Sie den Namen Ihrer Organisation ein",
+    "no-result": "Sie haben kein eigenes Organisation?",
+    "create-new-company": "Eigene erstellen",
+    "optional": "Optional"
+  },
+  "validation": {
+    "unique": "Dein einzigartiger Benutzername",
+    "error": "Fehler",
+    "required-field": "Dieses Feld ist erforderlich",
+    "username-valid": "Benutzername darf nur Buchstaben, Zahlen und Unterstriche enthalten",
+    "email-valid": "Eine gültige E-Mail ist erforderlich",
+    "min-length": "Mindestens {{min}} Zeichen erforderlich",
+    "password-placeholder": "mind. {{min}} Buchstaben, 1 Zahl, 1 Sonderzeichen"
+  },
+  "actions": {
+    "resend-confirmation-email": "Bestätigungs-E-Mail erneut senden",
+    "already-have-an-account": "Schon ein Konto?",
+    "sign-in-here": "Zum Anmelden gehen",
+    "without-acc": "Noch kein Konto?",
+    "sign-up-here": "Hier registrieren",
+    "forgot-password": "Passwort vergessen?",
+    "reset-password": "Passwort zurücksetzen",
+    "cancel": "Abbrechen",
+    "sign-in": "Einloggen",
+    "sign-up": "Registrieren"
+  },
+  "modal": {
+    "success-signup-title": "Erste Brücke zur Unterstützung gebaut",
+    "close": "Schließen",
+    "success-signup-text": "Die Details, die Sie geteilt haben, schaffen eine Brücke zwischen Ihren individuellen Bedürfnissen und den NGOs, die wirklich helfen können. Das ist wichtig, weil Einheitslösungen oft scheitern, wo persönliche Verbindungen Erfolg haben.",
+    "success-signup-next": "Was als nächstes passiert:",
+    "success-signup-text2": "Wir verbinden Sie mit Organisationen, die zu Ihrer Situation passen. Sie erhalten eine E-Mail, sobald eine Verbindung hergestellt ist - bitte prüfen Sie Ihren Posteingang regelmäßig, einschließlich Spam.",
+    "success-signup-text3": "Danke, dass Sie uns Ihre Geschichte anvertraut haben.",
+    "go-blog": "Blog besuchen"
+  }
+}

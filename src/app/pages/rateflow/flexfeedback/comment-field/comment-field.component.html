@@ -1,0 +1,195 @@
+<div
+  class="feedback__container"
+  [formGroup]="control"
+  (click)="itemText.focus()"
+  [ngClass]="{ 'feedback__container--colored': control.value.avratingparam_id }"
+  [class]="'feedback__container--' + control.value.color"
+>
+  <ng-container *ngIf="tab.name !== 'resort'">
+    <div
+      class="feedback__sidebtns"
+      *ngIf="
+        feedbackHasDraw ||
+        drawActive ||
+        (control.focus && itemText.value) ||
+        isRecording
+      "
+    >
+      <button
+        type="button"
+        class="feedback__sidebtn feedback__draw"
+        [ngClass]="{
+          'feedback__sidebtn--active': feedbackHasDraw,
+          'feedback__sidebtn--focused': drawActive,
+        }"
+        [disabled]="isRecording"
+        (click)="openDrawer.emit()"
+        *ngIf="selectedFile?.kind === 'image' && !feedbackHasScreenshot"
+      >
+        <img
+          [src]="
+            feedbackHasDraw
+              ? 'assets/flexfeedback/draw-icon.svg'
+              : 'assets/flexfeedback/draw-icon-gray.svg'
+          "
+        />
+      </button>
+
+      <button
+        type="button"
+        class="feedback__sidebtn feedback__screenshot"
+        [ngClass]="{ 'feedback__sidebtn--active': feedbackHasScreenshot }"
+        (click)="openScreenshotModal.emit()"
+        *ngIf="!feedbackHasDraw"
+      >
+        <img
+          [src]="
+            feedbackHasScreenshot
+              ? 'assets/flexfeedback/screenshot-icon.svg'
+              : 'assets/flexfeedback/screenshot-icon-gray.svg'
+          "
+        />
+      </button>
+    </div>
+  </ng-container>
+
+  <div class="feedback__badge">
+    <h5 class="feedback__count">{{ index + 1 }}</h5>
+    <img [src]="'assets/ratebacks/' + tab.name + '-mini.svg'" alt="" />
+  </div>
+
+<!--  <button-->
+<!--    class="feedback__microphone"-->
+<!--    (click)="startAudioRecording($event)"-->
+<!--    [disabled]="isRecording || drawActive"-->
+<!--  >-->
+<!--    <img src="/assets/icons/microphone.svg" />-->
+<!--  </button>-->
+
+  <app-button size="small" btnUIType="subtle" [disabled]="isRecording || drawActive" (click)="startAudioRecording($event)">
+    <app-icon-audio-record color="black"></app-icon-audio-record>
+  </app-button>
+
+  <div
+    class="feedback__input-group"
+    [ngClass]="{ 'feedback__input-group--links': tab.name === 'links' }"
+  >
+    <textarea
+      #itemText
+      formControlName="text"
+      class="auto-expandable-textarea"
+      [id]="'input-' + tab.name + '-' + index"
+      [ngClass]="{ message: control.value.avratingparam_id }"
+      [class]="'message-' + control.value.color"
+      [attr.placeholder]="tab.inputText"
+      (focus)="control.focus = true"
+      (paste)="detectPaste.emit($event)"
+      (keyup)="keyUp.emit($event)"
+      (keydown.enter)="onKeyDownEnter($event, itemText.value)"
+    ></textarea>
+    <textarea
+      #itemLink
+      *ngIf="tab.name === 'links'"
+      formControlName="link"
+      class="auto-expandable-textarea link"
+      type="text"
+      placeholder="Reference that could help"
+      [id]="'input-' + tab.name + '-' + i + '-link'"
+      (focus)="control.focus = true"
+      (click)="$event.stopPropagation()"
+      (paste)="detectPaste.emit($event)"
+      (keyup)="keyUpLink.emit(itemLink.value)"
+    ></textarea>
+  </div>
+
+  <div
+    class="feedback__audio-record"
+    *ngIf="isRecording"
+    (click)="$event.stopPropagation()"
+  >
+    <app-audio-record
+      [user]="author"
+      [isFlexFeedback]="true"
+      [stopRecording$]="stopRecordingEvt.asObservable()"
+      (uploadingFinished)="audioMessageUploaded($event)"
+      (close)="deleteAudioMessage()"
+    ></app-audio-record>
+  </div>
+
+  <ng-container *ngIf="control.value.audio_message as audioMessage">
+    <div class="feedback__audio-message" *ngIf="audioMessage.url">
+      <app-audio-message
+        [audioMessage]="audioMessage"
+        [languages]="author.lang"
+        [canSelectLanguage]="true"
+        (selectLang)="onAudioMsgLangChange($event)"
+        [disablePreload]="true"
+      ></app-audio-message>
+      <button
+        class="feedback__delete-audio delete-btn"
+        (click)="deleteAudioMessage($event)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+
+  @if(!(!control.value.text &&
+  !control.value.screenshot &&
+  !control.value.audio_message?.url)) {
+    <button
+      type="button"
+      class="feedback__controls"
+      [disabled]="
+      !control.value.text &&
+      !control.value.screenshot &&
+      !control.value.audio_message?.url
+    "
+      (click)="deleteItem.emit()"
+    >
+      <app-close-card-icon color="white"></app-close-card-icon>
+    </button>
+  }
+
+
+  <div class="feedback__tag" *ngIf="control.value.avratingparam_id">
+    <div class="inner-container">
+      <p [class]="'message-' + control.value.color">
+        {{ control.value.name }}
+      </p>
+      <span>{{ control.value.avtracktimeposition | hms }}</span>
+    </div>
+  </div>
+
+  <div class="feedback__image" *ngIf="control.value.screenshot">
+    <button
+      class="feedback__delete-image delete-btn"
+      (click)="deleteScreenshot.emit()"
+      *ngIf="!control.value.screenshotLoading"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <div class="feedback__image-loader" *ngIf="control.value.screenshotLoading">
+      <app-small-spinner [diameter]="30"></app-small-spinner>
+    </div>
+    <img [src]="control.value.screenshot" />
+  </div>
+
+  <p
+    class="feedback__hint"
+    *ngIf="
+      control.value.screenshot &&
+      !itemText.value &&
+      !control.value.audio_message?.url
+    "
+  >
+    Screenshot is saved only with a comment
+  </p>
+
+  <p
+    class="feedback__hint"
+    *ngIf="feedbackHasDraw && !itemText.value && !control.value.audio_message"
+  >
+    Drawing is saved only with a comment
+  </p>
+</div>

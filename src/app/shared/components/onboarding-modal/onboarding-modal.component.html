@@ -1,0 +1,47 @@
+<div class="modal__container cards" [@cardFlip]="state">
+  <app-first-card
+    class="card"
+    *ngIf="step === 1"
+    [form]="form"
+    [isLoading]="isLoading"
+    [error]="error"
+    (signup)="signup(false, $event)"
+  ></app-first-card>
+
+  <app-second-card
+    class="card"
+    *ngIf="step === 2"
+    [ngClass]="{ 'card--rotate': initialStep % 2 === 1 }"
+    (clickClose)="selectThird()"
+  ></app-second-card>
+
+  <app-third-card
+    class="card"
+    *ngIf="step === 3"
+    [ngClass]="{ 'card--rotate': initialStep % 2 === 0 }"
+    (showIframe)="showIframe.emit()"
+  ></app-third-card>
+
+  <app-fourth-card
+    class="card"
+    *ngIf="step === 4"
+    [ngClass]="{ 'card--rotate': initialStep % 2 === 1 }"
+  ></app-fourth-card>
+
+  <app-fifth-card
+    class="card"
+    *ngIf="step === 5"
+    [ngClass]="{ 'card--rotate': initialStep % 2 === 0 }"
+    [form]="form"
+    [isLoading]="isLoading"
+    [error]="error"
+    (signup)="signup(false)"
+    (signIn)="signIn()"
+  ></app-fifth-card>
+
+  <app-sixth-card
+    class="card"
+    *ngIf="step === 6"
+    [ngClass]="{ 'card--rotate': initialStep % 2 === 1 }"
+  ></app-sixth-card>
+</div>

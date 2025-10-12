@@ -1,0 +1,186 @@
+@import '_variables';
+@import '_mixins';
+
+.skills-tools-container {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.skills-card {
+  max-width: 395px;
+  width: 100%;
+  min-height: 42rem;
+  height: 62rem;
+
+  ::ng-deep app-advisor-card .user-info {
+    display: none;
+  }
+
+  ::ng-deep app-advisor-card app-available-time-slots {
+    display: none;
+  }
+
+  @media screen and (max-width: $bp-medium) {
+    ::ng-deep app-advisor-card app-available-time-slots {
+      display: block;
+    }
+  }
+
+  .skill-card-header {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.1em;
+  }
+}
+
+.available-time-slots-card {
+  align-self: baseline;
+  padding: 2rem 1rem;
+  background-color: $feed-content-background;
+  box-shadow: 0 0.3px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  min-width: 286px;
+
+  @media screen and (max-width: $bp-medium) {
+    display: none;
+  }
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 0.1em;
+    }
+  }
+}
+
+.add-days {
+  &__rulesets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 50px;
+    padding-top: 30px;
+  }
+
+  &__ruleset {
+    background: white;
+    border-radius: 8px;
+    padding-right: 9px;
+    padding-left: 2px;
+    padding-bottom: 9px;
+  }
+
+  &__element {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 13px;
+    text-align: center;
+    color: #828282;
+    margin: 5px 0;
+  }
+
+  &__days {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+    color: $--sds-color-grey-500;
+    margin-top: 10px;
+  }
+
+  &__time {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 33px;
+    text-align: center;
+    color: $feed-light-gray-text;
+
+    &__period {
+      font-size: 13px;
+      color: $feed-light-gray-text;
+      margin-right: 10px;
+      vertical-align: top;
+    }
+
+    &__range {
+      margin-right: 20px;
+    }
+  }
+}
+
+:host::ng-deep .custom-week .schedule__item.schedule__item--bold {
+  color: $--sds-color-grey-500;
+}
+
+:host::ng-deep .custom-week .schedule__item {
+  color: #f2f2f2;
+  font-weight: 600 !important;
+}
+
+.select-skill-card {
+  text-align: center;
+  align-self: baseline;
+  background-color: white;
+  padding: 6rem 5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+
+  .title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 220%;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 4rem;
+  }
+
+  .subtitle {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 220%;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    color: $--sds-color-grey-500;
+  }
+
+  .settings-btn {
+    cursor: pointer;
+    background: black;
+    box-shadow: 0 1.5px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+    padding: 15px 29px;
+    border: unset;
+
+    img {
+      height: 26px;
+      margin-right: 10px;
+      vertical-align: middle;
+      @include invertColor;
+    }
+  }
+}

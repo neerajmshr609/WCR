@@ -1,0 +1,28 @@
+<app-cover-image
+  [image]="userProfileImage()"
+></app-cover-image>
+
+@if (isProfileOfCurrentUser()) {
+  <app-button
+    class="profile-image_upload-button"
+    [btnUIType]="'neutral'"
+    [size]="'large'"
+    (click)="openUploader()"
+  >
+    <app-upload-icon
+      class="upload-button_icon"
+    ></app-upload-icon>
+    {{ 'profile-image.chose-cover' | translate }}
+  </app-button>
+}
+
+@if (isUploaderOpened()) {
+  <div class="uploader-wrapper">
+    <div class="uploader-wrapper__header">
+      <app-close-icon (click)="closeUploader()"></app-close-icon>
+    </div>
+
+    <div [ngClass]="['uploader', UPLOADER_CONTAINER_CLASSNAME]"></div>
+  </div>
+}
+

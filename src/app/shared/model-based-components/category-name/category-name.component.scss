@@ -1,0 +1,20 @@
+@import "variables";
+
+:host {
+  display: block;
+  border: $--sds-size-stroke-border--solid--sds-color-border-default-default;
+  padding: $--sds-size-space-200;
+  user-select: none;
+  color: $--sds-color-text-default-default;
+  font-family: $--sds-typography-body-font-family;
+  font-size: $--sds-typography-body-size-medium;
+  font-style: normal;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 100%;
+  border-radius: $--sds-size-radius-200;
+  border: $--sds-size-stroke-border solid $--sds-color-border-neutral-secondary;
+  background: $--sds-color-background-default-secondary;
+  &:hover {
+    cursor: default;
+  }
+}

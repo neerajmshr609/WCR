@@ -1,0 +1,23 @@
+<app-share-modal
+  [shareTitle]="titleText() | translate:appTitleContainer()"
+  [shareLink]="profileUrl()"
+>
+    <app-profile-info-card-title
+        [profile]="userProfile()"
+    ></app-profile-info-card-title>
+
+    <app-horizontal-line
+        class="share-profile-modal_horizontal-line"
+    ></app-horizontal-line>
+
+    @if (isOrganizationMember()) {
+        <app-role-description></app-role-description>
+    }
+
+    @if ((isProfileOwner() && isOrganizationMember()) || orgMemberHasTitleOrDescription()) {
+    <app-horizontal-line
+        class="share-profile-modal_horizontal-line"
+    ></app-horizontal-line>
+    }
+
+</app-share-modal>

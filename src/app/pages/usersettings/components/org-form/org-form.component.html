@@ -1,0 +1,72 @@
+@if (form()) {
+  <form [formGroup]="form()" class="form">
+    <div class="form__group">
+      <div class="form__group--left">
+        <h2 class="form-label">
+          {{ formData()?.uploadAvatarLabel | translate }}
+        </h2>
+        <app-image-uploader
+          [formData]="formData()"
+          (save)="uploadAvatar($event)"
+          [image]="form()?.value.org_logo"
+          [folder]="folder()"
+        ></app-image-uploader>
+        <div class="uploader--organizations-avatar"></div>
+      </div>
+      <div class="form__group--left">
+        <h2 class="form-label">
+          {{ formData()?.selectedAvatarLabel | translate }}
+        </h2>
+        <div class="form__group--left_container">
+          <carousel
+            [cellWidth]="48"
+            [height]="48"
+            [freeScroll]="true"
+            [arrows]="false"
+            [margin]="16"
+            [lightDOM]="true"
+            class="carousel_container"
+            [zIndex]="100"
+          >
+            @for (url of formData().avatars; track url) {
+              <button
+                [ngClass]="{ selected: orgatizationData()?.image === url }"
+                class="carousel-cell"
+                (click)="changeAvatar(url)"
+              >
+                <img [src]="url" class="avatars--img" alt="Avatar" />
+              </button>
+            }
+          </carousel>
+        </div>
+      </div>
+    </div>
+
+    <div class="form__group-container">
+      <div class="form__group-row">
+        @for (dataObj of formData()?.inputs; track dataObj.name) {
+          <div class="form-field">
+            @if (dataObj.type === 'select') {
+              <app-select
+                [control]="form().get(dataObj.name)"
+                inputName="{{ dataObj.name }}"
+                placeholder="{{ dataObj.placeholder | translate }}"
+                label="{{ dataObj.label | translate }}"
+                [options]="dataObj.options"
+                [viewModel]="dataObj?.viewModel"
+              ></app-select>
+            } @else {
+              <app-input
+                [control]="form().get(dataObj.name)"
+                inputName="{{ dataObj.name }}"
+                placeholder="{{ dataObj.placeholder | translate }}"
+                type="{{ dataObj.type }}"
+                label="{{ dataObj.label | translate }}"
+              ></app-input>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </form>
+}

@@ -1,0 +1,23 @@
+@import "_variables";
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visible-menu-items-container {
+  transition: all 0.4s;
+  border-radius: $--sds-size-radius-300;
+  background-color: $--sds-color-background-brand-default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $--sds-size-space-200;
+  padding: $--sds-size-space-200;
+
+  &_dropdown-open-btn {
+    width: calc(24px + $--sds-size-space-200 * 2);
+    height: calc(24px + $--sds-size-space-200 * 2);
+  }
+}

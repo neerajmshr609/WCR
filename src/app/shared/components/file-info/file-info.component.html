@@ -1,0 +1,41 @@
+<div
+  class="file-info"
+  *ngIf="
+    file &&
+    file.kind !== 'dummy' &&
+    file.showinfo &&
+    (file.lyrics || file.projectfile_title || file.filedescription)
+  "
+>
+  <div class="file-info__tabs tabs" *ngIf="showPopup">
+    <div class="tabs__titles">
+      <p
+        class="tabs__title"
+        [ngClass]="{ 'tabs__title--active': activeTab === tab.name }"
+        *ngFor="let tab of tabs"
+        (click)="tabClick(tab.name)"
+      >
+        {{ tab.displayName | translate }}
+      </p>
+    </div>
+
+    <div *ngIf="activeTab === 'lyrics'" class="tabs__content">
+      <p class="lyrics">
+        {{ file.lyrics }}
+      </p>
+    </div>
+
+    <div *ngIf="activeTab === 'description'" class="tabs__content">
+      <p class="title" *ngIf="file.projectfile_title as title">{{ title }}</p>
+      <p class="description" *ngIf="file.filedescription as description">
+        {{ description }}
+      </p>
+    </div>
+
+    <img class="file-info__tabs-info" src="assets/upload/info.svg" />
+
+    <button class="file-info__tabs-close" (click)="toggle.emit()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>

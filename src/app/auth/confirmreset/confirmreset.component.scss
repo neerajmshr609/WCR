@@ -1,0 +1,19 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  background-image: url("/assets/auth/reset-password.jpg");
+  background-origin: content-box;
+  width: 100%;
+  min-height: calc(100vh - 52px);
+  flex: 1;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+  @media (min-width: $bp-small) {
+    min-height: calc(100vh - 71px);
+  }
+}

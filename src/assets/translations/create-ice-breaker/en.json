@@ -1,0 +1,10 @@
+{
+  "header-text": "Select a topic to create a Capsule",
+  "sub-header-text": "Capsules are a set of questions you ask other people about a<br/>specific topic you are knowledgeable or interested in.",
+  "modal": {
+    "title": "Please confirm the creation of a new capsule.",
+    "cancel": "Cancel",
+    "confirm": "Yes, please continue",
+    "text": "You have selected the topic of <b>{{skill}}</b>. If you proceed, you can create a series of questions for clients to answer in order to save time and gain an overview of the case. In the end, you can choose whether all WCR members via <a href='{{helpLink}}' target='_blank'>Get help</a> can access this capsule, only in your <a href='{{ngoLink}}' target='_blank'>NGO</a> via their Org Page, or if it will be displayed only on your <a href='{{profileLink}}' target='_blank'>Personal Public Profile</a>."
+  }
+}

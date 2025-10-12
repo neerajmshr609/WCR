@@ -1,0 +1,50 @@
+<div class="chat__header">
+  <div class="left-block">
+    <a
+      routerLink=""
+      class="chat__header--back-link"
+      (click)="navigateBackClickHandler()"
+    >
+      <img ngSrc="assets/icons/chevron-left.svg" class="chat__header--back" height="54" width="54" alt="Arrow back" />
+    </a>
+
+    <app-conversation-users
+      [conversation]="conversation()"
+      [type]="convertType(conversation())"
+      [currentUserId]="currentUser().id"
+      [members]="members()"
+      [conversationImage]="conversation().image"
+      [name]="conversation().name || conversation().conversation_userskill?.skill?.name"
+    ></app-conversation-users>
+  </div>
+
+
+  <!--  <div class="chat__header-empty_space"></div>-->
+  <!--  @if (activeConversationRater()?.advisorrate || conversation()?.advisorrate) {-->
+  <!--    <div-->
+  <!--      class="chat__header&#45;&#45;price"-->
+  <!--      [ngClass]="{ 'chat__header&#45;&#45;offline': !activeConversationRater().online }"-->
+  <!--    >-->
+  <!--      @if(!paymentSessionOpened()) {-->
+  <!--        <app-price-slider-->
+  <!--          [isAdvisor]="isOwnerOfIceBreaker()"-->
+  <!--          [maxPrice]="1000"-->
+  <!--          [advisorRate]="conversation()?.advisorrate || activeConversationRater()?.advisorrate"-->
+  <!--          (sliderValueChange)="onPriceChanged.emit($event)"-->
+  <!--        ></app-price-slider>-->
+  <!--      }-->
+  <!--    </div>-->
+  <!--  }-->
+  @if (!currentUser().isAnonymous) {
+    <div class="chat__header-actions">
+      <app-conversation-menu
+        [conversation]="conversation()"
+        [isVideoCallRequested]="isVideoCallRequested()"
+        (requestVideoCall)="requestVideoCall.emit()"
+      ></app-conversation-menu>
+    </div>
+  }
+
+</div>
+
+

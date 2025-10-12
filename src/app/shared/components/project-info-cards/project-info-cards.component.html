@@ -1,0 +1,26 @@
+<div class="cards-container">
+  <div
+    class="project-info-cards"
+    [ngClass]="{ 'project-info-cards--small': isSmall }"
+  >
+    <app-project-info-card-single
+      *ngFor="let card of projectCards"
+      [projectInfoCard]="card"
+      [class]="card.cardType"
+      [isSmall]="isSmall"
+    ></app-project-info-card-single>
+  </div>
+
+  <div
+    class="skills"
+    *ngIf="skillCards?.length"
+    [ngClass]="{ 'skills--small': isSmall }"
+  >
+    <app-project-info-card-single
+      *ngFor="let card of skillCards"
+      [projectInfoCard]="card"
+      [class]="card.cardType"
+      [isSmall]="isSmall"
+    ></app-project-info-card-single>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <app-close-icon (click)="close()"></app-close-icon>
+</div>
+<h2 class="modal-title" mat-dialog-title>{{ 'modal.title' | translate }}</h2>
+<mat-dialog-content>
+  <p class="create-capsule-text" [innerHTML]="'modal.text' | translate:{
+  skill: data.skill,
+  helpLink: helpLink,
+  ngoLink: ngoLink,
+  profileLink: userLink
+}"></p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <app-button size="medium" btnUIType="neutral" (click)="close()">{{ 'modal.cancel' | translate }}</app-button>
+  <app-button size="medium" btnUIType="primary" (click)="confirm()">{{ 'modal.confirm' | translate }}</app-button>
+</mat-dialog-actions>

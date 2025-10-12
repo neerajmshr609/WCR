@@ -1,0 +1,102 @@
+{
+  "profile-image": {
+    "chose-cover": "Profilbild Auswählen"
+  },
+  "is-online": {
+    "online": "jetzt online",
+    "offline": "offline"
+  },
+  "role-description": {
+    "title-placeholder": "Titel hinzufügen... (z.B. Beruf)",
+    "description-placeholder": "Bitte fügen Sie Ihre Beschreibung mit max. {{ maxSigns }} Zeichen hinzu...",
+    "max-signs-error": "Die Beschreibung darf maximal {{ maxSigns }} Zeichen enthalten"
+  },
+  "button-edit": {
+    "edit": "Bearbeiten"
+  },
+  "button-save": {
+    "save": "Speichern"
+  },
+  "recommend-or-share": {
+    "recommended": "Empfohlen",
+    "recommend": "Empfehlen",
+    "share": "Profil teilen"
+  },
+  "stats": {
+    "title": "Statistiken",
+    "connections": "Kontakte",
+    "conversations": "Dialoge",
+    "cases_reviewed": "Fälle überprüft",
+    "got_recommended": "Wurde empfohlen"
+  },
+  "profile-topics-expertise": {
+    "title": "Themen / Fachgebiete",
+    "edit-target-name": "Themen"
+  },
+  "languages": {
+    "title": "Sprachen"
+  },
+  "email-notification": {
+    "title": "Benachrichtigungen",
+    "label": "Per E-Mail",
+    "description": "Erhalten Sie eine E-Mail-Benachrichtigung, sobald ein Kunde Ihnen eine neue Nachricht sendet."
+  },
+  "profile-navigation": {
+    "weblinks": "Weblinks",
+    "ask_a_question": "Frage stellen",
+    "capsules": "Kapseln",
+    "organizations": "Organisationen"
+  },
+  "collapse-button": {
+    "expand": "Profilkarte erweitern",
+    "collapse": "Profilkarte zusammenklappen"
+  },
+  "share-profile-modal": {
+    "owner-title": "Teilen Sie Ihr {{ appTitle }}-Profil",
+    "guest-title": "Teilen Sie das {{ appTitle }}-Profil des Benutzers {{ userName }}"
+  },
+  "click-to-copy": {
+    "copied-message": "In die Zwischenablage kopiert",
+    "failed-copy-message": "Kopieren in die Zwischenablage fehlgeschlagen",
+    "btn-text": "Klicken zum Kopieren"
+  },
+  "ice-breakers-list-card": {
+     "capsule": "Kapsel",
+     "share-capsule": "Kapsel teilen",
+     "enter-chat-capsule": "Chat-Kapsel betreten",
+     "create-new-capsule": "Neue Chat-Kapsel erstellen",
+     "create-description": "Nehmen Sie an diesem interaktiven Fragebogen teil. Hören Sie zu und beantworten Sie die erscheinenden Fragen direkt im Chatraum und warten Sie auf die Antworten des Beraters - ein idealer Weg, um Ihre Probleme schnell zu lösen."
+   },
+  "review-score": {
+    "reviews": "Bewertungen"
+  },
+  "ice-breaker-share-modal": {
+     "share-your-capsule": "Getme Kapsel teilen"
+   },
+  "profile-info": {
+    "title": "ÖFFENTLICHES PROFIL",
+    "description": "Überzeug schneller mehr Neukunden von dir, indem du ihnen zeigst was wie du ihnen wirklich helfen kannst, nutze dafür Inhalte, Fragen und Feedback, um das Gespräch zu starten.",
+    "connections": "Connections",
+    "Conversations": "Echte Gespräche",
+    "my-topics": "MEINE THEMEN",
+    "languages": "SPRACHEN",
+    "online": "jetzt online",
+    "no-project-uploaded": "keine Projekte hochgeladen",
+    "team-account": "Teamkonto",
+    "ice-breakers": "Kapseln",
+    "buttons": {
+      "chose-cover": "Profilcover auswählen",
+      "recommend": "Empfehlen",
+      "share": "Profil teilen",
+      "edit": "Bearbeiten",
+      "add-favorite": "Zu Meine Connections hinzufügen",
+      "remove-connector": "Von Connections entfernen",
+      "expand": "Profilkarte erweitern",
+      "collapse": "Profilkarte zusammenklappen"
+    }
+  },
+  "preselected-content": "<strong>1. BETRETE</strong> unsere einzigartige Chatraum-Erfahrung, die als Ice Breaker fungiert.<br><strong>2. DEINE GESPRÄCHE</strong> beginnen automatisch, wo du deine erste Frage als Text- oder Sprachnachricht erhalten wirst.<br><strong>3. FAHRE FORT</strong> mit Zuschauen, Lesen, Hören & Antworten bei jedem Schritt und warte auf die Antwort deines Gegenübers. Viel Spaß!",
+  "load-more-btn": "MEHR KAPSELN VON<br> DIESEM NUTZER ANZEIGEN",
+  "perfect-opportunity": "Eine Kapsel ist die perfekte Gelegenheit, um mögliche Neukunden schnell von deinen Fähigkeiten zu überzeugen, erstelle Fragen und Inhalte die den Nutzer zum nachdenken animieren, und ein tiefgehendes Gespräche von der ersten Minute an ermöglichen.",
+  "create-interactive": "Erstelle eine interaktive Kapsel Fragebogen in einem Chatraum, um schnell mit potentielen Neukunden in Kontakt zu treten."
+}

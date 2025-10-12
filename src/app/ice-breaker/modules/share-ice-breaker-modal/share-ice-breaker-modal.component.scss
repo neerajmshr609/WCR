@@ -1,0 +1,26 @@
+@import '_variables.scss';
+@import '_mixins.scss';
+
+.ice-breaker-share-modal {
+    &_title-row {
+        display: flex;
+        gap: $--sds-size-space-400;
+        align-items: center;
+        justify-content: center;
+        padding-left: $--sds-size-space-375;
+    }
+
+    &_title {
+        color: $--sds-color-text-default-default;
+        @include heading;
+    }
+
+    &_icon {
+        width: $--sds-size-title-icon;
+        height: $--sds-size-title-icon;
+    }
+
+    &_horizontal-line {
+        padding: $--sds-size-space-200 0;
+    }
+}

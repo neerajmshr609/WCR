@@ -1,0 +1,32 @@
+@import "variables";
+
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 3.9rem;
+  border-radius: 0 0 $--sds-size-space-200 $--sds-size-space-200;
+  border: 1px solid $--sds-color-border-default-secondary;
+  background: $--sds-color-background-neutral-tertiary;
+  margin-bottom: $--sds-size-space-1200;
+}
+
+.step-btn {
+  display: flex;
+  position: relative;
+  top: 1.5rem;
+  border-radius: 0 0 $--sds-size-radius-200 $--sds-size-radius-200;
+  border-right: $--sds-size-stroke-border solid $--sds-color-border-neutral-secondary;
+  border-bottom: $--sds-size-stroke-border solid $--sds-color-border-neutral-secondary;
+  border-left: $--sds-size-stroke-border solid $--sds-color-border-neutral-secondary;
+  background: $--sds-color-background-neutral-tertiary;
+  width: 260px;
+  padding: $--sds-size-space-200 $--sds-size-space-200 $--sds-size-space-400 $--sds-size-space-200;
+  justify-content: center;
+  align-items: center;
+  gap: $--sds-size-space-200;
+
+  @media (min-width: $bp-small) {
+    width: 375px;
+  }
+}

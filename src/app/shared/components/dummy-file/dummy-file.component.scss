@@ -1,0 +1,156 @@
+:host {
+  text-align: left;
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  ::ng-deep {
+    .tabs {
+      &__content {
+        background: white;
+
+        @media (max-width: 900px) {
+          flex-grow: 1;
+        }
+      }
+
+      &__title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        padding: 0 2rem;
+        height: 3rem;
+
+        &--active {
+          background: white;
+
+          &::before {
+            height: 4px;
+            bottom: -3px;
+            left: 0;
+            width: calc(100% + 2px);
+            background: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.tabs {
+  margin: 0 auto;
+  width: 48rem;
+
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 500px) {
+    width: calc(100% - 3px);
+  }
+
+  &--small {
+    width: 100% !important;
+    padding: 1rem;
+  }
+}
+
+.explainer {
+  display: block;
+  width: 100%;
+  max-width: 48rem;
+  margin: 2rem auto;
+  height: auto;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+.dummy {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  height: 100%;
+  position: relative;
+
+  @media (max-width: 500px) {
+    gap: 1.5rem;
+  }
+
+  &--small {
+    gap: 1.5rem !important;
+  }
+
+  &__title {
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 130%;
+    grid-column: 1 / 3;
+    margin: 0;
+
+    &--small {
+      overflow: hidden;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &__description {
+    font-size: 1.6rem;
+    grid-column: 1 / 3;
+  }
+
+  &__thumb {
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    margin: 0;
+    line-height: 1.7rem;
+    font-size: 1.4rem;
+    color: blue;
+    font-weight: bold;
+    word-break: break-all;
+    text-align: left;
+    padding-bottom: 4rem;
+  }
+}
+
+.how-to-use {
+  font-weight: 700;
+  grid-column: 1 / 3;
+  align-self: end;
+  justify-self: end;
+  background: none;
+  position: absolute;
+  bottom: 1rem;
+  right: 0;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: black;
+  line-height: 4rem;
+  cursor: pointer;
+
+  mat-icon {
+    margin-left: 0.5rem;
+    font-size: 2.5rem;
+    margin-top: -2px;
+  }
+}

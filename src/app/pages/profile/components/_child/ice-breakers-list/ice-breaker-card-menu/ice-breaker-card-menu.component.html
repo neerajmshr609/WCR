@@ -1,0 +1,29 @@
+<app-button-more-vert
+  class="capsule-card_dropdown-btn"
+
+  color="#fff"
+  hoverColor="#f5f5f5"
+  activeColor="#f5f5f5"
+  backgroundColor="#cdcdcd"
+  hoverBackgroundColor="#1e1e1e"
+  activeBackgroundColor="#1e1e1e"
+  borderColor="#cdcdcd"
+  hoverBorderColor="#1e1e1e"
+  activeBorderColor="#1e1e1e"
+
+  [isActive]="isOpen()"
+  (click)="toggleDropdown()"
+  #buttonTrigger
+></app-button-more-vert>
+
+@if (isOpen()) {
+  <app-dropdown-list
+    class="capsule-card_dropdown-menu"
+    [items]="dropdownItems()"
+    alignBy="left"
+    [buttonTriggerRef]="buttonTrigger.elementRef"
+    (outsideClick)="closeDropdown()"
+    (selectedChange)="clickMenuItemHandler($event)"
+  ></app-dropdown-list>
+}
+

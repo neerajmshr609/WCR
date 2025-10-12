@@ -1,0 +1,63 @@
+@import "_variables";
+
+:host {
+  box-sizing: border-box;
+  max-width: 260px;
+  height: 42px;
+  display: block;
+}
+
+
+.expertise-card-content {
+  display: inline-flex;
+  justify-content: stretch;
+  gap: 14px;
+
+  &_icon {
+    border-radius: $--sds-size-radius-200;
+    padding: 6.72px 1px;
+    border: $--sds-size-stroke-border--solid--sds-color-border-neutral-default;
+    width: $--sds-size-icon-large;
+    height: $--sds-size-icon-large;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+
+  &_text {
+    flex-grow: 1;
+  }
+
+  &_title {
+    color: $--sds-color-text-default-default;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    font-size: $--sds-typography-body-size-small;
+    font-weight: $--sds-typography-body-font-weight-strong;
+    line-height: $line-height-224;
+  }
+
+  &_sub-title {
+    display: inline-flex;
+    gap: 4px;
+  }
+
+  &_sub-title-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &_sub-title-text {
+    color: $--sds-color-text-default-secondary;
+    font-size: $--Body-Size-XXS;
+    font-weight: $--sds-typography-weight-bold;
+    line-height: $line-height-1406;
+    letter-spacing: $--letter-spacing-3;
+    display: flex;
+    align-items: flex-end;
+  }
+}

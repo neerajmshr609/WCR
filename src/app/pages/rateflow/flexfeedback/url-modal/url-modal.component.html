@@ -1,0 +1,63 @@
+<div class="modal__container">
+
+  <div class="modal__header">
+    <button mat-icon-button mat-dialog-close class="btn--close">
+      <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+    </button>
+
+  </div>
+
+  <div class="modal__body">
+    <h1 class="modal__title">Links</h1>
+
+    <div class="description">
+      <h3 class="description__title">Description</h3>
+      <p
+        class="description__text message"
+        [class]="'message--' + feedback.local_avratingparam.color"
+      >
+        <ng-container *ngIf="feedback.text">{{ feedback.text }}</ng-container>
+        <app-audio-message
+          *ngIf="feedback.audio_message"
+          [audioMessage]="feedback.audio_message"
+          [disablePreload]="true"
+          [languages]="author.lang"
+          [canSelectLanguage]="true"
+          (selectLang)="feedback.audio_message.language = $event"
+        ></app-audio-message>
+      </p>
+
+      <div class="description__tag">
+        <div class="inner-container">
+          <p [class]="'message--' + feedback.local_avratingparam.color">
+            {{ feedback.local_avratingparam.name }}
+          </p>
+          <span>{{ feedback.avtracktimeposition | hms }}</span>
+        </div>
+      </div>
+
+      <div class="url">
+        <div class="url__body">
+          <img src="assets/linksItems.png" alt="link" height="24" width="24" />
+          <h3 class="url__title">Paste in URL below</h3>
+        </div>
+
+        <input
+          type="text"
+          class="url__input"
+          placeholder="Your URL"
+          [formControl]="url"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="modal__actions">
+    <app-button btnUIType="primary" size="medium"
+                [mat-dialog-close]="url.value"
+                [disabled]="!url.valid">
+      Save
+    </app-button>
+
+  </div>
+</div>

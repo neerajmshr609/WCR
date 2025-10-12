@@ -1,0 +1,17 @@
+@if (collapsed()) {
+  <app-icon-chevrons-down
+    class="collapse-button_icon"
+    color="{{chevronsColor}}"
+  ></app-icon-chevrons-down>
+  <span
+    class="collapse-button_text"
+  >{{ 'collapse-button.expand' | translate }}</span>
+} @else {
+  <app-icon-chevrons-up
+    class="collapse-button_icon"
+    color="{{chevronsColor}}"
+  ></app-icon-chevrons-up>
+  <span
+    class="collapse-button_text"
+  >{{ 'collapse-button.collapse' | translate }}</span>
+}

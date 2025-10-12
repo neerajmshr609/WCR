@@ -1,0 +1,17 @@
+@import '_variables';
+.profile-feedbacks {
+  display: grid;
+  gap: 4rem;
+  justify-content: left;
+  margin-top: 2rem;
+  margin-right: 4rem;
+  background: #f7f7f7;
+  grid-template-columns: repeat(auto-fit, minmax(375px, 395px));
+  padding-bottom: 10rem;
+  @media only screen and (max-width: $bp-small) {
+    justify-items: center;
+    margin: 1rem;
+    grid-template-columns: 1fr;
+    padding-bottom: 1rem;
+  }
+}

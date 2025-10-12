@@ -1,0 +1,48 @@
+<div class="projects">
+  <app-main-content-menu
+    [menuItems]="menuItems"
+  ></app-main-content-menu>
+
+  <div class="cards-grid" *ngIf="!menuItem.param">
+    <app-intro-card></app-intro-card>
+
+    <app-small-spinner [diameter]="30" *ngIf="!projects"></app-small-spinner>
+
+    <div class="project" *ngFor="let project of projects">
+      <app-project-card
+        (deleteUpdate)="confirmDeleteDialog($event)"
+        [project]="project"
+      ></app-project-card>
+    </div>
+
+    <div class="project project--upload">
+      <app-project-card [isUploadPlaceholder]="true"></app-project-card>
+    </div>
+  </div>
+
+  <div class="cards-grid" *ngIf="menuItem.param === channels.choosethebest">
+    <div class="project project-ctb" *ngFor="let project of ctbProjects">
+      <app-item-ctb-media-view
+        [readonly]="true"
+        [projects]="projects"
+        [files]="project.projectfiles"
+      ></app-item-ctb-media-view>
+    </div>
+  </div>
+
+  <div
+    class="cards-grid"
+    *ngIf="currentUser && menuItem.param === channels.presenterquestion"
+  >
+    <div *ngFor="let collection of pqaCollections">
+      <app-pqa-card [PQACard]="collection"></app-pqa-card>
+    </div>
+  </div>
+</div>
+
+<app-helpnavigation
+  page="my-projects"
+  url="SmAEC1GlGio"
+  class="blue"
+></app-helpnavigation>
+<app-onboarding-presentation [flow]="'projects'"></app-onboarding-presentation>

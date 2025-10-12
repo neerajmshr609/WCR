@@ -1,0 +1,331 @@
+@import 'variables';
+
+:host {
+  height: fit-content;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0px 0.4px 2px rgb(0 0 0 / 25%);
+}
+
+.rateback-summary-card {
+  box-shadow: 0px 0.4px 2px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  min-height: 53rem;
+  background-color: white;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__payment-form {
+    margin-top: 1rem;
+    padding: 0 3rem;
+  }
+
+  &--unhelpful &,
+  &--discouraging & {
+    &__message {
+      grid-template-rows: 1fr max-content;
+    }
+
+    &__actions {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      padding: 1rem 4rem;
+    }
+  }
+
+  &__main-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+
+  &__text {
+    &-top {
+      color: $--sds-color-grey-500;
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 500;
+    }
+
+    &-middle {
+      font-size: 1.6rem;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    &-bottom {
+      margin-top: 2.8rem;
+      text-transform: uppercase;
+      color: $feed-light-gray-text;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-align: center;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    text-align: center;
+
+    img {
+      width: 55%;
+      height: auto;
+    }
+  }
+
+  &__slider {
+    width: 100%;
+    padding: 3rem;
+
+    &.disabled {
+      position: relative;
+      opacity: 0.5;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: '';
+        z-index: 3;
+      }
+    }
+  }
+
+  &__header {
+    padding: 1.8rem;
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-align: center;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  &__ratebacks {
+    padding: 5rem 2rem 0;
+  }
+
+  &__message {
+    display: grid;
+    flex-direction: column;
+    grid-template-rows: 1fr max-content;
+    align-items: center;
+    flex-grow: 1;
+
+    p {
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 20px;
+      text-align: center;
+      padding: 1rem 4rem 1rem;
+    }
+
+    h2 {
+      text-align: center;
+      color: $--sds-color-grey-500;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    &--advisor-payment {
+      font-size: 8rem;
+      color: black !important;
+    }
+  }
+
+  &__btn {
+    font-family: 'Poppins';
+    font-size: 2.6rem;
+    padding: 1.5rem;
+    display: block;
+    text-align: center;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: white;
+    background: #ddd;
+
+    &--fz {
+      font-size: 2rem;
+    }
+
+    &--green {
+      cursor: pointer;
+      background: $feed-accent-green;
+    }
+
+    &--yellow {
+      background-color: $feed-accent-ember;
+      cursor: default;
+    }
+
+    &--red {
+      background-color: $feed-accent-red;
+      cursor: default;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+    }
+  }
+
+  &__payment {
+    label {
+      font-family: 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 16px;
+      font-variant: normal;
+      padding: 0;
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    label {
+      font-weight: 500;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    #card-element {
+      width: calc(100% - 4rem);
+      margin: 0 auto 1rem;
+    }
+
+    #card-errors {
+      height: 20px;
+      padding: 4px 0;
+      color: #fa755a;
+    }
+
+    .form-row {
+      width: 70%;
+      float: left;
+    }
+
+    .token {
+      color: #32325d;
+      font-family: 'Source Code Pro', monospace;
+      font-weight: 500;
+    }
+
+    .wrapper {
+      width: 90%;
+      margin: 0 auto;
+      height: 100%;
+    }
+
+    #stripe-token-handler {
+      position: absolute;
+      top: 0;
+      left: 25%;
+      right: 25%;
+      padding: 20px 30px;
+      border-radius: 0 0 4px 4px;
+      box-sizing: border-box;
+      box-shadow:
+        0 50px 100px rgba(50, 50, 93, 0.1),
+        0 15px 35px rgba(50, 50, 93, 0.15),
+        0 5px 15px rgba(0, 0, 0, 0.1);
+      -webkit-transition: all 500ms ease-in-out;
+      transition: all 500ms ease-in-out;
+      transform: translateY(0);
+      opacity: 1;
+      background-color: white;
+    }
+
+    #stripe-token-handler.is-hidden {
+      opacity: 0;
+      transform: translateY(-80px);
+    }
+
+    /**
+     * The CSS shown here will not be introduced in the Quickstart guide, but shows
+     * how you can use CSS to style your Element's container.
+     */
+    .StripeElement {
+      background-color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      box-shadow: 0 1px 3px 0 #e6ebf1;
+      -webkit-transition: box-shadow 150ms ease;
+      transition: box-shadow 150ms ease;
+    }
+
+    .StripeElement--focus {
+      box-shadow: 0 1px 3px 0 #cfd7df;
+    }
+
+    .StripeElement--invalid {
+      border-color: #fa755a;
+    }
+
+    .StripeElement--webkit-autofill {
+      background-color: #fefde5 !important;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 3.2rem;
+  }
+
+  &__small-btn {
+    padding: 1.2rem 2.4rem;
+    border-radius: 8px;
+    border: 3px solid;
+    margin: 0 1.6rem;
+    background: #fff;
+    font-weight: bold;
+    font-size: 1.4rem;
+    line-height: 140.19%;
+    cursor: pointer;
+
+    &--disconnect {
+      border-color: $feed-accent-red;
+      color: $feed-accent-red;
+    }
+
+    &--connect {
+      border-color: $feed-accent-green;
+      color: $feed-accent-green;
+    }
+  }
+
+  &__text {
+    &--uppercase {
+      text-transform: uppercase;
+      font-weight: bold !important;
+      font-size: 2.2rem !important;
+      line-height: 137.69% !important;
+    }
+  }
+
+  &__img {
+  }
+}
+
+.error {
+  color: red;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+app-tips {
+  width: 100%;
+}

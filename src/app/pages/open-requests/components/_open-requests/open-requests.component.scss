@@ -1,0 +1,48 @@
+@import "_variables";
+@import "_mixins";
+
+:host {
+  @include pageContent;
+  padding: 0 1.2rem;
+
+  @media screen and (min-width: $desktop) {
+    padding-top: $--sds-size-space-1200;
+  }
+}
+
+.open-request {
+
+  &_header-menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  &_cards-container {
+    gap: $--sds-size-space-1100;
+    margin-top: 4.8rem;
+
+    @media (min-width: $desktop) {
+      width: 1280px;
+    };
+  }
+
+  &_loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 0;
+  }
+}
+
+app-skill-filter {
+  @media (min-width: $desktop) {
+    width: 1280px;
+  };
+}
+
+
+app-typing-card {
+  min-height: 400px;
+}

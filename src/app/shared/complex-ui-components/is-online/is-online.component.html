@@ -1,0 +1,11 @@
+@if (isOnline()?.online) {
+  {{ 'is-online.online' | translate }}
+  <app-icon-wifi
+    class="is-online_icon"
+  ></app-icon-wifi>
+} @else {
+  {{ 'is-online.offline' | translate }}
+  <app-icon-wifi-off
+    class="is-online_icon"
+  ></app-icon-wifi-off>
+}

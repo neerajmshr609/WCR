@@ -1,0 +1,8 @@
+<div class="search-bar" *ngIf="currentPage">
+  <app-search-bar-categories
+    *ngIf="currentPage === 'publicfeed' || currentPage === 'creatives'"
+  ></app-search-bar-categories>
+  <app-search-bar-skills
+    *ngIf="currentPage === 'advisors'"
+  ></app-search-bar-skills>
+</div>

@@ -1,0 +1,31 @@
+<div class="insights">
+  <div class="navigation-wrap">
+    <svg routerLink="/insights">
+      <use xlink:href="assets/feather-icon-defs.svg#icon-arrow-left"></use>
+    </svg>
+
+    <div class="header-wrap">
+      <div class="insights__project-header" *ngIf="project">
+        <h1>{{ project.title ? project.title : 'Untitled' }}</h1>
+        <div class="insights__project-header--badge-line">
+          <p class="insights__project-header--badge-line__badge">
+            {{ project.projectfiles.length }} FILE
+            {{ project.projectfiles.length > 1 ? 'S' : '' }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <svg class="share">
+      <use xlink:href="assets/feather-icon-defs.svg#icon-share-2"></use>
+    </svg>
+  </div>
+
+  <div class="insights__content">
+    <app-insights-newsfeed
+      *ngIf="project"
+      [activeInsightsChannel]="activeInsightsChannel"
+      [project]="project"
+    ></app-insights-newsfeed>
+  </div>
+</div>

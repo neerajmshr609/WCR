@@ -1,0 +1,245 @@
+@import "variables";
+
+
+:host {
+  display: flex;
+}
+
+.btn-entity {
+  display: inline-flex;
+  flex: 1;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: $--sds-size-radius-200;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+
+  &.large {
+
+    padding: 1.6rem 2.4rem;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 100%;
+    min-height: 4.8rem;
+    height: fit-content;
+  }
+
+  &.medium {
+    padding: $--sds-size-space-300;
+    height: 4rem;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 100%;
+  }
+
+  &.small {
+    padding: $--sds-size-space-200;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 100%;
+  }
+
+  &.primary {
+    color: $--sds-color-text-brand-on-brand;
+    border: $--sds-size-stroke-border solid $--sds-color-border-brand-default;
+    background: $--sds-color-background-brand-default;
+
+    &:hover {
+      border: $--sds-size-stroke-border solid $--sds-color-border-brand-default;
+      background: $--sds-color-background-brand-hover;
+      color: $--sds-color-text-brand-on-brand;
+    }
+  ;
+
+    &[disabled] {
+      border: $--sds-size-stroke-border solid $--sds-color-border-disabled-default;
+      background: $--sds-color-background-disabled-default;
+      color: $--sds-color-text-disabled-default;
+    }
+
+    &.selected {
+      border: $--sds-size-stroke-border solid $--sds-color-blue-800;
+      background: $--sds-color-blue-800;
+      color: $--sds-color-text-brand-on-brand;
+    }
+  }
+
+  &.neutral {
+    color: $--sds-color-text-default-default;
+    border: $--sds-size-stroke-border solid $--sds-color-border-neutral-secondary;
+    background: $--sds-color-background-neutral-tertiary;
+
+    &:hover {
+      border: $--sds-size-stroke-border solid $--sds-color-border-neutral-secondary;
+      background: $--sds-color-background-neutral-tertiary-hover;
+      color: $--sds-color-text-default-default;
+
+    }
+
+    &[disabled] {
+      border: $--sds-size-stroke-border solid $--sds-color-border-disabled-default;
+      background: $--sds-color-background-disabled-default;
+      color: $--sds-color-text-disabled-default;
+    }
+
+    &.selected {
+      border: $--sds-size-stroke-border solid $--sds-color-blue-800;
+      background: $--sds-color-background-neutral-tertiary;
+      color: $--sds-color-text-neutral-tertiary;
+    }
+    &.rounded {
+      border-radius: $--sds-size-radius-full;
+    }
+  }
+
+  &.subtle {
+    color: $--sds-color-text-neutral-default;
+    border: $--sds-size-stroke-border--solid--sds-color-background-default-default;
+    background: $--sds-color-background-default-default;
+
+    &:hover {
+      border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+      color: $--sds-color-text-default-default;
+    }
+
+    &[disabled] {
+      border: $--sds-size-stroke-border solid $--sds-color-border-disabled-default;
+      background: $--sds-color-background-disabled-default;
+      color: $--sds-color-text-disabled-default;
+    }
+
+    &.selected {
+    }
+  }
+
+  &.danger {
+    border: $--sds-size-stroke-border solid $--sds-color-border-danger-secondary;
+    background: $--sds-color-background-danger-default;
+    color: $--sds-color-text-danger-on-danger;
+
+    &.primary {
+      border: $--sds-size-stroke-border solid $--sds-color-border-danger-secondary;
+      background: $--sds-color-background-danger-default;
+      color: $--sds-color-text-danger-on-danger;
+
+      &:hover {
+        border: $--sds-size-stroke-border solid $--sds-color-border-danger-default;
+        background: $--sds-color-background-danger-default-hover;
+        color: $--sds-color-text-danger-on-danger;
+      }
+
+      &[disabled] {
+        border: $--sds-size-stroke-border solid $--sds-color-border-disabled-default;
+        background: $--sds-color-background-disabled-default;
+        color: $--sds-color-text-disabled-on-disabled;
+      }
+    }
+
+  }
+
+  &.danger {
+    &.subtle {
+      color: $--sds-color-text-danger-default;
+      background: none;
+      border: none;
+
+      &:hover {
+        border: $--sds-size-stroke-border solid $--sds-color-border-danger-default;
+        background: $--sds-color-background-danger-tertiary-hover;
+        color: $--sds-color-text-danger-default;
+      }
+
+      &[disabled] {
+        border: $--sds-size-stroke-border solid $--sds-color-border-disabled-default;
+        background: $--sds-color-background-disabled-default;
+        color: $--sds-color-text-disabled-default;
+      }
+    }
+  }
+
+  &.icon {
+    border-radius: $--sds-size-radius-200;
+
+    &.rounded {
+      border-radius: $--sds-size-radius-full;
+    }
+
+    * {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &.large {
+      width: 5.2rem;
+      height: 5.2rem;
+      padding: 1.2rem;
+
+    }
+
+    &.medium {
+      width: 4.4rem;
+      height: 4.4rem;
+      padding: 1.6rem;
+    }
+
+    &.small {
+      width: 3.6rem;
+      height: 3.6rem;
+      padding: 0.8rem;
+    }
+
+    &.primary {
+      border: $--sds-size-stroke-border solid $--sds-color-border-brand-default;
+      background: $--sds-color-background-brand-default;
+
+      &:hover {
+        border: $--sds-size-stroke-border solid $--sds-color-border-brand-default;
+        background: $--sds-color-background-brand-hover;
+      }
+
+      &[disabled] {
+        border: $--sds-size-stroke-border solid $--sds-color-border-disabled-default;
+        background: $--sds-color-background-disabled-default;
+      }
+    }
+
+    &.neutral {
+      border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+      background: $--sds-color-background-default-secondary;
+
+      &:hover {
+        border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+        background: $--sds-color-background-default-secondary-hover;
+      }
+
+      &[disabled] {
+        border: $--sds-size-stroke-border solid $--sds-color-border-disabled-default;
+        background: $--sds-color-background-disabled-default;
+      }
+    }
+
+    &.subtle {
+      border: none;
+      background: none;
+
+      &:hover {
+        background: $--sds-color-background-default-default-hover;
+      }
+
+      &[disabled] {
+        border: $--sds-size-stroke-border solid $--sds-color-border-disabled-default;
+        background: $--sds-color-background-disabled-default;
+      }
+    }
+  }
+}

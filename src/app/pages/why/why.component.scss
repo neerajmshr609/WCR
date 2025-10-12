@@ -1,0 +1,57 @@
+@import '_variables';
+@import '_mixins';
+
+.why {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: $--sds-size-space-400;
+
+  @media only screen and (min-width: $bp-large) {
+    padding-top: $--sds-size-space-1000;
+  }
+}
+
+.subtitle-mobile-card {
+  display: none;
+  @media screen and (max-width: $bp-small) {
+    display: block;
+  }
+}
+
+
+.get-help-btn {
+  &_icon {
+    width: 1.778rem;
+    height: 1.778rem;
+    margin-right: $--sds-size-space-200;
+  }
+}
+
+.cards {
+  display: grid;
+  gap: $--sds-size-space-400;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  margin-top: $--sds-size-space-200;
+  padding: $--sds-size-space-400;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media screen and (min-width: $bp-medium) {
+  .cards {
+    width: auto;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .cards {
+    grid-template-columns: repeat(3, 285px);
+    gap: 83px;
+    justify-content: center;
+  }
+}

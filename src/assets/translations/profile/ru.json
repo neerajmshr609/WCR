@@ -1,0 +1,102 @@
+{
+  "profile-image": {
+    "chose-cover": "Выберете Обложку Профиля"
+  },
+  "is-online": {
+    "online": "сейчас онлайн",
+    "offline": "не в сети"
+  },
+  "role-description": {
+    "title-placeholder": "Добавьте заголовок... (например, профессия)",
+    "description-placeholder": "Пожалуйста, добавьте описание макс. {{ maxSigns }} знаков...",
+    "max-signs-error": "Описание должно содержать не больше {{ maxSigns }} символов"
+  },
+  "button-edit": {
+    "edit": "Редактировать"
+  },
+  "button-save": {
+    "save": "Сохранить"
+  },
+  "recommend-or-share": {
+    "recommended": "Рекомендовано",
+    "recommend": "Рекомендовать",
+    "share": "Поделиться<br/>профилем"
+  },
+  "stats": {
+    "title": "Статистика",
+    "connections": "Контакты",
+    "conversations": "Диалоги",
+    "cases_reviewed": "Рассмотренные дела",
+    "got_recommended": "Получено рекомендаций"
+  },
+  "profile-topics-expertise": {
+    "title": "Темы / Экспертиза",
+    "edit-target-name": "Темы"
+  },
+  "languages": {
+    "title": "Языки"
+  },
+  "email-notification": {
+    "title": "Уведомления",
+    "label": "По электронной почте",
+    "description": "Получайте уведомление по электронной почте, когда клиент отправляет вам новое сообщение."
+  },
+  "profile-navigation": {
+    "weblinks": "Веб-ссылки",
+    "ask_a_question": "Задать вопрос",
+    "capsules": "Капсулы",
+    "organizations": "Организации"
+  },
+  "collapse-button": {
+    "expand": "Развернуть карточку профиля",
+    "collapse": "Свернуть карточку профиля"
+  },
+  "share-profile-modal": {
+    "owner-title": "Поделитесь своим профилем {{ appTitle }}",
+    "guest-title": "Поделитесь профилем {{ appTitle }} пользователя {{ userName }}"
+  },
+  "click-to-copy": {
+    "btn-text": "Нажмите, чтобы скопировать",
+    "copied-message": "Скопировано в буфер обмена",
+    "failed-copy-message": "Не удалось скопировать в буфер обмена"
+  },
+  "ice-breakers-list-card": {
+     "capsule": "Капсула",
+     "share-capsule": "Поделиться капсулой",
+     "enter-chat-capsule": "Войти в чат-капсулу",
+     "create-new-capsule": "Создать новую чат-капсулу",
+     "create-description": "Войдите в этот интерактивный опросник. Отвечайте на появляющиеся вопросы прямо в чате и получайте ответы от консультанта - идеальный способ быстро начать решать ваши проблемы."
+   },
+  "review-score": {
+    "reviews": "отзывов"
+  },
+  "ice-breaker-share-modal": {
+     "share-your-capsule": "Поделиться Getme Капсулем"
+   },
+  "profile-info": {
+    "title": "ПУБЛИЧНЫЙ ПРОФИЛЬ",
+    "description": "Быстрее завоевывайте перспективы, добавляя ценность сначала с помощью контента, вопросов и обратной связи для начала беседы.",
+    "connections": "Связи",
+    "Conversations": "Реальные беседы",
+    "my-topics": "МОИ ТЕМЫ",
+    "languages": "ЯЗЫКИ",
+    "online": "сейчас онлайн",
+    "no-project-uploaded": "проекты не загружены",
+    "team-account": "командный аккаунт",
+    "ice-breakers": "Capsule",
+    "buttons": {
+      "chose-cover": "Выбрать обложку профиля",
+      "recommend": "Рекомендовать",
+      "share": "Поделиться профилем",
+      "edit": "Редактировать",
+      "add-favorite": "Добавить в мои связи",
+      "remove-connector": "Удалить из связей",
+      "expand": "Развернуть карточку профиля",
+      "collapse": "Свернуть карточку профиля"
+    }
+  },
+  "preselected-content": "<strong>1. ВОЙДИТЕ</strong> в наш уникальный чат, который служит Capsule.<br><strong>2. ВАШИ БЕСЕДЫ</strong> начнутся автоматически, и вы получите первый вопрос в виде текста или голосового сообщения.<br><strong>3. ПРОДОЛЖАЙТЕ</strong> смотреть, читать, слушать и отвечать на каждом шагу и ждите ответа от вашего собеседника. Получайте удовольствие!",
+  "load-more-btn": "ЗАГРУЗИТЬ БОЛЬШЕ CAPSULE<br>ОТ ЭТОГО СОЕДИНЕНИЯ",
+  "perfect-opportunity": "Capsule - идеальная возможность быстро привлечь ваши связи, подготовив набор вопросов с контентом для начала беседы.",
+  "create-interactive": "Создайте интерактивный опросник Capsule в чате, чтобы быстро взаимодействовать со своими связями."
+}

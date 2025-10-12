@@ -1,0 +1,9 @@
+<span class="highlighted-reply">
+  @if(answerId() === 1){
+    <app-check-icon [fill]="'#1E1E1E'"></app-check-icon>
+  }
+  <span>{{getOptionValue() | translate}}</span>
+  @if(answerId() === 2){
+  <app-no-x-icon></app-no-x-icon>
+  }
+</span>

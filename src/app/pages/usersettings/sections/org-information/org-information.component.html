@@ -1,0 +1,26 @@
+<div>
+  <app-section-header [title]="'organization_title' | translate">
+    <app-organization-icon></app-organization-icon>
+  </app-section-header>
+
+  <app-org-form
+    [orgatizationData]="organization()"
+    [form]="form"
+    [avatars]="formData.avatars"
+    [formData]="formData"
+    (selectAvatar)="selectAvatar($event)"
+    (openUploader)="openUploader($event)"
+  ></app-org-form>
+</div>
+
+<div class="landing-page-wraper">
+  <app-section-header [title]="'organization_landing_page_title' | translate">
+    <app-landing-page-icon></app-landing-page-icon>
+  </app-section-header>
+  <app-landing-form
+    [orgatizationData]="organization()"
+    (saveOrgChanges)="saveOrgChanges($event)"
+  ></app-landing-form>
+</div>
+
+<app-org-skills [org]="organization()"></app-org-skills>

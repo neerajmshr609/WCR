@@ -1,0 +1,180 @@
+<div class="stats" [ngClass]="{ 'stats--expanded': expanded }">
+  <div class="stats__item overview">
+    <div>
+      <span>{{ 'stats.last_interaction' | translate }}</span>
+      <span>{{
+          (feedbackPath$?.value === 'my_advice' ? 'stats.total_income' : 'stats.spent_total') | translate
+      }}</span>
+      <span>{{ 'stats.time_spent' | translate }} </span>
+      <span>{{ 'stats.hourly_rate' | translate }} </span>
+    </div>
+    <div *ngIf="stats?.data as data">
+      <span>{{
+        data.last_interaction
+          ? (data.last_interaction | date: 'MMM d, y, h:mm a')
+          : ( 'stats.no_last_interaction' | translate )
+      }}</span>
+      <span>{{
+        (feedbackPath$?.value === 'my_advice'
+          ? data.income_total
+          : data.spent_total) / 100 | euroCurrency
+      }}</span>
+      <span>{{ data.time_spent | hms }}</span>
+      <span>{{ advisorRate | euroCurrency }}</span>
+    </div>
+  </div>
+
+  <div class="stats__item faces">
+    <app-rateback-selector
+      [readonly]="true"
+      [isSmall]="true"
+      [isFilledIcon]="true"
+      [ratebacks]="stats?.data?.ratebacks"
+    ></app-rateback-selector>
+  </div>
+
+  <ng-container *ngIf="expanded">
+    <div class="stats__item total-scores">
+      <p class="title">{{ 'stats.total_score' | translate }}</p>
+
+      <div class="skill-card-list">
+        <p class="skill-card-list__tag">
+          {{ 'stats.knowledge' | translate }}
+          <span [appScoreColor]="selectedReview.instant_score.knowledge_rate">
+            {{ selectedReview.instant_score.knowledge_rate | projectScore }}
+          </span>
+        </p>
+        <p class="skill-card-list__tag">
+          {{ 'stats.explanation' | translate }}
+          <span [appScoreColor]="selectedReview.instant_score.explanation_rate">
+            {{ selectedReview.instant_score.explanation_rate | projectScore }}
+          </span>
+        </p>
+        <p class="skill-card-list__tag">
+          {{ 'stats.pronunciation' | translate }}
+          <span
+            [appScoreColor]="selectedReview.instant_score.pronunciation_rate"
+          >
+            {{ selectedReview.instant_score.pronunciation_rate | projectScore }}
+          </span>
+        </p>
+        <p class="skill-card-list__tag">
+          {{ 'stats.politeness' | translate }}
+          <span [appScoreColor]="selectedReview.instant_score.politeness_rate">
+            {{ selectedReview.instant_score.politeness_rate | projectScore }}
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <div class="stats__item reviews">
+      <div class="review">
+        <div>
+          <div class="review__skill">
+            <img
+              *ngIf="selectedReview?.skills[0] as skill"
+              [src]="skill.image"
+              alt=""
+            />
+          </div>
+
+          <div class="review__switch">
+            <button
+              class="review__switch-btn"
+              [disabled]="!selectedReview?.positive_comment"
+              (click)="switchComment('positive')"
+              [ngClass]="{
+                'review__switch-btn--selected':
+                  selectedComment === 'positive_comment',
+              }"
+            >
+              <img src="assets/advisors/positive-feedback.svg" alt="" />
+            </button>
+
+            <button
+              class="review__switch-btn review__switch-btn--right"
+              [disabled]="!selectedReview?.negative_comment"
+              (click)="switchComment('negative')"
+              [ngClass]="{
+                'review__switch-btn--selected':
+                  selectedComment === 'negative_comment',
+              }"
+            >
+              <img src="assets/advisors/negative-feedback.svg" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="review__title">
+            <ng-container *ngIf="selectedReview">
+              <ng-container
+                *ngIf="selectedReview.skills[0] as skill; else noSkillTpl"
+                >{{ skill.name }}</ng-container
+              >
+              <ng-template #noSkillTpl>{{'stats.no_skill' | translate}}</ng-template>
+            </ng-container>
+          </h3>
+
+          <div class="review__text">
+            <p class="review__text-title" *ngIf="selectedReview">
+              <ng-container
+                *ngIf="selectedComment === 'positive_comment'; else negativeTpl"
+                >{{ 'stats.stands_out' | translate }}</ng-container
+              >
+              <ng-template #negativeTpl>{{ 'stats.could_be_improved' | translate }}</ng-template>
+            </p>
+            <p
+              class="review__text-content"
+              [ngClass]="{ 'review__text-content--small': !!selectedReview }"
+            >
+              {{
+                selectedReview
+                  ? selectedReview[selectedComment]
+                  : ('stats.no_reviews' | translate)
+              }}
+            </p>
+          </div>
+        </div>
+
+        <div class="review__btns">
+          <button
+            class="review__arrow-btn"
+            [disabled]="!reviews.length || selectedReviewIndex === 0"
+            (click)="changeReview(-1)"
+          >
+            <div class="review__arrow-btn-icon">
+              <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+            </div>
+          </button>
+          <button
+            class="review__arrow-btn review__arrow-btn--rotate"
+            [disabled]="
+              !reviews.length || selectedReviewIndex === reviews.length - 1
+            "
+            (click)="changeReview(1)"
+          >
+            <div class="review__arrow-btn-icon">
+              <mat-icon fontSet="material-icons-round">arrow_back</mat-icon>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="more" (click)="expandMoreInfo()">
+    <p class="more__text more__text--big">
+      {{ (expanded ? 'stats.less_info' : 'stats.more_info') | translate }}
+    </p>
+    <p class="more__text more__text--small">
+      {{ (expanded ? 'stats.hide_analytics' : 'stats.show_analytics') | translate }}
+    </p>
+    <img
+      height="24"
+      src="assets/conversations/chevrons.svg"
+      class="more__arrow"
+      [ngClass]="{ 'more__arrow--expanded': expanded }"
+    />
+  </div>
+</div>

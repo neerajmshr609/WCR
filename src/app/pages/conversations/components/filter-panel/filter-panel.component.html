@@ -1,0 +1,11 @@
+<form [formGroup]="filtersForm" class="filters">
+  <app-type-multi-select formControlName="types" [items]="filterItems()">
+    <app-search
+      [control]="filtersForm.get('search')"
+      [placeholder]="'filters.search' | translate"
+    ></app-search>
+    <button class="add-new" (click)="addNewConversation()">
+      <app-plus-icon strokeWidth="3"></app-plus-icon>
+    </button>
+  </app-type-multi-select>
+</form>

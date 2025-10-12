@@ -1,0 +1,28 @@
+:host {
+  font-size: 1.4rem;
+
+  ::ng-deep {
+    th,
+    td {
+      padding: 3px 15px;
+    }
+
+    .mat-form-field-prefix {
+      padding-right: 6px;
+    }
+  }
+}
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  display: block;
+  width: 100%;
+}
+
+mat-dialog-actions {
+  justify-content: flex-end;
+}

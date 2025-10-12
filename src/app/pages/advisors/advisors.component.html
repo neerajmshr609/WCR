@@ -1,0 +1,57 @@
+<div class="advisors">
+  <div
+    class="search-bar"
+    *ngIf="isSmallScreen && (selectedSkills$ | async).length"
+  >
+    <app-search-bar></app-search-bar>
+  </div>
+
+  <section class="search-result">
+    <app-search-results></app-search-results>
+  </section>
+  <ng-container *ngIf="!(selectedSkills$ | async).length">
+    <section class="skill-select-container">
+      <app-select-skill-container
+        [isLoading]="isLoading"
+        (pickedSkill)="pickedSkills($event)"
+      >
+        <ng-container header-illustration>
+          <img
+            height="70"
+            src="assets/header/advisors.svg"
+            alt="Skill illustration"
+          />
+        </ng-container>
+        <ng-container header-text>
+          Choose a topic that matches your question
+        </ng-container>
+        <ng-container sub-header-text>
+          You must first select a topic or software before contacting potential
+          advisors.
+        </ng-container>
+      </app-select-skill-container>
+    </section>
+  </ng-container>
+
+  <ng-container *ngIf="selectedSkills$ | async as selectedSkills">
+    <ng-container *ngIf="selectedSkills.length">
+      <div class="cards-grid">
+        <app-advisor-card
+          *ngFor="let advisor of filteredAdvisors"
+          [currentUser]="currentUser"
+          [advisor]="advisor"
+          [pickedSkill]="selectedSkills[0]"
+          [sortSkillsChange]="sortSkillsChange.asObservable()"
+          [currentUserProjects]="currentUserProjects"
+          (pinToTop)="onPinToTop()"
+        ></app-advisor-card>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+
+<app-helpnavigation
+  url="3xrIQ1O1nW0"
+  page="advisors"
+  class="yellow"
+></app-helpnavigation>

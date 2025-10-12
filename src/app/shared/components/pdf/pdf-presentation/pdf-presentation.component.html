@@ -1,0 +1,13 @@
+<div class="pdf" [ngClass]="{ 'pdf--center': !loaded }">
+  <app-load-pdf-btn (clicked)="load()" *ngIf="!loaded"></app-load-pdf-btn>
+
+  <div class="pdf__viewr">
+    <pdf-viewer
+      *ngIf="loaded"
+      [src]="file.url"
+      [render-text]="true"
+      [original-size]="false"
+      style="display: block"
+    ></pdf-viewer>
+  </div>
+</div>

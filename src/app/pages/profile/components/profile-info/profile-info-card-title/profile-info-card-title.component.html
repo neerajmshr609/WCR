@@ -1,0 +1,23 @@
+<app-conversation-image
+  [images]="images()"
+></app-conversation-image>
+
+<div class="card-title">
+  <div class="card-title_name">
+    {{ name() }}
+  </div>
+  <div class="card-title_sub-name">
+    @if (!isOrganizationMember()) {
+      <app-user-icon
+        class="sub-name_icon"
+      ></app-user-icon>
+    }
+    <span
+      class="sub-name_text"
+    >{{ subName() }}</span>
+  </div>
+</div>
+
+<app-is-online
+  [isOnline]="profile()"
+></app-is-online>

@@ -1,0 +1,323 @@
+{
+  "adding_user": {
+    "add_people": "Добавить людей в чат внутренней команды",
+    "name_groups_emails": "Имя, группы или электронные адреса",
+    "e_g": "например",
+    "note": {
+      "title": "Примечание",
+      "text": "Клиенты не могут читать этот чат, его цель - обсудить ситуацию клиентов с большим количеством людей. Пожалуйста, обращайтесь со всей личной информацией осторожно."
+    },
+    "protection": {
+      "protected_by": "ЭТОТ САЙТ ЗАЩИЩЕН RECAPTCHA И НАШЕЙ",
+      "privacy_policy": "политикой конфиденциальности",
+      "and": "И",
+      "terms_of_service": "условиями обслуживания",
+      "apply": "ПРИМЕНЯЮТСЯ"
+    },
+    "cancel_button_text": "Отмена",
+    "add_button_text": "Добавить"
+  },
+  "price-slider": {
+    "change_hourly_rate": "ИЗМЕНИТЬ ПОЧАСОВУЮ СТАВКУ"
+  },
+  "conversation_menu": {
+    "tasks": "Задачи",
+    "accept_case": "Принять дело",
+    "reject_case": "Отклонить дело",
+    "accept_case_description": "Вы берете на себя ответственность за этого человека или семью. Вы отвечаете за их поддержку и данные.",
+    "reject_case_description": "Запрос исчезает с вашей доски. Они получат короткое сообщение.",
+    "escalate_case": "Эскалировать",
+    "video_call_request": "Запросить видеозвонок",
+    "video_call_requested": "Видеозвонок запрошен",
+    "video_call_request_icon_alt": "Иллюстрация видеокамеры",
+    "add_user_title": "Добавить консультанта в чат клиента",
+    "add_user_description": "Люди, которых вы добавляете таким образом, могут напрямую общаться с клиентом."
+  },
+  "user_context_form": {
+    "title": "Начните ваш запрос",
+    "progress_text": "из 4 обязательных полей заполнено",
+    "countries": {
+      "ukraine": "Украина",
+      "syria": "Сирия",
+      "afghanistan": "Афганистан",
+      "turkey": "Турция",
+      "poland": "Польша",
+      "romania": "Румыния",
+      "other": "Другое"
+    },
+    "residence_areas": {
+      "bavaria": "Бавария",
+      "berlin": "Берлин",
+      "baden_wuerttemberg": "Баден-Вюртемберг",
+      "north_rhine_westphalia": "Северный Рейн-Вестфалия",
+      "schleswig_holstein": "Шлезвиг-Гольштейн",
+      "lower_saxony": "Нижняя Саксония",
+      "mecklenburg_western_pomerania": "Мекленбург-Передняя Померания",
+      "saxony": "Саксония",
+      "hesse": "Гессен",
+      "rhineland_palatinate": "Рейнланд-Пфальц",
+      "brandenburg": "Бранденбург",
+      "thuringia": "Тюрингия",
+      "hamburg": "Гамбург",
+      "saxony_anhalt": "Саксония-Анхальт",
+      "bremen": "Бремен",
+      "saarland": "Саар",
+      "other": "Другое"
+    },
+    "time_in_germany": {
+      "not_living": "Я не живу в Германии",
+      "tourist": "Я в Германии как турист",
+      "0_1_year": "0-1 год",
+      "1_5_years": "1-5 лет",
+      "5_plus_years": "+5 лет"
+    },
+    "age_options": {
+      "18_25": "18-25",
+      "26_35": "26-35",
+      "36_45": "36-45",
+      "46_55": "46-55",
+      "55_plus": "55+",
+      "unspecified": "Я не хочу говорить"
+    },
+    "labels": {
+      "origin_country": "Какая ваша страна происхождения?",
+      "current_area_of_residence": "Текущее место жительства в Германии",
+      "time_in_germany": "Как долго вы в Германии?",
+      "age": "Ваш возрастной диапазон"
+    },
+    "context_info": "Контекст пользователя",
+    "submit": "Отправить выбор и начать ввод"
+  },
+  "lupai_chatbot": {
+    "input_placeholder": "Пишите в Lupai Chatbot...",
+    "title": "Lupai Chatbot",
+    "subtitle": "Лучше всего для: Вопросов о немецком праве, бюрократии, политике, интеграции сообщества...",
+    "right_sidebar": {
+      "title": "Lupai Chatbot",
+      "menu_items": {
+        "adjust_robot": {
+          "title": "Настроить вашего робота",
+          "description": "Настройте и конфигурируйте поведение и ответы вашего робота."
+        },
+        "robot_info": {
+          "title": "Информация о роботе",
+          "description": "Лучше поймите, что делает робот и какие данные мы отправляем."
+        },
+        "system_settings": {
+          "title": "Настройки системы робота",
+          "description": "Описание меню."
+        },
+        "daily_tools": {
+          "title": "Подключение к вашим ежедневным инструментам",
+          "description": "Лучше интегрируйте этого робота, предоставив ему доступ к большему количеству данных."
+        },
+        "used_files": {
+          "title": "Файлы, используемые с этим роботом",
+          "description": "Все загруженные данные, которые использовались в компактном обзоре."
+        },
+        "need_help": {
+          "title": "Не совсем то, что мне нужно :-/",
+          "description": "Не можете найти робота, который решает вашу проблему? Отправьте нам запрос."
+        }
+      }
+    },
+    "user_context_saved": "Пожалуйста, напишите свой вопрос сейчас, он будет отфильтрован по следующим параметрам:",
+    "welcome_message": "Добро пожаловать! Я Lupai, ваш AI-ассистент по интеграции в Германии. Чем могу помочь вам сегодня?"
+  },
+  "conversation-request-more-button": {
+    "request": "Запрос"
+  },
+  "confirmation_message": {
+    "accept_case_title": "Взять запрос в работу",
+    "accept_case_message": "Принять запрос означает, что вы станете координатором для этого человека и поможете ему/ей/им решить его/ее/их проблему.",
+    "accept_case_question": "Хотите взять запрос в работу?",
+    "accept_case_btn": "Принять",
+    "reject_case_title": "Отклонить запрос",
+    "reject_case_message": "Отклонение запроса означает, что вы не хотите продолжать работу по этому запросу. Вы будете удалены из этого чата.",
+    "reject_case_question": "Хотите отклонить запрос?",
+    "reject_case_btn": "Отклонить",
+    "escalate_case_title": "Эскалация запроса",
+    "escalate_case_message_organization": "Эскалация означает, что запрос станет видимым для других консультантов Вашей организации.",
+    "escalate_case_message_platform": "Эскалация означает, что запрос станет видимым для других организаций на платформе.",
+    "escalate_case_question": "Вы хотите продолжить?",
+    "escalate_case_btn": "Эскалировать",
+    "cancel_btn": "Cancel"
+  },
+  "message": {
+    "was_deleted": "Сообщение было удалено пользователем",
+    "reply": "Ответить",
+    "edit_original": "Редактировать оригинал",
+    "download": "Скачать",
+    "remove": "Удалить",
+    "initial_comment": "Первоначальный комментарий",
+    "find": "Найти",
+    "initial_question": "Первоначальный вопрос",
+    "initial_message": "Первоначальное сообщение",
+    "audio_message": "Аудиосообщение",
+    "image": "Изображение",
+    "question": "Вопрос",
+    "give_feedback": "Перейти к оставлению отзыва",
+    "answer": "Ответить",
+    "copied": "Скопировано!",
+    "copy": "Копировать сообщение"
+  },
+  "audio_message_loading": "ЗАГРУЗКА",
+  "lesson_start_at": "ваш урок начнется сегодня в",
+  "enter_room": "Войти в консультационную комнату",
+  "additional_menu": {
+    "photos": "Фото",
+    "camera": "Камера",
+    "location": "Местоположение",
+    "contact": "Контакт",
+    "files": "Файлы",
+    "capsule": "Капсула",
+    "scanner": "Сканер",
+    "timer": "Таймер"
+  },
+  "pay_btn_text": "Оплатить",
+  "resolve_and_close": "Решить и закрыть",
+  "resolve_and_queue": "Решить и добавить в очередь",
+  "audio_message": "Аудиосообщение",
+  "image": "Изображение",
+  "text-input_placeholder": "Начните печатать...",
+  "tips_want_leave": "Хотите оставить чаевые?",
+  "tip_paid_additionally": "чаевые выплачены дополнительно",
+  "tip_payment_declined": "оплата чаевых отклонена",
+  "no_tip_paid_yet": "чаевые еще не выплачены",
+  "user_info": {
+    "name_anon": "Аноним",
+    "city_global": "ГЛОБАЛЬНО"
+  },
+  "conversation_manage_panel": {
+    "tasks": "Задачи",
+    "lupai": "Бот Lupai",
+    "robots": "Роботы",
+    "file_vault": "Файловый сейф",
+    "internal_chat": "Внутренний чат",
+    "client_chat": "Чат с клиентом",
+    "summary": "Резюме",
+    "coming_soon": "Скоро будет..",
+    "events": "События",
+    "subgroups": "Подгруппы",
+    "public_boards": "Общедоступные доски",
+    "summary-description": "Здесь вы можете увидеть все важные детали по вопросу.",
+    "internal-description": "Обсуждение с другими командами вопроса без участия клиента",
+    "lupai-description": "Задавайте любые юридические или бюрократические вопросы, касающиеся немецкого права.",
+    "robots-description": "Взаимодействуйте с ИИ-помощниками",
+    "talk": "Общение"
+  },
+  "conversation_header" : {
+    "online": "онлайн"
+  },
+  "text_input": {
+    "placeholder": "Начните печатать...",
+    "internal": "Пишите во внутреннем чате",
+    "client": "Пишите в чате с клиентом",
+    "disabled": "добавьте дополнительную информацию после нажатия любой кнопки"
+  },
+  "conversation_item": {
+    "to_pay": "<span>оплатить</span>",
+    "group_conversation_info": {
+      "img_alt": "Изображение беседы",
+      "person": "ЛИЦО"
+    }
+  },
+  "finish_questionnare_btn_text": "Завершить опрос",
+  "confirmation": {
+    "yes": "Да",
+    "no": "Нет"
+  },
+  "ice-breaker":{
+    "propose-finish_btn_text": "Зарегистрируйтесь, чтобы завершить запрос",
+    "finish_btn_text": "Закончить Капсулу {{ title }}",
+    "finish_btn_text-without-title": "Закончить Капсулу",
+    "next_btn_text": "Следующий вопрос"
+  },
+  "user_add_leave_chat_message": {
+    "member_added": "Пользователь {{active}} добавил {{passive}} в чат.",
+    "user_joined": "Пользователь {{active}} присоединился к чату.",
+    "member_removed": "Пользователь {{active}} удалил {{passive}} из чата.",
+    "user_left": "Пользователь {{active}} вышел из чата."
+  },
+  "audio_record": {
+    "error_uploading": "Ошибка при загрузке аудио",
+    "paused": "Пауза",
+    "uploading": "Загрузка аудио",
+    "uploading_1_dot": "Загрузка аудио.",
+    "uploading_2_dot": "Загрузка аудио..",
+    "uploading_3_dot": "Загрузка аудио...",
+    "skip": "Пропустить",
+    "add_title": "Добавить заголовок...",
+    "write_title": "Напишите заголовок здесь"
+  },
+  "payout_request": {
+    "cancel_dialog": {
+      "cancel_btn_text": "Cancel",
+      "confirm_btn_text": "Confirm"
+    }
+  },
+  "conversation": {
+    "service_message": {
+      "case_taken": " теперь ваш координатор. Вы можете начать чат с ним/ней.",
+      "shared_with_organization": "{{consultantName}} поделился вашим запросом со своей организацией {{organizationName}}",
+      "shared_with_platform": "{{consultantName}} поделился вашим запросом с другими организациями на платформе."
+    }
+  },
+  "auth": {
+    "sign_up": "Зарегистрироваться",
+    "sign_in": "Войти"
+  },
+  "auth-header": {
+    "sign-up": "Регистрация",
+    "sign-in": "Вход",
+    "reset": "Сброс",
+    "reset-password": "Сброс пароля",
+    "image-alt": "Изображение регистрации"
+  },
+  "fields": {
+    "reset-password": "Сброс пароля",
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "email": "Электронная почта",
+    "team-account": "Настроить как командный аккаунт",
+    "accept-terms": "Я принимаю условия",
+    "read-terms": "Ознакомьтесь с нашими условиями",
+    "org": "Выберите вашу организацию",
+    "org-placeholder": "например, Sunflower Care e.V.",
+    "org-name": "Название организации",
+    "org-placeholder-name": "Введите название вашей организации",
+    "no-result": "Нет собственной компании?",
+    "create-new-company": "Создать свою",
+    "optional": "Необязательно"
+  },
+  "validation": {
+    "unique": "Ваш уникальный идентификатор",
+    "error": "Ошибка",
+    "required-field": "Это обязательное поле",
+    "username-valid": "Имя пользователя может содержать только цифры, буквы и подчёркивания",
+    "email-valid": "Требуется действующий адрес электронной почты",
+    "min-length": "Требуется минимум {{min}} символов",
+    "password-placeholder": "мин. {{min}} букв, 1 цифра, 1 спецсимвол"
+  },
+  "actions": {
+    "resend-confirmation-email": "Отправить подтверждение повторно",
+    "already-have-an-account": "Уже есть аккаунт?",
+    "sign-in-here": "Перейти ко входу",
+    "without-acc": "Ещё нет аккаунта?",
+    "sign-up-here": "Зарегистрироваться здесь",
+    "forgot-password": "Забыли пароль?",
+    "reset-password": "Сбросить пароль",
+    "cancel": "Отмена",
+    "sign-in": "Войти",
+    "sign-up": "Зарегистрироваться"
+  },
+  "modal": {
+    "success-signup-title": "Первый мост к поддержке построен",
+    "close": "Закрыть",
+    "success-signup-text": "Предоставленные вами сведения создают мост между вашими конкретными потребностями и НКО, которые действительно могут помочь. Это важно, потому что универсальная поддержка часто не срабатывает там, где личные связи приводят к успеху.",
+    "success-signup-next": "Что будет дальше:",
+    "success-signup-text2": " Мы подберем организации, соответствующие вашей ситуации. Вы получите электронное письмо, как только появится подходящий вариант - пожалуйста, регулярно проверяйте свою почту, включая папку спам.",
+    "success-signup-text3": "Спасибо, что доверили нам свою историю.",
+    "go-blog": "Посетить Блок"
+  }
+}

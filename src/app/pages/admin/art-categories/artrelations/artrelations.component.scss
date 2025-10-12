@@ -1,0 +1,14 @@
+.relations {
+  padding: 2rem 6rem 6rem;
+  display: grid;
+  grid-template-columns: repeat(6, 24rem);
+}
+
+.subcategory__name {
+  padding-left: 2rem;
+}
+
+.category-not-selected {
+  font-size: 2rem;
+  text-align: center;
+}

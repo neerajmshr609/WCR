@@ -1,0 +1,338 @@
+<!-- first slide - waiting for ratebacks -->
+<div class="rateback-summary-card" *ngIf="slide === 1">
+  <div class="rateback-summary-card__container">
+    <p class="rateback-summary-card__text-top">Collecting your feedback</p>
+    <div class="rateback-summary-card__img">
+      <img src="/assets/rateback-summary/collecting.svg" alt="" />
+    </div>
+    <p class="rateback-summary-card__text-middle">
+      SUBMIT RATEBACK TO SEND REPLIES
+    </p>
+    <p class="rateback-summary-card__text-bottom">
+      Only after you have evaluated all connector comments and submitted the
+      rateback will your written responses be displayed to the advisor.
+    </p>
+  </div>
+</div>
+
+<ng-container *ngIf="slide === 2">
+  <!-- when ratebacks are bad -->
+  <div
+    class="rateback-summary-card rateback-summary-card--discouraging"
+    *ngIf="isDiscouraging || isDisconnect"
+  >
+    <div class="rateback-summary-card__header">
+      <p>Rateback score</p>
+    </div>
+    <div class="rateback-summary-card__main-content">
+      <div class="rateback-summary-card__ratebacks">
+        <app-rateback-selector
+          [readonly]="true"
+          [isBig]="true"
+          [isFilledIcon]="true"
+          [ratebacks]="ratebacks"
+        ></app-rateback-selector>
+      </div>
+
+      <div class="rateback-summary-card__message">
+        <p *ngIf="isDiscouraging">
+          Based on your answers Getme.Global thinks this review is discouraing
+          or very uninteresting
+          <span *ngIf="!isAnon"
+            >therefore we disconnect you from
+            {{ loadedRater?.username || 'this user' }}</span
+          >
+        </p>
+        <ng-container *ngIf="!isAnon">
+          <p *ngIf="isDisconnect">
+            Getme.Global will not introduce any new or existing works to this
+            advisor.
+          </p>
+
+          <div>
+            <img
+              class="rateback-summary-card__img"
+              src="assets/disconnected.svg"
+              alt="disconnected"
+              height="38px"
+              width="38px"
+            />
+            <p
+              class="rateback-summary-card__text rateback-summary-card__text--uppercase"
+            >
+              disconnected
+            </p>
+          </div>
+        </ng-container>
+      </div>
+
+      <button
+        (click)="disconnectUserFromAdvisor()"
+        class="rateback-summary-card__btn rateback-summary-card__btn--green"
+        *ngIf="
+          !isAnon &&
+          !paymentCompleted &&
+          !paymentInProgress &&
+          !tipsPaymentProcessing
+        "
+      >
+        Finish feedback session
+      </button>
+      <button
+        (click)="finishSessionDidClick(false)"
+        class="rateback-summary-card__btn rateback-summary-card__btn--green"
+        *ngIf="
+          isAnon &&
+          !paymentCompleted &&
+          !paymentInProgress &&
+          !tipsPaymentProcessing
+        "
+      >
+        Finish feedback session
+      </button>
+      <button
+        class="rateback-summary-card__btn"
+        *ngIf="
+          (!paymentCompleted && paymentInProgress) || tipsPaymentProcessing
+        "
+      >
+        Processing...
+      </button>
+      <button class="rateback-summary-card__btn" *ngIf="paymentCompleted">
+        Session finished
+      </button>
+    </div>
+  </div>
+
+  <!-- when ratebacks are not good -->
+  <div
+    class="rateback-summary-card rateback-summary-card--unhelpful"
+    *ngIf="isUnhelpful"
+  >
+    <div class="rateback-summary-card__header">
+      <p>Rateback score</p>
+    </div>
+    <div class="rateback-summary-card__main-content">
+      <div class="rateback-summary-card__ratebacks">
+        <app-rateback-selector
+          [readonly]="true"
+          [isBig]="true"
+          [isFilledIcon]="true"
+          [ratebacks]="ratebacks"
+        ></app-rateback-selector>
+      </div>
+
+      <div class="rateback-summary-card__message">
+        <p>
+          Based on your answers Getme.Global thinks you received uninteresting
+          feedback from {{ loadedRater?.username || 'this user' }}
+        </p>
+        <div class="rateback-summary-card__actions" *ngIf="!isAnon">
+          <button
+            (click)="disconnect()"
+            class="rateback-summary-card__small-btn rateback-summary-card__small-btn--disconnect"
+          >
+            Disconnect
+          </button>
+          <button
+            (click)="connect()"
+            class="rateback-summary-card__small-btn rateback-summary-card__small-btn--connect"
+          >
+            Connect
+          </button>
+        </div>
+      </div>
+
+      <button
+        (click)="finishSessionDidClick(false)"
+        class="rateback-summary-card__btn rateback-summary-card__btn--green"
+        *ngIf="
+          !paymentCompleted && !paymentInProgress && !tipsPaymentProcessing
+        "
+      >
+        Finish feedback session
+      </button>
+      <button
+        class="rateback-summary-card__btn"
+        *ngIf="
+          (!paymentCompleted && paymentInProgress) || tipsPaymentProcessing
+        "
+      >
+        Processing...
+      </button>
+      <button class="rateback-summary-card__btn" *ngIf="paymentCompleted">
+        Session finished
+      </button>
+    </div>
+  </div>
+
+  <!-- when ratebacks are good -->
+  <div
+    class="rateback-summary-card"
+    *ngIf="isGoodFeedback && !isConnected && !isRecommend"
+  >
+    <div class="rateback-summary-card__header">
+      <p>Rateback score</p>
+    </div>
+    <div class="rateback-summary-card__main-content">
+      <div class="rateback-summary-card__ratebacks">
+        <app-rateback-selector
+          [readonly]="true"
+          [isBig]="true"
+          [isFilledIcon]="true"
+          [ratebacks]="ratebacks"
+        ></app-rateback-selector>
+      </div>
+
+      <div class="rateback-summary-card__message">
+        <p *ngIf="isHelpful">
+          Based on your answers Getme.Global thinks you received helpful
+          feedback from {{ loadedRater?.username || 'this user' }}
+        </p>
+        <p *ngIf="isInspiring">
+          Based on your answers Getme.Global thinks you received inspiring
+          feedback from {{ loadedRater?.username || 'this user' }}
+        </p>
+        <p *ngIf="isConnect && !isAnon">
+          <span
+            >We connect you with the connector
+            {{ loadedRater.username }}.&nbsp;</span
+          >
+          <span *ngIf="!paid"
+            >To encourage a good start it would be good gesture to stick to your
+            reward promises or at least parts of it.</span
+          >
+        </p>
+
+        <div
+          class="rateback-summary-card__slider"
+          *ngIf="!paid && !isAnon && !trustedAdvisor"
+          [ngClass]="{
+            disabled: (paymentInProgress && isExternal) || paymentCompleted,
+          }"
+        >
+          <app-payment-slider
+            [inputValue]="project.inspiringrate"
+            (changes)="didUpdateSlider($event)"
+          ></app-payment-slider>
+        </div>
+
+        <div class="rateback-summary-card__payment-form">
+          <app-stripe-bank-card-form
+            *ngIf="bankCardPayment"
+            [secret]="secret"
+            (updatePaymentStatus)="updatePaymentStatus()"
+          ></app-stripe-bank-card-form>
+        </div>
+
+        <app-tips
+          [processing$]="tipsPaymentProcessing$"
+          *ngIf="!isAnon && trustedAdvisor"
+          [id]="feedbackSessionId"
+          [isFeedbackSessionTip]="true"
+          (payTips)="handleTipsActions($event, feedbackSessionId)"
+          (denyTips)="handleTipsActions(null, feedbackSessionId)"
+        ></app-tips>
+      </div>
+
+      <ng-container *ngIf="!isExternal">
+        <button
+          (click)="finishSessionDidClick(true)"
+          class="rateback-summary-card__btn rateback-summary-card__btn--green"
+          *ngIf="
+            !paymentCompleted && !paymentInProgress && !tipsPaymentProcessing
+          "
+        >
+          Finish feedback session
+        </button>
+        <button
+          class="rateback-summary-card__btn"
+          *ngIf="
+            (!paymentCompleted && paymentInProgress) || tipsPaymentProcessing
+          "
+        >
+          Processing...
+        </button>
+        <button class="rateback-summary-card__btn" *ngIf="paymentCompleted">
+          Session finished
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="slide === 3">
+  <!-- advisor did not setup payment slide -->
+  <div
+    class="rateback-summary-card"
+    *ngIf="isErrorSetupPayment && !paymentInProgress"
+  >
+    <div class="rateback-summary-card__header">
+      <p>Rateback finished</p>
+    </div>
+    <div class="rateback-summary-card__main-content">
+      <div class="rateback-summary-card__img">
+        <img src="/assets/rateback-summary/no-payment.svg" alt="" />
+      </div>
+      <div class="rateback-summary-card__message">
+        <p>
+          We connected you now with this advisor. Unfortunately this connector
+          did not connect their bank account yet. We will keep the money inside
+          Getme.Global but connector will be able to request a payout anytime.
+        </p>
+      </div>
+      <div
+        class="rateback-summary-card__btn rateback-summary-card__btn--yellow rateback-summary-card__btn--fz"
+      >
+        <p>CONNECTOR DID NOT SETUP PAYMENT</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- advisor did not registed slide -->
+  <div
+    class="rateback-summary-card"
+    *ngIf="isErrorRegistered && !paymentInProgress"
+  >
+    <div class="rateback-summary-card__header">
+      <p>Rateback finished</p>
+    </div>
+    <div class="rateback-summary-card__main-content">
+      <div class="rateback-summary-card__ratebacks">
+        <app-rateback-selector
+          [readonly]="true"
+          [isBig]="true"
+          [isFilledIcon]="true"
+          [ratebacks]="ratebacks"
+        ></app-rateback-selector>
+      </div>
+      <div class="rateback-summary-card__message">
+        <p>
+          Unfortunately this connector did not register after giving you
+          feedback. So we can’t process your desired payment anywhere.
+        </p>
+      </div>
+      <div
+        class="rateback-summary-card__btn rateback-summary-card__btn--red rateback-summary-card__btn--fz"
+      >
+        <p>CONNECTOR DID NOT REGISTER</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- slide Recommend -->
+  <app-slide-recommend
+    [raterShareToken]="raterShareToken"
+    *ngIf="
+      (isRecommend && !isAnon && !tipsPaymentProcessing) ||
+      (isConnected && tips)
+    "
+    [tips]="tips"
+    [link]="link"
+  ></app-slide-recommend>
+
+  <!-- slide Connected -->
+  <app-slide-connected
+    *ngIf="isConnected && !isAnon && !tips && !tipsPaymentProcessing"
+  ></app-slide-connected>
+</ng-container>

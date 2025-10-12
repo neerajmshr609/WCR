@@ -1,0 +1,57 @@
+<form class="skillset-item" [formGroup]="form">
+  @if (isAddMode()) {
+    <app-button-icon-oval
+      (click)="onSave()"
+      [disabled]="form.invalid || disabled()"
+      [isActive]="!form.invalid"
+    >
+      <app-plus-icon strokeWidth="3" [color]="form.invalid ? '#B3B3B3' : '#1E1E1E'"></app-plus-icon>
+    </app-button-icon-oval>
+  } @else {
+    @if (!isSaveModeActive()) {
+      <app-button-icon-oval>
+        <app-reorder-icon  strokeWidth="2"></app-reorder-icon>
+      </app-button-icon-oval>
+    } @else {
+      <app-button-icon-oval (click)="onEdit()" [isActive]="true">
+        <app-save-icon  strokeWidth="2"></app-save-icon>
+      </app-button-icon-oval>
+    }
+  }
+
+  <div class="form_field__group">
+    <div class="form_field topic">
+      <app-select
+        [control]="form.get('skill')"
+        inputName="skill"
+        label="{{
+          (isAddMode() ? 'add_new_topic' : 'selected_topic') | translate
+        }}"
+        [disabled]="disabled()"
+        [options]="skills()"
+        [placeholder]="'select' | translate"
+      ></app-select>
+    </div>
+    <div class="form_field experiance">
+      <app-select
+        [control]="form.get('level')"
+        inputName="level"
+        label="{{
+          (isAddMode() ? 'choose_experience' : 'experience') | translate
+        }}"
+        [disabled]="disabled()"
+        [options]="skillLevelsStringsList"
+        [placeholder]="'select_level' | translate"
+      ></app-select>
+    </div>
+  </div>
+
+  @if (!isAddMode()) {
+    <app-more-menu
+      class="skill-menu"
+      [placement]="'left'"
+      [menuList]="actionList"
+      [menuTitle]="'skill_menu_title' | translate"
+    ></app-more-menu>
+  }
+</form>

@@ -1,0 +1,88 @@
+@import "variables";
+
+:host {
+  display: flex;
+  align-items: center;
+  padding: $--sds-size-space-200;
+  gap: $--sds-size-space-200;
+  color: $--sds-color-text-neutral-secondary;
+  font-size: $--sds-typography-body-size-medium;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: 100%;
+  white-space: nowrap;
+
+  @media (max-width: $desktop) {
+    font-size: $--sds-typography-body-size-small;
+  }
+}
+.icon {
+  display: flex;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.conversation-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.tag-we-care {
+  background-color: $--sds-color-text-danger-on-danger;
+  border-color: $--sds-color-text-danger-tertiary;
+  color: $--sds-color-text-danger-secondary;
+}
+
+.tag-direct-chat {
+  background-color: $--sds-color-text-neutral-on-neutral;
+  border-color: $--sds-color-text-neutral-tertiary;
+  color: $--sds-color-text-brand-secondary;
+}
+
+.tag-community-chat {
+  background-color: $--sds-color-text-positive-on-positive;
+  border-color: $--sds-color-text-positive-tertiary;
+  color: $--sds-color-text-positive-secondary;
+}
+
+.tag-get-support {
+  background-color: $--sds-color-text-brand-on-brand;
+  border-color: $--sds-color-text-brand-tertiary;
+  color: $--sds-color-text-brand-on-brand-secondary;
+}
+
+.tag-requests {
+  background-color: $--sds-color-text-neutral-on-neutral;
+  border-color: $--sds-color-text-neutral-tertiary;
+  color: $--sds-color-text-neutral-secondary;
+}
+
+.tag-org-chat {
+  background-color: $--sds-color-text-brand-on-brand;
+  border-color: $--sds-color-text-brand-tertiary;
+  color: $--sds-color-text-brand-secondary;
+}
+
+.tag-our-echos {
+  background-color: $--Text-Default-Lighter;
+  border-color: $--sds-color-text-disabled-default;
+  color: $--sds-color-text-brand-secondary;
+}
+
+.tag-feedback-chat {
+  background-color: $--sds-color-text-neutral-on-neutral;
+  border-color: $--sds-color-text-neutral-tertiary;
+  color: $--sds-color-text-brand-secondary;
+}
+
+.tag-default {
+  background-color: $--sds-color-text-neutral-on-neutral;
+  border-color: $--sds-color-text-neutral-tertiary;
+  color: $--sds-color-text-neutral-secondary;
+}

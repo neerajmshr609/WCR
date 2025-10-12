@@ -1,0 +1,67 @@
+<div class="conditions_text-container">
+  <div class="conditions_text-content">
+    @if (invitation()) {
+      <h6 class="conditions_text-content-title">{{ 'organization-invitations-conditions.join_organization' | translate: invitation() }}</h6>
+    } @else {
+      <h6 class="conditions_text-content-title">{{ 'organization-invitations-conditions.confirm-invite' | translate }}</h6>
+    }
+    <app-close-icon class="close-modal-btn" (click)="deny()"></app-close-icon>
+  </div>
+  <div class="conditions_subtitle-container">
+    <app-icon-anchor color="#757575" strokeWidth="3.6"></app-icon-anchor>
+    <p>{{ 'organization-invitations-conditions.subtitles' | translate }}</p>
+  </div>
+
+  <div class="conditions_text">
+    <p>{{ 'organization-invitations-conditions.text-p1' | translate }}</p>
+    <p>{{ 'organization-invitations-conditions.text-p2' | translate }}</p>
+    <p>{{ 'organization-invitations-conditions.text-p3' | translate }}</p>
+  </div>
+</div>
+<div class="conditions_buttons">
+  <app-button
+    class="buttons_join"
+    size="medium"
+    btnUIType="primary"
+    (click)="accept()"
+  >
+    <span class="buttons_content">
+      <span
+        class="buttons_text">{{ (invitation()?.invite_type === 'free_consultant' ? 'organization-invitations-conditions.accept-counsellor' : 'organization-invitations-conditions.accept') | translate }}</span>
+
+      @if (invitation()?.invite_type === 'free_consultant') {
+        <app-login-icon
+          class="buttons_icon"
+          color="#F5F5F5"
+          strokeWidth="1.6"
+        ></app-login-icon>
+      } @else {
+        <app-mark-icon
+          class="buttons_icon"
+          color="#F5F5F5"
+          strokeWidth="2.6"
+        ></app-mark-icon>
+      }
+    </span>
+
+  </app-button>
+
+  <app-button
+    class="buttons_decline"
+    size="medium"
+    btnUIType="neutral"
+    (click)="deny()"
+  >
+    <span class="buttons_content">
+      <app-close-icon
+        class="buttons_icon"
+        color="#1E1E1E"
+        strokeWidth="2.6"
+      ></app-close-icon>
+
+      <span class="buttons_text">{{ 'organization-invitations-conditions.decline_invitation' | translate }}</span>
+    </span>
+
+  </app-button>
+</div>
+

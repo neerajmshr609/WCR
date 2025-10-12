@@ -1,0 +1,69 @@
+@import '_variables';
+
+.data-deletion {
+    display: block;
+    width: 100vw; // Full viewport width
+    padding: 2rem;
+    margin: 0; /* Align to left edge */
+    color: #111827;
+    color: $--sds-color-text-default-default;
+    font-size: $--sds-typography-body-size-medium;
+    text-align: left; /* Left-align all internal text */
+  
+    ul {
+      margin-left: 1.5rem;
+      padding-left: 1rem;
+      list-style: disc;
+    }
+  
+    li,
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      text-align: left;
+    }
+  
+    .header-title {
+        font-family: $--sds-typography-title-page-font-family;
+        font-size: $--sds-typography-subtitle-size-base;
+        font-weight: $--sds-typography-subtitle-font-weight;
+    }
+  
+    .heading {
+        font-family: $--sds-typography-heading-font-family;
+        color: $--sds-color-text-default-default;
+        font-size: $--sds-typography-heading-size-base;
+        font-weight: $--sds-typography-heading-font-weight;
+        line-height: $line-height-120;
+        letter-spacing: $--letter-spacing--0048;
+        margin-bottom: 1rem;
+    }
+  
+    .subheading {
+        color: $--sds-color-text-default-default;
+        font-family: $--sds-typography-subheading-font-family;
+        font-size: $--sds-typography-body-size-medium;
+        font-weight: $--sds-typography-subheading-font-weight;
+        line-height: $line-height-120;
+        margin-bottom: 1rem;
+    }
+  
+    .note {
+      font-size: 1.25rem;
+      color: #6b7280;
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+  
+    strong {
+      font-weight: 500;
+    }
+  
+    a,
+    .email {
+      color: #2563eb;
+      text-decoration: underline;
+      word-break: break-word;
+    }
+  }
+  

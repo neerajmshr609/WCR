@@ -1,0 +1,29 @@
+.story {
+  &__name {
+    margin: 2rem;
+    display: flex;
+    align-items: center;
+
+    h1 {
+      font-size: 4rem;
+      margin-right: 1rem;
+    }
+
+    mat-icon {
+      cursor: pointer;
+    }
+
+    .delete-icon {
+      margin-left: auto;
+    }
+  }
+
+  .cards {
+    display: flex;
+  }
+
+  .empty-card {
+    justify-items: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,67 @@
+<div class="accordion-card" [class]="'idx' + org().id">
+  <input
+    type="checkbox"
+    [id]="org().id"
+    (click)="toggle($event)"
+    [checked]="accordionInpIsChecked()"
+  />
+  <label [for]="org().id">
+    <div class="header-content">
+      <div class="avatar-section">
+        <img src="{{ org().org_logo ?? defaultAvatar }}" alt="Avatar" />
+      </div>
+      <div class="info-section">
+        <h4 class="fullname">{{ org().legal_name }} ({{ org().short_name }})</h4>
+        <h5 class="official-info">
+          Registry Number:
+          {{ org().reg_number ?? '-' }}
+        </h5>
+      </div>
+      <div class="btns-wrapper">
+        <app-button
+          size="medium"
+          btnUIType="neutral"
+          type="button"
+          (click)="approveOrg()"
+        >
+          Approve
+        </app-button>
+        <app-button
+          size="medium"
+          btnUIType="primary"
+          type="button"
+          (click)="rejectOrg()"
+        >
+          Reject
+        </app-button>
+      </div>
+      <div class="arrows">
+        @if (accordionInpIsChecked()) {
+          <mat-icon>expand_less</mat-icon>
+        } @else {
+          <mat-icon>expand_more</mat-icon>
+        }
+      </div>
+    </div>
+  </label>
+  <div class="content">
+    <hr class="divider" />
+    <div class="inner-content">
+      <div class="statuses">
+        <span class="status">
+          Profit status: {{ org().org_profit_status }}
+        </span>
+        <span class="type">
+          Type: {{ org().org_type ?? '-' }}
+        </span>
+      </div>
+      @if (org().city) {
+        <span class="city">
+          {{ org().apartment_number }} {{ org().street }}, {{ org().city }},
+          {{ org().postal_code }}
+        </span>
+      }
+      <p class="email">{{ org().email }}</p>
+    </div>
+  </div>
+</div>

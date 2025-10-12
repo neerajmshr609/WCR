@@ -1,0 +1,106 @@
+<div class="meeting-feedback">
+  <div
+    *ngFor="let item of meetingFeedbackOptions"
+    class="meeting-feedback__item"
+  >
+    <div class="meeting-feedback__question">
+      {{ item.question }}
+    </div>
+
+    <div class="slider-container">
+      <app-slider
+        [projectID]="item.id"
+        [currentValue]="lesson[item.key]"
+        [disabled]="lesson.rated"
+        [rated]="lesson.rated"
+        (sliderChangedValue)="didUpdateSlider(item.key, $event)"
+      ></app-slider>
+    </div>
+  </div>
+
+  <app-message
+    class="chat__message chat__message--left message"
+    [systemMessageOnly]="true"
+    [message]="{
+      body: 'What was the most memorable moment of your conversation?',
+      read: false,
+    }"
+  ></app-message>
+
+  <app-message
+    *ngIf="lesson.positive_comment"
+    class="chat__message chat__message--right message"
+    [message]="{ body: lesson.positive_comment, read: true }"
+  ></app-message>
+
+  <div
+    class="presenter-questions-pane__answer-container"
+    *ngIf="!lesson.positive_comment"
+  >
+    <p
+      #positiveInput
+      (focus)="onFocus(positiveInput)"
+      (focusout)="onFocusOut(positiveInput)"
+      (keydown)="onKeyDown(positiveInput)"
+      [contentEditable]="true"
+      class="presenter-questions-pane__answer-container--message-input"
+    >
+      Type your answer...
+    </p>
+    <img
+      (click)="didClickSend(positiveInput, 'positive_comment')"
+      class="presenter-questions-pane__answer-container--message-send-btn"
+      src="assets/presenter-question-send@2x.png"
+    />
+  </div>
+
+  <app-message
+    class="chat__message chat__message--left message"
+    [message]="{ body: 'Where could this Connector Improve?', read: false }"
+    [systemMessageOnly]="true"
+  ></app-message>
+
+  <app-message
+    *ngIf="lesson.negative_comment"
+    class="chat__message chat__message--right message"
+    [message]="{ body: lesson.negative_comment, read: true }"
+  ></app-message>
+
+  <div
+    class="presenter-questions-pane__answer-container"
+    *ngIf="!lesson.negative_comment"
+  >
+    <p
+      #negativeInput
+      (focus)="onFocus(negativeInput)"
+      (focusout)="onFocusOut(negativeInput)"
+      (keydown)="onKeyDown(negativeInput)"
+      [contentEditable]="true"
+      class="presenter-questions-pane__answer-container--message-input"
+    >
+      Type your answer...
+    </p>
+    <img
+      (click)="didClickSend(negativeInput, 'negative_comment')"
+      class="presenter-questions-pane__answer-container--message-send-btn"
+      src="assets/presenter-question-send@2x.png"
+    />
+  </div>
+
+  <div *ngIf="!lesson.rated">
+    <button
+      (click)="onSendFeedbackClick()"
+      class="submit submit--meeting"
+      [disabled]="meetingFeedbackSubmiting"
+    >
+      <div>
+        <span>Submit feedback</span>
+        <app-small-spinner
+          *ngIf="meetingFeedbackSubmiting"
+          diameter="16"
+          [isWhite]="true"
+        ></app-small-spinner>
+      </div>
+    </button>
+  </div>
+</div>

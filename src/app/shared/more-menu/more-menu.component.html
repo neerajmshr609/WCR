@@ -1,0 +1,41 @@
+<div class="dropdown-container">
+  <button class="more-btn" (click)="toggleDropdown()">
+    <app-icon-more-vertical
+      class="more-icon"
+      color="#000000"
+      strokeWidth="2.6"
+    ></app-icon-more-vertical>
+  </button>
+
+  <div [ngClass]="{ open: isDropdownOpen, close: !isDropdownOpen }">
+    <div class="dropdown-menu" [ngClass]="placement()">
+      <div class="more-item header">
+        @if (menuSubtitle()) {
+          <h6 class="subtitle">{{ menuSubtitle() | translate }}</h6>
+        }
+        <h4 class="title">{{ menuTitle() | translate }}</h4>
+      </div>
+      @for (menuItem of menuList(); track menuItem.title) {
+        <button class="more-item" (click)="menuItem.event(); toggleDropdown()">
+          <div class="icon-wrapper">
+            @if (menuItem.icon) {
+              <ng-container>
+                <ng-container *ngComponentOutlet="menuItem.icon"></ng-container>
+              </ng-container>
+            }
+          </div>
+          <div class="more-item-content">
+            <h4 class="more-item-content__title">
+              {{ menuItem.title | translate }}
+            </h4>
+            @if (menuItem.subtitle) {
+              <h6 class="more-item-content__subtitle">
+                {{ menuItem.subtitle | translate }}
+              </h6>
+            }
+          </div>
+        </button>
+      }
+    </div>
+  </div>
+</div>

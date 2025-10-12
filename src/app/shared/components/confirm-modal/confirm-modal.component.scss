@@ -1,0 +1,55 @@
+@import 'variables';
+
+.confirmation-dialog {
+  padding: 3rem;
+  background-color: $--sds-color-background-default-default;
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+
+    .title {
+      font-weight: $--sds-typography-heading-size-base;
+      font-size: $--sds-typography-heading-size-base;
+      color: $--sds-color-text-default-default;
+      text-align: center;
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+
+      .icon {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+
+  .subtitle,
+  .confirm-text {
+    font-size: $--sds-typography-body-size-small;
+    line-height: 51px;
+    font-weight: $--sds-typography-subtitle-font-weight;
+    color: $--sds-color-text-default-secondary;
+    line-height: inherit;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2rem 0 0;
+
+    .cancel {
+      margin-right: 1.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .confirmation-dialog{
+    margin: 1rem;
+  }
+}

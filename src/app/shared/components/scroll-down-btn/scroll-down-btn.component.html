@@ -1,0 +1,10 @@
+<button class="scroll-down-btn" (click)="clickedScrollDown.emit()" [ngStyle]="{
+    'top': top || null,
+    'bottom': bottom || null,
+    'left': left || null,
+    'right': right || null
+  }" type="button">
+  <div *ngIf="shownNumber" class="scroll-down-btn__number">{{shownNumber}}</div>
+  <!--  <app-arrow-down-icon class="scroll-down-btn__icon"></app-arrow-down-icon>-->
+  <app-icon-arrow direction="down" color="#1E1E1E" strokeWidth="2.5"></app-icon-arrow>
+</button>

@@ -1,0 +1,105 @@
+<div class="newsfeed">
+
+  <app-main-content-menu
+    [menuItems]="menuItems"
+    (changeSelectedItem)="didSelectMenuItem($event)"
+  ></app-main-content-menu>
+
+  <div class="pt-2">
+    <app-small-spinner diameter="30" *ngIf="isLoading"></app-small-spinner>
+
+    <ng-container
+      *ngIf="
+        ((!filteredFeedbackSessions.length &&
+          activeInsightsChannel === insightsChannels.inbox) ||
+          (activeInsightsChannel !== insightsChannels.inbox &&
+            !usersThatGaveFeedback.length)) &&
+        !isLoading
+      "
+    >
+      <p class="no-content">Nothing here for now</p>
+    </ng-container>
+
+    <ng-container
+      *ngIf="
+        activeInsightsChannel === insightsChannels.inbox;
+        else usersThatGaveFeedbackTpl
+      "
+    >
+      <div *ngFor="let feedbackSession of filteredFeedbackSessions">
+        <div class="newsfeed-item__user-header">
+          <div class="newsfeed-item__user-header--left">
+            <app-user-info [user]="feedbackSession.commenter"></app-user-info>
+          </div>
+
+          <div class="newsfeed-item__user-header--right">
+            <h3>
+              {{ feedbackSession.feedbacks_count }} comment{{
+                feedbackSession.feedbacks_count > 1 ? 's' : ''
+              }}
+            </h3>
+          </div>
+        </div>
+
+        <div class="cards-grid newsfeed__items-container" *ngIf="!isLoading">
+          <app-trusted-advisor-payment
+            *ngIf="
+              !isAnon(feedbackSession.commenter.id) &&
+              feedbackSession.payment_request
+            "
+            [feedbackSession]="feedbackSession"
+            (feedbackSessionChange)="updateFeedbackSession($event)"
+            [link]="stripeDashboardLink$ | async"
+            [raterId]="feedbackSession.commenter.id"
+            [project]="project"
+          ></app-trusted-advisor-payment>
+
+          <app-newsfeed-item
+            (didGiveRatebackToItem)="itemDidReceiveRateback($event)"
+            [feedback]="feedback"
+            [rater]="feedbackSession.commenter"
+            [project]="project"
+            *ngFor="let feedback of feedbackSession.feedbacks"
+          >
+          </app-newsfeed-item>
+
+          <app-rateback-summary-card
+            *ngIf="
+              !feedbackSession.payment_request ||
+              feedbackSession.status === paymentSessionStatuses.approved
+            "
+            [itemDidReceiveRateback$]="itemDidReceiveRateback$"
+            [raterID]="feedbackSession.commenter.id"
+            [project]="project"
+            [link]="stripeDashboardLink$ | async"
+            [feedbacks]="feedbackSession.feedbacks"
+            [trustedAdvisor]="!!feedbackSession.payment_request"
+            [paid]="feedbackSession.status === paymentSessionStatuses.approved"
+            [feedbackSessionId]="feedbackSession.id"
+          ></app-rateback-summary-card>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #usersThatGaveFeedbackTpl>
+      <div
+        class="cards-grid newsfeed__items-container"
+        *ngIf="usersThatGaveFeedback.length"
+      >
+        <app-project-card-v2
+          [currentUser]="currentUser"
+          [activeInsightsChannel]="activeInsightsChannel"
+          [isConversationsProject]="false"
+          [project]="project"
+          [raterID]="userId"
+          *ngFor="let userId of usersThatGaveFeedback"
+        ></app-project-card-v2>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<app-helpnavigation
+  page="insights-newsfeed"
+  url="SmAEC1GlGio"
+></app-helpnavigation>

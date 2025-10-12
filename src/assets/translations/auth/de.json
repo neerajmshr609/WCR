@@ -1,0 +1,59 @@
+{
+  "header": {
+    "sign-up": "Registrieren",
+    "sign-in": "Anmelden",
+    "reset": "Zurücksetzen",
+    "reset-password": "Passwort zurücksetzen",
+    "image-alt": "Registrierungsbild"
+  },
+  "fields": {
+    "reset-password": "Passwort zurücksetzen",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "email": "E-Mail",
+    "team-account": "Als Teamkonto einrichten",
+    "accept-terms": "Ich akzeptiere die Bedingungen",
+    "read-terms": "Unsere AGB lesen",
+    "org": "Wählen Sie Ihre Organisation",
+    "org-name": "Name der Organisation",
+    "org-placeholder-name": "Geben Sie den Namen Ihrer Organisation ein",
+    "org-placeholder": "z. B. Sunflower Care e.V.",
+    "no-result": "Sie haben kein eigenes Organisation?",
+    "create-new-company": "Eigene erstellen",
+    "optional": "Optional"
+  },
+  "validation": {
+    "unique": "Ihr einzigartiger Benutzername",
+    "error": "Fehler",
+    "required-field": "Dies ist ein Pflichtfeld",
+    "username-valid": "Der Benutzername darf nur Zahlen, Buchstaben und Unterstriche enthalten",
+    "email-valid": "Eine gültige E-Mail-Adresse ist erforderlich",
+    "min-length": "Mindestens {{min}} Zeichen erforderlich",
+    "password-placeholder": "min. {{min}} Zeichen, 1 Zahl, 1 Sonderzeichen",
+    "min-simbols": "Mindestens 6 Buchstaben erforderlich",
+    "min-number": "Mindestens eine Zahl erforderlich",
+    "min-special-simbol": "Mindestens ein Sonderzeichen erforderlich",
+    "password-match-error": "Passwörter stimmen nicht überein"
+  },
+  "actions": {
+    "resend-confirmation-email": "Bestätigungs-E-Mail erneut senden",
+    "already-have-an-account": "Haben Sie bereits ein Konto?",
+    "sign-in-here": "Zum Anmelden gehen",
+    "without-acc": "Noch kein Konto?",
+    "sign-up-here": "Hier registrieren",
+    "forgot-password": "Passwort vergessen?",
+    "reset-password": "Passwort zurücksetzen",
+    "cancel": "Abbrechen"
+  },
+  "organization-invitations-conditions": {
+    "decline_invitation": "Ablehnen",
+    "confirm-invite": "Einladung bestätigen",
+    "accept": "Organisation beitreten",
+    "accept-counsellor": "Als Helfer*in (extern) beitreten",
+    "join_organization": "{{ organization.legal_name }} hat dich eingeladen beizutreten",
+    "subtitles": "um gemeinsam mutig neue Seerouten der Solidarität zu kartieren, wo andere nur leere Horizonte sehen",
+    "text-p1": "Noch etwas holprig, aber voller Stolz sind wir endlich bereit die virtuelle See zurückzuerobern. Unser Gegner die kalte raue See der Wirklichkeit.",
+    "text-p2": "Unsere ersten Reisen führen uns zu den geflüchteten Menschen aus der Ukraine. Wir wollen ihnen online nicht nur in der Not helfen, den sicheren Hafen schnellstmöglich zu erreichen, sondern mit Ihnen gemeinsam neue Netze flechten, die aus Schiffbrüchigen wieder kühne Kapitäne macht welche das Steuerrad auch bei rauer See wieder wagemutig in die Hand nehmen.",
+    "text-p3": "Deshalb brauchen wir jede wohlwollende Seele um unseren virtuellen Hafen aufzubauen. Wir sind überzeugt mit vereinten Kräften und dem klugen Einsatz von Technologie können wir neue Wege finden, um Menschen in Not schnell und nachhaltig zu helfen und dabei auch unsere eigenen Schiffe besser vor den Flammen des Ausbrennens zu schützen."
+  }
+}

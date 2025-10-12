@@ -1,0 +1,77 @@
+@import '_variables';
+.wrapper {
+  position: relative;
+}
+
+.owner-btn {
+  cursor: pointer;
+  width: 100%;
+  padding-right: 6px;
+  padding-left: 6px;
+  height: 56px;
+  color: black;
+  border: 3px solid #000000;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  background-color: transparent;
+
+  &__icon {
+    vertical-align: bottom;
+    margin-right: 10px;
+  }
+
+  &__change-price {
+    background-color: black;
+  }
+
+  &:disabled {
+    cursor: unset;
+  }
+
+  @media screen and (max-width: $bp-small) {
+    font-size: 14px;
+    letter-spacing: unset;
+  }
+}
+
+.change-price-icon {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  cursor: pointer;
+
+  img {
+    height: 24px;
+  }
+}
+
+.price-section-change {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+
+  .text-price {
+    color: #fff;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    text-align: left;
+
+    @media screen and (max-width: $bp-small) {
+      display: none;
+    }
+  }
+
+  .coins-icon {
+    height: 25px;
+  }
+
+  .slider {
+    flex: 1;
+  }
+}

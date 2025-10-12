@@ -1,0 +1,79 @@
+@import '_variables';
+
+.policy {
+  display: block;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-items: center;
+  padding: 2rem;
+  color: $--sds-color-text-default-default;
+  font-size: $--sds-typography-body-size-medium;
+
+  ul {
+    margin-left: 1rem;
+  }
+
+  li, p, blockquote {
+    margin-bottom: 1rem;
+  }
+
+  .header-title {
+    font-family: $--sds-typography-title-page-font-family;
+    font-size: $--sds-typography-subtitle-size-base;
+    font-weight: $--sds-typography-subtitle-font-weight;
+  }
+
+  .header-subtitle {
+    font-family: $--sds-typography-title-page-font-family;
+    font-size: $--sds-typography-subheading-size-medium;
+    font-weight: $--sds-typography-subheading-font-weight;
+    margin-bottom: 1rem;
+  }
+  
+  .heading {
+    font-family: $--sds-typography-heading-font-family;
+      color: $--sds-color-text-default-default;
+      font-size: $--sds-typography-heading-size-base;
+      font-weight: $--sds-typography-heading-font-weight;
+      line-height: $line-height-120;
+      letter-spacing: $--letter-spacing--0048;
+      margin-bottom: 1rem;
+  }
+  
+  .subheading {
+      color: $--sds-color-text-default-default;
+      font-family: $--sds-typography-subheading-font-family;
+      font-size: $--sds-typography-body-size-medium;
+      font-weight: $--sds-typography-subheading-font-weight;
+      line-height: $line-height-120;
+      margin-bottom: 1rem;
+  }
+  
+  .policy-container {
+    margin: 1rem 0 auto;
+  }
+  
+  .policy-section {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+
+    h3, h4 {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  ol.policy-list, ul.policy-list {
+    padding-left: 1rem;
+  }
+  
+  ol.policy-sublist, ul.policy-sublist {
+    list-style-type: none;
+    padding-left: 1rem;
+  }
+
+  blockquote {
+    margin-left: 2rem;
+  }
+}

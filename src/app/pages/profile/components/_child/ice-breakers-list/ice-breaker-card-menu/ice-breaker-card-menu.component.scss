@@ -1,0 +1,19 @@
+@import '_variables';
+
+:host {
+    display: block;
+    position: relative;
+}
+
+.capsule-card {
+    &_dropdown-btn {
+        display: block;
+        width: calc(1.8rem + $--sds-size-space-200 * 2);
+        height: calc(1.8rem + $--sds-size-space-200 * 2);
+    }
+
+    &_dropdown-menu {
+        overflow: auto;
+    }
+    
+}

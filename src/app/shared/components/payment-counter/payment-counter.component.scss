@@ -1,0 +1,246 @@
+@import 'variables';
+
+.payment-counter {
+  display: grid;
+  height: 4.8rem;
+  @media screen and (max-width: $bp-smallest) {
+    height: auto;
+  }
+
+  &--student & {
+    &__active-state {
+      grid-template-columns: 1fr;
+
+      &--timers {
+        margin-left: -3.5rem;
+      }
+    }
+  }
+
+  &--feedback {
+    height: 4rem;
+  }
+
+  &--feedback & {
+    &__active-state {
+      grid-template-columns: max-content 1fr;
+      gap: 0;
+
+      &--timers {
+        margin-left: 0 !important;
+      }
+
+      input {
+        height: 2.8rem;
+      }
+    }
+
+    &__inactive-state {
+      &--info {
+        padding: 0.7rem 1rem;
+      }
+    }
+
+    &__button {
+      height: 4rem;
+    }
+
+    &__play-icon,
+    &__pause-icon,
+    &__coins-icon {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
+  }
+
+  &__inactive-state {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 1rem;
+    align-items: center;
+
+    &--start-button {
+      width: 66px;
+      height: 40px;
+      margin-right: 1.4rem;
+      cursor: pointer;
+    }
+
+    &--info {
+      flex: 1;
+      font-weight: 500;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 1rem;
+      color: $--sds-color-grey-500;
+      border: 3px solid #f7f7f7;
+      box-sizing: border-box;
+      border-radius: 6px;
+    }
+
+    .payment-counter__button {
+      padding: 0 1rem;
+    }
+  }
+
+  &__active-state {
+    position: relative;
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    gap: 1rem;
+    justify-items: center;
+    align-items: center;
+    padding: 0 1rem;
+    border-radius: 6px;
+    background-color: black;
+    color: white;
+
+    @media screen and (max-width: $bp-small) {
+      gap: 6px;
+    }
+
+    input {
+      justify-self: end;
+      max-width: 82px;
+      height: 3.2rem;
+      border: 0;
+      text-align: center;
+      background: #c4c4c4;
+      box-shadow: inset 0px 6px 6px rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      font-size: 1.8rem;
+
+      @media screen and (max-width: $bp-small) {
+        max-width: 58px;
+        font-size: 14px;
+      }
+    }
+
+    &--timers {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: -3.5rem;
+
+      &.meeting {
+        margin-left: -9rem;
+      }
+
+      &.paused:not(.meeting) {
+        margin-left: 1.6rem;
+
+        @media screen and (max-width: $bp-smallest) {
+          margin-left: auto;
+        }
+      }
+    }
+
+    &--button {
+      width: 66px;
+      height: 39px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      cursor: pointer;
+
+      &--for-student {
+        width: 34px;
+        height: 39px;
+        cursor: auto;
+      }
+    }
+
+    &--extra {
+      display: flex;
+      align-items: center;
+      justify-items: right;
+      width: fit-content;
+      margin-left: 1rem;
+    }
+
+    &--extra-money {
+      font-size: 1.6rem;
+      color: $--sds-color-grey-500;
+    }
+
+    &--minutes {
+      justify-self: end;
+      width: 82px;
+      font-size: 1.9rem;
+      line-height: 133%;
+      text-align: right;
+    }
+
+    &--money {
+      font-size: 2.1rem;
+      line-height: 133%;
+    }
+
+    &--divider {
+      height: 24px;
+      width: 2px;
+      background: #3f3f3f;
+      margin-left: 0.6rem;
+      margin-right: 0.6rem;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    line-height: 3rem;
+    color: white;
+    background: black;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    height: 4.8rem;
+    z-index: 5;
+  }
+
+  &__play-icon,
+  &__pause-icon,
+  &__coins-icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    margin-left: 0.8rem;
+  }
+
+  &__coins-icon {
+    margin-left: 0;
+  }
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  opacity: 1;
+}
+
+.icon {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
+.confirm-btn {
+  justify-self: end;
+  height: 100%;
+  color: $feed-accent-green;
+
+  @media screen and (max-width: $bp-small) {
+    font-size: 12px;
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+}
+
+.confirm-btns {
+  display: flex;
+  align-items: center;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+}

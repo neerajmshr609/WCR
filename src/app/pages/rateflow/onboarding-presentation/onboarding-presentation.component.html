@@ -1,0 +1,35 @@
+<div *ngIf="currentStory" class="onboarding-presentation">
+  <app-modal (close)="didFinish()">
+    <mat-icon class="presentation__item--close-icon" (click)="didFinish()"
+      >cancel</mat-icon
+    >
+
+    <div class="presentation" #presentationRef>
+      <div class="presentation__item" *ngFor="let card of currentStory.cards">
+        <div class="itm">
+          <div class="presentation__item--title">
+            <h1>{{ card.title }}</h1>
+          </div>
+
+          <div class="presentation__item--image">
+            <img src="{{ card.imageurl }}" alt="" />
+          </div>
+
+          <div class="presentation__item--text">
+            <p>{{ card.text }}</p>
+          </div>
+        </div>
+
+        <div
+          class="done {{
+            card.id === currentStory.cards[currentStory.cards.length - 1].id
+              ? ''
+              : 'done-hidden'
+          }}"
+        >
+          <button class="btn landing-btn" (click)="didGotIt()">got it!</button>
+        </div>
+      </div>
+    </div>
+  </app-modal>
+</div>

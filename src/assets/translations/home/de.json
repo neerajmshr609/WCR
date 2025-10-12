@@ -1,0 +1,54 @@
+{
+  "menu": {
+    "home": "Startseite",
+    "how-it-works": "So funktioniert es"
+  },
+  "home": {
+    "header": {
+      "text": "Erzähl nicht nur, wie toll du bist,",
+      "subtext": "beweise es!"
+    },
+    "subtitle": "Gemeinsam stärker. Das ist die Grundidee unserer Plattform, mit Expertenhilfe und einer Gemeinschaft, die sich kümmert.",
+    "we_care": "Wir sorgen",
+    "title_rebuilding": "das Wir neu aufzubauen",
+    "title_side": "auf Augenhöhe",
+    "title_beyond": "über Grenzen hinweg",
+    "title_every_step": "Schritt für Schritt",
+    "title_crisis": "über die Krise hinaus",
+    "title_each_other": "Füreinander",
+    "title_each_remotely": "remote, mit Herz",
+    "step": "Schritt {{stepNumber}}",
+    "get-help-btn": "Hier klicken für Hilfe",
+    "step-card-1": "Brauchst du Hilfe?<br/>Fang hier an. Schildere uns deine Situation und lass dich mit der richtigen Unterstützung verbinden.",
+    "step-card-2": "Im Hintergrund aktiv. Verschiedene NGOs prüfen gemeinsam deine Anfrage und finden heraus, wer dir am besten helfen kann.",
+    "step-card-3": "Im Hintergrund aktiv. Mehrere gemeinnützige Vereine prüfen deine Anfrage, stellen bei Bedarf weitere Fragen und finden so heraus, wer dir am besten helfen kann."
+  },
+  "how-it-works": {
+    "how_intro_card": {
+      "how_to_use": "WIE NUTZE ICH ES ALS",
+      "connectors": "KUNDENMAGNET",
+      "connections": "KUNDE"
+    },
+    "connectors-select": {
+      "card-1": "Drücke “Kapsel erstellen” <br> und melde dich per E-Mail an, um <br> einfach Gespräche <br> mit deiner <br> Zielgruppe <br> zu beginnen.",
+      "card-2": "Wähle nun ein Thema <br> aus über 615 <br> Optionen.",
+      "card-3": "Kopiere & füge jeden Link ein, <br> den du teilen möchtest, um <br> dieses Gespräch <br> zu beginnen; Dieser Link wird <br> als Vorschau <br> für deine Kapsel <br> angezeigt.",
+      "card-4": "Stelle so viele Fragen <br> wie du möchtest. Du kannst <br> immer einen Preis <br> für deine Kapsel festlegen.",
+      "card-5": "Teile deine Kapsel <br> mit deinen <br> Freunden, deinen <br> Gemeinschaften und <br> weltweit.",
+      "card-6": "Sobald eine Verbindung <br> deine Kapsel kauft, können <br> sie beginnen, die Fragen <br> zu beantworten, die du <br> bereits <br> vorbereitet hast.",
+      "card-7": "Nachdem die Kapsel-<br> Fragen beantwortet sind, kannst <br> du unser <br> integriertes Zeit-<br> Tracking-System nutzen und <br> für deine weitere <br> Zeit bequem abrechnen.",
+      "card-8": "Kommuniziere mit all <br> deinen neuen Kunden <br> per Chat, Sprachnachricht, <br> integrietem Videocalling <br>zeichne das <br> Gespräch für <br> zukünftige Verweise <br> auf.",
+      "card-9": "Bleibe in Kontakt mit all <br> deinen Neuen-, Potentiellen- und <br> Wiederkeherenden Kunden & <br> Verbindern mithilfe <br> unseres kostenfreien <br> Kundenmanagementsystems."
+    },
+    "connections-select": {
+      "card-1": "Drücke \"Gespräch starten\"  <br> um den Kapsel-<br>Chatraum zu betreten.",
+      "card-2": "Melde dich per E-Mail an <br> und wenn nötig zahle die Gebühr <br> via Kreditkarte <br> um das Gespräch  <br> zu beginnen.",
+      "card-3": "Lese & schau dir alle Inhalte an <br> , und beantworte, alle <br> im, Kapsel gestellten Fragen akkurat.",
+      "card-4": "Antworte alle weiteren <br> Fragen, und füge so viel infos wie du möchtest, <br> hinzu.",
+      "card-5": "Sobald du alle Antworten <br> beantwortet hast, geht <br> Verfasser-<br> des Kapseln <br> detailiert <br> auf deine <br> und Kommentare <br> ein.",
+      "card-6": "So können beide Seiten <br> schnell sehen, ob sie <br> einander <br> wirklich helfen <br> können <br> oder <br> ebend nicht.",
+      "card-7": "Um noch tiefer mit dem Verfasser <br> in Kontakt zu treten, kannst <br> du mittels Chat, <br>  Audionachrichten, Videocalling, <br> und 1-Click Zeiterfasser <br> bequem euer Gespräch vertiefen.",
+      "card-8": "Wenn du selbst Kapsel <br> verfassen möchtest, erstelle ganz <br> einfach deine eigene <br> Fragekapsel <br> und beginne noch heute, <br> für deine Zeit und <br> dein Wissen <br> bezahlt zu werden."
+    }
+  }
+}

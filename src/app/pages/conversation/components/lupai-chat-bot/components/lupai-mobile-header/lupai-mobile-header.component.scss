@@ -1,0 +1,94 @@
+@import 'variables';
+@import 'mixins';
+
+:host {
+  display: flex;
+  width: 100%;
+  position: relative;
+  left: 0;
+  right: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    right: -100vw;
+    bottom: 0;
+    background: $--sds-color-background-default-secondary;
+    z-index: -1;
+  }
+}
+
+.lupai-mobile-header {
+  display: flex;
+  width: 100%;
+  flex-shrink: 0;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 12px;
+  }
+
+  &__bot-controls {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__robot-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  &__nav-btn,
+  &__menu-btn {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: $--sds-color-text-default-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    min-width: 28px;
+    height: 28px;
+
+    ::ng-deep mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      color: $--sds-color-text-default-default;
+      background-color: $--sds-color-background-default-default-hover;
+    }
+
+    &:focus,
+    &:active {
+      outline: none !important;
+      border: 1px solid $--sds-color-border-default-default !important;
+      box-shadow: none !important;
+      background-color: $--sds-color-background-default-default-hover;
+    }
+  }
+}

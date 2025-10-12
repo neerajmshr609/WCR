@@ -1,0 +1,27 @@
+@import "_variables";
+@import "_mixins";
+
+:host {
+  display: block;
+}
+
+.stats {
+  &_rows-container {
+    padding: $--sds-size-space-300;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: $--sds-size-space-200;
+  }
+
+  &_row {
+    display: flex;
+    justify-content: space-between;
+    color: $--sds-color-grey-450;
+    @include bodySmall;
+  }
+}
+
+.font-strong {
+  font-weight: $--sds-typography-body-font-weight-strong;
+}

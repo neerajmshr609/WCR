@@ -1,0 +1,54 @@
+<div class="chat__message"
+     [ngClass]="{
+                'chat__message--left': chatMessageAlignLeft(),
+                'chat__message--right': chatMessageAlignRight(),
+              }">
+  @if (message().deleted) {
+    <div class="removed-message">
+      <span class="removed-message__text">
+        {{ 'message.was_deleted' | translate }}
+        <strong>
+          {{ message().deleted.deleted_by?.display_name }}
+        </strong>
+      </span>
+    </div>
+  } @else if (isSystemMessage()) {
+    <app-service-message
+      [id]="message().id"
+      [message]="message()"
+      [icebreakerTitle]="icebreakerTitle()"
+      [paymentSessionId]="paymentSessionId"
+      [currentUser]="currentUser"
+      [feedback]="feedback"
+      [feedbackQuestion]="feedbackQuestion"
+      [recipients]="recipients"
+      [direction]="justifySelf()"
+      [isInternalChat]="isInternalChat()"
+      (enterMeet)="onEnterClasroomClick($event)"
+    ></app-service-message>
+  } @else {
+    @if (isFeedbackMessage()) {
+      <app-feed-back-message [message]="message()" [direction]="justifySelf()"></app-feed-back-message>
+    } @else {
+      <app-default-message
+        [isInternalChat]="isInternalChat()"
+        [id]="message().id"
+        [message]="message()"
+        [icebreakerTitle]="icebreakerTitle()"
+        [paymentSessionId]="paymentSessionId"
+        [feedback]="feedback"
+        [feedbackQuestion]="feedbackQuestion"
+        [isRater]="isRater"
+        [canReply]="canReply"
+        [initialMessage]="initialMessage"
+        [canEdit]="canEdit"
+        [recipients]="recipients"
+        (find)="find.emit($event)"
+        (reply)="reply.emit($event)"
+        (edit)="edit.emit($event)"
+        (delete)="updateMessage($event)"
+        [direction]="justifySelf()"
+      ></app-default-message>
+    }
+  }
+</div>

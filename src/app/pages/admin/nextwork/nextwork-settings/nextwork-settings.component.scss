@@ -1,0 +1,48 @@
+@import 'variables';
+
+.nextwork-settings {
+  display: grid;
+  padding: 4rem;
+  width: 100%;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &--new-item {
+      button {
+        transform: scale(0.8);
+      }
+    }
+
+    &--title {
+      flex: 1;
+      font-size: 4rem;
+      font-family: monospace;
+
+      @media only screen and (max-width: $bp-medium) {
+        font-size: 1.2rem;
+      }
+    }
+
+    &--value {
+      font-size: 4rem;
+      font-family: monospace;
+      text-align: center;
+      margin-left: 1rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        font-size: 1.2rem;
+      }
+    }
+
+    &--delete {
+      margin-left: 1rem;
+      cursor: pointer;
+    }
+  }
+}

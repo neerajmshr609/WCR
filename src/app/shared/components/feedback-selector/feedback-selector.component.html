@@ -1,0 +1,22 @@
+<div class="feedback-selector">
+  <button
+    *ngFor="let feedbackType of feedbackTypes"
+    class="feedback-selector__item"
+    [ngClass]="{
+      'feedback-selector__item--selected':
+        selectedFeedbackType === feedbackType + 'Items',
+      'feedback-selector__item--empty':
+        !feedbacks || !feedbacks[feedbackType + 'Items'].length,
+    }"
+    (click)="selectTab.emit(feedbackType + 'Items')"
+  >
+    <p *ngIf="selectedFeedbackType === feedbackType + 'Items'">
+      {{ feedbackType === 'nextsteps' ? 'next steps' : feedbackType }}
+    </p>
+    <img
+      [ngClass]="{ big: feedbackType === 'links' }"
+      *ngIf="selectedFeedbackType !== feedbackType + 'Items'"
+      [src]="'assets/feedbackcards/' + feedbackType + '.png'"
+    />
+  </button>
+</div>

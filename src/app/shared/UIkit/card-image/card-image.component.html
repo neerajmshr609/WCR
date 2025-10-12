@@ -1,0 +1,9 @@
+@if (isImgSrc()) {
+  <img
+    width="100%"
+    height="100%"
+    [src]="image()"
+  />
+} @else if (isComponent()) {
+  <ng-container *ngComponentOutlet="image()"></ng-container>
+}

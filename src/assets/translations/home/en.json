@@ -1,0 +1,55 @@
+{
+  "menu": {
+    "home": "Home",
+    "how-it-works": "How it works"
+  },
+  "home": {
+    "header": {
+      "text": "Don’t just tell them how great you are,",
+      "subtext": "Prove It."
+    },
+    "we_care": "We Care",
+    "title_rebuilding": "To Bring “We” Back",
+    "title_side": "At Eye Level",
+    "title_beyond": "Beyond Boundaries",
+    "title_every_step": "At Every Step",
+    "title_crisis": "Beyond the Crisis",
+    "title_each_other": "For Each Other",
+    "title_each_remotely": "Remotely",
+    "subtitle": "Stronger together. It's the simple idea behind our platform, offering expert-led support and a community that cares.",
+    "step": "Step {{stepNumber}}",
+    "get-help-btn": "Click To Get Help",
+    "step-card-1": "Need Help?<br/>Start Here.<br/>Tell us your situation and get<br/>connected to the right<br/>support.",
+    "step-card-2": "Behind the Scenes,<br/>We Care.<br/>NGOs review your needs, ask questions,<br/>and determine who can<br/>assist you most<br/>effectively",
+    "step-card-2_mobile": "Behind the Scenes,<br/>We Care.<br/>NGOs review your needs,<br/>ask questions, and<br/>determine who can assist<br/>you most effectively",
+    "step-card-3": "Empowered by Experts,<br/>Supported by Peers.<br/>Your NGO guides you,<br/>and our<br/>community<br/>helps you<br/>thrive long-term."
+  },
+  "how-it-works": {
+    "how_intro_card": {
+      "how_to_use": "HOW TO USE",
+      "connectors": "CONNECTORS",
+      "connections": "CONNECTIONS"
+    },
+    "connectors-select": {
+      "card-1": "Press “Create Ice <br> Breaker” and <br> Sign UP by email, to <br> easily get <br> conversations <br> started with your <br> community.",
+      "card-2": "Now select a topic <br> from over 615 <br> options.",
+      "card-3": "Copy & Paste any link <br> you wish to share to <br> get this conversation <br> started; This link will <br> appear as a <br> preview for <br> your Capsule.",
+      "card-4": "Ask as many questions <br> as you  like. You can <br> always set a price <br> for your Capsule.",
+      "card-5": "Share your ice <br> breakers with your <br> friends, your <br> communities, And <br> globally.",
+      "card-6": "Once a connection buys <br> your Capsule, they <br> can start answering <br> the questions you <br> have already <br>prepared for them.",
+      "card-7": "After the Capsule <br> questions are done, to <br> continue the <br> conversation, you can <br> conveniently use our <br> integrated time <br>tracker and charge <br>for your time spent.",
+      "card-8": "Communicate with all <br> your Connections <br> using chat, audio <br> messages, video <br> conferencing, screen-<br>sharing and record the <br> conversation for <br> future reference.",
+      "card-9": "Stay in contact with all <br> your New, Interesting and <br> Regular, Connections & <br> Connectors using <br>our integrated <br>CRM inbox."
+    },
+    "connections-select": {
+      "card-1": "Press \"ENTER\" this <br> conversation to enter <br>the Capsule <br> chat room.",
+      "card-2": "Easily Sign Up by E-<br>mail OR Enter your <br> credit card information <br> to get this <br>conversation <br>started.",
+      "card-3": "Start by answering <br> the first Capsule <br> question provided.",
+      "card-4": "Continue answering <br> the other questions <br> provided. Add as many <br> links, audio messages <br> and comments to <br> make sure they truly <br> get you.",
+      "card-5": "After your Connector <br> has replied, you can <br> rate & review your <br> experience. You can <br> always leave a tip if <br> your experience was <br> exceptional.",
+      "card-6": "What makes Getme unique <br> is that this is just the start<br>of your conversation with<br>your Connectors, and you can<br>always continue your<br>exchange using our <br>integrated payment<br>time tracker in <br>the chat room. ",
+      "card-7": "To go even deeper with <br> your Connectors, you can <br> communicate using, <br> chat, audio messages, <br> video conferecing, <br> screen-sharing and <br> record the <br> conversation <br>for furture <br> refference.",
+      "card-8": "If you would like to <br> become an Connector, <br> Easily create your own <br> Capsule questions, <br> And start getting paid <br> for your time and <br> knowledge <br>today."
+    }
+  }
+}

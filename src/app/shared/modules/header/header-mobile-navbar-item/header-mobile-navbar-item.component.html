@@ -1,0 +1,17 @@
+<a class="header-nav-item-wrap"
+   [routerLink]="link()"
+   [queryParams]="queryParams()"
+
+   [routerLinkActive]="routerLinkActive()">
+  <div
+    [ngClass]="{'with-description': description()}"
+    class="header-nav-item">
+    <div class="header-nav-item__icon">
+      <ng-content></ng-content>
+    </div>
+    <span class="header__item-text" [innerHTML]="title() | translate"></span>
+  </div>
+  @if (description()) {
+    <span class="header-nav-item__description"> {{ description() | translate }}</span>
+  }
+</a>

@@ -1,0 +1,23 @@
+<div class="cap">
+  <h2 class="cap__subtitle">
+    If you spent €{{ transactionsService.freeTierCap() }} on Getme.Global on a
+    given month you can use the website for free til the end of that month
+  </h2>
+
+  <div class="cap__container">
+    <div class="cap__top">
+      <h3 class="cap__month">this month</h3>
+      <div class="cap__bubble">
+        <p *ngIf="currentUser">€{{ currentUser.free_tier_left }} left</p>
+      </div>
+    </div>
+
+    <div class="cap__line">
+      <div
+        *ngIf="currentUser"
+        class="cap__innerline"
+        [ngStyle]="{ width: currentUser.free_tier_complete + '%' }"
+      ></div>
+    </div>
+  </div>
+</div>

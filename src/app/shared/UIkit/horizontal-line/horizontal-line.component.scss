@@ -1,0 +1,12 @@
+@import "_variables";
+
+:host {
+  display: block;
+}
+
+.horizontal-line {
+  height: $--sds-size-stroke-border;
+  background-color: $--sds-color-border-default-default;
+  border-radius: $--sds-size-radius-200;
+  border: none;
+}

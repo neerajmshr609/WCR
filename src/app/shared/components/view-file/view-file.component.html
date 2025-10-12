@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <div class="file-name">{{ item.name }}</div>
+  <app-close-icon class="close-btn" (click)="close()"></app-close-icon>
+</div>
+<div class="modal-body">
+  <div *ngIf="item.kind === 'audio'">
+    <app-avpresentation
+      [file]="item"
+      [displayPlayBtn]="true"
+    ></app-avpresentation>
+  </div>
+
+  <div *ngIf="item.kind === 'video'">
+    <div
+      plyr
+      class="videoplayer-instance"
+      [plyrOptions]="playerOptions"
+      [plyrPlaysInline]="true"
+      [plyrSources]="videoSrc()"
+      (plyrInit)="player = $event"
+    ></div>
+  </div>
+
+  <div *ngIf="item.kind === 'iframe'">
+    <app-iframe-presentation
+      [file]="item"
+      [isSingleFileProject]="isSingleFileProject"
+    ></app-iframe-presentation>
+  </div>
+  <div class="image-container" *ngIf="item.kind === 'image'">
+    <img [src]="item.url" />
+  </div>
+
+  <div class="pdf-container" *ngIf="item.kind === 'pdf'">
+    <app-pdf-presentation [file]="item"></app-pdf-presentation>
+  </div>
+
+  <div *ngIf="item.kind === 'dummy'">
+    <app-dummy-file
+      #dummyFileComponent
+      [file]="item"
+      [isRateflowPresentation]="isRateflowPresentation"
+    ></app-dummy-file>
+  </div>
+</div>

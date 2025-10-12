@@ -1,0 +1,402 @@
+{
+  "header": {
+    "profile": {
+      "title": "Your Profile",
+      "description": "All your public info in on place.",
+      "share": {
+        "not_medium_screen_text": "Share your profile",
+        "text": "Share",
+        "img_alt": "Share Icon"
+      }
+    },
+   
+    "contact-us": "Contact Us",
+    "profile-title": "Profile",
+    "home": "Home",
+    "blog": "NGO<br/>Blog-Chain",
+    "news": "Echo<br/>Board",
+    "news-line": "Echo Board",
+    "news-description": "See how Clients send you requests",
+    "login": "Login",
+    "find-cases": "Find<br/>Cases",
+    "find-cases-line": "Find Cases",
+    "request_desk": "Request<br/>Desk",
+    "request_desk-line": "Request Desk",
+    "request_desk-description": "All new cases where people need help you find here.",
+    "counsellor_desk": "Counsellor<br/>Desk",
+    "counsellor_desk-dropdown-description": "Contact other counsellors to get help at certain cases and topics.",
+    "create_capsule": "Create Capsule",
+    "capsule": "Capsule",
+    "create_capsule_description": "Capsules are sequences of dialogues that are triggered at ones",
+    "language": "Language",
+    "org_landing_page": "Organization Landing Page",
+    "we_care_remote_home": "WCR - Home",
+    "my_briefs": "My Briefs",
+    "my_briefs_description": "Only Visible to WCR Admins",
+    "counsellor_desk-line": "Counsellor Desk",
+    "get-help": "Get<br/>Help",
+    "get-help-line": "Get Help",
+    "get-help_description": "Answer some questions to help us to get your problems fixed faster.",
+    "get-help-dropdown": "Get help",
+    "get-help-dropdown-description": "See how Clients send you requests ",
+    "find_projects": "Find<br/>projects",
+    "create_ice_breaker": "Create<br/>Capsule",
+    "quick_questions": "Quick<br/>questions",
+    "public_feed": "Public<br/>feed",
+    "public_feed-line": "Public feed",
+    "why_getme": "Why<br/>getme",
+    "our_blog": "Our<br/>blog",
+    "about_us": "About<br/>Us",
+    "sign_up": "SIGN<br/>UP",
+    "sign_up-line": "Sign up",
+    "log_in": "Log<br/>in",
+    "shape_impact": "Shape Impact",
+    "shape_impact_description": "Give Feedback to our next features.",
+    "give_feedback": "Give<br/>feedback",
+    "new_feedback": "New<br/>feedback",
+    "my_projects": "My<br/>projects",
+    "my_public_profile": "My public<br/>profile",
+    "inbox": "Conversations",
+    "feedback": "Give <br/> Feedback",
+    "feedback-mobile": "Give Feedback",
+    "inbox-description": "All chats and groups you find here inside.",
+    "insights": "My<br/>Projects",
+    "insights-mobile": "My Projects",
+    "menu": {
+      "upload": "Upload",
+      "settings": "Settings",
+      "logout": "Logout",
+      "log_in": "Log in",
+      "signed_in_as": "Signed in as",
+      "why_getme": "Why getme",
+      "contact_us": "Contact us",
+      "home": "Home",
+      "open_admin": "Open Admin"
+    },
+    "open_request": "Open<br/>Request",
+    "create_ice-breaker": "Create<br/>Capsule",
+    "terms": "Terms",
+    "privacy-policy": "Privacy policy",
+    "imprint": "Imprint",
+    "data-deletion-instructions": "Data Deletion Instructions"
+  },
+  "search_bar": {
+    "categories": {
+      "input_placeholder": "Search by art category"
+    },
+    "skills": {
+      "input_placeholder": "Search by art category",
+      "connectors_online": "CONNECTORS ONLINE",
+      "all_connectors": "All connectors"
+    }
+  },
+  "topic_confilmation": {
+    "title": "Warning, questionnaire included",
+    "subtitle": "By deleting this topic we also have to delete all questionnaires that are attached to this topic."
+  },
+  "coming_soon": {
+    "title": "Coming soon...."
+  },
+  "accept_invite": {
+    "confirm": "Confirm",
+    "title": "Confirm your invitation",
+    "something_went_wrong": "Something went wrong..."
+  },
+  "adding_user": {
+    "add_people": "Add People to",
+    "internal_chat": "Internal Team Chat",
+    "chat": "Chat",
+    "name_groups_emails": "Name, groups or emails",
+    "e_g": "e.g.",
+    "note": {
+      "title": "Note",
+      "internal_chat_note": "Clients can not read this chatroom, its purpose is to discuss the clients situation with more people. Please be handle all personal information, with discretion."
+    },
+    "protection": {
+      "protected_by": "THIS SITE IS PROTECTED BY RECAPTCHA AND OUR",
+      "privacy_policy": "Privacy policy",
+      "and": "AND",
+      "terms_of_service": "terms of service",
+      "data-deletion-instructions": "Data Deletion Instructions",
+      "apply": "APPLY"
+    },
+    "cancel_button_text": "Cancel",
+    "add_button_text": "Add"
+  },
+  "price-slider": {
+    "change_hourly_rate": "CHANGE HOURLY RATE"
+  },
+  "conversation_menu": {
+    "accept_case": "Accept Case",
+    "reject_case": "Reject Case",
+    "escalate_case": "Escalate",
+    "video_call_request": "Request video call",
+    "video_call_requested": "Video call requested",
+    "video_call_request_icon_alt": "Vide camera illustration",
+    "add_user_title": "Add Counsellor to Client Chat",
+    "add_user_description": "People you add this way directly may talk to the client."
+  },
+  "conversation-request-more-button": {
+    "request": "Request"
+  },
+  "confirmation_message": {
+    "accept_case_title": "Accept case",
+    "accept_case_message": "Accept case means that you will become a coordinator for this person and will help him/her/them to resolve his/her/their problem.",
+    "accept_case_question": "Do you want to accept the case?",
+    "accept_case_btn": "Accept",
+    "reject_case_title": "Reject case",
+    "reject_case_message": "Reject case means that you do not want to continue with this case. You will be removed from this chat.",
+    "reject_case_question": "Do you want to reject the case?",
+    "reject_case_btn": "Reject",
+    "escalate_case_title": "Escalate case",
+    "escalate_case_message_organization": "Escalation means that the case will be visible to the other consultants in your organization.",
+    "escalate_case_message_platform": "Escalation means that the case will be visible to the other organizations on the platform.",
+    "escalate_case_question": "Do you want to continue?",
+    "escalate_case_btn": "Escalate",
+    "cancel_btn": "Cancel"
+  },
+  "message": {
+    "was_deleted": "Message was deleted by the user",
+    "reply": "Reply",
+    "edit_original": "Edit Original",
+    "download": "Download",
+    "remove": "Remove",
+    "initial_comment": "Initial comment",
+    "find": "Find",
+    "initial_question": "Initial question",
+    "initial_message": "Initial message",
+    "audio_message": "Audio message",
+    "image": "Image",
+    "question": "Question",
+    "give_feedback": "Go to Give Feedback",
+    "answer": "Answer",
+    "copied": "Copied!",
+    "copy": "Copy message"
+  },
+  "audio_message_loading": "LOADING",
+  "lesson_start_at": "your lesson will start today at",
+  "enter_room": "Enter consultation room",
+  "additional_menu": {
+    "photos": "Photos",
+    "camera": "Camera",
+    "location": "Location",
+    "contact": "Contact",
+    "files": "Files",
+    "capsule": "Capsule",
+    "scanner": "Scanner",
+    "timer": "Timer"
+  },
+  "pay_btn_text": "Pay",
+  "resolve_and_close": "Resolve & close",
+  "resolve_and_queue": "Resolve & add to Queue",
+  "audio_message": "Audio message",
+  "image": "Image",
+  "text-input_placeholder": "Start typing...",
+  "tips_want_leave": "Want to leave a tip?",
+  "tip_paid_additionally": "tip paid additionally",
+  "tip_payment_declined": "tip payment declined",
+  "no_tip_paid_yet": "no tip paid yet",
+  "user_info": {
+    "name_anon": "Anonymous",
+    "city_global": "GLOBAL"
+  },
+  "conversation_manage_panel": {
+    "tasks": "Tasks",
+    "lupai": "Lupai Bot",
+    "robots": "Robots",
+    "robots-description": "Interact with AI assistants",
+    "file_vault": " File Vault",
+    "internal_chat": "Internal Chat",
+    "client_chat": "Client Chat",
+    "summary": "Summary",
+    "coming_soon": "Coming soon..",
+    "events": "Events",
+    "subgroups": "Subgroups",
+    "public_boards": "Public Boards"
+  },
+  "conversation_header": {
+    "online": "online"
+  },
+  "text_input": {
+    "placeholder": "Start typing...",
+    "internal": "Write in internal chat",
+    "client": "Write in client chat"
+  },
+  "conversation_item": {
+    "to_pay": "<span>to</span> pay",
+    "group_conversation_info": {
+      "img_alt": "Conversation Image",
+      "person": "PERSON"
+    }
+  },
+  "finish_questionnare_btn_text": "Finish Questionnaire",
+  "confirmation": {
+    "yes": "Yes",
+    "no": "No"
+  },
+  "user_add_leave_chat_message": {
+    "member_added": "User {{active}} added {{passive}} to chat.",
+    "user_joined": "User {{active}} joined chat.",
+    "member_removed": "User {{active}} removed {{passive}} from chat.",
+    "user_left": "User {{active}} left chat."
+  },
+  "minimized-invitation": {
+    "confirm-invite": "Confirm Invitation",
+    "join_organization": "Join {{ organization.legal_name }} by {{ invitation_by }}"
+  },
+  "select-language-modal": {
+    "title": "Switch to prefered Language",
+    "label": "Language",
+    "cancel_btn_text": "Cancel",
+    "save_btn_text": "Save"
+  },
+  "audio_record": {
+    "paused": "Paused",
+    "uploading": "Uploading",
+    "uploading_1_dot": "Uploading.",
+    "uploading_2_dot": "Uploading..",
+    "uploading_3_dot": "Uploading..."
+  },
+  "stats": {
+    "last_interaction": "last interaction",
+    "total_income": "total income",
+    "spent_total": "spent total",
+    "time_spent": "time spent",
+    "hourly_rate": "hourly rate",
+    "no_last_interaction": "NO",
+    "rate_backs": {
+      "disrespectful": "disrespectful",
+      "unhelpful": "unhelpful",
+      "helpful": "helpful",
+      "brilliant_insight": "brilliant insight",
+      "strengths": "strengths",
+      "weaknesses": "weaknesses",
+      "next_steps": "next steps",
+      "links": "links"
+    },
+    "total_score": "Total Score",
+    "knowledge": "Knowledge",
+    "explanation": "explanation",
+    "pronunciation": "pronunciation",
+    "politeness": "politeness",
+    "no_skill": "No skill",
+    "stands_out": "Stands out",
+    "could_be_improved": "Could be improved",
+    "no_reviews": "No reviews received",
+    "less_info": "less info",
+    "more_info": "more info",
+    "hide_analytics": "hide analytics",
+    "show_analytics": "show analytics"
+  },
+  "item_resort_view": {
+    "resort": "Resort",
+    "original": "Original"
+  },
+  "profile-info": {
+    "title": "PUBLIC PROFILE",
+    "description": "Win more prospects faster by adding value first using content, questions and feedback to get conversations started.",
+    "connections": "Connections",
+    "Conversations": "Real Conversations",
+    "my-topics": "MY TOPICS",
+    "languages": "LANGUAGES",
+    "online": "now online",
+    "no-project-uploaded": "no projects uploaded",
+    "team-account": "team account",
+    "ice-breakers": "Capsules",
+    "buttons": {
+      "chose-cover": "Chose profile cover",
+      "recommend": "Recommend",
+      "share": "Share Profile",
+      "edit": "Edit",
+      "add-favorite": "Add to My Connectors",
+      "remove-connector": "Remove from Connectors",
+      "expand": "Expand profile Card",
+      "collapse": "Collapse profile Card"
+    }
+  },
+  "feedback-focus-area": {
+    "emotions": "emotions",
+    "technical_execution": "technical<br/>execution",
+    "idea": "idea /<br/>concept /<br/>story"
+  },"load_iframe_btn": {
+    "text": "Load project"
+  },
+  "load_pdf_btn": {
+    "text": "Load file"
+  },
+  "organization-invitations-conditions": {
+    "decline_invitation": "Deny",
+    "join_organization": "{{ organization.legal_name }} invites you to join",
+    "subtitles": "and discover brave new sea routes of solidarity, where others see hopeless horizons",
+    "text-p1": "Still finding our sea legs, but we're proud to reclaim the digital waters. Our adversary: the harsh sea of reality.",
+    "text-p2": "Our first journeys lead us to refugees from Ukraine. We want to help them online not only in emergency to reach safe harbor as quickly as possible, but to weave new nets together that transform shipwrecked souls back into bold captains who courageously take the helm even in rough waters.",
+    "text-p3": "As dedicated helpers, we are happy if you join us in shaping We Care in our still small harbor. Together with smart technologies, we are finding new ways to help people in need quickly and sustainably, and to overcome bureaucratic hurdles.",
+    "confirm-invite": "Confirm Invitation",
+    "accept": "Join Organisation",
+    "accept-counsellor": "Join as a counsellor"
+  },
+  "conversation": {
+    "service_message": {
+      "case_taken": " is now your coordinator. You can start a chat with him/her/them.",
+      "shared_with_organization": "{{consultantName}} shared your request with his/her/their organization {{organizationName}}"
+    }
+  },
+  "escalation": {
+    "title": "Select where we should display this case?",
+    "title_error": "Something went wrong, please try again",
+    "description_error": "Oops! Something went wrong. Give it another shot!",
+    "feedback": "Send Feedback",
+    "description": "With this function, you can make the case visible to other consultants, either for your organisation or for the entire platform.",
+    "share_case": "Share Case",
+    "cancel": "Cancel",
+    "share_case_repeat": "Try again",
+    "platform": "Show Case to all organisations",
+    "my_organization": "Show Case to my organisation",
+    "yourself": "Show Case to me only",
+    "success_title": "Case ahared successfully",
+    "success_description": "Remember, the visibility of open cases cannot be restricted again, it is only possible to increase visibility accross the platform.",
+    "got_it": "Got it"
+  },
+  "please-login-modal": {
+    "title": "Please sign up before commenting.",
+    "text": "Right now, we don’t support unsigned comments. You can still interact with everything else here, but the best way to help us out is by signing up and leaving your feedback. It really helps us reach our mission!",
+    "sign-up": "Go To Sign Up",
+    "cancel": "Cancel"
+  },
+  "footer": {
+    "address": "Hosted by: Sunflower care E.V.",
+    "imprint": "Imprint",
+    "terms": "Terms of service",
+    "privacy": "Privacy policy",
+    "data-deletion-instructions": "User Data Deletion"
+  },
+
+  "check-email": {
+    "check": "Check your Email",
+    "click-on": "Click on the",
+    "link": "link",
+    "to-login": "to Login or Signup",
+    "resend": "Resend",
+    "go-to-login": "Go to Client Login"
+  },
+  "fields": {
+    "password": "Password",
+    "new-password": "New password",
+    "passwordConfirmation": "Confirm password ",
+    "reset-password": "Repeat Password"
+  },
+  "validation": {
+    "required-field": "This is a required field",
+    "min-length": "Minimum {{min}} characters required",
+    "min-simbols": "At least 6 letters required",
+    "min-number": "At least one number required",
+    "min-special-simbol": "At least one special character required",
+    "password-match-error": "Passwords do not match"
+  },
+  "reset-password": {
+    "title": "Reset previous password",
+    "validator-description": "It must contain at least 6x letters, 1x number and 1x special character",
+    "reset-action": "Reset Password",
+    "cancel": "Cancel"
+  }
+}

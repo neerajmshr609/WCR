@@ -1,0 +1,73 @@
+@import '_variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 3.2rem;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &--title {
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-heading-font-family;
+    font-size: $--sds-typography-heading-size-base;
+    font-style: normal;
+    font-weight: $--sds-typography-heading-font-weight;
+    line-height: 120%;
+    letter-spacing: -0.48px;
+  }
+
+  app-close-icon {
+    display: flex;
+    height: 2.4rem;
+    width: 2.4rem;
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    cursor: pointer;
+  }
+}
+
+
+.btn-link {
+  background: none;
+  border: none;
+  outline: none;
+  text-decoration: underline;
+  color: blue;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.btns {
+  width: 100%;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 2.4rem;
+  gap: 1.6rem;
+}
+
+.modal {
+
+  &__title {
+    width: 100%;
+    padding: 0;
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: 140%;
+    margin: 1.2rem 0;
+  }
+}

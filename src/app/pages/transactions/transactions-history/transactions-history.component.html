@@ -1,0 +1,44 @@
+<div class="history">
+  <h2 class="history__subtitle">How you make money</h2>
+  <app-small-spinner [diameter]="50" *ngIf="!transactions"></app-small-spinner>
+  <div class="history__item" *ngFor="let transaction of transactions">
+    <div class="history__item--icon">
+      <img
+        src="assets/indicators/transaction-default.svg"
+        *ngIf="transaction.transactiontype === 'signup_bonus'"
+      />
+      <img
+        src="assets/indicators/transaction-upload.svg"
+        *ngIf="transaction.transactiontype === 'upload'"
+      />
+      <img
+        src="assets/indicators/transaction-topup.svg"
+        *ngIf="transaction.transactiontype === 'top_up'"
+      />
+      <img
+        src="assets/indicators/transaction-feedback.svg"
+        *ngIf="transaction.transactiontype === 'inspiring_feedback'"
+      />
+      <img
+        src="assets/indicators/transaction-refer.svg"
+        *ngIf="transaction.transactiontype === 'referral_bonus'"
+      />
+    </div>
+    <div class="history__item--title">
+      <h3>{{ transaction.display_name }}</h3>
+    </div>
+
+    <div class="history__item-leftside">
+      <div class="history__item-leftside--amount">
+        <h4>{{ transaction.display_value }}</h4>
+      </div>
+      <div class="history__item-leftside--time">
+        <p>{{ transaction.created_at | amTimeAgo }}</p>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" routerLink="/upload/balance" class="btn topup">
+    Top up your balance
+  </button>
+</div>

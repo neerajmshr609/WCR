@@ -1,0 +1,65 @@
+<div
+  class="additional-menu"
+  [@openClose]="isDisplayAdditionalMenu() ? 'open' : 'closed'"
+>
+  <div class="additional-menu__header">
+    <app-close-icon (click)="closeAdditionalMenu()"></app-close-icon>
+  </div>
+
+  @if (isUploadFile()) {
+    <div class="uploader">
+      <div class="uploader--conversation-file"></div>
+      <div class="uploader__actions">
+        @if (addedFiles()) {
+          <app-send-icon
+            [color]="isSendingFile() ? '#757575' : '#1E1E1E'"
+            strokeWidth="4"
+            (click)="sendFiles()"
+          ></app-send-icon>
+        }
+      </div>
+    </div>
+  } @else {
+    <div class="additional-menu__items">
+      <div class="additional-menu__item">
+        <app-image-icon color="#757575"></app-image-icon>
+        <span>{{ 'additional_menu.photos' | translate }}</span>
+      </div>
+      <div class="additional-menu__item">
+        <app-camera-icon color="#757575"></app-camera-icon>
+        <span>{{ 'additional_menu.camera' | translate }}</span>
+      </div>
+      <div class="additional-menu__item">
+        <app-location-icon color="#757575"></app-location-icon>
+        <span>{{ 'additional_menu.location' | translate }}</span>
+      </div>
+      <div class="additional-menu__item">
+        <app-contact-icon
+          strokeWidth="0.883082"
+          color="#757575"
+        ></app-contact-icon>
+        <span>{{ 'additional_menu.contact' | translate }}</span>
+      </div>
+      <div
+        class="additional-menu__item active"
+        (click)="isUploadFile.set(true)"
+      >
+        <app-file-icon></app-file-icon>
+        <span>{{ 'additional_menu.files' | translate }}</span>
+      </div>
+
+      <div class="additional-menu__item">
+        <app-pill-icon color="#757575"></app-pill-icon>
+        <span>{{ 'additional_menu.capsule' | translate }}</span>
+      </div>
+      <div class="additional-menu__item">
+        <app-scanner-icon strokeWidth="0.6" color="#757575"></app-scanner-icon>
+        <span>{{ 'additional_menu.scanner' | translate }}</span>
+      </div>
+      <div class="additional-menu__item">
+        <app-dollar-icon color="#757575"></app-dollar-icon>
+        <span>{{ 'additional_menu.timer' | translate }} </span>
+      </div>
+    </div>
+  }
+</div>

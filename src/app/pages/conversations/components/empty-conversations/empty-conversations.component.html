@@ -1,0 +1,30 @@
+@if (filteredTypes(); as items) {
+  @if (items.length === 0) {
+    <div class="empty-block">
+      {{ 'empty.empty-list' | translate }}
+    </div>
+    <div class="empty-details">
+      <div>
+        <h3 class="empty-title">{{ 'empty.main-title' | translate }}</h3>
+        <p class="empty-descriptions">{{ 'empty.main-descriptions' | translate }}</p>
+      </div>
+
+      <img class="empty-image" [src]="isDesktop() ? 'assets/conversations/people.svg' : 'assets/conversations/people-mobile.svg'" alt="People SVG">
+    </div>
+  } @else {
+    @if(items[items.length - 1]; as item) {
+      @if(views[item]; as view) {
+        <div class="empty-extended">
+          <img class="empty-extended-image" [src]="view.image" [attr.width]="isDesktop() ? '500px' : '200px'" [attr.height]="isDesktop() ? '500px' : '200px'">
+          <div class="empty-extended-details">
+            <h4 class="empty-extended-title"> {{ view.title | translate}} </h4>
+            <p class="empty-extended-subtitle"> {{ view.subtitle | translate }} </p>
+          </div>
+        </div>
+      }
+    }
+  }
+}
+
+
+

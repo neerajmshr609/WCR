@@ -1,0 +1,390 @@
+@import '_variables';
+@import '_mixins';
+
+@mixin maxWidthOfCard {
+  max-width: 395px;
+  width: 100%;
+}
+
+$heightOfMainContent: 375px;
+
+:host {
+  @include maxWidthOfCard;
+}
+
+.ice-breaker {
+  background-color: white;
+  box-shadow: 0 1.5px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+
+  &:hover {
+    .title-container {
+      background-color: $feed-accent-selection !important;
+
+      ::ng-deep .custom-price-slider .price-slider__container {
+        background-color: $feed-accent-selection;
+      }
+    }
+
+    .submit-btn:not(:disabled) {
+      color: $feed-accent-selection;
+      border-color: $feed-accent-selection;
+
+      img {
+        @include blackToBlue;
+      }
+    }
+  }
+
+  &__promotion {
+    position: relative;
+    height: $heightOfMainContent;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+
+    &-bg {
+      background-color: black;
+      position: relative;
+      overflow-y: auto;
+    }
+  }
+
+  &__header {
+    z-index: 3;
+    display: flex;
+    width: 100%;
+    margin-bottom: 60px;
+    div:first-child {
+      z-index: 9;
+    }
+
+    .title-container {
+      align-self: center;
+      margin-left: auto;
+      color: white;
+      background-color: black;
+      padding-left: 10px;
+      display: flex;
+      border-radius: 0 0 0 8px;
+      height: 47px;
+      z-index: 9;
+
+      .share-icon {
+        height: 20px;
+        vertical-align: middle;
+        margin-right: 10px;
+        @include invertColor;
+
+        @media screen and (max-width: $bp-small) {
+          height: 16px;
+        }
+      }
+
+      .title {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        padding-right: 10px;
+        align-self: center;
+
+        &__own {
+          padding-right: unset;
+        }
+      }
+
+      ::ng-deep .custom-price-slider .price-slider__container {
+        filter: unset;
+
+        .price-slider__price {
+          color: black;
+        }
+      }
+    }
+  }
+
+  &__title {
+    padding-top: 0;
+    padding-right: 18px;
+    padding-left: 18px;
+    letter-spacing: 0.1em;
+    color: black;
+    margin: unset;
+    height: 250px;
+    overflow: auto;
+
+    &-text {
+      background-color: #e5e5e5;
+      font-weight: 700;
+      font-size: 32.4877px;
+      line-height: 160%;
+
+      &-small {
+        background-color: unset;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 160%;
+        color: black;
+        height: 60px;
+        overflow-y: auto;
+      }
+    }
+  }
+
+  &__info {
+    background-color: #fafafa;
+    padding: 30px 30px 12px;
+
+    .skill-info {
+      display: flex;
+      align-items: center;
+
+      img {
+        height: 4.7rem;
+        width: 4.7rem;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      &-body {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1rem !important;
+
+        &__name {
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 23px;
+          letter-spacing: 0.03em;
+          color: $--sds-color-grey-500;
+        }
+
+        &__rate {
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 14px;
+          letter-spacing: 0.03em;
+          color: #858585;
+        }
+      }
+    }
+
+    .skill-review {
+      display: flex;
+      justify-content: space-between;
+
+      &__actions {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-direction: column;
+        gap: 13px;
+
+        &-title {
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 14px;
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
+          margin: unset;
+          color: $feed-light-gray-text;
+        }
+
+        &-btns {
+          display: flex;
+          gap: 13px;
+        }
+      }
+
+      &__arrow-btn {
+        background: none;
+        border: none;
+        outline: none;
+        width: 30px;
+        height: 30px;
+        color: black;
+        cursor: pointer;
+
+        &:disabled {
+          opacity: 0.1;
+          cursor: default;
+        }
+
+        mat-icon {
+          font-size: 2rem;
+          line-height: 2rem;
+          height: 2rem;
+          width: 2rem;
+        }
+
+        &--rotate {
+          transform: rotate(180deg);
+        }
+
+        &__content {
+          width: 2.3rem;
+          height: 2.3rem;
+          box-sizing: content-box;
+          border: 0.2rem solid black;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+        }
+      }
+
+      &__rate {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        &__reviews {
+          font-size: 13px;
+          line-height: 15px;
+          text-align: center;
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
+          color: $feed-light-gray-text;
+        }
+      }
+    }
+  }
+
+  &__description {
+    padding: 17px 34px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 122%;
+    letter-spacing: 0.03em;
+    color: #858585;
+    overflow-y: auto;
+    height: 100px;
+  }
+}
+
+.action {
+  padding: 10px 14px;
+}
+
+.submit-btn {
+  cursor: pointer;
+  width: 100%;
+  background-color: #fff473;
+  padding: 12px;
+  color: black;
+  border: 3px solid #000000;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  &__icon {
+    vertical-align: bottom;
+    margin-right: 10px;
+  }
+
+  &:disabled {
+    cursor: unset;
+  }
+
+  @media screen and (max-width: $bp-small) {
+    font-size: 14px;
+    letter-spacing: unset;
+  }
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+
+  &__blue {
+    color: #000fff;
+  }
+
+  &__green {
+    color: #00c67e;
+  }
+}
+
+.not-owner-title {
+  margin-right: 30px;
+  border-radius: 0 0 8px 8px !important;
+}
+
+.not-selected-skill-title-container {
+  background-color: black !important;
+}
+
+.context-btn {
+  z-index: 9;
+  cursor: pointer;
+  height: 46px;
+  background-color: black;
+  border-top-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border: unset;
+  color: white;
+
+  &__white {
+    color: black;
+    background-color: transparent;
+  }
+}
+
+.review {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0.03em;
+  color: #858585;
+  height: 150px;
+  overflow-y: auto;
+
+  &__switch {
+    display: flex;
+    gap: 3px;
+    justify-content: flex-end;
+
+    &-btn {
+      opacity: 0.4;
+      background-color: unset;
+      border: unset;
+      cursor: pointer;
+
+      &--selected {
+        opacity: 1;
+      }
+
+      &:disabled {
+        cursor: default;
+        opacity: 0.1;
+      }
+    }
+  }
+}
+
+.share-element {
+  cursor: pointer;
+}
+
+.custom-price-slider {
+  ::ng-deep app-price-slider {
+    .price-slider__container {
+      min-width: 110px;
+    }
+  }
+}
+
+.embed-content {
+  @include maxWidthOfCard;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  height: $heightOfMainContent;
+}

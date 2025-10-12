@@ -1,0 +1,46 @@
+
+<div class="about__wrapper">
+  <div class="banner">
+    <iframe
+      src="https://www.youtube.com/embed/kNtc_pIhJPg"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+    <!--    <h1 class="banner__title">-->
+    <!--      Do You Truly get me?-->
+    <!--    </h1>-->
+
+    <!--    <p class="banner__text">-->
+    <!--      How often were your ideas, your knowledge, your skills, and your talents not taken seriously, or worse ignored?-->
+    <!--      Did you ever wish there was a way you could express who you truly are, share topics and content that matter most-->
+    <!--      you, and have the opportunity to finally get real with people?-->
+    <!--      <br>-->
+    <!--      <br>-->
+    <!--      Imagine a new empowering community of connectors whom are eager to truly get you by sharing and engaging with Ice-->
+    <!--      breakers that turn shallow chats into meaningful one on one conversations.-->
+    <!--      <br>-->
+    <!--      <br>-->
+    <!--      GetMe is the first value-driven platform that puts the power in your hands to connect with people on a deeper-->
+    <!--      level, learn from their knowledge & expertise, And get paid for your time spent instantly.-->
+    <!--      <br>-->
+    <!--      <br>-->
+    <!--      Now everyone globally can contribute to a unique experience that gives them the opportunity to share their ideas,-->
+    <!--      talents, knowledge, skills, expertise, wisdom and creativity all in one place.-->
+    <!--      <br>-->
+    <!--      <br>-->
+    <!--      We believe in order to get me, you have to truly GetMe.-->
+    <!--    </p>-->
+  </div>
+
+  <div class="cards-grid about__cards">
+    <app-about-card
+      *ngFor="let card of companyPurposeCards; let i = index"
+      [card]="card"
+      [index]="i"
+    ></app-about-card>
+  </div>
+</div>
+
+<app-goey-footer></app-goey-footer>

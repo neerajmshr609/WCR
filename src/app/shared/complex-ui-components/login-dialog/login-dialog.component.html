@@ -1,0 +1,192 @@
+<div class="login-dialog" #authRef>
+  <form class="form" [formGroup]="form" (submit)="onSubmit()">
+    @if(form.get('username'); as nameForm) {
+      <app-input [control]="form.get('username')" inputName="username" [placeholder]="'validation.unique' | translate" type="text" [label]="'fields.username' | translate">
+
+        @if(!(
+          (nameForm.touched && nameForm.errors?.required) ||
+          (nameForm.value && nameForm.errors?.pattern)
+        )) {
+          <span>{{'validation.error' | translate}}</span>
+        }
+        @if(nameForm.touched && nameForm.errors?.required) {
+          <span
+          >{{'validation.required-field' | translate}}</span
+          >
+        }
+        @if (nameForm.value && nameForm.errors?.pattern) {
+          <span>{{'validation.username-valid' | translate}}</span>
+        }
+      </app-input>
+    }
+
+    <app-input [control]="form.get('email')" inputName="email" placeholder="example@mail.org" type="email" [label]="'fields.email' | translate">
+      <span>{{'validation.email-valid' | translate}}</span>
+    </app-input>
+
+    <app-input [control]="form.get('password')" inputName="password" [placeholder]="'validation.password-placeholder' | translate: {min: 6}" type="password" [label]="'fields.password' | translate">
+      <span>{{'validation.min-length' | translate:{min: 6} }}</span>
+
+      @if(form.get('password')?.errors?.['passwordComplexity']) {
+        @if(!form.get('password')?.errors?.['passwordComplexity'].hasSixLetters) {
+          <span>
+              {{ 'validation.min-simbols' | translate }}
+            </span>
+        }
+        @if(!form.get('password')?.errors?.['passwordComplexity'].hasNumber) {
+          <span>
+              {{ 'validation.min-number' | translate }}
+            </span>
+        }
+        @if(!form.get('password')?.errors?.['passwordComplexity'].hasSpecialChar) {
+          <span>
+              {{ 'validation.min-special-simbol' | translate }}
+            </span>
+        }
+      }
+
+    </app-input>
+
+    @if(form.get('newPassword')) {
+      <app-input [control]="form.get('newPassword')" inputName="newPassword" [placeholder]="'validation.password-placeholder' | translate: {min: 6}"  type="password" [label]="'fields.password' | translate">
+        <span>{{'validation.min-length' | translate :{min: 6} }}</span>
+        @if(form.get('newPassword')?.errors?.['passwordComplexity']) {
+          @if(!form.get('newPassword')?.errors?.['passwordComplexity'].hasSixLetters) {
+            <span>
+              {{ 'validation.min-simbols' | translate }}
+            </span>
+          }
+          @if(!form.get('newPassword')?.errors?.['passwordComplexity'].hasNumber) {
+            <span>
+              {{ 'validation.min-number' | translate }}
+            </span>
+          }
+          @if(!form.get('newPassword')?.errors?.['passwordComplexity'].hasSpecialChar) {
+            <span>
+              {{ 'validation.min-special-simbol' | translate }}
+            </span>
+          }
+        }
+      </app-input>
+    }
+
+    @if (isSignupMode) {
+      <div class="form-field">
+        <label class="form-label" for="findOrgInput">{{ 'fields.org' | translate }} <span>({{ 'fields.optional' | translate }})</span></label>
+        <input
+          [placeholder]="'fields.org-placeholder' | translate"
+          id="findOrgInput"
+          class="form-input"
+          [formControl]="organizationsControl"
+          [appAutocomplete]="autocomplete">
+      </div>
+
+      <app-autocomplete (valueChange)="organizationSelected($event)" #autocomplete="appAutocomplete">
+        <ng-template appAutocompleteContent>
+          @for(option of organizations(); track option.id) {
+            <app-autocomplete-option [value]="option">
+              {{ option.legal_name }}
+            </app-autocomplete-option>
+          }
+          @if(!organizations().length){
+            <app-autocomplete-option>{{ 'fields.no-result'  | translate }}</app-autocomplete-option>
+          }
+        </ng-template>
+      </app-autocomplete>
+    }
+
+    @if (isSignupMode && form.get('accepted')) {
+      <div  class="terms-checkbox">
+        <mat-checkbox formControlName="accepted"
+        >
+          <p>{{ 'fields.accept-terms' | translate }}</p>
+          <a [href]="termsLink" target="_blank">{{ 'fields.read-terms' | translate }}</a>
+        </mat-checkbox>
+
+      </div>
+    }
+    @if(error){
+      <div>
+        <p class="mat-error">{{ error }}</p>
+        @if(shouldShowResendConfirmation){
+          <app-button
+            size="medium"
+            btnUIType="subtle"
+            type="button"
+            (click)="didRequestConfirmation(form.get('email')?.value)"
+          >
+            {{'actions.resend-confirmation-email' | translate }}
+          </app-button>
+        }
+      </div>
+    }
+
+    <div class="btn-group" [ngClass]="{'center': isPasswordResetMode}">
+      @if (isPasswordResetMode){
+        <app-button
+          size="medium"
+          btnUIType="subtle"
+          type="button"
+          (click)="cancelPasswordReset()"
+        >{{ 'actions.cancel' | translate }}</app-button>
+      }
+
+
+      @if(isLoginMode || isSignupMode){
+        <app-button style="width: 100%" class="submit-btn" size="medium" btnUIType="primary" type="submit" [disabled]="form.invalid || (form.get('accepted') && form.get('accepted')?.value === false)">
+         @if(isLoading){
+           <div class="spinner" role="status">
+             <app-small-spinner [isWhite]="true" diameter="16"></app-small-spinner>
+           </div>
+         }
+
+          @if(isLoginMode){
+            {{'header.sign-in' | translate }}
+          }
+
+          @if(isSignupMode){
+            {{'header.sign-up' | translate }}
+          }
+        </app-button>
+      }
+
+      @if(isPasswordResetMode){
+        <app-button class="submit-btn" size="medium" btnUIType="primary" type="submit" [disabled]="form.invalid || (form.get('accepted') && form.get('accepted')?.value === false)">
+          @if(isLoading){
+            <div class="spinner" role="status">
+              <app-small-spinner [isWhite]="true" diameter="16"></app-small-spinner>
+            </div>
+          }
+          @if(isPasswordResetMode){
+            {{'header.reset-password' | translate }}
+          }
+        </app-button>
+      }
+    </div>
+
+    @if(!isLoginMode &&! isPasswordResetMode){
+      <div class="login-dialog__login-switch">
+        <p>
+          {{ 'actions.already-have-an-account' | translate }}
+          <a (click)="onSwitchMode('login')">{{ 'actions.sign-in-here' | translate }}</a>.
+        </p>
+      </div>
+    }
+    @if(!isSignupMode && !isPasswordResetMode){
+      <div class="login-dialog__login-switch">
+        <p>
+          {{'actions.without-acc' | translate }}
+          <a (click)="onSwitchMode('signup')">{{ 'actions.sign-up-here' | translate }}</a>.
+        </p>
+      </div>
+    }
+    @if(!isPasswordResetMode){
+      <div class="login-dialog__login-switch forgot-password">
+        <p>
+          {{'actions.forgot-password' | translate }}
+          <a (click)="onSwitchMode('resetpassword')">{{'actions.reset-password' | translate }}</a>.
+        </p>
+      </div>
+    }
+  </form>
+</div>

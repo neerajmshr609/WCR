@@ -1,0 +1,17 @@
+@import "_variables";
+@import "_mixins";
+
+:host {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $--sds-size-space-400;
+}
+
+.invert-colors {
+  @include invertColor;
+}
+
+.btn-icon {
+  width: $--sds-typography-body-size-medium;
+  height: $--sds-typography-body-size-medium;
+}

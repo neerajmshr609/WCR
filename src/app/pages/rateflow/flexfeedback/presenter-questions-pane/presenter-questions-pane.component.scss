@@ -1,0 +1,33 @@
+@import 'variables';
+
+.presenter-questions-pane {
+  display: flex;
+  flex-direction: column;
+
+  align-content: center;
+  justify-content: center;
+
+  h1 {
+    text-align: center;
+
+    color: $--Dark-Gray;
+    font-family: $--sds-typography-body-font-family;
+    font-size: $--sds-typography-body-size-medium;
+    font-style: normal;
+    font-weight: $--sds-typography-body-font-weight-strong;
+    line-height: 140%;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.6rem;
+    text-transform: uppercase;
+    color: $--Grey;
+    font-family: $--sds-typography-family-sans;
+    font-size: $--Body-Size-XS;
+    font-style: normal;
+    font-weight: $--sds-typography-weight-medium;
+    line-height: normal;
+    letter-spacing: $--letter-spacing-3;
+  }
+}

@@ -1,0 +1,22 @@
+<form class="payment-form">
+  <div id="card-element"></div>
+
+  <div id="card-errors" role="alert"></div>
+
+  <button
+    class="payment-form__submit-btn"
+    mat-flat-button
+    id="submit"
+    [disabled]="paymentInProgress"
+    (click)="onPayClick()"
+  >
+    <div class="btn-body">
+      <div>Pay</div>
+      <app-small-spinner
+        *ngIf="paymentInProgress"
+        diameter="16"
+        [isWhite]="true"
+      ></app-small-spinner>
+    </div>
+  </button>
+</form>

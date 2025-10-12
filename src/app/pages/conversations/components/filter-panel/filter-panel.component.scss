@@ -1,0 +1,51 @@
+@import "variables";
+
+:host {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.filters {
+  display: flex;
+  gap: 1.6rem;
+  flex: 1;
+}
+
+.icon {
+  display: flex;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+app-search {
+  width: 22.2rem;
+  height: 4rem;
+  flex: 1;
+  align-items: center;
+
+  @media (max-width: $desktop) {
+    flex: 1;
+    width: auto;
+  }
+}
+
+.add-new {
+  background-color: $--sds-color-background-default-default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.4rem;
+  min-width: 4.4rem;
+  height: 4.4rem;
+  cursor: pointer;
+  border-radius: 2.2rem;
+  border: $--sds-size-stroke-border solid $--sds-color-border-default-default;
+}
+
+app-plus-icon {
+  display: flex;
+  width: 2.4rem;
+  height: 2.4rem;
+}

@@ -1,0 +1,114 @@
+@import 'variables';
+
+.payments {
+  box-shadow: 0px 0.3px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 5.27126px;
+  margin: 30px 20px;
+
+  &-save {
+    background: $feed-light-gray-text;
+
+    &-inform {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      color: white;
+      padding-bottom: 16px;
+    }
+
+    h2 {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 26px;
+      text-transform: uppercase;
+      text-align: center;
+      color: white;
+      padding-top: 15px;
+    }
+
+    .payments-save-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      @media screen and (max-width: $bp-small) {
+        grid-template-columns: 1fr;
+      }
+
+      .commission {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .block {
+          width: 75%;
+
+          .commission-percent {
+            font-weight: bold;
+            font-size: 58px;
+            line-height: 68px;
+            text-align: center;
+            color: white;
+          }
+
+          .commission-info {
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 22px;
+            text-align: center;
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .payments-save-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          max-width: 175px;
+        }
+      }
+
+      .bonus {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 16px;
+
+        .bonus-block {
+          display: flex;
+          align-items: center;
+          padding-bottom: 10px;
+
+          .bonus-percent {
+            font-weight: 500;
+            font-size: 21px;
+            line-height: 24px;
+            color: white;
+            padding-right: 20px;
+          }
+
+          .bonus-text {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+            color: black;
+            white-space: pre-line;
+          }
+
+          .bonus-percent-first {
+            padding: 0;
+          }
+
+          .bonus-text-first {
+            font-weight: bold;
+            color: white;
+            padding-left: 55px;
+          }
+        }
+      }
+    }
+  }
+}

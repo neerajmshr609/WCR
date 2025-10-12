@@ -1,0 +1,22 @@
+<div class="skills" appLoadMoreOnscroll (loadMoreEvt)="loadMore()">
+  <app-skill-item
+    (skillCreated)="fetchSkills()"
+    (skillDeleted)="onSkillDelete($event)"
+  ></app-skill-item>
+
+  <div class="skills__filter">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Search skills"
+        [formControl]="filterControl"
+      />
+    </mat-form-field>
+  </div>
+
+  <app-skill-item
+    *ngFor="let skill of filteredSkills"
+    (skillDeleted)="onSkillDelete($event)"
+    [skill]="skill"
+  ></app-skill-item>
+</div>

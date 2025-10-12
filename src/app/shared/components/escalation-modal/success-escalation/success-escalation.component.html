@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h2 mat-dialog-title>{{ 'escalation.success_title' | translate }}</h2> <app-close-icon strokeWidth="3" (click)="close()"></app-close-icon>
+</div>
+
+<mat-dialog-content >
+  <p>{{ 'escalation.success_description' | translate }}</p>
+  <div class="escalation-type">
+    @if (data.escalationLevel === 'organization_direct') {
+      {{ 'escalation.my_organization' | translate }}
+    }
+    @if (data.escalationLevel === 'platform') {
+      {{ 'escalation.platform' | translate }}
+    }
+
+    <app-icon-check-circle color="#02542D"></app-icon-check-circle>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <app-button size="medium" btnUIType="neutral" (click)="close()">{{ 'escalation.cancel' | translate }}</app-button>
+  <app-button size="medium" btnUIType="primary" (click)="close()">{{ 'escalation.got_it' | translate }}</app-button>
+</mat-dialog-actions>

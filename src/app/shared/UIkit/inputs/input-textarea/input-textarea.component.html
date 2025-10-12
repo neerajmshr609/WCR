@@ -1,0 +1,7 @@
+<textarea
+  class="text-area-input"
+  [placeholder]="placeholder()"
+  [disabled]="disabled()"
+  (input)="changeHandler()"
+  #textAreaInput
+>{{ value() }}</textarea>

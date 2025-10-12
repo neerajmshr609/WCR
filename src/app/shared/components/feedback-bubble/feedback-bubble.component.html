@@ -1,0 +1,211 @@
+<div class="feedback" *ngIf="feedback">
+  <app-user-info
+    *ngIf="rater"
+    [user]="rater"
+    [isRound]="true"
+    [noName]="true"
+    [borderColor]="borderColor"
+    [borderWidth]="1"
+  ></app-user-info>
+
+  <div class="feedback__wrapper">
+    <div
+      class="feedback__bubble"
+      [class]="'feedback__bubble--' + feedback.avratingparam?.color || 'null'"
+      [ngClass]="{
+        'feedback__bubble--active': isSelected,
+        'feedback__bubble--active-screenshot': isSelected && showScreenshot,
+        'feedback__bubble--active-curves': isSelected && showCurves,
+        'feedback__bubble--project-card': isProjectCard,
+        'pt-1': isGameCard && !feedback.screenshot && !feedback.drawing,
+      }"
+      (click)="selectFeedback.emit($event)"
+    >
+      <div class="feedback__additions-icons">
+        <ng-container *ngIf="feedback.screenshot">
+          <p class="feedback__additions-icon feedback__screenshot-icon">
+            <img src="assets/flexfeedback/screenshot-icon.svg" />
+          </p>
+        </ng-container>
+
+        <ng-container *ngIf="isProjectCard && feedback.avratingparam_id">
+          <p class="feedback__additions-icon feedback__curves-icon">
+            <img src="assets/flexfeedback/avparam-icon.svg" />
+          </p>
+        </ng-container>
+
+        <ng-container *ngIf="feedback.drawing">
+          <p class="feedback__additions-icon feedback__additions-icon--small">
+            <img src="assets/flexfeedback/draw-icon.svg" />
+          </p>
+        </ng-container>
+      </div>
+
+      <ng-container *ngIf="!isGameCard">
+        <button
+          class="feedback__order"
+          [ngClass]="{ pl: feedback.rateback_score }"
+          *ngIf="isAuthor"
+          [matMenuTriggerFor]="menu"
+          (click)="$event.stopPropagation()"
+        >
+          {{ feedback.order + 1 }}
+          <div
+            class="feedback__rateback"
+            *ngIf="getRatebackName(feedback.rateback_score) as rateback"
+          >
+            <img
+              [src]="
+                'assets/ratebacks/' +
+                rateback[0] +
+                (selectedFeedbackId === feedback.id
+                  ? '-filled.svg'
+                  : '-filled-gray.svg')
+              "
+              alt=""
+            />
+            {{ rateback[1] }}
+          </div>
+        </button>
+
+        <button
+          class="feedback__order"
+          [ngClass]="{ pl: feedback.rateback_score }"
+          *ngIf="!isAuthor"
+        >
+          {{ feedback.order + 1 }}
+          <ng-container *ngIf="feedback.rateback_score">
+            <div
+              class="feedback__rateback"
+              *ngIf="getRatebackName(feedback.rateback_score) as rateback"
+            >
+              <img
+                [src]="
+                  'assets/ratebacks/' +
+                  rateback[0] +
+                  (selectedFeedbackId === feedback.id
+                    ? '-filled.svg'
+                    : '-filled-gray.svg')
+                "
+                alt=""
+              />
+              {{ rateback[1] }}
+            </div>
+          </ng-container>
+        </button>
+
+        <mat-menu #menu="matMenu">
+          <button
+            [disabled]="feedback.rateback_score === -5"
+            mat-menu-item
+            (click)="didSelectRerateRateback.emit(-5)"
+            class="flex-btn"
+          >
+            <img
+              class="rerate-icon"
+              width="44"
+              height="44"
+              src="assets/ratebacks/discouraging.svg"
+            />
+            <span style="margin-left: 0.6rem">Disrespectful</span>
+          </button>
+
+          <button
+            [disabled]="feedback.rateback_score === -1"
+            mat-menu-item
+            (click)="didSelectRerateRateback.emit(-1)"
+            class="flex-btn"
+          >
+            <img
+              class="rerate-icon"
+              width="44"
+              height="44"
+              src="assets/ratebacks/unhelpful.svg"
+            />
+            <span style="margin-left: 0.6rem">Unhelpful</span>
+          </button>
+
+          <button
+            [disabled]="feedback.rateback_score === 1"
+            mat-menu-item
+            (click)="didSelectRerateRateback.emit(1)"
+            class="flex-btn"
+          >
+            <img
+              class="rerate-icon"
+              width="44"
+              height="44"
+              src="assets/ratebacks/helpful.svg"
+            />
+            <span style="margin-left: 0.6rem">Helpful</span>
+          </button>
+
+          <button
+            [disabled]="feedback.rateback_score === 5"
+            mat-menu-item
+            (click)="didSelectRerateRateback.emit(5)"
+            class="flex-btn"
+          >
+            <img
+              class="rerate-icon"
+              width="44"
+              height="44"
+              src="assets/ratebacks/inspiring.svg"
+            />
+            <span style="margin-left: 0.6rem">Brilliant insight</span>
+          </button>
+        </mat-menu>
+      </ng-container>
+
+      <ng-container
+        *ngIf="feedback.feedbacktype !== 'linksItems'; else linksItemsTpl"
+      >
+        <h2 *ngIf="feedback.text as text">
+          {{ text }}
+        </h2>
+        <div *ngIf="feedback.audio_message?.url">
+          <app-audio-message
+            [audioMessage]="feedback.audio_message"
+            [canSelectLanguage]="canSelectLanguage"
+            [languages]="project?.user.lang"
+            (selectLang)="onAudioMsgLangChange($event)"
+          ></app-audio-message>
+        </div>
+      </ng-container>
+
+      <ng-template #linksItemsTpl>
+        <h2>
+          <p>
+            {{ feedback.text }}
+          </p>
+          <a
+            [href]="feedback.link"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="av-link"
+            [ngClass]="{ 'av-link--black': !feedback.avratingparam_id }"
+          >
+            {{ feedback.link || 'Link' }}
+          </a>
+        </h2>
+        <div *ngIf="feedback.audio_message?.url">
+          <app-audio-message
+            [audioMessage]="feedback.audio_message"
+            [canSelectLanguage]="canSelectLanguage"
+            [languages]="project?.user.lang"
+            (selectLang)="onAudioMsgLangChange($event)"
+          ></app-audio-message>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="tag active" *ngIf="feedback.avratingparam_id && !hideTag">
+      <div class="inner-container">
+        <p [class]="'feedback__bubble--' + feedback.avratingparam.color">
+          {{ feedback.avratingparam.name }}
+        </p>
+        <span>{{ feedback.avtracktimeposition | hms }}</span>
+      </div>
+    </div>
+  </div>
+</div>

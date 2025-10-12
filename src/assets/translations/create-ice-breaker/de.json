@@ -1,0 +1,10 @@
+{
+  "header-text": "Wählen Sie ein Thema, um eine Kapsel zu erstellen",
+  "sub-header-text": "Kapseln sind eine Sammlung von Fragen, die Sie anderen Personen<br/>zu einem bestimmten Thema stellen, mit dem Sie sich auskennen oder das Sie interessiert.",
+  "modal": {
+    "title": "Bitte bestätigen Sie die Erstellung einer neuen Kapsel.",
+    "cancel": "Abbrechen",
+    "confirm": "Ja, bitte fortfahren",
+    "text": "Du hast das Thema <b>{{skill}}</b>. Wenn du fortfährst, kannst du eine Reihe von Fragen erstellen, die die Kunden beantworten sollen, um Zeit zu sparen und einen Überblick über den Fall zu erhalten. Am Ende können Sie wählen, ob alle WCR-Mitglieder über <a href='{{helpLink}}' target='_blank'>Get help</a> auf diese Kapsel zugreifen können, nur in Ihrer <a href='{{ngoLink}}' target='_blank'>NGO</a> über deren Organisation Landing Page oder ob sie nur auf Ihrem <a href='{{profileLink}}' target='_blank'>persönlichen öffentlichen Profil</a> angezeigt wird."
+  }
+}

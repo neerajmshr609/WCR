@@ -1,0 +1,102 @@
+{
+  "profile-image": {
+    "chose-cover": "Select Profile Cover"
+  },
+  "is-online": {
+    "online": "now online",
+    "offline": "offline"
+  },
+  "role-description": {
+    "title-placeholder": "Add title... (e.g. Profession)",
+    "description-placeholder": "Please add your description max. {{ maxSigns }} signs....",
+    "max-signs-error": "Description must not exceed {{ maxSigns }} characters"
+  },
+  "button-edit": {
+    "edit": "Edit"
+  },
+  "button-save": {
+    "save": "Save"
+  },
+  "recommend-or-share": {
+    "recommended": "Recommended",
+    "recommend": "Recommend",
+    "share": "Share Profile"
+  },
+  "stats": {
+    "title": "Stats",
+    "connections": "Connections",
+    "conversations": "Conversations",
+    "cases_reviewed": "Cases reviewed",
+    "got_recommended": "Got recommended"
+  },
+  "profile-topics-expertise": {
+    "title": "Topics / Expertise",
+    "edit-target-name": "Topics"
+  },
+  "languages": {
+    "title": "Languages"
+  },
+  "email-notification": {
+    "title": "Notifications",
+    "label": "Via Email",
+    "description": "Receive a notification by email once a client sends you a new message."
+  },
+  "profile-navigation": {
+    "weblinks": "Weblinks",
+    "ask_a_question": "Ask a Question",
+    "capsules": "Capsules",
+    "organizations": "Organizations"
+  },
+  "collapse-button": {
+    "expand": "Expand profile Card",
+    "collapse": "Collapse profile Card"
+  },
+  "share-profile-modal": {
+    "owner-title": "Share your {{ appTitle }} profile",
+    "guest-title": "Share  {{ appTitle }} profile of user {{ userName }}"
+  },
+  "click-to-copy": {
+    "btn-text": "Click to copy",
+    "copied-message": "Copied to clipboard",
+    "failed-copy-message": "Failed Copy to clipboard"
+  },
+  "ice-breakers-list-card": {
+    "capsule": "Capsule",
+    "share-capsule": "Share Capsule",
+    "enter-chat-capsule": "Enter chat capsule",
+    "create-new-capsule": "Create new chat capsule",
+    "create-description": "Enter this interactive questionnaire. Listen and answer the appearing questions directly in the chat room and wait for the replies from the advisor an ideal way to start solving your problems quickly."
+  },
+  "review-score": {
+    "reviews": "reviews"
+  },
+  "ice-breaker-share-modal": {
+    "share-your-capsule": "Share Getme Capsule"
+  },
+  "profile-info": {
+    "title": "PUBLIC PROFILE",
+    "description": "Win more prospects faster by adding value first using content, questions and feedback to get conversations started.",
+    "connections": "Connections",
+    "Conversations": "Real Conversations",
+    "my-topics": "MY TOPICS",
+    "languages": "LANGUAGES",
+    "online": "now online",
+    "no-project-uploaded": "no projects uploaded",
+    "team-account": "team account",
+    "ice-breakers": "Capsules",
+    "buttons": {
+      "chose-cover": "Chose profile cover",
+      "recommend": "Recommend",
+      "share": "Share Profile",
+      "edit": "Edit",
+      "add-favorite": "Add to My Connectors",
+      "remove-connector": "Remove from Connectors",
+      "expand": "Expand profile Card",
+      "collapse": "Collapse profile Card"
+    }
+  },
+  "preselected-content": "<strong>1. ENTER</strong> into our unique chat room experience that functions as a Capsule.<br><strong>2. YOUR CONVERSATIONS</strong> will start automatically where you will receive your first question as a text or voice message.<br><strong>3. CONTINUE</strong> to Watch, Read, Listen & Answer at each step, and wait for your counterpart to reply. Enjoy!",
+  "load-more-btn": "LOAD MORE CAPSULES<br>FROM THIS CONNECTOR",
+  "perfect-opportunity": "An Capsule is a perfect opportunity to convert your connections quickly by preparing a set of questions with content to get conversations started.",
+  "create-interactive": "Create an interactive Capsule questionnaire inside a chat room to engage quickly with your Connections."
+}

@@ -1,0 +1,16 @@
+<div class="permissions">
+  @for (permission of permissions(); track permission.name) {
+    <div class="permission">
+      <div class="permission_header">
+        <h5 class="title">{{ permission.name }}</h5>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="permission_content">
+        <p>{{ permission.description }}</p>
+      </div>
+    </div>
+  }
+</div>

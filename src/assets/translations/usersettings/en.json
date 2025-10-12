@@ -1,0 +1,564 @@
+{
+  "menu": {
+    "individual": {
+      "name": "Individual",
+      "text": "Setup your basic infos and languages you speak fluently."
+    },
+    "organization": {
+      "name": "Organization",
+      "text": "Setup your basic infos and languages you speak fluently."
+    },
+    "my_topics": {
+      "name": "My Topics & Expertise",
+      "text": "Select topics you are knowledgeable or interested in."
+    },
+    "user-management": {
+      "name": "User management",
+      "text": "Setup your basic infos and languages you speak fluently."
+    },
+    "finances": {
+      "name": "Finances",
+      "text": "Setup & see afterwards all your financial transactions. It is required by law to seperately register your payments (as a Connection) and payouts (as an Connector) on Getme.Global."
+    },
+    "scheduling": {
+      "name": "Scheduling",
+      "text": "Setup times and conditions at which Connections can schedule meetings with you."
+    },
+    "notifications": {
+      "name": "Notifications",
+      "text": "Setup precisely when we should inform you and through which channel."
+    },
+    "privacy": {
+      "name": "Privacy",
+      "text": "See all data we track about you in one single panel. Decide on your own which data you feel comfortable to share and which not."
+    },
+    "visibility": {
+      "name": "Public visibility",
+      "text": "Select topics at which you have some expertise on."
+    },
+    "create-organisation": {
+      "name": "Create organization",
+      "text": ""
+    },
+    "org_requests": {
+      "name": "Organization requests",
+      "text": ""
+    }
+  },
+  "settings": "Settings",
+  "basic_title": "Basic account Information",
+  "visibility_title": "Public visibitly",
+  "organization_title": "Organization account Information",
+  "background_image_top": "Cover Image Heading Section",
+  "background_image_bottom": "Cover Image Contact Section",
+  "all_org_partners_in_current_organization": "Organization partners",
+  "create_organization_title": "Create organization",
+  "status": "Status",
+  "request": "Request",
+  "create_org": "Create organization",
+  "delete_org":"Delete organization",
+  "update_org":"Update organization",
+  "organization_landing_page_title": "Customise your Organization Landing Page",
+  "org_skills": "Organization skills",
+  "select_avatar": "Selected Avatar",
+  "choose_avatar": "Choose Avatar",
+  "upload_avatar_ngo": "Selected Organization Logo",
+  "uploader": {
+    "upload_file": "Upload Image"
+  },
+  "generic_avatars": "Generic Avatars",
+  "user_management_title": "Registered Users",
+  "no_users_found_with_this_state": "No users found with this state",
+  "user_settings": "User settings",
+  "delete_user": "Delete user",
+  "suspend_user": "Suspend user",
+  "invite_user": "Invite user",
+  "active": "Active",
+  "approve_user": "Approve user",
+  "pending_users": "Pending users",
+  "all_users": "All users",
+  "organization_adjustments_title": "Organization Wide Adjustments",
+  "show_contact_form_input": {
+    "title": "Show Contact Form Section",
+    "description": "If activated people can contact via o form on the landing page. Rather by email or directly into the chat"
+  },
+  "firstname_input": {
+    "title": "First Name",
+    "placeholder": "e.g. Emila"
+  },
+  "lastname_input": {
+    "title": "Last Name",
+    "placeholder": "e.g. Smith"
+  },
+  "phone_number_input": {
+    "title": "Phone number",
+    "placeholder": "e.g 380123456"
+  },
+  "country_input": {
+    "title": "Country",
+    "placeholder": "e.g. Ukraine"
+  },
+  "username_input": {
+    "title": "Username",
+    "placeholder": "e.g. wecarehero",
+    "hint_uniq": "Choose a unique username"
+  },
+  "ngo_nickname_input": {
+    "title": "Organization Nickname",
+    "placeholder": "e.g. https://wcr.is/sfc"
+  },
+  "claim_input": {
+    "title": "Hero Title",
+    "placeholder": "Enter title..."
+  },
+  "about_short_input": {
+    "title": "Subtitle",
+    "placeholder": "Enter title..."
+  },
+  "blog_url_input": {
+    "title": "Link to Blog",
+    "placeholder": "e.g. https://wcr.is/blog"
+  },
+  "website_url_input": {
+    "title": "Link to Website",
+    "placeholder": "e.g. https://wcr.is"
+  },
+  "background_image_top_input": {
+    "title": "Top background image"
+  },
+  "background_image_bottom_input": {
+    "title": "Bottom background image"
+  },
+  "all_org_members_in_current_organization_input": {
+    "title": "Organization members"
+  },
+  "image_input": {
+    "title": "Background image"
+  },
+  "description_input": {
+    "title": "Description",
+    "placeholder": "Enter description"
+  },
+  "all_org_partners_in_current_organization_input": {
+    "title": "Organization partners"
+  },
+  "ngo_name_input": {
+    "title": "Official Organization Name",
+    "placeholder": "e.g. Sunflower Care e.V."
+  },
+  "ngo_handle_input": {
+    "title": "Organization Name Alternative",
+    "placeholder": "e.g. https://wcr.is/sunflowercare"
+  },
+  "ngo_email_input": {
+    "title": "Organization Admin Email",
+    "placeholder": "e.g. example@gmail.com"
+  },
+  "ngo_reg_number_input": {
+    "title": "Organization Registry Number",
+    "placeholder": "e.g. 10115"
+  },
+  "non_profit_status_input": {
+    "title": "Non Profit Status",
+    "placeholder": "Select"
+  },
+  "vat_number_input": {
+    "title": "VAT Number",
+    "placeholder": "e.g. DE323232232"
+  },
+  "org_admin_input": {
+    "title": "Organization admin permissions",
+    "description": "Access to user management and organization settings"
+  },
+  "consult_input": {
+    "title": "Consult permissions",
+    "description": "Can access open requests page and take one"
+  },
+  "blog_input": {
+    "title": "Blog permissions",
+    "description": "Can access to blog page"
+  },
+  "name_input": {
+    "title": "Name",
+    "placeholder": "e.g. Example"
+  },
+  "street_input": {
+    "title": "Street",
+    "placeholder": "e.g. Mainstreet"
+  },
+  "apartmentNumber_input": {
+    "title": "House / Apartment Number",
+    "placeholder": "e.g. 12, Apt. 21"
+  },
+  "zipCode_input": {
+    "title": "Zip Code",
+    "placeholder": "e.g. 10115"
+  },
+  "city_input": {
+    "title": "City / Town",
+    "placeholder": "e.g. Berlin"
+  },
+  "email_input": {
+    "title": "Email",
+    "invalid_msg": "Invalid email"
+  },
+  "change_email": "Change Email",
+  "password_reset": "Reset Password",
+  "delete_personal_info": "Delete personal info",
+  "languages": {
+    "title": "Languages",
+    "choose": "In what languages people may communicate with you.",
+    "input_title": "Select Languages",
+    "placeholder": "e.g. Ukrainian"
+  },
+  "topics_tools": {
+    "title": "Topics&Tools",
+    "payouts_account": {
+      "title": "Connector Payouts Account",
+      "unconnected": "unconnected",
+      "connect_with_stripe": "Connect with Stripe",
+      "connect_bank_account": "Connect your bank account <strong>for automatic payouts</strong>."
+    },
+    "discover_title": "Select Relevant Topics"
+  },
+  "advisors_skillset": {
+    "select_from": "Select Connectors from {{ amount }} available topics",
+    "connectors_amount": "{{ amount }} connectors",
+    "cant_find": "cant find a topic?",
+    "select_adjust": "Selected Topics"
+  },
+  "currency_rate": {
+    "hourly_rate": "Default hourly rate",
+    "select_display": "Currency"
+  },
+  "finance": "Finance",
+  "finances_stripe": {
+    "manual_payouts": "Manual payouts account {{ secure }}",
+    "unconnected": "unconnected",
+    "username": "Username",
+    "unpaid_balance": "Unpaid balance",
+    "date_time": "date/time",
+    "amount": "amount",
+    "request_payout": "Request payout",
+    "connector_payouts_account": "Connector payouts account",
+    "setup_secure_payouts": "Setup secure payouts account via Stripe",
+    "delete_stripe_account": "Delete Stripe Account",
+    "connected": "connected",
+    "connect_with_stripe": "Connect with Stripe",
+    "please_reload": "Please reload the page to get changes",
+    "your_advice_income": "Your advice Income",
+    "ready_for_payout": "Ready for payout",
+    "on_the_way": "On the way",
+    "supported_countries": "Currently Supported Countries",
+    "country": {
+      "argentina": "Argentina",
+      "australia": "Australia",
+      "austria": "Austria",
+      "belgium": "Belgium",
+      "bolivia": "Bolivia",
+      "bulgaria": "Bulgaria",
+      "canada": "Canada",
+      "china": "China",
+      "costa_rica": "Costa Rica",
+      "croatia": "Croatia",
+      "cyprus": "Cyprus",
+      "czech_republic": "Czech Republic",
+      "denmark": "Denmark",
+      "dominican_republic": "Dominican Republic",
+      "egypt": "Egypt",
+      "finland": "Finland",
+      "france": "France",
+      "germany": "Germany",
+      "greece": "Greece",
+      "hong_kong": "Hong Kong",
+      "hungary": "Hungary",
+      "iceland": "Iceland",
+      "india": "India",
+      "indonesia": "Indonesia",
+      "ireland": "Ireland",
+      "israel": "Israel",
+      "italy": "Italy",
+      "latvia": "Latvia",
+      "liechtenstein": "Liechtenstein",
+      "lithuania": "Lithuania",
+      "luxembourg": "Luxembourg",
+      "malta": "Malta",
+      "mexico": "Mexico",
+      "netherlands": "Netherlands",
+      "new_zealand": "New Zealand",
+      "norway": "Norway",
+      "peru": "Peru",
+      "poland": "Poland",
+      "portugal": "Portugal",
+      "romania": "Romania",
+      "singapore": "Singapore",
+      "slovakia": "Slovakia",
+      "slovenia": "Slovenia",
+      "spain": "Spain",
+      "sweden": "Sweden",
+      "switzerland": "Switzerland",
+      "thailand": "Thailand",
+      "trinidad_and_tobago": "Trinidad & Tobago",
+      "united_kingdom": "United Kingdom",
+      "uruguay": "Uruguay",
+      "brazil": "Brazil",
+      "chile": "Chile",
+      "colombia": "Colombia",
+      "paraguay": "Paraguay"
+    },
+    "open_payouts_dashboard": "Open payouts dashboard",
+    "payout_my_income": "Payout my income",
+    "not_support_text": {
+      "paragraph_1": "Receiving money is something heavily regulated, mainly because of tax avoidance and money laundering. Therefore it is way harder for stripe to add countries to their payouts program.",
+      "paragraph_2": "Luckily we found this alternative for people outside the supported countries, at wise.com you just create a EUR/USD bank account and then wire it later on to your home countries bank account.",
+      "paragraph_3": " We really wish it would be simpler, for the world to learn from each other, but for now that's the fastest way."
+    },
+    "multi_cur_acc_wise": {
+      "title": "Multi currency account on wise.com",
+      "sub_title": "Watch video About Wise multi-currency account",
+      "support_countries_title": "Currently SUPPORTED Countries",
+      "visit": "visit"
+    },
+    "your_payment_accounts": "Your payments account",
+    "setup_paying_others": "Setup paying others",
+    "stay_turned": "Stay tuned for new options",
+    "last_transactions": "Last Transactions",
+    "supported_payments_methods": "SUPPORTED PAYMENT METHODS",
+    "open_payments_dashboard": "Open payments dashboard",
+    "save_money": "Save money",
+    "connect_paying": "Your stripe billing dashboard, contains all your payment information. Here<br/>you can access your entire billing history or edit your payment methods.",
+    "getting": "Payout available when<br/>Your balance is over <b>€ 30.00.</b>",
+    "paying": "Connect to your prefered payment method.",
+    "your_current_commission": "Your Current commission on Getme.Global",
+    "bonus": {
+      "percent_": "Lower your commission forever by reaching the following milestones.",
+      "percent_1_1": "Complete our tutorial leaving 8 different reviews",
+      "percent_1_2": "Invite a new user, that makes a purchase",
+      "percent_2": "Invite a new user, that becomes an advisor",
+      "percent_3_1": "Receive inspiring rating badge from 10 different Creatives",
+      "percent_3_2": "Payout more then 200€ to your bank account",
+      "percent_5": "Payout more then 1000€ to your bank account"
+    },
+    "once_lower": "Once lowered your commission will stay smaller permantely ;)",
+    "withdraw": {
+      "question": "Are you sure you want to withdraw this money?",
+      "cancel_btn_text": "Cancel",
+      "accept_btn_text": "Accept"
+    }
+  },
+  "payout_request": {
+    "accept_btn": {
+      "tooltip": "Save",
+      "img_alt": "check icon"
+    },
+    "deny_btn": {
+      "tooltip": "Close without saving",
+      "img_alt": "deny icon"
+    },
+    "edit_btn": {
+      "tooltip": "Edit request",
+      "text": "Edit"
+    },
+    "cancel_btn": {
+      "tooltip": "Cancel request"
+    },
+    "title": {
+      "request_for_payout": "Request for payout",
+      "request_sent": "Request sent",
+      "money_sent": "Money sent",
+      "request_in_progress": "Request in progress",
+      "review_payment_data": "Review payment data",
+      "payment_declined": "Payment declined"
+    },
+    "cancel_dialog": {
+      "message": "Do you want to cancel the request?",
+      "close_img_alt": "Close modal icon",
+      "cancel_btn_text": "Cancel",
+      "confirm_btn_text": "Confirm"
+    },
+    "request_for_payout": "Request for payout",
+    "request_sent": "Request sent",
+    "payment_sent": "Payment sent",
+    "receive_payment_in": "Receive payment in",
+    "wallet_address": "Wallet address",
+    "reason_declined": "Reason declined",
+    "not_specified": "Not specified",
+    "account_holders_name": "Account Holders Name",
+    "required_field": "This is a required field",
+    "account_number": "Account Number",
+    "bank": "Bank Name and Address(if not IBAN):"
+  },
+  "not_support_country": "If your country is not supported",
+  "scheduling": {
+    "settings": "Settings",
+    "current_time_zone": "Current time zone",
+    "contact_ways": "Ways to contact you",
+    "live_video": "Connections can schedule live video calls with me.",
+    "auto_confirmation": "Auto confirmation of appointments",
+    "live_chat": "Connections can schedule live chats sessions with me.",
+    "set_available_timeslots": "Set available Timeslots",
+    "create_timeframe": "Create time frames when creatives can contact you for live advise.",
+    "select_category": "Select what Category of connections this Time Rule should apply",
+    "new_connections": "New connections",
+    "interested_connections": "Interested connections",
+    "regular_connections": "Regular connections",
+    "select_days": "Select days",
+    "week_days": {
+      "mo": "MO",
+      "tu": "TU",
+      "we": "WE",
+      "th": "TH",
+      "fr": "FR",
+      "sa": "SA",
+      "su": "SU"
+    },
+    "check_img_alt": "check",
+    "set_time": "Set time",
+    "from": "from",
+    "until": "until",
+    "add_time_rule": "Add time rule",
+    "remove_time_rule": "remove time rule"
+  },
+  "notifications_img_alt": "Icon notifications",
+  "soon_able_receive": "Soon you will be able to receive<br/>direct notifications to different,<br/>messengers directly.",
+  "lock_notifications_img_alt": "Lock notifications",
+  "privacy_seriously": "“Because we take your privacy very<br/>seriously, Please know that all<br/>conversations and data are by<br/>default securely saved on German<br/>servers only, and not analysed or<br/>shared with any third party.”",
+  "coming_soon": {
+    "title": "coming soon",
+    "notifications": "Setup when you want to receive email notifications.",
+    "privacy": "Setup criterias at which point creatives will see your works & detailed infos.",
+    "visibility": "See exactly what information we track from you and why."
+  },
+  "notification": {
+    "title": "When you want to notified",
+    "new_message_notification": {
+      "title": "New email notification",
+      "description": "Get an email notification when receiving a new message"
+    },
+    "success_message": "Notification has been updated!",
+    "error_message": "Something went wrong! Please try again later!"
+  },
+  "permissions": {
+    "permission_removed": "Permission removed",
+    "permission_added": "Permission added"
+  },
+  "search": "Search",
+  "add_new_topic": "Add new topic",
+  "sharing_advice_as": "Sharing advice as...",
+  "organisation": "Organisation",
+  "represent_organisation": "Represent Organisation as...",
+  "member_volunteer": "Member (Volunteer)",
+  "external_contractor": "External (Contractor)",
+  "member_employed": "Member (Employed)",
+  "Beginner": "Beginner",
+  "Intermediate": "Intermediate",
+  "Professional": "Professional",
+  "Expert": "Expert",
+  "personal_opinion": "Personal Opinion",
+  "certified_professional": "Certified Professional",
+  "selected_topic": "Selected topic",
+  "experience": "Experience",
+  "choose_experience": "Choose Your Experience",
+  "skill_menu_title": "Skill settings",
+  "select": "Select",
+  "select_level": "Select level",
+  "remove": "Remove",
+  "topic_confilmation": {
+    "title": "Warning, questionnaire included",
+    "subtitle": "By deleting this topic we also have to delete all questionnaires that are attached to this topic.",
+    "question": "Are you sure you wish to proceed?",
+    "cancel_btn": "Cancel",
+    "confirm_btn": "Confirm deletion"
+  },
+  "partner_deletion_confilmation": {
+    "title": "Removing organization partner",
+    "subtitle": "You are about to permanently delete an organization partner. This action cannot be undone.",
+    "question": "Are you sure you wish to proceed?",
+    "cancel_btn": "Cancel",
+    "confirm_btn": "Confirm deletion"
+  },
+  "org_deletion_confilmation": {
+    "title": "Removing organization",
+    "subtitle": "You are about to permanently delete an organization. This action cannot be undone.",
+    "question": "Are you sure you wish to proceed?",
+    "cancel_btn": "Cancel",
+    "confirm_btn": "Confirm deletion"
+  },
+  "personal_info_removing": {
+    "title": "Warning, you are about to delete your personal info!",
+    "subtitle": "By deleting your personal info, you delete all info related to your account.",
+    "question": "Are you sure you wish to proceed?",
+    "cancel_btn": "Cancel",
+    "confirm_btn": "Confirm deletion"
+  },
+  "skill_deletion_confilmation": {
+    "title": "Removing of an organization topic",
+    "subtitle": "You are about to permanently delete an organization topic. This action cannot be undone.",
+    "question": "Are you sure you wish to proceed?",
+    "cancel_btn": "Cancel",
+    "confirm_btn": "Confirm deletion"
+  },
+  "inviteUser": {
+    "title": "Add People to ",
+    "note": "Note: ",
+    "note-text": "Added counselors can directly message the client.",
+    "protected_by": "This site is protected by reCaptcha and our",
+    "privacy_policy": "Privacy policy",
+    "and": "and",
+    "terms_of_service": "terms of service",
+    "apply": "apply",
+    "add": "Add",
+    "cancel": "Cancel",
+    "validation": {
+      "error": "Error",
+      "required-field": "This is a required field",
+      "email-valid": "Valid email is required"
+    },
+    "client_counsellor": "Client Counsellor",
+    "member": "Member"
+  },
+  "user-management": {
+    "invite": "Invite User"
+  },
+  "delete": "Delete",
+  "parner_settings": "Parner settings",
+  "delete_partner": "Delete partner",
+  "org_requests_title": "Organization requests",
+  "pending_orgs": {
+    "reg_number": "Registry Number",
+    "org_type": "Type",
+    "approve_org": "Approve",
+    "reject_org": "Reject",
+    "website_url": "Website url",
+    "blog_url": "Blog url",
+    "org_profit_status": "Profit status",
+    "has_contact": "Show contact"
+  },
+  "messages": {
+    "saved": "Saved"
+  },
+  "uploader": {
+    "upload_file": "Upload File",
+    "img-help": "Ideal size 500px x 500px"
+  },
+  "empty-skills": "All available skills are already selected.",
+  "sharing_advice_guide": {
+    "personal_opinion": {
+      "subtitle": "You provide insights and advice based on your experience, but your advice is your personal and non-binding opinion.",
+      "p1": "Give advice based on personal experience or informal knowledge.",
+      "p2": "Regularly remind users that your insights are personal opinions.",
+      "p3": "Support users in their decision-making, but encourage them to seek further professional advice if needed."
+    },
+    "certified_professional": {
+      "subtitle": "You are a trained expert (e.g., lawyer, psychologist, or certified counselor). Your advice carries legal or professional significance.",
+      "p1": "Provide professional, legally or ethically grounded advice within your certified expertise.",
+      "p2": "Always make it clear when your advice is legally binding or has formal implications.",
+      "p3": "Always clearly mention when you are giving advice and when you are merely sharing your opinion.",
+      "p4": "You are fully responsible for the accuracy and consequences of your advice."
+    },
+    "title_personal_opinion": "As a person who only shares their opinion",
+    "title_certified": "As a certified professional",
+    "cancel": "Not  allowed",
+    "confirm": "Allowed"
+  }
+}

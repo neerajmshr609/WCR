@@ -1,0 +1,27 @@
+@import "variables";
+
+:host {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+  color: $--sds-color-text-default-secondary;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+.add-to-review-queue {
+  &_icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &_text {
+    font-size: $--sds-typography-body-size-small;
+    font-weight: $--sds-typography-body-font-weight-strong;
+    line-height: $line-height-140;
+    text-transform: uppercase;
+  }
+}

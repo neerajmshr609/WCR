@@ -1,0 +1,85 @@
+{
+  "create": {
+    "title": "Select a topic to create a Capsule",
+    "sub-title": "Capsules are a set of questions you ask other people about a<br/>specific topic you are knowledgeable or interested in."
+  },
+  "create-modal": {
+    "title": "Are you sure you want to<br/>proceed with this topic?",
+    "cancel": "Cancel",
+    "confirm": "Yes go ahead"
+  },
+
+
+  "message-to-save": "To save your Capsule questionnaire enter a title",
+  "buttons": {
+    "create-next": "Create Next Question",
+    "complete": "Complete",
+    "other-pay": "Others pay me",
+    "i-will-pay": "I will pay",
+    "skip-test": "Skip this Step"
+  },
+  "confirmation": {
+    "true": "Yes",
+    "false": "No"
+  },
+  "sure-done": "Sure you’re done",
+  "who-pay": "Who will pay <strong>when replying</strong> to this Capsule?",
+  "my-title": "MY CAPSULE TITLE",
+  "template-messages": {
+    "hi-there": "Hi there, I’m here to help you create this Capsule.",
+    "copy-and-paste": "Copy & Paste any link you wish in the text box to get this conversation started. Your content will appear as a preview for your Capsule.",
+    "start-asking": "Start by asking your first Capsule question to get the conversation started.",
+    "good-start": "Good start! Now it’s possible to add as many links, audio messages and comments to make sure they truly get you.",
+    "once-done": "Once done, create next question OR press complete to finish.",
+    "well-done": "Well done!",
+    "choose-title": "Please choose a title that describes this Capsule..",
+    "set-description": "Please give a short description for this Capsule.",
+    "allow-org-level": "Do you allow to show your Capsule on the Profile Page of your organization (if any)?",
+    "allow-platform-level": "Do you allow to show your Capsule on the Get Help Page of We Care Remote?",
+    "you-reade": "Now you’re ready to start sharing your Capsule with your community.",
+    "link-not-supported": "This link is currently not fully supported. Rather enter another link (supported websites) or press “Skip this Step” to create your first Capsule question to get the conversation started.",
+    "no-problem": "No problem, please enter your new Capsule title.",
+    "perfect": "Perfect! Now you’re ready to start sharing your Capsule with your community.",
+    "next-question": "Now create question number {{stepNumber}}",
+    "excellent": "Excellent! This is how your Capsule preview will look like.\nNow ask your first question to get this conversation started."
+  },
+  "user_info": {
+    "name_anon": "Anonymous",
+    "city_global": "GLOBAL"
+  },
+  "text_input": {
+    "placeholder": "Start typing..."
+  },
+  "ice-breaker-card": {
+    "ice-breaker": "CAPSULE",
+    "share": "SHARE CAPSULE {{id}}",
+    "delete": "Delete Capsule",
+    "single-reviews": "SINGLE REVIEWS",
+    "reviews": "Reviews",
+    "select-topic": "Select a topic",
+    "create": "Create Capsule",
+    "rating": {
+      "title": "RATINGS COMBINED",
+      "knowledge": "Knowledge",
+      "articulation": "Articulation",
+      "explanation": "Explanation",
+      "politeness": "Politeness"
+    },
+    "select-profile": "Select a topic from your profile card to create a Capsule conversation.",
+    "click-button": "Click the button below to start creating this Capsule",
+    "pick-topic": "Pick a topic before creating a Capsule",
+    "adjust-price": "Adjust<br>Price",
+    "want-share": "wants to share this Capsule with you:",
+    "preview": "Preview",
+    "click-to-copy": "CLICK TO COPY",
+    "share-your-getme": "<span style=\"font-weight: 700;color: #000000;\">Share</span> your Getme <br>Capsule now",
+    "if-you-have": "If you have no topics setup yet go to the <a href=\"/settings?type=skills\" style=\"text-decoration: underline\">settings area</a> and pick topics your knowledgeable in.",
+    "buttons": {
+      "enter-and-pay": "ENTER conversation",
+      "enter-and-get-paid": "ENTER conversation",
+      "go-chat-room": "Go to chat room",
+      "connections-will-get-paid": "Connections",
+      "connections-will-pay": "Connections"
+    }
+  }
+}

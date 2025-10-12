@@ -1,0 +1,86 @@
+<form class="add-user" [formGroup]="addUserForm">
+  <mat-icon class="add-user__close" (click)="close()">close</mat-icon>
+  <div class="add-user__inputs">
+    <h3 class="add-user__title">{{ 'adding_user.add_people' | translate }} {{ ('adding_user.' + inviteTo()) | translate }}</h3>
+
+    <div class="form__group">
+      <label class="form__label add-user__input-label" for="name"
+        >{{ 'adding_user.name_groups_emails' | translate }}</label
+      >
+      <input
+        class="form__input"
+        [formControlName]="SEARCH_INPUT_NAME"
+        (keyup)="selectedUserKeyPressHandler()"
+        placeholder="{{'adding_user.e_g' | translate }} Marta, Evacteam, marta@ngo.org"
+        type="text"
+        id="name"
+        autocomplete="off"
+        #name_input
+      />
+      @if (showUsersListToAdd$ | async) {
+        <ul class="add-user__list" [style]="listSizeStyles">
+          @for (user of addUsersList(); track user.id) {
+            <li (click)="selectUserToAdd($event, user)">
+              @if( user.first_name && user.last_name) {
+                <span class="user-item">{{ user.first_name}} {{ user.last_name }}</span>
+
+                } @else {
+                <span class="user-item">{{ user.username }} </span>
+              }
+            </li>
+          }
+        </ul>
+      }
+    </div>
+
+    <!--&lt;!&ndash;  TODO: Implement when user roles are added to the project &ndash;&gt;-->
+    <!--    <div class="form__group">-->
+    <!--      <label class="form__label add-user__input-label" for="role">Role</label>-->
+    <!--      <input class="form__input"-->
+    <!--             [formControlName]="ROLE_INPUT_NAME"-->
+    <!--             placeholder="Internal Team Member"-->
+    <!--             type="text"-->
+    <!--             id="role"-->
+
+    <!--             autocomplete="false"-->
+    <!--      >-->
+    <!--    </div>-->
+    @if (note()) {
+      <p class="add-user__note">
+        <span>{{ 'adding_user.note.title' | translate }}:</span>
+        {{ 'adding_user.note.' + note() | translate }}
+      </p>
+    }
+    <p class="add-user__site-protection">
+      {{ 'adding_user.protection.protected_by' | translate }}
+      <a target="_blank" href="{{ PRIVACY_POLICY_ROUTE }}">
+        {{ 'adding_user.protection.privacy_policy' | translate }}
+      </a>
+      {{ 'adding_user.protection.and' | translate }}
+      <a target="_blank" href="{{ TERMS_OF_SERVICE_ROUTE }}">
+        {{ 'adding_user.protection.terms_of_service' | translate }}
+      </a>
+          {{ 'adding_user.protection.apply' | translate }}
+
+          {{ 'adding_user.protection.and' | translate }}
+      <a target="_blank" href="/data-deletion-instructions">
+        {{ 'adding_user.protection.data_deletion' | translate }}
+      </a>
+      {{ 'adding_user.protection.apply' | translate }}
+    </p>
+  </div>
+  <div class="add-user__buttons" #buttons_container>
+    <button mat-button class="button-cancel" (click)="cancel()">
+      {{ 'adding_user.cancel_button_text' | translate }}
+    </button>
+
+    <button
+      class="button-add"
+      (click)="add()"
+      [disabled]="!(selectedUserToAdd$ | async)"
+    >
+      <mat-icon class="button-add__icon">add</mat-icon>
+      <span>{{ 'adding_user.add_button_text' | translate }}</span>
+    </button>
+  </div>
+</form>

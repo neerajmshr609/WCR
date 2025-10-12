@@ -1,0 +1,12 @@
+<div class="queued-by_icon-container">
+  <app-queue-icon></app-queue-icon>
+  <span class="queued-by_icon-text">{{ 'queued_by.queued_by' | translate }}</span>
+</div>
+<app-icon-arrow direction="right" color="#757575" strokeWidth="2.5"></app-icon-arrow>
+<div class="queued-by_images-container">
+  @for (queueItem of queuedByImages(); track queueItem) {
+    <app-conversation-image
+      [images]="queueItem"
+    ></app-conversation-image>
+  }
+</div>

@@ -1,0 +1,17 @@
+<div class="card" [ngClass]="{'active' : active()}">
+  <div class="card__content">
+    <div class="card__icon-container">
+      <img class="card__icon" [ngClass]="{'active' : active()}" [src]="skill().icon" [alt]="skill().name">
+    </div>
+    <div class="card__text">
+      <p class="card__name">{{ skill().name }}</p>
+      <p class="card__counselors">{{ skill().advisors_count }} {{ 'card.counselors' | translate }} </p>
+    </div>
+  </div>
+  @if (active()) {
+    <app-close-card-button
+      class="card__close-btn"
+      (click)="close.emit()"
+    ></app-close-card-button>
+  }
+</div>

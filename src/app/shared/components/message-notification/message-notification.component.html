@@ -1,0 +1,23 @@
+<section class="message-notification-container">
+  <div class="header">
+    <span class="header__text">New Message:</span>
+    <span class="header__name">{{ messagePayload.display_name }}</span>
+  </div>
+  <button class="close-btn" (click)="close()">
+    <img src="assets/x-circle.svg" alt="Cross icon" />
+  </button>
+  <article class="body-message" (click)="navigateToChatRoom()">
+    <img
+      class="body-message__avatar"
+      [src]="messagePayload.avatar"
+      alt="User avatar"
+    />
+    <div class="body-message__text">
+      {{ messagePayload.body }}
+    </div>
+  </article>
+  <button class="new-tab-btn" (click)="openNewTab()">
+    <img src="assets/new-folder.svg" alt="Open in new tab icon" />
+    New tab
+  </button>
+</section>

@@ -1,0 +1,97 @@
+:host {
+  position: absolute;
+  display: block;
+  width: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.file-info {
+  position: relative;
+
+  &__button {
+    height: 4.5rem;
+    text-align: center;
+    font-weight: 500;
+    background-color: black;
+    color: white;
+    font-size: 1.4rem;
+    border-radius: 5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.8rem;
+    width: fit-content;
+    z-index: 100;
+    border: 2px solid white;
+    transition: 0.2s;
+    margin: 0 auto;
+    white-space: nowrap;
+
+    &:hover {
+      transform: translateY(-0.5rem);
+    }
+  }
+
+  &__icon {
+    margin-right: 12px;
+  }
+
+  &__tabs {
+    width: 44rem;
+    z-index: 1200;
+    position: absolute;
+    bottom: 3px;
+    max-width: calc(100% - 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+
+    p {
+      white-space: break-spaces;
+    }
+  }
+
+  &__tabs-info {
+    position: absolute;
+    bottom: 1.3rem;
+    left: 0.7rem;
+    z-index: 1201;
+  }
+
+  &__tabs-close {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 1201;
+  }
+}
+
+.tabs__content {
+  padding: 1rem 5rem;
+  max-height: 28rem;
+  overflow: auto;
+}
+
+.lyrics {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 160%;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding-bottom: 0;
+}
+
+.description {
+  font-size: 1.4rem;
+}

@@ -1,0 +1,19 @@
+<div class="presenter-questions-pane">
+  <h1>{{ 'presenter-questions.title' | translate }}</h1>
+  <h2>{{ 'presenter-questions.subtitle' | translate }}</h2>
+
+  <ng-container *ngIf="author">
+    <app-presenter-questions-pane-item
+      *ngFor="let question of project.presenterquestions; let i = index"
+      [questionHasSavedAnswer]="questionHasSavedAnswer(question.id)"
+      [question]="question"
+      [author]="author"
+      [questionSavedAnswer]="questionSavedAnswer(question.id)"
+      [answers]="answers"
+      (focusOut)="onFocusOut($event)"
+      (keyDown)="onKeyDown($event)"
+      (didClickSend)="didClickSend(question.id, $event.text, $event.audio)"
+      (didClickDelete)="didClickDelete(question.id)"
+    ></app-presenter-questions-pane-item>
+  </ng-container>
+</div>

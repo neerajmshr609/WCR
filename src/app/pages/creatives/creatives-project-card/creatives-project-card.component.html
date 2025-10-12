@@ -1,0 +1,313 @@
+<div
+  class="disabled"
+  *ngIf="currentUser && disabled"
+  (click)="openModal()"
+></div>
+<div class="card">
+  <div class="card__header">
+    <app-user-info *ngIf="author" [userId]="author.id" [user]="author"></app-user-info>
+
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          (click)="setQueue()"
+          mat-menu-item
+          class="menu-item"
+          *ngIf="currentUser?.queuedprojects?.includes(project.id)"
+        >
+          <img src="assets/creatives/set-first.svg" alt="" />
+          <span>{{ 'creatives_project_card.set_first' | translate }}</span>
+        </button>
+        <a
+          [routerLink]="'/rateflow/' + project.sharetoken"
+          target="_blank"
+          mat-menu-item
+          class="menu-item"
+        >
+          <img src="assets/creatives/give-feedback.svg" alt="" />
+          <span>{{ 'creatives_project_card.give_feedback' | translate }}</span>
+        </a>
+        <ng-container *ngIf="draftId">
+          <button
+            (click)="removeFromQueueDidClick()"
+            mat-menu-item
+            class="menu-item"
+            *ngIf="currentUser?.queuedprojects?.includes(project.id)"
+          >
+            <img src="assets/heart-cancel.svg" alt="" />
+            <span>{{ 'creatives_project_card.remove_from_que' | translate }}</span>
+          </button>
+          <button
+            (click)="addToQueueDidClick()"
+            mat-menu-item
+            class="menu-item"
+            *ngIf="
+              currentUser && !currentUser?.queuedprojects?.includes(project.id)
+            "
+          >
+            <img src="assets/newsfeed/heart.svg" alt="" />
+            <span>{{ 'creatives_project_card.add_to_que' | translate }}</span>
+          </button>
+        </ng-container>
+        <button
+          (click)="deleteDraft()"
+          mat-menu-item
+          class="menu-item"
+          *ngIf="draftId"
+        >
+          <img src="assets/creatives/delete-draft.svg" alt="" />
+          <span> {{ 'creatives_project_card.delete_draft' | translate }} </span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <div class="card__file-list">
+    <button
+      class="flickity-button flickity-prev-next-button previous"
+      type="button"
+      aria-label="Previous"
+      [disabled]="
+        horizontalSlider?.selectedIndex === 0 ||
+        (isSingleFileProject && horizontalSlider?.selectedIndex === 1)
+      "
+      (click)="horizontalSlider.previous()"
+    >
+      <svg class="flickity-button-icon" viewBox="0 0 100 100">
+        <path
+          d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+          class="arrow"
+        ></path>
+      </svg>
+    </button>
+
+    <button
+      class="flickity-button flickity-prev-next-button next"
+      type="button"
+      aria-label="Next"
+      [disabled]="horizontalSlider?.selectedIndex === slidesCount"
+      (click)="horizontalSlider.next()"
+    >
+      <svg class="flickity-button-icon" viewBox="0 0 100 100">
+        <path
+          d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+          class="arrow"
+          transform="translate(100, 100) rotate(180) "
+        ></path>
+      </svg>
+    </button>
+
+    <div class="slider-presentation-nav" #presentationNavRef>
+      <div
+        class="slider-presentation-nav__item"
+        [ngClass]="{ 'is-nav-selected': selectedDisplayType === 'grid' }"
+        *ngIf="!isSingleFileProject"
+      >
+        <svg>
+          <use xlink:href="assets/feather-icon-defs.svg#icon-grid"></use>
+        </svg>
+      </div>
+
+      <div
+        class="slider-presentation-nav__item"
+        [ngClass]="{ 'is-nav-selected': selectedDisplayType === 'concept' }"
+      >
+        <mat-icon>info</mat-icon>
+      </div>
+
+      <ng-template ngFor let-item [ngForOf]="project.projectfiles">
+        <div
+          class="slider-presentation-nav__item"
+          [class]="'slider-presentation-nav__item--' + item.kind"
+          [ngClass]="{ 'is-nav-selected': selectedFile?.id === item.id }"
+        >
+          <img *ngIf="item.kind === 'image'" [src]="item.url" />
+          <img
+            *ngIf="item.kind === 'video' || item.kind === 'hostedvideo'"
+            src="assets/projectfiles-types/video.svg"
+          />
+          <img
+            *ngIf="item.kind === 'audio'"
+            src="assets/projectfiles-types/audio.svg"
+          />
+          <img
+            *ngIf="item.kind === 'iframe'"
+            src="assets/projectfiles-types/iframe.svg"
+          />
+          <img
+            *ngIf="item.kind === 'pdf'"
+            src="assets/projectfiles-types/pdf.svg"
+          />
+          <img
+            *ngIf="item.kind === 'dummy'"
+            src="assets/projectfiles-types/dummy.svg"
+          />
+
+          <div
+            class="slider-presentation-nav__item-info"
+            [ngClass]="{
+              'slider-presentation-nav__item-info--active': isFileInfoOpen,
+            }"
+            *ngIf="
+              item.kind !== 'dummy' &&
+              item.showinfo &&
+              (item.lyrics || item.projectfile_title || item.filedescription)
+            "
+          >
+            i
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <p class="card__category">
+    {{ project.category_name }}
+  </p>
+
+  <div
+    class="card__media-view"
+    [ngClass]="{ 'p-0': selectedDisplayType === 'file' }"
+  >
+    <app-item-media-view
+      *ngIf="selectedDisplayType === 'file'"
+      [file]="selectedFile"
+      [showCurves]="false"
+      [isFileInfoOpen]="isFileInfoOpen"
+      [selectedFileImageView$]="selectedFileImageView$"
+      (toggleFileInfo)="toggleFileInfo()"
+    ></app-item-media-view>
+
+    <app-project-info-cards
+      *ngIf="selectedDisplayType === 'concept'"
+      [project]="project"
+      [isSmall]="true"
+    ></app-project-info-cards>
+
+    <app-grid-presentation
+      *ngIf="selectedDisplayType === 'grid'"
+      [projectFiles]="project.projectfiles"
+    ></app-grid-presentation>
+  </div>
+
+  <div class="payment-frequency__container">
+    <a
+      [routerLink]="'/rateflow/' + project.sharetoken"
+      target="_blank"
+      class="payment-frequency payment-frequency--count"
+      *ngIf="!project.paid_feedback_request; else paidRequestTpl"
+    >
+      <span class="payment-frequency__left">
+        <span class="payment-frequency__span">
+          <span *ngIf="project.inspiring_feedback?.count"
+            >{{ project.inspiring_feedback.paid }} in
+            {{ project.inspiring_feedback?.count }} reviews</span
+          >
+          <span *ngIf="!project.inspiring_feedback?.count"
+            >{{ 'not_enough_data' | translate }}</span
+          >
+          <span
+            class="payment-frequency__label"
+            [appPaymentFrequencyColor]="project.inspiring_feedback"
+            >{{ 'payment_frequency' | translate }} </span
+          >
+        </span>
+        <span class="payment-frequency__icon">€</span>
+      </span>
+      <span class="payment-frequency__right"
+        >{{ project.inspiringrate | euroCurrency }} {{ 'per_review' | translate }}</span
+      >
+    </a>
+
+    <ng-template #paidRequestTpl>
+      <a
+        [routerLink]="'/rateflow/' + project.sharetoken"
+        target="_blank"
+        class="payment-frequency payment-frequency--request"
+        *ngIf="project.paid_feedback_request"
+      >
+        <img src="assets/creatives/feedback-request.svg" alt="" />
+        {{ 'paid_feedback_request' | translate }}
+      </a>
+    </ng-template>
+  </div>
+
+  <div class="card__footer draft" *ngIf="draftId">
+    <div class="draft__icon">
+      <img src="assets/creatives/draft.svg" alt="" />
+    </div>
+    <a
+      class="draft__btn"
+      target="_blank"
+      [routerLink]="'/rateflow/' + project.sharetoken"
+    >
+      {{ 'finish_feedback' | translate }}
+    </a>
+  </div>
+
+  <div
+    class="card__footer"
+    [ngClass]="{ 'no-height': !currentUser }"
+    *ngIf="!draftId"
+  >
+    <div class="clarifying-question">
+      <app-text-input
+        *ngIf="author && !feedbackChatMessageSaved"
+        [inputPlaceholder]="
+          currentUser
+            ? 'ask_question'
+            : 'sign_up'
+        "
+        [user]="author"
+        audioPage="creatives"
+        [audioOrder]="project.id"
+        [messageSent$]="messageSentEvt.asObservable()"
+        (sendBtnClicked)="onChatMessageSendClick($event)"
+      ></app-text-input>
+
+      <app-message
+        *ngIf="feedbackChatMessageSaved"
+        class="chat__message chat__message--right"
+        [message]="savedMessage"
+        [recipient]="author"
+        [currentUser]="currentUser"
+      ></app-message>
+    </div>
+
+    <ng-template [ngIf]="currentUser">
+      <div class="card__actions-area">
+        <ng-template
+          [ngIf]="authService.userIsSignedIn() && feedbackChatMessageSaved"
+        >
+          <p>{{ 'question_sent' | translate }}</p>
+        </ng-template>
+
+        <ng-template
+          [ngIf]="authService.userIsSignedIn() && !feedbackChatMessageSaved"
+        >
+          <ng-template
+            [ngIf]="
+              currentUser && !currentUser.queuedprojects?.includes(project.id)
+            "
+          >
+            <p (click)="addToQueueDidClick()">
+              <img src="assets/newsfeed/heart.svg" alt="" />
+              {{ 'add_to_review_queue' | translate }}
+            </p>
+          </ng-template>
+          <ng-template
+            [ngIf]="currentUser?.queuedprojects?.includes(project.id)"
+          >
+            <p (click)="removeFromQueueDidClick()">
+              <img src="assets/heart-cancel.svg" alt="" />
+              Remove from Review Queue
+            </p>
+          </ng-template>
+        </ng-template>
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+@import "_variables";
+
+:host {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: $--sds-size-space-200;
+  gap: $--sds-size-space-200;
+  font-size: $--sds-typography-body-size-medium;
+  font-weight: $--sds-typography-body-font-weight-regular;
+  line-height: $line-height-100;
+  color: $--sds-color-text-default-default;
+  text-wrap: nowrap;
+}
+
+.is-online_icon {
+  width: $--sds-typography-body-size-medium;
+  height: $--sds-typography-body-size-medium;
+}

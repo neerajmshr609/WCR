@@ -1,0 +1,24 @@
+<div #cardRef class="maze-animation">
+  <div #headerRef class="maze-animation__header"></div>
+  <div class="maze-animation__body" #bodyRef>
+    <img
+      [ngStyle]="{ opacity: showMaze ? 1 : 0 }"
+      #mazeRef
+      class="maze-animation__maze"
+      src="assets/why/maze.svg"
+    />
+    <img
+      [ngStyle]="{ opacity: showBridge ? 1 : 0 }"
+      #bridgeRef
+      class="maze-animation__bridge"
+      src="assets/why/bridge.svg"
+    />
+    <img
+      [ngStyle]="{ opacity: showDude ? 1 : 0 }"
+      #dudeRef
+      class="maze-animation__dude"
+      src="assets/why/dude.svg"
+    />
+  </div>
+  <div #footerRef class="maze-animation__footer"></div>
+</div>

@@ -1,0 +1,75 @@
+<section class="price-conditions-container">
+  <ng-container
+    *ngIf="
+      iceBreakerType === ICE_BREAKER_TYPES.I_WILL_PAY;
+      else setPriceOfIceBreakerTmpl
+    "
+  >
+    <button (click)="stepBack.emit()" class="ice-breaker-type-element">
+      <img src="assets/advisors.svg" alt="Advisor icon" />
+      I will pay
+    </button>
+
+    <app-property-counter
+      [isDisabled]="!!pricePerPerson"
+      [isCurrency]="true"
+      (selectedCount)="setPriceOfPerson($event)"
+    >
+      <ng-container icon>
+        <img
+          (click)="setPriceOfPerson(0); setCountOfPersons(0)"
+          class="property-counter-icon"
+          src="assets/payments/coins.svg"
+          alt="Coins icon"
+        />
+      </ng-container>
+      <ng-container title>
+        <p class="price-per-complete-icebreaker-title">Price Per Person</p>
+      </ng-container>
+    </app-property-counter>
+
+    <app-property-counter
+      *ngIf="pricePerPerson"
+      [isDisabled]="!!countOfPersons"
+      [isCurrency]="false"
+      (selectedCount)="setCountOfPersons($event)"
+    >
+      <ng-container icon>
+        <img
+          (click)="setCountOfPersons(0)"
+          class="property-counter-icon"
+          src="assets/payments/group-people.svg"
+          alt="Coins icon"
+        />
+      </ng-container>
+      <ng-container title>
+        <p class="count-people-title">Max. Number of People</p>
+      </ng-container>
+    </app-property-counter>
+    <button
+      *ngIf="countOfPersons && pricePerPerson"
+      class="icon-btn pay-btn"
+      (click)="finishPay()"
+    >
+      Confirm Budget
+    </button>
+  </ng-container>
+  <ng-template #setPriceOfIceBreakerTmpl>
+    <button (click)="stepBack.emit()" class="ice-breaker-type-element">
+      <img src="assets/clients.svg" alt="Clients icon" />
+      Others pay me
+    </button>
+    <app-price-slider
+      [advisorRate]="0"
+      [showHourPrefix]="false"
+      [step]="PRICE_CONFIG.step"
+      [isAdvisor]="true"
+      [minPrice]="PRICE_CONFIG.minPrice"
+      [showSubTitle]="false"
+      title="Set a price"
+      [maxPrice]="PRICE_CONFIG.maxPrice"
+      (confirmChangedPrice)="setPriceOfIceBreaker($event)"
+    >
+    </app-price-slider>
+  </ng-template>
+</section>

@@ -1,0 +1,41 @@
+<header
+  class="header-container"
+  #headerContainer
+>
+  <app-header></app-header>
+</header>
+<main
+  class="main-container"
+  [@fader]="outlet.isActivated ? outlet.activatedRoute : ''"
+  [ngStyle]="{
+    marginTop: mainContainerMarginTop(),
+    minHeight: mainContainerMinHeight()
+  }"
+>
+  <div
+    class="outlet-container"
+    [ngClass]="{'hidden': !isModalActive()}">
+    <router-outlet name="modal"></router-outlet>
+  </div>
+  <div
+    class="outlet-container"
+    [ngClass]="{'hidden': isModalActive()}">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+</main>
+
+@if (displayFooter()) {
+  <footer
+    class="footer-container"
+    #footerContainer
+  >
+    <app-goey-footer></app-goey-footer>
+  </footer>
+}
+
+<app-cookie-notification
+  [@slideInOut]
+  *ngIf="showCookieNotification"
+  (hideNotification)="showCookieNotification = false"
+  (agree)="hideNotification()"
+></app-cookie-notification>

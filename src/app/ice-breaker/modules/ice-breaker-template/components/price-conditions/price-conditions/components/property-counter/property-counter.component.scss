@@ -1,0 +1,57 @@
+@import '../../control-elements.mixins';
+
+:host {
+  @media screen and (max-width: $bp-small) {
+    width: 100%;
+  }
+}
+
+.price-per-person-container {
+  @include priceElement;
+  gap: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  min-width: 260px;
+  justify-content: space-between;
+
+  .price-window {
+    width: 65px;
+    background-color: #fff;
+    border-radius: $elementsBorderRadius;
+    color: $--sds-color-black-400;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  .gear-btn {
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    height: 22px;
+    background-color: unset;
+    border: unset;
+    cursor: pointer;
+
+    img {
+      height: 24px;
+    }
+  }
+
+  &__active {
+    background-color: black;
+  }
+}
+
+::ng-deep .counter-slider {
+  flex: 1;
+
+  .price-body {
+    display: none !important;
+  }
+}

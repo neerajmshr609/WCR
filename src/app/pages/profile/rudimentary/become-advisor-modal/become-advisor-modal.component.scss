@@ -1,0 +1,73 @@
+@import '_variables';
+
+::ng-deep .mat-dialog-content {
+  max-height: 92vh;
+  overflow-x: hidden;
+}
+
+::ng-deep .mat-dialog-container {
+  overflow-x: hidden !important;
+  border-radius: 20px;
+}
+
+.modal-container {
+  overflow-x: hidden;
+  text-align: center;
+  padding-top: 5px;
+  height: 100%;
+  padding-bottom: 5px;
+
+  .close-section {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .header {
+    font-weight: 500;
+    font-size: 25.7481px;
+    line-height: 31px;
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+
+  .gif {
+    width: 250px;
+    text-align: center;
+    margin-left: auto;
+    margin-bottom: 4.8rem;
+  }
+
+  .subtitle {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 160%;
+    letter-spacing: 0.03em;
+    color: $--sds-color-grey-500;
+    margin-bottom: 3rem;
+  }
+}
+
+.become-advisor-btn {
+  cursor: pointer;
+  background: black;
+  border: unset;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 16.1428px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: white;
+}
+
+.close-btn {
+  background-color: unset;
+  border: unset;
+  cursor: pointer;
+
+  img {
+    height: 35px;
+  }
+}

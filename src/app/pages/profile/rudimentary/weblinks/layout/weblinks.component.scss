@@ -1,0 +1,43 @@
+@import '_variables';
+.profile-weblinks {
+  display: grid;
+  gap: 6.5rem;
+  margin-top: 2rem;
+  margin-right: 4rem;
+  grid-template-columns: repeat(2, minmax(243px, 280px));
+  padding-bottom: 4rem;
+
+  @media only screen and (max-width: $bp-large) {
+    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(243px, 245px));
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    justify-content: center;
+    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(243px, 350px));
+    margin-right: 0;
+  }
+
+  &-footer {
+    text-align: left;
+    margin-bottom: 2rem;
+    justify-content: left;
+    display: flex;
+
+    @media only screen and (max-width: $bp-small) {
+      justify-content: center;
+    }
+  }
+}
+
+.btn-weblinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+
+  div {
+    margin-right: 1rem;
+  }
+}

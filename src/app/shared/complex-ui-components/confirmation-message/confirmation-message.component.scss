@@ -1,0 +1,48 @@
+@import "_variables";
+
+:host {
+  display: block;
+}
+
+.confirmation-message {
+  width: 600px;
+  max-width: 100vw;
+  padding: $--sds-size-space-800;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $--sds-size-space-600;
+  border-radius: $--sds-size-radius-200;
+  border: $--sds-size-stroke-border--solid--sds-color-border-default-default;
+  background: $--sds-color-background-default-default;
+  box-shadow: $--sds-size-depth-0 $--sds-size-depth-400 $--sds-size-depth-800 $--sds-size-depth-negative-100 $--sds-color-black-200, $--sds-size-depth-0 $--sds-size-depth-100 $--sds-size-depth-100 $--sds-size-depth-negative-100 $--sds-color-black-100;
+
+  &_close-icon_btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  &_title {
+    color: $--sds-color-text-default-default;
+    font-family: $--sds-typography-heading-font-family;
+    font-size: $--sds-typography-heading-size-base;
+    font-weight: $--sds-typography-heading-font-weight;
+    line-height: $line-height-120;
+    letter-spacing: $--letter-spacing--0048;
+  }
+
+  &_text {
+    color: $--sds-color-text-default-default;
+    font-size: $--sds-typography-body-size-medium;
+    font-weight: $--sds-typography-body-font-weight-regular;
+    line-height: $line-height-140;
+    margin-top: $--sds-size-space-300;
+  }
+
+  &_action {
+    display: flex;
+    justify-content: flex-end;
+    gap: $--sds-size-space-400;
+  }
+}

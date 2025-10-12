@@ -1,0 +1,45 @@
+<div class="modal creatives-modal">
+  <button mat-icon-button mat-dialog-close class="modal__btn--close">
+    <img src="assets/close-modal-icon.svg" alt="close-modal-icon" />
+  </button>
+
+  <app-rateback-selector
+    [showOutline]="true"
+    [isFilledIcon]="true"
+    [readonly]="true"
+    [ratebacks]="ratebacks"
+    [preselectedRateback]="5"
+  ></app-rateback-selector>
+
+  <p class="modal__title">
+    Unlock this Area by giving others five briliant insights
+  </p>
+  <p class="modal__text">
+    Go to "Give Feedback" and review projects suggested by our algorithm. Once
+    several creatives told us that 5 of your comments where "Brilliant insights"
+    we unlock the "Creatives" area for you.
+  </p>
+  <p class="modal__text">
+    Until then you're still able to earn money for briliant advice just not in
+    such a direct fashion like here.
+  </p>
+
+  <div class="modal__actions">
+    <a class="btn btn-primary" mat-dialog-close routerLink="/rateflow">
+      <img src="assets/header/give-feedback.svg" alt="" />
+      Give Feedback
+    </a>
+  </div>
+
+  <div class="toggle">
+    <app-gt-switch
+      (didChangeEvent)="toggleUserTutorials()"
+      [small]="true"
+      [isSwitched]="!!currentUser.showtutorials"
+      [onoffMode]="true"
+    ></app-gt-switch>
+    <p class="toggle__text">
+      Activate our practice focused tutorial on how to give inspiring feedback
+    </p>
+  </div>
+</div>

@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
   DestroyRef,
   inject,
   input,
@@ -26,7 +25,6 @@ import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { OutletService } from '../../../../services/outlet.service';
 import { Router } from '@angular/router';
 import { CurrentRouteService } from '../providers/current-route.service';
-import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-mobile-current-route',
@@ -54,7 +52,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class MobileCurrentRouteComponent {
   public openMenuState = input(false);
   private destroyRef = inject(DestroyRef);
-  readonly authorizedUser = toSignal(this._authService.authorizedUser$);
   private readonly _authModal$ = this._outletService.currentUrl$.pipe(
     startWith(this._router.url),
     map((url) => {
@@ -72,7 +69,6 @@ export class MobileCurrentRouteComponent {
   public pathTitle$ = new BehaviorSubject<string>(null);
 
   constructor(
-    private readonly _authService: AuthService,
     private readonly _outletService: OutletService,
     private readonly _router: Router,
     private currentRoute: CurrentRouteService,
@@ -84,13 +80,4 @@ export class MobileCurrentRouteComponent {
         this.pathTitle$.next(res);
       });
   }
-
-  readonly subName = computed(() => {
-    const user = this.authorizedUser();
-    console.log('USER', user);
-    if (!user) return '';
-
-    // Check if user is organization member by looking for organization property
-    return user.display_name ?? user.username ?? user.name ?? '';
-  });
 }

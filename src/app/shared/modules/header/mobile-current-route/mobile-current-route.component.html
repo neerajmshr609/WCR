@@ -57,7 +57,7 @@
     <span class="route-title" [innerHTML]="'header.' + authModal() | translate"></span>
   } @else {
     @if (path) {
-      <span class="route-title" [innerHTML]="('header.' + path) | translate"></span>
+      <span class="route-title" [innerHTML]="subName()"></span>
     }
   }
 }

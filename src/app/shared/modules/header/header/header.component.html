@@ -46,6 +46,7 @@
   <ng-container *ngTemplateOutlet="mainMenu"></ng-container>
 
   @if (userIsSignedIn()) {
+    {{ subName() }} 
   <app-dropdown-menu (logoutEvent)="onLogout()"></app-dropdown-menu>
   }
   }

@@ -165,7 +165,8 @@
 
 <ng-template #languageTemplate>
   <app-header-mobile-navbar-item
-    title="{{languageService.currentLanguageTitle()}}"
+    title="Select languages you speak"
+    description="Select all languages you speak so we can connect you better"
     (click)="openLanguageSelectModal()"
   >
     <app-icon-globe></app-icon-globe>
@@ -215,7 +216,7 @@
   <app-header-mobile-navbar-item
     [link]="profileLink()"
     title="header.profile.title"
-    description="header.profile.description"
+    [description]="subName()"
   >
     <app-icon-public-profile></app-icon-public-profile>
   </app-header-mobile-navbar-item>

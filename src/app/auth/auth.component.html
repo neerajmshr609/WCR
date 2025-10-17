@@ -1,14 +1,11 @@
 <div class="authform-container" [ngClass]="{login: isLoginMode}" #authRef>
   <div class="authform__image-container" [ngClass]="{signup: isSignupMode}">
-    <div class="authform__logo-container">
-      <app-ngo-ngo-logo-icon fill="#1E1E1E"></app-ngo-ngo-logo-icon>
-    </div>
     <img [ngSrc]="
     isLoginMode 
       ? 'assets/auth/login-image.jpg' 
       : (signUpMode() === 'counsellor' 
           ? 'assets/auth/counsellor-sign-up.png' 
-          : 'assets/auth/sign-up-image.png')" height="1724" width="1221" priority="true" [alt]="'header.image-alt' | translate">
+          : 'assets/auth/sign-up-image-new.png')" height="1724" width="1221" priority="true" [alt]="'header.image-alt' | translate">
   </div>
 
   <div class="authform" [@slideTop]="startAnimations()" [ngClass]="{login: isLoginMode, signup: isSignupMode}">

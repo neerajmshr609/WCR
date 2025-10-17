@@ -256,8 +256,8 @@
   },
   "select-language-modal": {
     "select-language-modal": {
-      "title": "Zur bevorzugten Sprache wechseln",
-      "label": "Sprache",
+      "title": "Sprachen, die ich fließend spreche",
+      "label": "Öffnen die Liste und wähle alle Sprachen aus, die du fließend sprichst",
       "cancel_btn_text": "Abbrechen",
       "save_btn_text": "Speichern"
     }

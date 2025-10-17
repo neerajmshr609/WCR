@@ -203,8 +203,8 @@
     "join_organization": "Присоединиться к {{ organization.legal_name }} от {{ invitation_by }}"
   },
   "select-language-modal": {
-    "title": "Переключить на предпочитаемый язык",
-    "label": "Язык",
+    "title": "Языки, которыми вы свободно владеете",
+    "label": "Откройте список и выберите все языки, которыми вы свободно владеете.",
     "cancel_btn_text": "Отмена",
     "save_btn_text": "Сохранить"
   },

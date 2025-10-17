@@ -1,6 +1,6 @@
 import { environment } from 'src/environments/environment';
 
-export const BASE_URL = environment.baseUrl;
+export const BASE_URL = 'https://getme.global/';
 export const API_URL = BASE_URL + 'api/v1/';
 export const ADMIN_URL = API_URL + 'admin/';
 export const COMPANION_URL = BASE_URL + 'uploader/';

@@ -3,7 +3,7 @@
   "version": "3.6.6",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "start-local": "ng s -c local",
     "build": "ng build",
     "test": "ng test",

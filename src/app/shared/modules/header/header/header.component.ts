@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   DestroyRef,
   HostBinding,
   inject,
@@ -55,6 +56,8 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   }
   private destroyRef = inject(DestroyRef);
 
+  readonly authorizedUser = toSignal(this.authService.authorizedUser$);
+
   private pathTitle$ = this.router.events.pipe(
     filter((e) => e instanceof NavigationEnd),
     switchMap(() =>
@@ -89,6 +92,15 @@ export class HeaderComponent extends BaseComponent implements OnInit {
         this.currentRouteService.pathTitle.next(res);
       });
   }
+
+  readonly subName = computed(() => {
+    const user = this.authorizedUser();
+    console.log('USER', user);
+    if (!user) return '';
+
+    // Check if user is organization member by looking for organization property
+    return user.display_name ?? user.username ?? user.name ?? '';
+  });
 
   @HostBinding('style.position') width = this.openMobileMenu()
     ? 'fixed'

@@ -471,7 +471,7 @@ export class AuthComponent
         catchError((err: HttpErrorResponse) => {
           this.error.set(err.error.errors?.[0]);
           this.shouldShowResendConfirmation =
-            this.error().includes('confirmation');
+            this.error()?.includes('confirmation') || false;
           return throwError(err);
         }),
         tap(() => {
@@ -574,7 +574,6 @@ export class AuthComponent
     }
   }
 
-  
   public signupByToken(): void {
     const queryParams = this.route.snapshot.queryParams;
     if (!queryParams.token) {

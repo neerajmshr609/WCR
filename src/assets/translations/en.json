@@ -245,8 +245,8 @@
     "join_organization": "Join {{ organization.legal_name }} by {{ invitation_by }}"
   },
   "select-language-modal": {
-    "title": "Switch to prefered Language",
-    "label": "Language",
+    "title": "Languages your fluent in",
+    "label": "Open list and select all languages you speak fluently",
     "cancel_btn_text": "Cancel",
     "save_btn_text": "Save"
   },

@@ -5,6 +5,7 @@ import {
   computed,
   DestroyRef,
   inject,
+  input,
   output,
   signal,
   ViewChild,
@@ -50,6 +51,7 @@ import { OutletService } from '../../../../services/outlet.service';
 import { PROFILE_PATH } from '../../../../pages/profile/routing/profile.paths';
 import { ICE_BREAKER_CREATE_PATH } from 'src/app/ice-breaker/routing/ice-breaker.paths';
 import { slideOutDownAnimation } from 'angular-animations';
+import { UserProfile } from 'src/app/pages/profile/model/user-profile.model';
 
 @Component({
   selector: 'app-dropdown-menu',
@@ -90,14 +92,26 @@ export class DropDownMenuComponent implements AfterViewInit {
   public menuOpenState = signal(false);
 
   private destroyRef = inject(DestroyRef);
-  readonly authorizedUser = toSignal(this._authService.userIsSignedIn$);
+  readonly authorizedUser = toSignal(this._authService.authorizedUser$);
   readonly authUserShareToken = toSignal(
     this._authService.authUserShareToken$,
     { initialValue: null },
   );
   readonly profileLink = computed(() => {
-    const profileToken = this.authUserShareToken();
-    return profileToken ? PROFILE_PATH.toStringUrl({ profileToken }) : null;
+    const shareToken = this.authUserShareToken();
+    return shareToken ? `${PROFILE_PATH}/${shareToken}` : '';
+  });
+
+  readonly subName = computed(() => {
+    const user = this.authorizedUser();
+    if (!user) return '';
+
+    // Check if user is organization member by looking for organization property
+    const isOrganizationMember = user.organization?.id;
+
+    return isOrganizationMember
+      ? user.display_name || user.username || user.name || ''
+      : user.country || '';
   });
 
   readonly isSignedInAsCounselor = toSignal(

@@ -33,7 +33,9 @@
       "video_call_requested": "Videoanruf angefordert",
       "video_call_request_icon_alt": "Videokamera-Illustration",
       "add_user_title": "Berater zum Klienten-Chat hinzufügen",
-      "add_user_description": "Personen, die Sie auf diese Weise hinzufügen, können direkt mit dem Klienten sprechen."
+      "add_user_description": "Personen, die Sie auf diese Weise hinzufügen, können direkt mit dem Klienten sprechen.",
+      "select_language_title": "Sprachen, die Sie fließend sprechen",
+      "select_language_description": "Öffnen Sie die Liste und wählen Sie alle Sprachen aus, die Sie fließend sprechen."
     },
     "user_context_form": {
       "title": "Starten Sie Ihre Anfrage",

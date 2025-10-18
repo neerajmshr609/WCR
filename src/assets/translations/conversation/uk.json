@@ -31,7 +31,9 @@
     "video_call_requested": "Відеодзвінок запрошено",
     "video_call_request_icon_alt": "Ілюстрація відеокамери",
     "add_user_title": "Додати консультанта до чату клієнта",
-    "add_user_description": "Люди, яких ви додаєте таким чином, можуть безпосередньо спілкуватися з клієнтом."
+    "add_user_description": "Люди, яких ви додаєте таким чином, можуть безпосередньо спілкуватися з клієнтом.",
+    "select_language_title": "Select Language",
+    "select_language_description": "Select the language you want to use for this conversation."
   },
   "user_context_form": {
     "title": "Почніть ваш запит",

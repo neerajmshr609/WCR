@@ -32,8 +32,10 @@
     "video_call_request": "Request video call",
     "video_call_requested": "Video call requested",
     "video_call_request_icon_alt": "Vide camera illustration",
-    "add_user_title": "Add Counsellor to Client Chat",
-    "add_user_description": "People you add this way directly may talk to the client."
+    "add_user_title": "Add Counsellor to Client Chat xD",
+    "add_user_description": "People you add this way directly may talk to the client.",
+    "select_language_title": "Select Language",
+    "select_language_description": "Select the language you want to use for this conversation."
   },
   "user_context_form": {
     "title": "Start your request",
@@ -243,6 +245,12 @@
     "user_joined": "User {{active}} joined chat.",
     "member_removed": "User {{active}} removed {{passive}} from chat.",
     "user_left": "User {{active}} left chat."
+  },
+  "select-language-modal": {
+    "title": "Languages your fluent in",
+    "label": "Open list and select all languages you speak fluently",
+    "cancel_btn_text": "Cancel",
+    "save_btn_text": "Save"
   },
   "audio_record": {
     "error_uploading": "Error while uploading audio",

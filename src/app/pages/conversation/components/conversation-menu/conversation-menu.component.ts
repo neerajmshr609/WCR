@@ -27,6 +27,12 @@ import { AnonymousUser } from '../../../../shared/models/user/anonymous-user.mod
 import { DropdownListComponent } from '../../../../shared/complex-ui-components/dropdown-list/dropdown-list.component';
 import { ConversationRequestMoreButtonComponent } from '../conversation-request-more-button/conversation-request-more-button.component';
 import { returnConversationType } from '../../../../shared/functions/converstion-types-adapter';
+import {
+  LANGUAGES_CODE_TYPE,
+  LANGUAGES_TITLES,
+} from 'src/app/shared/app-language/data';
+import { ModalSelectComponent } from '@ui-components/modal-select/modal-select.component';
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-conversation-menu',
@@ -44,6 +50,7 @@ export class ConversationMenuComponent {
   }
 
   constructor(
+    private languageService: LanguageService,
     private readonly _dialog: MatDialog,
     private authService: AuthService,
     private readonly _conversationsService: ConversationsService,
@@ -65,6 +72,13 @@ export class ConversationMenuComponent {
     this._permissionsService.isCounselor$,
   );
   private currentUser = toSignal(this.authService.authorizedUser$);
+
+  readonly languagesOptions = Object.values(LANGUAGES_TITLES).map((_) => ({
+    name: _,
+  }));
+  readonly currentLanguageOption = computed(() => ({
+    name: this.languageService.currentLanguageTitle(),
+  }));
 
   private isIncludeInConversation = computed(() => {
     return this.conversation().members.some(
@@ -129,6 +143,13 @@ export class ConversationMenuComponent {
         param: 'add_user',
         icon: 'assets/icons/user-plus.svg',
         selectHandler: this._openAddUserPopup,
+      },
+      {
+        title: 'conversation_menu.select_language_title',
+        description: 'conversation_menu.select_language_description',
+        param: 'select_language',
+        icon: 'assets/icons/world.svg',
+        selectHandler: this.openLanguageSelectModal,
       },
     ];
     if (
@@ -261,6 +282,32 @@ export class ConversationMenuComponent {
 
   private _requestVideoCall() {
     this.requestVideoCall.emit();
+  }
+
+  openLanguageSelectModal(): void {
+    this._dialog
+      .open(ModalSelectComponent, {
+        data: {
+          title: 'select-language-modal.title',
+          label: 'select-language-modal.label',
+          options: this.languagesOptions,
+          preSelected: this.currentLanguageOption(),
+          placeholder: 'select language',
+          cancel_btn_text: 'select-language-modal.cancel_btn_text',
+          save_btn_text: 'select-language-modal.save_btn_text',
+        },
+      })
+      .afterClosed()
+      .subscribe(({ name: languageTitle }) => {
+        const lang = Object.entries(LANGUAGES_TITLES).find(
+          ([, title]) => title === languageTitle,
+        );
+        if (isArrayAndHasItems(lang)) {
+          this.languageService.setCurrentLanguage(
+            lang[0] as LANGUAGES_CODE_TYPE,
+          );
+        }
+      });
   }
 
   private _openAddUserPopup() {

@@ -104,7 +104,7 @@
         @if (type() === types().DIRECT_CHAT) {
           <span class="city"> {{ anotherMembers[0]?.city }} </span>
         } @else {
-          @if(anotherMembers.length > 0) {
+          @if(anotherMembers?.length > 0) {
             <div class="conversation-info__members">
               <app-user-icon [strokeWidth]="2"></app-user-icon>
               <span>
